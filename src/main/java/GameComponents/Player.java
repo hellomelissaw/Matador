@@ -7,18 +7,18 @@ This class is reused from our CDIO2 project and built upon.
  */
 public class Player {
 
-    private String playerName;
+    //private String playerName;
     private int balance;
     private int squareIndex = 0;
-    Account PlayerAccount = new Account(playerName);
+    Account PlayerAccount = new Account();
 
-    public Player(String playerName) {
+    /*public Player(String playerName) {
         this.playerName = playerName;
         //this.balance = balance;
         //System.out.println(playerName);
         //PlayerAccount.setBalance(balance);
 
-    }
+    }*/
 
     /*
     public int getPlayerNumber() {
@@ -40,9 +40,9 @@ public class Player {
         return (PlayerAccount.getBalance());
     }
 
-    public String getPlayerName (){
+    /*public String getPlayerName (){
         return playerName;
-    }
+    }*/
 
     public int updatePosition(int sumDice) {
         for(int i = 0; i < sumDice; i++) {

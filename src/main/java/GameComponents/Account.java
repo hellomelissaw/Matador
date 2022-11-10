@@ -8,9 +8,9 @@ public class Account {
     private String Accountname;
 
 
-    public Account(String name){
+    public Account(){
         balance = 0;
-        Accountname = name;
+       // Accountname = name;
     }
     public void setBalance(int initialBalance){
         balance = initialBalance;
