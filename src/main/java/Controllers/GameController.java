@@ -49,7 +49,7 @@ public class GameController {
         int newPosition = 0;
 
         int testInt = 0;
-        while(testInt < 50) { //ARBITRARY NEWPOSITION VALUE TO TEST FOR-LOOP
+        while(testInt < 50) {
 
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
                 testInt++;
@@ -68,9 +68,11 @@ public class GameController {
                         System.out.println("This property is available for purchase.");
                         ((DeedSquare) square[newPosition]).sellDeed();
 
-                    } else if (!((DeedSquare) square[newPosition]).hasDeed()) {
+                        //player[i].withdrawMoney();
 
+                    } else if (!((DeedSquare) square[newPosition]).hasDeed()) {
                         System.out.println("Sorry but u gotta pay rent.");
+
                     }
 
                     System.out.println();
