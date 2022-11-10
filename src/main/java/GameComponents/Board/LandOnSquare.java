@@ -10,7 +10,7 @@ public class LandOnSquare {
     public LandOnSquare(Square[] square, Player[] player) {
         this.square = square;
         this.player = player;
-    }w
+    }
     public void landOnDeedSquare(int newPosition, int currentPlayer) {
         int i = currentPlayer;
         int deedPrice = ((DeedSquare) square[newPosition]).getDeedPrice();
