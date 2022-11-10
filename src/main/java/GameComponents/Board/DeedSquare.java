@@ -13,7 +13,7 @@ public class DeedSquare extends Square{
         this.deed = new Deed(deedPrice, deedName);
         this.deedPrice = deedPrice;
     }
-    Deed getDeed(){
+    public Deed getDeed(){
         return deed;
     }
     public boolean hasDeed(){ // Checks if the square has a deed available to buy or if it's already sold

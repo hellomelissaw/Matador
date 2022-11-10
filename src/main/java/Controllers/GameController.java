@@ -53,6 +53,7 @@ public class GameController {
 
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
                 testInt++;
+                //THROWS THE DICE AND MOVES THE PLAYER
                 diceArr = cup.getSum();
                 int sum = diceArr[2];
                 int playerIndex = i + 1;
@@ -62,22 +63,25 @@ public class GameController {
 
                 System.out.println("Player " + playerIndex + " you are on square " + square[newPosition].toString());
 
+                //HANDLES THE PROCESS OF LANDING ON A SQUARE AND CALLS METHOD FOR SUBSEQUENT ACTIONS
+                LandOnSquare playerTurn = new LandOnSquare(square);
+
                 if(square[newPosition] instanceof DeedSquare) {
+                    playerTurn.landOnDeedSquare(newPosition);
 
-                    if(((DeedSquare) square[newPosition]).hasDeed()) {
-                        System.out.println("This property is available for purchase.");
-                        ((DeedSquare) square[newPosition]).sellDeed();
+                } else if (square[newPosition] instanceof ChanceSquare) {
+                    playerTurn.landOnChanceSquare(newPosition);
 
-                        //player[i].withdrawMoney();
+                } else if (square[newPosition] instanceof JailSquare) {
+                    playerTurn.landOnJailSquare(newPosition);
 
-                    } else if (!((DeedSquare) square[newPosition]).hasDeed()) {
-                        System.out.println("Sorry but u gotta pay rent.");
+                } else if (square[newPosition] instanceof ParkingSquare) {
+                    playerTurn.landOnParkingSquare(newPosition);
 
-                    }
-
-                    System.out.println();
-
+                } else {
+                    playerTurn.landOnStartSquare(newPosition);
                 }
+
             }
         }
     }
