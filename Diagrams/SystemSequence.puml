@@ -1,0 +1,67 @@
+@startuml
+title Systemsekvensdiagram
+
+
+participant Player
+participant System
+
+
+
+loop [while Player != bankrupt]
+  Player -> System : roll dice
+  System  --> Player : move pawn
+  alt #LightBlue [if property square]
+  alt [if squareIsFree]
+  Player -> System : buy property
+  System --> Player : update property ownership
+
+  else [if squareHasOwner]
+    Player -> System : pay rent
+  System --> Player : deposit owner account balance
+
+  System --> Player : withdraw account balance
+end
+  else #Pink [if chance square]
+
+  loop [while pickChanceCard]
+      Player -> System : pick chance card
+      alt #LavenderBlush [if actionMove]
+        System --> Player : update player position
+
+      else #White [if actionGetMoney]
+        System --> Player : deposit money
+        alt [if otherPlayersPay]
+        System --> Player : withdraw from other players' account
+        end
+
+      else [if actionPayMoney]
+         System --> Player : withdraw money
+
+      else #White [if actionGetProperty]
+        System --> Player : update propertyOwnership
+
+      else [if giveCardToOtherPlayer]
+        System --> Player : store next turn actions other player
+
+       else #White [if actionGetJailFreeCard]
+              System --> Player : store get-out-of-jail-free card
+       end
+
+    end
+
+    else #Khaki [if start square]
+      System --> Player : deposit money
+
+    else #Lavender [if go-to-jail square]
+      System --> Player : update player position
+
+
+    end
+  end
+
+Player -> System : isBankrupt
+System --> Player : getOtherPlayerBalance
+System --> Player : winnerMessage
+
+
+@enduml
