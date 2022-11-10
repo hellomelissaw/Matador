@@ -23,6 +23,10 @@ public class DeedSquare extends Square{
         sellDeed = false ;
     }
 
+    public int getDeedPrice() {
+        return deedPrice;
+    }
+
     @Override
     public String toString() {
         String priceString = Integer.toString(deedPrice);

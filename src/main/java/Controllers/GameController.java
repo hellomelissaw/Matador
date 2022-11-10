@@ -64,7 +64,7 @@ public class GameController {
                 System.out.println("Player " + playerIndex + " you are on square " + square[newPosition].toString());
 
                 //HANDLES THE PROCESS OF LANDING ON A SQUARE AND CALLS METHOD FOR SUBSEQUENT ACTIONS
-                LandOnSquare playerTurn = new LandOnSquare(square);
+                LandOnSquare playerTurn = new LandOnSquare(square, player);
 
                 if(square[newPosition] instanceof DeedSquare) {
                     playerTurn.landOnDeedSquare(newPosition,i);
