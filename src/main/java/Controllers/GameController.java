@@ -58,12 +58,13 @@ public class GameController {
                 System.out.println("Player " + playerIndex + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
                 newPosition = player[i].updatePosition(sum);
 
-
-
                 System.out.println("Player " + playerIndex + " you are on square " + square[newPosition].toString());
 
                 if(square[newPosition] instanceof DeedSquare) {
-                    System.out.println("You bought this!");
+                    boolean deed = ((DeedSquare) square[newPosition]).hasDeed();
+                    if(deed) {
+                        System.out.println("This property is available for purchase.");
+                    }
 
                     System.out.println();
 

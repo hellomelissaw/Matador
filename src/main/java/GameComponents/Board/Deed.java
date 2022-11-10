@@ -5,7 +5,7 @@ import GameComponents.Player;
 public class Deed {
 
     Player ownerName;
-    // int[] squarePrise; // i Matador mangler vi en array med alle priser på et skød
+    // int[] squarePrice; // i Matador mangler vi en array med alle priser på et skød
     int squarePrice;
     String name;
 

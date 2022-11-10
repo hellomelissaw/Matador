@@ -3,7 +3,7 @@ package GameComponents.Board;
 public class DeedSquare extends Square{
 
     Deed deed;
-    boolean sellDeed = false;
+    boolean sellDeed = true;
 
     // public DeedSquare(String deedName , Deed deed) {
     public DeedSquare(String deedName, int price) {
@@ -20,6 +20,6 @@ public class DeedSquare extends Square{
     }
 
     public void sellDeed(){ // Sets deed to null so Square no longer has a deed
-        sellDeed = true ;
+        sellDeed = false ;
     }
 }
