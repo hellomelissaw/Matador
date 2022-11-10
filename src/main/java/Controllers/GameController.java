@@ -1,28 +1,46 @@
 package Controllers;
-import GameComponents.Board.*;
+
+import GameComponents.Board.BoardInit;
+import GameComponents.Board.Square;
 import GameComponents.Cup;
 import GameComponents.Player;
+import gui_fields.GUI_Player;
+import gui_main.GUI;
 
 import java.util.Scanner;
 
 public class GameController {
-    int playerCount = 0;
+
+    GuiController gui;
+
+
+    public int getPlayerCount() {
+        return playerCount;
+    }
+
+    public int playerCount = 0;
     int balance = 0;
     Player[] player;
 
     Square[] square;
     public void init() {
+
         BoardInit board = new BoardInit();
         square = board.getSquareArr();
         Scanner userInput = new Scanner(System.in);
 
+
         //INITIALIZING PLAYERS
         System.out.println("Enter number of player (2-4):");
+        gui.showMessage("Enter number of player (2-4):");
         boolean playerCountInvalid = true;
         while (playerCountInvalid) {
-            playerCount = userInput.nextInt();
+           // playerCount = userInput.nextInt();
+            playerCount = gui.getUserInteger();
+            //playerCount = gui.getUserInteger("Enter number of player (2-4):");
             if (playerCount >= 2 && playerCount <= 4) {
                 playerCountInvalid = false;
+
             } else {
                 System.out.println("Invalid player number, please enter an integer between 2 and 4 inclusively.");
             }
@@ -36,10 +54,13 @@ public class GameController {
             //System.out.println("There are " + playerCount + "players.");
             int playerNumber = i + 1;
             System.out.println("Player " + playerNumber + " enter your name:");
+            gui.showMessage("Player " + playerNumber + " enter your name:");
+
             Scanner input = new Scanner(System.in);
             String playerName = input.nextLine();
             player[i] = new Player(playerName); // INITIALISE EACH PLAYER WITH NAME
             player[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE
+            GUI_Player player = new GUI_Player(playerName,balance);
         }
 
     }

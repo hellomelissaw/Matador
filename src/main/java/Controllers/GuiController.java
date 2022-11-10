@@ -1,9 +1,17 @@
 package Controllers;
+import GameComponents.Player;
 import gui_fields.*;
 import gui_main.GUI;
 
 import java.awt.*;
-public class GuiController {
+public class GuiController extends GameController{
+
+
+    private Player[] player = new Player[playerCount];
+    int players;
+    private String playerName;
+    private int balance;
+
 
     public GuiController() {
         GUI_Field[] fields = {
@@ -126,5 +134,34 @@ public class GuiController {
         gui.getFields()[23].setBackGroundColor(Color.orange);
         gui.getFields()[23].setSubText("M5");
 
+        gui.getUserButtonPressed("Press Ok to start!");
+        gui.showMessage("Welcome to Monopoly Junior game.");
+
+
+    }
+
+    public GuiController(String playerName, Player[] player) {
+        //super(playerName);
+        this.player = player;
+    }
+    public String showMessage(String message){
+        return message;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void addPlayer(){
+
+      GUI_Player gui_player = new GUI_Player(playerName,balance);
+    }
+
+    public int getUserInteger() {
+        return gui.getUserInteger();
     }
 }
