@@ -67,19 +67,19 @@ public class GameController {
                 LandOnSquare playerTurn = new LandOnSquare(square);
 
                 if(square[newPosition] instanceof DeedSquare) {
-                    playerTurn.landOnDeedSquare(newPosition);
+                    playerTurn.landOnDeedSquare(newPosition,i);
 
                 } else if (square[newPosition] instanceof ChanceSquare) {
-                    playerTurn.landOnChanceSquare(newPosition);
+                    playerTurn.landOnChanceSquare(newPosition,i);
 
                 } else if (square[newPosition] instanceof JailSquare) {
-                    playerTurn.landOnJailSquare(newPosition);
+                    playerTurn.landOnJailSquare(newPosition,i);
 
                 } else if (square[newPosition] instanceof ParkingSquare) {
-                    playerTurn.landOnParkingSquare(newPosition);
+                    playerTurn.landOnParkingSquare(newPosition,i);
 
                 } else {
-                    playerTurn.landOnStartSquare(newPosition);
+                    playerTurn.landOnStartSquare(newPosition,i);
                 }
 
             }

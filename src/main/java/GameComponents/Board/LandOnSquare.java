@@ -5,7 +5,7 @@ public class LandOnSquare {
     public LandOnSquare(Square[] squares) {
         this.square = squares;
     }
-    public void landOnDeedSquare(int newPosition) {
+    public void landOnDeedSquare(int newPosition, int currentPlayer) {
 
         if(((DeedSquare) square[newPosition]).hasDeed()) {
                 System.out.println("This property is available for purchase.");
@@ -18,19 +18,19 @@ public class LandOnSquare {
         }
     }
 
-    public void landOnChanceSquare(int newPosition) {
+    public void landOnChanceSquare(int newPosition, int currentPlayer) {
 
     }
 
-    public void landOnStartSquare (int newPosition) {
+    public void landOnStartSquare (int newPosition, int currentPlayer) {
 
     }
 
-    public void landOnJailSquare(int newPosition) {
+    public void landOnJailSquare(int newPosition, int currentPlayer) {
 
     }
 
-    public void landOnParkingSquare(int newPosition) {
+    public void landOnParkingSquare(int newPosition, int currentPlayer) {
 
     }
 }
