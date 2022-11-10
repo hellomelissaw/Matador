@@ -9,7 +9,6 @@ public class GameController {
     int playerCount = 0;
     int balance = 0;
     Player[] player;
-
     Square[] square;
     public void init() {
         BoardInit board = new BoardInit();
@@ -54,13 +53,21 @@ public class GameController {
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
                 diceArr = cup.getSum();
                 int sum = diceArr[2];
-                System.out.println("You have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
+                int playerIndex = i + 1;
+
+                System.out.println("Player " + playerIndex + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
                 newPosition = player[i].updatePosition(sum);
 
-                int playerIndex = i + 1;
+
 
                 System.out.println("Player " + playerIndex + " you are on square " + square[newPosition].toString());
 
+                if(square[newPosition] instanceof DeedSquare) {
+                    System.out.println("You bought this!");
+
+                    System.out.println();
+
+                }
             }
         }
     }
