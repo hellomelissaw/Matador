@@ -10,15 +10,17 @@ public class Player {
     //private String playerName;
     private int balance;
     private int squareIndex = 0;
+
+    private String playerName;
     Account PlayerAccount = new Account();
 
-    /*public Player(String playerName) {
+    public Player(String playerName) {
         this.playerName = playerName;
         //this.balance = balance;
         //System.out.println(playerName);
         //PlayerAccount.setBalance(balance);
 
-    }*/
+    }
 
     /*
     public int getPlayerNumber() {
