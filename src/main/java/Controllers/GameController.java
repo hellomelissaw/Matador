@@ -48,9 +48,11 @@ public class GameController {
         int[] diceArr;
         int newPosition = 0;
 
-        while(newPosition < 20) { //ARBITRARY NEWPOSITION VALUE TO TEST FOR-LOOP
+        int testInt = 0;
+        while(testInt < 50) { //ARBITRARY NEWPOSITION VALUE TO TEST FOR-LOOP
 
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
+                testInt++;
                 diceArr = cup.getSum();
                 int sum = diceArr[2];
                 int playerIndex = i + 1;
@@ -61,9 +63,14 @@ public class GameController {
                 System.out.println("Player " + playerIndex + " you are on square " + square[newPosition].toString());
 
                 if(square[newPosition] instanceof DeedSquare) {
-                    boolean deed = ((DeedSquare) square[newPosition]).hasDeed();
-                    if(deed) {
+
+                    if(((DeedSquare) square[newPosition]).hasDeed()) {
                         System.out.println("This property is available for purchase.");
+                        ((DeedSquare) square[newPosition]).sellDeed();
+
+                    } else if (!((DeedSquare) square[newPosition]).hasDeed()) {
+
+                        System.out.println("Sorry but u gotta pay rent.");
                     }
 
                     System.out.println();
