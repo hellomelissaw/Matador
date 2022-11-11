@@ -4,7 +4,7 @@ public class DeedSquare extends Square{
     Deed deed;
     boolean sellDeed = true;
 
-    Player player;
+    Player deedOwner;
     int deedPrice;
 
     // public DeedSquare(String deedName , Deed deed) {
@@ -26,6 +26,11 @@ public class DeedSquare extends Square{
 
     public int getDeedPrice() {
         return deedPrice;
+    }
+
+    public Player owesRentTo() {
+        deedOwner = deed.getOwner();
+        return deedOwner;
     }
 
     @Override
