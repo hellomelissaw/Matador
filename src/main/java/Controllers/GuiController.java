@@ -153,13 +153,23 @@ import java.awt.*;
     public String getPlayerName() {
         return playerName;
     }
+     public GUI_Player addPlayer(String userInput, int balance){
 
-    public GUI_Player addPlayer(String userInput, int balance){
+         GUI_Player gui_player = new GUI_Player(playerName, this.balance);
 
-      GUI_Player gui_player = new GUI_Player(playerName, this.balance);
+         return gui_player;
+     }
 
-        return gui_player;
-    }
+     public Die getDie1() {
+         return die1;
+     }
+
+     public Die getDie2() {
+         return die2;
+     }
+
+
+
 
      public int getUserInteger() {
         return gui.getUserInteger("Enter players count:");
@@ -170,8 +180,8 @@ import java.awt.*;
 
 
 
-    /*public void setDice(Die die1, Die die2){
-        return;
+    public void setDice(Die die1, Die die2){
+         gui.setDice(die1.roll(),die2.roll());
 
-    }*/
+    }
 }
