@@ -1,6 +1,6 @@
 package Controllers;
 
-import GameComponents.Board.BoardInit;
+import GameComponents.Board.*;
 import GameComponents.Board.Square;
 import GameComponents.Cup;
 import GameComponents.Player;
