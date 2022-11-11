@@ -7,10 +7,8 @@ This class is reused from our CDIO2 project and built upon.
  */
 public class Player {
 
-    //private String playerName;
     private int balance;
     private int squareIndex = 0;
-
     private String playerName;
     Account PlayerAccount = new Account();
 
@@ -19,7 +17,6 @@ public class Player {
         //this.balance = balance;
         //System.out.println(playerName);
         //PlayerAccount.setBalance(balance);
-
     }
 
     /*
@@ -55,5 +52,10 @@ public class Player {
             }
         }
         return this.squareIndex;
+    }
+
+    @Override
+    public String toString() {
+        return playerName;
     }
 }
