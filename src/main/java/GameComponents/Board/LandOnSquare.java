@@ -1,4 +1,5 @@
 package GameComponents.Board;
+import GameComponents.Account;
 import GameComponents.Player;
 
 public class LandOnSquare {
@@ -55,7 +56,20 @@ public class LandOnSquare {
 
     public void landOnJailSquare(int newPosition, int currentPlayer) {
 
+       int i= currentPlayer;
+        if (newPosition==18)
+            System.out.println("Go to jail,and pay M1 for the bank ");
+
+        player[i].withdrawMoney(1);
+        int currentBalance = player[i].getCurrentBalance();
+            System.out.println("You now have " + currentBalance + " in your bank account.");
+
+
+
+
+
     }
+
 
     public void landOnParkingSquare(int newPosition, int currentPlayer) {
 
