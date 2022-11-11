@@ -4,15 +4,15 @@ import GameComponents.Player;
 
 public class Deed {
 
-    Player ownerName;
+    Player owner;
     // int[] squarePrice; // i Matador mangler vi en array med alle priser på et skød
     int squarePrice;
-    String name;
+    String deedName;
 
-    public Deed(int squarePrice,String name){
+    public Deed(int squarePrice,String deedName){
         //this.owner = owner;
         this.squarePrice = squarePrice;
-        this.name=name;
+        this.deedName = deedName;
     }
 
     public int getSquarePrice() {
@@ -20,11 +20,12 @@ public class Deed {
     }
 
     public Player getOwner() {
-        return ownerName;
+        return owner;
     }
     public void setOwner(Player ownerName){ // Not sure where we will use setOwner method yet
 
-        this.ownerName = ownerName;
+        this.owner = ownerName;
 
     }
+
 }

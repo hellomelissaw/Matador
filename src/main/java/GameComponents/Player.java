@@ -39,9 +39,9 @@ public class Player {
         return (PlayerAccount.getBalance());
     }
 
-    /*public String getPlayerName (){
+    public String getPlayerName (){
         return playerName;
-    }*/
+    }
 
     public int updatePosition(int sumDice) {
         for(int i = 0; i < sumDice; i++) {

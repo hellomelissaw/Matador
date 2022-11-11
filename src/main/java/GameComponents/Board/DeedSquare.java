@@ -3,8 +3,6 @@ import GameComponents.Player;
 public class DeedSquare extends Square{
     Deed deed;
     boolean sellDeed = true;
-
-    Player deedOwner;
     int deedPrice;
 
     // public DeedSquare(String deedName , Deed deed) {
@@ -19,7 +17,7 @@ public class DeedSquare extends Square{
     public boolean hasDeed(){ // Checks if the square has a deed available to buy or if it's already sold
         return sellDeed;
     }
-    public void sellDeed(Player player){ // Sets deed to null so Square no longer has a deed
+    public void sellDeed(Player player){ // Sets deed to false so Square no longer has a deed
         sellDeed = false ;
         deed.setOwner(player);
     }
@@ -28,10 +26,14 @@ public class DeedSquare extends Square{
         return deedPrice;
     }
 
-    public Player owesRentTo() {
+    public Player getDeedOwner() {
+        return deed.getOwner();
+    }
+
+   /* public Player owesRentTo() {
         deedOwner = deed.getOwner();
         return deedOwner;
-    }
+    }*/
 
     @Override
     public String toString() {

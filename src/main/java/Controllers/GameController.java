@@ -49,7 +49,7 @@ public class GameController {
         int newPosition = 0;
 
         int testInt = 0;
-        while(testInt < 50) {
+        while(testInt < 25) {
 
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
                 testInt++;
@@ -58,10 +58,10 @@ public class GameController {
                 int sum = diceArr[2];
                 int playerIndex = i + 1;
 
-                System.out.println("Player " + playerIndex + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
+                System.out.println(player[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
                 newPosition = player[i].updatePosition(sum);
 
-                System.out.println("Player " + playerIndex + " you are on square " + square[newPosition].toString());
+                System.out.println(player[i].getPlayerName() + " you are on square " + square[newPosition].toString());
 
                 //HANDLES THE PROCESS OF LANDING ON A SQUARE AND CALLS METHOD FOR SUBSEQUENT ACTIONS
                 LandOnSquare playerTurn = new LandOnSquare(square, player);
