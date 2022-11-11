@@ -1,5 +1,4 @@
 package GameComponents.Board;
-
 import GameComponents.Player;
 
 public class LandOnSquare {
@@ -16,17 +15,20 @@ public class LandOnSquare {
         int deedPrice = ((DeedSquare) square[newPosition]).getDeedPrice();
 
         if(((DeedSquare) square[newPosition]).hasDeed()) {
-                System.out.println("This property is available for purchase.");
-                ((DeedSquare) square[newPosition]).sellDeed();
-                player[i].withdrawMoney(deedPrice);
-                int currentBalance = player[i].getCurrentBalance();
+            System.out.println("This property is available for purchase.");
+
+            player[i].withdrawMoney(deedPrice); // TO DO: must check if player has enough money to buy
+            int currentBalance = player[i].getCurrentBalance();
             System.out.println("You now have " + currentBalance + " in your bank account.");
+
+            ((DeedSquare) square[newPosition]).sellDeed(player[i]); // SETS sellDeed TO FALSE
+
 
             } else if (!((DeedSquare) square[newPosition]).hasDeed()) {
                 System.out.println("Sorry but u gotta pay rent.");
-            player[i].withdrawMoney(deedPrice); // NOTE: Maybe make a "transferMoney" method to withdraw form one account and deposit in another?
-            int currentBalance = player[i].getCurrentBalance();
-            System.out.println("You now have " + currentBalance + " in your bank account.");
+                player[i].withdrawMoney(deedPrice); // NOTE: Maybe make a "transferMoney" method to withdraw form one account and deposit in another?
+                int currentBalance = player[i].getCurrentBalance();
+                System.out.println("You now have " + currentBalance + " in your bank account.");
 
 
         }
