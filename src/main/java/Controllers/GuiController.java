@@ -1,13 +1,16 @@
 package Controllers;
+import GameComponents.Die;
 import GameComponents.Player;
 import gui_fields.*;
 import gui_main.GUI;
 
 import java.awt.*;
-public class GuiController extends GameController{
-
-
-    private Player[] player = new Player[playerCount];
+ public class GuiController {
+    GUI gui;
+    //GuiController gui;
+     Die die1 = new Die();
+     Die die2 = new Die();
+    String message;
     int players;
     private String playerName;
     private int balance;
@@ -41,8 +44,7 @@ public class GuiController extends GameController{
                 new GUI_Street(),
         };
 
-
-        GUI gui = new GUI(fields);
+        this.gui = new GUI(fields);
 
         gui.getFields()[0].setTitle("Start");
         gui.getFields()[0].setBackGroundColor(Color.yellow);
@@ -140,12 +142,8 @@ public class GuiController extends GameController{
 
     }
 
-    public GuiController(String playerName, Player[] player) {
-        //super(playerName);
-        this.player = player;
-    }
-    public String showMessage(String message){
-        return message;
+    public void showMessage(String message){
+        gui.showMessage(message);
     }
 
     public int getBalance() {
@@ -157,11 +155,13 @@ public class GuiController extends GameController{
     }
 
     public void addPlayer(){
-
       GUI_Player gui_player = new GUI_Player(playerName,balance);
     }
 
-    public int getUserInteger() {
-        return gui.getUserInteger();
-    }
+
+
+    /*public void setDice(Die die1, Die die2){
+        return;
+
+    }*/
 }

@@ -1,11 +1,14 @@
 package GameComponents;
 
+import Controllers.GameController;
+
 /*
 ===================================================================================
 This class is reused from our previous project CDIO 1 and translated to English.
 ===================================================================================
  */
 public class Cup {
+
     Die die1 = new Die();
     Die die2 = new Die();
 

@@ -5,25 +5,19 @@ import GameComponents.Board.Square;
 import GameComponents.Cup;
 import GameComponents.Player;
 import gui_fields.GUI_Player;
-import gui_main.GUI;
 
 import java.util.Scanner;
 
 public class GameController {
-
-    GuiController gui;
-
-
-    public int getPlayerCount() {
-        return playerCount;
-    }
-
+    GuiController guiController;
     public int playerCount = 0;
     int balance = 0;
     Player[] player;
-
     Square[] square;
     public void init() {
+        guiController = new GuiController();
+        //gui.init();
+        //gui.run();
 
         BoardInit board = new BoardInit();
         square = board.getSquareArr();
@@ -32,11 +26,13 @@ public class GameController {
 
         //INITIALIZING PLAYERS
         System.out.println("Enter number of player (2-4):");
-        gui.showMessage("Enter number of player (2-4):");
+        guiController.showMessage("Enter number of player (2-4):");
         boolean playerCountInvalid = true;
         while (playerCountInvalid) {
            // playerCount = userInput.nextInt();
-            playerCount = gui.getUserInteger();
+            System.out.println(playerCount);
+
+           // playerCount = gui.getUserInteger();
             //playerCount = gui.getUserInteger("Enter number of player (2-4):");
             if (playerCount >= 2 && playerCount <= 4) {
                 playerCountInvalid = false;
@@ -54,7 +50,8 @@ public class GameController {
             //System.out.println("There are " + playerCount + "players.");
             int playerNumber = i + 1;
             System.out.println("Player " + playerNumber + " enter your name:");
-            gui.showMessage("Player " + playerNumber + " enter your name:");
+            String guiMessage = "Player " + playerNumber + " enter your name:";
+            guiController.showMessage(guiMessage);
 
             Scanner input = new Scanner(System.in);
             String playerName = input.nextLine();
@@ -84,5 +81,8 @@ public class GameController {
 
             }
         }
+    }
+    public int getPlayerCount() {
+        return playerCount;
     }
 }
