@@ -70,17 +70,39 @@ public class GameController {
         int[] diceArr;
         int newPosition = 0;
 
-        while(newPosition < 20) { //ARBITRARY NEWPOSITION VALUE TO TEST FOR-LOOP
+        int testInt = 0;
+        while(testInt < 25) {
 
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
+                testInt++;
+                //THROWS THE DICE AND MOVES THE PLAYER
                 diceArr = cup.getSum();
                 int sum = diceArr[2];
-                System.out.println("You have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
-                newPosition = player[i].updatePosition(sum);
-
                 int playerIndex = i + 1;
 
-                System.out.println("Player " + playerIndex + " you are on square " + square[newPosition].toString());
+                System.out.println(player[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
+                newPosition = player[i].updatePosition(sum);
+
+                System.out.println(player[i].getPlayerName() + " you are on square " + square[newPosition].toString());
+
+                //HANDLES THE PROCESS OF LANDING ON A SQUARE AND CALLS METHOD FOR SUBSEQUENT ACTIONS
+                LandOnSquare playerTurn = new LandOnSquare(square, player);
+
+                if(square[newPosition] instanceof DeedSquare) {
+                    playerTurn.landOnDeedSquare(newPosition,i);
+
+                } else if (square[newPosition] instanceof ChanceSquare) {
+                    playerTurn.landOnChanceSquare(newPosition,i);
+
+                } else if (square[newPosition] instanceof JailSquare) {
+                    playerTurn.landOnJailSquare(newPosition,i);
+
+                } else if (square[newPosition] instanceof ParkingSquare) {
+                    playerTurn.landOnParkingSquare(newPosition,i);
+
+                } else {
+                    playerTurn.landOnStartSquare(newPosition,i);
+                }
 
             }
         }
