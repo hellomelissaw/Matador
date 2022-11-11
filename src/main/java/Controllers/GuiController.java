@@ -1,15 +1,15 @@
 package Controllers;
 import GameComponents.Die;
-import GameComponents.Player;
 import gui_fields.*;
 import gui_main.GUI;
 
 import java.awt.*;
  public class GuiController {
-    GUI gui;
-    //GuiController gui;
+     GUI gui;
+
      Die die1 = new Die();
      Die die2 = new Die();
+
     String message;
     int players;
     private String playerName;
@@ -154,9 +154,19 @@ import java.awt.*;
         return playerName;
     }
 
-    public void addPlayer(){
-      GUI_Player gui_player = new GUI_Player(playerName,balance);
+    public GUI_Player addPlayer(String userInput, int balance){
+
+      GUI_Player gui_player = new GUI_Player(playerName, this.balance);
+
+        return gui_player;
     }
+
+     public int getUserInteger() {
+        return gui.getUserInteger("Enter players count:");
+     }
+     public String getUserString(){
+        return gui.getUserString("");
+     }
 
 
 

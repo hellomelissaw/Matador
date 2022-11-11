@@ -5,23 +5,28 @@ import GameComponents.Board.Square;
 import GameComponents.Cup;
 import GameComponents.Player;
 import gui_fields.GUI_Player;
+import gui_main.GUI;
 
 import java.util.Scanner;
 
 public class GameController {
     GuiController guiController;
     public int playerCount = 0;
+    String userInput;
     int balance = 0;
     Player[] player;
     Square[] square;
     public void init() {
         guiController = new GuiController();
+
+                ;
         //gui.init();
         //gui.run();
 
         BoardInit board = new BoardInit();
         square = board.getSquareArr();
-        Scanner userInput = new Scanner(System.in);
+        //String userInput = new Scanner(System.in);
+        String userInput;
 
 
         //INITIALIZING PLAYERS
@@ -31,9 +36,7 @@ public class GameController {
         while (playerCountInvalid) {
            // playerCount = userInput.nextInt();
             System.out.println(playerCount);
-
-           // playerCount = gui.getUserInteger();
-            //playerCount = gui.getUserInteger("Enter number of player (2-4):");
+            playerCount = guiController.getUserInteger();
             if (playerCount >= 2 && playerCount <= 4) {
                 playerCountInvalid = false;
 
@@ -52,12 +55,11 @@ public class GameController {
             System.out.println("Player " + playerNumber + " enter your name:");
             String guiMessage = "Player " + playerNumber + " enter your name:";
             guiController.showMessage(guiMessage);
-
-            Scanner input = new Scanner(System.in);
-            String playerName = input.nextLine();
-            player[i] = new Player(playerName); // INITIALISE EACH PLAYER WITH NAME
+            userInput = guiController.getUserString();
+            player[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
             player[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE
-            GUI_Player player = new GUI_Player(playerName,balance);
+            //GUI_Player player = new GUI_Player(userInput,balance);
+            guiController.addPlayer(userInput,balance);
         }
 
     }
