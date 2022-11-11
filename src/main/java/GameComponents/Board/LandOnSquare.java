@@ -55,20 +55,18 @@ public class LandOnSquare {
     }
 
     public void landOnJailSquare(int newPosition, int currentPlayer) {
-
-       int i= currentPlayer;
+        int i= currentPlayer;
         if (newPosition==18)
             System.out.println("Go to jail,and pay M1 for the bank ");
 
         player[i].withdrawMoney(1);
         int currentBalance = player[i].getCurrentBalance();
-            System.out.println("You now have " + currentBalance + " in your bank account.");
+        System.out.println("You now have " + currentBalance + " in your bank account.");
 
-
-
-
-
+        player[i].updatePosition(12);
+        //TO DO: No M2 for the player (startsquare), chancekort.
     }
+
 
 
     public void landOnParkingSquare(int newPosition, int currentPlayer) {
