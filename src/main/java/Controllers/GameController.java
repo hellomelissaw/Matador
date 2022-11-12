@@ -6,11 +6,13 @@ import GameComponents.Cup;
 import GameComponents.Player;
 import gui_fields.GUI_Player;
 import gui_main.GUI;
+import org.w3c.dom.Text;
 
 import java.util.Scanner;
 
 public class GameController {
     GuiController guiController;
+    //Text gameInstruction = new Text("src/DanskTekst.csv");
     public int playerCount = 0;
     String userInput;
     int balance = 0;

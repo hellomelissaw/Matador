@@ -6,6 +6,7 @@ import gui_main.GUI;
 import java.awt.*;
  public class GuiController {
      GUI gui;
+     GUI_Field[] fields = new GUI_Field[24];
 
      Die die1 = new Die();
      Die die2 = new Die();
@@ -17,32 +18,32 @@ import java.awt.*;
 
 
     public GuiController() {
-        GUI_Field[] fields = {
-                new GUI_Start(),
-                new GUI_Street(),
-                new GUI_Street(),
-                new GUI_Chance(),
-                new GUI_Street(),
-                new GUI_Street(),
-                new GUI_Jail(),
-                new GUI_Street(),
-                new GUI_Street(),
-                new GUI_Chance(),
-                new GUI_Street(),
-                new GUI_Street(),
-                new GUI_Street(),
-                new GUI_Street(),
-                new GUI_Street(),
-                new GUI_Chance(),
-                new GUI_Street(),
-                new GUI_Street(),
-                new GUI_Street(),
-                new GUI_Street(),
-                new GUI_Street(),
-                new GUI_Chance(),
-                new GUI_Street(),
-                new GUI_Street(),
-        };
+         fields = new GUI_Field[]{
+                 new GUI_Start(),
+                 new GUI_Street(),
+                 new GUI_Street(),
+                 new GUI_Chance(),
+                 new GUI_Street(),
+                 new GUI_Street(),
+                 new GUI_Jail(),
+                 new GUI_Street(),
+                 new GUI_Street(),
+                 new GUI_Chance(),
+                 new GUI_Street(),
+                 new GUI_Street(),
+                 new GUI_Street(),
+                 new GUI_Street(),
+                 new GUI_Street(),
+                 new GUI_Chance(),
+                 new GUI_Street(),
+                 new GUI_Street(),
+                 new GUI_Street(),
+                 new GUI_Street(),
+                 new GUI_Street(),
+                 new GUI_Chance(),
+                 new GUI_Street(),
+                 new GUI_Street(),
+         };
 
         this.gui = new GUI(fields);
 
@@ -156,6 +157,7 @@ import java.awt.*;
      public GUI_Player addPlayer(String userInput, int balance){
 
          GUI_Player gui_player = new GUI_Player(playerName, this.balance);
+         fields[0].setCar(gui_player,true);
 
          return gui_player;
      }
