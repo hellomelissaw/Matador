@@ -2,6 +2,8 @@ package GameComponents.Board;
 import GameComponents.Account;
 import GameComponents.Player;
 
+import java.sql.SQLOutput;
+
 public class LandOnSquare {
     Square[] square;
     Player[] player;
@@ -72,6 +74,15 @@ public class LandOnSquare {
 
 
     public void landOnParkingSquare(int newPosition, int currentPlayer) {
+        int i = currentPlayer;
+         if (newPosition==12)
+             System.out.println("You now have free parking!");
+
+         Player deedOwner = ((DeedSquare) square[newPosition]).getDeedOwner();
+         if (player[i]==deedOwner) {
+                 System.out.println("Girl u own this joint! U don't pay anything.");
 
     }
+}
+
 }
