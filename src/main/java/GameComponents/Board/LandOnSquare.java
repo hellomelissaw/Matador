@@ -76,7 +76,7 @@ public class LandOnSquare {
     public void landOnParkingSquare(int newPosition, int currentPlayer) {
         int i = currentPlayer;
          if (newPosition==12)
-             System.out.println("You now have free parking!");
+             System.out.println("You now have free parking, take a well deserved break! :)");
 
          Player deedOwner = ((DeedSquare) square[newPosition]).getDeedOwner();
          if (player[i]==deedOwner) {
