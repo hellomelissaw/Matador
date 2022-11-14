@@ -1,6 +1,7 @@
-Hvor mange spillere?
-indsæt navn på spiller 1
-indsæt navn på spiller 2
+label, message
+antalSpillere, Hvor mange spillere?
+navnSpiller1, indsæt navn på spiller 1
+navnSpiller2, indsæt navn på spiller 2
 indsæt navn på spiller 3
 indsæt navn på spiller 4
 START, MODTAG M2 NÅR DU PASSERER
