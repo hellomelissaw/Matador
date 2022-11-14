@@ -14,17 +14,14 @@ public class Cup{
 
     Die die1  = new Die();
     Die die2  = new Die();
-    GuiController guiController = new GuiController(die1,die2);
+    GuiController guiController = new GuiController();
     GUI gui;
     String guiMessage;
 
     public int[] getSum () { // GETS THE SUM OF THE VALUE OF BOTH DICE
-        //guiController ;
         int d1 = die1.roll();
         int d2 = die2.roll();
         guiController.setDice(die1,die2);
-        //guiController.setDice(d1,d2);
-        //gui.setDice(d1,d2);
         System.out.println("First die: " + d1 + " and second die: " + d2);
         guiMessage = "First die: " + die1 + " and second die: " + die2;
         guiController.showMessage(guiMessage);
