@@ -1,20 +1,26 @@
 package Controllers;
 import GameComponents.Die;
+import Reader.*;
 import gui_fields.*;
 import gui_main.GUI;
 
 import java.awt.*;
  public class GuiController {
+
      GUI gui;
+     //TextReader reader = new TextReader(DanskTekst);
      GUI_Field[] fields = new GUI_Field[24];
+
 
      Die die1 = new Die();
      Die die2 = new Die();
+     int diceSum = 0;
 
     String message;
     int players;
     private String playerName;
     private int balance;
+
 
 
     public GuiController() {
@@ -143,7 +149,14 @@ import java.awt.*;
 
     }
 
-    public void showMessage(String message){
+     public GuiController(Die die1 , Die die2) {
+        die1 = new Die();
+        die2 = new Die();
+
+
+     }
+
+     public void showMessage(String message){
         gui.showMessage(message);
     }
 
@@ -156,10 +169,23 @@ import java.awt.*;
     }
      public GUI_Player addPlayer(String userInput, int balance){
 
-         GUI_Player gui_player = new GUI_Player(playerName, this.balance);
+         GUI_Player gui_player = new GUI_Player(playerName, balance);
          fields[0].setCar(gui_player,true);
-
          return gui_player;
+     }
+
+     public void Move(GUI_Player currentPlayer){
+
+        //GUI_Field i = getCurrentPosition();
+        //fields[i].removeAllCars();
+        fields[getCurrentPosition()].removeAllCars();
+        fields[diceSum].setCar(currentPlayer,true);
+
+
+
+     }
+     public int getCurrentPosition(){
+        return getCurrentPosition();
      }
 
      public Die getDie1() {
@@ -183,7 +209,17 @@ import java.awt.*;
 
 
     public void setDice(Die die1, Die die2){
-         gui.setDice(die1.roll(),die2.roll());
+        //gui = new GUI();
+        gui.setDice(die1.roll(),die2.roll());// why gui is null ???????????
 
     }
-}
+    public int diceSum (Die die1, Die die2){
+        return die1.roll() + die2.roll();
+    }
+
+
+
+     /*public void setDice(int d1, int d2) {
+        gui.setDice(d1,d2);
+     }*/
+ }
