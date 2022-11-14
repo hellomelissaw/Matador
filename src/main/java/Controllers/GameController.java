@@ -11,7 +11,7 @@ import org.w3c.dom.Text;
 import java.util.Scanner;
 
 public class GameController {
-    GuiController guiController;
+    GuiController guiController = new GuiController();
     //Text gameInstruction = new Text("src/DanskTekst.csv");
     public int playerCount = 0;
     String userInput;
@@ -19,9 +19,7 @@ public class GameController {
     Player[] player;
     Square[] square;
     public void init() {
-        guiController = new GuiController();
 
-                ;
         //gui.init();
         //gui.run();
 

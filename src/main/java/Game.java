@@ -8,7 +8,7 @@ public class Game {
         GameController game = new GameController();
         //GuiController gui = new GuiController();
         game.init();
-        //game.run();
+        game.run();
 
         //GuiController gui = new GuiController();
         //gui.init();
