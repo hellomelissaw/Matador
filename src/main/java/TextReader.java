@@ -1,27 +1,29 @@
 /* Copying from our CDIO 2 */
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.*;
-
-public class TextReader {
 
 
-
-    public class Text {
+    public class TextReader {
         String file;
-        public Text(String file){
+        public TextReader(String file){
             this.file = file;
         }
         public void printText(int index) {
             String[] row = new String[49];
             BufferedReader csvReader;
+            String line = "";
 
             try {
                 csvReader = new BufferedReader(new FileReader(file));
+                while((line = csvReader.readLine()) != null) {
+                    String[] messages = line.split(",");
+                    System.out.println(messages);
+                }
+                /*
                 for (int i = 0; i < row.length; i++) {
                     row[i] = csvReader.readLine();
 
-                }
+                }*/
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -51,5 +53,3 @@ public class TextReader {
 
     }
 
-
-}
