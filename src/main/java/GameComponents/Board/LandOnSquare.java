@@ -2,6 +2,7 @@ package GameComponents.Board;
 import GameComponents.Account;
 import GameComponents.Player;
 
+import javax.swing.*;
 import java.sql.SQLOutput;
 
 public class LandOnSquare {
@@ -56,7 +57,7 @@ public class LandOnSquare {
 
     }
 
-    public void landOnJailSquare(int newPosition, int currentPlayer) {
+    public void landOnJailSquare(int newPosition, int currentPlayer){
 
        int i= currentPlayer;
         if (newPosition==18)
@@ -65,24 +66,19 @@ public class LandOnSquare {
         player[i].withdrawMoney(1);
         int currentBalance = player[i].getCurrentBalance();
             System.out.println("You now have " + currentBalance + " in your bank account.");
+            player[i].updatePosition(12);
 
-
-
-
-
+        switch (newPosition) {
+            case 6 -> System.out.println("You are now visiting jail, think about your life choices! :(");
+        }
     }
+
 
 
     public void landOnParkingSquare(int newPosition, int currentPlayer) {
         int i = currentPlayer;
          if (newPosition==12)
              System.out.println("You now have free parking, take a well deserved break! :)");
-
-         Player deedOwner = ((DeedSquare) square[newPosition]).getDeedOwner();
-         if (player[i]==deedOwner) {
-                 System.out.println("Girl u own this joint! U don't pay anything.");
-
     }
 }
 
-}
