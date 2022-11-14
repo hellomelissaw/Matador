@@ -1,28 +1,34 @@
-/* Copying from our CDIO 2 */
-import java.io.BufferedReader;
-import java.io.FileReader;
+package Translator;/* Copying from our CDIO 2 */
+/*import java.io.BufferedReader;
+import java.io.FileReader;*/
+import java.io.*;
 
 
     public class TextReader {
         String file;
+        String[] messages = new String[51];
         public TextReader(String file){
             this.file = file;
         }
-        public void printText(int index) {
-           String[] messages = new String[51];
+        //public void printText(int index) {
+        public void printText() {
+
             BufferedReader csvReader;
             String line = "";
 
             try {
                 csvReader = new BufferedReader(new FileReader(file));
-                String[] reader = new String[2];
+                //String[] reader = new String[3];
                 while((line = csvReader.readLine()) != null) {
-                    reader = line.split(",");
+                   String[] reader = line.split(";");
+                    System.out.println(reader[1]);
                 }
                 String[] labels = new String[51];
-                labels = reader[0].split("\n");
+                //labels = reader[0].split("\n");
 
-                messages = reader[1].split("\n");
+
+               // messages = reader[1].split("\n");
+
                 /*
                 for (int i = 0; i < row.length; i++) {
                     row[i] = csvReader.readLine();
@@ -33,7 +39,7 @@ import java.io.FileReader;
                 e.printStackTrace();
 
             }
-            System.out.println(messages[index]);
+            //System.out.println(reader);
         }
 
         public String returnText(int index) {
@@ -45,10 +51,12 @@ import java.io.FileReader;
                 csvReader = new BufferedReader(new FileReader(file));
                 String[] reader = new String[2];
                 while((line = csvReader.readLine()) != null) {
-                    reader = line.split(",");
+                    reader = line.split(";");
                 }
+
                 String[] labels = new String[51];
                 labels = reader[0].split("\n");
+
 
                 messages = reader[1].split("\n");
                 /*
@@ -63,7 +71,6 @@ import java.io.FileReader;
             }
             return messages[index];
         }
-
 
     }
 
