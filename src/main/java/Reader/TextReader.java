@@ -1,4 +1,4 @@
-/* Copying from our CDIO 2 */
+package Reader;/* Copying from our CDIO 2 */
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.*;

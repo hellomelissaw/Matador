@@ -1,6 +1,6 @@
 package Controllers;
 import GameComponents.Die;
-import GameComponents.Player;
+import Reader.*;
 import gui_fields.*;
 import gui_main.GUI;
 
@@ -8,6 +8,7 @@ import java.awt.*;
  public class GuiController {
 
      GUI gui;
+     //TextReader reader = new TextReader(DanskTekst);
      GUI_Field[] fields = new GUI_Field[24];
 
 
