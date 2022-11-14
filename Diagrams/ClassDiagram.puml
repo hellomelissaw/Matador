@@ -1,0 +1,137 @@
+@startuml
+
+title Class Diagram
+
+
+
+class Cup{
+die1: Die
+die2 : Die
+sumDice():int
+}
+
+class Die {
+maxSides: int
+faceValue: int
+
+roll(): random int
+
+}
+
+class GameController {
+-playerCount : int
+-player[playerCount]: Player[]
+-board : BoardInit
+-cup: Cup
++run()
+
+}
+
+class LandOnSquare {
++landOnDeedSquare()
++landOnStartSquare()
++landOnJailSquare()
++landOnParkingSquare()
+}
+
+class Player{
+-account : Account
+-name: String
+
+}
+
+class Account{
+-balance: int
++updateBalance()
+
+}
+
+class Square {
+-pointsValue[]: int
+-description[]: String
+
+}
+
+class BoardInit {
++deedName : Deed()
+
+}
+
+abstract class Square {
+- name : String
+}
+
+class DeedSquare {
+deed: Deed()
+deedSold: boolean false
++hasDeed():boolean
++sellDeed():void
+
+}
+
+class Deed {
+ownerName: Player
+price: int
+
+}
+
+class Player {
+name: String
+addDeed(Deed s)
+
+}
+
+class Account {
+withdraw()
+deposit()
+
+}
+
+class ChanceSquare {}
+
+class ChanceCard {}
+
+class JailSquare {}
+
+class StartSquare {}
+
+class ParkingSquare {}
+
+
+GameController <-down- LandOnSquare
+
+LandOnSquare <-down- BoardInit
+
+LandOnSquare <-right- Player
+
+BoardInit <|-down- Square
+
+Square <|-down- DeedSquare
+
+DeedSquare <-down- Deed
+
+Square  <|-down- ChanceSquare
+
+ChanceSquare <-down- ChanceCard
+
+Square  <|-down- JailSquare
+
+Square  <|-down- StartSquare
+
+Square  <|-down- ParkingSquare
+
+
+GameController <-right- Player
+
+GameController "1" -left- "1" Cup
+
+
+
+
+Cup "1" -down- "2" Die
+
+Player "1" -down- "1" Account
+
+@enduml
+
+
