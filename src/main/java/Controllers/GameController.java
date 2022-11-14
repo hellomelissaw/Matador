@@ -58,6 +58,13 @@ public class GameController {
                 int sum = diceArr[2];
                 int playerIndex = i + 1;
 
+                int oldPosition = player[i].getPosition();
+                // hvis newPosition er mindre end oldPosition, betyder det at man har passeret start
+                if (newPosition<oldPosition) {
+                    player[i].depositMoney(2);
+                    System.out.println(player[i].getPlayerName()+(" passed the start square, and will now recieve 2M"));
+                }
+
                 System.out.println(player[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
                 newPosition = player[i].updatePosition(sum);
 
