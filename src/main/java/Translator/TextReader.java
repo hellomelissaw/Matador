@@ -18,16 +18,17 @@ import java.io.*;
 
             try {
                 csvReader = new BufferedReader(new FileReader(file));
-                //String[] reader = new String[3];
+                String[] reader = new String[2];
                 while((line = csvReader.readLine()) != null) {
-                   String[] reader = line.split(";");
-                    System.out.println(reader[1]);
+                   reader = line.split(";");
+                   //System.out.println(reader[0]);
                 }
                 String[] labels = new String[51];
-                //labels = reader[0].split("\n");
+                labels = reader[0].split("\n");
+                System.out.println(labels[0]);
 
-
-               // messages = reader[1].split("\n");
+                messages = reader[1].split("-");
+                System.out.println(messages[0]);
 
                 /*
                 for (int i = 0; i < row.length; i++) {

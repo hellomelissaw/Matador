@@ -2,6 +2,7 @@ package Controllers;
 import GameComponents.Board.*;
 import GameComponents.Cup;
 import GameComponents.Player;
+import Translator.*;
 
 import java.util.Scanner;
 
@@ -12,10 +13,15 @@ public class GameController {
 
     Square[] square;
     public void init() {
+        //TEST READER
+        TextReader reader = new TextReader("src/main/java/Translator/TestLand");
+        reader.printText();
+
         BoardInit board = new BoardInit();
         square = board.getSquareArr();
         Scanner userInput = new Scanner(System.in);
 
+        System.out.println();
         //INITIALIZING PLAYERS
         System.out.println("Enter number of player (2-4):");
         boolean playerCountInvalid = true;
