@@ -3,7 +3,9 @@ package Controllers;
 import GameComponents.Board.*;
 import GameComponents.Board.Square;
 import GameComponents.Cup;
+import GameComponents.Die;
 import GameComponents.Player;
+import gui_fields.GUI_Board;
 import gui_fields.GUI_Player;
 import gui_main.GUI;
 import org.w3c.dom.Text;
@@ -13,18 +15,17 @@ import java.util.Scanner;
 public class GameController {
     GuiController guiController;
     //Text gameInstruction = new Text("src/DanskTekst.csv");
+    GUI_Board guiBoard;
     public int playerCount = 0;
     String userInput;
     int balance = 0;
     Player[] player;
     Square[] square;
+    String guiMessage;
+    Die die1 = new Die();
+    Die die2 = new Die();
     public void init() {
         guiController = new GuiController();
-
-                ;
-        //gui.init();
-        //gui.run();
-
         BoardInit board = new BoardInit();
         square = board.getSquareArr();
         //String userInput = new Scanner(System.in);
@@ -32,7 +33,7 @@ public class GameController {
 
 
         //INITIALIZING PLAYERS
-        System.out.println("Enter number of player (2-4):");
+        //System.out.println("Enter number of player (2-4):");
         guiController.showMessage("Enter number of player (2-4):");
         boolean playerCountInvalid = true;
         while (playerCountInvalid) {
@@ -55,20 +56,20 @@ public class GameController {
             //System.out.println("There are " + playerCount + "players.");
             int playerNumber = i + 1;
             System.out.println("Player " + playerNumber + " enter your name:");
-            String guiMessage = "Player " + playerNumber + " enter your name:";
+            guiMessage = "Player " + playerNumber + " enter your name:";
             guiController.showMessage(guiMessage);
             userInput = guiController.getUserString();
             player[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
             player[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE
-            //GUI_Player player = new GUI_Player(userInput,balance);
             guiController.addPlayer(userInput,balance);
         }
+        guiMessage = "Press enter to start the game:";
+        guiController.showMessage(guiMessage);
 
     }
 
     public void run() {
         Cup cup = new Cup();
-        guiController.setDice(guiController.die1, guiController.die2);
         int[] diceArr;
         int newPosition = 0;
 
@@ -81,9 +82,15 @@ public class GameController {
                 diceArr = cup.getSum();
                 int sum = diceArr[2];
                 int playerIndex = i + 1;
+                guiController.setDice(die1, die2);
+                guiController.diceSum(die1,die2);
 
                 System.out.println(player[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
+                guiMessage = player[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.";
+                guiController.showMessage(guiMessage);
                 newPosition = player[i].updatePosition(sum);
+                //guiController.Move(player[i]);
+
 
                 System.out.println(player[i].getPlayerName() + " you are on square " + square[newPosition].toString());
 

@@ -1,4 +1,7 @@
 package GameComponents;
+
+import java.awt.*;
+
 /*
 ===================================================================================
 This class is reused from our previous project CDIO 1 and translated to English.
