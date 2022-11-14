@@ -66,8 +66,14 @@ public class LandOnSquare {
         int currentBalance = player[i].getCurrentBalance();
             System.out.println("You now have " + currentBalance + " in your bank account.");
 
+            player[i].updatePosition(12);
 
+        else if(newPosition==6);{
+            System.out.println("You are now visiting jail, think about your life choices! :(");
 
+            int currentBalance = player[i].getCurrentBalance();
+            System.out.println("You now have " + currentBalance + " in your bank account.");
+        }
 
 
     }
@@ -78,11 +84,9 @@ public class LandOnSquare {
          if (newPosition==12)
              System.out.println("You now have free parking, take a well deserved break! :)");
 
-         Player deedOwner = ((DeedSquare) square[newPosition]).getDeedOwner();
-         if (player[i]==deedOwner) {
-                 System.out.println("Girl u own this joint! U don't pay anything.");
+         int currentBalance = player[i].getCurrentBalance();
+         System.out.println("You now have " + currentBalance + " in your bank account.");
 
     }
 }
 
-}
