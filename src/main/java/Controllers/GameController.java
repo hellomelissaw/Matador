@@ -39,7 +39,10 @@ public class GameController {
             String playerName = input.nextLine();
             player[i] = new Player(playerName); // INITIALISE EACH PLAYER WITH NAME
             player[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE
+
         }
+        /*//TEST START BALANCE
+        System.out.println("There is " + playerCount + " players with a start balance of " + balance + " each.");*/
 
     }
 
