@@ -1,11 +1,16 @@
+import Translator.*;
+import java.io.*;
 import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class TextReaderTest {
+public class TextReaderTest {
 
     @Test
-    public void printHvorMangeSpillerMessage() {
-        TextReader reader = new TextReader("DanskTekst");
+    public void returnText() {
+            TextReader reader = new TextReader("src/main/java/Translator/DanskTekst");
+            String testString = "Hvor mange spillere?";
+            assertEquals(testString,reader.returnText(1));
+
     }
 }
