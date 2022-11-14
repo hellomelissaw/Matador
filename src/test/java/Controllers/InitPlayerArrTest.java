@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class InitPlayerArrTest {
 
     @Test
-    void init() {
+    void initTwoPlayersWithBalanceTwenty() {
     int playerCount = 2;
     int balance = 20;
 
