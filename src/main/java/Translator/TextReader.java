@@ -9,16 +9,20 @@ import java.io.FileReader;
             this.file = file;
         }
         public void printText(int index) {
-            String[] row = new String[49];
+           String[] messages = new String[51];
             BufferedReader csvReader;
             String line = "";
 
             try {
                 csvReader = new BufferedReader(new FileReader(file));
+                String[] reader = new String[2];
                 while((line = csvReader.readLine()) != null) {
-                    String[] messages = line.split(",");
-                    System.out.println(messages);
+                    reader = line.split(",");
                 }
+                String[] labels = new String[51];
+                labels = reader[0].split("\n");
+
+                messages = reader[1].split("\n");
                 /*
                 for (int i = 0; i < row.length; i++) {
                     row[i] = csvReader.readLine();
@@ -29,25 +33,35 @@ import java.io.FileReader;
                 e.printStackTrace();
 
             }
-            System.out.println(row[index]);
+            System.out.println(messages[index]);
         }
 
         public String returnText(int index) {
-            String[] row = new String[49];
+            String[] messages = new String[51];
             BufferedReader csvReader;
+            String line = "";
 
             try {
                 csvReader = new BufferedReader(new FileReader(file));
-                for (int i = 0; i < 49; i++) {
+                String[] reader = new String[2];
+                while((line = csvReader.readLine()) != null) {
+                    reader = line.split(",");
+                }
+                String[] labels = new String[51];
+                labels = reader[0].split("\n");
+
+                messages = reader[1].split("\n");
+                /*
+                for (int i = 0; i < row.length; i++) {
                     row[i] = csvReader.readLine();
 
-                }
+                }*/
 
             } catch (Exception e) {
                 e.printStackTrace();
 
             }
-            return row[index];
+            return messages[index];
         }
 
 
