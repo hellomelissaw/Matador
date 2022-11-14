@@ -1,15 +1,17 @@
 package Controllers;
 
+import GameComponents.Player;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class InitPlayerArrTest {
+class InitPlayerArrTest { //INCOMPLETE
 
     @Test
     void initTwoPlayersWithBalanceTwenty() {
-    int playerCount = 2;
-    int balance = 20;
+        Player[] player;
+        int playerCount;
+        int balance;
 
     }
 }
