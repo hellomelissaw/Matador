@@ -65,11 +65,7 @@ public class LandOnSquare {
         player[i].withdrawMoney(1);
         int currentBalance = player[i].getCurrentBalance();
             System.out.println("You now have " + currentBalance + " in your bank account.");
-
-
-
-
-
+        player[i].updatePosition(12);
     }
 
 
@@ -78,11 +74,9 @@ public class LandOnSquare {
          if (newPosition==12)
              System.out.println("You now have free parking, take a well deserved break! :)");
 
-         Player deedOwner = ((DeedSquare) square[newPosition]).getDeedOwner();
-         if (player[i]==deedOwner) {
-                 System.out.println("Girl u own this joint! U don't pay anything.");
+         int currentBalance = player[i].getCurrentBalance();
+             System.out.println("You now have " + currentBalance + " in your bank account.");
 
     }
 }
 
-}
