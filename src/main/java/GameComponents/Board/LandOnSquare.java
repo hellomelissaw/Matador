@@ -2,6 +2,7 @@ package GameComponents.Board;
 import GameComponents.Account;
 import GameComponents.Player;
 
+import javax.swing.*;
 import java.sql.SQLOutput;
 
 public class LandOnSquare {
@@ -56,22 +57,26 @@ public class LandOnSquare {
 
     }
 
-    public void landOnJailSquare(int newPosition, int currentPlayer) {
-        int i= currentPlayer;
+    public void landOnJailSquare(int newPosition, int currentPlayer){
+
+       int i= currentPlayer;
         if (newPosition==18)
             System.out.println("Go to jail,and pay M1 for the bank ");
 
         player[i].withdrawMoney(1);
         int currentBalance = player[i].getCurrentBalance();
-        System.out.println("You now have " + currentBalance + " in your bank account.");
+            System.out.println("You now have " + currentBalance + " in your bank account.");
+            player[i].updatePosition(12);
 
-        player[i].updatePosition(12);
-        //TO DO: No M2 for the player (startsquare), chancekort.
+        if (newPosition==6) {
+            System.out.println("You are now visiting jail, think about your life choices! :(");
+        }
     }
 
 
 
     public void landOnParkingSquare(int newPosition, int currentPlayer) {
+
          if (newPosition==12)
              System.out.println("You now have free parking, take a well deserved break! :)");
     }
