@@ -68,8 +68,8 @@ public class LandOnSquare {
             System.out.println("You now have " + currentBalance + " in your bank account.");
             player[i].updatePosition(12);
 
-        switch (newPosition) {
-            case 6 -> System.out.println("You are now visiting jail, think about your life choices! :(");
+        if (newPosition==6) {
+            System.out.println("You are now visiting jail, think about your life choices! :(");
         }
     }
 
