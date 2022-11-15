@@ -63,6 +63,7 @@ public class GameController {
                 if (newPosition<oldPosition && oldPosition != 18) {
                     player[i].depositMoney(2);
                     System.out.println(player[i].getPlayerName()+(" passed the start square, and will now recieve M2"));
+
                 }
 
                 System.out.println(player[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");

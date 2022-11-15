@@ -18,3 +18,4 @@ auto-import.
 *.iml
 *.ipr
 *.class
+.idea/uiDesigner.xml
