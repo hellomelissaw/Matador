@@ -4,11 +4,6 @@ import GameComponents.Board.*;
 import GameComponents.Board.Square;
 import GameComponents.Cup;
 import GameComponents.Player;
-import gui_fields.GUI_Player;
-import gui_main.GUI;
-import org.w3c.dom.Text;
-
-import java.util.Scanner;
 
 public class GameController {
     GuiController guiController = new GuiController();
@@ -16,7 +11,7 @@ public class GameController {
     public int playerCount = 0;
     String userInput;
     int balance = 0;
-    Player[] player;
+    Player[] players;
     Square[] square;
     public void init() {
         BoardInit board = new BoardInit();
@@ -43,7 +38,7 @@ public class GameController {
         balance = 20-(playerCount-2)*2; //SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
 
 
-        player = new Player[playerCount];
+        players = new Player[playerCount];
 
         for (int i = 0 ; i < playerCount ; i++) {
             //System.out.println("There are " + playerCount + "players.");
@@ -52,12 +47,13 @@ public class GameController {
             String guiMessage = "Player " + playerNumber + " enter your name:";
             guiController.showMessage(guiMessage);
             userInput = guiController.getUserString();
-            player[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
-            player[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE
+            players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
+            players[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE
             //GUI_Player player = new GUI_Player(userInput,balance);
-            guiController.addPlayer(userInput,balance);
+
         }
 
+        guiController.addPlayerOnBoard(players);
     }
 
     public void run() {
@@ -76,13 +72,13 @@ public class GameController {
                 int sum = diceArr[2];
                 int playerIndex = i + 1;
 
-                System.out.println(player[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
-                newPosition = player[i].updatePosition(sum);
+                System.out.println(players[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
+                newPosition = players[i].updatePosition(sum);
 
-                System.out.println(player[i].getPlayerName() + " you are on square " + square[newPosition].toString());
+                System.out.println(players[i].getPlayerName() + " you are on square " + square[newPosition].toString());
 
                 //HANDLES THE PROCESS OF LANDING ON A SQUARE AND CALLS METHOD FOR SUBSEQUENT ACTIONS
-                LandOnSquare playerTurn = new LandOnSquare(square, player);
+                LandOnSquare playerTurn = new LandOnSquare(square, players);
 
                 if(square[newPosition] instanceof DeedSquare) {
                     playerTurn.landOnDeedSquare(newPosition,i);

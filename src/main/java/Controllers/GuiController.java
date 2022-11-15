@@ -1,5 +1,6 @@
 package Controllers;
 import GameComponents.Die;
+import GameComponents.Player;
 import gui_fields.*;
 import gui_main.GUI;
 
@@ -16,7 +17,9 @@ import java.awt.*;
      int diceSum = 0;
 
     String message;
-    int player;
+    int[] player;
+    GUI_Player gui_player;
+    GUI_Player[] gui_players;
     private String playerName;
     private int balance;
     GUI_Ownable ownable ;
@@ -199,11 +202,19 @@ import java.awt.*;
     public String getPlayerName() {
         return playerName;
     }
-     public GUI_Player addPlayer(String userInput, int balance){
+     /*public GUI_Player addPlayer(String userInput, int balance){
 
          GUI_Player gui_player = new GUI_Player(playerName, balance);
          fields[0].setCar(gui_player,true);
          return gui_player;
+     }*/
+     public void addPlayerOnBoard(Player[] list){
+         gui_players = new GUI_Player[list.length];
+         for (int i = 0; i < list.length; i++) {
+             gui_players[i] = new GUI_Player(list[i].getPlayerName(),list[i].getCurrentBalance());
+             fields[0].setCar(gui_players[i],true);
+             gui.addPlayer(gui_players[i]);
+         }
      }
 
      public void Move(GUI_Player currentPlayer){
