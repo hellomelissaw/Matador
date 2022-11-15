@@ -257,20 +257,20 @@ import java.awt.*;
 
 
 
-    public void setDice(Die die1, Die die2){
+    public void setDice(int die1, int die2){
         //gui = new GUI();
-        gui.setDice(die1.roll(),die2.roll());// why gui is null ???????????
+        gui.setDice(die1,die2);// why gui is null ???????????
 
     }
 
-     @Override
+    /* @Override
      public String toString() {
          int d1 = die1.roll();
          int d2 = die2.roll();
          int sum = d1 + d2 ;
         String result = Integer.toString(sum);
          return result;
-     }
+     }*/
 
      public int[] diceSum (int die1, int die2){
         //return die1.roll() + die2.roll();

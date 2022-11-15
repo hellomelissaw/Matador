@@ -25,7 +25,7 @@ public class Cup {
     public int[] getSum () { // GETS THE SUM OF THE VALUE OF BOTH DICE
         int d1 = die1.roll();
         int d2 = die2.roll();
-        guiController.setDice(die1,die2);
+        guiController.setDice(d1,d2);
         System.out.println("First die: " + d1 + " and second die: " + d2);
         guiMessage = "First die: " + die1 + " and second die: " + die2;
         guiController.showMessage(guiMessage);
@@ -37,8 +37,8 @@ public class Cup {
         DiceData[1]=d2;
         DiceData[2]=sum;
         //guiController.diceSum(die1,die2);
-        System.out.println(guiController.diceSum(d1,d2).toString());
-        guiMessage = "You earn " + guiController.diceSum(d1,d2).toString() + " and move your car!"; // how convert to string
+        //System.out.println(guiController.diceSum(d1,d2).toString());
+        guiMessage = "You earn " + sum + " and move your car!"; // how convert to string
         guiController.showMessage(guiMessage);
         return DiceData;
     }
