@@ -72,4 +72,24 @@ public class LandOnSquareTest {
 
     }
 
+    @Test
+    public void landOnVisitJailAndDontPay() {
+        Square[] testBoard = new Square[24];
+        Player[] testPlayer = new Player[1];
+
+        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer);
+
+        testPlayer[0] = new Player("Player 1");
+        testPlayer[0].depositMoney(20);
+
+        testBoard[6] = new JailSquare("Visit Jail");
+
+        testPlayer[0].updatePosition(6);
+
+        playerTurnTest.landOnJailSquare(6,0);
+        System.out.println(testPlayer[0].getPosition());
+        assertEquals(20,testPlayer[0].getCurrentBalance());
+
+    }
+
 }
