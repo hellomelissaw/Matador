@@ -4,6 +4,7 @@ import GameComponents.Board.*;
 import GameComponents.Board.Square;
 import GameComponents.Cup;
 import GameComponents.Player;
+import gui_fields.GUI_Player;
 
 public class GameController {
     GuiController guiController = new GuiController();
@@ -13,6 +14,8 @@ public class GameController {
     int balance = 0;
     Player[] players;
     Square[] square;
+
+    GUI_Player[] guiPlayers;
     public void init() {
         BoardInit board = new BoardInit();
         square = board.getSquareArr();
@@ -39,6 +42,7 @@ public class GameController {
 
 
         players = new Player[playerCount];
+        guiPlayers = new GUI_Player[playerCount];
 
         for (int i = 0 ; i < playerCount ; i++) {
             //System.out.println("There are " + playerCount + "players.");
@@ -49,11 +53,12 @@ public class GameController {
             userInput = guiController.getUserString();
             players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
             players[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE
-            //GUI_Player player = new GUI_Player(userInput,balance);
+
+            guiPlayers[i] = guiController.addPlayer(guiPlayers[i], userInput, balance);
 
         }
 
-        guiController.addPlayerOnBoard(players);
+       // guiController.addPlayerOnBoard(players);
     }
 
     public void run() {
@@ -70,10 +75,11 @@ public class GameController {
                 //THROWS THE DICE AND MOVES THE PLAYER
                 diceArr = cup.getSum();
                 int sum = diceArr[2];
-                int playerIndex = i + 1;
 
                 System.out.println(players[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
                 newPosition = players[i].updatePosition(sum);
+
+                //guiController.move(guiPlayers[i], )
 
                 System.out.println(players[i].getPlayerName() + " you are on square " + square[newPosition].toString());
 

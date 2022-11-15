@@ -217,6 +217,13 @@ import java.awt.*;
          }
      }
 
+     public GUI_Player addPlayer(GUI_Player gui_player, String userInput, int balance){
+
+         gui_player = new GUI_Player(playerName, balance);
+         fields[0].setCar(gui_player,true);
+         return gui_player;
+     }
+
      public void move(GUI_Player currentPlayer, int currentPosition, int newPosition){
 
         //GUI_Field i = getCurrentPosition();
