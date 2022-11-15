@@ -14,7 +14,7 @@ public class GameController {
     Square[] square;
     public void init() {
         //TEST READER
-        TextReader reader = new TextReader("src/main/java/Translator/TestLand");
+        TextReader reader = new TextReader("src/main/java/Translator/TestLang");
         reader.printText();
 
         BoardInit board = new BoardInit();
