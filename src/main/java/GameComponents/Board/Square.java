@@ -9,7 +9,11 @@ public abstract class Square {
         this.squareName = squareName;
     }
 
-    public String toString() {
+    /*public String toString() {
+        return squareName;
+    }*/
+
+    public String getSquareName() {
         return squareName;
     }
 }

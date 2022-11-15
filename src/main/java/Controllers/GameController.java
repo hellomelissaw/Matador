@@ -1,5 +1,4 @@
 package Controllers;
-
 import GameComponents.Board.*;
 import GameComponents.Board.Square;
 import GameComponents.Cup;
@@ -75,13 +74,23 @@ public class GameController {
                 //THROWS THE DICE AND MOVES THE PLAYER
                 diceArr = cup.getSum();
                 int sum = diceArr[2];
+                int playerIndex = i + 1;
+                int oldPosition = players[i].getPosition();
 
                 System.out.println(players[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
                 newPosition = players[i].updatePosition(sum);
 
+                // hvis newPosition er mindre end oldPosition, betyder det at man har passeret start
+                if (newPosition<oldPosition && oldPosition != 18) {
+                    players[i].depositMoney(2);
+                    System.out.println(players[i].getPlayerName()+ " passed the start square, and will now recieve M2. New balance: " + players[i].getCurrentBalance());
+
                 //guiController.move(guiPlayers[i], )
 
                 System.out.println(players[i].getPlayerName() + " you are on square " + square[newPosition].toString());
+                }
+                System.out.println(players[i].getPlayerName() + " you are on square " + square[newPosition].getSquareName() + "(square #" + players[i].getPosition() + ")");
+
 
                 //HANDLES THE PROCESS OF LANDING ON A SQUARE AND CALLS METHOD FOR SUBSEQUENT ACTIONS
                 LandOnSquare playerTurn = new LandOnSquare(square, players);
@@ -101,6 +110,9 @@ public class GameController {
                 } else {
                     playerTurn.landOnStartSquare(newPosition,i);
                 }
+
+                System.out.println("");
+                System.out.println("");
 
             }
         }

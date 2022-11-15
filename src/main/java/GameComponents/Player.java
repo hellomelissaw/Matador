@@ -45,13 +45,17 @@ public class Player {
 
     public int updatePosition(int sumDice) {
         for(int i = 0; i < sumDice; i++) {
-            if (this.squareIndex < 23) {
-                this.squareIndex++;
+            if (squareIndex < 23) {
+                squareIndex++;
             } else {
-                this.squareIndex = 0;
+                squareIndex = 0;
             }
         }
-        return this.squareIndex;
+        return squareIndex;
+    }
+
+    public int getPosition(){
+        return squareIndex;
     }
 
     @Override

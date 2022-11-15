@@ -1,5 +1,6 @@
 package GameComponents.Board;
 import Controllers.GuiController;
+import GameComponents.Account;
 import GameComponents.Player;
 
 public class LandOnSquare {
@@ -11,7 +12,6 @@ public class LandOnSquare {
     public LandOnSquare(Square[] square, Player[] player) {
         this.square = square;
         this.player = player;
-        //GuiController guiController = new GuiController();
     }
     public void landOnDeedSquare(int newPosition, int currentPlayer) {
         int i = currentPlayer;
@@ -46,6 +46,7 @@ public class LandOnSquare {
                     //guiController.showMessage(guiMessage);
 
                 } else {
+                    System.out.println(deedOwner.toString() + " owns this place. " + player[i].getPlayerName() + ", you gotta pay " + ((DeedSquare) square[newPosition]).getDeedPrice() + " in rent.");
                     player[i].withdrawMoney(deedPrice);
                     deedOwner.depositMoney(deedPrice);
                     int currentBalance = player[i].getCurrentBalance();
@@ -73,11 +74,28 @@ public class LandOnSquare {
 
     }
 
-    public void landOnJailSquare(int newPosition, int currentPlayer) {
+    public void landOnJailSquare(int newPosition, int currentPlayer){
 
+       int i= currentPlayer;
+        if (newPosition==18){
+            System.out.println("Go to jail,and pay M1 for the bank ");
+
+            player[i].withdrawMoney(1);
+            int currentBalance = player[i].getCurrentBalance();
+            System.out.println("You now have " + currentBalance + " in your bank account.");
+            player[i].updatePosition(12);
+
+        }  else if (newPosition==6) {
+            System.out.println("You are now visiting jail, think about your life choices! :(");
+        }
     }
+
+
 
     public void landOnParkingSquare(int newPosition, int currentPlayer) {
 
+         if (newPosition==12)
+             System.out.println("You now have free parking, take a well deserved break! :)");
     }
 }
+
