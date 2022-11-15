@@ -57,7 +57,8 @@ public class GameController {
 
         }
 
-       guiController.addPlayerOnBoard(players);
+      guiPlayers = guiController.addPlayerOnBoard(players);
+
     }
 
     public void run() {
@@ -79,6 +80,8 @@ public class GameController {
 
                 System.out.println(players[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
                 newPosition = players[i].updatePosition(sum);
+                guiController.move(guiPlayers[i], oldPosition, newPosition);
+
 
                 // hvis newPosition er mindre end oldPosition, betyder det at man har passeret start
                 if (newPosition<oldPosition && oldPosition != 18) {

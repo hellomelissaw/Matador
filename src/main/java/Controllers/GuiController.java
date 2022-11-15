@@ -208,28 +208,30 @@ import java.awt.*;
          fields[0].setCar(gui_player,true);
          return gui_player;
      }*/
-     public void addPlayerOnBoard(Player[] list){
+     public GUI_Player[] addPlayerOnBoard(Player[] list){
          gui_players = new GUI_Player[list.length];
          for (int i = 0; i < list.length; i++) {
              gui_players[i] = new GUI_Player(list[i].getPlayerName(),list[i].getCurrentBalance());
              fields[0].setCar(gui_players[i],true);
              gui.addPlayer(gui_players[i]);
          }
+         return gui_players;
      }
 
-     public GUI_Player addPlayer(GUI_Player gui_player, String userInput, int balance){
+    /* public GUI_Player addPlayer(GUI_Player gui_player, String userInput, int balance){
 
          gui_player = new GUI_Player(playerName, balance);
          fields[0].setCar(gui_player,true);
          return gui_player;
-     }
+     }*/
 
 
-     public void Move(GUI_Player currentPlayer){
+     public void move(GUI_Player currentPlayer, int currentPositionIndex, int diceSum){
 
         //GUI_Field i = getCurrentPosition();
         //fields[i].removeAllCars();
-        fields[getCurrentPosition()].removeAllCars();
+
+        fields[currentPositionIndex].removeAllCars();
         fields[diceSum].setCar(currentPlayer,true);
 
 
