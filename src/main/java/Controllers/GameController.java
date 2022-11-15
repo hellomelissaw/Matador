@@ -53,11 +53,11 @@ public class GameController {
             players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
             players[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE
 
-            guiPlayers[i] = guiController.addPlayer(guiPlayers[i], userInput, balance);
+            //guiPlayers[i] = guiController.addPlayer(guiPlayers[i], userInput, balance);
 
         }
 
-       // guiController.addPlayerOnBoard(players);
+       guiController.addPlayerOnBoard(players);
     }
 
     public void run() {

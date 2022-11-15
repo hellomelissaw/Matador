@@ -224,12 +224,14 @@ import java.awt.*;
          return gui_player;
      }
 
-     public void move(GUI_Player currentPlayer, int currentPosition, int newPosition){
+
+     public void Move(GUI_Player currentPlayer){
 
         //GUI_Field i = getCurrentPosition();
         //fields[i].removeAllCars();
-        fields[currentPosition].removeAllCars();
-        fields[newPosition].setCar(currentPlayer,true);
+        fields[getCurrentPosition()].removeAllCars();
+        fields[diceSum].setCar(currentPlayer,true);
+
 
 
      }
