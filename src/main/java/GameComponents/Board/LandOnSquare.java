@@ -18,7 +18,7 @@ public class LandOnSquare {
         int deedPrice = ((DeedSquare) square[newPosition]).getDeedPrice();
 
         if(((DeedSquare) square[newPosition]).hasDeed()) {
-            System.out.println("This property is available for purchase.");
+            System.out.println("This property is available for purchase for " + ((DeedSquare) square[newPosition]).getDeedPrice() + ".");
 
             player[i].withdrawMoney(deedPrice); // TO DO: must check if player has enough money to buy
             int currentBalance = player[i].getCurrentBalance();
@@ -34,6 +34,7 @@ public class LandOnSquare {
                     System.out.println("Girl u own this joint! U don't pay anything.");
 
                 } else {
+                    System.out.println(deedOwner.toString() + " owns this place. " + player[i].getPlayerName() + ", you gotta pay " + ((DeedSquare) square[newPosition]).getDeedPrice() + " in rent.");
                     player[i].withdrawMoney(deedPrice);
                     deedOwner.depositMoney(deedPrice);
                     int currentBalance = player[i].getCurrentBalance();
