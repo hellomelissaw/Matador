@@ -54,6 +54,10 @@ public class Player {
         return this.squareIndex;
     }
 
+    public int getPosition(){
+        return squareIndex;
+    }
+
     @Override
     public String toString() {
         return playerName;
