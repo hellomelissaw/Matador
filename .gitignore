@@ -17,4 +17,5 @@ auto-import.
 .idea/usage.statistics.xml
 *.iml
 *.ipr
+*.class
 .idea/uiDesigner.xml
