@@ -61,7 +61,7 @@ public class GameController {
     }
 
     public void run() {
-        Cup cup = new Cup();
+        Cup cup = new Cup(guiController);
         //guiController.setDice(guiController.die1, guiController.die2);
         int[] diceArr;
         int newPosition = 0;

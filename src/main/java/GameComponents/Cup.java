@@ -14,9 +14,13 @@ public class Cup {
 
     Die die1  = new Die();
     Die die2  = new Die();
-    GuiController guiController = new GuiController();
+    GuiController guiController;
     GUI gui;
     String guiMessage;
+
+    public Cup (GuiController guiController) {
+       this.guiController = guiController;
+    }
 
     public int[] getSum () { // GETS THE SUM OF THE VALUE OF BOTH DICE
         int d1 = die1.roll();
