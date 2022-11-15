@@ -69,7 +69,7 @@ public class GameController {
                 System.out.println(player[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
                 newPosition = player[i].updatePosition(sum);
 
-                System.out.println(player[i].getPlayerName() + " you are on square " + square[newPosition].toString());
+                System.out.println(player[i].getPlayerName() + " you are on square " + newPosition + "(square #" + player[i].getPosition() + ")");
 
                 //HANDLES THE PROCESS OF LANDING ON A SQUARE AND CALLS METHOD FOR SUBSEQUENT ACTIONS
                 LandOnSquare playerTurn = new LandOnSquare(square, player);
@@ -89,6 +89,9 @@ public class GameController {
                 } else {
                     playerTurn.landOnStartSquare(newPosition,i);
                 }
+
+                System.out.println("");
+                System.out.println("");
 
             }
         }
