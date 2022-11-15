@@ -70,13 +70,8 @@ public class LandOnSquare {
 
 
     public void landOnParkingSquare(int newPosition, int currentPlayer) {
-        int i = currentPlayer;
          if (newPosition==12)
              System.out.println("You now have free parking, take a well deserved break! :)");
-
-         int currentBalance = player[i].getCurrentBalance();
-             System.out.println("You now have " + currentBalance + " in your bank account.");
-
     }
 }
 
