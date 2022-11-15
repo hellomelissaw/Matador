@@ -61,15 +61,15 @@ public class LandOnSquare {
     public void landOnJailSquare(int newPosition, int currentPlayer){
 
        int i= currentPlayer;
-        if (newPosition==18)
+        if (newPosition==18){
             System.out.println("Go to jail,and pay M1 for the bank ");
 
-        player[i].withdrawMoney(1);
-        int currentBalance = player[i].getCurrentBalance();
+            player[i].withdrawMoney(1);
+            int currentBalance = player[i].getCurrentBalance();
             System.out.println("You now have " + currentBalance + " in your bank account.");
             player[i].updatePosition(12);
 
-        if (newPosition==6) {
+        }  else if (newPosition==6) {
             System.out.println("You are now visiting jail, think about your life choices! :(");
         }
     }
