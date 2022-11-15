@@ -231,7 +231,7 @@ import java.awt.*;
         //GUI_Field i = getCurrentPosition();
         //fields[i].removeAllCars();
 
-        fields[currentPositionIndex].removeAllCars();
+        fields[currentPositionIndex].setCar(currentPlayer,false);
         fields[diceSum].setCar(currentPlayer,true);
 
 
