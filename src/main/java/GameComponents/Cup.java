@@ -10,7 +10,7 @@ import gui_main.GUI;
 This class is reused from our previous project CDIO 1 and translated to English.
 ===================================================================================
  */
-public class Cup{
+public class Cup {
 
     Die die1  = new Die();
     Die die2  = new Die();
@@ -32,8 +32,10 @@ public class Cup{
         DiceData[0]=d1;
         DiceData[1]=d2;
         DiceData[2]=sum;
-        guiController.diceSum(die1,die2);
-        //gui.setDice(d1,d2);
+        //guiController.diceSum(die1,die2);
+        System.out.println(guiController.diceSum(d1,d2).toString());
+        guiMessage = "You earn " + guiController.diceSum(d1,d2).toString() + " and move your car!"; // how convert to string
+        guiController.showMessage(guiMessage);
         return DiceData;
     }
 }

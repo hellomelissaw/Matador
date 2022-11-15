@@ -19,10 +19,6 @@ public class GameController {
     Player[] player;
     Square[] square;
     public void init() {
-
-        //gui.init();
-        //gui.run();
-
         BoardInit board = new BoardInit();
         square = board.getSquareArr();
         //String userInput = new Scanner(System.in);

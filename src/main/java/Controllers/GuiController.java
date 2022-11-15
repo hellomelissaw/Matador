@@ -1,6 +1,5 @@
 package Controllers;
 import GameComponents.Die;
-import Reader.*;
 import gui_fields.*;
 import gui_main.GUI;
 
@@ -213,8 +212,25 @@ import java.awt.*;
         gui.setDice(die1.roll(),die2.roll());// why gui is null ???????????
 
     }
-    public int diceSum (Die die1, Die die2){
-        return die1.roll() + die2.roll();
+
+     @Override
+     public String toString() {
+         int d1 = die1.roll();
+         int d2 = die2.roll();
+         int sum = d1 + d2 ;
+        String result = Integer.toString(sum);
+         return result;
+     }
+
+     public int[] diceSum (int die1, int die2){
+        //return die1.roll() + die2.roll();
+        int sum = 0;
+        sum = die1 + die2;
+        int DiceData[] = new int[3];
+        DiceData[0]=die1;
+        DiceData[1]=die2;
+        DiceData[2]=sum;
+        return DiceData;
     }
 
 
