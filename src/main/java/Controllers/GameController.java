@@ -15,12 +15,38 @@ public class GameController {
     Square[] square;
 
     GUI_Player[] guiPlayers;
+
+    public void initTest() {
+        BoardInit board = new BoardInit();
+        square = board.getSquareArr();
+        playerCount = 2;
+        balance = 20 - (playerCount - 2) * 2;
+        players = new Player[playerCount];
+        guiPlayers = new GUI_Player[playerCount];
+
+
+        players[0] = new Player("Marc"); // INITIALISE EACH PLAYER WITH NAME
+        players[0].depositMoney(balance); // DEPOSIT INITIAL BALANCE
+
+        players[1] = new Player("Germaine"); // INITIALISE EACH PLAYER WITH NAME
+        players[1].depositMoney(balance); // DEPOSIT INITIAL BALANCE
+
+        if (playerCount > 2) {
+            players[2] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
+            players[2].depositMoney(balance); // DEPOSIT INITIAL BALANCE
+            if (playerCount == 4) {
+                players[3] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
+                players[3].depositMoney(balance); // DEPOSIT INITIAL BALANCE
+            }
+        }
+        guiPlayers = guiController.addPlayerOnBoard(players);
+    }
+
     public void init() {
         BoardInit board = new BoardInit();
         square = board.getSquareArr();
         //String userInput = new Scanner(System.in);
         String userInput;
-
 
         //INITIALIZING PLAYERS
         System.out.println("Enter number of player (2-4):");
@@ -87,7 +113,6 @@ public class GameController {
                 // UNCOMMENT THE FOLLOWING LINE WHEN NOT USING TEST DIE
                 // newPosition = players[i].updatePosition(sum);
                 guiController.showMessage(players[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
-                newPosition = players[i].updatePosition(sum);
                 guiController.move(guiPlayers[i], oldPosition, newPosition);
 
 
