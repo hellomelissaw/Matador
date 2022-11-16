@@ -109,11 +109,11 @@ public class GameController {
                 System.out.println(players[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
 
                 //TO TEST LANDING ON SPECIFIC SQUARE, COMMENT OUT WHEN NOT IN USE
-                /*int testDie = 18;
-                newPosition = players[i].updatePosition(testDie);*/
+                int testDie = 1;
+                newPosition = players[i].updatePosition(testDie);
 
                 // UNCOMMENT THE FOLLOWING LINE WHEN NOT USING TEST DIE
-                newPosition = players[i].updatePosition(sum);
+                //newPosition = players[i].updatePosition(sum);
                 guiController.showMessage(players[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
                 guiController.move(guiPlayers[i], oldPosition, newPosition);
 

@@ -40,7 +40,7 @@ public class LandOnSquare {
             guiMessage ="owner before " + ((DeedSquare) square[newPosition]).getDeedOwner();
             //guiController.showMessage(guiMessage);
 
-            ((DeedSquare) square[newPosition]).sellDeed(player[i]); // SETS sellDeed TO FALSE AND UPDATES OWNERSHIP
+            ((DeedSquare) square[newPosition]).sellDeed(player[i], newPosition); // SETS sellDeed TO FALSE AND UPDATES OWNERSHIP
             System.out.println("owner after " + ((DeedSquare) square[newPosition]).getDeedOwner());
             guiMessage = "owner after " + ((DeedSquare) square[newPosition]).getDeedOwner();
             //guiController.showMessage(guiMessage);
