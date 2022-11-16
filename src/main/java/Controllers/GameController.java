@@ -55,7 +55,6 @@ public class GameController {
             players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
             players[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE
 
-
         }
 
       guiPlayers = guiController.addPlayerOnBoard(players);
@@ -80,6 +79,13 @@ public class GameController {
                 int oldPosition = players[i].getPosition();
 
                 System.out.println(players[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
+
+                //TO TEST LANDING ON SPECIFIC SQUARE, COMMENT OUT WHEN NOT IN USE
+                int testDie = 18;
+                newPosition = players[i].updatePosition(testDie);
+
+                // UNCOMMENT THE FOLLOWING LINE WHEN NOT USING TEST DIE
+                // newPosition = players[i].updatePosition(sum);
                 guiController.showMessage(players[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
                 newPosition = players[i].updatePosition(sum);
                 guiController.move(guiPlayers[i], oldPosition, newPosition);
@@ -90,14 +96,13 @@ public class GameController {
                     players[i].depositMoney(2);
                     System.out.println(players[i].getPlayerName()+ " passed the start square, and will now recieve M2. New balance: " + players[i].getCurrentBalance());
 
-
                 System.out.println(players[i].getPlayerName() + " you are on square " + square[newPosition].toString());
                 }
                 System.out.println(players[i].getPlayerName() + " you are on square " + square[newPosition].getSquareName() + "(square #" + players[i].getPosition() + ")");
 
 
                 //HANDLES THE PROCESS OF LANDING ON A SQUARE AND CALLS METHOD FOR SUBSEQUENT ACTIONS
-                LandOnSquare playerTurn = new LandOnSquare(square, players, guiController);
+                LandOnSquare playerTurn = new LandOnSquare(square, players, guiController, guiPlayers);
 
                 if(square[newPosition] instanceof DeedSquare) {
                     playerTurn.landOnDeedSquare(newPosition,i);
