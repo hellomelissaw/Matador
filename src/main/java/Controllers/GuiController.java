@@ -21,6 +21,8 @@ import java.awt.*;
     GUI_Player gui_player;
     GUI_Player[] gui_players;
     private String playerName;
+
+    private String ownerName = "Available";
     private int balance;
     GUI_Ownable ownable ;
 
@@ -65,6 +67,7 @@ import java.awt.*;
         //gui.getFields()[1].setSubText("M1");
         ownable = (GUI_Ownable)fields[1];
         ownable.setSubText("M1");
+        ownable.setOwnerName(ownerName);
 
 
         gui.getFields()[2].setTitle("Pizzahuset");
@@ -238,7 +241,8 @@ import java.awt.*;
          if (fields[currentPositionIndex])
 
      }*/
-     public void setOwnerName(GUI_Player currentPlayer , GUI_Field currentField){
+     public void setOwnerName(Player currentPlayer){
+         ownerName = currentPlayer.getPlayerName();
 
      }
 

@@ -17,7 +17,7 @@ public class GameController {
     GUI_Player[] guiPlayers;
 
     public void initTest() {
-        BoardInit board = new BoardInit();
+        BoardInit board = new BoardInit(guiController);
         square = board.getSquareArr();
         playerCount = 2;
         balance = 20 - (playerCount - 2) * 2;
@@ -43,7 +43,7 @@ public class GameController {
     }
 
     public void init() {
-        BoardInit board = new BoardInit();
+        BoardInit board = new BoardInit(guiController);
         square = board.getSquareArr();
         //String userInput = new Scanner(System.in);
         String userInput;

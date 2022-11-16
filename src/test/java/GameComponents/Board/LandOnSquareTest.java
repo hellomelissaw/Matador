@@ -26,7 +26,7 @@ public class LandOnSquareTest {
         testPlayer[1].depositMoney(20);
 
 
-        testBoard[0] = new DeedSquare("Test Property",5);
+        testBoard[0] = new DeedSquare("Test Property",5,guiController);
 
         //PLAYER 1 BUYS TEST PROPERTY
         playerTurnTest.landOnDeedSquare(0,0);
