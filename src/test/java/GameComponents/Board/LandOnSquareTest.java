@@ -3,6 +3,7 @@ package GameComponents.Board;
 import Controllers.GuiController;
 import GameComponents.Player;
 
+import gui_fields.GUI_Player;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -15,7 +16,8 @@ public class LandOnSquareTest {
         Square[] testBoard = new Square[1];
         Player[] testPlayer = new Player[2];
         GuiController guiController = new GuiController();
-        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer,guiController);
+        GUI_Player[] guiPlayers = new GUI_Player[1];
+        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer,guiController, guiPlayers);
 
         testPlayer[0] = new Player("Player 1");
         testPlayer[0].depositMoney(20);
@@ -42,7 +44,8 @@ public class LandOnSquareTest {
         Square[] testBoard = new Square[19];
         Player[] testPlayer = new Player[1];
         GuiController guiController = new GuiController();
-        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer, guiController);
+        GUI_Player[] guiPlayers = new GUI_Player[1];
+        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer, guiController, guiPlayers);
 
         testPlayer[0] = new Player("Player 1");
         testPlayer[0].depositMoney(20);
@@ -60,10 +63,12 @@ public class LandOnSquareTest {
         Square[] testBoard = new Square[24];
         Player[] testPlayer = new Player[1];
         GuiController guiController = new GuiController();
-        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer, guiController);
+        GUI_Player[] guiPlayers = new GUI_Player[1];
+        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer, guiController, guiPlayers);
 
         testPlayer[0] = new Player("Player 1");
         testPlayer[0].depositMoney(20);
+        guiPlayers[0] = new GUI_Player("Player 1", 20);
 
         testBoard[18] = new JailSquare("Go to Jail");
 
@@ -80,7 +85,8 @@ public class LandOnSquareTest {
         Square[] testBoard = new Square[24];
         Player[] testPlayer = new Player[1];
         GuiController guiController = new GuiController();
-        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer, guiController);
+        GUI_Player[] guiPlayers = new GUI_Player[1];
+        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer, guiController, guiPlayers);
 
         testPlayer[0] = new Player("Player 1");
         testPlayer[0].depositMoney(20);

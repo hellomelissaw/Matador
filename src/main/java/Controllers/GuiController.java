@@ -226,10 +226,10 @@ import java.awt.*;
      }*/
 
 
-     public void move(GUI_Player currentPlayer, int currentPositionIndex, int diceSum){
+     public void move(GUI_Player currentPlayer, int currentPositionIndex, int newPosition){
 
         fields[currentPositionIndex].setCar(currentPlayer,false);
-        fields[diceSum].setCar(currentPlayer,true);
+        fields[newPosition].setCar(currentPlayer,true);
 
      }
 

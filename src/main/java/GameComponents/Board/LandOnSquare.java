@@ -2,19 +2,23 @@ package GameComponents.Board;
 import Controllers.GuiController;
 import GameComponents.Account;
 import GameComponents.Player;
+import gui_fields.GUI_Player;
 
 public class LandOnSquare {
     Square[] square;
     Player[] player;
+
+    GUI_Player[] guiPlayers;
     GuiController guiController;
     String guiMessage;
 
 
 
-    public LandOnSquare(Square[] square, Player[] player, GuiController guiController) {
+    public LandOnSquare(Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers) {
         this.square = square;
         this.player = player;
         this.guiController = guiController;
+        this.guiPlayers = guiPlayers;
     }
     public void landOnDeedSquare(int newPosition, int currentPlayer) {
         int i = currentPlayer;
@@ -86,8 +90,10 @@ public class LandOnSquare {
             player[i].withdrawMoney(1);
             int currentBalance = player[i].getCurrentBalance();
             System.out.println("You now have " + currentBalance + " in your bank account.");
+            guiController.showMessage("You are going to jail now, press OK to be driven there.");
             player[i].updatePosition(12);
-
+            guiController.move(guiPlayers[i],18,6);
+            System.out.println("You have been moved to square #" + player[i].getPosition() );
 
         }  else if (newPosition==6) {
             System.out.println("You are now visiting jail, think about your life choices! :(");
