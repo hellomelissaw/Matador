@@ -228,15 +228,51 @@ import java.awt.*;
 
      public void move(GUI_Player currentPlayer, int currentPositionIndex, int diceSum){
 
-        //GUI_Field i = getCurrentPosition();
-        //fields[i].removeAllCars();
-
         fields[currentPositionIndex].setCar(currentPlayer,false);
         fields[diceSum].setCar(currentPlayer,true);
 
+     }
 
+     /*public void updateBankAccount(GUI_Player currentPlayer,int currentPositionIndex, int balance , int currentPoint){
+        fields[currentPositionIndex].o
+         if (fields[currentPositionIndex])
+
+     }*/
+     public void setOwnerName(GUI_Player currentPlayer , GUI_Field currentField){
 
      }
+
+     public void getFieldsPris(int currentPositionIndex){
+
+         int pris = 0;
+         if (currentPositionIndex == 0 && currentPositionIndex == 3 && currentPositionIndex == 6 && currentPositionIndex == 9 && currentPositionIndex == 12 && currentPositionIndex == 15 && currentPositionIndex == 18 && currentPositionIndex == 21)
+             pris = 0;
+         for (int i = 1; i < 3; i++)
+             pris = 1;
+
+         for (int i = 4; i < 6; i++)
+             pris = 1;
+
+         for (int i = 7; i < 9; i++)
+             pris = 2;
+
+         for (int i = 10; i < 12; i++)
+             pris = 2;
+
+         for (int i = 13; i < 15; i++)
+             pris = 2;
+
+         for (int i = 16; i < 18; i++)
+             pris = 3;
+
+         for (int i = 19; i < 21; i++)
+             pris = 4;
+
+         for (int i = 23; i < 25; i++)
+             pris = 5;
+
+     }
+
      public int getCurrentPosition(){
         return getCurrentPosition();
      }

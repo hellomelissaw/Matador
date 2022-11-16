@@ -35,6 +35,7 @@ public class GameController {
 
             } else {
                 System.out.println("Invalid player number, please enter an integer between 2 and 4 inclusively.");
+                guiController.showMessage("Invalid player number, please enter an integer between 2 and 4 inclusively.");
             }
         }
         balance = 20-(playerCount-2)*2; //SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
@@ -45,6 +46,7 @@ public class GameController {
 
         for (int i = 0 ; i < playerCount ; i++) {
             //System.out.println("There are " + playerCount + "players.");
+            guiController.showMessage("There are " + playerCount + " players.");
             int playerNumber = i + 1;
             System.out.println("Player " + playerNumber + " enter your name:");
             String guiMessage = "Player " + playerNumber + " enter your name:";
@@ -53,17 +55,16 @@ public class GameController {
             players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
             players[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE
 
-            //guiPlayers[i] = guiController.addPlayer(guiPlayers[i], userInput, balance);
 
         }
 
       guiPlayers = guiController.addPlayerOnBoard(players);
+        guiController.showMessage("Press Ok to start the game!");
 
     }
 
     public void run() {
         Cup cup = new Cup(guiController);
-        //guiController.setDice(guiController.die1, guiController.die2);
         int[] diceArr;
         int newPosition = 0;
 
@@ -79,6 +80,7 @@ public class GameController {
                 int oldPosition = players[i].getPosition();
 
                 System.out.println(players[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
+                guiController.showMessage(players[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
                 newPosition = players[i].updatePosition(sum);
                 guiController.move(guiPlayers[i], oldPosition, newPosition);
 
@@ -88,7 +90,6 @@ public class GameController {
                     players[i].depositMoney(2);
                     System.out.println(players[i].getPlayerName()+ " passed the start square, and will now recieve M2. New balance: " + players[i].getCurrentBalance());
 
-                //guiController.move(guiPlayers[i], )
 
                 System.out.println(players[i].getPlayerName() + " you are on square " + square[newPosition].toString());
                 }
