@@ -143,7 +143,7 @@ import java.awt.*;
         gui.getFields()[16].setTitle("Legetøjsbutikken");
         gui.getFields()[16].setBackGroundColor(Color.orange);
         //gui.getFields()[16].setSubText("M3");
-        ownable[16] = (GUI_Ownable)fields[17];
+        ownable[16] = (GUI_Ownable)fields[16];
         ownable[16].setSubText("M3");
 
         gui.getFields()[17].setTitle("Dyrebutikken");
