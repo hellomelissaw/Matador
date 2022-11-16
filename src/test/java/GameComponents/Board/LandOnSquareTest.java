@@ -1,5 +1,6 @@
 package GameComponents.Board;
 
+import Controllers.GuiController;
 import GameComponents.Player;
 
 import org.junit.Test;
@@ -13,7 +14,8 @@ public class LandOnSquareTest {
     public void player1BuysAvailableDeedSquareAndPlayer2PaysRent() {
         Square[] testBoard = new Square[1];
         Player[] testPlayer = new Player[2];
-        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer);
+        GuiController guiController = new GuiController();
+        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer,guiController);
 
         testPlayer[0] = new Player("Player 1");
         testPlayer[0].depositMoney(20);
@@ -39,7 +41,8 @@ public class LandOnSquareTest {
     public void landOnJailSquareAndPay1M() {
         Square[] testBoard = new Square[19];
         Player[] testPlayer = new Player[1];
-        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer);
+        GuiController guiController = new GuiController();
+        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer, guiController);
 
         testPlayer[0] = new Player("Player 1");
         testPlayer[0].depositMoney(20);
@@ -56,8 +59,8 @@ public class LandOnSquareTest {
     public void updatePlayerPositionToIndex6AfterJail(){
         Square[] testBoard = new Square[24];
         Player[] testPlayer = new Player[1];
-
-        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer);
+        GuiController guiController = new GuiController();
+        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer, guiController);
 
         testPlayer[0] = new Player("Player 1");
         testPlayer[0].depositMoney(20);
@@ -76,8 +79,8 @@ public class LandOnSquareTest {
     public void landOnVisitJailAndDontPay() {
         Square[] testBoard = new Square[24];
         Player[] testPlayer = new Player[1];
-
-        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer);
+        GuiController guiController = new GuiController();
+        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer, guiController);
 
         testPlayer[0] = new Player("Player 1");
         testPlayer[0].depositMoney(20);

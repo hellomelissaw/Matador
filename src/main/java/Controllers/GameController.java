@@ -97,7 +97,7 @@ public class GameController {
 
 
                 //HANDLES THE PROCESS OF LANDING ON A SQUARE AND CALLS METHOD FOR SUBSEQUENT ACTIONS
-                LandOnSquare playerTurn = new LandOnSquare(square, players);
+                LandOnSquare playerTurn = new LandOnSquare(square, players, guiController);
 
                 if(square[newPosition] instanceof DeedSquare) {
                     playerTurn.landOnDeedSquare(newPosition,i);

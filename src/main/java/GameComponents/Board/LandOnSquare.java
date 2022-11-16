@@ -9,9 +9,12 @@ public class LandOnSquare {
     GuiController guiController;
     String guiMessage;
 
-    public LandOnSquare(Square[] square, Player[] player) {
+
+
+    public LandOnSquare(Square[] square, Player[] player, GuiController guiController) {
         this.square = square;
         this.player = player;
+        this.guiController = guiController;
     }
     public void landOnDeedSquare(int newPosition, int currentPlayer) {
         int i = currentPlayer;
@@ -84,6 +87,7 @@ public class LandOnSquare {
             int currentBalance = player[i].getCurrentBalance();
             System.out.println("You now have " + currentBalance + " in your bank account.");
             player[i].updatePosition(12);
+
 
         }  else if (newPosition==6) {
             System.out.println("You are now visiting jail, think about your life choices! :(");
