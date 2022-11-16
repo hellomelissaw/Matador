@@ -99,6 +99,8 @@ public class GameController {
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
                 testInt++;
                 //THROWS THE DICE AND MOVES THE PLAYER
+                String rollMessage = players[i].getPlayerName() + ", press OK to roll the dice.";
+                guiController.showMessage(rollMessage);
                 diceArr = cup.getSum();
                 int sum = diceArr[2];
                 int playerIndex = i + 1;

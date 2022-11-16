@@ -15,8 +15,6 @@ public class Cup {
     Die die1  = new Die();
     Die die2  = new Die();
     GuiController guiController;
-    GUI gui;
-    String guiMessage;
 
     public Cup (GuiController guiController) {
        this.guiController = guiController;
@@ -27,8 +25,6 @@ public class Cup {
         int d2 = die2.roll();
         guiController.setDice(d1,d2);
         System.out.println("First die: " + d1 + " and second die: " + d2);
-        //guiMessage = "First die: " + die1 + " and second die: " + die2;
-        //guiController.showMessage(guiMessage);
         int sum;
         sum = d1 + d2;
         //guiController.diceSum(die1,die2);
@@ -36,8 +32,6 @@ public class Cup {
         DiceData[0]=d1;
         DiceData[1]=d2;
         DiceData[2]=sum;
-        //guiController.diceSum(die1,die2);
-        //System.out.println(guiController.diceSum(d1,d2).toString());
         return DiceData;
     }
 }
