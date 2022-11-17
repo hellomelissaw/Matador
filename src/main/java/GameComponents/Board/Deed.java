@@ -1,6 +1,7 @@
 package GameComponents.Board;
 
 import GameComponents.Player;
+import gui_fields.GUI_Player;
 
 public class Deed {
 

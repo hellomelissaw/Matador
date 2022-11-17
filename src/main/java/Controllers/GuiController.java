@@ -26,7 +26,7 @@ import java.awt.*;
     private int balance;
     GUI_Ownable[] ownable = new GUI_Ownable[24];
 
-
+    GUI_Player owner;
 
     public GuiController() {
          fields = new GUI_Field[]{
@@ -199,7 +199,7 @@ import java.awt.*;
      public void showMessage(String message){
         gui.showMessage(message);
     }
-
+     /*
     public int getBalance() {
         return balance;
     }
@@ -207,7 +207,7 @@ import java.awt.*;
     public String getPlayerName() {
         return playerName;
     }
-     /*public GUI_Player addPlayer(String userInput, int balance){
+    public GUI_Player addPlayer(String userInput, int balance){
 
          GUI_Player gui_player = new GUI_Player(playerName, balance);
          fields[0].setCar(gui_player,true);
@@ -243,6 +243,7 @@ import java.awt.*;
          if (fields[currentPositionIndex])
 
      }*/
+
      public void displayOwnerName(Player currentPlayer, int currentPositionIndex){
          ownable[currentPositionIndex].setOwnerName(currentPlayer.getPlayerName());
 
@@ -250,6 +251,15 @@ import java.awt.*;
 
      public void updateBalance(GUI_Player currentPlayer, int newBalance){
          currentPlayer.setBalance(newBalance);
+     }
+
+     public void receiveRent(String ownerName, int newBalance) {
+         for(int i = 0; i < gui_players.length; i++){
+             if(ownerName == gui_players[i].getName()) {
+                 gui_players[i].setBalance(newBalance);
+                 break;
+             }
+         }
      }
 
      /*public void getFieldsPris(int currentPositionIndex){
