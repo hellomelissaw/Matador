@@ -10,7 +10,7 @@ public class BoardInit {
         this.guiController = guiController;
 
         board[0] = new StartSquare("Start");
-        board[1] = new DeedSquare("The Burgerbar", 2,guiController);
+        board[1] = new DeedSquare("The Burgerbar", 1,guiController);
         board[2] = new DeedSquare("The Pizzahouse", 1,guiController);
         board[3] = new ChanceSquare("Chance");
         board[4] = new DeedSquare("The Candy Store",1,guiController);
