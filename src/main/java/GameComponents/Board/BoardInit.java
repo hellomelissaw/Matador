@@ -41,7 +41,7 @@ public class BoardInit {
     }
 
 
-    public void initializeDeeds(){
+    /*public void initializeDeeds(){
 
         Deed[] boardDeed = new Deed[24];
 
@@ -71,4 +71,6 @@ public class BoardInit {
         boardDeed[23] = new Deed(5,"Strandpromenaden");
 
     }
+    */
+
 }

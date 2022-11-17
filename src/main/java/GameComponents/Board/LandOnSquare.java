@@ -26,7 +26,7 @@ public class LandOnSquare {
         int deedPrice = ((DeedSquare) square[newPosition]).getDeedPrice();
 
         if(((DeedSquare) square[newPosition]).hasDeed()) {
-            System.out.println("This property is available for purchase.");
+            System.out.println("This property is available for purchase for" +((DeedSquare) square[newPosition]).getDeedPrice()  + "M.");
             guiMessage = "This property is available for purchase.";
             guiController.showMessage(guiMessage);
 
@@ -90,6 +90,7 @@ public class LandOnSquare {
 
             player[i].withdrawMoney(1);
             int currentBalance = player[i].getCurrentBalance();
+            guiController.updateBalance(guiPlayers[i], currentBalance);
             System.out.println("You now have " + currentBalance + " in your bank account.");
             guiController.showMessage("You are going to jail now, press OK to be driven there.");
             player[i].updatePosition(12);
