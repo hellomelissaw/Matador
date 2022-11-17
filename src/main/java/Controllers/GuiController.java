@@ -248,7 +248,11 @@ import java.awt.*;
 
      }
 
-     public void getFieldsPris(int currentPositionIndex){
+     public void updateBalance(GUI_Player currentPlayer, int newBalance){
+         currentPlayer.setBalance(newBalance);
+     }
+
+     /*public void getFieldsPris(int currentPositionIndex){
 
          int pris = 0;
          if (currentPositionIndex == 0 && currentPositionIndex == 3 && currentPositionIndex == 6 && currentPositionIndex == 9 && currentPositionIndex == 12 && currentPositionIndex == 15 && currentPositionIndex == 18 && currentPositionIndex == 21)
@@ -277,17 +281,15 @@ import java.awt.*;
          for (int i = 23; i < 25; i++)
              pris = 5;
 
-     }
+     } */
 
-     public int getCurrentPosition(){
+    /* public int getCurrentPosition(){
         return getCurrentPosition();
      }
      public int getCurrentPlayer(int player){
         return player;
      }
-     public int setBalance(int balance){
-        return balance;
-     }
+
 
      public Die getDie1() {
          return die1;
@@ -297,7 +299,7 @@ import java.awt.*;
          return die2;
      }
 
-
+    */
 
 
      public int getUserInteger() {
@@ -324,7 +326,7 @@ import java.awt.*;
          return result;
      }*/
 
-     public int[] diceSum (int die1, int die2){
+     /*public int[] diceSum (int die1, int die2){
         //return die1.roll() + die2.roll();
         int sum = 0;
         sum = die1 + die2;
@@ -334,6 +336,8 @@ import java.awt.*;
         DiceData[2]=sum;
         return DiceData;
     }
+
+      */
 
 
 
