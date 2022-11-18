@@ -8,7 +8,6 @@ public class DeedSquare extends Square{
 
     GuiController guiController;
 
-    // public DeedSquare(String deedName , Deed deed) {
     public DeedSquare(String deedName, int deedPrice, GuiController guiController) {
         super(deedName);
         this.deed = new Deed(deedPrice, deedName);

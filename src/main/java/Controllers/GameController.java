@@ -142,7 +142,7 @@ public class GameController {
                     playerTurn.landOnJailSquare(newPosition,i);
 
                 } else if (square[newPosition] instanceof ParkingSquare) {
-                    playerTurn.landOnParkingSquare(newPosition,i);
+                    playerTurn.landOnParkingSquare(newPosition);
 
                 } else {
                     playerTurn.landOnStartSquare(newPosition,i);

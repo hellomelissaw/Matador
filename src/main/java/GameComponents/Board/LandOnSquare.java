@@ -22,7 +22,6 @@ public class LandOnSquare {
     }
     public void landOnDeedSquare(int newPosition, int currentPlayer) {
         int i = currentPlayer;
-        //guiController.getCurrentPlayer(currentPlayer);
         int deedPrice = ((DeedSquare) square[newPosition]).getDeedPrice();
 
         if(((DeedSquare) square[newPosition]).hasDeed()) {
@@ -44,7 +43,7 @@ public class LandOnSquare {
 
             } else if (((DeedSquare) square[newPosition]).hasDeed()==false) {
                 Player deedOwner = ((DeedSquare) square[newPosition]).getDeedOwner();
-                //GUI_Player deedOwner =
+
                 if (player[i]==deedOwner) {
                     System.out.println("Girl u own this joint! U don't pay anything.");
                     guiMessage = "Girl u own this joint! U don't pay anything.";
@@ -57,7 +56,7 @@ public class LandOnSquare {
                     guiController.updateBalance(guiPlayers[i], currentBalance);
 
                     System.out.println(player[i].getPlayerName() + ", you now have " + currentBalance + " in your bank account.");
-                    guiMessage = deedOwner.toString() + " owns this place. " + player[i].getPlayerName() + ", you gotta pay " + ((DeedSquare) square[newPosition]).getDeedPrice() + " in rent. You now have " + currentBalance + "M in your bank account.";
+                    guiMessage = deedOwner + " owns this place. " + player[i].getPlayerName() + ", you gotta pay " + ((DeedSquare) square[newPosition]).getDeedPrice() + " in rent. You now have " + currentBalance + "M in your bank account.";
                     guiController.showMessage(guiMessage);
 
                     deedOwner.depositMoney(deedPrice);
@@ -81,7 +80,6 @@ public class LandOnSquare {
     public void landOnStartSquare (int newPosition, int currentPlayer) {
 
     }
-
     public void landOnJailSquare(int newPosition, int currentPlayer){
 
        int i= currentPlayer;
@@ -102,9 +100,7 @@ public class LandOnSquare {
         }
     }
 
-
-
-    public void landOnParkingSquare(int newPosition, int currentPlayer) {
+    public void landOnParkingSquare(int newPosition) {
 
          if (newPosition==12)
              System.out.println("You now have free parking, take a well deserved break! :)");

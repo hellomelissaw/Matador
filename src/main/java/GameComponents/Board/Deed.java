@@ -12,19 +12,14 @@ public class Deed {
     String deedName;
 
     public Deed(int squarePrice,String deedName){
-        //this.owner = owner;
         this.squarePrice = squarePrice;
         this.deedName = deedName;
-    }
-
-    public int getSquarePrice() {
-        return squarePrice ;
     }
 
     public Player getOwner() {
         return owner;
     }
-    public void setOwner(Player ownerName){ // Not sure where we will use setOwner method yet
+    public void setOwner(Player ownerName){
 
         this.owner = ownerName;
 
