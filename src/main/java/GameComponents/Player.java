@@ -14,17 +14,9 @@ public class Player {
 
     public Player(String playerName) {
         this.playerName = playerName;
-        //this.balance = balance;
-        //System.out.println(playerName);
-        //PlayerAccount.setBalance(balance);
+
     }
 
-    /*
-    public int getPlayerNumber() {
-        return playerNumber;
-    }
-
-     */
 
     public void withdrawMoney(int newPoints) {
         PlayerAccount.withDraw(newPoints);
@@ -35,7 +27,6 @@ public class Player {
     }
 
     public int getCurrentBalance(){
-        //System.out.println(PlayerAccount.getBalance());
         return (PlayerAccount.getBalance());
     }
 
