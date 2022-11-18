@@ -5,29 +5,38 @@ package GameComponents;
 This class is reused from our CDIO2 project and built upon.
 ===================================================================================
  */
-public class player {
+public class Player {
 
     private int balance;
     private int squareIndex = 0;
     private String playerName;
-    Account PlayerAccount = new Account();
 
-    public player(String playerName) {
+    private boolean bankrupt=false;
+    Account playerAccount = new Account();
+    private String winnerName;
+
+    public Player(String playerName) {
         this.playerName = playerName;
 
+        bankrupt = false;
     }
 
 
     public void withdrawMoney(int newPoints) {
-        PlayerAccount.withDraw(newPoints);
+        playerAccount.withDraw(newPoints);
+        bankrupt = playerAccount.isBankrupt();
+    }
+
+    public boolean isBankrupt() {
+        return bankrupt;
     }
 
     public void depositMoney(int newPoints){
-        PlayerAccount.deposit(newPoints);
+        playerAccount.deposit(newPoints);
     }
 
     public int getCurrentBalance(){
-        return (PlayerAccount.getBalance());
+        return (playerAccount.getBalance());
     }
 
     public String getPlayerName (){
@@ -52,5 +61,14 @@ public class player {
     @Override
     public String toString() {
         return playerName;
+    }
+
+    public String winner(Player[] player) {
+        int winner = player[0].getCurrentBalance();
+        for (Player i : player) {
+            if (i.getCurrentBalance() > winner)
+                winner = i.getCurrentBalance();
+            winnerName = i.getPlayerName();
+        } return winnerName;
     }
 }

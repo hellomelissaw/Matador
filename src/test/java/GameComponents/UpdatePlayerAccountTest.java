@@ -4,7 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class UpdatePlayerAccountTest {
-    player testPlayer = new player("Test Player");
+    Player testPlayer = new Player("Test Player");
 
     @Test
     public void getCurrentBalance0() {

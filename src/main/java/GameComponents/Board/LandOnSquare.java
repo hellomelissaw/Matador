@@ -1,10 +1,11 @@
 package GameComponents.Board;
 import Controllers.GuiController;
+import GameComponents.Player;
 import gui_fields.GUI_Player;
 
 public class LandOnSquare {
     Square[] square;
-    GameComponents.player[] player;
+    Player[] player;
 
     GUI_Player[] guiPlayers;
     GuiController guiController;
@@ -12,7 +13,7 @@ public class LandOnSquare {
 
 
 
-    public LandOnSquare(Square[] square, GameComponents.player[] player, GuiController guiController, GUI_Player[] guiPlayers) {
+    public LandOnSquare(Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers) {
         this.square = square;
         this.player = player;
         this.guiController = guiController;
@@ -40,7 +41,7 @@ public class LandOnSquare {
             System.out.println("owner after " + ((DeedSquare) square[newPosition]).getDeedOwner());
 
             } else if (((DeedSquare) square[newPosition]).hasDeed()==false) {
-                GameComponents.player deedOwner = ((DeedSquare) square[newPosition]).getDeedOwner();
+                Player deedOwner = ((DeedSquare) square[newPosition]).getDeedOwner();
 
                 if (player[i]==deedOwner) {
                     System.out.println("Girl u own this joint! U don't pay anything.");

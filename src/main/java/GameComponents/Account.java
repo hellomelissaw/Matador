@@ -1,33 +1,38 @@
 package GameComponents;
 
-import gui_fields.GUI_Player;
-
 public class Account {
     private int balance;
     private String Accountname;
+    private boolean bankrupt=false;
 
-
-    public Account(){
+    public Account() {
         balance = 0;
-       // Accountname = name;
+        // Accountname = name;
     }
-    public void setBalance(int initialBalance){
+
+    public void setBalance(int initialBalance) {
         balance = initialBalance;
     }
-    public void deposit(int amount)
-    {
+
+    public void deposit(int amount) {
         balance += amount;
     }
-    public void withDraw(int amount)
-    {
+
+    public void withDraw(int amount) {
         balance -= amount;
-        if (balance < 0)
-            balance = 0;
+        if (balance < 0){
+            bankrupt=true;
+        }
     }
-    public int getBalance()
-    {
+
+    public boolean isBankrupt(){
+        return bankrupt;
+
+    }
+
+    public int getBalance() {
         //System.out.println(Accountname + "now has " + balance + " points");
-        return(balance);
+        return (balance);
     }
 
 

@@ -1,6 +1,6 @@
 package GameComponents.Board;
 import Controllers.GuiController;
-import GameComponents.player;
+import GameComponents.Player;
 public class DeedSquare extends Square{
     Deed deed;
     boolean sellDeed = true;
@@ -20,7 +20,7 @@ public class DeedSquare extends Square{
     public boolean hasDeed(){ // Checks if the square has a deed available to buy or if it's already sold
         return sellDeed;
     }
-    public void sellDeed(player player, int currentSquareIndex){ // Sets deed to false so Square no longer has a deed
+    public void sellDeed(Player player, int currentSquareIndex){ // Sets deed to false so Square no longer has a deed
         sellDeed = false ;
         deed.setOwner(player);
         guiController.displayOwnerName(player, currentSquareIndex);
@@ -31,7 +31,7 @@ public class DeedSquare extends Square{
         return deedPrice;
     }
 
-    public player getDeedOwner() {
+    public Player getDeedOwner() {
         return deed.getOwner();
     }
 
