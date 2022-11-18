@@ -18,7 +18,6 @@ public class Player {
     public Player(String playerName) {
         this.playerName = playerName;
 
-        bankrupt = false;
     }
 
 
