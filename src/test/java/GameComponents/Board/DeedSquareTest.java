@@ -19,7 +19,7 @@ public class DeedSquareTest {
     }
     @Test
     public void setTestDeedSquareHasDeedFalseafterSellDeed() {
-        testDeedSquare.sellDeed(testPlayer1);
+        testDeedSquare.sellDeed(testPlayer1,1);
         assertEquals(false,testDeedSquare.hasDeed());
     }
     @Test
@@ -28,9 +28,9 @@ public class DeedSquareTest {
     }
     @Test
     public void getDeedOwner() {
-        testDeedSquare.sellDeed(testPlayer1);
+        testDeedSquare.sellDeed(testPlayer1,1);
         assertEquals(testPlayer1, testDeedSquare.getDeedOwner());
-        testDeedSquare.sellDeed(testPlayer2);
+        testDeedSquare.sellDeed(testPlayer2,1);
         assertEquals(testPlayer2, testDeedSquare.getDeedOwner());
     }
 }

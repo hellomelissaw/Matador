@@ -82,7 +82,7 @@ public class LandOnSquare {
     }
     public void landOnJailSquare(int newPosition, int currentPlayer){
 
-       int i= currentPlayer;
+       int i = currentPlayer;
         if (newPosition==18){
             System.out.println("Go to jail,and pay M1 for the bank ");
 
