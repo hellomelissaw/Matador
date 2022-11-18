@@ -215,5 +215,9 @@ import java.awt.*;
     public void setDice(int die1, int die2){
         gui.setDice(die1,die2);
     }
+    public String winner(){
+
+        return winner();
+    }
 
  }
