@@ -8,7 +8,7 @@ public class UpdatePlayerPositionTest {
 
     @Test
     public void updatePosition10Squares() {
-        Player testPlayer = new Player("Test Player");
+        player testPlayer = new player("Test Player");
         int currentPosition = 0;
         currentPosition = testPlayer.updatePosition(10);
         assertEquals(10,currentPosition);
@@ -16,7 +16,7 @@ public class UpdatePlayerPositionTest {
 
     @Test
     public void updatePosition25Squares() {
-        Player testPlayer = new Player("Test Player");
+        player testPlayer = new player("Test Player");
         int currentPosition = 0;
         currentPosition = testPlayer.updatePosition(25);
         assertEquals(1,currentPosition);

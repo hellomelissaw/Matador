@@ -1,7 +1,7 @@
 package GameComponents.Board;
 
 import Controllers.GuiController;
-import GameComponents.Player;
+import GameComponents.player;
 
 import gui_fields.GUI_Player;
 import org.junit.Test;
@@ -14,15 +14,15 @@ public class LandOnSquareTest {
     @Test
     public void player1BuysAvailableDeedSquareAndPlayer2PaysRent() {
         Square[] testBoard = new Square[1];
-        Player[] testPlayer = new Player[2];
+        player[] testPlayer = new player[2];
         GuiController guiController = new GuiController();
         GUI_Player[] guiPlayers = new GUI_Player[1];
         LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer,guiController, guiPlayers);
 
-        testPlayer[0] = new Player("Player 1");
+        testPlayer[0] = new player("Player 1");
         testPlayer[0].depositMoney(20);
 
-        testPlayer[1] = new Player("Player 2");
+        testPlayer[1] = new player("Player 2");
         testPlayer[1].depositMoney(20);
 
 
@@ -42,12 +42,12 @@ public class LandOnSquareTest {
     @Test
     public void landOnJailSquareAndPay1M() {
         Square[] testBoard = new Square[19];
-        Player[] testPlayer = new Player[1];
+        player[] testPlayer = new player[1];
         GuiController guiController = new GuiController();
         GUI_Player[] guiPlayers = new GUI_Player[1];
         LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer, guiController, guiPlayers);
 
-        testPlayer[0] = new Player("Player 1");
+        testPlayer[0] = new player("Player 1");
         testPlayer[0].depositMoney(20);
 
         testBoard[18] = new JailSquare("Go to Jail");
@@ -61,12 +61,12 @@ public class LandOnSquareTest {
     @Test
     public void updatePlayerPositionToIndex6AfterJail(){
         Square[] testBoard = new Square[24];
-        Player[] testPlayer = new Player[1];
+        player[] testPlayer = new player[1];
         GuiController guiController = new GuiController();
         GUI_Player[] guiPlayers = new GUI_Player[1];
         LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer, guiController, guiPlayers);
 
-        testPlayer[0] = new Player("Player 1");
+        testPlayer[0] = new player("Player 1");
         testPlayer[0].depositMoney(20);
         guiPlayers[0] = new GUI_Player("Player 1", 20);
 
@@ -83,12 +83,12 @@ public class LandOnSquareTest {
     @Test
     public void landOnVisitJailAndDontPay() {
         Square[] testBoard = new Square[24];
-        Player[] testPlayer = new Player[1];
+        player[] testPlayer = new player[1];
         GuiController guiController = new GuiController();
         GUI_Player[] guiPlayers = new GUI_Player[1];
         LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer, guiController, guiPlayers);
 
-        testPlayer[0] = new Player("Player 1");
+        testPlayer[0] = new player("Player 1");
         testPlayer[0].depositMoney(20);
 
         testBoard[6] = new JailSquare("Visit Jail");

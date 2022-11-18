@@ -1,6 +1,5 @@
 package Controllers;
 import GameComponents.Die;
-import GameComponents.Player;
 import gui_fields.*;
 import gui_main.GUI;
 
@@ -174,7 +173,7 @@ import java.awt.*;
         gui.showMessage(message);
     }
 
-     public GUI_Player[] addPlayerOnBoard(Player[] list){
+     public GUI_Player[] addPlayerOnBoard(GameComponents.player[] list){
          gui_players = new GUI_Player[list.length];
          for (int i = 0; i < list.length; i++) {
              gui_players[i] = new GUI_Player(list[i].getPlayerName(),list[i].getCurrentBalance());
@@ -191,7 +190,7 @@ import java.awt.*;
 
      }
 
-     public void displayOwnerName(Player currentPlayer, int currentPositionIndex){
+     public void displayOwnerName(GameComponents.player currentPlayer, int currentPositionIndex){
          ownable[currentPositionIndex].setOwnerName(currentPlayer.getPlayerName());
 
      }

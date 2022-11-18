@@ -1,6 +1,4 @@
 import Controllers.*;
-import GameComponents.Player;
-
 
 
 public class Game {

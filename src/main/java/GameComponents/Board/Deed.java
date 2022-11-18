@@ -1,12 +1,11 @@
 package GameComponents.Board;
 
-import GameComponents.Player;
-import gui_fields.GUI_Player;
+import GameComponents.player;
 
 public class Deed {
 
 
-    Player owner;
+    player owner;
     // int[] squarePrice; // i Matador mangler vi en array med alle priser på et skød
     int squarePrice;
     String deedName;
@@ -16,10 +15,10 @@ public class Deed {
         this.deedName = deedName;
     }
 
-    public Player getOwner() {
+    public player getOwner() {
         return owner;
     }
-    public void setOwner(Player ownerName){
+    public void setOwner(player ownerName){
 
         this.owner = ownerName;
 

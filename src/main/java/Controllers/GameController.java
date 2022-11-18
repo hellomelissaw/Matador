@@ -2,7 +2,7 @@ package Controllers;
 import GameComponents.Board.*;
 import GameComponents.Board.Square;
 import GameComponents.Cup;
-import GameComponents.Player;
+import GameComponents.player;
 import gui_fields.GUI_Player;
 
 public class GameController {
@@ -11,7 +11,7 @@ public class GameController {
     public int playerCount = 0;
     String userInput;
     int balance = 0;
-    Player[] players;
+    player[] players;
     Square[] square;
 
     GUI_Player[] guiPlayers;
@@ -21,21 +21,21 @@ public class GameController {
         square = board.getSquareArr();
         playerCount = 2;
         balance = 20 - (playerCount - 2) * 2;
-        players = new Player[playerCount];
+        players = new player[playerCount];
         guiPlayers = new GUI_Player[playerCount];
 
 
-        players[0] = new Player("Marc"); // INITIALISE EACH PLAYER WITH NAME
+        players[0] = new player("Marc"); // INITIALISE EACH PLAYER WITH NAME
         players[0].depositMoney(balance); // DEPOSIT INITIAL BALANCE
 
-        players[1] = new Player("Germaine"); // INITIALISE EACH PLAYER WITH NAME
+        players[1] = new player("Germaine"); // INITIALISE EACH PLAYER WITH NAME
         players[1].depositMoney(balance); // DEPOSIT INITIAL BALANCE
 
         if (playerCount > 2) {
-            players[2] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
+            players[2] = new player(userInput); // INITIALISE EACH PLAYER WITH NAME
             players[2].depositMoney(balance); // DEPOSIT INITIAL BALANCE
             if (playerCount == 4) {
-                players[3] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
+                players[3] = new player(userInput); // INITIALISE EACH PLAYER WITH NAME
                 players[3].depositMoney(balance); // DEPOSIT INITIAL BALANCE
             }
         }
@@ -67,7 +67,7 @@ public class GameController {
         balance = 20-(playerCount-2)*2; //SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
 
 
-        players = new Player[playerCount];
+        players = new player[playerCount];
         guiPlayers = new GUI_Player[playerCount];
 
         for (int i = 0 ; i < playerCount ; i++) {
@@ -77,7 +77,7 @@ public class GameController {
             String guiMessage = "Player " + playerNumber + " enter your name:";
             guiController.showMessage(guiMessage);
             userInput = guiController.getUserString();
-            players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
+            players[i] = new player(userInput); // INITIALISE EACH PLAYER WITH NAME
             players[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE
 
         }

@@ -5,14 +5,14 @@ package GameComponents;
 This class is reused from our CDIO2 project and built upon.
 ===================================================================================
  */
-public class Player {
+public class player {
 
     private int balance;
     private int squareIndex = 0;
     private String playerName;
     Account PlayerAccount = new Account();
 
-    public Player(String playerName) {
+    public player(String playerName) {
         this.playerName = playerName;
 
     }
