@@ -71,7 +71,6 @@ public class GameController {
         guiPlayers = new GUI_Player[playerCount];
 
         for (int i = 0 ; i < playerCount ; i++) {
-            //System.out.println("There are " + playerCount + "players.");
             guiController.showMessage("There are " + playerCount + " players.");
             int playerNumber = i + 1;
             System.out.println("Player " + playerNumber + " enter your name:");
@@ -154,8 +153,5 @@ public class GameController {
 
             }
         }
-    }
-    public int getPlayerCount() {
-        return playerCount;
     }
 }
