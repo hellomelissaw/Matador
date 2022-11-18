@@ -2,28 +2,37 @@
 
 title Class Diagram
 
+class Game{
+game: GameController()
+}
 
 
 class Cup{
 die1: Die
 die2 : Die
-sumDice():int
+guiController: GuiController
++getSum():int
 }
 
 class Die {
-maxSides: int
-faceValue: int
+-resultRoll: int
 
-roll(): random int
-
++roll(): random int
++toString(): String
 }
 
 class GameController {
+guiController: GuiController
 -playerCount : int
--player[playerCount]: Player[]
+-player[playerCount]: Players[]
 -board : BoardInit
 -cup: Cup
-+run()
++balance: int
+square: Square[]
+guiPlayers: GUI_Player[]
+
++run(): void
++init(): void
 
 }
 
@@ -35,8 +44,17 @@ class LandOnSquare {
 }
 
 class Player{
--account : Account
--name: String
+-PlayerAccount : Account
+-playerName: String
+-squareIndex: int
++Player()
++withdrawMoney(): void
++depositMoney(): int
++getCurrentBalance(): int
++getPlayerName(): String
++UpdatePosision(): int
++getPosision(): int
++toString(): String
 
 }
 
@@ -82,8 +100,11 @@ addDeed(Deed s)
 }
 
 class Account {
-withdraw()
-deposit()
+-balance: int
++Account()
++withdraw(): void
++deposit(): void
++getBalance(): int
 
 }
 
@@ -97,8 +118,31 @@ class StartSquare {}
 
 class ParkingSquare {}
 
+class GuiController{
+-gui: GUI
+-fields[24]: GUI_Fields
+-gui_players[]: GUI_Player
+-ownable: GUI_Ownable
++GuiController()
+showMessage(): String
+addPlayerOnBoard(): GUI_Player
+move(): void
+displayOwnerName(): void
+updateBalance(): void
+receiveRent(): void
+getUserIntiger(): int
+getUserString(): String
+setDice(): void
+winner(): String
+}
+
+GameController -up- Game
+
+GuiController -right Game
 
 GameController <-down- LandOnSquare
+
+GuiController -left GameController
 
 LandOnSquare <-down- BoardInit
 
