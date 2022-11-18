@@ -31,8 +31,8 @@ public class BoardInit {
         board[19] = new DeedSquare("The Bowling Alley",4,guiController);
         board[20] = new DeedSquare("The Zoo",4,guiController);
         board[21] = new ChanceSquare("Chance");
-        board[22] = new DeedSquare("The Water Park",4,guiController);
-        board[23] = new DeedSquare("The Board Walk",4,guiController);
+        board[22] = new DeedSquare("The Water Park",5,guiController);
+        board[23] = new DeedSquare("The Board Walk",5,guiController);
 
     }
 
