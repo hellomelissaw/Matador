@@ -60,7 +60,6 @@ import java.awt.*;
 
         gui.getFields()[0].setTitle("Start");
         gui.getFields()[0].setBackGroundColor(Color.yellow);
-        gui.getFields()[0].setSubText("M1");
 
         gui.getFields()[1].setTitle("Burgerbaren");
         gui.getFields()[1].setBackGroundColor(Color.PINK);
