@@ -6,7 +6,7 @@ import java.io.*;
 public class Text {
     String file;
 
-    int lineCount = 5;
+    int lineCount = 32;
     String[] messages = new String[lineCount];
 
     String[] labels = new String[lineCount];
@@ -16,8 +16,7 @@ public class Text {
 
         try {
             reader = new BufferedReader(new java.io.FileReader(file));
-
-            String line = "";
+            String line;
 
             for (int i = 0; i < lineCount; i++) {
 
