@@ -12,9 +12,6 @@ public class Text {
     String[] labels = new String[lineCount];
     public Text(String file){
         this.file = file;
-
-    }
-    public String getText(int index) {
         BufferedReader reader;
 
         try {
@@ -31,12 +28,21 @@ public class Text {
 
             }
 
-
         } catch (Exception e) {
             e.printStackTrace();
 
         }
-        return messages[index];
+
+    }
+    public String getText(String label) {
+        String message = "";
+        for (int i = 0 ; i < lineCount ; i++) {
+            if(label.equals(labels[i])) {
+                message = messages[i];
+                break;
+            }
+        }
+        return message;
     }
 
     /*public void printText(int index) {

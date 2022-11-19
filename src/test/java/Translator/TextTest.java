@@ -7,10 +7,11 @@ import static org.junit.Assert.*;
 public class TextTest {
 
     @Test
-    public void returnTextFirstIndexOfMessages() {
+    public void getTextChecksLabelReturnsMessage() {
         Text reader = new Text("src/main/java/Translator/TestLang");
-        String testString = " Hvor mange spillere?";
-        assertEquals(testString,reader.getText(1));
+
+        String testMessage = " message";
+        assertEquals(testMessage,reader.getText("label"));
 
     }
 
