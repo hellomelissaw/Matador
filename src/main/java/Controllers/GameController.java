@@ -102,7 +102,7 @@ public class GameController {
                 int playerIndex = i + 1;
                 int oldPosition = players[i].getPosition();
 
-                System.out.println(players[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
+                System.out.println(players[i].getPlayerName() + " rolled a " + diceArr[0] + " and a " + diceArr[1] + ". Got moved " + sum + " squares.");
 
                 //TO TEST LANDING ON SPECIFIC SQUARE, COMMENT OUT WHEN NOT IN USE
                 /*int testDie = 1;
@@ -119,7 +119,9 @@ public class GameController {
                     players[i].depositMoney(2);
                     int currentBalance = players[i].getCurrentBalance();
                     guiController.updateBalance(guiPlayers[i], currentBalance);
-                    System.out.println(players[i].getPlayerName()+ msg.getText("passStart") + currentBalance);
+                    String passStart = players[i].getPlayerName()+ msg.getText("passStart") + currentBalance;
+                    System.out.println(passStart);
+                    guiController.showMessage(passStart);
 
                 System.out.println(players[i].getPlayerName() + msg.getText("position") + square[newPosition].toString());
                 }
