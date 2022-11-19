@@ -50,12 +50,11 @@ public class GameController {
         String userInput;
 
         //INITIALIZING PLAYERS
-        System.out.println(msg.getText("playerCount"));
-        guiController.showMessage(msg.getText("playerCount"));
+        System.out.println(msg.getText("enterPlayerCount"));
         boolean playerCountInvalid = true;
         while (playerCountInvalid) {
            // playerCount = userInput.nextInt();
-            System.out.println(playerCount);
+            //System.out.println(playerCount);
             playerCount = guiController.getUserInteger();
             if (playerCount >= 2 && playerCount <= 4) {
                 playerCountInvalid = false;
@@ -72,12 +71,9 @@ public class GameController {
         guiPlayers = new GUI_Player[playerCount];
 
         for (int i = 0 ; i < playerCount ; i++) {
-            guiController.showMessage(msg.getText("enterName"));
             int playerNumber = i + 1;
-            System.out.println(msg.getText("enterName"));
-            //String guiMessage = "Player " + playerNumber + " enter your name:";
-            //guiController.showMessage(guiMessage);
-            userInput = guiController.getUserString();
+            System.out.println(msg.getText("enterName") + " " + playerNumber);
+            userInput = guiController.getUserString(playerNumber);
             players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
             players[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE
 
