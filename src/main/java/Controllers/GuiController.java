@@ -9,7 +9,7 @@ import java.awt.*;
  public class GuiController {
      private GUI gui;
 
-     Text msg = new Text("src/main/java/Translator/EnglishText");
+     Text msg;
      private GUI_Field[] fields = new GUI_Field[24];
 
     private GUI_Player[] gui_players;
@@ -17,6 +17,7 @@ import java.awt.*;
     private GUI_Ownable[] ownable = new GUI_Ownable[24];
 
     public GuiController() {
+
          fields = new GUI_Field[]{
                  new GUI_Start(),
                  new GUI_Street(),
@@ -46,118 +47,152 @@ import java.awt.*;
 
         this.gui = new GUI(fields);
 
-        gui.getFields()[0].setTitle(msg.getText("start"));
+        gui.getFields()[0].setTitle(" ");
         gui.getFields()[0].setBackGroundColor(Color.yellow);
-        gui.getFields()[0].setSubText("");
+        gui.getFields()[0].setSubText(" ");
 
-        gui.getFields()[1].setTitle(msg.getText("burgerBar"));
+        gui.getFields()[1].setTitle("");
         gui.getFields()[1].setBackGroundColor(Color.PINK);
         ownable[1] = (GUI_Ownable)fields[1];
         ownable[1].setSubText("M1");
 
-
-
-        gui.getFields()[2].setTitle(msg.getText("pizzeria"));
+        gui.getFields()[2].setTitle(" ");
         gui.getFields()[2].setBackGroundColor(Color.red);
         ownable[2] = (GUI_Ownable)fields[2];
         ownable[2].setSubText("M1");
 
+        gui.getFields()[3].setTitle("?");
         gui.getFields()[3].setBackGroundColor(Color.MAGENTA);
+        gui.getFields()[3].setSubText(" ");
 
-        gui.getFields()[4].setTitle(msg.getText("candyShop"));
+        gui.getFields()[4].setTitle("");
         gui.getFields()[4].setBackGroundColor(Color.ORANGE);
         ownable[4] = (GUI_Ownable)fields[4];
         ownable[4].setSubText("M1");
 
-        gui.getFields()[5].setTitle(msg.getText("iceCreamShop"));
+        gui.getFields()[5].setTitle("");
         gui.getFields()[5].setBackGroundColor(Color.blue);
         ownable[5] = (GUI_Ownable)fields[5];
         ownable[5].setSubText("M1");
 
-        gui.getFields()[6].setTitle(msg.getText("inJail"));
+        gui.getFields()[6].setTitle("");
         gui.getFields()[6].setBackGroundColor(Color.gray);
-        gui.getFields()[6].setSubText(msg.getText("onVisit"));
+        gui.getFields()[6].setSubText("");
 
-        gui.getFields()[7].setTitle(msg.getText("museum"));
+        gui.getFields()[7].setTitle("");
         gui.getFields()[7].setBackGroundColor(Color.PINK);
         ownable[7] = (GUI_Ownable)fields[7];
         ownable[7].setSubText("M2");
 
-        gui.getFields()[8].setTitle(msg.getText("library"));
+        gui.getFields()[8].setTitle("");
         gui.getFields()[8].setBackGroundColor(Color.orange);
         ownable[8] = (GUI_Ownable)fields[8];
         ownable[8].setSubText("M2");
 
+        gui.getFields()[9].setTitle("?");
         gui.getFields()[9].setBackGroundColor(Color.magenta);
+        gui.getFields()[9].setSubText(" ");
 
-        gui.getFields()[10].setTitle(msg.getText("skatePark"));
+        gui.getFields()[10].setTitle("");
         gui.getFields()[10].setBackGroundColor(Color.CYAN);
         ownable[10] = (GUI_Ownable)fields[10];
         ownable[10].setSubText("M2");
 
-        gui.getFields()[11].setTitle(msg.getText("pool"));
+        gui.getFields()[11].setTitle("");
         gui.getFields()[11].setBackGroundColor(Color.orange);
         ownable[11] = (GUI_Ownable)fields[11];
         ownable[11].setSubText("M2");
 
-        gui.getFields()[12].setTitle(msg.getText("parking"));
+        gui.getFields()[12].setTitle("");
         gui.getFields()[12].setBackGroundColor(Color.darkGray);
-        gui.getFields()[12].setSubText(msg.getText("free"));
+        gui.getFields()[12].setSubText("");
 
-        gui.getFields()[13].setTitle(msg.getText("playingHall"));
+        gui.getFields()[13].setTitle("");
         gui.getFields()[13].setBackGroundColor(Color.orange);
         ownable[13] = (GUI_Ownable)fields[13];
         ownable[13].setSubText("M3");
 
-        gui.getFields()[14].setTitle(msg.getText("cinema"));
+        gui.getFields()[14].setTitle("");
         gui.getFields()[14].setBackGroundColor(Color.pink);
         ownable[14] = (GUI_Ownable)fields[14];
         ownable[14].setSubText("M3");
 
+        gui.getFields()[15].setTitle("?");
         gui.getFields()[15].setBackGroundColor(Color.magenta);
+        gui.getFields()[15].setSubText(" ");
 
-        gui.getFields()[16].setTitle(msg.getText("toyStore"));
+        gui.getFields()[16].setTitle("");
         gui.getFields()[16].setBackGroundColor(Color.orange);
         ownable[16] = (GUI_Ownable)fields[16];
         ownable[16].setSubText("M3");
 
-        gui.getFields()[17].setTitle(msg.getText("petShop"));
+        gui.getFields()[17].setTitle("");
         gui.getFields()[17].setBackGroundColor(Color.pink);
         ownable[17] = (GUI_Ownable)fields[17];
         ownable[17].setSubText("M3");
 
-        gui.getFields()[18].setTitle(msg.getText("jail"));
+        gui.getFields()[18].setTitle("");
         gui.getFields()[18].setBackGroundColor(Color.gray);
         gui.getFields()[18].setSubText("");
 
-        gui.getFields()[19].setTitle(msg.getText("bowlingAlley"));
+        gui.getFields()[19].setTitle("");
         gui.getFields()[19].setBackGroundColor(Color.blue);
         ownable[19] = (GUI_Ownable)fields[19];
         ownable[19].setSubText("M4");
 
-        gui.getFields()[20].setTitle(msg.getText("zoo"));
+        gui.getFields()[20].setTitle("");
         gui.getFields()[20].setBackGroundColor(Color.PINK);
         ownable[20] = (GUI_Ownable)fields[20];
         ownable[20].setSubText("M4");
 
-
+        gui.getFields()[21].setTitle("?");
         gui.getFields()[21].setBackGroundColor(Color.MAGENTA);
+        gui.getFields()[21].setSubText(" ");
 
-        gui.getFields()[22].setTitle(msg.getText("waterPark"));
+        gui.getFields()[22].setTitle("");
         gui.getFields()[22].setBackGroundColor(Color.CYAN);
         ownable[22] = (GUI_Ownable)fields[22];
         ownable[22].setSubText("M5");
 
-        gui.getFields()[23].setTitle(msg.getText("boardWalk"));
+        gui.getFields()[23].setTitle("");
         gui.getFields()[23].setBackGroundColor(Color.orange);
         ownable[23] = (GUI_Ownable)fields[23];
         ownable[23].setSubText("M5");
 
-        gui.getUserButtonPressed(msg.getText("startGame"));
-        gui.showMessage(msg.getText("welcomeMessage"));
-
-
     }
+
+     public void initFieldTitles(String langFile){
+         msg = new Text(langFile);
+
+         gui.getFields()[0].setTitle(msg.getText("start"));
+         gui.getFields()[1].setTitle(msg.getText("burgerBar"));
+         gui.getFields()[2].setTitle(msg.getText("pizzeria"));
+         gui.getFields()[3].setSubText(msg.getText("chance"));
+         gui.getFields()[4].setTitle(msg.getText("candyShop"));
+         gui.getFields()[5].setTitle(msg.getText("iceCreamShop"));
+         gui.getFields()[6].setTitle(msg.getText("inJail"));
+         gui.getFields()[6].setSubText(msg.getText("onVisit"));
+         gui.getFields()[7].setTitle(msg.getText("museum"));
+         gui.getFields()[8].setTitle(msg.getText("library"));
+         gui.getFields()[9].setSubText(msg.getText("chance"));
+         gui.getFields()[10].setTitle(msg.getText("skatePark"));
+         gui.getFields()[11].setTitle(msg.getText("pool"));
+         gui.getFields()[12].setTitle(msg.getText("parking"));
+         gui.getFields()[12].setSubText(msg.getText("free"));
+         gui.getFields()[13].setTitle(msg.getText("playingHall"));
+         gui.getFields()[14].setTitle(msg.getText("cinema"));
+         gui.getFields()[15].setSubText(msg.getText("chance"));
+         gui.getFields()[16].setTitle(msg.getText("toyStore"));
+         gui.getFields()[17].setTitle(msg.getText("petShop"));
+         gui.getFields()[18].setTitle(msg.getText("jail"));
+         gui.getFields()[19].setTitle(msg.getText("bowlingAlley"));
+         gui.getFields()[20].setTitle(msg.getText("zoo"));
+         gui.getFields()[21].setSubText(msg.getText("chance"));
+         gui.getFields()[22].setTitle(msg.getText("waterPark"));
+         gui.getFields()[23].setTitle(msg.getText("boardWalk"));
+         gui.getUserButtonPressed(msg.getText("startGame"));
+         gui.showMessage(msg.getText("welcomeMessage"));
+     }
 
      public void showMessage(String message){
         gui.showMessage(message);
@@ -197,6 +232,10 @@ import java.awt.*;
      }
      public int getUserInteger() {
         return gui.getUserInteger(msg.getText("enterPlayerCount"));
+     }
+
+     public int getUserLang() {
+        return gui.getUserInteger("You are in English mode. Enter 1 to keep English or enter 2 to switch to Danish.");
      }
      public String getUserString(int currentPlayer){
 
