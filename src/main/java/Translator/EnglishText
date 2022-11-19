@@ -15,7 +15,8 @@ payRent; owns this place. U gotta pay rent.
 start; Start;
 burgerBar; The Burger-bar
 pizzeria; The Pizzeria
-chance;, you have landed on Chance. Press OK to pick a card.
+chance; Chance
+pickChance;, you have landed on Chance. Press OK to pick a card.
 candyShop; The Candy shop
 iceCreamShop; The Ice Cream Shop
 inJail; In Jail

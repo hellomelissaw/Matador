@@ -15,7 +15,8 @@ payRent; ejer feltet. Du skal betale husleje.
 start; Start;
 burgerBar; Burgerbaren
 pizzeria; Pizzeriet
-chance;, du er landet på Prøv Lykke. Tryk OK til at tage et kort.
+chance; Prøv lykke
+pickChance;, du er landet på Prøv Lykke. Tryk OK til at tage et kort.
 candyShop; Slikbutikken
 iceCreamShop; Isbutikken
 inJail; I fængsel
@@ -24,15 +25,15 @@ visitJail; Du besøger nu fænglset.
 museum; Museet
 library; Biblioteket
 skatePark; Skateparken
-pool; Swimminpoolen
+pool; Poolen
 playingHall; Spillehallen
 parking; Parkering
 free; Gratis!
 freeParking; Du har nu gratis parkering.
 arcade; Arcaden
 cinema; Biografen
-toyStore; Legetøjsbutikken
-petShop; Dyrhandleren
+toyStore; Legetøjsbutik
+petShop; Dyrhandler
 jail; Gå i fængsel!
 movedToJail;Du går i fængsel nu. Tryk OK for at blive kørt dertil.
 movedToSquare; Du er blevet rykket til felt #
