@@ -1,10 +1,15 @@
-How many players?
+playerCount;Enter number of player (2-4):
+invalidCount;Invalid player number, please enter an integer between 2 and 4 inclusively.
+enterName;Enter your name, Player
+startGame;Press OK to start the game!
+passStart; COLLECT M2 SALARY AS YOU PASS START. New balance:
+position; , you have landed on square
+squareNum; , square #
 Insert player 1 name
 Insert player 2 name
 Insert player 3 name
 Insert player 4 name
-startGame; Press Ok to start the game!
-GO, COLLECT M2 SALARY AS YOU PASS
+
 You have bought The Burger-bar for M1
 You have bought The Pizzeria for M1
 You have landed on Chance

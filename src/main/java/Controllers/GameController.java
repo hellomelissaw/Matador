@@ -50,8 +50,8 @@ public class GameController {
         String userInput;
 
         //INITIALIZING PLAYERS
-        System.out.println("Enter number of player (2-4):");
-        guiController.showMessage("Enter number of player (2-4):");
+        System.out.println(msg.getText("playerCount"));
+        guiController.showMessage(msg.getText("playerCount"));
         boolean playerCountInvalid = true;
         while (playerCountInvalid) {
            // playerCount = userInput.nextInt();
@@ -61,8 +61,8 @@ public class GameController {
                 playerCountInvalid = false;
 
             } else {
-                System.out.println("Invalid player number, please enter an integer between 2 and 4 inclusively.");
-                guiController.showMessage("Invalid player number, please enter an integer between 2 and 4 inclusively.");
+                System.out.println(msg.getText("invalidCount"));
+                guiController.showMessage(msg.getText("invalidCount"));
             }
         }
         balance = 20-(playerCount-2)*2; //SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
@@ -72,11 +72,11 @@ public class GameController {
         guiPlayers = new GUI_Player[playerCount];
 
         for (int i = 0 ; i < playerCount ; i++) {
-            guiController.showMessage("There are " + playerCount + " players.");
+            guiController.showMessage(msg.getText("enterName"));
             int playerNumber = i + 1;
-            System.out.println("Player " + playerNumber + " enter your name:");
-            String guiMessage = "Player " + playerNumber + " enter your name:";
-            guiController.showMessage(guiMessage);
+            System.out.println(msg.getText("enterName"));
+            //String guiMessage = "Player " + playerNumber + " enter your name:";
+            //guiController.showMessage(guiMessage);
             userInput = guiController.getUserString();
             players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
             players[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE
@@ -114,7 +114,7 @@ public class GameController {
 
                 // UNCOMMENT THE FOLLOWING LINE WHEN NOT USING TEST DIE
                 newPosition = players[i].updatePosition(sum);
-                guiController.showMessage(players[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
+                //guiController.showMessage(players[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
                 guiController.move(guiPlayers[i], oldPosition, newPosition);
 
 
@@ -123,11 +123,11 @@ public class GameController {
                     players[i].depositMoney(2);
                     int currentBalance = players[i].getCurrentBalance();
                     guiController.updateBalance(guiPlayers[i], currentBalance);
-                    System.out.println(players[i].getPlayerName()+ " passed the start square, and will now recieve M2. New balance: " + currentBalance);
+                    System.out.println(players[i].getPlayerName()+ msg.getText("passStart") + currentBalance);
 
-                System.out.println(players[i].getPlayerName() + " you are on square " + square[newPosition].toString());
+                System.out.println(players[i].getPlayerName() + msg.getText("position") + square[newPosition].toString());
                 }
-                System.out.println(players[i].getPlayerName() + " you are on square " + square[newPosition].getSquareName() + "(square #" + players[i].getPosition() + ")");
+                System.out.println(players[i].getPlayerName() + msg.getText("position") + square[newPosition].getSquareName() +  msg.getText("squareNum") + players[i].getPosition());
 
 
                 //HANDLES THE PROCESS OF LANDING ON A SQUARE AND CALLS METHOD FOR SUBSEQUENT ACTIONS
