@@ -12,22 +12,9 @@ import java.awt.*;
      Text msg = new Text("src/main/java/Translator/EnglishText");
      private GUI_Field[] fields = new GUI_Field[24];
 
-
-     Die die1 = new Die();
-     Die die2 = new Die();
-     int diceSum = 0;
-
-    String message;
-    int[] player;
-    GUI_Player gui_player;
     private GUI_Player[] gui_players;
-    private String playerName;
 
-    private String ownerName = "Available";
-    private int balance;
     private GUI_Ownable[] ownable = new GUI_Ownable[24];
-
-    GUI_Player owner;
 
     public GuiController() {
          fields = new GUI_Field[]{
@@ -166,8 +153,8 @@ import java.awt.*;
         ownable[23] = (GUI_Ownable)fields[23];
         ownable[23].setSubText("M5");
 
-        gui.getUserButtonPressed("Press Ok to start!");
-        gui.showMessage("Welcome to Monopoly Junior game.");
+        gui.getUserButtonPressed(msg.getText("startGame"));
+        gui.showMessage(msg.getText("welcomeMessage"));
 
 
     }
@@ -209,10 +196,11 @@ import java.awt.*;
          }
      }
      public int getUserInteger() {
-        return gui.getUserInteger("Enter players count:");
+        return gui.getUserInteger(msg.getText("enterPlayerCount"));
      }
-     public String getUserString(){
-        return gui.getUserString("");
+     public String getUserString(int currentPlayer){
+
+        return gui.getUserString(msg.getText("enterName") + " " + currentPlayer);
      }
     public void setDice(int die1, int die2){
         gui.setDice(die1,die2);
