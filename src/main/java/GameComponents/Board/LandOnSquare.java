@@ -10,13 +10,16 @@ public class LandOnSquare {
     GUI_Player[] guiPlayers;
     GuiController guiController;
     String guiMessage;
-
-    Text msg = new Text("src/main/java/Translator/EnglishText");
+    Text msg;
     public LandOnSquare(Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers) {
         this.square = square;
         this.player = player;
         this.guiController = guiController;
         this.guiPlayers = guiPlayers;
+    }
+
+    public void setLang(String langFile) {
+        msg = new Text(langFile);
     }
     public void landOnDeedSquare(int newPosition, int currentPlayer) {
         int i = currentPlayer;

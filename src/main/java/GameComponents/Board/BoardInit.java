@@ -6,8 +6,8 @@ import Translator.Text;
 public class BoardInit {
     Square[] board = new Square[24];
     GuiController guiController;
-    public BoardInit(GuiController guiController) {
-        Text msg = new Text("src/main/java/Translator/EnglishText");
+    public BoardInit(GuiController guiController, String langFile) {
+        Text msg = new Text(langFile);
         this.guiController = guiController;
 
         board[0] = new StartSquare(msg.getText("start"));

@@ -14,11 +14,12 @@ public class GameController {
     Player[] players;
     Square[] square;
     GUI_Player[] guiPlayers;
-
     Text msg;
 
+    String langFile="";
+
     public void initTest() {
-        BoardInit board = new BoardInit(guiController);
+        BoardInit board = new BoardInit(guiController,"src/main/java/Translator/EnglishText");
         square = board.getSquareArr();
         playerCount = 2;
         balance = 20 - (playerCount - 2) * 2;
@@ -44,16 +45,16 @@ public class GameController {
     }
 
     public void init() {
-        BoardInit board = new BoardInit(guiController);
+        String[] lang = {"EnglishText","DanskTekst"};
+        int langIndex = guiController.getUserLang(); //GETS USER TO CHOOSE LANGUAGE
+        langFile = "src/main/java/Translator/"+lang[langIndex-1];
+        msg = new Text(langFile);
+        guiController.initFieldTitles(langFile);
+
+        BoardInit board = new BoardInit(guiController,langFile);
         square = board.getSquareArr();
         //String userInput = new Scanner(System.in);
         String userInput;
-
-        String[] lang = {"EnglishText","DanskTekst"};
-        int langIndex = guiController.getUserLang(); //GETS USER TO CHOOSE LANGUAGE
-        String langFile = "src/main/java/Translator/"+lang[langIndex-1];
-        msg = new Text(langFile);
-        guiController.initFieldTitles(langFile);
 
         //INITIALIZING PLAYERS
         System.out.println(msg.getText("enterPlayerCount"));
@@ -136,7 +137,7 @@ public class GameController {
 
                 //HANDLES THE PROCESS OF LANDING ON A SQUARE AND CALLS METHOD FOR SUBSEQUENT ACTIONS
                 LandOnSquare playerTurn = new LandOnSquare(square, players, guiController, guiPlayers);
-
+                playerTurn.setLang(langFile);
                 if(square[newPosition] instanceof DeedSquare) {
                     playerTurn.landOnDeedSquare(newPosition,i);
 
