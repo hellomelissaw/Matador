@@ -8,7 +8,7 @@ import Translator.*;
 
 public class GameController {
     GuiController guiController = new GuiController();
-    Text msg = new Text("src/main/java/Translator/TestLang");
+    Text msg = new Text("src/main/java/Translator/EnglishText");
     public int playerCount = 0;
     String userInput;
     int balance = 0;

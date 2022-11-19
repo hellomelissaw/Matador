@@ -1,9 +1,8 @@
 package GameComponents.Board;
 import Controllers.GuiController;
-import GameComponents.Account;
 import GameComponents.Player;
 import gui_fields.GUI_Player;
-
+import Translator.*;
 public class LandOnSquare {
     Square[] square;
     Player[] player;
@@ -12,8 +11,7 @@ public class LandOnSquare {
     GuiController guiController;
     String guiMessage;
 
-
-
+    Text msg = new Text("src/main/java/Translator/EnglishText");
     public LandOnSquare(Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers) {
         this.square = square;
         this.player = player;
@@ -25,46 +23,41 @@ public class LandOnSquare {
         int deedPrice = ((DeedSquare) square[newPosition]).getDeedPrice();
 
         if(((DeedSquare) square[newPosition]).hasDeed()) {
-            System.out.println("This property is available for purchase for" +((DeedSquare) square[newPosition]).getDeedPrice()  + "M.");
-            guiMessage = "This property is available for purchase.";
+            /*System.out.println("This property is available for purchase for" +((DeedSquare) square[newPosition]).getDeedPrice()  + "M.");
+            guiMessage = "This property is available for purchase.";*/
+            guiMessage = player[i].getPlayerName() + msg.getText("haveBought") + square[newPosition].getSquareName();
             guiController.showMessage(guiMessage);
 
             player[i].withdrawMoney(deedPrice); // TO DO: must check if player has enough money to buy
             int currentBalance = player[i].getCurrentBalance();
             guiController.updateBalance(guiPlayers[i], currentBalance);
-            System.out.println("You now have " + currentBalance + " in your bank account.");
-            guiMessage = "You now have " + currentBalance + " in your bank account.";
-            guiController.showMessage(guiMessage);
-
-            System.out.println("owner before " + ((DeedSquare) square[newPosition]).getDeedOwner());
+            System.out.println(msg.getText("newBalance") + currentBalance);
 
             ((DeedSquare) square[newPosition]).sellDeed(player[i], newPosition); // SETS sellDeed TO FALSE AND UPDATES OWNERSHIP
-            System.out.println("owner after " + ((DeedSquare) square[newPosition]).getDeedOwner());
 
             } else if (((DeedSquare) square[newPosition]).hasDeed()==false) {
                 Player deedOwner = ((DeedSquare) square[newPosition]).getDeedOwner();
 
                 if (player[i]==deedOwner) {
-                    System.out.println("Girl u own this joint! U don't pay anything.");
-                    guiMessage = "Girl u own this joint! U don't pay anything.";
-                    guiController.showMessage(guiMessage);
+                    String ownerMessage = msg.getText("ownerOfDeed");
+                    System.out.println(ownerMessage);
+                    guiController.showMessage(ownerMessage);
 
                 } else {
-                    System.out.println(deedOwner.toString() + " owns this place. " + player[i].getPlayerName() + ", you gotta pay " + ((DeedSquare) square[newPosition]).getDeedPrice() + " in rent.");
+                    String payRent = deedOwner.toString() + msg.getText("payRent");
+                    System.out.println(payRent + ((DeedSquare) square[newPosition]).getDeedPrice());
                     player[i].withdrawMoney(deedPrice);
                     int currentBalance = player[i].getCurrentBalance();
                     guiController.updateBalance(guiPlayers[i], currentBalance);
 
-                    System.out.println(player[i].getPlayerName() + ", you now have " + currentBalance + " in your bank account.");
-                    guiMessage = deedOwner + " owns this place. " + player[i].getPlayerName() + ", you gotta pay " + ((DeedSquare) square[newPosition]).getDeedPrice() + " in rent. You now have " + currentBalance + "M in your bank account.";
-                    guiController.showMessage(guiMessage);
+                    System.out.println(msg.getText("newBalance") + currentBalance);
+                    guiController.showMessage(payRent);
 
                     deedOwner.depositMoney(deedPrice);
                     currentBalance = deedOwner.getCurrentBalance();
                     guiController.receiveRent(deedOwner.getPlayerName(),currentBalance);
-                    System.out.println(deedOwner.getPlayerName() + ", you now have " + currentBalance + " in your bank account.");
-                    guiMessage = deedOwner.getPlayerName() + ", you received rent and now have " + currentBalance + " in your bank account.";
-                    guiController.showMessage(guiMessage);
+
+
                 }
 
 
@@ -84,7 +77,7 @@ public class LandOnSquare {
 
        int i = currentPlayer;
         if (newPosition==18){
-            System.out.println("Go to jail,and pay M1 for the bank ");
+            System.out.println("Go to jail, and pay M1 for the bank.");
 
             player[i].withdrawMoney(1);
             int currentBalance = player[i].getCurrentBalance();

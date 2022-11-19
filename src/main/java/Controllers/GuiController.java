@@ -1,14 +1,15 @@
 package Controllers;
 import GameComponents.Die;
 import GameComponents.Player;
+import Translator.Text;
 import gui_fields.*;
 import gui_main.GUI;
 
 import java.awt.*;
  public class GuiController {
+     private GUI gui;
 
-      private GUI gui;
-     //TextReader reader = new TextReader(DanskTekst);
+     Text msg = new Text("src/main/java/Translator/EnglishText");
      private GUI_Field[] fields = new GUI_Field[24];
 
 
