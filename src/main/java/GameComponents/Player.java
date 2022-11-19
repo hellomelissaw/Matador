@@ -16,6 +16,9 @@ public class Player {
         this.playerName = playerName;
 
     }
+    public  Player(){
+
+    }
 
 
     public void withdrawMoney(int newPoints) {
