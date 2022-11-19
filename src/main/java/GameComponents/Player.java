@@ -7,25 +7,19 @@ This class is reused from our CDIO2 project and built upon.
  */
 public class Player {
 
-    private String playerName;
     private int balance;
     private int squareIndex = 0;
-    Account PlayerAccount = new Account(playerName);
+    private String playerName;
+    Account PlayerAccount = new Account();
 
     public Player(String playerName) {
         this.playerName = playerName;
-        //this.balance = balance;
-        //System.out.println(playerName);
-        //PlayerAccount.setBalance(balance);
+
+    }
+    public  Player(){
 
     }
 
-    /*
-    public int getPlayerNumber() {
-        return playerNumber;
-    }
-
-     */
 
     public void withdrawMoney(int newPoints) {
         PlayerAccount.withDraw(newPoints);
@@ -36,7 +30,6 @@ public class Player {
     }
 
     public int getCurrentBalance(){
-        //System.out.println(PlayerAccount.getBalance());
         return (PlayerAccount.getBalance());
     }
 
@@ -46,12 +39,21 @@ public class Player {
 
     public int updatePosition(int sumDice) {
         for(int i = 0; i < sumDice; i++) {
-            if (this.squareIndex < 23) {
-                this.squareIndex++;
+            if (squareIndex < 23) {
+                squareIndex++;
             } else {
-                this.squareIndex = 0;
+                squareIndex = 0;
             }
         }
-        return this.squareIndex;
+        return squareIndex;
+    }
+
+    public int getPosition(){
+        return squareIndex;
+    }
+
+    @Override
+    public String toString() {
+        return playerName;
     }
 }

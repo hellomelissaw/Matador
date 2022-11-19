@@ -1,25 +1,44 @@
 package GameComponents.Board;
-
+import Controllers.GuiController;
+import GameComponents.Player;
 public class DeedSquare extends Square{
-
     Deed deed;
-    boolean sellDeed = false;
+    boolean sellDeed = true;
+    int deedPrice;
 
-    // public DeedSquare(String deedName , Deed deed) {
-    public DeedSquare(String deedName, int price) {
+    GuiController guiController;
+
+    public DeedSquare(String deedName, int deedPrice, GuiController guiController) {
         super(deedName);
-        this.deed = new Deed(20, deedName);
+        this.deed = new Deed(deedPrice, deedName);
+        this.deedPrice = deedPrice;
+        this.guiController = guiController;
     }
-
-    Deed getDeed(){
+    public Deed getDeed(){
         return deed;
     }
-
     public boolean hasDeed(){ // Checks if the square has a deed available to buy or if it's already sold
         return sellDeed;
     }
+    public void sellDeed(Player player, int currentSquareIndex){ // Sets deed to false so Square no longer has a deed
+        sellDeed = false ;
+        deed.setOwner(player);
+        guiController.displayOwnerName(player, currentSquareIndex);
 
-    public void sellDeed(){ // Sets deed to null so Square no longer has a deed
-        sellDeed = true ;
+    }
+
+    public int getDeedPrice() {
+        return deedPrice;
+    }
+
+    public Player getDeedOwner() {
+        return deed.getOwner();
+    }
+
+
+    @Override
+    public String toString() {
+        String priceString = Integer.toString(deedPrice);
+        return priceString;
     }
 }

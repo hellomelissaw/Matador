@@ -8,9 +8,9 @@ public class Account {
     private String Accountname;
 
 
-    public Account(String name){
+    public Account(){
         balance = 0;
-        Accountname = name;
+       // Accountname = name;
     }
     public void setBalance(int initialBalance){
         balance = initialBalance;
@@ -31,25 +31,8 @@ public class Account {
         return(balance);
     }
 
-    /*
-    public void printText(int index) {
-        String[] row = new String[18];
-        BufferedReader csvReader;
 
-        try {
-            csvReader = new BufferedReader(new FileReader(file));
-            for (int i = 0; i < 18; i++) {
-                row[i] = csvReader.readLine();
 
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
-    }
-
-     */
 }
 
 

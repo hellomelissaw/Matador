@@ -1,30 +1,26 @@
 package GameComponents.Board;
 
 import GameComponents.Player;
+import gui_fields.GUI_Player;
 
 public class Deed {
-
-    Player ownerName;
-    // int[] squarePrise; // i Matador mangler vi en array med alle priser på et skød
+    Player owner;
+    // int[] squarePrice; // i Matador mangler vi en array med alle priser på et skød
     int squarePrice;
-    String name;
+    String deedName;
 
-    public Deed(int squarePrice,String name){
-        //this.owner = owner;
+    public Deed(int squarePrice,String deedName){
         this.squarePrice = squarePrice;
-        this.name=name;
-    }
-
-    public int getSquarePrice() {
-        return squarePrice ;
+        this.deedName = deedName;
     }
 
     public Player getOwner() {
-        return ownerName;
+        return owner;
     }
-    public void setOwner(Player ownerName){ // Not sure where we will use setOwner method yet
+    public void setOwner(Player ownerName){
 
-        this.ownerName = ownerName;
+        this.owner = ownerName;
 
     }
+
 }
