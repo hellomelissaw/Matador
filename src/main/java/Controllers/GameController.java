@@ -8,14 +8,14 @@ import Translator.*;
 
 public class GameController {
     GuiController guiController = new GuiController();
-    Text msg = new Text("src/main/java/Translator/EnglishText");
     public int playerCount = 0;
     String userInput;
     int balance = 0;
     Player[] players;
     Square[] square;
-
     GUI_Player[] guiPlayers;
+
+    Text msg;
 
     public void initTest() {
         BoardInit board = new BoardInit(guiController);
@@ -48,6 +48,12 @@ public class GameController {
         square = board.getSquareArr();
         //String userInput = new Scanner(System.in);
         String userInput;
+
+        String[] lang = {"EnglishText","DanskTekst"};
+        int langIndex = guiController.getUserLang(); //GETS USER TO CHOOSE LANGUAGE
+        String langFile = "src/main/java/Translator/"+lang[langIndex-1];
+        msg = new Text(langFile);
+        guiController.initFieldTitles(langFile);
 
         //INITIALIZING PLAYERS
         System.out.println(msg.getText("enterPlayerCount"));
