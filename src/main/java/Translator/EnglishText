@@ -10,27 +10,34 @@ haveBought;, you have bought
 newBalance; Your bank account balance is now:
 ownerOfDeed; Girl u own this joint! U don't pay anything.
 payRent; owns this place. U gotta pay rent.
+start; Start;
 burgerBar; The Burger-bar
 pizzeria; The Pizzeria
 chance;, you have landed on Chance. Press OK to pick a card.
 candyShop; The Candy shop
 iceCreamShop; The Ice Cream Shop
-visitJail;You are now visiting jail, think about your life choices! :(
+inJail; In Jail
+onVisit; On a visit!
+visitJail; You are now visiting jail, think about your life choices! :(
 museum; The Museum
 library; The Library
 skatePark; The Skate Park
-swimmingPool; The Swimming Pool
+pool; The Pool
+playingHall; The Playing Hall
+parking; Parking
+free; Free!
 freeParking;You now have free parking, take a well deserved break! :)
-arcade; The Arcade for
-cinema; The Cinema for
-toyStore; The Toy Store for
-petShop; The Pet Shop for
-jail;You are going to jail now, press OK to be driven there.
-moveJail;You have been moved to square #
-bowlingAlley; The Bowling Alley for
-zoo; The Zoo for
-aqualand; AquaLand for
-promenade; The Promenade for
+arcade; The Arcade
+cinema; The Cinema
+toyStore; The Toy Store
+petShop; The Pet Shop
+jail; Go to Jail!
+movedToJail;You are going to jail now, press OK to be driven there.
+movedToSquare; You have been moved to square #
+bowlingAlley; The Bowling Alley
+zoo; The Zoo
+waterPark; The Water Park
+boardWalk; The Board Walk
 Chance Cards:
 Give this card to the CAR and take one more chance card. CAR: On your next turn, drone to any available square and buy it. If there are no available squares, then you must buy one from another player!
 Give this card to the CAT and take one more chance card. CAT: On your next turn, sneak to any available square and buy it. If there are no available squares, then you must buy one from another player!

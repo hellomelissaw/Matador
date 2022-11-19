@@ -77,26 +77,27 @@ public class LandOnSquare {
 
        int i = currentPlayer;
         if (newPosition==18){
-            System.out.println("Go to jail, and pay M1 for the bank.");
+            String jailMessage = msg.getText("movedToJail");
+            System.out.println(jailMessage);
 
             player[i].withdrawMoney(1);
             int currentBalance = player[i].getCurrentBalance();
             guiController.updateBalance(guiPlayers[i], currentBalance);
-            System.out.println("You now have " + currentBalance + " in your bank account.");
-            guiController.showMessage("You are going to jail now, press OK to be driven there.");
+            System.out.println(msg.getText("newBalance")+ currentBalance);
+            guiController.showMessage(jailMessage);
             player[i].updatePosition(12);
             guiController.move(guiPlayers[i],18,6);
-            System.out.println("You have been moved to square #" + player[i].getPosition() );
+            System.out.println(msg.getText("movedToSquare") + player[i].getPosition() );
 
         }  else if (newPosition==6) {
-            System.out.println("You are now visiting jail, think about your life choices! :(");
+            System.out.println(msg.getText("visitJail"));
         }
     }
 
     public void landOnParkingSquare(int newPosition) {
 
          if (newPosition==12)
-             System.out.println("You now have free parking, take a well deserved break! :)");
+             System.out.println(msg.getText("freeParking"));
     }
 }
 
