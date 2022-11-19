@@ -7,9 +7,9 @@ import gui_main.GUI;
 import java.awt.*;
  public class GuiController {
 
-     GUI gui;
+      private GUI gui;
      //TextReader reader = new TextReader(DanskTekst);
-     GUI_Field[] fields = new GUI_Field[24];
+     private GUI_Field[] fields = new GUI_Field[24];
 
 
      Die die1 = new Die();
@@ -19,12 +19,12 @@ import java.awt.*;
     String message;
     int[] player;
     GUI_Player gui_player;
-    GUI_Player[] gui_players;
+    private GUI_Player[] gui_players;
     private String playerName;
 
     private String ownerName = "Available";
     private int balance;
-    GUI_Ownable[] ownable = new GUI_Ownable[24];
+    private GUI_Ownable[] ownable = new GUI_Ownable[24];
 
     GUI_Player owner;
 
