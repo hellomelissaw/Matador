@@ -4,10 +4,11 @@ import GameComponents.Board.Square;
 import GameComponents.Cup;
 import GameComponents.Player;
 import gui_fields.GUI_Player;
+import Translator.*;
 
 public class GameController {
     GuiController guiController = new GuiController();
-    //Text gameInstruction = new Text("src/DanskTekst.csv");
+    Text msg = new Text("src/main/java/Translator/TestLang");
     public int playerCount = 0;
     String userInput;
     int balance = 0;
@@ -83,7 +84,7 @@ public class GameController {
         }
 
       guiPlayers = guiController.addPlayerOnBoard(players);
-        guiController.showMessage("Press Ok to start the game!");
+        guiController.showMessage(msg.getText(3));
 
     }
 
@@ -98,7 +99,7 @@ public class GameController {
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
                 testInt++;
                 //THROWS THE DICE AND MOVES THE PLAYER
-                String rollMessage = players[i].getPlayerName() + ", press OK to roll the dice.";
+                String rollMessage = players[i].getPlayerName() + msg.getText(4);
                 guiController.showMessage(rollMessage);
                 diceArr = cup.getSum();
                 int sum = diceArr[2];

@@ -1,3 +1,5 @@
-label, message
-amountOfPlayers, Hvor mange spillere?
-player1Name, indsæt navn på spiller 1
+label; message
+amountOfPlayers; Hvor mange spillere?
+player1Name; indsæt navn på spiller 1
+startGame; Press OK to start the game!
+rollDice; Press OK to roll the dice!

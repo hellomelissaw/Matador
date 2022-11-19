@@ -10,7 +10,7 @@ public class TextTest {
     public void returnTextFirstIndexOfMessages() {
         Text reader = new Text("src/main/java/Translator/TestLang");
         String testString = " Hvor mange spillere?";
-        assertEquals(testString,reader.returnText(1));
+        assertEquals(testString,reader.getText(1));
 
     }
 

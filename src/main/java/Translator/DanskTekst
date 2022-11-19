@@ -4,6 +4,7 @@ player1Name; indsæt navn på spiller 1
 indsæt navn på spiller 2
 indsæt navn på spiller 3
 indsæt navn på spiller 4
+welcomeMessage;
 START, MODTAG M2 NÅR DU PASSERER
 Du har købt Burgerbaren for M1
 Du har købt Pizzeriaet for M1

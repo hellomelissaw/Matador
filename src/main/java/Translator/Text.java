@@ -6,7 +6,7 @@ import java.io.*;
 public class Text {
     String file;
 
-    int lineCount = 3;
+    int lineCount = 5;
     String[] messages = new String[lineCount];
 
     String[] labels = new String[lineCount];
@@ -14,7 +14,7 @@ public class Text {
         this.file = file;
 
     }
-    public String returnText(int index) {
+    public String getText(int index) {
         BufferedReader reader;
 
         try {
@@ -25,7 +25,7 @@ public class Text {
             for (int i = 0; i < lineCount; i++) {
 
                 line = reader.readLine();
-                String[] labelsAndMessages = line.split(",");
+                String[] labelsAndMessages = line.split(";");
                 labels[i] = labelsAndMessages[0];
                 messages[i] = labelsAndMessages[1];
 
@@ -39,7 +39,7 @@ public class Text {
         return messages[index];
     }
 
-    public void printText(int index) {
+    /*public void printText(int index) {
         BufferedReader reader;
 
         try {
@@ -70,7 +70,7 @@ public class Text {
         }
 
     }
-
+*/
 
 }
 
