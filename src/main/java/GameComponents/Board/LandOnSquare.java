@@ -18,8 +18,8 @@ public class LandOnSquare {
         this.guiPlayers = guiPlayers;
     }
 
-    public void setLang(String langFile) {
-        msg = new Text(langFile);
+    public void setLang(Text msg) {
+        this.msg = msg;
     }
     public void landOnDeedSquare(int newPosition, int currentPlayer) {
         int i = currentPlayer;

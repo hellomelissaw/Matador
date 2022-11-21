@@ -161,8 +161,8 @@ import java.awt.*;
 
     }
 
-     public void initFieldTitles(String langFile){
-         msg = new Text(langFile);
+     public void initFieldTitles(Text msg){
+         this.msg = msg;
 
          gui.getFields()[0].setTitle(msg.getText("start"));
          gui.getFields()[1].setTitle(msg.getText("burgerBar"));

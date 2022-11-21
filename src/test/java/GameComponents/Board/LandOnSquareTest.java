@@ -3,6 +3,7 @@ package GameComponents.Board;
 import Controllers.GuiController;
 import GameComponents.Player;
 
+import Translator.Text;
 import gui_fields.GUI_Player;
 import org.junit.Test;
 
@@ -18,7 +19,8 @@ public class LandOnSquareTest {
         GuiController guiController = new GuiController();
         GUI_Player[] guiPlayers = new GUI_Player[1];
         LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer,guiController, guiPlayers);
-
+        Text testMsg = new Text("src/main/java/Translator/EnglishText");
+        playerTurnTest.setLang(testMsg);
         testPlayer[0] = new Player("Player 1");
         testPlayer[0].depositMoney(20);
 
@@ -87,7 +89,6 @@ public class LandOnSquareTest {
         GuiController guiController = new GuiController();
         GUI_Player[] guiPlayers = new GUI_Player[1];
         LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer, guiController, guiPlayers);
-
         testPlayer[0] = new Player("Player 1");
         testPlayer[0].depositMoney(20);
 
