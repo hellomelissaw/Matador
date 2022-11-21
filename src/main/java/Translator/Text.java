@@ -11,6 +11,10 @@ public class Text {
 
     String[] labels = new String[lineCount];
 
+    /***
+     * Reads a text file and parses each line into labels and their corresponding messages
+     * @param file file name for user-chosen language
+     */
     public Text(String file){
         this.file = file;
         BufferedReader reader;
@@ -34,6 +38,12 @@ public class Text {
         }
 
     }
+
+    /**
+     * Takes the label given as parameter and finds corresponding message
+     * @param label the label for a specific message (The label is the same for every language)
+     * @return String contained message corresponding to given label in chosen language
+     */
     public String getText(String label) {
         String message = "";
         for (int i = 0 ; i < lineCount ; i++) {

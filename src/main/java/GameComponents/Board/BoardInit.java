@@ -6,6 +6,12 @@ import Translator.Text;
 public class BoardInit {
     Square[] board = new Square[24];
     GuiController guiController;
+
+    /**
+     * Constructs a BoardInit where all the Squares on the board are instantiated with name and evt. price.
+     * @param guiController The GuiController used throughout the classes.
+     * @param langFile the name of the file containing all in game-messages in selected language
+     */
     public BoardInit(GuiController guiController, String langFile) {
         Text msg = new Text(langFile);
         this.guiController = guiController;

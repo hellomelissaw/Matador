@@ -101,7 +101,6 @@ public class GameController {
 
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
                 testInt++;
-                //THROWS THE DICE AND MOVES THE PLAYER
                 String rollMessage = players[i].getPlayerName() + msg.getText("rollDice");
                 guiController.showMessage(rollMessage);
                 diceArr = cup.getSum();

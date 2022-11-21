@@ -161,6 +161,10 @@ import java.awt.*;
 
     }
 
+     /**
+      * Sets the titles on the Squares according to language chosen by user
+      * @param langFile the name of the file containing all in game-messages in selected language
+      */
      public void initFieldTitles(String langFile){
          msg = new Text(langFile);
 
@@ -208,6 +212,12 @@ import java.awt.*;
          return gui_players;
      }
 
+     /**
+      * Moves the GUI_car object to a new square for current player
+      * @param currentPlayer current GUI_Player to be moved
+      * @param currentPositionIndex index of Square GUI_Player is located on, so their car can stop being displayed there
+      * @param newPosition new index of Square to display car on after removing from previous square
+      */
      public void move(GUI_Player currentPlayer, int currentPositionIndex, int newPosition){
 
         fields[currentPositionIndex].setCar(currentPlayer,false);
@@ -215,6 +225,11 @@ import java.awt.*;
 
      }
 
+     /**
+      * Sets name of owner of a deed when buying it and displays name in center square when clicking on DeedSquare
+      * @param currentPlayer current Player buying the deed
+      * @param currentPositionIndex index of the Deed Square being bought
+      */
      public void displayOwnerName(Player currentPlayer, int currentPositionIndex){
          ownable[currentPositionIndex].setOwnerName(currentPlayer.getPlayerName());
 
@@ -222,6 +237,12 @@ import java.awt.*;
      public void updateBalance(GUI_Player currentPlayer, int newBalance){
          currentPlayer.setBalance(newBalance);
      }
+
+     /**
+      * Determines which GUI_Player owns the deed to update their balance in the GUI when receiving rent
+      * @param ownerName name of the Player who owns the deed
+      * @param newBalance the new Account balance to be displayed
+      */
      public void receiveRent(String ownerName, int newBalance) {
          for(int i = 0; i < gui_players.length; i++){
              if(ownerName == gui_players[i].getName()) {
