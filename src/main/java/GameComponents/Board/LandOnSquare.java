@@ -3,6 +3,7 @@ import Controllers.GuiController;
 import GameComponents.Player;
 import gui_fields.GUI_Player;
 import Translator.*;
+
 public class LandOnSquare {
     Square[] square;
     Player[] player;
@@ -11,6 +12,14 @@ public class LandOnSquare {
     GuiController guiController;
     String guiMessage;
     Text msg;
+
+    /**
+     * Constructs a new LandOnSquare with parameters initialized in {@link Controllers.GameController}.
+     * @param square Array of squares instantiated from {@link BoardInit}.
+     * @param player Array of {@link Player} objects instantiated in run() method.
+     * @param guiController The GuiController used throughout the classes
+     * @param guiPlayers The array of GUI_Player objects instantiated in {@link GuiController}
+     */
     public LandOnSquare(Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers) {
         this.square = square;
         this.player = player;
@@ -18,9 +27,19 @@ public class LandOnSquare {
         this.guiPlayers = guiPlayers;
     }
 
+    /**
+     * Sets language according to user input at game start
+     * @param langFile the name of the file containing all in game-messages in selected language
+     */
     public void setLang(String langFile) {
         msg = new Text(langFile);
     }
+
+    /**
+     * Handles three possible scenarios when landing on a Deed Square (buy deed, land on own property or pay rent)
+     * @param newPosition gives the index of the Square that Player is on
+     * @param currentPlayer gives the current Player of the Player Array whose turn it is
+     */
     public void landOnDeedSquare(int newPosition, int currentPlayer) {
         int i = currentPlayer;
         int deedPrice = ((DeedSquare) square[newPosition]).getDeedPrice();
@@ -76,6 +95,12 @@ public class LandOnSquare {
     public void landOnStartSquare (int newPosition, int currentPlayer) {
 
     }
+
+    /**
+     * Handles landing on Go to Jail and Visiting Jail square
+     *@param newPosition gives the index of the Square that Player is on
+     *@param currentPlayer gives the current Player of the Player Array whose turn it is
+     */
     public void landOnJailSquare(int newPosition, int currentPlayer){
 
        int i = currentPlayer;
