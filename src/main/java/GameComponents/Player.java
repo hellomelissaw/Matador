@@ -11,7 +11,7 @@ public class Player {
     private int squareIndex = 0;
     private String playerName;
 
-    private boolean bankrupt=false;
+    private boolean bankrupt = false;
     Account playerAccount = new Account();
     private String winnerName;
 
@@ -30,20 +30,21 @@ public class Player {
         return bankrupt;
     }
 
-    public void depositMoney(int newPoints){
+    public void depositMoney(int newPoints) {
         playerAccount.deposit(newPoints);
     }
 
-    public int getCurrentBalance(){
+    public int getCurrentBalance() {
         return (playerAccount.getBalance());
     }
 
-    public String getPlayerName (){
+    public String getPlayerName() {
         return playerName;
     }
+    //public String setPlayerName(String playerName){return playerName;}
 
     public int updatePosition(int sumDice) {
-        for(int i = 0; i < sumDice; i++) {
+        for (int i = 0; i < sumDice; i++) {
             if (squareIndex < 23) {
                 squareIndex++;
             } else {
@@ -53,7 +54,7 @@ public class Player {
         return squareIndex;
     }
 
-    public int getPosition(){
+    public int getPosition() {
         return squareIndex;
     }
 
@@ -62,12 +63,30 @@ public class Player {
         return playerName;
     }
 
-    public String winner(Player[] player) {
+    /*public String winner(Player[] player) {
+         int winner = player[0].getCurrentBalance();
+         for (Player i : player) {
+             if (i.getCurrentBalance() > winner)
+                 winner = i.getCurrentBalance();
+             winnerName = i.getPlayerName();
+         } return winnerName;
+     }*/
+    /*public void winner(Player[] player) {
         int winner = player[0].getCurrentBalance();
         for (Player i : player) {
             if (i.getCurrentBalance() > winner)
                 winner = i.getCurrentBalance();
             winnerName = i.getPlayerName();
-        } return winnerName;
+        }*/
+    public String winner(Player[] player) {
+        int winner = player[0].getCurrentBalance();
+        for (int i = 1; i < player.length; i++) {
+            if (player[i].getCurrentBalance() > winner)
+                winner = player[i].getCurrentBalance();
+            winnerName = player[i].getPlayerName();
+        }
+        return winnerName;
     }
+
 }
+
