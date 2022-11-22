@@ -6,6 +6,7 @@ import java.io.FileReader;
 public class Account {
     private int balance;
     private String Accountname;
+    private boolean isBankrupt = false;
 
 
     public Account(){
@@ -22,13 +23,18 @@ public class Account {
     public void withDraw(int amount)
     {
         balance -= amount;
-        if (balance < 0)
-            balance = 0;
+        if (balance < 0) {
+            isBankrupt = true;
+        }
     }
     public int getBalance()
     {
         //System.out.println(Accountname + "now has " + balance + " points");
         return(balance);
+    }
+
+    public boolean getAccountStatus() {
+        return isBankrupt;
     }
 
 

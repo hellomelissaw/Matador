@@ -64,6 +64,10 @@ public class Player {
         return squareIndex;
     }
 
+    public boolean isBankrupt() {
+        return PlayerAccount.getAccountStatus();
+
+    }
     @Override
     public String toString() {
         return playerName;
