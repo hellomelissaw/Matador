@@ -101,4 +101,7 @@ public class LandOnSquareTest {
 
     }
 
+    @Test
+    public void landOnStartSquare() {
+    }
 }
