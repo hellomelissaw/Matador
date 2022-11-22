@@ -56,4 +56,10 @@ public class Player {
     public String toString() {
         return playerName;
     }
+
+    public int goToSquare(int moveToThisSquare)
+    {
+        squareIndex = moveToThisSquare;
+        return squareIndex;
+    }
 }

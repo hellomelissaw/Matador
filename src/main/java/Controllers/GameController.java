@@ -112,11 +112,11 @@ public class GameController {
                 System.out.println(players[i].getPlayerName() + " rolled a " + diceArr[0] + " and a " + diceArr[1] + ". Got moved " + sum + " squares.");
 
                 //TO TEST LANDING ON SPECIFIC SQUARE, COMMENT OUT WHEN NOT IN USE
-                /*int testDie = 1;
-                newPosition = players[i].updatePosition(testDie);*/
+                int testDie = 3;
+                newPosition = players[i].updatePosition(testDie);
 
                 // UNCOMMENT THE FOLLOWING LINE WHEN NOT USING TEST DIE
-                newPosition = players[i].updatePosition(sum);
+                //newPosition = players[i].updatePosition(sum);
                 //guiController.showMessage(players[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
                 guiController.move(guiPlayers[i], oldPosition, newPosition);
 
@@ -136,7 +136,7 @@ public class GameController {
 
 
                 //HANDLES THE PROCESS OF LANDING ON A SQUARE AND CALLS METHOD FOR SUBSEQUENT ACTIONS
-                LandOnSquare playerTurn = new LandOnSquare(square, players, guiController, guiPlayers);
+                LandOnSquare playerTurn = new LandOnSquare(square, players, guiController, guiPlayers, playerCount);
                 playerTurn.setLang(langFile);
                 if(square[newPosition] instanceof DeedSquare) {
                     playerTurn.landOnDeedSquare(newPosition,i);
