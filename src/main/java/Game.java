@@ -12,13 +12,5 @@ public class Game {
         //game.init();
         game.run();
 
-
-
-
-
-
-
-
-
     }
 }

@@ -75,7 +75,7 @@ public class Player {
     // Methode is inspired from internet https://www.geeksforgeeks.org/java-program-for-program-to-find-largest-element-in-an-array/
     public String winner(Player[] player) {
         int winner = player[0].getCurrentBalance();
-        for (int i = 1; i < player.length; i++) {
+        for (int i = 0; i < player.length; i++) {
             if (player[i].getCurrentBalance() > winner) {
                 winner = player[i].getCurrentBalance();
                 winnerName = player[i].getPlayerName();

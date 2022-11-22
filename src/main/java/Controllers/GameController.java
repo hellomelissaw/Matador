@@ -154,8 +154,9 @@ public class GameController {
                 }
 
                     if(players[i].isBankrupt() == true) {
-                        System.out.println("Game is over.");
-                        guiController.showMessage("Game is over.");
+                        String winnerName = players[i].winner(players);
+                        System.out.println("Game is over." + winnerName + ", you win.");
+                        guiController.showMessage("Game is over." + winnerName + ", you win.");
                         gameOver = true;
                         break;
                     }
@@ -166,6 +167,8 @@ public class GameController {
                 }
 
             }
+
+
 
     }
 }

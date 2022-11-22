@@ -18,9 +18,9 @@ public class UpdatePlayerAccountTest {
     }
 
     @Test
-    public void noNegativeBalanceZeroMinus3() {
+    public void ifBalanceNegativeDeclarePlayerBankrupt() {
         testPlayer.withdrawMoney(3);
-        assertEquals(0,testPlayer.getCurrentBalance());
+        assertEquals(true,testPlayer.isBankrupt());
     }
 
     @Test
