@@ -155,6 +155,7 @@ public class GameController {
 
                     if(players[i].isBankrupt() == true) {
                         System.out.println("Game is over.");
+                        guiController.showMessage("Game is over.");
                         gameOver = true;
                         break;
                     }
