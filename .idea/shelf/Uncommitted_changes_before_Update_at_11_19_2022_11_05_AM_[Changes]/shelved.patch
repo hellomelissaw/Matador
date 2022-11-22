@@ -1,0 +1,95 @@
+Index: src/main/java/GameComponents/Board/Deed.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package GameComponents.Board;\r\n\r\nimport GameComponents.Player;\r\nimport gui_fields.GUI_Player;\r\n\r\npublic class Deed {\r\n\r\n\r\n    Player owner;\r\n    // int[] squarePrice; // i Matador mangler vi en array med alle priser på et skød\r\n    int squarePrice;\r\n    String deedName;\r\n\r\n    public Deed(int squarePrice,String deedName){\r\n        this.squarePrice = squarePrice;\r\n        this.deedName = deedName;\r\n    }\r\n\r\n    public Player getOwner() {\r\n        return owner;\r\n    }\r\n    public void setOwner(Player ownerName){\r\n\r\n        this.owner = ownerName;\r\n\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/GameComponents/Board/Deed.java b/src/main/java/GameComponents/Board/Deed.java
+--- a/src/main/java/GameComponents/Board/Deed.java	(revision 12a12855ae3325cfc92a56f0ae46799d5809033d)
++++ b/src/main/java/GameComponents/Board/Deed.java	(date 1668787280284)
+@@ -4,8 +4,6 @@
+ import gui_fields.GUI_Player;
+ 
+ public class Deed {
+-
+-
+     Player owner;
+     // int[] squarePrice; // i Matador mangler vi en array med alle priser på et skød
+     int squarePrice;
+Index: src/main/java/Controllers/GuiController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Controllers;\r\nimport GameComponents.Die;\r\nimport GameComponents.Player;\r\nimport gui_fields.*;\r\nimport gui_main.GUI;\r\n\r\nimport java.awt.*;\r\n public class GuiController {\r\n\r\n     GUI gui;\r\n     //TextReader reader = new TextReader(DanskTekst);\r\n     GUI_Field[] fields = new GUI_Field[24];\r\n\r\n\r\n     Die die1 = new Die();\r\n     Die die2 = new Die();\r\n     int diceSum = 0;\r\n\r\n    String message;\r\n    int[] player;\r\n    GUI_Player gui_player;\r\n    GUI_Player[] gui_players;\r\n    private String playerName;\r\n\r\n    private String ownerName = \"Available\";\r\n    private int balance;\r\n    GUI_Ownable[] ownable = new GUI_Ownable[24];\r\n\r\n    GUI_Player owner;\r\n\r\n    public GuiController() {\r\n         fields = new GUI_Field[]{\r\n                 new GUI_Start(),\r\n                 new GUI_Street(),\r\n                 new GUI_Street(),\r\n                 new GUI_Chance(),\r\n                 new GUI_Street(),\r\n                 new GUI_Street(),\r\n                 new GUI_Jail(),\r\n                 new GUI_Street(),\r\n                 new GUI_Street(),\r\n                 new GUI_Chance(),\r\n                 new GUI_Street(),\r\n                 new GUI_Street(),\r\n                 new GUI_Street(),\r\n                 new GUI_Street(),\r\n                 new GUI_Street(),\r\n                 new GUI_Chance(),\r\n                 new GUI_Street(),\r\n                 new GUI_Street(),\r\n                 new GUI_Street(),\r\n                 new GUI_Street(),\r\n                 new GUI_Street(),\r\n                 new GUI_Chance(),\r\n                 new GUI_Street(),\r\n                 new GUI_Street(),\r\n         };\r\n\r\n        this.gui = new GUI(fields);\r\n\r\n        gui.getFields()[0].setTitle(\"Start\");\r\n        gui.getFields()[0].setBackGroundColor(Color.yellow);\r\n\r\n        gui.getFields()[1].setTitle(\"Burgerbaren\");\r\n        gui.getFields()[1].setBackGroundColor(Color.PINK);\r\n        ownable[1] = (GUI_Ownable)fields[1];\r\n        ownable[1].setSubText(\"M1\");\r\n\r\n\r\n\r\n        gui.getFields()[2].setTitle(\"Pizzahuset\");\r\n        gui.getFields()[2].setBackGroundColor(Color.red);\r\n        ownable[2] = (GUI_Ownable)fields[2];\r\n        ownable[2].setSubText(\"M1\");\r\n\r\n        gui.getFields()[3].setBackGroundColor(Color.MAGENTA);\r\n\r\n        gui.getFields()[4].setTitle(\"Slikbuttiken\");\r\n        gui.getFields()[4].setBackGroundColor(Color.ORANGE);\r\n        ownable[4] = (GUI_Ownable)fields[4];\r\n        ownable[4].setSubText(\"M1\");\r\n\r\n        gui.getFields()[5].setTitle(\"Iskiosken\");\r\n        gui.getFields()[5].setBackGroundColor(Color.blue);\r\n        ownable[5] = (GUI_Ownable)fields[5];\r\n        ownable[5].setSubText(\"M1\");\r\n\r\n        gui.getFields()[6].setTitle(\"I fengsel\");\r\n        gui.getFields()[6].setBackGroundColor(Color.gray);\r\n        gui.getFields()[6].setSubText(\"På besøg!\");\r\n\r\n        gui.getFields()[7].setTitle(\"Museet\");\r\n        gui.getFields()[7].setBackGroundColor(Color.PINK);\r\n        ownable[7] = (GUI_Ownable)fields[7];\r\n        ownable[7].setSubText(\"M2\");\r\n\r\n        gui.getFields()[8].setTitle(\"Biblioteket\");\r\n        gui.getFields()[8].setBackGroundColor(Color.orange);\r\n        ownable[8] = (GUI_Ownable)fields[8];\r\n        ownable[8].setSubText(\"M2\");\r\n\r\n        gui.getFields()[9].setBackGroundColor(Color.magenta);\r\n\r\n        gui.getFields()[10].setTitle(\"Skateparken\");\r\n        gui.getFields()[10].setBackGroundColor(Color.CYAN);\r\n        ownable[10] = (GUI_Ownable)fields[10];\r\n        ownable[10].setSubText(\"M2\");\r\n\r\n        gui.getFields()[11].setTitle(\"Swimmingpoolen\");\r\n        gui.getFields()[11].setBackGroundColor(Color.orange);\r\n        ownable[11] = (GUI_Ownable)fields[11];\r\n        ownable[11].setSubText(\"M2\");\r\n\r\n        gui.getFields()[12].setTitle(\"Parkering\");\r\n        gui.getFields()[12].setBackGroundColor(Color.darkGray);\r\n        gui.getFields()[12].setSubText(\"Gratis\");\r\n\r\n        gui.getFields()[13].setTitle(\"Spillehallen\");\r\n        gui.getFields()[13].setBackGroundColor(Color.orange);\r\n        ownable[13] = (GUI_Ownable)fields[13];\r\n        ownable[13].setSubText(\"M3\");\r\n\r\n        gui.getFields()[14].setTitle(\"Biografen\");\r\n        gui.getFields()[14].setBackGroundColor(Color.pink);\r\n        ownable[14] = (GUI_Ownable)fields[14];\r\n        ownable[14].setSubText(\"M3\");\r\n\r\n        gui.getFields()[15].setBackGroundColor(Color.magenta);\r\n\r\n        gui.getFields()[16].setTitle(\"Legetøjsbutikken\");\r\n        gui.getFields()[16].setBackGroundColor(Color.orange);\r\n        ownable[16] = (GUI_Ownable)fields[16];\r\n        ownable[16].setSubText(\"M3\");\r\n\r\n        gui.getFields()[17].setTitle(\"Dyrebutikken\");\r\n        gui.getFields()[17].setBackGroundColor(Color.pink);\r\n        ownable[17] = (GUI_Ownable)fields[17];\r\n        ownable[17].setSubText(\"M3\");\r\n\r\n        gui.getFields()[18].setTitle(\"I fengsel\");\r\n        gui.getFields()[18].setBackGroundColor(Color.gray);\r\n        gui.getFields()[18].setSubText(\"Gå i fengsel!\");\r\n\r\n        gui.getFields()[19].setTitle(\"Bowlinghallen\");\r\n        gui.getFields()[19].setBackGroundColor(Color.blue);\r\n        ownable[19] = (GUI_Ownable)fields[19];\r\n        ownable[19].setSubText(\"M4\");\r\n\r\n        gui.getFields()[20].setTitle(\"Zoologisk Have\");\r\n        gui.getFields()[20].setBackGroundColor(Color.PINK);\r\n        ownable[20] = (GUI_Ownable)fields[20];\r\n        ownable[20].setSubText(\"M4\");\r\n\r\n\r\n        gui.getFields()[21].setBackGroundColor(Color.MAGENTA);\r\n\r\n        gui.getFields()[22].setTitle(\"Vandlandet\");\r\n        gui.getFields()[22].setBackGroundColor(Color.CYAN);\r\n        ownable[22] = (GUI_Ownable)fields[22];\r\n        ownable[22].setSubText(\"M5\");\r\n\r\n        gui.getFields()[23].setTitle(\"Strand\");\r\n        gui.getFields()[23].setBackGroundColor(Color.orange);\r\n        ownable[23] = (GUI_Ownable)fields[23];\r\n        ownable[23].setSubText(\"M5\");\r\n\r\n        gui.getUserButtonPressed(\"Press Ok to start!\");\r\n        gui.showMessage(\"Welcome to Monopoly Junior game.\");\r\n\r\n\r\n    }\r\n\r\n     public void showMessage(String message){\r\n        gui.showMessage(message);\r\n    }\r\n\r\n     public GUI_Player[] addPlayerOnBoard(Player[] list){\r\n         gui_players = new GUI_Player[list.length];\r\n         for (int i = 0; i < list.length; i++) {\r\n             gui_players[i] = new GUI_Player(list[i].getPlayerName(),list[i].getCurrentBalance());\r\n             fields[0].setCar(gui_players[i],true);\r\n             gui.addPlayer(gui_players[i]);\r\n         }\r\n         return gui_players;\r\n     }\r\n\r\n     public void move(GUI_Player currentPlayer, int currentPositionIndex, int newPosition){\r\n\r\n        fields[currentPositionIndex].setCar(currentPlayer,false);\r\n        fields[newPosition].setCar(currentPlayer,true);\r\n\r\n     }\r\n\r\n     public void displayOwnerName(Player currentPlayer, int currentPositionIndex){\r\n         ownable[currentPositionIndex].setOwnerName(currentPlayer.getPlayerName());\r\n\r\n     }\r\n     public void updateBalance(GUI_Player currentPlayer, int newBalance){\r\n         currentPlayer.setBalance(newBalance);\r\n     }\r\n     public void receiveRent(String ownerName, int newBalance) {\r\n         for(int i = 0; i < gui_players.length; i++){\r\n             if(ownerName == gui_players[i].getName()) {\r\n                 gui_players[i].setBalance(newBalance);\r\n                 break;\r\n             }\r\n         }\r\n     }\r\n     public int getUserInteger() {\r\n        return gui.getUserInteger(\"Enter players count:\");\r\n     }\r\n     public String getUserString(){\r\n        return gui.getUserString(\"\");\r\n     }\r\n    public void setDice(int die1, int die2){\r\n        gui.setDice(die1,die2);\r\n    }\r\n    public String winner(){\r\n\r\n        return winner();\r\n    }\r\n\r\n }\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Controllers/GuiController.java b/src/main/java/Controllers/GuiController.java
+--- a/src/main/java/Controllers/GuiController.java	(revision 12a12855ae3325cfc92a56f0ae46799d5809033d)
++++ b/src/main/java/Controllers/GuiController.java	(date 1668784306522)
+@@ -7,9 +7,9 @@
+ import java.awt.*;
+  public class GuiController {
+ 
+-     GUI gui;
++      private GUI gui;
+      //TextReader reader = new TextReader(DanskTekst);
+-     GUI_Field[] fields = new GUI_Field[24];
++     private GUI_Field[] fields = new GUI_Field[24];
+ 
+ 
+      Die die1 = new Die();
+@@ -19,12 +19,12 @@
+     String message;
+     int[] player;
+     GUI_Player gui_player;
+-    GUI_Player[] gui_players;
++    private GUI_Player[] gui_players;
+     private String playerName;
+ 
+     private String ownerName = "Available";
+     private int balance;
+-    GUI_Ownable[] ownable = new GUI_Ownable[24];
++    private GUI_Ownable[] ownable = new GUI_Ownable[24];
+ 
+     GUI_Player owner;
+ 
+Index: src/test/java/GuiController/GuiControllerTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/GuiController/GuiControllerTest.java b/src/test/java/GuiController/GuiControllerTest.java
+new file mode 100644
+--- /dev/null	(date 1668787428751)
++++ b/src/test/java/GuiController/GuiControllerTest.java	(date 1668787428751)
+@@ -0,0 +1,28 @@
++package GuiController;
++
++import org.junit.Test;
++
++import static org.junit.Assert.*;
++
++public class GuiControllerTest {
++
++    @Test
++    public void addPlayerOnBoard() {
++    }
++
++    @Test
++    public void move() {
++    }
++
++    @Test
++    public void updateBalance() {
++    }
++
++    @Test
++    public void receiveRent() {
++    }
++
++    @Test
++    public void winner() {
++    }
++}
+\ No newline at end of file

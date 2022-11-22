@@ -13,15 +13,16 @@ public class Account {
         balance = 0;
        // Accountname = name;
     }
-    public void setBalance(int initialBalance){
+
+    public void setBalance(int initialBalance) {
         balance = initialBalance;
     }
-    public void deposit(int amount)
-    {
+
+    public void deposit(int amount) {
         balance += amount;
     }
-    public void withDraw(int amount)
-    {
+
+    public void withDraw(int amount) {
         balance -= amount;
         if (balance < 0) {
             isBankrupt = true;
@@ -36,8 +37,6 @@ public class Account {
     public boolean getAccountStatus() {
         return isBankrupt;
     }
-
-
 
 }
 

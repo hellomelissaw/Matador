@@ -72,7 +72,7 @@ public class GameController {
                 guiController.showMessage(msg.getText("invalidCount"));
             }
         }
-       balance = 20-(playerCount-2)*2; //SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
+        balance = 20-(playerCount-2)*2; //SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
 
 
         players = new Player[playerCount];
