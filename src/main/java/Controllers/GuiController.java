@@ -1,5 +1,4 @@
 package Controllers;
-import GameComponents.Die;
 import GameComponents.Player;
 import Translator.Text;
 import gui_fields.*;
@@ -12,7 +11,7 @@ import java.awt.*;
      Text msg;
      private GUI_Field[] fields = new GUI_Field[24];
 
-    private GUI_Player[] gui_players;
+    private GUI_Player[] guiPlayers;
 
     private GUI_Ownable[] ownable = new GUI_Ownable[24];
 
@@ -199,13 +198,13 @@ import java.awt.*;
     }
 
      public GUI_Player[] addPlayerOnBoard(Player[] list){
-         gui_players = new GUI_Player[list.length];
+         guiPlayers = new GUI_Player[list.length];
          for (int i = 0; i < list.length; i++) {
-             gui_players[i] = new GUI_Player(list[i].getPlayerName(),list[i].getCurrentBalance());
-             fields[0].setCar(gui_players[i],true);
-             gui.addPlayer(gui_players[i]);
+             guiPlayers[i] = new GUI_Player(list[i].getPlayerName(),list[i].getCurrentBalance());
+             fields[0].setCar(guiPlayers[i],true);
+             gui.addPlayer(guiPlayers[i]);
          }
-         return gui_players;
+         return guiPlayers;
      }
 
      public void move(GUI_Player currentPlayer, int currentPositionIndex, int newPosition){
@@ -223,9 +222,9 @@ import java.awt.*;
          currentPlayer.setBalance(newBalance);
      }
      public void receiveRent(String ownerName, int newBalance) {
-         for(int i = 0; i < gui_players.length; i++){
-             if(ownerName == gui_players[i].getName()) {
-                 gui_players[i].setBalance(newBalance);
+         for(int i = 0; i < guiPlayers.length; i++){
+             if(ownerName == guiPlayers[i].getName()) {
+                 guiPlayers[i].setBalance(newBalance);
                  break;
              }
          }

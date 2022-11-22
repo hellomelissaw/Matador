@@ -11,33 +11,36 @@ import static org.junit.Assert.*;
 
 public class LandOnSquareTest {
 
+    Square[] testBoard = new Square[2];
+    Player[] testPlayers = new Player[2];
+    GuiController guiController = new GuiController();
+    GUI_Player[] gui_players;
+    Text testMsg = new Text("src/main/java/Translator/EnglishText");
+    LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayers,guiController, gui_players);
 
     @Test
     public void player1BuysAvailableDeedSquareAndPlayer2PaysRent() {
-        Square[] testBoard = new Square[1];
-        Player[] testPlayer = new Player[2];
-        GuiController guiController = new GuiController();
-        GUI_Player[] guiPlayers = new GUI_Player[1];
-        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer,guiController, guiPlayers);
-        Text testMsg = new Text("src/main/java/Translator/EnglishText");
         playerTurnTest.setLang(testMsg);
-        testPlayer[0] = new Player("Player 1");
-        testPlayer[0].depositMoney(20);
 
-        testPlayer[1] = new Player("Player 2");
-        testPlayer[1].depositMoney(20);
+        testPlayers[0] = new Player("Player 1");
+        testPlayers[0].depositMoney(20);
 
+        testPlayers[1] = new Player("Player 2");
+        testPlayers[1].depositMoney(20);
 
-        testBoard[0] = new DeedSquare("Test Property",5,guiController);
+        gui_players = guiController.addPlayerOnBoard(testPlayers);
+
+        testBoard[1] = new DeedSquare("Test Property",5,guiController);
+
 
         //PLAYER 1 BUYS TEST PROPERTY
-        playerTurnTest.landOnDeedSquare(0,0);
-        assertEquals(15,testPlayer[0].getCurrentBalance());
+        playerTurnTest.landOnDeedSquare(1,0);
+        assertEquals(15,testPlayers[0].getCurrentBalance());
 
         //PLAYER 2 PAYS RENT TO PLAYER 1 AFTER LANDING ON TEST PROPERTY OWNED BY PLAYER 1
-        playerTurnTest.landOnDeedSquare(0,1);
-        assertEquals(15,testPlayer[1].getCurrentBalance());
-        assertEquals(20,testPlayer[0].getCurrentBalance());
+        playerTurnTest.landOnDeedSquare(1,1);
+        assertEquals(15,testPlayers[1].getCurrentBalance());
+        assertEquals(20,testPlayers[0].getCurrentBalance());
 
     }
 
