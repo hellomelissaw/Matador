@@ -81,9 +81,10 @@ public class Player {
     public String winner(Player[] player) {
         int winner = player[0].getCurrentBalance();
         for (int i = 1; i < player.length; i++) {
-            if (player[i].getCurrentBalance() > winner)
+            if (player[i].getCurrentBalance() > winner) {
                 winner = player[i].getCurrentBalance();
-            winnerName = player[i].getPlayerName();
+                winnerName = player[i].getPlayerName();
+            }
         }
         return winnerName;
     }
