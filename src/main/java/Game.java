@@ -1,6 +1,4 @@
 import Controllers.*;
-import GameComponents.Player;
-
 
 
 public class Game {
@@ -13,14 +11,6 @@ public class Game {
         //UNCOMMENT TO WHEN RUNNING PROGRAM NORMALLY AND COMMENT game.initTest();
         //game.init();
         game.run();
-
-
-
-
-
-
-
-
 
     }
 }

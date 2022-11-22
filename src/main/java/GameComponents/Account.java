@@ -6,24 +6,27 @@ import java.io.FileReader;
 public class Account {
     private int balance;
     private String Accountname;
+    private boolean isBankrupt = false;
 
 
     public Account(){
         balance = 0;
        // Accountname = name;
     }
-    public void setBalance(int initialBalance){
+
+    public void setBalance(int initialBalance) {
         balance = initialBalance;
     }
-    public void deposit(int amount)
-    {
+
+    public void deposit(int amount) {
         balance += amount;
     }
-    public void withDraw(int amount)
-    {
+
+    public void withDraw(int amount) {
         balance -= amount;
-        if (balance < 0)
-            balance = 0;
+        if (balance < 0) {
+            isBankrupt = true;
+        }
     }
     public int getBalance()
     {
@@ -31,7 +34,9 @@ public class Account {
         return(balance);
     }
 
-
+    public boolean getAccountStatus() {
+        return isBankrupt;
+    }
 
 }
 

@@ -10,22 +10,21 @@ public class Player {
     private int balance;
     private int squareIndex = 0;
     private String playerName;
-    Account PlayerAccount = new Account();
+    Account playerAccount = new Account();
+    private String winnerName;
 
     public Player(String playerName) {
         this.playerName = playerName;
 
     }
-    public  Player(){
 
-    }
 
     /**
      * Deposits money in Player's Account
      * @param newPoints amount of Monopoly money to deposit
      */
     public void withdrawMoney(int newPoints) {
-        PlayerAccount.withDraw(newPoints);
+        playerAccount.withDraw(newPoints);
     }
 
     /**
@@ -33,11 +32,11 @@ public class Player {
      * @param newPoints amount of Monopoly Money to withdraw
      */
     public void depositMoney(int newPoints){
-        PlayerAccount.deposit(newPoints);
+        playerAccount.deposit(newPoints);
     }
 
     public int getCurrentBalance(){
-        return (PlayerAccount.getBalance());
+        return (playerAccount.getBalance());
     }
 
     public String getPlayerName (){
@@ -64,8 +63,26 @@ public class Player {
         return squareIndex;
     }
 
+    public boolean isBankrupt() {
+        return playerAccount.getAccountStatus();
+
+    }
     @Override
     public String toString() {
         return playerName;
     }
+
+    // Methode is inspired from internet https://www.geeksforgeeks.org/java-program-for-program-to-find-largest-element-in-an-array/
+    public String winner(Player[] player) {
+        int winner = player[0].getCurrentBalance();
+        for (int i = 0; i < player.length; i++) {
+            if (player[i].getCurrentBalance() > winner) {
+                winner = player[i].getCurrentBalance();
+                winnerName = player[i].getPlayerName();
+            }
+        }
+        return winnerName;
+    }
+
 }
+

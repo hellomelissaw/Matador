@@ -22,7 +22,8 @@ public class GameController {
         BoardInit board = new BoardInit(guiController,msg);
         square = board.getSquareArr();
         playerCount = 2;
-        balance = 20 - (playerCount - 2) * 2;
+        //balance = 20 - (playerCount - 2) * 2;
+        balance = 1; //TEST BALANCE, REMOVE FOR NORMAL RUNNING OF GAME
         players = new Player[playerCount];
         guiPlayers = new GUI_Player[playerCount];
 
@@ -96,11 +97,10 @@ public class GameController {
         int[] diceArr;
         int newPosition = 0;
 
-        int testInt = 0;
-        while(testInt < 25) {
+        boolean gameOver = false;
+        while(gameOver == false) {
 
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
-                testInt++;
                 String rollMessage = players[i].getPlayerName() + msg.getText("rollDice");
                 guiController.showMessage(rollMessage);
                 diceArr = cup.getSum();
@@ -153,10 +153,24 @@ public class GameController {
                     playerTurn.landOnStartSquare(newPosition,i);
                 }
 
+                    if(players[i].isBankrupt() == true) {
+                        gameOver = true;
+                        String winnerName = players[i].winner(players);
+                        String gameOverMsg = msg.getText("gameOver") + " " + winnerName;
+                        System.out.println(gameOverMsg);
+                        guiController.showMessage(gameOverMsg);
+
+                        break;
+                    }
+
                 System.out.println("");
                 System.out.println("");
 
+                }
+
             }
-        }
+
+
+
     }
 }
