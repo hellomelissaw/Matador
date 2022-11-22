@@ -94,6 +94,7 @@ public class LandOnSquare {
 
     public void landOnStartSquare (int newPosition, int currentPlayer) {
 
+
     }
 
     /**
