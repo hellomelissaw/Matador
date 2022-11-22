@@ -9,6 +9,11 @@ public class Deed {
     int squarePrice;
     String deedName;
 
+    /**
+     * Constructs a Deed which can be owned by Player
+     * @param squarePrice price of the Deed
+     * @param deedName name of the Deed (For example "The Skate Park")
+     */
     public Deed(int squarePrice,String deedName){
         this.squarePrice = squarePrice;
         this.deedName = deedName;

@@ -20,11 +20,18 @@ public class Player {
 
     }
 
-
+    /**
+     * Deposits money in Player's Account
+     * @param newPoints amount of Monopoly money to deposit
+     */
     public void withdrawMoney(int newPoints) {
         PlayerAccount.withDraw(newPoints);
     }
 
+    /**
+     * Withdraws money from Player's Account
+     * @param newPoints amount of Monopoly Money to withdraw
+     */
     public void depositMoney(int newPoints){
         PlayerAccount.deposit(newPoints);
     }
@@ -37,6 +44,11 @@ public class Player {
         return playerName;
     }
 
+    /**
+     * Updates the position of the Player according to the sum of the dice in rings from square 0 to 23
+     * @param sumDice sum of the face values of dice in Cup
+     * @return index of the Square that the Player is moved to after throwing dice
+     */
     public int updatePosition(int sumDice) {
         for(int i = 0; i < sumDice; i++) {
             if (squareIndex < 23) {

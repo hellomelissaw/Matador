@@ -81,7 +81,7 @@ public class GameController {
             int playerNumber = i + 1;
             System.out.println(msg.getText("enterName") + " " + playerNumber);
             userInput = guiController.getUserString(playerNumber);
-            players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
+            players[i] = new Player(userInput); // INSTANTIATE EACH PLAYER WITH NAME
             players[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE
 
         }
@@ -101,7 +101,6 @@ public class GameController {
 
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
                 testInt++;
-                //THROWS THE DICE AND MOVES THE PLAYER
                 String rollMessage = players[i].getPlayerName() + msg.getText("rollDice");
                 guiController.showMessage(rollMessage);
                 diceArr = cup.getSum();

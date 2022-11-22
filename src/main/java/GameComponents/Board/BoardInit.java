@@ -7,6 +7,11 @@ public class BoardInit {
     Square[] board = new Square[24];
     GuiController guiController;
     Text msg;
+    /**
+     * Constructs a BoardInit where all the Squares on the board are instantiated with name and evt. price.
+     * @param guiController The GuiController used throughout the classes.
+     * @param msg The Text object used throughout the classes.
+     */
     public BoardInit(GuiController guiController, Text msg) {
         this.msg = msg;
         this.guiController = guiController;
