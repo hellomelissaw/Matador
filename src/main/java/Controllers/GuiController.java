@@ -230,8 +230,12 @@ import java.awt.*;
              }
          }
      }
-     public int getUserInteger() {
+     public int getUserIntegerPlayerCount() {
         return gui.getUserInteger(msg.getText("enterPlayerCount"));
+     }
+
+     public int getUserInteger(String message) {
+         return gui.getUserInteger(message);
      }
 
      public int getUserLang() {

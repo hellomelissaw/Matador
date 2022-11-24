@@ -62,7 +62,7 @@ public class GameController {
         while (playerCountInvalid) {
            // playerCount = userInput.nextInt();
             //System.out.println(playerCount);
-            playerCount = guiController.getUserInteger();
+            playerCount = guiController.getUserIntegerPlayerCount();
             if (playerCount >= 2 && playerCount <= 4) {
                 playerCountInvalid = false;
 
