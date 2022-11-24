@@ -41,7 +41,7 @@ bowlingAlley; The Bowling Alley
 zoo; The Zoo
 waterPark; The Water Park
 boardWalk; The Board Walk
-Chance Cards:
+Chance Cards; .
 Give this card to the CAR and take one more chance card. CAR: On your next turn, drone to any available square and buy it. If there are no available squares, then you must buy one from another player!
 Give this card to the CAT and take one more chance card. CAT: On your next turn, sneak to any available square and buy it. If there are no available squares, then you must buy one from another player!
 Give this card to the SHIP and take one more chance card. SHIP: On your next turn, sail to any available square and buy it. If there are no available squares, then you must buy one from another player!
@@ -62,7 +62,7 @@ chance13; NO CHARGE SQUARE! Move forward to red square. If no one owns it,then y
 chance14; NO CHARGE SQUARE! Move forward to orange or green square. If no one owns it,then you get it for free. Or you have to pay the owner
 chance15; NO CHARGE SQUARE! Move forward to pink or dark blue square. If no one owns it,then you get it for free. Or you have to pay the owner
 prompt; Type 1 or 2 to choose between
-lightgray;
+lightgray; lightgray
 cyan; cyan
 pink; pink
 orange; orange

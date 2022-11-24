@@ -144,8 +144,8 @@ public class LandOnSquare {
     }
 
 
-    public void landOnChanceSquare(int currentPlayer) {
-        int cardNr = (int) (Math.random()*(15-1)) + 1;
+    public void landOnChanceSquare(int currentPlayer, int currentPosition) {
+        int cardNr = 1; //(int) (Math.random()*(15-1)) + 1;
         System.out.println(cardNr);
         boolean running = true;
         int choice2 = 0;
@@ -154,7 +154,8 @@ public class LandOnSquare {
         String prompt;
 
         //while(running) {
-            switch (cardNr) {
+            switch (cardNr)
+            {
                 case 1: // Move forward to GO. Collect M2
                     //guiMessage = player[i].getPlayerName() + msg.getText("haveBought") + square[newPosition].getSquareName();
                     cardMessage = msg.getText("chance1");
@@ -163,6 +164,8 @@ public class LandOnSquare {
 
                     player[currentPlayer].goToSquare(0);
                     player[currentPlayer].depositMoney(2); //Test this
+                    guiController.move(guiPlayers[currentPlayer],currentPosition,0);
+
                     System.out.println(player[currentPlayer].getPosition());
                     running = false;
 
@@ -191,7 +194,7 @@ public class LandOnSquare {
                             player[currentPlayer].updatePosition(1);
                             running = false;
                         case 2:
-                            cardNr = (int) (Math.random()*(19-1)) + 1;
+                            cardNr = (int)(Math.random()*(19-1)) + 1;
                     }
 
                 case 4: //Move forward to the Promenade
@@ -444,8 +447,8 @@ public class LandOnSquare {
                     }
                     running = false;
 
-                default:
-                    break;
+                    default:
+                        break;
             }
 
        // }

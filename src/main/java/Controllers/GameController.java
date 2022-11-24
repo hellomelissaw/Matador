@@ -142,7 +142,7 @@ public class GameController {
                     playerTurn.landOnDeedSquare(newPosition,i);
 
                 } else if (square[newPosition] instanceof ChanceSquare) {
-                    playerTurn.landOnChanceSquare(i);
+                    playerTurn.landOnChanceSquare(i, newPosition);
 
                 } else if (square[newPosition] instanceof JailSquare) {
                     playerTurn.landOnJailSquare(newPosition,i);
