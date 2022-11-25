@@ -32,7 +32,7 @@ public class LandOnSquareTest {
 
         guiPlayers = guiController.addPlayerOnBoard(testPlayers);
 
-        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayers,guiController, guiPlayers);
+        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayers,guiController, guiPlayers,1);
 
         playerTurnTest.setLang(testMsg);
 
@@ -60,7 +60,7 @@ public class LandOnSquareTest {
         testBoard = new Square[19];
         testBoard[18] = new JailSquare("Go to Jail");
 
-        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayers, guiController, guiPlayers);
+        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayers, guiController, guiPlayers,1);
         playerTurnTest.setLang(testMsg);
 
 
@@ -83,7 +83,7 @@ public class LandOnSquareTest {
         testBoard = new Square[24];
         testBoard[18] = new JailSquare("Go to Jail");
 
-        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayers, guiController, guiPlayers);
+        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayers, guiController, guiPlayers,1);
         playerTurnTest.setLang(testMsg);
 
         testPlayers[0].updatePosition(18);
@@ -106,7 +106,7 @@ public class LandOnSquareTest {
         testBoard = new Square[24];
         testBoard[6] = new JailSquare("Visit Jail");
 
-        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayers, guiController, guiPlayers);
+        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayers, guiController, guiPlayers,1);
         playerTurnTest.setLang(testMsg);
 
         testPlayers[0].updatePosition(6);

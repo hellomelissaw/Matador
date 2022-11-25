@@ -42,7 +42,6 @@ zoo; The Zoo
 waterPark; The Water Park
 boardWalk; The Board Walk
 gameOver; The game is over and the winner is:
-Chance Cards:
 Chance Cards; .
 chance1; Move forward to GO. Collect M2
 chance2; Move 5 squares forward
@@ -70,8 +69,3 @@ green; green
 darkblue; darkblue
 or; or
 pick; You picked color
-
-Give this card to the CAR and take one more chance card. CAR: On your next turn, drone to any available square and buy it. If there are no available squares, then you must buy one from another player!
-Give this card to the CAT and take one more chance card. CAT: On your next turn, sneak to any available square and buy it. If there are no available squares, then you must buy one from another player!
-Give this card to the SHIP and take one more chance card. SHIP: On your next turn, sail to any available square and buy it. If there are no available squares, then you must buy one from another player!
-Give this card to the DOG and take one more chance card. DOG: On your next turn, jump to any available square and buy it. If there are no available squares, then you must buy one from another player!
