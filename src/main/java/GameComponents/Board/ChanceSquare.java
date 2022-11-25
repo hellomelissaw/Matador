@@ -79,6 +79,7 @@ public class ChanceSquare extends Square{
         int choice1 = 0;
         String cardMessage;
         String prompt;
+        //hej;
 
         while(running) {
             switch (cardNr)
