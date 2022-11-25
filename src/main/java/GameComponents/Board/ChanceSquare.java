@@ -30,11 +30,9 @@ public class ChanceSquare extends Square{
     }
 
 
-
     public void noChargeSquare(int noChargeSquareNumber, int currentPlayer) {
 
         player[currentPlayer].goToSquare(noChargeSquareNumber);
-
 
         if (((DeedSquare) square[noChargeSquareNumber]).hasDeed())
         {
@@ -69,17 +67,61 @@ public class ChanceSquare extends Square{
 
     }
 
+    public void noChargeOneCategory(String chanceText, int currentPlayer, int squareOne,int squareTwo) {
+
+        //NO CHARGE SQUARE! Move forward to cyan square. If no one owns it,then you get it for free. Or you have to pay the owner
+        String prompt;
+        int choice = 0;
+        System.out.println(msg.getText(chanceText));
+        guiController.showMessage(msg.getText(chanceText));
+
+        prompt = msg.getText("prompt") + square[squareOne].getSquareName() + msg.getText("or") + square[squareTwo].getSquareName();
+
+        System.out.println(prompt);
+        choice = guiController.getUserInteger(prompt);
+
+        if (choice == 1) {
+            noChargeSquare(squareOne,currentPlayer);
+        } else if (choice == 2) {
+            noChargeSquare(squareTwo, currentPlayer);
+        }
+    }
+
+    public void noChargeTwoCategories(String chanceText, int currentPlayer, String colorOne, String colorTwo, int squareOne,int squareTwo, int squareThree, int squareFour) {
+        String prompt;
+        String pick;
+        int choice1 = 0;
+
+        System.out.println(msg.getText(chanceText));
+        guiController.showMessage(msg.getText(chanceText));
+
+        prompt = msg.getText("prompt") + msg.getText(colorOne) + msg.getText("or") + msg.getText(colorTwo);
+        System.out.println(prompt);
+        choice1 = guiController.getUserInteger(prompt);
+
+        switch (choice1) {
+            case 1 -> {
+                pick = msg.getText("pick") + msg.getText(colorOne);
+                noChargeOneCategory(pick, currentPlayer, squareOne, squareTwo);
+            }
+            case 2 -> {
+                pick = msg.getText("pick") + msg.getText(colorTwo);
+                noChargeOneCategory(pick, currentPlayer, squareThree, squareFour);
+            }
+        }
+    }
+
+
 
     public void Roll(int currentPlayer, int currentPosition /*Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers, int playerCount,Text msg*/)
     {
-        int cardNr = 3; //(int) (Math.random()*(15-1)) + 1;
+        int cardNr = (int) (Math.random()*(15-1)) + 1;
         System.out.println(cardNr);
         boolean running = true;
         int choice2 = 0;
         int choice1 = 0;
         String cardMessage;
         String prompt;
-        //hej;
 
         while(running) {
             switch (cardNr)
@@ -118,7 +160,7 @@ public class ChanceSquare extends Square{
                     System.out.println(prompt);
 
                     choice1 = guiController.getUserInteger(prompt);
-                    //Write gui code for user prompt to pick between case 1 or 2
+
                     switch (choice1) {
                         case 1:
                             player[currentPlayer].updatePosition(1);
@@ -136,6 +178,7 @@ public class ChanceSquare extends Square{
                     guiController.showMessage(cardMessage);
 
                     player[currentPlayer].goToSquare(23);
+                    guiController.move(guiPlayers[currentPlayer],currentPosition,23);
                     running = false;
                     break;
 
@@ -145,6 +188,8 @@ public class ChanceSquare extends Square{
                     guiController.showMessage(cardMessage);
 
                     player[currentPlayer].withdrawMoney(2);
+                    guiController.updateBalance(guiPlayers[currentPlayer],player[currentPlayer].getCurrentBalance());
+
                     running = false;
                     break;
 
@@ -162,17 +207,21 @@ public class ChanceSquare extends Square{
                         {
                             player[i].withdrawMoney(1);
                             player[currentPlayer].depositMoney(1);
+                            guiController.updateBalance(guiPlayers[i],player[i].getCurrentBalance());
                         }
 
                     }
+                    guiController.updateBalance(guiPlayers[currentPlayer],player[currentPlayer].getCurrentBalance());
+
                     running = false;
                     break;
                 case 7: //You have done your homework! Collect M2 from the bank
                     cardMessage = msg.getText("chance7");
                     System.out.println(cardMessage);
                     guiController.showMessage(cardMessage);
-
                     player[currentPlayer].depositMoney(2);
+                    guiController.updateBalance(guiPlayers[currentPlayer],player[currentPlayer].getCurrentBalance());
+
                     running = false;
                     break;
 
@@ -186,201 +235,38 @@ public class ChanceSquare extends Square{
                     break;
 
                 case 9: //NO CHARGE SQUARE! Move forward to cyan or red square. If no one owns it,then you get it for free. Or you have to pay the owner
-                    cardMessage = msg.getText("chance9");
-                    System.out.println(cardMessage);
-                    guiController.showMessage(cardMessage);
-
-
-                    prompt = msg.getText("prompt" + "cyan" + "or" + "red");
-                    System.out.println(prompt);
-                    choice1 = guiController.getUserInteger(prompt);
-
-                    switch (choice1) {
-                        case 1:
-                            prompt = msg.getText("prompt") + square[4].getSquareName() + "or" + square[5].getSquareName();
-                            System.out.println(prompt);
-                            choice2 = guiController.getUserInteger(prompt);
-
-                            if (choice2 == 1) {
-                                noChargeSquare(4,currentPlayer);
-                            } else if (choice2 == 2) {
-                                noChargeSquare(5, currentPlayer);
-                            }
-                            break;
-
-                        case 2:
-                            prompt = msg.getText("prompt" + square[13].getSquareName() + "or" + square[14].getSquareName());
-                            System.out.println(prompt);
-                            choice2 = guiController.getUserInteger(prompt);
-                            if (choice2 == 1) {
-                                noChargeSquare(13,currentPlayer);
-                            } else if (choice2 == 2) {
-                                noChargeSquare(14, currentPlayer);
-                            }
-                            break;
-
-                    }
+                    noChargeTwoCategories("chance9",currentPlayer,"cyan","red",4,5,13,14);
                     running = false;
                     break;
 
                 case 10: // NO CHARGE SQUARE! Move forward to lightgrey or yellow square. If no one owns it,then you get it for free. Or you have to pay the owner
-                    cardMessage = msg.getText("chance10");
-                    System.out.println(cardMessage);
-                    guiController.showMessage(cardMessage);
-
-                    prompt = msg.getText("prompt") + msg.getText("lightgrey") + msg.getText("or") + msg.getText("yellow");
-                    System.out.println(prompt);
-                    choice1 = guiController.getUserInteger(prompt);
-
-                    switch (choice1) {
-                        case 1:
-                            prompt = msg.getText("prompt") + square[1].getSquareName() + msg.getText("or") + square[2].getSquareName();
-                            System.out.println(prompt);
-                            choice2 = guiController.getUserInteger(prompt);
-
-                            if (choice2 == 1) {
-                                noChargeSquare(1,currentPlayer);
-                            } else if (choice2 == 2) {
-                                noChargeSquare(2, currentPlayer);
-                            }
-                            break;
-
-                        case 2:
-                            prompt = msg.getText("prompt") + square[16].getSquareName() + msg.getText("or") + square[17].getSquareName();
-                            System.out.println(prompt);
-                            choice2 = guiController.getUserInteger(prompt);
-
-                            if (choice2 == 1) {
-                                noChargeSquare(16,currentPlayer);
-                            } else if (choice2 == 2) {
-                                noChargeSquare(17, currentPlayer);
-                            }
-                            break;
-                    }
+                    noChargeTwoCategories("chance10",currentPlayer,"lightgrey","yellow",1,2,16,17);
                     running = false;
                     break;
 
                 case 11: //NO CHARGE SQUARE! Move forward to orange square. If no one owns it,then you get it for free. Or you have to pay the owner
-                    cardMessage = msg.getText("chance11");
-                    System.out.println(cardMessage);
-                    guiController.showMessage(cardMessage);
-
-                    prompt = msg.getText("prompt") + square[10].getSquareName() + msg.getText("or") + square[11].getSquareName();
-                    System.out.println(prompt);
-                    choice2 = guiController.getUserInteger(prompt);
-
-                    if (choice2 == 1) {
-                        noChargeSquare(10,currentPlayer);
-                    } else if (choice2 == 2) {
-                        noChargeSquare(11, currentPlayer);
-                    }
-                    running = false;
+                    noChargeOneCategory("chance11",currentPlayer,10,11);
+                    running=false;
                     break;
 
                 case 12: //NO CHARGE SQUARE! Move forward to cyan square. If no one owns it,then you get it for free. Or you have to pay the owner
-                    cardMessage = msg.getText("chance12");
-                    System.out.println(cardMessage);
-                    guiController.showMessage(cardMessage);
-
-                    prompt = msg.getText("prompt") + square[4].getSquareName() + msg.getText("or") + square[5].getSquareName();
-                    System.out.println(prompt);
-                    choice2 = guiController.getUserInteger(prompt);
-
-                    if (choice2 == 1) {
-                        noChargeSquare(4,currentPlayer);
-                    } else if (choice2 == 2) {
-                        noChargeSquare(5, currentPlayer);
-                    }
+                    noChargeOneCategory("chance12",currentPlayer,4,5);
                     running = false;
                     break;
 
                 case 13: //NO CHARGE SQUARE! Move forward to red square. If no one owns it,then you get it for free. Or you have to pay the owner
-                    cardMessage = msg.getText("chance13");
-                    System.out.println(cardMessage);
-                    guiController.showMessage(cardMessage);
-
-
-                    prompt = msg.getText("prompt") + square[13].getSquareName() + msg.getText("or") + square[14].getSquareName();
-                    System.out.println(prompt);
-                    choice2 = guiController.getUserInteger(prompt);
-
-                    if (choice2 == 1) {
-                        noChargeSquare(13,currentPlayer);
-                    } else if (choice2 == 2) {
-                        noChargeSquare(14, currentPlayer);
-                    }
+                    noChargeOneCategory("chance13",currentPlayer,13,14);
                     running = false;
                     break;
 
                 case 14: //NO CHARGE SQUARE! Move forward to orange or green square. If no one owns it,then you get it for free. Or you have to pay the owner
-                    cardMessage = msg.getText("chance14");
-                    System.out.println(cardMessage);
-                    guiController.showMessage(cardMessage);
-
-                    prompt = msg.getText("prompt") + msg.getText("orange") + msg.getText("or") + msg.getText("green");
-                    System.out.println(prompt);
-                    choice1 = guiController.getUserInteger(prompt);
-
-                    switch (choice1) {
-                        case 1:
-                            prompt = msg.getText("prompt") + square[10].getSquareName() + msg.getText("or") + square[11].getSquareName();
-                            System.out.println(prompt);
-
-                            choice2 = guiController.getUserInteger(prompt);
-                            if (choice2 == 1) {
-                                noChargeSquare(10,currentPlayer);
-                            } else if (choice2 == 2) {
-                                noChargeSquare(11, currentPlayer);
-                            }
-                            break;
-                        case 2:
-                            prompt = msg.getText("prompt") + square[19].getSquareName() + msg.getText("or") + square[20].getSquareName();
-                            System.out.println(prompt);
-
-                            choice2 = guiController.getUserInteger(prompt);
-                            if (choice2 == 1) {
-                                noChargeSquare(19,currentPlayer);
-                            } else if (choice2 == 2) {
-                                noChargeSquare(20, currentPlayer);
-                            }
-                            break;
-
-                    }
+                    noChargeTwoCategories("chance14",currentPlayer,"orange","green",10,11,19,20);
                     running = false;
                     break;
 
                 case 15: //NO CHARGE SQUARE! Move forward to pink or dark blue square. If no one owns it,then you get it for free. Or you have to pay the owner
-                    cardMessage = msg.getText("chance15");
-                    System.out.println(cardMessage);
-                    guiController.showMessage(cardMessage);
+                    noChargeTwoCategories("chance15",currentPlayer,"pink","darkblue",7,8,22,23);
 
-                    prompt = msg.getText("prompt") + msg.getText("pink") + msg.getText("or") + msg.getText("darkblue");
-                    System.out.println(prompt);
-                    choice1 = guiController.getUserInteger(prompt);
-
-                    switch (choice1) {
-                        case 1:
-                            prompt = msg.getText("prompt") + square[7].getSquareName() + msg.getText("or") + square[8].getSquareName();
-                            System.out.println(prompt);
-                            choice2 = guiController.getUserInteger(prompt);
-
-                            if (choice2 == 1) {
-                                noChargeSquare(7,currentPlayer);
-                            } else if (choice2 == 2) {
-                                noChargeSquare(8, currentPlayer);
-                            }
-                            break;
-                        case 2:
-                            prompt = msg.getText("prompt") + square[22].getSquareName() + msg.getText("or") + square[23].getSquareName();
-                            System.out.println(prompt);
-                            choice2 = guiController.getUserInteger(prompt);
-                            if (choice2 == 1) {
-                                noChargeSquare(22,currentPlayer);
-                            } else if (choice2 == 2) {
-                                noChargeSquare(23, currentPlayer);
-                            }
-                            break;
-                    }
                     running = false;
                     break;
 

@@ -6,7 +6,7 @@ import java.io.*;
 public class Text {
     String file;
 
-    int lineCount = 69;
+    int lineCount = 70;
     String[] messages = new String[lineCount];
 
     String[] labels = new String[lineCount];

@@ -147,8 +147,7 @@ public class LandOnSquare {
     public void landOnChanceSquare(int currentPlayer, int currentPosition,Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers, int playerCount) {
         ChanceSquare chanceSquare = new ChanceSquare(square[currentPosition].getSquareName());
         chanceSquare.initializer(square, player, guiController, guiPlayers, playerCount, msg);
-        chanceSquare.Roll(currentPlayer,currentPosition /*,square, player, guiController, guiPlayers, playerCount, msg*/);
-
+        chanceSquare.Roll(currentPlayer,currentPosition);
 
 
         /*
