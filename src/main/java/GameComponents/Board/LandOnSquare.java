@@ -105,7 +105,7 @@ public class LandOnSquare {
              System.out.println(msg.getText("freeParking"));
     }
 
-    public void noChargeSquare(int noChargeSquareNumber, int currentPlayer) {
+    /*public void noChargeSquare(int noChargeSquareNumber, int currentPlayer) {
 
         player[currentPlayer].goToSquare(noChargeSquareNumber);
 
@@ -142,9 +142,16 @@ public class LandOnSquare {
         }
 
     }
+        */
+
+    public void landOnChanceSquare(int currentPlayer, int currentPosition,Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers, int playerCount) {
+        ChanceSquare chanceSquare = new ChanceSquare(square[currentPosition].getSquareName());
+        chanceSquare.initializer(square, player, guiController, guiPlayers, playerCount, msg);
+        chanceSquare.Roll(currentPlayer,currentPosition /*,square, player, guiController, guiPlayers, playerCount, msg*/);
 
 
-    public void landOnChanceSquare(int currentPlayer, int currentPosition) {
+
+        /*
         int cardNr = 3; //(int) (Math.random()*(15-1)) + 1;
         System.out.println(cardNr);
         boolean running = true;
@@ -153,7 +160,9 @@ public class LandOnSquare {
         String cardMessage;
         String prompt;
 
-        while(running) {
+         */
+
+       /* while(running) {
             switch (cardNr)
             {
                 case 1: // Move forward to GO. Collect M2
@@ -462,7 +471,7 @@ public class LandOnSquare {
 
        }
 
-
+        */
     }
 
 }
