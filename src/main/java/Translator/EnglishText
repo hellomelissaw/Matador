@@ -43,22 +43,35 @@ waterPark; The Water Park
 boardWalk; The Board Walk
 gameOver; The game is over and the winner is:
 Chance Cards:
+Chance Cards; .
+chance1; Move forward to GO. Collect M2
+chance2; Move 5 squares forward
+chance3; Move 1 square forward, or take one more chance card
+chance4; Move forward to the Promenade
+chance5; You have eaten a lot of candy. PAY M2 to the bank
+chance6; It is your birthday!Each player will give you M1. HAPPY BIRTHDAY!
+chance7; You have done your homework! Collect M2 from the bank
+chance8; NO CHARGE SQUARE! Move forward The Skate Park to make the perfect grind! If no one owns it,then you get it for free. Or you have to pay the owner.
+chance9; NO CHARGE SQUARE! Move forward to cyan or red square. If no one owns it,then you get it for free. Or you have to pay the owner
+chance10; NO CHARGE SQUARE! Move forward to lightgrey or yellow square. If no one owns it,then you get it for free. Or you have to pay the owner
+chance11; NO CHARGE SQUARE! Move forward to orange square. If no one owns it,then you get it for free. Or you have to pay the owner
+chance12; NO CHARGE SQUARE! Move forward to cyan square. If no one owns it,then you get it for free. Or you have to pay the owner
+chance13; NO CHARGE SQUARE! Move forward to red square. If no one owns it,then you get it for free. Or you have to pay the owner
+chance14; NO CHARGE SQUARE! Move forward to orange or green square. If no one owns it,then you get it for free. Or you have to pay the owner
+chance15; NO CHARGE SQUARE! Move forward to pink or dark blue square. If no one owns it,then you get it for free. Or you have to pay the owner
+prompt; Type 1 or 2 to choose between
+lightgray; lightgray
+cyan; cyan
+pink; pink
+orange; orange
+red; red
+yellow; yellow
+green; green
+darkblue; darkblue
+or; or
+pick; You picked color
+
 Give this card to the CAR and take one more chance card. CAR: On your next turn, drone to any available square and buy it. If there are no available squares, then you must buy one from another player!
 Give this card to the CAT and take one more chance card. CAT: On your next turn, sneak to any available square and buy it. If there are no available squares, then you must buy one from another player!
-Give this card to the SHIP and take one more chance card.SHIP: On your next turn, sail to any available square and buy it. If there are no available squares, then you must buy one from another player!
+Give this card to the SHIP and take one more chance card. SHIP: On your next turn, sail to any available square and buy it. If there are no available squares, then you must buy one from another player!
 Give this card to the DOG and take one more chance card. DOG: On your next turn, jump to any available square and buy it. If there are no available squares, then you must buy one from another player!
-Move forward to GO. Collect M2
-Move 5 squares forward
-Move 1 square forward, or take one more chance card
-Move forward to the Promenade
-You have eaten a lot of candy. PAY M2 to the bank
-It is your birthday!Each player will give you M1. HAPPY BIRTHDAY!
-You have done your homework! Collect M2 from the bank
-NO CHARGE SQUARE! Move forward The Skate Park to make the perfect grind! If no one owns it,then you get it for free. Or you have to pay the owner.
-NO CHARGE SQUARE! Move forward to lightblue or red square. If no one owns it,then you get it for free. Or you have to pay the owner
-NO CHARGE SQUARE! Move forward to brown or yellow square. If no one owns it,then you get it for free. Or you have to pay the owner
-NO CHARGE SQUARE! Move forward to orange square. If no one owns it,then you get it for free. Or you have to pay the owner
-NO CHARGE SQUARE! Move forward to lightblue square. If no one owns it,then you get it for free. Or you have to pay the owner
-NO CHARGE SQUARE! Move forward to red square. If no one owns it,then you get it for free. Or you have to pay the owner
-NO CHARGE SQUARE! Move forward to orange or green square. If no one owns it,then you get it for free. Or you have to pay the owner
-NO CHARGE SQUARE! Move forward to pink or dark blue square. If no one owns it,then you get it for free. Or you have to pay the owner

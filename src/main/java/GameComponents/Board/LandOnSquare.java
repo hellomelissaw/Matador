@@ -4,6 +4,9 @@ import GameComponents.Player;
 import gui_fields.GUI_Player;
 import Translator.*;
 
+
+import java.util.Random;
+
 public class LandOnSquare {
     Square[] square;
     Player[] player;
@@ -12,6 +15,7 @@ public class LandOnSquare {
     GuiController guiController;
     String guiMessage;
     Text msg;
+    int playerCount;
 
     /**
      * Constructs a new LandOnSquare with parameters initialized in {@link Controllers.GameController}.
@@ -20,11 +24,13 @@ public class LandOnSquare {
      * @param guiController The GuiController used throughout the classes
      * @param guiPlayers The array of GUI_Player objects instantiated in {@link GuiController}
      */
-    public LandOnSquare(Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers) {
+
+    public LandOnSquare(Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers, int playerCount) {
         this.square = square;
         this.player = player;
         this.guiController = guiController;
         this.guiPlayers = guiPlayers;
+        this.playerCount = playerCount;
     }
 
     /**
@@ -88,10 +94,6 @@ public class LandOnSquare {
         }
     }
 
-    public void landOnChanceSquare(int newPosition, int currentPlayer) {
-
-    }
-
     public void landOnStartSquare (int newPosition, int currentPlayer) {
 
 
@@ -128,5 +130,12 @@ public class LandOnSquare {
          if (newPosition==12)
              System.out.println(msg.getText("freeParking"));
     }
+
+    public void landOnChanceSquare(int currentPlayer, int currentPosition,Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers, int playerCount) {
+        ChanceSquare chanceSquare = new ChanceSquare(square[currentPosition].getSquareName());
+        chanceSquare.initializer(square, player, guiController, guiPlayers, playerCount, msg);
+        chanceSquare.Roll(currentPlayer,currentPosition);
+    }
+
 }
 

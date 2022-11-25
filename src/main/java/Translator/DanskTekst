@@ -42,23 +42,36 @@ zoo; Den zoologiske have
 waterPark; Aqualand
 boardWalk; Promenaden
 gameOver; Spillet er slut og vinderen er:
-Chancekort:
+Chancekort; .
+chance1; Ryk frem til START.Modtag M2
+chance2; Ryk op til 5 felter frem
+chance3; Ryk 1 felt frem, eller tag et chancekort mere.
+chance4; Ryk frem til Strandpromenaden
+chance5; Du har spist for meget slik. BETAL M2 til banken
+chance6; Det er din fødselsdag! Alle giver dig M1. TILLYKKE MED FØDSELSDAGEN.
+chance7; Du har lavet alle dine lektier. MODTAG M2 fra banken
+chance8; GRATIS FELT! Ryk frem til Skaterparken for at lave det perfekte grind! Hvis ingen ejer den, får du den GRATIS! Ellers skal du BETALE leje til ejeren
+chance9; GRATIS FELT! Ryk frem til cyan eller rødt felt. Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren
+chance10; GRATIS FELT! Ryk frem til lysegråt eller gult felt. Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren
+chance11; GRATIS FELT! Ryk frem til orange felt. Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren
+chance12; GRATIS FELT! Ryk frem til cyan felt. Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren
+chance13; GRATIS FELT! Ryk frem til rødt felt. Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren
+chance14; GRATIS FELT! Ryk frem til orange eller grønt felt. Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren
+chance15; GRATIS FELT! Ryk frem til pink eller mørkeblåt felt. Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren
+prompt; Tast 1 eller 2 for at vælge mellem
+lightgray; lysegrå
+cyan; cyan
+pink; pink
+orange; orange
+red; rød
+yellow; gul
+green; grøn
+darkblue; mørkeblåt
+or; eller
+pick; Du har valgt farven
+
+
 Giv dette kort til BILEN, og tag et chancekort mere. BIL: På din næste tur skal du drøne frem til et hvilket som helst ledigt felt og køb det. Hvis der ikke er nogen ledige felter, skal du købe et fra en anden spiller!
 Giv dette kort til KATTEN, og tag et chancekort mere. KAT: På din næste tur skal du liste dig hen på et hvilket som helst ledigt felt og køb det. Hvis der ikke er nogen ledige felter, skal du købe et fra en anden spiller!
 Giv dette kort til SKIBET, og tag et chancekort mere. SKIB: På din næste tur skal du sejle frem til et hvilket som helst ledigt felt og køb det. Hvis der ikke er nogen ledige felter, skal du købe et fra en anden spiller!
 Giv dette kort til HUNDEN, og tag et chancekort mere. HUND: På din næste tur skal du hoppe den frem til et hvilket som helst ledigt felt og køb det. Hvis der ikke er nogen ledige felter, skal du købe et fra en anden spiller!
-Ryk frem til START.Modtag M2
-Ryk op til 5 felter frem
-Ryk 1 felt frem, eller tag et chancekort mere.
-Ryk frem til Strandpromenaden
-Du har spist for meget slik.BETAL M2 til banken
-Det er din fødseslsdag!Alle giver dig M1. TILLYKKE MED FØDSELSDAGEN.
-Du har lavet alle dine lektier. MODTAG M2 fra banken
-GRATIS FELT! Ryk frem til Skaterparken for at lave det perfekte grind! Hvis ingen ejer den, får du den GRATIS! Ellers skal du BETALE leje til ejeren
-GRATIS FELT! Ryk frem til lyseblåt eller rødt felt. Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren
-GRATIS FELT! Ryk frem til brunt eller gult felt. Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren
-GRATIS FELT! Ryk frem til orange felt. Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren
-GRATIS FELT! Ryk frem til lyseblåt felt. Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren
-GRATIS FELT! Ryk frem til rødt felt. Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren
-GRATIS FELT! Ryk frem til orange eller grønt felt. Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren
-GRATIS FELT! Ryk frem til pink eller mørkeblåt felt. Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren

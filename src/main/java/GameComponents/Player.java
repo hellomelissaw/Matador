@@ -84,5 +84,11 @@ public class Player {
         return winnerName;
     }
 
+
+    public int goToSquare(int moveToThisSquare)
+    {
+        squareIndex = moveToThisSquare;
+        return squareIndex;
+    }
 }
 
