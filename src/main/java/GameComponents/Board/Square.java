@@ -1,4 +1,5 @@
 package GameComponents.Board;
+import Translator.*;
 
 public abstract class Square {
     int pointsValue;
@@ -9,8 +10,11 @@ public abstract class Square {
         this.squareName = squareName;
     }
 
+    abstract void landOn();
+
     public String getSquareName() {
         return squareName;
     }
+
 }
 

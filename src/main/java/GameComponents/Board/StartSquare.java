@@ -5,4 +5,8 @@ public class StartSquare extends Square{
         super(startSquare);
 
     }
+
+    void landOn() {
+
+    }
 }

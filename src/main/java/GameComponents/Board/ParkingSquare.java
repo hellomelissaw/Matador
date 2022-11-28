@@ -4,6 +4,10 @@ public class ParkingSquare extends Square{
     public ParkingSquare(String freeParkingSquare) {
         super(freeParkingSquare);
 
+
+    }
+    void landOn() {
+        System.out.println(msg.getText("freeParking"));
     }
 }
 

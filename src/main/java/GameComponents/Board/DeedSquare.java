@@ -52,4 +52,8 @@ public class DeedSquare extends Square{
         String priceString = Integer.toString(deedPrice);
         return priceString;
     }
+
+    void landOn() {
+
+    }
 }
