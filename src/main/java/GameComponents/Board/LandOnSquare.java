@@ -4,9 +4,6 @@ import GameComponents.Player;
 import gui_fields.GUI_Player;
 import Translator.*;
 
-
-import java.util.Random;
-
 public class LandOnSquare {
     Square[] square;
     Player[] player;
