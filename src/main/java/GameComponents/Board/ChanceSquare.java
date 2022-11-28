@@ -278,7 +278,7 @@ public class ChanceSquare extends Square{
 
     }
 
-    void landOn() {
+    public void landOn() {
 
     }
 }

@@ -19,8 +19,6 @@ public class GameController {
     public void initTest() {
         msg = new Text("src/main/java/Translator/EnglishText");
         guiController.initFieldTitles(msg);
-        BoardInit board = new BoardInit(guiController,msg);
-        square = board.getSquareArr();
         playerCount = 2;
         //balance = 20 - (playerCount - 2) * 2;
         balance = 1; //TEST BALANCE, REMOVE FOR NORMAL RUNNING OF GAME
@@ -52,9 +50,13 @@ public class GameController {
         msg = new Text(langFile);
         guiController.initFieldTitles(msg);
 
+
         BoardInit board = new BoardInit(guiController,msg);
         square = board.getSquareArr();
         //String userInput = new Scanner(System.in);
+        for(int i = 0 ; i < square.length ; i++) {
+            square[i].setLang(lang[langIndex - 1]);
+        }
         String userInput;
 
         //INITIALIZING PLAYERS
@@ -133,9 +135,9 @@ public class GameController {
                 }
                 System.out.println(players[i].getPlayerName() + msg.getText("position") + square[newPosition].getSquareName() +  msg.getText("squareNum") + players[i].getPosition());
 
-
+                square[newPosition].landOn(players[i], guiPlayers[i]);
                 //HANDLES THE PROCESS OF LANDING ON A SQUARE AND CALLS METHOD FOR SUBSEQUENT ACTIONS
-                LandOnSquare playerTurn = new LandOnSquare(square, players, guiController, guiPlayers, playerCount);
+                /*LandOnSquare playerTurn = new LandOnSquare(square, players, guiController, guiPlayers, playerCount);
                 playerTurn.setLang(msg);
                 if(square[newPosition] instanceof DeedSquare) {
                     playerTurn.landOnDeedSquare(newPosition,i);
@@ -151,7 +153,7 @@ public class GameController {
 
                 } else {
                     playerTurn.landOnStartSquare(newPosition,i);
-                }
+                } */
 
                     if(players[i].isBankrupt() == true) {
                         gameOver = true;

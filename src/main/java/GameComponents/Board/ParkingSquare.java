@@ -6,7 +6,7 @@ public class ParkingSquare extends Square{
 
 
     }
-    void landOn() {
+    public void landOn() {
         System.out.println(msg.getText("freeParking"));
     }
 }

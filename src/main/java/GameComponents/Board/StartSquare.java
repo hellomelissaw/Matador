@@ -1,4 +1,5 @@
 package GameComponents.Board;
+import Translator.Text;
 
 public class StartSquare extends Square{
     public StartSquare(String startSquare) {
@@ -6,7 +7,7 @@ public class StartSquare extends Square{
 
     }
 
-    void landOn() {
+   public void landOn() {
 
     }
 }

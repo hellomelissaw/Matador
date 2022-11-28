@@ -1,6 +1,9 @@
 package GameComponents.Board;
 import Controllers.GuiController;
 import GameComponents.Player;
+import Translator.Text;
+import gui_fields.GUI_Player;
+
 public class DeedSquare extends Square{
     Deed deed;
     boolean sellDeed = true;
@@ -31,12 +34,12 @@ public class DeedSquare extends Square{
      * @param player gives the current player whose turn it is
      * @param currentSquareIndex gives the index of the Square that the current player is on
      */
-    public void sellDeed(Player player, int currentSquareIndex){
+  /* public void sellDeed(Player player, int currentSquareIndex){
         sellDeed = false ;
         deed.setOwner(player);
         guiController.displayOwnerName(player, currentSquareIndex);
 
-    }
+    }*/
 
     public Player getDeedOwner() {
         return deed.getOwner();
@@ -49,19 +52,19 @@ public class DeedSquare extends Square{
         return priceString;
     }
 
-    void landOn(Player currentPlayer, int newPosition) {
+    public void landOn(Player currentPlayer, GUI_Player currentGuiPlayer) {
         //int i = currentPlayer;
         //int deedPrice = ((DeedSquare) square[newPosition]).getDeedPrice();
 
         if(sellDeed == true) {
             /*System.out.println("This property is available for purchase for" +((DeedSquare) square[newPosition]).getDeedPrice()  + "M.");
             guiMessage = "This property is available for purchase.";*/
-            guiMessage = currentPlayer.getPlayerName() + msg.getText("haveBought") + Square.deedName;
-            guiController.showMessage(guiMessage);
 
             currentPlayer.withdrawMoney(deedPrice); // TO DO: must check if player has enough money to buy
             int currentBalance = currentPlayer.getCurrentBalance();
-            guiController.updateBalance(guiPlayers[i], currentBalance);
+            guiController.updateBalance(currentGuiPlayer, currentBalance);
+            String guiMessage = currentPlayer.getPlayerName() + msg.getText("haveBought") + deed.getDeedName();
+            guiController.showMessage(guiMessage);
             System.out.println(msg.getText("newBalance") + currentBalance);
 
             sellDeed = false ;
@@ -81,7 +84,7 @@ public class DeedSquare extends Square{
                 System.out.println(payRent + deed.getDeedPrice());
                 currentPlayer.withdrawMoney(deedPrice);
                 int currentBalance = currentPlayer.getCurrentBalance();
-                guiController.updateBalance(guiPlayers[i], currentBalance);
+                guiController.updateBalance(currentGuiPlayer, currentBalance);
 
                 System.out.println(msg.getText("newBalance") + currentBalance);
                 guiController.showMessage(payRent);
@@ -99,4 +102,5 @@ public class DeedSquare extends Square{
         }
 
     }
+
 }

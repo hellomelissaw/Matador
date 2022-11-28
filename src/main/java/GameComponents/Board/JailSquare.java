@@ -6,7 +6,7 @@ public class JailSquare extends Square{
 
     }
 
-    void landOn() {
+    public void landOn() {
 
     }
 

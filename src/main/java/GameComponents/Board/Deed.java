@@ -31,4 +31,8 @@ public class Deed {
         return deedPrice;
     }
 
+    public String getDeedName() {
+        return deedName;
+    }
+
 }
