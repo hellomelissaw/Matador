@@ -38,10 +38,6 @@ public class DeedSquare extends Square{
 
     }
 
-    public int getDeedPrice() {
-        return deedPrice;
-    }
-
     public Player getDeedOwner() {
         return deed.getOwner();
     }
@@ -53,7 +49,54 @@ public class DeedSquare extends Square{
         return priceString;
     }
 
-    void landOn() {
+    void landOn(Player currentPlayer, int newPosition) {
+        //int i = currentPlayer;
+        //int deedPrice = ((DeedSquare) square[newPosition]).getDeedPrice();
+
+        if(sellDeed == true) {
+            /*System.out.println("This property is available for purchase for" +((DeedSquare) square[newPosition]).getDeedPrice()  + "M.");
+            guiMessage = "This property is available for purchase.";*/
+            guiMessage = currentPlayer.getPlayerName() + msg.getText("haveBought") + Square.deedName;
+            guiController.showMessage(guiMessage);
+
+            currentPlayer.withdrawMoney(deedPrice); // TO DO: must check if player has enough money to buy
+            int currentBalance = currentPlayer.getCurrentBalance();
+            guiController.updateBalance(guiPlayers[i], currentBalance);
+            System.out.println(msg.getText("newBalance") + currentBalance);
+
+            sellDeed = false ;
+            deed.setOwner(currentPlayer);
+            guiController.displayOwnerName(currentPlayer, currentSquareIndex);
+            //((DeedSquare) square[newPosition]).sellDeed(player[i], newPosition); // SETS sellDeed TO FALSE AND UPDATES OWNERSHIP
+
+        } else {
+           Player deedOwner = deed.getOwner();
+            if (currentPlayer==deedOwner) {
+                String ownerMessage = msg.getText("ownerOfDeed");
+                System.out.println(ownerMessage);
+                guiController.showMessage(ownerMessage);
+
+            } else {
+                String payRent = deedOwner.toString() + msg.getText("payRent");
+                System.out.println(payRent + deed.getDeedPrice());
+                currentPlayer.withdrawMoney(deedPrice);
+                int currentBalance = currentPlayer.getCurrentBalance();
+                guiController.updateBalance(guiPlayers[i], currentBalance);
+
+                System.out.println(msg.getText("newBalance") + currentBalance);
+                guiController.showMessage(payRent);
+
+                deedOwner.depositMoney(deedPrice);
+                currentBalance = deedOwner.getCurrentBalance();
+                guiController.receiveRent(deedOwner.getPlayerName(),currentBalance);
+
+
+            }
+
+
+            System.out.println("");
+
+        }
 
     }
 }
