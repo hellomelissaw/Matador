@@ -25,7 +25,11 @@ public class GameController {
         players = new Player[playerCount];
         guiPlayers = new GUI_Player[playerCount];
 
-
+        BoardInit board = new BoardInit(guiController,msg);
+        square = board.getSquareArr();
+        for(int i = 0 ; i < square.length ; i++) {
+            square[i].setLang("EnglishText");
+        }
         players[0] = new Player("Marc"); // INITIALISE EACH PLAYER WITH NAME
         players[0].depositMoney(balance); // DEPOSIT INITIAL BALANCE
 
@@ -54,7 +58,7 @@ public class GameController {
         BoardInit board = new BoardInit(guiController,msg);
         square = board.getSquareArr();
         //String userInput = new Scanner(System.in);
-        for(int i = 0 ; i < square.length ; i++) {
+        for(int i = 0 ; i < square.length ; i++) { //SETS LANGUAGE FOR ALL SQUARES
             square[i].setLang(lang[langIndex - 1]);
         }
         String userInput;

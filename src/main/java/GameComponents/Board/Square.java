@@ -14,7 +14,6 @@ public abstract class Square {
 
     Square(String squareName){
         this.squareName = squareName;
-        msg = new Text("src/main/java/Translator/"+lang);
 
     }
 
@@ -26,6 +25,7 @@ public abstract class Square {
 
     public void setLang(String lang) {
         this.lang = lang;
+        msg = new Text("src/main/java/Translator/"+lang);
     }
 
 }
