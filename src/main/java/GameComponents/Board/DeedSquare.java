@@ -29,7 +29,7 @@ public class DeedSquare extends Square{
         return sellDeed;
     }
 
-    /**
+    /*
      * Sells the deed by setting sellDeed to false and setting owner name for the deed.
      * @param player gives the current player whose turn it is
      * @param currentSquareIndex gives the index of the Square that the current player is on
@@ -55,21 +55,21 @@ public class DeedSquare extends Square{
     public void landOn(Player currentPlayer, GUI_Player currentGuiPlayer) {
         //int i = currentPlayer;
         //int deedPrice = ((DeedSquare) square[newPosition]).getDeedPrice();
+        currentPlayer.withdrawMoney(deedPrice); // TO DO: must check if player has enough money to buy
+        int currentBalance = currentPlayer.getCurrentBalance();
+        guiController.updateBalance(currentGuiPlayer, currentBalance);
+        System.out.println(msg.getText("newBalance") + currentBalance);
 
         if(sellDeed == true) {
             /*System.out.println("This property is available for purchase for" +((DeedSquare) square[newPosition]).getDeedPrice()  + "M.");
             guiMessage = "This property is available for purchase.";*/
 
-            currentPlayer.withdrawMoney(deedPrice); // TO DO: must check if player has enough money to buy
-            int currentBalance = currentPlayer.getCurrentBalance();
-            guiController.updateBalance(currentGuiPlayer, currentBalance);
             String guiMessage = currentPlayer.getPlayerName() + msg.getText("haveBought") + deed.getDeedName();
             guiController.showMessage(guiMessage);
-            System.out.println(msg.getText("newBalance") + currentBalance);
 
             sellDeed = false ;
             deed.setOwner(currentPlayer);
-            //guiController.displayOwnerName(currentPlayer, currentSquareIndex); FIX THIS
+            guiController.displayOwnerName(currentPlayer, currentPlayer.getPosition());
             //((DeedSquare) square[newPosition]).sellDeed(player[i], newPosition); // SETS sellDeed TO FALSE AND UPDATES OWNERSHIP
 
         } else {
@@ -82,11 +82,7 @@ public class DeedSquare extends Square{
             } else {
                 String payRent = deedOwner.toString() + msg.getText("payRent");
                 System.out.println(payRent + deed.getDeedPrice());
-                currentPlayer.withdrawMoney(deedPrice);
-                int currentBalance = currentPlayer.getCurrentBalance();
-                guiController.updateBalance(currentGuiPlayer, currentBalance);
 
-                System.out.println(msg.getText("newBalance") + currentBalance);
                 guiController.showMessage(payRent);
 
                 deedOwner.depositMoney(deedPrice);
