@@ -18,7 +18,7 @@ public class ChanceSquare extends Square{
     public ChanceSquare(String squareName) {
         super(squareName);
     }
-
+/*
     public void initializer(Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers, int playerCount, Text msg){
         this.square = square;
         this.player = player;
@@ -113,7 +113,7 @@ public class ChanceSquare extends Square{
 
 
 
-    public void Roll(int currentPlayer, int currentPosition /*Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers, int playerCount,Text msg*/)
+    public void Roll(int currentPlayer, int currentPosition) //Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers, int playerCount,Text msg
     {
         int cardNr = (int) (Math.random()*(15-1)) + 1;
         System.out.println(cardNr);
@@ -277,8 +277,9 @@ public class ChanceSquare extends Square{
         }
 
     }
+    */
 
-    public void landOn() {
+    public void landOn(Player currentPlayer, GUI_Player currentGuiPlayer) {
 
     }
 }

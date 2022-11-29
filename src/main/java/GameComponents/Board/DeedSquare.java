@@ -69,7 +69,7 @@ public class DeedSquare extends Square{
 
             sellDeed = false ;
             deed.setOwner(currentPlayer);
-            guiController.displayOwnerName(currentPlayer, currentSquareIndex);
+            //guiController.displayOwnerName(currentPlayer, currentSquareIndex); FIX THIS
             //((DeedSquare) square[newPosition]).sellDeed(player[i], newPosition); // SETS sellDeed TO FALSE AND UPDATES OWNERSHIP
 
         } else {

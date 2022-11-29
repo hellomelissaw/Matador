@@ -1,5 +1,7 @@
 package GameComponents.Board;
-import Translator.Text;
+import GameComponents.Player;
+import Controllers.GuiController;
+import gui_fields.GUI_Player;
 
 public class StartSquare extends Square{
     public StartSquare(String startSquare) {
@@ -7,7 +9,7 @@ public class StartSquare extends Square{
 
     }
 
-   public void landOn() {
+   public void landOn(Player currentPlayer, GUI_Player currentGuiPlayer) {
 
     }
 }
