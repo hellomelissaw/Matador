@@ -22,7 +22,7 @@ public class BoardInit {
         board[3] = new ChanceSquare(msg.getText("chance"));
         board[4] = new DeedSquare(msg.getText("candyShop"),1,guiController);
         board[5] = new DeedSquare(msg.getText("iceCreamShop"), 1,guiController);
-        board[6] = new JailSquare(msg.getText("visitJail"));
+        board[6] = new JailSquare(msg.getText("visitJail"),guiController);
         board[7] = new DeedSquare(msg.getText("museum"),2,guiController);
         board[8] = new DeedSquare(msg.getText("library"),2,guiController);
         board[9] = new ChanceSquare(msg.getText("Chance"));
@@ -34,7 +34,7 @@ public class BoardInit {
         board[15] = new ChanceSquare(msg.getText("chance"));
         board[16] = new DeedSquare(msg.getText("toyStore"),3,guiController);
         board[17] = new DeedSquare(msg.getText("petShop"),3,guiController);
-        board[18] = new JailSquare(msg.getText("jail"));
+        board[18] = new JailSquare(msg.getText("jail"),guiController);
         board[19] = new DeedSquare(msg.getText("bowlingAlley"),4,guiController);
         board[20] = new DeedSquare(msg.getText("zoo"),4,guiController);
         board[21] = new ChanceSquare(msg.getText("chance"));
