@@ -231,7 +231,11 @@ import java.awt.*;
       * @param currentPositionIndex index of the Deed Square being bought
       */
      public void displayOwnerName(Player currentPlayer, int currentPositionIndex){
-         ownable[currentPositionIndex].setOwnerName(currentPlayer.getPlayerName());
+         System.out.println("current" + ownable[currentPositionIndex] +currentPositionIndex);
+         if (fields[24] instanceof GUI_Ownable ){
+             ((GUI_Ownable)fields[currentPositionIndex]).setOwnerName(currentPlayer.getPlayerName());
+         }
+
 
      }
      public void updateBalance(GUI_Player currentPlayer, int newBalance){
