@@ -90,5 +90,6 @@ public class Player {
         squareIndex = moveToThisSquare;
         return squareIndex;
     }
+
 }
 

@@ -57,7 +57,7 @@ public class LandOnSquare {
      *@param currentPlayer gives the current Player of the Player Array whose turn it is
      */
     public void landOnJailSquare(int newPosition, int currentPlayer){
-
+/*
        int i = currentPlayer;
         if (newPosition==18){
             String jailMessage = msg.getText("movedToJail");
@@ -75,19 +75,23 @@ public class LandOnSquare {
         }  else if (newPosition==6) {
             System.out.println(msg.getText("visitJail"));
         }
+
+ */
     }
 
     public void landOnParkingSquare(int newPosition) {
-
+/*
          if (newPosition==12)
              System.out.println(msg.getText("freeParking"));
-    }
 
+ */
+    }
+/*
     public void landOnChanceSquare(int currentPlayer, int currentPosition,Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers, int playerCount) {
         ChanceSquare chanceSquare = new ChanceSquare(square[currentPosition].getSquareName());
         chanceSquare.initializer(square, player, guiController, guiPlayers, playerCount, msg);
         chanceSquare.Roll(currentPlayer,currentPosition);
     }
-
+*/
 }
 

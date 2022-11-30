@@ -25,9 +25,9 @@ public class DeedSquare extends Square{
     public Deed getDeed(){
         return deed;
     }
-    public boolean hasDeed(){ // Checks if the square has a deed available to buy or if it's already sold
+   /* public boolean hasDeed(){ // Checks if the square has a deed available to buy or if it's already sold
         return sellDeed;
-    }
+    }*/
 
     /*
      * Sells the deed by setting sellDeed to false and setting owner name for the deed.
@@ -87,7 +87,7 @@ public class DeedSquare extends Square{
 
                 deedOwner.depositMoney(deedPrice);
                 currentBalance = deedOwner.getCurrentBalance();
-                guiController.receiveRent(deedOwner.getPlayerName(),currentBalance);
+                guiController.updateBalance(currentGuiPlayer,currentBalance);
 
 
             }
