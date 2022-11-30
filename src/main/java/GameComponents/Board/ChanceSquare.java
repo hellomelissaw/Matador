@@ -36,7 +36,7 @@ public class ChanceSquare extends Square{
 
         for (int i = 0 ; i < chanceCards.length ; i++) { //SETS LANGUAGE FOR EACH CARD
             chanceCards[i].setLang(msg);
-            chanceCards[i].setPlayers(players,guiPlayers);
+            //chanceCards[i].setPlayers(players,guiPlayers);
         }
 
 
@@ -46,6 +46,7 @@ public class ChanceSquare extends Square{
         int cardIndex = (int) (Math.random()*(15-1));
         chanceCards[cardIndex].printMessage(cardIndex);
         System.out.println("Card picked: " + cardIndex);
+        chanceCards[cardIndex].playCard(currentPlayer, currentGuiPlayer);
     }
 
     /*public void initializer(Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers, int playerCount){

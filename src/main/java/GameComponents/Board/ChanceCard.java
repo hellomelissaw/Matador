@@ -24,11 +24,11 @@ public abstract class ChanceCard {
        this.msg = msg;
     }
 
-    protected void setPlayers(Player[] players, GUI_Player[] guiPlayers){
+    /*protected void setPlayers(Player[] players, GUI_Player[] guiPlayers){
         this.players = players;
         this.guiPlayers = guiPlayers;
 
-    }
+    }*/
 
     public void printMessage(int cardIndex) {
         int cardNr = cardIndex+1;
@@ -38,5 +38,5 @@ public abstract class ChanceCard {
         guiController.showMessage(cardMessage);
     }
 
-    public abstract void playCard(Player currentPlayer);
+    public abstract void playCard(Player currentPlayer, GUI_Player currentGuiPlayer);
 }
