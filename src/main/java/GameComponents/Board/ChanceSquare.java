@@ -15,8 +15,9 @@ public class ChanceSquare extends Square{
 
     private ChanceCard[] chanceCards = new ChanceCard[18];
 
-    public ChanceSquare(String squareName) { //INITIALISES DECK OF CHANCE CARDS
+    public ChanceSquare(String squareName, GuiController guiController) { //INITIALISES DECK OF CHANCE CARDS
         super(squareName);
+        this.guiController = guiController;
         chanceCards[0] = new CardMove("chance1", guiController, 24);
         chanceCards[1] = new CardMove("chance2", guiController,5);
         chanceCards[2] = new CardMove("chance3", guiController,1);
