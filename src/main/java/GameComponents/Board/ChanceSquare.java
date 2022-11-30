@@ -43,10 +43,14 @@ public class ChanceSquare extends Square{
     }
 
     public void landOn(Player currentPlayer, GUI_Player currentGuiPlayer) {
-        int cardIndex = (int) (Math.random()*(15-1));
-        chanceCards[cardIndex].printMessage(cardIndex);
-        System.out.println("Card picked: " + cardIndex);
-        chanceCards[cardIndex].playCard(currentPlayer, currentGuiPlayer);
+        boolean pickAgain = true;
+        while(pickAgain){
+            int cardIndex = (int) (Math.random() * (15 - 1));
+            chanceCards[cardIndex].printMessage(cardIndex);
+            System.out.println("Card picked: " + cardIndex);
+            chanceCards[cardIndex].playCard(currentPlayer, currentGuiPlayer);
+            pickAgain = chanceCards[cardIndex].checkPickAgain();
+        }
     }
 
     /*public void initializer(Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers, int playerCount){

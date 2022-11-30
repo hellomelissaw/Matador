@@ -14,6 +14,8 @@ public abstract class ChanceCard {
 
     protected GUI_Player[] guiPlayers;
 
+    boolean pickAgain;
+
     public ChanceCard(String cardMessage, GuiController guiController){
         this.cardMessage = cardMessage;
         this.guiController = guiController;
@@ -39,4 +41,8 @@ public abstract class ChanceCard {
     }
 
     public abstract void playCard(Player currentPlayer, GUI_Player currentGuiPlayer);
+
+    public boolean checkPickAgain() {
+        return pickAgain;
+    }
 }
