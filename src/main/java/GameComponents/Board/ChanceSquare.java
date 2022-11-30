@@ -13,19 +13,45 @@ public class ChanceSquare extends Square{
     private GUI_Player[] guiPlayers;
     private GuiController guiController;
     private int playerCount;
-    private Text msg;
 
-    public ChanceSquare(String squareName) {
+    private ChanceCard[] chanceCards = new ChanceCard[18];
+
+    public ChanceSquare(String squareName) { //INITIALISES DECK OF CHANCE CARDS
         super(squareName);
+        chanceCards[0] = new CardMove("chance1", guiController);
+        chanceCards[1] = new CardMove("chance2", guiController);
+        chanceCards[2] = new CardMove("chance3", guiController);
+        chanceCards[3] = new CardMove("chance4", guiController);
+        chanceCards[4] = new CardMoney("chance5", guiController);
+        chanceCards[5] = new CardMoney("chance6", guiController);
+        chanceCards[6] = new CardMoney("chance7", guiController);
+        chanceCards[7] = new CardDeed("chance8", guiController);
+        chanceCards[8] = new CardDeed("chance9", guiController);
+        chanceCards[9] = new CardDeed("chance10", guiController);
+        chanceCards[10] = new CardDeed("chance11", guiController);
+        chanceCards[11] = new CardDeed("chance12", guiController);
+        chanceCards[12] = new CardDeed("chance13", guiController);
+        chanceCards[13] = new CardDeed("chance14", guiController);
+        chanceCards[14] = new CardDeed("chance15", guiController);
+
+        for (int i = 0 ; i < chanceCards.length ; i++) { //SETS LANGUAGE FOR EACH CARD
+            chanceCards[i].setLang(msg);
+        }
+
     }
-/*
-    public void initializer(Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers, int playerCount, Text msg){
+
+    public void landOn(Player currentPlayer, GUI_Player currentGuiPlayer) {
+        int cardNr = (int) (Math.random()*(15-1)) + 1;
+        System.out.println(cardNr);
+    }
+
+    /*public void initializer(Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers, int playerCount){
         this.square = square;
         this.player = player;
         this.guiController = guiController;
         this.guiPlayers = guiPlayers;
         this.playerCount = playerCount;
-        this.msg = msg;
+
 
     }
 
@@ -115,8 +141,7 @@ public class ChanceSquare extends Square{
 
     public void Roll(int currentPlayer, int currentPosition) //Square[] square, Player[] player, GuiController guiController, GUI_Player[] guiPlayers, int playerCount,Text msg
     {
-        int cardNr = (int) (Math.random()*(15-1)) + 1;
-        System.out.println(cardNr);
+
         boolean running = true;
         int choice2 = 0;
         int choice1 = 0;
@@ -277,9 +302,9 @@ public class ChanceSquare extends Square{
         }
 
     }
-    */
 
-    public void landOn(Player currentPlayer, GUI_Player currentGuiPlayer) {
 
-    }
+
+
+     */
 }
