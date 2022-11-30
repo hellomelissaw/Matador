@@ -136,6 +136,15 @@ setDice(): void
 winner(): String
 }
 
+class ChanceCard {
+currentPlayer: Player
+
+}
+
+class MoveCard {
+
+}
+
 GameController -up- Game
 
 GuiController -right Game
@@ -163,6 +172,13 @@ Square  <|-down- JailSquare
 Square  <|-down- StartSquare
 
 Square  <|-down- ParkingSquare
+
+ChanceCard <|-down- MoveCard
+
+ChanceCard <|-down- MoneyCard
+
+ChanceCard <|-down- DeedCard
+
 
 
 GameController <-right- Player
