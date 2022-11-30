@@ -225,19 +225,6 @@ import java.awt.*;
          currentPlayer.setBalance(newBalance);
      }
 
-     /**
-      * Determines which GUI_Player owns the deed to update their balance in the GUI when receiving rent
-      * @param ownerName name of the Player who owns the deed
-      * @param newBalance the new Account balance to be displayed
-      */
-     public void receiveRent(String ownerName, int newBalance) {
-         for(int i = 0; i < guiPlayers.length; i++){
-             if(ownerName == guiPlayers[i].getName()) {
-                 guiPlayers[i].setBalance(newBalance);
-                 break;
-             }
-         }
-     }
      public int getUserIntegerPlayerCount() {
         return gui.getUserInteger(msg.getText("enterPlayerCount"));
      }

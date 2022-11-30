@@ -26,11 +26,13 @@ public class DeedSquareTest {
     @Test
     public void testPlayer2PaysRentToDeedOwner() {
         testDeedSquare.setLang("EnglishText");
+        testPlayer1.depositMoney(20);
         testPlayer2.depositMoney(20);
         testPlayer1.updatePosition(1);
         testDeedSquare.landOn(testPlayer1, testGuiPlayer1);
         testPlayer2.updatePosition(1);
         testDeedSquare.landOn(testPlayer2, testGuiPlayer2);
+        assertEquals(20, testPlayer1.getCurrentBalance());
         assertEquals(15, testPlayer2.getCurrentBalance());
     }
 }
