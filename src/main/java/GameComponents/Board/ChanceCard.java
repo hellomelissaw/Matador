@@ -18,8 +18,10 @@ public abstract class ChanceCard {
        this.msg = msg;
     }
 
-    public void printMessage() {
-        cardMessage = msg.getText("chance5");
+    public void printMessage(int cardIndex) {
+        int cardNr = cardIndex+1;
+        String card = "chance"+cardNr;
+        cardMessage = msg.getText(card);
         System.out.println(cardMessage);
         guiController.showMessage(cardMessage);
     }
