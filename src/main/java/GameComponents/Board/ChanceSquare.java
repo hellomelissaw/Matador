@@ -17,10 +17,10 @@ public class ChanceSquare extends Square{
 
     public ChanceSquare(String squareName) { //INITIALISES DECK OF CHANCE CARDS
         super(squareName);
-        chanceCards[0] = new CardMove("chance1", guiController);
-        chanceCards[1] = new CardMove("chance2", guiController);
-        chanceCards[2] = new CardMove("chance3", guiController);
-        chanceCards[3] = new CardMove("chance4", guiController);
+        chanceCards[0] = new CardMove("chance1", guiController, 24);
+        chanceCards[1] = new CardMove("chance2", guiController,5);
+        chanceCards[2] = new CardMove("chance3", guiController,1);
+        chanceCards[3] = new CardMove("chance4", guiController,23);
         chanceCards[4] = new CardMoney("chance5", guiController);
         chanceCards[5] = new CardMoney("chance6", guiController);
         chanceCards[6] = new CardMoney("chance7", guiController);

@@ -38,5 +38,5 @@ public abstract class ChanceCard {
         guiController.showMessage(cardMessage);
     }
 
-    public abstract void playCard();
+    public abstract void playCard(Player currentPlayer);
 }
