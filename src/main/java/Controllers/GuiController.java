@@ -52,13 +52,11 @@ import java.awt.*;
 
         gui.getFields()[1].setTitle("");
         gui.getFields()[1].setBackGroundColor(Color.lightGray);
-        ownable[1] = (GUI_Ownable)fields[1];
-        ownable[1].setSubText("M1");
+        gui.getFields()[1].setSubText("M1");
 
         gui.getFields()[2].setTitle(" ");
         gui.getFields()[2].setBackGroundColor(Color.lightGray);
-        ownable[2] = (GUI_Ownable)fields[2];
-        ownable[2].setSubText("M1");
+        gui.getFields()[2].setSubText("M1");
 
         gui.getFields()[3].setTitle("?");
         gui.getFields()[3].setBackGroundColor(Color.orange);
@@ -66,13 +64,11 @@ import java.awt.*;
 
         gui.getFields()[4].setTitle("");
         gui.getFields()[4].setBackGroundColor(Color.cyan);
-        ownable[4] = (GUI_Ownable)fields[4];
-        ownable[4].setSubText("M1");
+        gui.getFields()[4].setSubText("M1");
 
         gui.getFields()[5].setTitle("");
         gui.getFields()[5].setBackGroundColor(Color.cyan);
-        ownable[5] = (GUI_Ownable)fields[5];
-        ownable[5].setSubText("M1");
+        gui.getFields()[5].setSubText("M1");
 
         gui.getFields()[6].setTitle("");
         gui.getFields()[6].setBackGroundColor(Color.white);
@@ -80,13 +76,11 @@ import java.awt.*;
 
         gui.getFields()[7].setTitle("");
         gui.getFields()[7].setBackGroundColor(Color.pink);
-        ownable[7] = (GUI_Ownable)fields[7];
-        ownable[7].setSubText("M2");
+        gui.getFields()[7].setSubText("M2");
 
         gui.getFields()[8].setTitle("");
         gui.getFields()[8].setBackGroundColor(Color.pink);
-        ownable[8] = (GUI_Ownable)fields[8];
-        ownable[8].setSubText("M2");
+        gui.getFields()[8].setSubText("M2");
 
         gui.getFields()[9].setTitle("?");
         gui.getFields()[9].setBackGroundColor(Color.orange);
@@ -94,13 +88,11 @@ import java.awt.*;
 
         gui.getFields()[10].setTitle("");
         gui.getFields()[10].setBackGroundColor(Color.orange);
-        ownable[10] = (GUI_Ownable)fields[10];
-        ownable[10].setSubText("M2");
+        gui.getFields()[10].setSubText("M2");
 
         gui.getFields()[11].setTitle("");
         gui.getFields()[11].setBackGroundColor(Color.orange);
-        ownable[11] = (GUI_Ownable)fields[11];
-        ownable[11].setSubText("M2");
+        gui.getFields()[11].setSubText("M2");
 
         gui.getFields()[12].setTitle("");
         gui.getFields()[12].setBackGroundColor(Color.white);
@@ -108,13 +100,11 @@ import java.awt.*;
 
         gui.getFields()[13].setTitle("");
         gui.getFields()[13].setBackGroundColor(Color.red);
-        ownable[13] = (GUI_Ownable)fields[13];
-        ownable[13].setSubText("M3");
+        gui.getFields()[13].setSubText("M3");
 
         gui.getFields()[14].setTitle("");
         gui.getFields()[14].setBackGroundColor(Color.red);
-        ownable[14] = (GUI_Ownable)fields[14];
-        ownable[14].setSubText("M3");
+        gui.getFields()[14].setSubText("M3");
 
         gui.getFields()[15].setTitle("?");
         gui.getFields()[15].setBackGroundColor(Color.orange);
@@ -122,13 +112,11 @@ import java.awt.*;
 
         gui.getFields()[16].setTitle("");
         gui.getFields()[16].setBackGroundColor(Color.yellow);
-        ownable[16] = (GUI_Ownable)fields[16];
-        ownable[16].setSubText("M3");
+        gui.getFields()[16].setSubText("M3");
 
         gui.getFields()[17].setTitle("");
         gui.getFields()[17].setBackGroundColor(Color.yellow);
-        ownable[17] = (GUI_Ownable)fields[17];
-        ownable[17].setSubText("M3");
+        gui.getFields()[17].setSubText("M3");
 
         gui.getFields()[18].setTitle("");
         gui.getFields()[18].setBackGroundColor(Color.white);
@@ -136,13 +124,11 @@ import java.awt.*;
 
         gui.getFields()[19].setTitle("");
         gui.getFields()[19].setBackGroundColor(Color.green);
-        ownable[19] = (GUI_Ownable)fields[19];
-        ownable[19].setSubText("M4");
+        gui.getFields()[19].setSubText("M4");
 
         gui.getFields()[20].setTitle("");
         gui.getFields()[20].setBackGroundColor(Color.green);
-        ownable[20] = (GUI_Ownable)fields[20];
-        ownable[20].setSubText("M4");
+        gui.getFields()[20].setSubText("M4");
 
         gui.getFields()[21].setTitle("?");
         gui.getFields()[21].setBackGroundColor(Color.orange);
@@ -150,13 +136,11 @@ import java.awt.*;
 
         gui.getFields()[22].setTitle("");
         gui.getFields()[22].setBackGroundColor(Color.blue);
-        ownable[22] = (GUI_Ownable)fields[22];
-        ownable[22].setSubText("M5");
+        gui.getFields()[22].setSubText("M5");
 
         gui.getFields()[23].setTitle("");
         gui.getFields()[23].setBackGroundColor(Color.blue);
-        ownable[23] = (GUI_Ownable)fields[23];
-        ownable[23].setSubText("M5");
+        gui.getFields()[23].setSubText("M5");
 
     }
 
