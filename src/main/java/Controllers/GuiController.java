@@ -186,13 +186,17 @@ import java.awt.*;
         gui.showMessage(message);
     }
 
-     public GUI_Player[] addPlayerOnBoard(Player[] list){
+     public void addPlayerOnBoard(Player[] list){
          guiPlayers = new GUI_Player[list.length];
          for (int i = 0; i < list.length; i++) {
              guiPlayers[i] = new GUI_Player(list[i].getPlayerName(),list[i].getCurrentBalance());
              fields[0].setCar(guiPlayers[i],true);
              gui.addPlayer(guiPlayers[i]);
          }
+
+     }
+
+     public GUI_Player[] getGuiPlayersArr() {
          return guiPlayers;
      }
 
