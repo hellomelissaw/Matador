@@ -7,4 +7,5 @@ public class CardDeed extends ChanceCard {
         super(cardMessage, guiController);
 
     }
+    public void playCard(){}
 }

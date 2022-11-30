@@ -6,4 +6,6 @@ public class CardMoney extends ChanceCard {
         super(cardMessage, guiController);
 
     }
+
+    public void playCard(){}
 }

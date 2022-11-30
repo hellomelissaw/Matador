@@ -6,4 +6,6 @@ public class CardMove extends ChanceCard {
         super(cardMessage, guiController);
 
     }
+
+    public void playCard(){}
 }

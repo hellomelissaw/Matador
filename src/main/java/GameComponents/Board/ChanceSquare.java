@@ -2,13 +2,12 @@ package GameComponents.Board;
 
 import Controllers.GuiController;
 import GameComponents.Player;
-import Translator.Text;
 import gui_fields.GUI_Player;
 
 public class ChanceSquare extends Square{
 
     private Square[] square;
-    private Player[] player;
+    private Player[] players;
 
     private GUI_Player[] guiPlayers;
     private GuiController guiController;
@@ -36,7 +35,9 @@ public class ChanceSquare extends Square{
 
         for (int i = 0 ; i < chanceCards.length ; i++) { //SETS LANGUAGE FOR EACH CARD
             chanceCards[i].setLang(msg);
+            chanceCards[i].setPlayers(players,guiPlayers);
         }
+
 
     }
 
