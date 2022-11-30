@@ -13,7 +13,7 @@ import java.awt.*;
 
     private GUI_Player[] guiPlayers;
 
-    private GUI_Ownable[] ownable = new GUI_Ownable[24];
+    //private GUI_Ownable[] ownable = new GUI_Ownable[24];
 
     public GuiController() {
 
@@ -215,8 +215,7 @@ import java.awt.*;
       * @param currentPositionIndex index of the Deed Square being bought
       */
      public void displayOwnerName(Player currentPlayer, int currentPositionIndex){
-         System.out.println("current" + ownable[currentPositionIndex] +currentPositionIndex);
-         if (fields[24] instanceof GUI_Ownable ){
+         if (fields[currentPositionIndex] instanceof GUI_Ownable ){
              ((GUI_Ownable)fields[currentPositionIndex]).setOwnerName(currentPlayer.getPlayerName());
          }
 
