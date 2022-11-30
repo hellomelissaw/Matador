@@ -55,7 +55,7 @@ public class DeedSquare extends Square{
     public void landOn(Player currentPlayer, GUI_Player currentGuiPlayer) {
         //int i = currentPlayer;
         //int deedPrice = ((DeedSquare) square[newPosition]).getDeedPrice();
-        currentPlayer.withdrawMoney(deedPrice); // TO DO: must check if player has enough money to buy
+        currentPlayer.withdrawMoney(deedPrice);
         int currentBalance = currentPlayer.getCurrentBalance();
         guiController.updateBalance(currentGuiPlayer, currentBalance);
         System.out.println(msg.getText("newBalance") + currentBalance);

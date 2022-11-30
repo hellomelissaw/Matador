@@ -15,16 +15,18 @@ public class ChanceSquare extends Square{
 
     private ChanceCard[] chanceCards = new ChanceCard[18];
 
-    public ChanceSquare(String squareName, GuiController guiController) { //INITIALISES DECK OF CHANCE CARDS
+    public ChanceSquare(String squareName, GuiController guiController, Player[] players) { //INITIALISES DECK OF CHANCE CARDS
         super(squareName);
         this.guiController = guiController;
+        this.players = players;
+
         chanceCards[0] = new CardMove("chance1", guiController, 24);
         chanceCards[1] = new CardMove("chance2", guiController,5);
         chanceCards[2] = new CardMove("chance3", guiController,1);
         chanceCards[3] = new CardMove("chance4", guiController,23);
-        chanceCards[4] = new CardMoney("chance5", guiController);
-        chanceCards[5] = new CardMoney("chance6", guiController);
-        chanceCards[6] = new CardMoney("chance7", guiController);
+        chanceCards[4] = new CardMoney("chance5", guiController, players);
+        chanceCards[5] = new CardMoney("chance6", guiController, players);
+        chanceCards[6] = new CardMoney("chance7", guiController, players);
         chanceCards[7] = new CardDeed("chance8", guiController);
         chanceCards[8] = new CardDeed("chance9", guiController);
         chanceCards[9] = new CardDeed("chance10", guiController);
@@ -36,7 +38,7 @@ public class ChanceSquare extends Square{
 
         for (int i = 0 ; i < chanceCards.length ; i++) { //SETS LANGUAGE FOR EACH CARD
             chanceCards[i].setLang(msg);
-            //chanceCards[i].setPlayers(players,guiPlayers);
+            chanceCards[i].setPlayers(players,guiPlayers);
         }
 
 

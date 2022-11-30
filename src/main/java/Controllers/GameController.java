@@ -25,8 +25,6 @@ public class GameController {
         players = new Player[playerCount];
         guiPlayers = new GUI_Player[playerCount];
 
-        BoardInit board = new BoardInit(guiController,msg);
-        square = board.getSquareArr();
         for(int i = 0 ; i < square.length ; i++) {
             square[i].setLang("EnglishText");
         }
@@ -44,7 +42,10 @@ public class GameController {
                 players[3].depositMoney(balance); // DEPOSIT INITIAL BALANCE
             }
         }
-        guiPlayers = guiController.addPlayerOnBoard(players);
+        BoardInit board = new BoardInit(guiController,msg, players);
+        square = board.getSquareArr();
+        guiController.addPlayerOnBoard(players);
+        guiPlayers = guiController.getGuiPlayersArr();
     }
 
     public void init() {
@@ -54,13 +55,6 @@ public class GameController {
         msg = new Text(langFile);
         guiController.initFieldTitles(msg);
 
-
-        BoardInit board = new BoardInit(guiController,msg);
-        square = board.getSquareArr();
-        //String userInput = new Scanner(System.in);
-        for(int i = 0 ; i < square.length ; i++) { //SETS LANGUAGE FOR ALL SQUARES
-            square[i].setLang(lang[langIndex - 1]);
-        }
         String userInput;
 
         //INITIALIZING PLAYERS
@@ -93,7 +87,15 @@ public class GameController {
 
         }
 
-      guiPlayers = guiController.addPlayerOnBoard(players);
+        BoardInit board = new BoardInit(guiController,msg, players);
+        square = board.getSquareArr();
+        //String userInput = new Scanner(System.in);
+        for(int i = 0 ; i < square.length ; i++) { //SETS LANGUAGE FOR ALL SQUARES
+            square[i].setLang(lang[langIndex - 1]);
+        }
+
+        guiController.addPlayerOnBoard(players);
+        guiPlayers = guiController.getGuiPlayersArr();
         guiController.showMessage(msg.getText("startGame"));
 
     }
