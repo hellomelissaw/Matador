@@ -18,12 +18,12 @@ public class CardMove extends ChanceCard {
             String message = msg.getText("prompt") + msg.getText("chance3");
             int choice = guiController.getUserInteger(message);
             if (choice == 2) {
-                distance = distance - 1;
+                distance -= 1;
                 pickAgain = true; //NEEDS TO BE TESTED
             }
 
             } else if (distance == 23 || distance == 24) {
-                distance = distance - currentPlayer.getPosition();
+                distance -= currentPlayer.getPosition();
                 pickAgain = false;
 
             } else if (distance == 5) {
