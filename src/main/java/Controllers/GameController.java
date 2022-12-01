@@ -25,9 +25,9 @@ public class GameController {
         players = new Player[playerCount];
         guiPlayers = new GUI_Player[playerCount];
 
-        for(int i = 0 ; i < square.length ; i++) {
+        /*for(int i = 0 ; i < square.length ; i++) {
             square[i].setLang("EnglishText");
-        }
+        }*/
         players[0] = new Player("Marc"); // INITIALISE EACH PLAYER WITH NAME
         players[0].depositMoney(balance); // DEPOSIT INITIAL BALANCE
 
@@ -42,7 +42,7 @@ public class GameController {
                 players[3].depositMoney(balance); // DEPOSIT INITIAL BALANCE
             }
         }
-        BoardInit board = new BoardInit(guiController,msg, players);
+        BoardInit board = new BoardInit(guiController, msg, players);
         square = board.getSquareArr();
         guiController.addPlayerOnBoard(players);
         guiPlayers = guiController.getGuiPlayersArr();
@@ -82,17 +82,17 @@ public class GameController {
             int playerNumber = i + 1;
             System.out.println(msg.getText("enterName") + " " + playerNumber);
             userInput = guiController.getUserString(playerNumber);
-            players[i] = new Player(userInput); // INSTANTIATE EACH PLAYER WITH NAME
+            players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
             players[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE
 
         }
 
-        BoardInit board = new BoardInit(guiController,msg, players);
+        BoardInit board = new BoardInit(guiController, msg, players);
         square = board.getSquareArr();
         //String userInput = new Scanner(System.in);
-        for(int i = 0 ; i < square.length ; i++) { //SETS LANGUAGE FOR ALL SQUARES
-            square[i].setLang(lang[langIndex - 1]);
-        }
+        /*for(int i = 0 ; i < square.length ; i++) { //SETS LANGUAGE FOR ALL SQUARES
+            square[i].setLang(msg);
+        }*/
 
         guiController.addPlayerOnBoard(players);
         guiPlayers = guiController.getGuiPlayersArr();
@@ -119,11 +119,11 @@ public class GameController {
                 System.out.println(players[i].getPlayerName() + " rolled a " + diceArr[0] + " and a " + diceArr[1] + ". Got moved " + sum + " squares.");
 
                 //TO TEST LANDING ON SPECIFIC SQUARE, COMMENT OUT WHEN NOT IN USE
-                /*int testDie = 1;
-                newPosition = players[i].updatePosition(testDie);*/
+                int testDie = 3;
+                newPosition = players[i].updatePosition(testDie);
 
                 // UNCOMMENT THE FOLLOWING LINE WHEN NOT USING TEST DIE
-                newPosition = players[i].updatePosition(sum);
+                //newPosition = players[i].updatePosition(sum);
                 //guiController.showMessage(players[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
                 guiController.move(guiPlayers[i], oldPosition, newPosition);
 

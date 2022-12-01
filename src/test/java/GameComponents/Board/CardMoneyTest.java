@@ -22,7 +22,7 @@ public class CardMoneyTest {
         testPlayers[1].depositMoney(20);
         ChanceCard testChanceCard = new CardMoney("chance5",guiController,testPlayers);
         //testChanceSquare.setLang("EnglishText");
-        testChanceCard.setLang(msg);
+        testChanceCard.setCardLang(msg);
         testChanceCard.playCard(testPlayers[1],testGuiPlayer1);
         assertEquals(18, testPlayers[1].getCurrentBalance());
 
@@ -38,7 +38,7 @@ public class CardMoneyTest {
 
         ChanceCard testChanceCard = new CardMoney("chance6",guiController,testPlayers);
         //testChanceSquare.setLang("EnglishText");
-        testChanceCard.setLang(msg);
+        testChanceCard.setCardLang(msg);
         testChanceCard.playCard(testPlayers[0],testGuiPlayer1);
         assertEquals(3, testPlayers[0].getCurrentBalance());
         assertEquals(-1, testPlayers[1].getCurrentBalance());
@@ -51,7 +51,7 @@ public class CardMoneyTest {
         testPlayers[0] = new Player("TestPlayer 1");
         ChanceCard testChanceCard = new CardMoney("chance7",guiController,testPlayers);
         //testChanceSquare.setLang("EnglishText");
-        testChanceCard.setLang(msg);
+        testChanceCard.setCardLang(msg);
         testChanceCard.playCard(testPlayers[0],testGuiPlayer1);
         assertEquals(2, testPlayers[0].getCurrentBalance());
 

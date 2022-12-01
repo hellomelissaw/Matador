@@ -23,7 +23,7 @@ public class CardMoveTest {
     public void playCardMoveToStart() {
         ChanceCard testChanceCard = new CardMove("chance1",guiController,24);
         //testChanceSquare.setLang("EnglishText");
-        testChanceCard.setLang(msg);
+        testChanceCard.setCardLang(msg);
         testChanceCard.playCard(testPlayer1,testGuiPlayer1);
         assertEquals(0, testPlayer1.getPosition());
 
@@ -33,7 +33,7 @@ public class CardMoveTest {
     public void playCardMoveToPromenade() {
         //testChanceSquare.setLang("EnglishText");
         ChanceCard testChanceCard = new CardMove("chance4",guiController,23);
-        testChanceCard.setLang(msg);
+        testChanceCard.setCardLang(msg);
         testChanceCard.playCard(testPlayer1,testGuiPlayer1);
         assertEquals(23, testPlayer1.getPosition());
 
@@ -42,7 +42,7 @@ public class CardMoveTest {
     public void playCardMove5() {
         //testChanceSquare.setLang("EnglishText");
         ChanceCard testChanceCard = new CardMove("chance2",guiController,5);
-        testChanceCard.setLang(msg);
+        testChanceCard.setCardLang(msg);
         testPlayer1.updatePosition(5);
         testChanceCard.playCard(testPlayer1,testGuiPlayer1);
         assertEquals(10, testPlayer1.getPosition());
@@ -53,7 +53,7 @@ public class CardMoveTest {
     public void playCardMove1() {
         //testChanceSquare.setLang("EnglishText");
         ChanceCard testChanceCard = new CardMove("chance3",guiController,1);
-        testChanceCard.setLang(msg);
+        testChanceCard.setCardLang(msg);
         testPlayer1.updatePosition(5);
         testChanceCard.playCard(testPlayer1,testGuiPlayer1);
 

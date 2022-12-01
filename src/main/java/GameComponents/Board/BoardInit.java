@@ -7,14 +7,14 @@ import Translator.Text;
 public class BoardInit {
     Square[] board = new Square[24];
     GuiController guiController;
-    Text msg;
+    //Text msg;
     /**
      * Constructs a BoardInit where all the Squares on the board are instantiated with name and evt. price.
      * @param guiController The GuiController used throughout the classes.
      * @param msg The Text object used throughout the classes.
      */
     public BoardInit(GuiController guiController, Text msg, Player[] players) {
-        this.msg = msg;
+        //this.msg = msg;
         this.guiController = guiController;
 
         board[0] = new StartSquare(msg.getText("start"));
@@ -41,6 +41,13 @@ public class BoardInit {
         board[21] = new ChanceSquare(msg.getText("chance"),guiController, players);
         board[22] = new DeedSquare(msg.getText("waterPark"),5,guiController);
         board[23] = new DeedSquare(msg.getText("promenade"),5,guiController);
+
+        for (int i = 0 ; i < board.length ; i++) {
+            board[i].setLang(msg);
+            if(board[i] instanceof ChanceSquare){
+                ((ChanceSquare)board[i]).setCardLang();
+            }
+        }
 
     }
     public Square[] getSquareArr() {

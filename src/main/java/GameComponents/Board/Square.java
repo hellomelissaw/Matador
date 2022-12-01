@@ -8,9 +8,9 @@ public abstract class Square {
     int pointsValue;
     private String squareName;
 
-    protected Text msg;
-
     protected String lang = "";
+
+    Text msg;
 
     Square(String squareName){
         this.squareName = squareName;
@@ -23,9 +23,9 @@ public abstract class Square {
         return squareName;
     }
 
-    public void setLang(String lang) {
-        this.lang = lang;
-        msg = new Text("src/main/java/Translator/"+lang);
+    public void setLang(Text msg) {
+       this.msg = msg;
+
     }
 
 }

@@ -2,6 +2,7 @@ package GameComponents.Board;
 
 import Controllers.GuiController;
 import GameComponents.Player;
+import Translator.Text;
 import gui_fields.GUI_Player;
 import org.junit.Test;
 
@@ -16,16 +17,17 @@ public class DeedSquareTest {
     GUI_Player testGuiPlayer1 = new GUI_Player("TestPlayer 1");
     GUI_Player testGuiPlayer2 = new GUI_Player("TestPlayer 2");
 
+    Text msg = new Text("src/main/java/Translator/EnglishText");
     @Test
     public void deedOwnerIsTestPlayer1AfterLandingOnIt() {
-        testDeedSquare.setLang("EnglishText");
+        testDeedSquare.setLang(msg);
         testPlayer1.updatePosition(1);
         testDeedSquare.landOn(testPlayer1, testGuiPlayer1);
         assertEquals(testPlayer1, testDeedSquare.getDeedOwner());
     }
     @Test
     public void testPlayer2PaysRentToDeedOwner() {
-        testDeedSquare.setLang("EnglishText");
+        testDeedSquare.setLang(msg);
         testPlayer1.depositMoney(20);
         testPlayer2.depositMoney(20);
         testPlayer1.updatePosition(1);

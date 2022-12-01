@@ -6,19 +6,17 @@ import gui_fields.GUI_Player;
 
 public class ChanceSquare extends Square{
 
-    private Square[] square;
-    private Player[] players;
-
-    private GUI_Player[] guiPlayers;
-    private GuiController guiController;
-    private int playerCount;
-
-    private ChanceCard[] chanceCards = new ChanceCard[18];
+    //private Square[] square;
+    //private int playerCount;
+    //private Player[] players;
+    private GUI_Player[] guiPlayers; //THIS IS CURRENTLY NULL, BUT CAN GUI PLAYERS BE SOMEHOW TIED TO players???
+    //private GuiController guiController;
+    private ChanceCard[] chanceCards = new ChanceCard[15];
 
     public ChanceSquare(String squareName, GuiController guiController, Player[] players) { //INITIALISES DECK OF CHANCE CARDS
         super(squareName);
-        this.guiController = guiController;
-        this.players = players;
+        //this.guiController = guiController;
+        //this.players = players;
 
         chanceCards[0] = new CardMove("chance1", guiController, 24);
         chanceCards[1] = new CardMove("chance2", guiController,5);
@@ -36,12 +34,19 @@ public class ChanceSquare extends Square{
         chanceCards[13] = new CardDeed("chance14", guiController);
         chanceCards[14] = new CardDeed("chance15", guiController);
 
-        for (int i = 0 ; i < chanceCards.length ; i++) { //SETS LANGUAGE FOR EACH CARD
-            chanceCards[i].setLang(msg);
+
+        for (int i = 0 ; i < chanceCards.length ; i++) { //SETS PLAYERS ARRAY FOR EACH CARD
             chanceCards[i].setPlayers(players,guiPlayers);
+
         }
 
+    }
 
+    public void setCardLang() {
+        for (int i = 0 ; i < chanceCards.length ; i++) { //SETS LANGUAGE FOR EACH CARD
+            chanceCards[i].setCardLang(msg);
+
+        }
     }
 
     public void landOn(Player currentPlayer, GUI_Player currentGuiPlayer) {

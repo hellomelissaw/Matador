@@ -8,6 +8,9 @@ public class CardDeed extends ChanceCard {
     public CardDeed(String cardMessage, GuiController guiController) {
         super(cardMessage, guiController);
 
+
     }
-    public void playCard(Player currentPlayer, GUI_Player currentGuiPlayer){}
+    public void playCard(Player currentPlayer, GUI_Player currentGuiPlayer){
+       // currentPlayer.updatePosition()
+    }
 }

@@ -9,7 +9,7 @@ import java.awt.*;
      private GUI gui;
 
      Text msg;
-     private GUI_Field[] fields = new GUI_Field[24];
+     private GUI_Field[] fields;
 
     private GUI_Player[] guiPlayers;
 
@@ -59,7 +59,7 @@ import java.awt.*;
         gui.getFields()[2].setSubText("M1");
 
         gui.getFields()[3].setTitle("?");
-        gui.getFields()[3].setBackGroundColor(Color.orange);
+        gui.getFields()[3].setBackGroundColor(Color.magenta);
         gui.getFields()[3].setSubText(" ");
 
         gui.getFields()[4].setTitle("");
@@ -83,7 +83,7 @@ import java.awt.*;
         gui.getFields()[8].setSubText("M2");
 
         gui.getFields()[9].setTitle("?");
-        gui.getFields()[9].setBackGroundColor(Color.orange);
+        gui.getFields()[9].setBackGroundColor(Color.magenta);
         gui.getFields()[9].setSubText(" ");
 
         gui.getFields()[10].setTitle("");
@@ -107,7 +107,7 @@ import java.awt.*;
         gui.getFields()[14].setSubText("M3");
 
         gui.getFields()[15].setTitle("?");
-        gui.getFields()[15].setBackGroundColor(Color.orange);
+        gui.getFields()[15].setBackGroundColor(Color.magenta);
         gui.getFields()[15].setSubText(" ");
 
         gui.getFields()[16].setTitle("");
@@ -131,7 +131,7 @@ import java.awt.*;
         gui.getFields()[20].setSubText("M4");
 
         gui.getFields()[21].setTitle("?");
-        gui.getFields()[21].setBackGroundColor(Color.orange);
+        gui.getFields()[21].setBackGroundColor(Color.magenta);
         gui.getFields()[21].setSubText(" ");
 
         gui.getFields()[22].setTitle("");

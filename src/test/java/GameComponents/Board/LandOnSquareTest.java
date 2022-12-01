@@ -14,10 +14,10 @@ public class LandOnSquareTest {
     Player testPlayer1 = new Player("TestPlayer 1");
     JailSquare testJail = new JailSquare("Jail", guiController);
     GUI_Player testGuiPlayer1 = new GUI_Player("TestPlayer 1");
-
+    Text msg = new Text("src/main/java/Translator/EnglishText");
     @Test
     public void landOnJailSquareAndPay1M() {
-        testJail.setLang("EnglishText");
+        testJail.setLang(msg);
         testPlayer1.depositMoney(20);
         testPlayer1.updatePosition(18);
         testJail.landOn(testPlayer1,testGuiPlayer1);
@@ -27,7 +27,7 @@ public class LandOnSquareTest {
 
     @Test
     public void updatePlayerPositionToIndex6AfterJail(){
-        testJail.setLang("EnglishText");
+        testJail.setLang(msg);
         testPlayer1.updatePosition(18);
         testJail.landOn(testPlayer1,testGuiPlayer1);
         assertEquals(6,testPlayer1.getPosition());
@@ -36,7 +36,7 @@ public class LandOnSquareTest {
 
     @Test
     public void landOnVisitJailAndDontPay() {
-        testJail.setLang("EnglishText");
+        testJail.setLang(msg);
         testPlayer1.depositMoney(20);
         testPlayer1.updatePosition(6);
         testJail.landOn(testPlayer1,testGuiPlayer1);

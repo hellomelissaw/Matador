@@ -22,7 +22,7 @@ public abstract class ChanceCard {
 
     }
 
-    protected void setLang(Text msg) {
+    protected void setCardLang(Text msg) {
        this.msg = msg;
     }
 
