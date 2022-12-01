@@ -25,14 +25,14 @@ public class ChanceSquare extends Square{
         chanceCards[4] = new CardMoney("chance5", guiController, players);
         chanceCards[5] = new CardMoney("chance6", guiController, players);
         chanceCards[6] = new CardMoney("chance7", guiController, players);
-        chanceCards[7] = new CardDeed("chance8", guiController);
-        chanceCards[8] = new CardDeed("chance9", guiController);
-        chanceCards[9] = new CardDeed("chance10", guiController);
-        chanceCards[10] = new CardDeed("chance11", guiController);
-        chanceCards[11] = new CardDeed("chance12", guiController);
-        chanceCards[12] = new CardDeed("chance13", guiController);
-        chanceCards[13] = new CardDeed("chance14", guiController);
-        chanceCards[14] = new CardDeed("chance15", guiController);
+        chanceCards[7] = new CardDeed("chance8", guiController, "na","na");
+        chanceCards[8] = new CardDeed("chance9", guiController, "cyan", "red");
+        chanceCards[9] = new CardDeed("chance10", guiController, "lightgrey", "yellow");
+        chanceCards[10] = new CardDeed("chance11", guiController, "orange", "na");
+        chanceCards[11] = new CardDeed("chance12", guiController, "cyan", "na");
+        chanceCards[12] = new CardDeed("chance13", guiController, "red", "na");
+        chanceCards[13] = new CardDeed("chance14", guiController, "orange", "green");
+        chanceCards[14] = new CardDeed("chance15", guiController, "pink", "darkblue");
 
 
         for (int i = 0 ; i < chanceCards.length ; i++) { //SETS PLAYERS ARRAY FOR EACH CARD
