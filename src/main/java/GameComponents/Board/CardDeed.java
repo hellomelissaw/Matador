@@ -43,6 +43,7 @@ public class CardDeed extends ChanceCard {
 
             System.out.println("New position is: " + newPos);
             currentPlayer.updatePosition(newPos);
+            ((DeedSquare)board[skateParkIndex]).sellDeed(currentPlayer, skateParkIndex);
 
 
 

@@ -77,13 +77,14 @@ public class CardDeedTest {
         chanceCards[6] = new CardDeed("chance14", guiController, "orange", "green");
         chanceCards[7] = new CardDeed("chance15", guiController, "pink", "darkblue");
 
-        testPlayer1.updatePosition(15);
+
 
         for(int i = 0 ; i < chanceCards.length ; i++) {
             ((CardDeed)chanceCards[i]).setBoard(board);
             chanceCards[i].setCardLang(msg);
 
         }
+        testPlayer1.updatePosition(15);
         chanceCards[0].playCard(testPlayer1,testGuiPlayer1);
        assertEquals(10, testPlayer1.getPosition());
 
@@ -107,6 +108,11 @@ public class CardDeedTest {
 
         chanceCards[7].playCard(testPlayer1,testGuiPlayer1);
         assertEquals(7, testPlayer1.getPosition());
+
+    }
+
+    @Test
+    public void playerGetsDeedForFree() {
 
     }
 }
