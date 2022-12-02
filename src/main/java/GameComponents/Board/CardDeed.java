@@ -43,7 +43,11 @@ public class CardDeed extends ChanceCard {
 
             System.out.println("New position is: " + newPos);
             currentPlayer.updatePosition(newPos);
+
+            if(((DeedSquare)board[skateParkIndex]).hasDeed()){
             ((DeedSquare)board[skateParkIndex]).sellDeed(currentPlayer, skateParkIndex);
+
+            } else {board[skateParkIndex].landOn(currentPlayer,currentGuiPlayer);}
 
 
 
@@ -55,19 +59,24 @@ public class CardDeed extends ChanceCard {
                 for (int i = 0 ; i < board.length ; i++) {
                     if (board[i].getColor() == color1 || board[i].getColor() == color2) {
                         foundFreeSquare = ((DeedSquare) board[i]).hasDeed();
+
                         if (foundFreeSquare) {
                             freeSquare = board[i];
                             ((DeedSquare) freeSquare).sellDeed(currentPlayer, i);
+
                             if (currentPos > i) {
                                 newPos = board.length - currentPlayer.getPosition() + i;
 
                             } else {
                                 newPos = board.length - currentPos - (board.length - i);
+
                             }
-                            System.out.println("THis is new position: " + newPos);
+                            System.out.println("This is new position: " + newPos);
                             currentPlayer.updatePosition(newPos);
                             break;
-                        }
+
+                        } else {
+                            board[i].landOn(currentPlayer, currentGuiPlayer); }
                     }
                 }
             }
