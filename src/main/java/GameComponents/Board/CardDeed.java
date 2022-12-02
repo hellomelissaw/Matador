@@ -49,34 +49,31 @@ public class CardDeed extends ChanceCard {
         } else {
             boolean foundFreeSquare = false;
             Square freeSquare;
+
             while(!foundFreeSquare) { // LOOKS FOR FREE SQUARE
-            for (int i = 0 ; i < board.length ; i++) {
-                foundFreeSquare = ((DeedSquare) board[i]).hasDeed();
-                if (foundFreeSquare && (board[i].getColor() == color1 || board[i].getColor() == color2)) {
-                    freeSquare = board[i];
-                } else { foundFreeSquare = false;}
-            }
-            for (int i = 0 ; i < board.length ; i++) {
+                for (int i = 0 ; i < board.length ; i++) {
                     if (board[i].getColor() == color1 || board[i].getColor() == color2) {
-                        if (board[i] instanceof DeedSquare) {
+                        foundFreeSquare = ((DeedSquare) board[i]).hasDeed();
+                        if (foundFreeSquare) {
+                            freeSquare = board[i];
+                            ((DeedSquare) freeSquare).sellDeed(currentPlayer, i);
+                            if (currentPos > i) {
+                                newPos = board.length - currentPlayer.getPosition() + i;
 
-                            if (squareIsFree) {
-                                ((DeedSquare) board[i]).setDeedOwner(currentPlayer);
-                                if (currentPos > i) {
-                                    newPos = board.length - currentPlayer.getPosition() + i;
-
-                                } else {
-                                    newPos = board.length - currentPos - (board.length - i);
-                                }
-                                System.out.println("THis is new position: " + newPos);
-                                currentPlayer.updatePosition(newPos);
-                                break;
+                            } else {
+                                newPos = board.length - currentPos - (board.length - i);
                             }
+                            System.out.println("THis is new position: " + newPos);
+                            currentPlayer.updatePosition(newPos);
+                            break;
                         }
                     }
                 }
             }
         }
+    }
+}
+
 
 
 
@@ -116,7 +113,4 @@ public class CardDeed extends ChanceCard {
        }
 
          */
-    }
 
-
-}

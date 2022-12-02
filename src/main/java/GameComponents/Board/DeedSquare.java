@@ -34,18 +34,18 @@ public class DeedSquare extends Square{
      * @param player gives the current player whose turn it is
      * @param currentSquareIndex gives the index of the Square that the current player is on
      */
-  /* public void sellDeed(Player player, int currentSquareIndex){
+   public void sellDeed(Player currentPlayer, int currentSquareIndex){
         sellDeed = false ;
-        deed.setOwner(player);
-        guiController.displayOwnerName(player, currentSquareIndex);
+        deed.setOwner(currentPlayer);
+        guiController.displayOwnerName(currentPlayer, currentSquareIndex);
 
-    }*/
+    }
 
     public Player getDeedOwner() {
         return deed.getOwner();
     }
 
-    public void setDeedOwner(Player currentPlayer) { deed.setOwner(currentPlayer); }
+    //public void setDeedOwner(Player currentPlayer) { deed.setOwner(currentPlayer); }
 
 
     @Override
