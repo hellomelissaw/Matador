@@ -95,7 +95,7 @@ public class CardDeedTest {
         assertEquals(1, testPlayer1.getPosition());
 
         chanceCards[3].playCard(testPlayer1,testGuiPlayer1);
-        assertEquals(10, testPlayer1.getPosition());
+        assertEquals(11, testPlayer1.getPosition());
 
         chanceCards[4].playCard(testPlayer1,testGuiPlayer1);
         assertEquals(5, testPlayer1.getPosition());
@@ -104,7 +104,7 @@ public class CardDeedTest {
         assertEquals(13, testPlayer1.getPosition());
 
         chanceCards[6].playCard(testPlayer1,testGuiPlayer1);
-        assertEquals(11, testPlayer1.getPosition());
+        assertEquals(19, testPlayer1.getPosition());
 
         chanceCards[7].playCard(testPlayer1,testGuiPlayer1);
         assertEquals(7, testPlayer1.getPosition());
@@ -112,7 +112,61 @@ public class CardDeedTest {
     }
 
     @Test
-    public void playerGetsDeedForFree() {
+    public void playerGetsSkateParkAndCyanSquareDeedForFree() {
+        Square[] board = new Square[24];
+        for (int i = 0 ; i < 24 ; i++) {
+            board[i] = new DeedSquare("Test Deed", 5, guiController);
+        }
+
+
+        String[] colors = {"lightgrey", "cyan", "pink", "orange", "red", "yellow", "green", "darkblue"};
+        board[1].setColor(colors[0]);
+        board[2].setColor(colors[0]);
+
+        board[4].setColor(colors[1]);
+        board[5].setColor(colors[1]);
+
+        board[7].setColor(colors[2]);
+        board[8].setColor(colors[2]);
+
+        board[10].setColor(colors[3]);
+        board[11].setColor(colors[3]);
+
+        board[13].setColor(colors[4]);
+        board[14].setColor(colors[4]);
+
+        board[16].setColor(colors[5]);
+        board[17].setColor(colors[5]);
+
+        board[19].setColor(colors[6]);
+        board[20].setColor(colors[6]);
+
+        board[22].setColor(colors[7]);
+        board[23].setColor(colors[7]);
+        /*for(int i = 1 ; i < board.length ; i+=3) {
+            for (int j = 0 ; j < colors.length ; j++) {
+                board[i].setColor(colors[j]);
+                board[i+1].setColor(colors[j]);
+            }
+        }*/
+
+        ChanceCard[] chanceCards = new ChanceCard[2];
+
+        chanceCards[0] = new CardDeed("chance8", guiController, "na","na");
+        chanceCards[1] = new CardDeed("chance9", guiController, "cyan", "red");
+
+        for(int i = 0 ; i < chanceCards.length ; i++) {
+            ((CardDeed)chanceCards[i]).setBoard(board);
+            chanceCards[i].setCardLang(msg);
+
+        }
+        testPlayer1.depositMoney(3);
+
+        chanceCards[0].playCard(testPlayer1,testGuiPlayer1);
+        assertEquals(3,testPlayer1.getCurrentBalance());
+
+        chanceCards[1].playCard(testPlayer1,testGuiPlayer1);
+        assertEquals(3, testPlayer1.getCurrentBalance());
 
     }
 }
