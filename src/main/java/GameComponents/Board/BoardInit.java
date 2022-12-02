@@ -46,12 +46,26 @@ public class BoardInit {
             board[i].setLang(msg);
             if(board[i] instanceof ChanceSquare){
                 ((ChanceSquare)board[i]).setCardLang();
+                ((ChanceSquare)board[i]).setBoard(board);
+            }
+        }
+
+        String[] colors = {"lightgrey", "cyan", "pink", "orange", "red", "yellow", "green", "darkblue"};
+
+        for(int i = 1 ; i < board.length ; i+=3) {
+            for (int j = 0 ; j < colors.length ; j++) {
+                board[i].setColor(colors[j]);
+                board[i+1].setColor(colors[j]);
             }
         }
 
     }
     public Square[] getSquareArr() {
         return board;
+    }
+
+    public String getSquareColor(int squareIndex) {
+       return board[squareIndex].getColor();
     }
 
 }

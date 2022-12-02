@@ -6,7 +6,7 @@ import gui_fields.GUI_Player;
 
 public class ChanceSquare extends Square{
 
-    //private Square[] square;
+    //private Square[] board;
     //private int playerCount;
     //private Player[] players;
     private GUI_Player[] guiPlayers; //THIS IS CURRENTLY NULL, BUT CAN GUI PLAYERS BE SOMEHOW TIED TO players???
@@ -42,12 +42,21 @@ public class ChanceSquare extends Square{
 
     }
 
+    public void setBoard(Square[] board) {
+        for (int i = 0; i < chanceCards.length; i++) {
+            if (chanceCards[i] instanceof CardDeed) {
+                ((CardDeed) chanceCards[i]).setBoard(board);
+            }
+        }
+    }
+
     public void setCardLang() {
         for (int i = 0 ; i < chanceCards.length ; i++) { //SETS LANGUAGE FOR EACH CARD
             chanceCards[i].setCardLang(msg);
 
         }
     }
+
 
     public void landOn(Player currentPlayer, GUI_Player currentGuiPlayer) {
         boolean pickAgain = true;
