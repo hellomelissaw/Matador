@@ -55,9 +55,9 @@ public class CardDeed extends ChanceCard {
             boolean foundFreeSquare = false;
             Square freeSquare;
 
-            while(!foundFreeSquare) { // LOOKS FOR FREE SQUARE
                 for (int i = 0 ; i < board.length ; i++) {
                     if (board[i].getColor() == color1 || board[i].getColor() == color2) {
+
                         foundFreeSquare = ((DeedSquare) board[i]).hasDeed();
 
                         if (foundFreeSquare) {
@@ -75,14 +75,14 @@ public class CardDeed extends ChanceCard {
                             currentPlayer.updatePosition(newPos);
                             break;
 
-                        } else {
-                            board[i].landOn(currentPlayer, currentGuiPlayer); }
+                        }
+                        // if the square is the right color but unavailable program goes here
                     }
                 }
             }
         }
     }
-}
+
 
 
 
