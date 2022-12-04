@@ -35,6 +35,26 @@ public class CardDeedTest {
         assertEquals(10, testPlayer1.getPosition());
     }
 
+    @Test
+    public void Chance8GoToSkateParkAndPayRent() {
+        Player[] testPlayers = new Player[2];
+        testPlayers[0] = new Player("Test Player1");
+        testPlayers[1] = new Player("Test Player2");
+
+        Square[] board = new Square[24];
+        for (int i = 0 ; i < board.length ; i++) {
+            board[i] = new DeedSquare("Test Deed", 2, guiController);
+        }
+        board[10].setColor("na");
+        ((DeedSquare)board[10]).sellDeed(testPlayers[0],10);
+        board[10].setLang(msg);
+        ChanceCard goToSkatePark = new CardDeed("chance8", guiController, "na", "na");
+        goToSkatePark.setCardLang(msg);
+        ((CardDeed)goToSkatePark).setBoard(board);
+        goToSkatePark.playCard(testPlayers[1],testGuiPlayer1);
+        assertEquals(-2, testPlayers[1].getCurrentBalance());
+    }
+
 
     @Test
     public void Chance9GoToFreeCyanSquareFromSquare15() {
