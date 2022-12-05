@@ -6,8 +6,6 @@ import gui_fields.GUI_Player;
 public class CardDeed extends ChanceCard {
     private String color1;
     private String color2;
-    Square[] sameColorSquares = {};
-    int squareIndex = 0;
 
     Square[] board;
 
@@ -34,6 +32,9 @@ public class CardDeed extends ChanceCard {
     public void playCard(Player currentPlayer, GUI_Player currentGuiPlayer) {
         int currentPos = currentPlayer.getPosition();
         int newPos;
+        int index = 0;
+        boolean foundFreeSquare = false;
+        //Square correctColorSquare[] = {};
         if(color1 == "na") {
             int skateParkIndex = 10;
             if(currentPos > skateParkIndex){
@@ -45,24 +46,20 @@ public class CardDeed extends ChanceCard {
             currentPlayer.updatePosition(newPos);
 
             if(((DeedSquare)board[skateParkIndex]).hasDeed()){
-            ((DeedSquare)board[skateParkIndex]).sellDeed(currentPlayer, skateParkIndex);
+            ((DeedSquare)board[skateParkIndex]).setDeedOwner(currentPlayer, skateParkIndex);
 
             } else {board[skateParkIndex].landOn(currentPlayer,currentGuiPlayer);}
 
 
 
         } else {
-            boolean foundFreeSquare = false;
-            Square freeSquare;
 
                 for (int i = 0 ; i < board.length ; i++) {
                     if (board[i].getColor() == color1 || board[i].getColor() == color2) {
 
-                        foundFreeSquare = ((DeedSquare) board[i]).hasDeed();
+                     foundFreeSquare = ((DeedSquare) board[i]).hasDeed();
 
                         if (foundFreeSquare) {
-                            freeSquare = board[i];
-                            ((DeedSquare) freeSquare).sellDeed(currentPlayer, i);
 
                             if (currentPos > i) {
                                 newPos = board.length - currentPlayer.getPosition() + i;
@@ -73,13 +70,29 @@ public class CardDeed extends ChanceCard {
                             }
                             System.out.println("This is new position: " + newPos);
                             currentPlayer.updatePosition(newPos);
+                            ((DeedSquare)board[i]).setDeedOwner(currentPlayer,newPos);
                             break;
 
-                        }
+                        } else {
+                            index = i; }
+                            //int index = -1;
+                            //board[i] = correctColorSquare[index++];
                         // if the square is the right color but unavailable program goes here
-                    }
+
+                    } // check color
+
+                }//for loop
+
+                if (!foundFreeSquare) {
+                    board[index].landOn(currentPlayer, currentGuiPlayer);
                 }
-            }
+
+                }
+
+               /* color check loop
+               // for (int i = 0 ; i < correctColorSquare.length ; i ++) {
+
+            }*/
         }
     }
 

@@ -1,7 +1,6 @@
 package GameComponents.Board;
 import Controllers.GuiController;
 import GameComponents.Player;
-import Translator.Text;
 import gui_fields.GUI_Player;
 
 public class DeedSquare extends Square{
@@ -34,7 +33,7 @@ public class DeedSquare extends Square{
      * @param player gives the current player whose turn it is
      * @param currentSquareIndex gives the index of the Square that the current player is on
      */
-   public void sellDeed(Player currentPlayer, int currentSquareIndex){
+   public void setDeedOwner(Player currentPlayer, int currentSquareIndex){
         sellDeed = false ;
         deed.setOwner(currentPlayer);
         guiController.displayOwnerName(currentPlayer, currentSquareIndex);

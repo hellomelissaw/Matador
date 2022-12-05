@@ -6,8 +6,6 @@ import Translator.Text;
 import gui_fields.GUI_Player;
 import org.junit.Test;
 
-import java.util.HashMap;
-
 import static org.junit.Assert.*;
 
 public class CardDeedTest {
@@ -15,9 +13,15 @@ public class CardDeedTest {
     GuiController guiController = new GuiController();
     Player testPlayer1 = new Player("TestPlayer 1");
 
+    Player[] testPlayers = new Player[2];
     Text msg = new Text("src/main/java/Translator/EnglishText");
 
     GUI_Player testGuiPlayer1 = new GUI_Player("TestPlayer 1");
+
+    @Test
+    public void setColorForLoop(){
+
+    }
 
     @Test
     public void Chance8GoToSkateParkFromSquare22() {
@@ -37,7 +41,7 @@ public class CardDeedTest {
 
     @Test
     public void Chance8GoToSkateParkAndPayRent() {
-        Player[] testPlayers = new Player[2];
+
         testPlayers[0] = new Player("Test Player1");
         testPlayers[1] = new Player("Test Player2");
 
@@ -46,7 +50,7 @@ public class CardDeedTest {
             board[i] = new DeedSquare("Test Deed", 2, guiController);
         }
         board[10].setColor("na");
-        ((DeedSquare)board[10]).sellDeed(testPlayers[0],10);
+        ((DeedSquare)board[10]).setDeedOwner(testPlayers[0],10);
         board[10].setLang(msg);
         ChanceCard goToSkatePark = new CardDeed("chance8", guiController, "na", "na");
         goToSkatePark.setCardLang(msg);
@@ -202,6 +206,10 @@ public class CardDeedTest {
 
     @Test
     public void payRentIfNoAvailableSquare() {
+
+        testPlayers[0] = new Player("Test Player1");
+        testPlayers[1] = new Player("Test Player2");
+
         Square[] board = new Square[24];
 
         for (int i = 0 ; i < 24 ; i++) {
@@ -260,14 +268,12 @@ public class CardDeedTest {
 
         }
 
-        testPlayer1.depositMoney(3);
-        chanceCards[0].playCard(testPlayer1,testGuiPlayer1);
-        testPlayer1.getCurrentBalance();
-        chanceCards[3].playCard(testPlayer1,testGuiPlayer1);
-        testPlayer1.getCurrentBalance();
-        chanceCards[6].playCard(testPlayer1,testGuiPlayer1);
-        testPlayer1.getCurrentBalance();
-        assertEquals(-2, testPlayer1.getCurrentBalance());
+        ((DeedSquare)board[10]).setDeedOwner(testPlayers[0], 10);
+        ((DeedSquare)board[11]).setDeedOwner(testPlayers[0], 11);
+
+        chanceCards[3].playCard(testPlayers[1],testGuiPlayer1);
+
+        assertEquals(-5, testPlayers[1].getCurrentBalance());
 
     }
 }
