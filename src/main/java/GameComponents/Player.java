@@ -1,23 +1,31 @@
 package GameComponents;
 
+import Controllers.GuiController;
+import gui_fields.GUI_Player;
+
 /*
 ===================================================================================
 This class is reused from our CDIO2 project and built upon.
 ===================================================================================
  */
 public class Player {
+    GUI_Player guiPlayer;
 
-    private int balance;
+    GuiController guiController;
     private int squareIndex = 0;
     private String playerName;
     Account playerAccount = new Account();
     private String winnerName;
 
-    public Player(String playerName) {
+    public Player(String playerName, GuiController guiController) {
         this.playerName = playerName;
-
+        this.guiController = guiController;
     }
 
+    public void setGuiPlayer(GUI_Player guiPlayer) {
+        this.guiPlayer = guiPlayer;
+
+    }
 
     /**
      * Deposits money in Player's Account
