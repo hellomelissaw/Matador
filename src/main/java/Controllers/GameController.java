@@ -2,6 +2,7 @@ package Controllers;
 import GameComponents.Board.*;
 import GameComponents.Board.Square;
 import GameComponents.Cup;
+import GameComponents.Cup_stub;
 import GameComponents.Player;
 import gui_fields.GUI_Player;
 import Translator.*;
@@ -101,7 +102,14 @@ public class GameController {
     }
 
     public void run() {
-        Cup cup = new Cup(guiController);
+        boolean testing = false; // SET TO TRUE WHEN TESTING LANDING ON SPECIFIC SQUARE (SET SUM IN Cup_stub)
+        Cup cup;
+        if(testing){
+           cup = new Cup_stub(guiController);
+
+        } else {
+        cup = new Cup(guiController);}
+
         int[] diceArr;
         int newPosition;
 
@@ -117,12 +125,7 @@ public class GameController {
 
                 System.out.println(players[i].getPlayerName() + " rolled a " + diceArr[0] + " and a " + diceArr[1] + ". Got moved " + sum + " squares.");
 
-                //TO TEST LANDING ON SPECIFIC SQUARE, COMMENT OUT WHEN NOT IN USE
-                int testDie = 3;
-                newPosition = players[i].updatePosition(testDie);
-
-                // UNCOMMENT THE FOLLOWING LINE WHEN NOT USING TEST DIE
-                //newPosition = players[i].updatePosition(sum);
+                newPosition = players[i].updatePosition(sum);
                 guiController.move(guiPlayers[i], oldPosition, newPosition);
 
 

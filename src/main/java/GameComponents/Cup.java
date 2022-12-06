@@ -11,14 +11,11 @@ This class is reused from our previous project CDIO 1 and translated to English.
 ===================================================================================
  */
 public class Cup {
-
-    Die die1  = new Die();
-    Die die2  = new Die();
+    Die  die1 = new Die();
+    Die die2 = new Die();
     GuiController guiController;
 
-    public Cup (GuiController guiController) {
-       this.guiController = guiController;
-    }
+    public Cup (GuiController guiController) {this.guiController = guiController;}
 
     public int[] getSum () { // GETS THE SUM OF THE VALUE OF BOTH DICE
         int d1 = die1.roll();
