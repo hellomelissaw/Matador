@@ -42,18 +42,7 @@ public class BoardInit {
         board[22] = new DeedSquare(msg.getText("waterPark"),5,guiController);
         board[23] = new DeedSquare(msg.getText("promenade"),5,guiController);
 
-        for (int i = 0 ; i < board.length ; i++) {
-            board[i].setLang(msg);
-            if(board[i] instanceof ChanceSquare){
-                ((ChanceSquare)board[i]).setCardLang();
-                ((ChanceSquare)board[i]).setBoard(board);
-            }
-        }
-
         String[] colors = {"lightgrey", "cyan", "pink", "orange", "red", "yellow", "green", "darkblue"};
-        for (int i = 0 ; i < board.length ; i++) {
-            board[i] = new DeedSquare("Test Deed", 5, guiController);
-        }
 
         for(int i = 0 ; i < board.length ; i+=3) {
             if(i % 2 == 0) {
@@ -67,6 +56,14 @@ public class BoardInit {
             board[i+1].setColor(colors[i/3]);
             board[i+2].setColor(colors[i/3]);
 
+        }
+
+        for (int i = 0 ; i < board.length ; i++) {
+            board[i].setLang(msg);
+            if(board[i] instanceof ChanceSquare){
+                ((ChanceSquare)board[i]).setCardLang();
+                ((ChanceSquare)board[i]).setBoard(board);
+            }
         }
     }
     public Square[] getSquareArr() {
