@@ -13,6 +13,7 @@ public class CardDeedTest {
     GuiController guiController = new GuiController();
     Player testPlayer1 = new Player("TestPlayer 1");
 
+    String[] colors = {"lightgrey", "cyan", "pink", "orange", "red", "yellow", "green", "darkblue"};
     Player[] testPlayers = new Player[2];
     Text msg = new Text("src/main/java/Translator/EnglishText");
 
@@ -21,7 +22,6 @@ public class CardDeedTest {
     @Test
     public void setColorForLoop(){
         Square[] board = new Square[24];
-        String[] colors = {"lightgrey", "cyan", "pink", "orange", "red", "yellow", "green", "darkblue"};
         for (int i = 0 ; i < board.length ; i++) {
             board[i] = new DeedSquare("Test Deed", 5, guiController);
         }
@@ -112,37 +112,23 @@ public class CardDeedTest {
             board[i] = new DeedSquare("Test Deed", 5, guiController);
         }
 
+        for (int i = 0 ; i < board.length ; i++) {
+            board[i] = new DeedSquare("Test Deed", 5, guiController);
+        }
 
-        String[] colors = {"lightgrey", "cyan", "pink", "orange", "red", "yellow", "green", "darkblue"};
-        board[1].setColor(colors[0]);
-        board[2].setColor(colors[0]);
+        for(int i = 0 ; i < board.length ; i+=3) {
+            if(i % 2 == 0) {
+                board[i].setColor("white");
 
-        board[4].setColor(colors[1]);
-        board[5].setColor(colors[1]);
+            } else {
+                board[i].setColor("magenta");
 
-        board[7].setColor(colors[2]);
-        board[8].setColor(colors[2]);
-
-        board[10].setColor(colors[3]);
-        board[11].setColor(colors[3]);
-
-        board[13].setColor(colors[4]);
-        board[14].setColor(colors[4]);
-
-        board[16].setColor(colors[5]);
-        board[17].setColor(colors[5]);
-
-        board[19].setColor(colors[6]);
-        board[20].setColor(colors[6]);
-
-        board[22].setColor(colors[7]);
-        board[23].setColor(colors[7]);
-        /*for(int i = 1 ; i < board.length ; i+=3) {
-            for (int j = 0 ; j < colors.length ; j++) {
-                board[i].setColor(colors[j]);
-                board[i+1].setColor(colors[j]);
             }
-        }*/
+
+            board[i+1].setColor(colors[i/3]);
+            board[i+2].setColor(colors[i/3]);
+
+        }
 
         ChanceCard[] chanceCards = new ChanceCard[8];
 
@@ -196,37 +182,23 @@ public class CardDeedTest {
             board[i] = new DeedSquare("Test Deed", 5, guiController);
         }
 
+        for (int i = 0 ; i < board.length ; i++) {
+            board[i] = new DeedSquare("Test Deed", 5, guiController);
+        }
 
-        String[] colors = {"lightgrey", "cyan", "pink", "orange", "red", "yellow", "green", "darkblue"};
-        board[1].setColor(colors[0]);
-        board[2].setColor(colors[0]);
+        for(int i = 0 ; i < board.length ; i+=3) {
+            if(i % 2 == 0) {
+                board[i].setColor("white");
 
-        board[4].setColor(colors[1]);
-        board[5].setColor(colors[1]);
+            } else {
+                board[i].setColor("magenta");
 
-        board[7].setColor(colors[2]);
-        board[8].setColor(colors[2]);
-
-        board[10].setColor(colors[3]);
-        board[11].setColor(colors[3]);
-
-        board[13].setColor(colors[4]);
-        board[14].setColor(colors[4]);
-
-        board[16].setColor(colors[5]);
-        board[17].setColor(colors[5]);
-
-        board[19].setColor(colors[6]);
-        board[20].setColor(colors[6]);
-
-        board[22].setColor(colors[7]);
-        board[23].setColor(colors[7]);
-        /*for(int i = 1 ; i < board.length ; i+=3) {
-            for (int j = 0 ; j < colors.length ; j++) {
-                board[i].setColor(colors[j]);
-                board[i+1].setColor(colors[j]);
             }
-        }*/
+
+            board[i+1].setColor(colors[i/3]);
+            board[i+2].setColor(colors[i/3]);
+
+        }
 
         ChanceCard[] chanceCards = new ChanceCard[2];
 
@@ -261,37 +233,19 @@ public class CardDeedTest {
             board[i].setLang(msg);
         }
 
+        for(int i = 0 ; i < board.length ; i+=3) {
+            if(i % 2 == 0) {
+                board[i].setColor("white");
 
-        String[] colors = {"lightgrey", "cyan", "pink", "orange", "red", "yellow", "green", "darkblue"};
-        board[1].setColor(colors[0]);
-        board[2].setColor(colors[0]);
+            } else {
+                board[i].setColor("magenta");
 
-        board[4].setColor(colors[1]);
-        board[5].setColor(colors[1]);
-
-        board[7].setColor(colors[2]);
-        board[8].setColor(colors[2]);
-
-        board[10].setColor(colors[3]);
-        board[11].setColor(colors[3]);
-
-        board[13].setColor(colors[4]);
-        board[14].setColor(colors[4]);
-
-        board[16].setColor(colors[5]);
-        board[17].setColor(colors[5]);
-
-        board[19].setColor(colors[6]);
-        board[20].setColor(colors[6]);
-
-        board[22].setColor(colors[7]);
-        board[23].setColor(colors[7]);
-        /*for(int i = 1 ; i < board.length ; i+=3) {
-            for (int j = 0 ; j < colors.length ; j++) {
-                board[i].setColor(colors[j]);
-                board[i+1].setColor(colors[j]);
             }
-        }*/
+
+            board[i+1].setColor(colors[i/3]);
+            board[i+2].setColor(colors[i/3]);
+
+        }
 
         ChanceCard[] chanceCards = new ChanceCard[8];
 
