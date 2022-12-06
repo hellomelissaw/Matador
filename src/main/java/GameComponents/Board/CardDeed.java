@@ -68,9 +68,10 @@ public class CardDeed extends ChanceCard {
                                 newPos = board.length - currentPos - (board.length - i);
 
                             }
-                            System.out.println("This is new position: " + newPos);
+
                             currentPlayer.updatePosition(newPos);
                             ((DeedSquare)board[i]).setDeedOwner(currentPlayer,newPos);
+
                             break;
 
                         } else {
@@ -93,6 +94,7 @@ public class CardDeed extends ChanceCard {
                // for (int i = 0 ; i < correctColorSquare.length ; i ++) {
 
             }*/
+        System.out.println("This is new position: " + currentPlayer.getPosition() + " and new square color is: " + board[currentPlayer.getPosition()].getColor());
         }
     }
 
