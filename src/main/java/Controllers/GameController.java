@@ -32,17 +32,17 @@ public class GameController {
             players = new Player[playerCount];
             guiPlayers = new GUI_Player[playerCount];
 
-            players[0] = new Player("Marc", guiController); // INITIALISE EACH PLAYER WITH NAME
+            players[0] = new Player("Marc"); // INITIALISE EACH PLAYER WITH NAME
             players[0].depositMoney(balance); // DEPOSIT INITIAL BALANCE
 
-            players[1] = new Player("Germaine", guiController); // INITIALISE EACH PLAYER WITH NAME
+            players[1] = new Player("Germaine"); // INITIALISE EACH PLAYER WITH NAME
             players[1].depositMoney(balance); // DEPOSIT INITIAL BALANCE
 
             if (playerCount > 2) {
-                players[2] = new Player(userInput, guiController); // INITIALISE EACH PLAYER WITH NAME
+                players[2] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
                 players[2].depositMoney(balance); // DEPOSIT INITIAL BALANCE
                 if (playerCount == 4) {
-                    players[3] = new Player(userInput, guiController); // INITIALISE EACH PLAYER WITH NAME
+                    players[3] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
                     players[3].depositMoney(balance); // DEPOSIT INITIAL BALANCE
                 }
             }
@@ -85,7 +85,7 @@ public class GameController {
                 int playerNumber = i + 1;
                 System.out.println(msg.getText("enterName") + " " + playerNumber);
                 userInput = guiController.getUserString(playerNumber);
-                players[i] = new Player(userInput, guiController); // INITIALISE EACH PLAYER WITH NAME
+                players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
                 players[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE
 
             }

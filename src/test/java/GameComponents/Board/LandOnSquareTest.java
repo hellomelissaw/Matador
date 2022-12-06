@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 public class LandOnSquareTest {
     GuiController guiController = new GuiController();
-    Player testPlayer1 = new Player("TestPlayer 1");
+    Player testPlayer1 = new Player("TestPlayer 1", guiController);
     JailSquare testJail = new JailSquare("Jail", guiController);
     GUI_Player testGuiPlayer1 = new GUI_Player("TestPlayer 1");
     Text msg = new Text("src/main/java/Translator/EnglishText");

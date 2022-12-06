@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 
 public class CardMoveTest {
     GuiController guiController = new GuiController();
-    Player testPlayer1 = new Player("TestPlayer 1");
+    Player testPlayer1 = new Player("TestPlayer 1",guiController);
 
    // Square testChanceSquare = new ChanceSquare("Testing Chance", guiController);
     Text msg = new Text("src/main/java/Translator/EnglishText");

@@ -1,0 +1,403 @@
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\"\n         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n\n    <groupId>dtu.gruppe26.cdio3</groupId>\n    <artifactId>cdio-3</artifactId>\n    <version>1.0-SNAPSHOT</version>\n\n    <properties>\n        <maven.compiler.source>18</maven.compiler.source>\n        <maven.compiler.target>18</maven.compiler.target>\n        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n    </properties>\n\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	(revision 395deb89ab9ee74e642e0f5cb958681c314126dd)
++++ b/pom.xml	(date 1668531191771)
+@@ -7,6 +7,32 @@
+     <groupId>dtu.gruppe26.cdio3</groupId>
+     <artifactId>cdio-3</artifactId>
+     <version>1.0-SNAPSHOT</version>
++    <dependencies>
++        <dependency>
++            <groupId>junit</groupId>
++            <artifactId>junit</artifactId>
++            <version>4.13.1</version>
++            <scope>test</scope>
++        </dependency>
++        <dependency>
++            <groupId>junit</groupId>
++            <artifactId>junit</artifactId>
++            <version>4.13.1</version>
++            <scope>test</scope>
++        </dependency>
++        <dependency>
++            <groupId>junit</groupId>
++            <artifactId>junit</artifactId>
++            <version>4.13.1</version>
++            <scope>test</scope>
++        </dependency>
++        <dependency>
++            <groupId>org.junit.jupiter</groupId>
++            <artifactId>junit-jupiter</artifactId>
++            <version>5.8.1</version>
++            <scope>test</scope>
++        </dependency>
++    </dependencies>
+ 
+     <properties>
+         <maven.compiler.source>18</maven.compiler.source>
+Index: src/main/java/GameComponents/Board/StartSquare.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package GameComponents.Board;\n\npublic class StartSquare extends Square{\n    String squareName;\n    public StartSquare(String startSquare) {\n        super(startSquare);\n\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/GameComponents/Board/StartSquare.java b/src/main/java/GameComponents/Board/StartSquare.java
+--- a/src/main/java/GameComponents/Board/StartSquare.java	(revision 395deb89ab9ee74e642e0f5cb958681c314126dd)
++++ b/src/main/java/GameComponents/Board/StartSquare.java	(date 1668531191773)
+@@ -1,9 +1,38 @@
+ package GameComponents.Board;
+ 
++import GameComponents.Player;
++
+ public class StartSquare extends Square{
+     String squareName;
++    Player player;
++    BoardInit board;
+     public StartSquare(String startSquare) {
+         super(startSquare);
+ 
++    }
++
++    public StartSquare(String squareName, String squareName1) {
++        super(squareName);
++        this.squareName = squareName1;
++    }
++
++    public String getSquareName() {
++        return squareName;
++    }
++
++    public BoardInit getBoard() {
++        return board;
++    }
++
++    public Player getPlayer() {
++        return player;
++    }
++
++    /* public boolean LandOnStartSquare() {
++       if (board[0]==true)
++          return
++   }*/
++    public void LandOnSquare() {
++
+     }
+ }
+Index: src/main/java/GameComponents/Player.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package GameComponents;\n\n/*\n===================================================================================\nThis class is reused from our CDIO2 project and built upon.\n===================================================================================\n */\npublic class Player {\n\n    private int balance;\n    private int squareIndex = 0;\n    private String playerName;\n    Account PlayerAccount = new Account();\n\n    public Player(String playerName) {\n        this.playerName = playerName;\n        //this.balance = balance;\n        //System.out.println(playerName);\n        //PlayerAccount.setBalance(balance);\n    }\n\n    /*\n    public int getPlayerNumber() {\n        return playerNumber;\n    }\n\n     */\n\n    public void withdrawMoney(int newPoints) {\n        PlayerAccount.withDraw(newPoints);\n    }\n\n    public void depositMoney(int newPoints){\n        PlayerAccount.deposit(newPoints);\n    }\n\n    public int getCurrentBalance(){\n        //System.out.println(PlayerAccount.getBalance());\n        return (PlayerAccount.getBalance());\n    }\n\n    public String getPlayerName (){\n        return playerName;\n    }\n\n    public int updatePosition(int sumDice) {\n        for(int i = 0; i < sumDice; i++) {\n            if (this.squareIndex < 23) {\n                this.squareIndex++;\n            } else {\n                this.squareIndex = 0;\n            }\n        }\n        return this.squareIndex;\n    }\n\n    @Override\n    public String toString() {\n        return playerName;\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/GameComponents/Player.java b/src/main/java/GameComponents/Player.java
+--- a/src/main/java/GameComponents/Player.java	(revision 395deb89ab9ee74e642e0f5cb958681c314126dd)
++++ b/src/main/java/GameComponents/Player.java	(date 1668531191776)
+@@ -54,6 +54,10 @@
+         return this.squareIndex;
+     }
+ 
++    public int getPosition(){
++        return squareIndex;
++    }
++
+     @Override
+     public String toString() {
+         return playerName;
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Default ignored files\n/shelf/\n/.idea/workspace.xml\n# Editor-based HTTP Client requests\n/httpRequests/\n# Datasource local storage ignored files\n/dataSources/\n/dataSources.local.xml\nout/\nauto-import.\n.idea/artifacts\n.idea/compiler.xml\n.idea/jarRepositories.xml\n.idea/modules.xml\n.idea/*.iml\n.idea/modules\n.idea/usage.statistics.xml\n*.iml\n*.ipr\n.idea/uiDesigner.xml
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+--- a/.gitignore	(revision 395deb89ab9ee74e642e0f5cb958681c314126dd)
++++ b/.gitignore	(date 1668531285581)
+@@ -17,4 +17,5 @@
+ .idea/usage.statistics.xml
+ *.iml
+ *.ipr
++*.class
+ .idea/uiDesigner.xml
+\ No newline at end of file
+Index: src/main/java/Controllers/GameController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Controllers;\nimport GameComponents.Board.*;\nimport GameComponents.Cup;\nimport GameComponents.Player;\n\nimport java.util.Scanner;\n\npublic class GameController {\n    int playerCount = 0;\n    int balance = 0;\n    Player[] player;\n    Square[] square;\n    public void init() {\n        BoardInit board = new BoardInit();\n        square = board.getSquareArr();\n        Scanner userInput = new Scanner(System.in);\n\n        //INITIALIZING PLAYERS\n        System.out.println(\"Enter number of player (2-4):\");\n        boolean playerCountInvalid = true;\n        while (playerCountInvalid) {\n            playerCount = userInput.nextInt();\n            if (playerCount >= 2 && playerCount <= 4) {\n                playerCountInvalid = false;\n            } else {\n                System.out.println(\"Invalid player number, please enter an integer between 2 and 4 inclusively.\");\n            }\n        }\n        balance = 20-(playerCount-2)*2; //SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT\n\n\n        player = new Player[playerCount];\n\n        for (int i = 0 ; i < playerCount ; i++) {\n            //System.out.println(\"There are \" + playerCount + \"players.\");\n            int playerNumber = i + 1;\n            System.out.println(\"Player \" + playerNumber + \" enter your name:\");\n            Scanner input = new Scanner(System.in);\n            String playerName = input.nextLine();\n            player[i] = new Player(playerName); // INITIALISE EACH PLAYER WITH NAME\n            player[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE\n        }\n\n    }\n\n    public void run() {\n        Cup cup = new Cup();\n        int[] diceArr;\n        int newPosition = 0;\n\n        int testInt = 0;\n        while(testInt < 25) {\n\n            for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION\n                testInt++;\n                //THROWS THE DICE AND MOVES THE PLAYER\n                diceArr = cup.getSum();\n                int sum = diceArr[2];\n                int playerIndex = i + 1;\n\n                System.out.println(player[i].getPlayerName() + \", you have rolled a \" + diceArr[0] + \" and a \" + diceArr[1] + \". You move \" + sum + \" squares.\");\n                newPosition = player[i].updatePosition(sum);\n\n                System.out.println(player[i].getPlayerName() + \" you are on square \" + square[newPosition].toString());\n\n                //HANDLES THE PROCESS OF LANDING ON A SQUARE AND CALLS METHOD FOR SUBSEQUENT ACTIONS\n                LandOnSquare playerTurn = new LandOnSquare(square, player);\n\n                if(square[newPosition] instanceof DeedSquare) {\n                    playerTurn.landOnDeedSquare(newPosition,i);\n\n                } else if (square[newPosition] instanceof ChanceSquare) {\n                    playerTurn.landOnChanceSquare(newPosition,i);\n\n                } else if (square[newPosition] instanceof JailSquare) {\n                    playerTurn.landOnJailSquare(newPosition,i);\n\n                } else if (square[newPosition] instanceof ParkingSquare) {\n                    playerTurn.landOnParkingSquare(newPosition,i);\n\n                } else {\n                    playerTurn.landOnStartSquare(newPosition,i);\n                }\n\n            }\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Controllers/GameController.java b/src/main/java/Controllers/GameController.java
+--- a/src/main/java/Controllers/GameController.java	(revision 395deb89ab9ee74e642e0f5cb958681c314126dd)
++++ b/src/main/java/Controllers/GameController.java	(date 1668531191772)
+@@ -39,7 +39,10 @@
+             String playerName = input.nextLine();
+             player[i] = new Player(playerName); // INITIALISE EACH PLAYER WITH NAME
+             player[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE
++
+         }
++        /*//TEST START BALANCE
++        System.out.println("There is " + playerCount + " players with a start balance of " + balance + " each.");*/
+ 
+     }
+ 
+@@ -58,6 +61,13 @@
+                 int sum = diceArr[2];
+                 int playerIndex = i + 1;
+ 
++                int oldPosition = player[i].getPosition();
++                // hvis newPosition er mindre end oldPosition, betyder det at man har passeret start
++                if (newPosition<oldPosition && oldPosition != 18) {
++                    player[i].depositMoney(2);
++                    System.out.println(player[i].getPlayerName()+(" passed the start square, and will now recieve M2"));
++                }
++
+                 System.out.println(player[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
+                 newPosition = player[i].updatePosition(sum);
+ 
+Index: src/test/java/Controllers/InitPlayerArrTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/Controllers/InitPlayerArrTest.java b/src/test/java/Controllers/InitPlayerArrTest.java
+new file mode 100644
+--- /dev/null	(date 1668531191777)
++++ b/src/test/java/Controllers/InitPlayerArrTest.java	(date 1668531191777)
+@@ -0,0 +1,17 @@
++package Controllers;
++
++import GameComponents.Player;
++import org.junit.jupiter.api.Test;
++
++import static org.junit.jupiter.api.Assertions.*;
++
++class InitPlayerArrTest { //INCOMPLETE
++
++    @Test
++    void initTwoPlayersWithBalanceTwenty() {
++        Player[] player;
++        int playerCount;
++        int balance;
++
++    }
++}
+\ No newline at end of file
+Index: src/test/java/GameComponents/UpdatePlayerPositionTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/GameComponents/UpdatePlayerPositionTest.java b/src/test/java/GameComponents/UpdatePlayerPositionTest.java
+new file mode 100644
+--- /dev/null	(date 1668531191781)
++++ b/src/test/java/GameComponents/UpdatePlayerPositionTest.java	(date 1668531191781)
+@@ -0,0 +1,24 @@
++package GameComponents;
++
++import org.junit.Test;
++
++import static org.junit.Assert.*;
++
++public class UpdatePlayerPositionTest {
++
++    @Test
++    public void updatePosition10Squares() {
++        Player testPlayer = new Player("Test Player");
++        int currentPosition = 0;
++        currentPosition = testPlayer.updatePosition(10);
++        assertEquals(10,currentPosition);
++    }
++
++    @Test
++    public void updatePosition25Squares() {
++        Player testPlayer = new Player("Test Player");
++        int currentPosition = 0;
++        currentPosition = testPlayer.updatePosition(25);
++        assertEquals(1,currentPosition);
++    }
++}
+\ No newline at end of file
+Index: src/test/java/GameComponents/Board/DeedSquareTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/GameComponents/Board/DeedSquareTest.java b/src/test/java/GameComponents/Board/DeedSquareTest.java
+new file mode 100644
+--- /dev/null	(date 1668531191778)
++++ b/src/test/java/GameComponents/Board/DeedSquareTest.java	(date 1668531191778)
+@@ -0,0 +1,34 @@
++package GameComponents.Board;
++
++import GameComponents.Player;
++import org.junit.Test;
++
++import static org.junit.Assert.*;
++
++public class DeedSquareTest {
++    Player testPlayer1 = new Player("TestPlayer 1");
++    Player testPlayer2 = new Player("TestPlayer 2");
++    DeedSquare testDeedSquare = new DeedSquare("Test Deed 1",5);
++
++
++    @Test
++    public void testDeedSquareHasDeed() {
++        assertEquals(true,testDeedSquare.hasDeed());
++    }
++    @Test
++    public void setTestDeedSquareHasDeedFalseafterSellDeed() {
++        testDeedSquare.sellDeed(testPlayer1);
++        assertEquals(false,testDeedSquare.hasDeed());
++    }
++    @Test
++    public void getDeedPrice() {
++        assertEquals(5, testDeedSquare.getDeedPrice());
++    }
++    @Test
++    public void getDeedOwner() {
++        testDeedSquare.sellDeed(testPlayer1);
++        assertEquals(testPlayer1, testDeedSquare.getDeedOwner());
++        testDeedSquare.sellDeed(testPlayer2);
++        assertEquals(testPlayer2, testDeedSquare.getDeedOwner());
++    }
++}
+\ No newline at end of file
+Index: src/test/java/GameComponents/UpdatePlayerAccountTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/GameComponents/UpdatePlayerAccountTest.java b/src/test/java/GameComponents/UpdatePlayerAccountTest.java
+new file mode 100644
+--- /dev/null	(date 1668531191780)
++++ b/src/test/java/GameComponents/UpdatePlayerAccountTest.java	(date 1668531191780)
+@@ -0,0 +1,33 @@
++package GameComponents;
++
++import org.junit.Test;
++import static org.junit.Assert.*;
++
++public class UpdatePlayerAccountTest {
++    Player testPlayer = new Player("Test Player");
++
++    @Test
++    public void getCurrentBalance0() {
++        assertEquals(0,testPlayer.getCurrentBalance());
++    }
++
++    @Test
++    public void deposit10() {
++        testPlayer.depositMoney(10);
++        assertEquals(10,testPlayer.getCurrentBalance());
++    }
++
++    @Test
++    public void noNegativeBalanceZeroMinus3() {
++        testPlayer.withdrawMoney(3);
++        assertEquals(0,testPlayer.getCurrentBalance());
++    }
++
++    @Test
++    public void deposit10withdraw3() {
++        testPlayer.depositMoney(10);
++        testPlayer.withdrawMoney(3);
++        assertEquals(7,testPlayer.getCurrentBalance());
++    }
++
++}
+\ No newline at end of file
+Index: src/test/java/GameComponents/Board/LandOnSquareTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/GameComponents/Board/LandOnSquareTest.java b/src/test/java/GameComponents/Board/LandOnSquareTest.java
+new file mode 100644
+--- /dev/null	(date 1668531191779)
++++ b/src/test/java/GameComponents/Board/LandOnSquareTest.java	(date 1668531191779)
+@@ -0,0 +1,75 @@
++package GameComponents.Board;
++
++import GameComponents.Player;
++
++import org.junit.Test;
++
++import static org.junit.Assert.*;
++
++public class LandOnSquareTest {
++
++
++    @Test
++    public void player1BuysAvailableDeedSquareAndPlayer2PaysRent() {
++        Square[] testBoard = new Square[1];
++        Player[] testPlayer = new Player[2];
++        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer);
++
++        testPlayer[0] = new Player("Player 1");
++        testPlayer[0].depositMoney(20);
++
++        testPlayer[1] = new Player("Player 2");
++        testPlayer[1].depositMoney(20);
++
++
++        testBoard[0] = new DeedSquare("Test Property",5);
++
++        //PLAYER 1 BUYS TEST PROPERTY
++        playerTurnTest.landOnDeedSquare(0,0);
++        assertEquals(15,testPlayer[0].getCurrentBalance());
++
++        //PLAYER 2 PAYS RENT TO PLAYER 1 AFTER LANDING ON TEST PROPERTY OWNED BY PLAYER 1
++        playerTurnTest.landOnDeedSquare(0,1);
++        assertEquals(15,testPlayer[1].getCurrentBalance());
++        assertEquals(20,testPlayer[0].getCurrentBalance());
++
++    }
++
++    @Test
++    public void landOnJailSquareAndPay1M() {
++        Square[] testBoard = new Square[19];
++        Player[] testPlayer = new Player[1];
++        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer);
++
++        testPlayer[0] = new Player("Player 1");
++        testPlayer[0].depositMoney(20);
++
++        testBoard[18] = new JailSquare("Go to Jail");
++
++        playerTurnTest.landOnJailSquare(18,0);
++        System.out.println(testPlayer[0].getPosition());
++        assertEquals(19, testPlayer[0].getCurrentBalance());
++
++    }
++
++    @Test
++    public void updatePlayerPositionToIndex6AfterJail(){
++        Square[] testBoard = new Square[24];
++        Player[] testPlayer = new Player[1];
++
++        LandOnSquare playerTurnTest = new LandOnSquare(testBoard, testPlayer);
++
++        testPlayer[0] = new Player("Player 1");
++        testPlayer[0].depositMoney(20);
++
++        testBoard[18] = new JailSquare("Go to Jail");
++
++        testPlayer[0].updatePosition(18);
++
++        playerTurnTest.landOnJailSquare(18,0);
++        System.out.println(testPlayer[0].getPosition());
++        assertEquals(6,testPlayer[0].getPosition());
++
++    }
++
++}
+\ No newline at end of file

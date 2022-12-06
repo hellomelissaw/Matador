@@ -10,8 +10,8 @@ import static org.junit.Assert.*;
 
 public class DeedSquareTest {
     GuiController guiController = new GuiController();
-    Player testPlayer1 = new Player("TestPlayer 1");
-    Player testPlayer2 = new Player("TestPlayer 2");
+    Player testPlayer1 = new Player("TestPlayer 1",guiController);
+    Player testPlayer2 = new Player("TestPlayer 2",guiController);
     DeedSquare testDeedSquare = new DeedSquare("Test Deed 1",5,guiController);
 
     GUI_Player testGuiPlayer1 = new GUI_Player("TestPlayer 1");

@@ -1,5 +1,6 @@
 package GuiController;
 
+import Controllers.GuiController;
 import GameComponents.Player;
 import gui_fields.GUI_Field;
 import gui_fields.GUI_Player;
@@ -34,7 +35,7 @@ public class GuiControllerTest {
 
     @Test
     public void updateBalance() {
-        Player player = new Player("Test Player");
+        Player player = new Player("Test Player", new GuiController());
         player.depositMoney(20);
         player.getCurrentBalance();
         int balance = 2;

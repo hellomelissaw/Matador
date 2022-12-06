@@ -1,10 +1,11 @@
 package GameComponents;
 
+import Controllers.GuiController;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class UpdatePlayerAccountTest {
-    Player testPlayer = new Player("Test Player");
+    Player testPlayer = new Player("Test Player", new GuiController());
 
     @Test
     public void getCurrentBalance0() {
