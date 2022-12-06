@@ -9,22 +9,23 @@ This class is reused from our CDIO2 project and built upon.
 ===================================================================================
  */
 public class Player {
+    private boolean testing = true;
     GUI_Player guiPlayer;
-
     GuiController guiController;
     private int squareIndex = 0;
     private String playerName;
     Account playerAccount = new Account();
     private String winnerName;
 
-    public Player(String playerName, GuiController guiController) {
+    public Player(String playerName) {
         this.playerName = playerName;
-        this.guiController = guiController;
+
     }
 
-    public void setGuiPlayer(GUI_Player guiPlayer) {
+    public void setGui(GUI_Player guiPlayer, GuiController guiController) {
         this.guiPlayer = guiPlayer;
-
+        this.guiController = guiController;
+        testing = false;
     }
 
     /**
@@ -56,15 +57,15 @@ public class Player {
      * @param sumDice sum of the face values of dice in Cup
      * @return index of the Square that the Player is moved to after throwing dice
      */
-    public int updatePosition(int sumDice) {
+    public void updatePosition(int sumDice) {
         for(int i = 0; i < sumDice; i++) {
             if (squareIndex < 23) {
                 squareIndex++;
             } else {
                 squareIndex = 0;
             }
+
         }
-        return squareIndex;
     }
 
     public int getPosition(){
