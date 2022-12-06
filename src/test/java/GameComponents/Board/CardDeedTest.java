@@ -20,6 +20,50 @@ public class CardDeedTest {
 
     @Test
     public void setColorForLoop(){
+        Square[] board = new Square[24];
+        String[] colors = {"lightgrey", "cyan", "pink", "orange", "red", "yellow", "green", "darkblue"};
+        for (int i = 0 ; i < board.length ; i++) {
+            board[i] = new DeedSquare("Test Deed", 5, guiController);
+        }
+
+        for(int i = 0 ; i < board.length ; i+=3) {
+            if(i % 2 == 0) {
+                board[i].setColor("white");
+
+            } else {
+                board[i].setColor("magenta");
+
+            }
+
+            board[i+1].setColor(colors[i/3]);
+            board[i+2].setColor(colors[i/3]);
+
+        }
+        assertEquals("white", board[0].getColor());
+        assertEquals("lightgrey", board[1].getColor());
+        assertEquals("lightgrey", board[2].getColor());
+        assertEquals("magenta", board[3].getColor());
+        assertEquals("cyan", board[4].getColor());
+        assertEquals("cyan", board[5].getColor());
+        assertEquals("white", board[6].getColor());
+        assertEquals("pink", board[7].getColor());
+        assertEquals("pink", board[8].getColor());
+        assertEquals("magenta", board[9].getColor());
+        assertEquals("orange", board[10].getColor());
+        assertEquals("orange", board[11].getColor());
+        assertEquals("white", board[12].getColor());
+        assertEquals("red", board[13].getColor());
+        assertEquals("red", board[14].getColor());
+        assertEquals("magenta", board[15].getColor());
+        assertEquals("yellow", board[16].getColor());
+        assertEquals("yellow", board[17].getColor());
+        assertEquals("white", board[18].getColor());
+        assertEquals("green", board[19].getColor());
+        assertEquals("green", board[20].getColor());
+        assertEquals("magenta", board[21].getColor());
+        assertEquals("darkblue", board[22].getColor());
+        assertEquals("darkblue", board[23].getColor());
+
 
     }
 
