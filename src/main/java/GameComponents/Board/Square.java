@@ -17,7 +17,7 @@ public abstract class Square {
 
     }
 
-    public abstract void landOn(Player currentPlayer, GUI_Player currentGuiPlayer);
+    public abstract void landOn(Player currentPlayer);
 
     public String getSquareName() {
         return squareName;

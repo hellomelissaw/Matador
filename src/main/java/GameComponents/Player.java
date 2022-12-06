@@ -28,12 +28,17 @@ public class Player {
         testing = false;
     }
 
+    public void setStartBalance(int startBalance) {
+        playerAccount.deposit(startBalance);
+    }
+
     /**
      * Deposits money in Player's Account
      * @param newPoints amount of Monopoly money to deposit
      */
     public void withdrawMoney(int newPoints) {
         playerAccount.withDraw(newPoints);
+        guiPlayer.setBalance(playerAccount.getBalance());
     }
 
     /**
@@ -42,6 +47,7 @@ public class Player {
      */
     public void depositMoney(int newPoints){
         playerAccount.deposit(newPoints);
+        guiPlayer.setBalance(playerAccount.getBalance());
     }
 
     public int getCurrentBalance(){
@@ -64,8 +70,9 @@ public class Player {
             } else {
                 squareIndex = 0;
             }
-
         }
+        System.out.println("Square Index after for loop: " + squareIndex);
+        if(!testing){ guiController.move(guiPlayer, squareIndex - sumDice, squareIndex);}
     }
 
     public int getPosition(){

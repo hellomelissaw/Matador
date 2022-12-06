@@ -40,7 +40,7 @@ public abstract class ChanceCard {
         guiController.showMessage(cardMessage);
     }
 
-    public abstract void playCard(Player currentPlayer, GUI_Player currentGuiPlayer);
+    public abstract void playCard(Player currentPlayer);
 
     public boolean checkPickAgain() {
         return pickAgain;

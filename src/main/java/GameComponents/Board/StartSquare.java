@@ -9,7 +9,7 @@ public class StartSquare extends Square{
 
     }
 
-   public void landOn(Player currentPlayer, GUI_Player currentGuiPlayer) {
+   public void landOn(Player currentPlayer) {
 
     }
 }

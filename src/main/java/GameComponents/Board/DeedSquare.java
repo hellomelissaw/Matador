@@ -50,10 +50,10 @@ public class DeedSquare extends Square{
         return priceString;
     }
 
-    public void landOn(Player currentPlayer, GUI_Player currentGuiPlayer) {
+    public void landOn(Player currentPlayer) {
         currentPlayer.withdrawMoney(deedPrice);
         int currentBalance = currentPlayer.getCurrentBalance();
-        guiController.updateBalance(currentGuiPlayer, currentBalance);
+        //guiController.updateBalance(currentGuiPlayer, currentBalance);
         System.out.println(msg.getText("newBalance") + currentBalance);
 
         if(sellDeed == true) {
@@ -80,7 +80,7 @@ public class DeedSquare extends Square{
 
                 deedOwner.depositMoney(deedPrice);
                 currentBalance = deedOwner.getCurrentBalance();
-                guiController.updateBalance(currentGuiPlayer,currentBalance);
+                //guiController.updateBalance(currentGuiPlayer,currentBalance);
 
             }
 

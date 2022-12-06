@@ -17,7 +17,7 @@ public class CardDeed extends ChanceCard {
     public void setBoard(Square[] board) {
        this.board = board;
     }
-    public void playCard(Player currentPlayer, GUI_Player currentGuiPlayer) {
+    public void playCard(Player currentPlayer) {
         int currentPos = currentPlayer.getPosition();
         int newPos;
         int index = 0;
@@ -35,7 +35,7 @@ public class CardDeed extends ChanceCard {
             if(((DeedSquare)board[skateParkIndex]).hasDeed()){
             ((DeedSquare)board[skateParkIndex]).setDeedOwner(currentPlayer, skateParkIndex);
 
-            } else { board[skateParkIndex].landOn(currentPlayer,currentGuiPlayer); }
+            } else { board[skateParkIndex].landOn(currentPlayer); }
 
         } else {
                 for (int i = 0 ; i < board.length ; i++) {
@@ -66,7 +66,7 @@ public class CardDeed extends ChanceCard {
                 }// end for loop
 
                     if (!foundFreeSquare) {
-                        board[index].landOn(currentPlayer, currentGuiPlayer);
+                        board[index].landOn(currentPlayer);
                     }
 
                 } // end else

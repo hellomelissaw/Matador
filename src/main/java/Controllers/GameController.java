@@ -14,7 +14,6 @@ public class GameController {
     int balance = 0;
     Player[] players;
     Square[] square;
-    GUI_Player[] guiPlayers;
     Text msg;
 
     public void initTest() {
@@ -30,26 +29,22 @@ public class GameController {
             balance = 20 - (playerCount - 2) * 2;
             //balance = 1; //TEST BALANCE, COMMENT OUT FOR NORMAL RUNNING OF GAME
             players = new Player[playerCount];
-            guiPlayers = new GUI_Player[playerCount];
+            //guiPlayers = new GUI_Player[playerCount];
 
             players[0] = new Player("Marc"); // INITIALISE EACH PLAYER WITH NAME
-            players[0].depositMoney(balance); // DEPOSIT INITIAL BALANCE
+            players[0].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
 
             players[1] = new Player("Germaine"); // INITIALISE EACH PLAYER WITH NAME
-            players[1].depositMoney(balance); // DEPOSIT INITIAL BALANCE
+            players[1].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
 
             if (playerCount > 2) {
                 players[2] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
-                players[2].depositMoney(balance); // DEPOSIT INITIAL BALANCE
+                players[2].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
                 if (playerCount == 4) {
                     players[3] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
-                    players[3].depositMoney(balance); // DEPOSIT INITIAL BALANCE
+                    players[3].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
                 }
             }
-            BoardInit board = new BoardInit(guiController, msg, players);
-            square = board.getSquareArr();
-            guiController.addPlayerOnBoard(players);
-            guiPlayers = guiController.getGuiPlayersArr();
 
         } else {
             String[] lang = {"EnglishText", "DanskTekst"};
@@ -79,28 +74,29 @@ public class GameController {
 
 
             players = new Player[playerCount];
-            guiPlayers = new GUI_Player[playerCount];
+            //guiPlayers = new GUI_Player[playerCount];
 
             for (int i = 0; i < playerCount; i++) {
                 int playerNumber = i + 1;
                 System.out.println(msg.getText("enterName") + " " + playerNumber);
                 userInput = guiController.getUserString(playerNumber);
                 players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
-                players[i].depositMoney(balance); // DEPOSIT INITIAL BALANCE
+                players[i].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
 
             }
-
-            BoardInit board = new BoardInit(guiController, msg, players);
-            square = board.getSquareArr();
-            //String userInput = new Scanner(System.in);
-        /*for(int i = 0 ; i < square.length ; i++) { //SETS LANGUAGE FOR ALL SQUARES
-            square[i].setLang(msg);
-        }*/
-
-            guiController.addPlayerOnBoard(players);
-            guiPlayers = guiController.getGuiPlayersArr();
-            guiController.showMessage(msg.getText("startGame"));
         }
+
+        BoardInit board = new BoardInit(guiController, msg, players);
+        square = board.getSquareArr();
+
+        guiController.addPlayerOnBoard(players);
+        GUI_Player[] guiPlayers = guiController.getGuiPlayersArr();
+        for(int i = 0 ; i < players.length ; i++) {
+            players[i].setGui(guiPlayers[i],guiController);
+            System.out.println("Gui Players are set");
+        }
+
+        guiController.showMessage(msg.getText("startGame"));
 
     }
 
@@ -131,14 +127,14 @@ public class GameController {
                 players[i].updatePosition(sum);
                 newPosition = players[i].getPosition();
 
-                guiController.move(guiPlayers[i], oldPosition, newPosition);
+                //guiController.move(guiPlayers[i], oldPosition, newPosition);
 
 
                 // hvis newPosition er mindre end oldPosition, betyder det at man har passeret start
                 if (newPosition<oldPosition && oldPosition != 18) {
                     players[i].depositMoney(2);
                     int currentBalance = players[i].getCurrentBalance();
-                    guiController.updateBalance(guiPlayers[i], currentBalance);
+                    //guiController.updateBalance(guiPlayers[i], currentBalance);
                     String passStart = players[i].getPlayerName()+ msg.getText("passStart") + currentBalance;
                     System.out.println(passStart);
                     guiController.showMessage(passStart);
@@ -146,7 +142,7 @@ public class GameController {
                 }
                 System.out.println(players[i].getPlayerName() + msg.getText("position") + square[newPosition].getSquareName() +  msg.getText("squareNum") + players[i].getPosition());
 
-                square[newPosition].landOn(players[i], guiPlayers[i]);
+                square[newPosition].landOn(players[i]);
 
                     if(players[i].isBankrupt() == true) {
                         gameOver = true;

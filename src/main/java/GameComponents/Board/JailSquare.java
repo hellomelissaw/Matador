@@ -12,7 +12,7 @@ public class JailSquare extends Square{
 
     }
 
-    public void landOn(Player currentPlayer, GUI_Player currentGuiPlayer) {
+    public void landOn(Player currentPlayer) {
         int currentPosition = currentPlayer.getPosition();
         if (currentPosition==18){
             String jailMessage = msg.getText("movedToJail");
@@ -20,11 +20,11 @@ public class JailSquare extends Square{
 
             currentPlayer.withdrawMoney(1);
             int currentBalance = currentPlayer.getCurrentBalance();
-            guiController.updateBalance(currentGuiPlayer, currentBalance);
+            //guiController.updateBalance(currentGuiPlayer, currentBalance);
             System.out.println(msg.getText("newBalance")+ currentBalance);
             guiController.showMessage(jailMessage);
             currentPlayer.updatePosition(12);
-            guiController.move(currentGuiPlayer,18,6);
+            //guiController.move(currentGuiPlayer,18,6);
             System.out.println(msg.getText("movedToSquare") + currentPlayer.getPosition() );
 
         }  else  {

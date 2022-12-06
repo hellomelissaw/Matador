@@ -1,8 +1,6 @@
 package GameComponents.Board;
 import Controllers.GuiController;
 import GameComponents.Player;
-import gui_fields.GUI_Player;
-import gui_main.GUI;
 
 public class CardMove extends ChanceCard {
     int distance;
@@ -12,7 +10,7 @@ public class CardMove extends ChanceCard {
         this.distance = distance;
     }
 
-    public void playCard(Player currentPlayer, GUI_Player currentGuiPlayer) {
+    public void playCard(Player currentPlayer) {
 
         if (distance == 1) {
             String message = msg.getText("prompt") + msg.getText("chance3");

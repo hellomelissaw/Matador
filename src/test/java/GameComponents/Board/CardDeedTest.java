@@ -79,7 +79,7 @@ public class CardDeedTest {
         testPlayer1.updatePosition(22);
         goToSkatePark.setCardLang(msg);
         ((CardDeed)goToSkatePark).setBoard(board);
-        goToSkatePark.playCard(testPlayer1,testGuiPlayer1);
+        goToSkatePark.playCard(testPlayer1);
         assertEquals(10, testPlayer1.getPosition());
     }
 
