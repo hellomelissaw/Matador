@@ -44,9 +44,6 @@ public class DeedSquare extends Square{
         return deed.getOwner();
     }
 
-    //public void setDeedOwner(Player currentPlayer) { deed.setOwner(currentPlayer); }
-
-
     @Override
     public String toString() {
         String priceString = Integer.toString(deedPrice);
@@ -54,16 +51,12 @@ public class DeedSquare extends Square{
     }
 
     public void landOn(Player currentPlayer, GUI_Player currentGuiPlayer) {
-        //int i = currentPlayer;
-        //int deedPrice = ((DeedSquare) square[newPosition]).getDeedPrice();
         currentPlayer.withdrawMoney(deedPrice);
         int currentBalance = currentPlayer.getCurrentBalance();
         guiController.updateBalance(currentGuiPlayer, currentBalance);
         System.out.println(msg.getText("newBalance") + currentBalance);
 
         if(sellDeed == true) {
-            /*System.out.println("This property is available for purchase for" +((DeedSquare) square[newPosition]).getDeedPrice()  + "M.");
-            guiMessage = "This property is available for purchase.";*/
 
             String guiMessage = currentPlayer.getPlayerName() + msg.getText("haveBought") + deed.getDeedName();
             guiController.showMessage(guiMessage);
@@ -71,7 +64,6 @@ public class DeedSquare extends Square{
             sellDeed = false ;
             deed.setOwner(currentPlayer);
             guiController.displayOwnerName(currentPlayer, currentPlayer.getPosition());
-            //((DeedSquare) square[newPosition]).sellDeed(player[i], newPosition); // SETS sellDeed TO FALSE AND UPDATES OWNERSHIP
 
         } else {
            Player deedOwner = deed.getOwner();
@@ -90,12 +82,9 @@ public class DeedSquare extends Square{
                 currentBalance = deedOwner.getCurrentBalance();
                 guiController.updateBalance(currentGuiPlayer,currentBalance);
 
-
             }
 
-
             System.out.println("");
-
         }
 
     }

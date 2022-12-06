@@ -30,9 +30,7 @@ public class CardMove extends ChanceCard {
                 pickAgain = false;
 
             }
-
             currentPlayer.updatePosition(distance);
-
         }
     }
 

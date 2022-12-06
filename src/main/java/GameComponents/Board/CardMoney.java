@@ -9,7 +9,6 @@ public class CardMoney extends ChanceCard {
         this.players = players;
 
     }
-
     public void playCard(Player currentPlayer, GUI_Player currentGuiPlayer){
         if (cardMessage == "chance5") {
             currentPlayer.withdrawMoney(2);

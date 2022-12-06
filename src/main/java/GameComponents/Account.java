@@ -5,13 +5,11 @@ import java.io.FileReader;
 
 public class Account {
     private int balance;
-    private String Accountname;
     private boolean isBankrupt = false;
 
 
     public Account(){
         balance = 0;
-       // Accountname = name;
     }
 
     public void setBalance(int initialBalance) {
@@ -30,7 +28,6 @@ public class Account {
     }
     public int getBalance()
     {
-        //System.out.println(Accountname + "now has " + balance + " points");
         return(balance);
     }
 

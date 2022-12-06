@@ -108,10 +108,6 @@ public class CardDeedTest {
     public void Chance9GoToFreeCyanSquareFromSquare15() {
         Square[] board = new Square[24];
 
-        for (int i = 0 ; i < 24 ; i++) {
-            board[i] = new DeedSquare("Test Deed", 5, guiController);
-        }
-
         for (int i = 0 ; i < board.length ; i++) {
             board[i] = new DeedSquare("Test Deed", 5, guiController);
         }
@@ -150,7 +146,7 @@ public class CardDeedTest {
         }
         testPlayer1.updatePosition(15);
         chanceCards[0].playCard(testPlayer1,testGuiPlayer1);
-       assertEquals(10, testPlayer1.getPosition());
+        assertEquals(10, testPlayer1.getPosition());
 
         chanceCards[1].playCard(testPlayer1,testGuiPlayer1);
         assertEquals(4, testPlayer1.getPosition());

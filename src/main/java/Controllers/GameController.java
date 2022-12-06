@@ -103,7 +103,7 @@ public class GameController {
     public void run() {
         Cup cup = new Cup(guiController);
         int[] diceArr;
-        int newPosition = 0;
+        int newPosition;
 
         boolean gameOver = false;
         while(gameOver == false) {
@@ -113,7 +113,6 @@ public class GameController {
                 guiController.showMessage(rollMessage);
                 diceArr = cup.getSum();
                 int sum = diceArr[2];
-                int playerIndex = i + 1;
                 int oldPosition = players[i].getPosition();
 
                 System.out.println(players[i].getPlayerName() + " rolled a " + diceArr[0] + " and a " + diceArr[1] + ". Got moved " + sum + " squares.");
@@ -124,7 +123,6 @@ public class GameController {
 
                 // UNCOMMENT THE FOLLOWING LINE WHEN NOT USING TEST DIE
                 //newPosition = players[i].updatePosition(sum);
-                //guiController.showMessage(players[i].getPlayerName() + ", you have rolled a " + diceArr[0] + " and a " + diceArr[1] + ". You move " + sum + " squares.");
                 guiController.move(guiPlayers[i], oldPosition, newPosition);
 
 
@@ -137,29 +135,10 @@ public class GameController {
                     System.out.println(passStart);
                     guiController.showMessage(passStart);
 
-                System.out.println(players[i].getPlayerName() + msg.getText("position") + square[newPosition].toString());
                 }
                 System.out.println(players[i].getPlayerName() + msg.getText("position") + square[newPosition].getSquareName() +  msg.getText("squareNum") + players[i].getPosition());
 
                 square[newPosition].landOn(players[i], guiPlayers[i]);
-                //HANDLES THE PROCESS OF LANDING ON A SQUARE AND CALLS METHOD FOR SUBSEQUENT ACTIONS
-                /*LandOnSquare playerTurn = new LandOnSquare(square, players, guiController, guiPlayers, playerCount);
-                playerTurn.setLang(msg);
-                if(square[newPosition] instanceof DeedSquare) {
-                    playerTurn.landOnDeedSquare(newPosition,i);
-
-                } else if (square[newPosition] instanceof ChanceSquare) {
-                    playerTurn.landOnChanceSquare(i, newPosition, square, players, guiController, guiPlayers, playerCount);
-
-                } else if (square[newPosition] instanceof JailSquare) {
-                    playerTurn.landOnJailSquare(newPosition,i);
-
-                } else if (square[newPosition] instanceof ParkingSquare) {
-                    playerTurn.landOnParkingSquare(newPosition);
-
-                } else {
-                    playerTurn.landOnStartSquare(newPosition,i);
-                } */
 
                     if(players[i].isBankrupt() == true) {
                         gameOver = true;

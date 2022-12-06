@@ -13,8 +13,6 @@ import java.awt.*;
 
     private GUI_Player[] guiPlayers;
 
-    //private GUI_Ownable[] ownable = new GUI_Ownable[24];
-
     public GuiController() {
 
          fields = new GUI_Field[]{

@@ -5,10 +5,8 @@ import Translator.*;
 import gui_fields.GUI_Player;
 
 public abstract class Square {
-    int pointsValue;
-    private String squareName;
 
-    protected String lang = "";
+    private String squareName;
 
     Text msg;
 
