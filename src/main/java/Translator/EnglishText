@@ -5,7 +5,7 @@ invalidCount; Invalid player number, please enter an integer between 2 and 4 inc
 enterName; Enter your name, Player
 startGame; Press OK to start the game!
 rollDice;, press OK to roll the die!
-passStart; COLLECT M2 SALARY AS YOU PASS START. You new balance is:
+passStart; COLLECT M2 SALARY AS YOU PASS START.
 position;, you have landed on square
 squareNum;, square #
 haveBought;, you have bought

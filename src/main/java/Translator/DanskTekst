@@ -5,7 +5,7 @@ invalidCount; Ugyldig indtastning, indtast venligst et tal mellem 2 og 4 inklusi
 enterName; Indtast dit navn, Spiller
 startGame; Tryk OK til at starte spillet!
 rollDice;, tryk OK til at kaste terningen.
-passStart; MODTAG EN BELØNNING PÅ M2 FORDI DU PASSERER START. Din nye saldo er:
+passStart; MODTAG EN BELØNNING PÅ M2 FORDI DU PASSERER START.
 position;, du er landet på feltet:
 squareNum;, felt #
 haveBought;, du har købt
