@@ -221,7 +221,6 @@ import java.awt.*;
              ((GUI_Ownable)fields[currentPositionIndex]).setOwnerName(currentPlayer.getPlayerName());
          }
 
-
      }
      public void updateBalance(GUI_Player currentPlayer, int newBalance){
          currentPlayer.setBalance(newBalance);

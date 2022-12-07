@@ -25,6 +25,7 @@ public class Deed {
 
         this.owner = ownerName;
 
+
     }
 
     public int getDeedPrice() {

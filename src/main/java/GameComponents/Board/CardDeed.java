@@ -55,7 +55,7 @@ public class CardDeed extends ChanceCard {
                             }
 
                             currentPlayer.updatePosition(distance);
-                            ((DeedSquare)board[i]).setDeedOwner(currentPlayer,distance);
+                            ((DeedSquare)board[i]).setDeedOwner(currentPlayer,i);
 
                             break;
 
