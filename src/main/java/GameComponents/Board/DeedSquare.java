@@ -1,7 +1,6 @@
 package GameComponents.Board;
 import Controllers.GuiController;
 import GameComponents.Player;
-import gui_fields.GUI_Player;
 
 public class DeedSquare extends Square{
     Deed deed;
@@ -36,7 +35,7 @@ public class DeedSquare extends Square{
    public void setDeedOwner(Player currentPlayer, int deedIndex){
         sellDeed = false ;
         deed.setOwner(currentPlayer);
-        guiController.displayOwnerName(currentPlayer, deedIndex);
+        guiController.setOwnerName(currentPlayer, deedIndex);
 
     }
 
@@ -62,7 +61,7 @@ public class DeedSquare extends Square{
 
             sellDeed = false ;
             deed.setOwner(currentPlayer);
-            guiController.displayOwnerName(currentPlayer, currentPlayer.getPosition());
+            guiController.setOwnerName(currentPlayer, currentPlayer.getPosition());
 
         } else {
            Player deedOwner = deed.getOwner();

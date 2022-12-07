@@ -216,7 +216,7 @@ import java.awt.*;
       * @param currentPlayer current Player buying the deed
       * @param currentPositionIndex index of the Deed Square being bought
       */
-     public void displayOwnerName(Player currentPlayer, int currentPositionIndex){
+     public void setOwnerName(Player currentPlayer, int currentPositionIndex){
          if (fields[currentPositionIndex] instanceof GUI_Ownable ){
              ((GUI_Ownable)fields[currentPositionIndex]).setOwnerName(currentPlayer.getPlayerName());
          }
