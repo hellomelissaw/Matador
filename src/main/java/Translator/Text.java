@@ -59,6 +59,17 @@ public class Text {
         return message;
     }
 
+    public void printText(String label) {
+        String message = "";
+        for (int i = 0 ; i < lineCount ; i++) {
+            if(label.equals(labels[i])) {
+                message = messages[i];
+                break;
+            }
+        }
+        System.out.println(message);
+        guiController.showMessage(message);
 
+    }
 }
 
