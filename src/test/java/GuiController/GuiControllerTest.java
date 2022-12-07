@@ -35,7 +35,7 @@ public class GuiControllerTest {
 
     @Test
     public void updateBalance() {
-        Player player = new Player("Test Player", new GuiController());
+        Player player = new Player("Test Player");
         player.depositMoney(20);
         player.getCurrentBalance();
         int balance = 2;

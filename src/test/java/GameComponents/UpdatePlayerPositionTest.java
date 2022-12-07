@@ -9,7 +9,7 @@ public class UpdatePlayerPositionTest {
 
     @Test
     public void updatePosition10Squares() {
-        Player testPlayer = new Player("Test Player", new GuiController());
+        Player testPlayer = new Player("Test Player");
         int currentPosition = 0;
         testPlayer.updatePosition(10);
         currentPosition = testPlayer.getPosition();
@@ -18,7 +18,7 @@ public class UpdatePlayerPositionTest {
 
     @Test
     public void updatePosition25Squares() {
-        Player testPlayer = new Player("Test Player", new GuiController());
+        Player testPlayer = new Player("Test Player");
         int currentPosition = 0;
         testPlayer.updatePosition(25);
         currentPosition = testPlayer.getPosition();

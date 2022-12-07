@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 
 public class CardMoveTest {
     GuiController guiController = new GuiController();
-    Player testPlayer1 = new Player("TestPlayer 1",guiController);
+    Player testPlayer1 = new Player("TestPlayer 1");
 
    // Square testChanceSquare = new ChanceSquare("Testing Chance", guiController);
     Text msg = new Text("src/main/java/Translator/EnglishText");
@@ -24,7 +24,7 @@ public class CardMoveTest {
         ChanceCard testChanceCard = new CardMove("chance1",guiController,24);
         //testChanceSquare.setLang("EnglishText");
         testChanceCard.setCardLang(msg);
-        testChanceCard.playCard(testPlayer1,testGuiPlayer1);
+        testChanceCard.playCard(testPlayer1);
         assertEquals(0, testPlayer1.getPosition());
 
     }
@@ -34,7 +34,7 @@ public class CardMoveTest {
         //testChanceSquare.setLang("EnglishText");
         ChanceCard testChanceCard = new CardMove("chance4",guiController,23);
         testChanceCard.setCardLang(msg);
-        testChanceCard.playCard(testPlayer1,testGuiPlayer1);
+        testChanceCard.playCard(testPlayer1);
         assertEquals(23, testPlayer1.getPosition());
 
     }
@@ -44,7 +44,7 @@ public class CardMoveTest {
         ChanceCard testChanceCard = new CardMove("chance2",guiController,5);
         testChanceCard.setCardLang(msg);
         testPlayer1.updatePosition(5);
-        testChanceCard.playCard(testPlayer1,testGuiPlayer1);
+        testChanceCard.playCard(testPlayer1);
         assertEquals(10, testPlayer1.getPosition());
 
     }
@@ -55,7 +55,7 @@ public class CardMoveTest {
         ChanceCard testChanceCard = new CardMove("chance3",guiController,1);
         testChanceCard.setCardLang(msg);
         testPlayer1.updatePosition(5);
-        testChanceCard.playCard(testPlayer1,testGuiPlayer1);
+        testChanceCard.playCard(testPlayer1);
 
         assertEquals(6, testPlayer1.getPosition());
 

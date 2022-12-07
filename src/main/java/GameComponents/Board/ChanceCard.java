@@ -17,7 +17,7 @@ public abstract class ChanceCard {
     public ChanceCard(String cardMessage, GuiController guiController){
         this.cardMessage = cardMessage;
         this.guiController = guiController;
-        guiPlayers = guiController.getGuiPlayersArr();
+        //guiPlayers = guiController.getGuiPlayersArr();
 
 
     }
@@ -26,9 +26,9 @@ public abstract class ChanceCard {
        this.msg = msg;
     }
 
-    protected void setPlayers(Player[] players, GUI_Player[] guiPlayers){
+    protected void setPlayers(Player[] players){
         this.players = players;
-        this.guiPlayers = guiPlayers;
+        //this.guiPlayers = guiPlayers;
 
     }
 

@@ -31,7 +31,7 @@ public class ChanceSquare extends Square{
 
 
         for (int i = 0 ; i < chanceCards.length ; i++) { //SETS PLAYERS ARRAY FOR EACH CARD
-            chanceCards[i].setPlayers(players,guiPlayers);
+            chanceCards[i].setPlayers(players);
 
         }
     }
