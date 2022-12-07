@@ -3,12 +3,12 @@ package Translator;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-
+import Controllers.GuiController;
 public class TextTest {
-
+GuiController guiController = new GuiController();
     @Test
     public void getTextChecksLabelReturnsMessage() {
-        Text reader = new Text("src/main/java/Translator/EnglishText");
+        Text reader = new Text("src/main/java/Translator/EnglishText", guiController);
 
         String testMessage = " message";
         assertEquals(testMessage,reader.getText("label"));

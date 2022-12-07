@@ -13,7 +13,7 @@ public class CardDeedTest {
 
     String[] colors = {"lightgrey", "cyan", "pink", "orange", "red", "yellow", "green", "darkblue"};
     Player[] testPlayers = new Player[2];
-    Text msg = new Text("src/main/java/Translator/EnglishText");
+    Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
 
     Square[] board = new Square[24];
 

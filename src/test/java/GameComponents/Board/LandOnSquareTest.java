@@ -14,7 +14,7 @@ public class LandOnSquareTest {
     Player testPlayer1 = new Player("TestPlayer 1");
     JailSquare testJail = new JailSquare("Jail", guiController);
     GUI_Player testGuiPlayer1 = new GUI_Player("TestPlayer 1");
-    Text msg = new Text("src/main/java/Translator/EnglishText");
+    Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
     @Test
     public void landOnJailSquareAndPay1M() {
         testJail.setLang(msg);

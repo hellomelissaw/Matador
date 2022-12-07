@@ -1,10 +1,12 @@
 package Translator;/*import java.io.BufferedReader;
 import java.io.FileReader;*/
 import java.io.*;
+import Controllers.GuiController;
 
 
 public class Text {
     String file;
+    GuiController guiController;
 
     int lineCount = 71;
     String[] messages = new String[lineCount];
@@ -14,9 +16,11 @@ public class Text {
     /***
      * Reads a text file and parses each line into labels and their corresponding messages
      * @param file file name for user-chosen language
+     * @param guiController
      */
-    public Text(String file){
+    public Text(String file, GuiController guiController){
         this.file = file;
+        this.guiController = guiController;
         BufferedReader reader;
 
         try {
@@ -54,6 +58,7 @@ public class Text {
         }
         return message;
     }
+
 
 }
 

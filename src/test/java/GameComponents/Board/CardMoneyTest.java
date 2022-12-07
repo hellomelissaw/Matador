@@ -13,7 +13,7 @@ public class CardMoneyTest {
     Player[] testPlayers = new Player[4];
 
     // Square testChanceSquare = new ChanceSquare("Testing Chance", guiController);
-    Text msg = new Text("src/main/java/Translator/EnglishText");
+    Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
 
     GUI_Player testGuiPlayer1 = new GUI_Player("TestPlayer 1");
     @Test

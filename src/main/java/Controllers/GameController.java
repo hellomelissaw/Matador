@@ -19,7 +19,7 @@ public class GameController {
     public void init() {
         boolean testingInit = true;
         if (testingInit){
-            msg = new Text("src/main/java/Translator/EnglishText");
+            msg = new Text("src/main/java/Translator/EnglishText", guiController);
             guiController.initFieldTitles(msg);
             playerCount = 2;
             balance = 20 - (playerCount - 2) * 2;
@@ -45,7 +45,7 @@ public class GameController {
             String[] lang = {"EnglishText", "DanskTekst"};
             int langIndex = guiController.getUserLang(); //GETS USER TO CHOOSE LANGUAGE
             String langFile = "src/main/java/Translator/" + lang[langIndex - 1];
-            msg = new Text(langFile);
+            msg = new Text(langFile, guiController);
             guiController.initFieldTitles(msg);
 
             String userInput;

@@ -17,7 +17,7 @@ public class DeedSquareTest {
     GUI_Player testGuiPlayer1 = new GUI_Player("TestPlayer 1");
     GUI_Player testGuiPlayer2 = new GUI_Player("TestPlayer 2");
 
-    Text msg = new Text("src/main/java/Translator/EnglishText");
+    Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
     @Test
     public void deedOwnerIsTestPlayer1AfterLandingOnIt() {
         testDeedSquare.setLang(msg);
