@@ -1,7 +1,6 @@
 package GameComponents.Board;
 
 import GameComponents.Player;
-import gui_fields.GUI_Player;
 
 public class ParkingSquare extends Square{
     public ParkingSquare(String freeParkingSquare) {

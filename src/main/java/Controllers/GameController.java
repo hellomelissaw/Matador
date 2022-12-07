@@ -16,10 +16,6 @@ public class GameController {
     Square[] square;
     Text msg;
 
-    public void initTest() {
-
-    }
-
     public void init() {
         boolean testingInit = true;
         if (testingInit){
@@ -29,7 +25,6 @@ public class GameController {
             balance = 20 - (playerCount - 2) * 2;
             //balance = 1; //TEST BALANCE, COMMENT OUT FOR NORMAL RUNNING OF GAME
             players = new Player[playerCount];
-            //guiPlayers = new GUI_Player[playerCount];
 
             players[0] = new Player("Marc"); // INITIALISE EACH PLAYER WITH NAME
             players[0].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
@@ -72,9 +67,7 @@ public class GameController {
             }
             balance = 20 - (playerCount - 2) * 2; //SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
 
-
             players = new Player[playerCount];
-            //guiPlayers = new GUI_Player[playerCount];
 
             for (int i = 0; i < playerCount; i++) {
                 int playerNumber = i + 1;
@@ -127,14 +120,11 @@ public class GameController {
                 players[i].updatePosition(sum);
                 newPosition = players[i].getPosition();
 
-                //guiController.move(guiPlayers[i], oldPosition, newPosition);
-
 
                 // hvis newPosition er mindre end oldPosition, betyder det at man har passeret start
                 if (newPosition<oldPosition && oldPosition != 18) {
                     players[i].depositMoney(2);
                     int currentBalance = players[i].getCurrentBalance();
-                    //guiController.updateBalance(guiPlayers[i], currentBalance);
                     String passStart = players[i].getPlayerName()+ msg.getText("passStart") + currentBalance;
                     System.out.println(passStart);
                     guiController.showMessage(passStart);
@@ -160,8 +150,6 @@ public class GameController {
                 }
 
             }
-
-
 
     }
 }

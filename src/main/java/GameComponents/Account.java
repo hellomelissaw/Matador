@@ -12,10 +12,6 @@ public class Account {
         balance = 0;
     }
 
-    public void setBalance(int initialBalance) {
-        balance = initialBalance;
-    }
-
     public void deposit(int amount) {
         balance += amount;
     }

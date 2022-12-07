@@ -1,12 +1,8 @@
 package GameComponents.Board;
-
 import Controllers.GuiController;
 import GameComponents.Player;
-import gui_fields.GUI_Player;
 
 public class ChanceSquare extends Square{
-
-    private GUI_Player[] guiPlayers; //THIS IS CURRENTLY NULL, BUT CAN GUI PLAYERS BE SOMEHOW TIED TO players???
 
     private ChanceCard[] chanceCards = new ChanceCard[15];
 

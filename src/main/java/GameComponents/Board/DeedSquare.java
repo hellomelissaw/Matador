@@ -79,8 +79,6 @@ public class DeedSquare extends Square{
                 guiController.showMessage(payRent);
 
                 deedOwner.depositMoney(deedPrice);
-                currentBalance = deedOwner.getCurrentBalance();
-                //guiController.updateBalance(currentGuiPlayer,currentBalance);
 
             }
 
