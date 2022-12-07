@@ -222,9 +222,6 @@ import java.awt.*;
          }
 
      }
-     public void updateBalance(GUI_Player currentPlayer, int newBalance){
-         currentPlayer.setBalance(newBalance);
-     }
 
      public int getUserInteger(String message) {
          return gui.getUserInteger(message);
