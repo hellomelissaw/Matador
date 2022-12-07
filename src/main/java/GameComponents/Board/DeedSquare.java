@@ -53,13 +53,12 @@ public class DeedSquare extends Square{
     public void landOn(Player currentPlayer) {
         currentPlayer.withdrawMoney(deedPrice);
         int currentBalance = currentPlayer.getCurrentBalance();
-        //guiController.updateBalance(currentGuiPlayer, currentBalance);
         System.out.println(msg.getText("newBalance") + currentBalance);
 
         if(sellDeed == true) {
 
             String guiMessage = currentPlayer.getPlayerName() + msg.getText("haveBought") + deed.getDeedName();
-            guiController.showMessage(guiMessage);
+            guiController.showMessage(guiMessage); // CAN BE DELETED ONCE IMPLEMENT BORDER AROUND SQUARE
 
             sellDeed = false ;
             deed.setOwner(currentPlayer);
@@ -68,16 +67,11 @@ public class DeedSquare extends Square{
         } else {
            Player deedOwner = deed.getOwner();
             if (currentPlayer==deedOwner) {
-                String ownerMessage = msg.getText("ownerOfDeed");
-                System.out.println(ownerMessage);
-                guiController.showMessage(ownerMessage);
+                msg.printText("ownerOfDeed", "na");
 
             } else {
-                String payRent = deedOwner.toString() + msg.getText("payRent");
-                System.out.println(payRent + deed.getDeedPrice());
 
-                guiController.showMessage(payRent);
-
+                msg.printText("payRent", "na");
                 deedOwner.depositMoney(deedPrice);
 
             }

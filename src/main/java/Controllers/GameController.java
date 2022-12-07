@@ -43,7 +43,7 @@ public class GameController {
 
         } else {
             String[] lang = {"EnglishText", "DanskTekst"};
-            int langIndex = guiController.getUserLang(); //GETS USER TO CHOOSE LANGUAGE
+            int langIndex = guiController.getUserInteger("You are in English mode. Enter 1 to keep English or enter 2 to switch to Danish."); //GETS USER TO CHOOSE LANGUAGE
             String langFile = "src/main/java/Translator/" + lang[langIndex - 1];
             msg = new Text(langFile, guiController);
             guiController.initFieldTitles(msg);
@@ -51,18 +51,18 @@ public class GameController {
             String userInput;
 
             //INITIALIZING PLAYERS
-            System.out.println(msg.getText("enterPlayerCount"));
+            //System.out.println(msg.getText("enterPlayerCount"));
             boolean playerCountInvalid = true;
             while (playerCountInvalid) {
                 // playerCount = userInput.nextInt();
                 //System.out.println(playerCount);
-                playerCount = guiController.getUserIntegerPlayerCount();
+                playerCount = guiController.getUserInteger(msg.getText("playerCount"));
                 if (playerCount >= 2 && playerCount <= 4) {
                     playerCountInvalid = false;
 
                 } else {
-                    System.out.println(msg.getText("invalidCount"));
-                    guiController.showMessage(msg.getText("invalidCount"));
+                    msg.printText("invalidCount", "na");
+
                 }
             }
             balance = 20 - (playerCount - 2) * 2; //SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
@@ -71,6 +71,7 @@ public class GameController {
 
             for (int i = 0; i < playerCount; i++) {
                 int playerNumber = i + 1;
+                msg.printText("enterName", String.valueOf(playerNumber));
                 System.out.println(msg.getText("enterName") + " " + playerNumber);
                 userInput = guiController.getUserString(playerNumber);
                 players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
@@ -89,7 +90,7 @@ public class GameController {
             System.out.println("Gui Players are set");
         }
 
-        guiController.showMessage(msg.getText("startGame"));
+        msg.printText("startGame", "na");
 
     }
 
@@ -109,8 +110,8 @@ public class GameController {
         while(gameOver == false) {
 
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
-                String rollMessage = players[i].getPlayerName() + msg.getText("rollDice");
-                guiController.showMessage(rollMessage);
+                msg.printText("rollDice", players[i].getPlayerName());
+
                 diceArr = cup.getSum();
                 int sum = diceArr[2];
                 int oldPosition = players[i].getPosition();
@@ -124,23 +125,18 @@ public class GameController {
                 // hvis newPosition er mindre end oldPosition, betyder det at man har passeret start
                 if (newPosition<oldPosition && oldPosition != 18) {
                     players[i].depositMoney(2);
-                    int currentBalance = players[i].getCurrentBalance();
-                    String passStart = players[i].getPlayerName()+ msg.getText("passStart") + currentBalance;
-                    System.out.println(passStart);
-                    guiController.showMessage(passStart);
+                    System.out.println("New balance after passing start is: " + players[i].getCurrentBalance());
+                    msg.printText("passStart", players[i].getPlayerName());
 
                 }
-                System.out.println(players[i].getPlayerName() + msg.getText("position") + square[newPosition].getSquareName() +  msg.getText("squareNum") + players[i].getPosition());
+                System.out.println(players[i].getPlayerName() + "has landed on" + square[newPosition].getSquareName() +  ", this is square #" + players[i].getPosition());
 
                 square[newPosition].landOn(players[i]);
 
                     if(players[i].isBankrupt() == true) {
                         gameOver = true;
-                        String winnerName = players[i].winner(players);
-                        String gameOverMsg = msg.getText("gameOver") + " " + winnerName;
-                        System.out.println(gameOverMsg);
-                        guiController.showMessage(gameOverMsg);
-
+                        String winnerName = players[i].winner(players) + " ";
+                        msg.printText("gameOver", winnerName);
                         break;
                     }
 

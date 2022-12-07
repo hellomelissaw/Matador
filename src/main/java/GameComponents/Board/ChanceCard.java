@@ -35,9 +35,8 @@ public abstract class ChanceCard {
     public void printMessage(int cardIndex) {
         int cardNr = cardIndex+1;
         String card = "chance"+cardNr;
-        cardMessage = msg.getText(card);
-        System.out.println(cardMessage);
-        guiController.showMessage(cardMessage);
+        msg.printText(card,"na");
+
     }
 
     public abstract void playCard(Player currentPlayer);

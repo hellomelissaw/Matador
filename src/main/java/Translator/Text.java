@@ -59,7 +59,7 @@ public class Text {
         return message;
     }
 
-    public void printText(String label) {
+    public void printText(String label, String otherMessage) {
         String message = "";
         for (int i = 0 ; i < lineCount ; i++) {
             if(label.equals(labels[i])) {
@@ -67,8 +67,14 @@ public class Text {
                 break;
             }
         }
-        System.out.println(message);
-        guiController.showMessage(message);
+
+        if(otherMessage == "na") {
+            System.out.println(message);
+            guiController.showMessage(message);
+        } else {
+            System.out.println(otherMessage + message);
+            guiController.showMessage(otherMessage + message);
+        }
 
     }
 }

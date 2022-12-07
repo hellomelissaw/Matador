@@ -227,20 +227,13 @@ import java.awt.*;
          currentPlayer.setBalance(newBalance);
      }
 
-     public int getUserIntegerPlayerCount() {
-        return gui.getUserInteger(msg.getText("enterPlayerCount"));
-     }
-
      public int getUserInteger(String message) {
          return gui.getUserInteger(message);
-     }
 
-     public int getUserLang() {
-        return gui.getUserInteger("You are in English mode. Enter 1 to keep English or enter 2 to switch to Danish.");
      }
      public String getUserString(int currentPlayer){
-
         return gui.getUserString(msg.getText("enterName") + " " + currentPlayer);
+
      }
     public void setDice(int die1, int die2){
         gui.setDice(die1,die2);
