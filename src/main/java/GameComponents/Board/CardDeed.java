@@ -19,18 +19,18 @@ public class CardDeed extends ChanceCard {
     }
     public void playCard(Player currentPlayer) {
         int currentPos = currentPlayer.getPosition();
-        int newPos;
+        int distance;
         int index = 0;
         boolean foundFreeSquare = false;
 
         if(color1 == "na") {
             int skateParkIndex = 10;
             if(currentPos > skateParkIndex){
-                newPos = board.length - currentPlayer.getPosition() + skateParkIndex;
+                distance = board.length - currentPlayer.getPosition() + skateParkIndex;
 
-            } else { newPos = skateParkIndex - currentPos; }
+            } else { distance = skateParkIndex - currentPos; }
 
-            currentPlayer.updatePosition(newPos);
+            currentPlayer.updatePosition(distance);
 
             if(((DeedSquare)board[skateParkIndex]).hasDeed()){
             ((DeedSquare)board[skateParkIndex]).setDeedOwner(currentPlayer, skateParkIndex);
@@ -46,16 +46,16 @@ public class CardDeed extends ChanceCard {
                         if (foundFreeSquare) {
 
                             if (currentPos > i) {
-                                newPos = board.length - currentPlayer.getPosition() + i;
-                                System.out.println("New pos when currentPos > i: " + newPos);
+                                distance = board.length - currentPlayer.getPosition() + i;
+                                System.out.println("New pos when currentPos > i: " + distance);
 
                             } else {
-                                newPos = board.length - currentPos - (board.length - i);
-                                System.out.println("New pos when i > currentPos: " + newPos);
+                                distance = board.length - currentPos - (board.length - i);
+                                System.out.println("New pos when i > currentPos: " + distance);
                             }
 
-                            currentPlayer.updatePosition(newPos);
-                            ((DeedSquare)board[i]).setDeedOwner(currentPlayer,newPos);
+                            currentPlayer.updatePosition(distance);
+                            ((DeedSquare)board[i]).setDeedOwner(currentPlayer,distance);
 
                             break;
 

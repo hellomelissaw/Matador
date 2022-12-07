@@ -60,14 +60,14 @@ public class Player {
 
     /**
      * Updates the position of the Player according to the sum of the dice in rings from square 0 to 23
-     * @param sumDice sum of the face values of dice in Cup
+     * @param distance amount of squares to move player's car
      * @return index of the Square that the Player is moved to after throwing dice
      */
-    public void updatePosition(int sumDice) {
+    public void updatePosition(int distance) {
         System.out.println("Square Index before for loop: " + squareIndex);
         int currentPos = squareIndex;
 
-        for(int i = 0; i < sumDice; i++) {
+        for(int i = 0; i < distance; i++) {
             if (squareIndex < 23) {
                 squareIndex++;
             } else {
