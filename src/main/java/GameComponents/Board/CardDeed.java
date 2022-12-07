@@ -47,10 +47,11 @@ public class CardDeed extends ChanceCard {
 
                             if (currentPos > i) {
                                 newPos = board.length - currentPlayer.getPosition() + i;
+                                System.out.println("New pos when currentPos > i: " + newPos);
 
                             } else {
                                 newPos = board.length - currentPos - (board.length - i);
-
+                                System.out.println("New pos when i > currentPos: " + newPos);
                             }
 
                             currentPlayer.updatePosition(newPos);

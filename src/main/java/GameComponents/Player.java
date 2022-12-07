@@ -64,6 +64,9 @@ public class Player {
      * @return index of the Square that the Player is moved to after throwing dice
      */
     public void updatePosition(int sumDice) {
+        System.out.println("Square Index before for loop: " + squareIndex);
+        int currentPos = squareIndex;
+
         for(int i = 0; i < sumDice; i++) {
             if (squareIndex < 23) {
                 squareIndex++;
@@ -72,7 +75,8 @@ public class Player {
             }
         }
         System.out.println("Square Index after for loop: " + squareIndex);
-        if(!testing){ guiController.move(guiPlayer, squareIndex - sumDice, squareIndex);}
+
+        if(!testing){ guiController.move(guiPlayer, currentPos, squareIndex);}
     }
 
     public int getPosition(){
