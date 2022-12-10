@@ -227,6 +227,11 @@ import java.awt.*;
          return gui.getUserInteger(message);
 
      }
+
+     public String getUserButtonPressed(String message, String[] buttons) {
+         return gui.getUserButtonPressed(message, buttons);
+     }
+
      public String getUserString(int currentPlayer){
         return gui.getUserString(msg.getText("enterName") + " " + currentPlayer);
 

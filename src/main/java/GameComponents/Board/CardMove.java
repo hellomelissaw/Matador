@@ -14,6 +14,7 @@ public class CardMove extends ChanceCard {
 
         if (distance == 1) {
             String message = msg.getText("prompt") + msg.getText("chance3");
+
             int choice = guiController.getUserInteger(message);
             if (choice == 2) {
                 distance -= 1;
