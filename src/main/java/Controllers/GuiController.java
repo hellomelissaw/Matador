@@ -228,8 +228,8 @@ import java.awt.*;
 
      }
 
-     public String getUserButtonPressed(String message, String[] buttons) {
-         return gui.getUserButtonPressed(message, buttons);
+     public String getUserSelection(String message, String[] buttons) {
+         return gui.getUserSelection(message, buttons);
      }
 
      public String getUserString(int currentPlayer){

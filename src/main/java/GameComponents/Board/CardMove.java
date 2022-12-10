@@ -20,7 +20,7 @@ public class CardMove extends ChanceCard {
 
         } else if (distanceToMove == 1) {
             String[] buttons = {"Move 1", "Pick again"};
-            String choice = guiController.getUserButtonPressed(msg.getText("prompt"), buttons);
+            String choice = guiController.getUserSelection(msg.getText("prompt"), buttons);
             if (choice == "Move 1") {
                 pickAgain = false;
 
