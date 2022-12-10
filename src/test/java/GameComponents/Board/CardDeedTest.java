@@ -48,7 +48,7 @@ public class CardDeedTest {
         testPlayers[0].setGui(testGuiPlayers[0], guiController);
 
         testPlayers[1] = new Player("Test Player2");
-        testPlayers[1].setGui(testGuiPlayers[0], guiController);
+        testPlayers[1].setGui(testGuiPlayers[1], guiController);
 
         chanceCards[0] = new CardDeed("chance8", guiController, "na","na");
         chanceCards[1] = new CardDeed("chance9", guiController, "cyan", "red");

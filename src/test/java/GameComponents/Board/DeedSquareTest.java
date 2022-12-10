@@ -10,31 +10,40 @@ import static org.junit.Assert.*;
 
 public class DeedSquareTest {
     GuiController guiController = new GuiController();
-    Player testPlayer1 = new Player("TestPlayer 1");
-    Player testPlayer2 = new Player("TestPlayer 2");
+
+    Player[] testPlayers = new Player[2];
+    GUI_Player[] testGuiPlayers = new GUI_Player[2];
     DeedSquare testDeedSquare = new DeedSquare("Test Deed 1",5,guiController);
-
-    GUI_Player testGuiPlayer1 = new GUI_Player("TestPlayer 1");
-    GUI_Player testGuiPlayer2 = new GUI_Player("TestPlayer 2");
-
     Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
+
+    public DeedSquareTest() {
+        testPlayers[0] = new Player("TestPlayer 1");
+        testPlayers[1] = new Player("TestPlayer 2");
+
+        testGuiPlayers[0] = new GUI_Player("TestPlayer 1");
+        testGuiPlayers[1] = new GUI_Player("TestPlayer 2");
+
+        for(int i = 0 ; i < testPlayers.length ; i++) {
+            testPlayers[i].setGui(testGuiPlayers[i], guiController);
+        }
+    }
     @Test
     public void deedOwnerIsTestPlayer1AfterLandingOnIt() {
         testDeedSquare.setLang(msg);
-        testPlayer1.updatePosition(1);
-        testDeedSquare.landOn(testPlayer1);
-        assertEquals(testPlayer1, testDeedSquare.getDeedOwner());
+        testPlayers[0].updatePosition(1);
+        testDeedSquare.landOn(testPlayers[0]);
+        assertEquals(testPlayers[0], testDeedSquare.getDeedOwner());
     }
     @Test
     public void testPlayer2PaysRentToDeedOwner() {
         testDeedSquare.setLang(msg);
-        testPlayer1.depositMoney(20);
-        testPlayer2.depositMoney(20);
-        testPlayer1.updatePosition(1);
-        testDeedSquare.landOn(testPlayer1);
-        testPlayer2.updatePosition(1);
-        testDeedSquare.landOn(testPlayer2);
-        assertEquals(20, testPlayer1.getCurrentBalance());
-        assertEquals(15, testPlayer2.getCurrentBalance());
+        testPlayers[0].depositMoney(20);
+        testPlayers[1].depositMoney(20);
+        testPlayers[0].updatePosition(1);
+        testDeedSquare.landOn(testPlayers[0]);
+        testPlayers[1].updatePosition(1);
+        testDeedSquare.landOn(testPlayers[1]);
+        assertEquals(20, testPlayers[0].getCurrentBalance());
+        assertEquals(15, testPlayers[1].getCurrentBalance());
     }
 }

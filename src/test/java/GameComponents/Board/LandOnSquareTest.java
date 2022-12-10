@@ -10,11 +10,16 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class LandOnSquareTest {
-    GuiController guiController = new GuiController();
+
     Player testPlayer1 = new Player("TestPlayer 1");
+    GUI_Player testGuiPlayer1 = new GUI_Player("TestGuiPlayer 1");
+    GuiController guiController = new GuiController();
     JailSquare testJail = new JailSquare("Jail", guiController);
-    GUI_Player testGuiPlayer1 = new GUI_Player("TestPlayer 1");
     Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
+
+    public LandOnSquareTest() {
+        testPlayer1.setGui(testGuiPlayer1, guiController);
+    }
     @Test
     public void landOnJailSquareAndPay1M() {
         testJail.setLang(msg);
