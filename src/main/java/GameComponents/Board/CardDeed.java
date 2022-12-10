@@ -23,29 +23,48 @@ public class CardDeed extends ChanceCard {
         int index = 0;
         boolean foundFreeSquare = false;
 
-        if(color1 == "na") {
+        if (color1 == "na") {
             int skateParkIndex = 10;
-            if(currentPos > skateParkIndex){
+            if (currentPos > skateParkIndex) {
                 distance = board.length - currentPlayer.getPosition() + skateParkIndex;
 
-            } else { distance = skateParkIndex - currentPos; }
+            } else {
+                distance = skateParkIndex - currentPos;
+            }
 
             currentPlayer.updatePosition(distance);
 
-            if(((DeedSquare)board[skateParkIndex]).hasDeed()){
-            ((DeedSquare)board[skateParkIndex]).setDeedOwner(currentPlayer, skateParkIndex);
+            if (((DeedSquare) board[skateParkIndex]).hasDeed()) {
+                ((DeedSquare) board[skateParkIndex]).setDeedOwner(currentPlayer, skateParkIndex);
 
-            } else { board[skateParkIndex].landOn(currentPlayer); }
+            } else {
+                board[skateParkIndex].landOn(currentPlayer);
+            }
 
         } else {
-                for (int i = 0 ; i < board.length ; i++) {
-                    if (board[i].getColor() == color1 || board[i].getColor() == color2) {
+            int arraySize = 0;
+            Square[] currentColorsArr = new Square[0];
 
-                     foundFreeSquare = ((DeedSquare) board[i]).hasDeed();
+            for (int i = 0; i < board.length; i++) {
 
+                if (board[i].getColor() == color1 || board[i].getColor() == color2) {
+                    arraySize++;
+                    Square[] updatedColorArr = new Square[arraySize];
+                    updatedColorArr[0] = board[i];
+                    System.arraycopy(currentColorsArr, 0, updatedColorArr, 1, currentColorsArr.length);
+                    currentColorsArr = updatedColorArr.clone();
+                }
+
+
+            }
+               /*
+            foundFreeSquare = ((DeedSquare) board[i]).hasDeed();
+
+
+                     int indexFree = -1;
                         if (foundFreeSquare) {
-
-                            if (currentPos > i) {
+                            board[i] = freeSquares[1];
+                         if (currentPos > i) {
                                 distance = board.length - currentPlayer.getPosition() + i;
                                 System.out.println("New pos when currentPos > i: " + distance);
 
@@ -73,5 +92,7 @@ public class CardDeed extends ChanceCard {
                 } // end else
 
         System.out.println("This is new position: " + currentPlayer.getPosition() + " and new square color is: " + board[currentPlayer.getPosition()].getColor());
+         */
         }
     }
+}
