@@ -3,33 +3,36 @@ import Controllers.GuiController;
 import GameComponents.Player;
 
 public class CardMove extends ChanceCard {
-    int distance;
+    int distanceToMove;
 
-    public CardMove(String cardMessage, GuiController guiController, int distance) {
+    public CardMove(String cardMessage, GuiController guiController, int distanceToMove) {
         super(cardMessage, guiController);
-        this.distance = distance;
+        this.distanceToMove = distanceToMove;
     }
 
     public void playCard(Player currentPlayer) {
+        if (distanceToMove == 24 || distanceToMove == 23) {
+            distanceToMove -= currentPlayer.getPosition();
+            pickAgain = false;
 
-        if (distance == 1) {
-            String message = msg.getText("prompt") + msg.getText("chance3");
+        } else if (distanceToMove == 5) {
+            pickAgain = false;
 
-            int choice = guiController.getUserInteger(message);
-            if (choice == 2) {
-                distance -= 1;
-                pickAgain = true; //NEEDS TO BE TESTED
-            }
-
-            } else if (distance == 23 || distance == 24) {
-                distance -= currentPlayer.getPosition();
+        } else if (distanceToMove == 1) {
+            String[] buttons = {"Move 1", "Pick again"};
+            String choice = guiController.getUserButtonPressed(msg.getText("prompt"), buttons);
+            if (choice == "Move 1") {
                 pickAgain = false;
 
-            } else if (distance == 5) {
-                pickAgain = false;
+            } else {
+                distanceToMove -= 1;
+                pickAgain = true;
 
             }
-            currentPlayer.updatePosition(distance);
+
+            }
+
+            currentPlayer.updatePosition(distanceToMove);
         }
     }
 

@@ -60,4 +60,15 @@ public class CardMoveTest {
         assertEquals(6, testPlayer1.getPosition());
 
     }
+    @Test
+    public void playCardPickAgain() {
+        //testChanceSquare.setLang("EnglishText");
+        ChanceCard testChanceCard = new CardMove("chance3",guiController,1);
+        testChanceCard.setCardLang(msg);
+        testPlayer1.updatePosition(5);
+        testChanceCard.playCard(testPlayer1);
+
+        assertEquals(5, testPlayer1.getPosition());
+
+    }
 }

@@ -58,7 +58,7 @@ chance12; NO CHARGE SQUARE! Move forward to cyan square. If no one owns it,then 
 chance13; NO CHARGE SQUARE! Move forward to red square. If no one owns it,then you get it for free. Or you have to pay the owner
 chance14; NO CHARGE SQUARE! Move forward to orange or green square. If no one owns it,then you get it for free. Or you have to pay the owner
 chance15; NO CHARGE SQUARE! Move forward to pink or dark blue square. If no one owns it,then you get it for free. Or you have to pay the owner
-prompt; Type 1 or 2 to choose between
+prompt; Choose between:
 lightgray; lightgray
 cyan; cyan
 pink; pink
