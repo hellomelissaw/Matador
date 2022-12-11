@@ -65,6 +65,7 @@ public class DeedSquare extends Square{
             guiController.showMessage(guiMessage); // CAN BE DELETED ONCE IMPLEMENT BORDER AROUND SQUARE
 
             sellDeed = false ;
+            freeDeed = false ;
             deed.setOwner(currentPlayer);
             guiController.setOwnerName(currentPlayer, currentPlayer.getPosition());
 
