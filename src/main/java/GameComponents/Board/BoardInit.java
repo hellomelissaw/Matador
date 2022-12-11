@@ -39,7 +39,7 @@ public class BoardInit {
         board[20] = new DeedSquare(msg.getText("zoo"),4,guiController);
         board[21] = new ChanceSquare(msg.getText("chance"),guiController, players);
         board[22] = new DeedSquare(msg.getText("waterPark"),5,guiController);
-        board[23] = new DeedSquare(msg.getText("promenade"),5,guiController);
+        board[23] = new DeedSquare(msg.getText("boardWalk"),5,guiController);
 
         String[] colors = {"lightgrey", "cyan", "pink", "orange", "red", "yellow", "green", "darkblue"};
 
