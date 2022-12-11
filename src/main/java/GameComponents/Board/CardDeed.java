@@ -54,9 +54,13 @@ public class CardDeed extends ChanceCard {
                     System.arraycopy(currentColorsArr, 0, updatedColorArr, 1, currentColorsArr.length);
                     currentColorsArr = updatedColorArr.clone();
                 }
-
+            }
+            String[] currentColorSqrName = new String[currentColorsArr.length];
+            for(int i = 0 ; i < currentColorsArr.length ; i++){
+                currentColorSqrName[i] = currentColorsArr[i].getSquareName();
 
             }
+            guiController.getUserSelection(msg.getText("prompt"), currentColorSqrName);
                /*
             foundFreeSquare = ((DeedSquare) board[i]).hasDeed();
 
