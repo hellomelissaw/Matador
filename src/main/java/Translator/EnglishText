@@ -8,7 +8,7 @@ rollDice;, press OK to roll the die!
 passStart; COLLECT M2 SALARY AS YOU PASS START.
 position;, you have landed on square
 squareNum;, square #
-haveBought;, you have bought
+haveBought;, you now own
 newBalance; Your bank account balance is now:
 ownerOfDeed; Girl u own this joint! U don't pay anything.
 payRent; Dang, this square is not free. U gotta pay rent.
