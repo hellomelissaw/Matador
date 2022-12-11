@@ -60,7 +60,13 @@ public class CardDeed extends ChanceCard {
                 currentColorSqrName[i] = currentColorsArr[i].getSquareName();
 
             }
-            guiController.getUserSelection(msg.getText("prompt"), currentColorSqrName);
+            String selectedSquare = guiController.getUserSelection(msg.getText("prompt"), currentColorSqrName);
+
+            for(int i = 0 ; i < board.length ; i++) {
+                if (selectedSquare == board[i].getSquareName()) {
+                    board[i].landOn(currentPlayer);
+                }
+            }
                /*
             foundFreeSquare = ((DeedSquare) board[i]).hasDeed();
 
