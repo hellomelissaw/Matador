@@ -111,27 +111,18 @@ public class GameController {
 
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
                 msg.printText("rollDice", players[i].getPlayerName());
-
                 diceArr = cup.getSum();
                 int sum = diceArr[2];
-                int oldPosition = players[i].getPosition();
-
                 System.out.println(players[i].getPlayerName() + " rolled a " + diceArr[0] + " and a " + diceArr[1] + ". Got moved " + sum + " squares.");
 
+                int oldPosition = players[i].getPosition();
                 players[i].updatePosition(sum);
                 newPosition = players[i].getPosition();
-
-
-                // hvis newPosition er mindre end oldPosition, betyder det at man har passeret start
-                if (newPosition<oldPosition && oldPosition != 18) {
-                    players[i].depositMoney(2);
-                    System.out.println("New balance after passing start is: " + players[i].getCurrentBalance());
-                    msg.printText("passStart", players[i].getPlayerName());
-
-                }
-                System.out.println(players[i].getPlayerName() + "has landed on" + square[newPosition].getSquareName() +  ", this is square #" + players[i].getPosition());
+                players[i].passedStartCheck(oldPosition);
 
                 square[newPosition].landOn(players[i]);
+                System.out.println(players[i].getPlayerName() + "has landed on" + square[newPosition].getSquareName() +  ", this is square #" + players[i].getPosition());
+
 
                     if(players[i].isBankrupt() == true) {
                         gameOver = true;

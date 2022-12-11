@@ -105,6 +105,15 @@ public class Player {
         return playerName;
     }
 
+    public void passedStartCheck(int oldPosition) {
+        // hvis newPosition er mindre end oldPosition, betyder det at man har passeret start
+        if (squareIndex < oldPosition && oldPosition != 18) {
+            playerAccount.deposit(2);
+            System.out.println("New balance after passing start is: " + playerAccount.getBalance());
+
+        }
+    }
+
     // Methode is inspired from internet https://www.geeksforgeeks.org/java-program-for-program-to-find-largest-element-in-an-array/
     public String winner(Player[] player) {
         int winner = player[0].getCurrentBalance();
