@@ -186,4 +186,12 @@ public class CardDeedTest {
         assertEquals(-5, testPlayers[1].getCurrentBalance());
 
     }
+
+    @Test
+    public void player2PaysRentWhenPickingSquareOwnedByPlayer1() {
+        chanceCards[0].playCard(testPlayers[0]);
+        chanceCards[3].playCard(testPlayers[1]);
+
+        assertEquals(-2, testPlayers[1].getCurrentBalance());
+    }
 }
