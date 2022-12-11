@@ -55,15 +55,31 @@ public class CardDeed extends ChanceCard {
                     currentColorsArr = updatedColorArr.clone();
                 }
             }
+
             String[] currentColorSqrName = new String[currentColorsArr.length];
             for(int i = 0 ; i < currentColorsArr.length ; i++){
                 currentColorSqrName[i] = currentColorsArr[i].getSquareName();
 
             }
+
             String selectedSquare = guiController.getUserSelection(msg.getText("prompt"), currentColorSqrName);
 
             for(int i = 0 ; i < board.length ; i++) {
                 if (selectedSquare == board[i].getSquareName()) {
+                    if(((DeedSquare)board[i]).hasDeed() == true) {
+                        ((DeedSquare)board[i]).setDeedToFree();
+                    }
+
+                    if (currentPos > i) {
+                        distance = board.length - currentPlayer.getPosition() + i;
+                        System.out.println("New pos when currentPos > i: " + distance);
+
+                    } else {
+                        distance = board.length - currentPos - (board.length - i);
+                        System.out.println("New pos when i > currentPos: " + distance);
+                    }
+
+                    currentPlayer.updatePosition(distance);
                     board[i].landOn(currentPlayer);
                 }
             }
