@@ -70,17 +70,10 @@ public class CardDeed extends ChanceCard {
                         ((DeedSquare)board[i]).setDeedToFree();
                     }
 
-                    if (currentPos > i) {
-                        distance = board.length - currentPlayer.getPosition() + i;
-                        System.out.println("New pos when currentPos > i: " + distance);
-
-                    } else {
-                        distance = board.length - currentPos - (board.length - i);
-                        System.out.println("New pos when i > currentPos: " + distance);
-                    }
-
+                    distance = currentPlayer.getDistanceToMove(i, board.length);
                     currentPlayer.updatePosition(distance);
                     board[i].landOn(currentPlayer);
+                    break;
                 }
             }
                /*

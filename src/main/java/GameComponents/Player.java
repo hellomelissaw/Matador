@@ -83,6 +83,19 @@ public class Player {
         return squareIndex;
     }
 
+    public int getDistanceToMove(int newSquareIndex, int boardLength) {
+        int distance;
+        if (squareIndex > newSquareIndex) {
+            distance = boardLength - squareIndex + newSquareIndex;
+            System.out.println("New pos when currentPos > i: " + distance);
+
+        } else {
+            distance = boardLength - squareIndex - (boardLength - newSquareIndex);
+            System.out.println("New pos when i > currentPos: " + distance);
+        }
+        return distance;
+    }
+
     public boolean isBankrupt() {
         return playerAccount.getAccountStatus();
 
