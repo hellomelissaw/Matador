@@ -46,4 +46,13 @@ public class DeedSquareTest {
         assertEquals(20, testPlayers[0].getCurrentBalance());
         assertEquals(15, testPlayers[1].getCurrentBalance());
     }
+
+    @Test
+    public void playerGetsDeedForFree() {
+        testDeedSquare.setLang(msg);
+        testDeedSquare.setDeedToFree();
+        testDeedSquare.landOn(testPlayers[0]);
+
+        assertEquals(0, testPlayers[0].getCurrentBalance());
+    }
 }

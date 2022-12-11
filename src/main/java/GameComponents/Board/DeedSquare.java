@@ -5,6 +5,7 @@ import GameComponents.Player;
 public class DeedSquare extends Square{
     Deed deed;
     boolean sellDeed = true;
+    boolean freeDeed = false;
     int deedPrice;
     GuiController guiController;
 
@@ -43,6 +44,10 @@ public class DeedSquare extends Square{
         return deed.getOwner();
     }
 
+    public void setDeedToFree() {
+       freeDeed = true;
+    }
+
     @Override
     public String toString() {
         String priceString = Integer.toString(deedPrice);
@@ -50,9 +55,9 @@ public class DeedSquare extends Square{
     }
 
     public void landOn(Player currentPlayer) {
-        currentPlayer.withdrawMoney(deedPrice);
-        int currentBalance = currentPlayer.getCurrentBalance();
-        System.out.println(msg.getText("newBalance") + currentBalance);
+       if(freeDeed == false){ currentPlayer.withdrawMoney(deedPrice); }
+
+        System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
 
         if(sellDeed == true) {
 
