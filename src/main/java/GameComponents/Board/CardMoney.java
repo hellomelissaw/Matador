@@ -3,8 +3,8 @@ import Controllers.GuiController;
 import GameComponents.Player;
 
 public class CardMoney extends ChanceCard {
-    public CardMoney(String cardMessage, GuiController guiController, Player[] players) {
-        super(cardMessage, guiController);
+    public CardMoney(String cardName, GuiController guiController, Player[] players) {
+        super(cardName, guiController);
         this.players = players;
 
     }

@@ -8,8 +8,8 @@ public class CardDeed extends ChanceCard {
     private String color2;
     Square[] board;
 
-    public CardDeed(String cardMessage, GuiController guiController, String color1, String color2) {
-        super(cardMessage, guiController);
+    public CardDeed(String cardName, GuiController guiController, String color1, String color2) {
+        super(cardName, guiController);
         this.color1 = color1;
         this.color2 = color2;
 

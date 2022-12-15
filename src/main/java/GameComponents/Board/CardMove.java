@@ -5,8 +5,8 @@ import GameComponents.Player;
 public class CardMove extends ChanceCard {
     int distanceToMove;
 
-    public CardMove(String cardMessage, GuiController guiController, int distanceToMove) {
-        super(cardMessage, guiController);
+    public CardMove(String cardName, GuiController guiController, int distanceToMove) {
+        super(cardName, guiController);
         this.distanceToMove = distanceToMove;
     }
 
