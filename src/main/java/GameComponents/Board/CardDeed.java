@@ -23,7 +23,9 @@ public class CardDeed extends ChanceCard {
         int index = 0;
         boolean foundFreeSquare = false;
 
-        if (color1 == "na") {
+       if (color1 == "na") {
+           index = 10;
+            /*
             int skateParkIndex = 10;
             if (currentPos > skateParkIndex) {
                 distance = board.length - currentPlayer.getPosition() + skateParkIndex;
@@ -40,7 +42,7 @@ public class CardDeed extends ChanceCard {
             } else {
                 board[skateParkIndex].landOn(currentPlayer);
             }
-
+**/
         } else {
             int arraySize = 0;
             Square[] currentColorsArr = new Square[0];
@@ -66,16 +68,15 @@ public class CardDeed extends ChanceCard {
 
             for(int i = 0 ; i < board.length ; i++) {
                 if (selectedSquare == board[i].getSquareName()) {
+                    index = i ;
                     if(((DeedSquare)board[i]).hasDeed() == true) {
                         ((DeedSquare)board[i]).setDeedToFree();
+                        break;
                     }
 
-                    distance = currentPlayer.getDistanceToMove(i, board.length);
-                    currentPlayer.updatePosition(distance);
-                    board[i].landOn(currentPlayer);
-                    break;
                 }
             }
+           System.out.println("Index is now: " + index);
                /*
             foundFreeSquare = ((DeedSquare) board[i]).hasDeed();
 
@@ -107,11 +108,15 @@ public class CardDeed extends ChanceCard {
                     if (!foundFreeSquare) {
                         board[index].landOn(currentPlayer);
                     }
-
+*/
                 } // end else
 
+                    distance = currentPlayer.getDistanceToMove(index, board.length);
+                    currentPlayer.updatePosition(distance);
+                    board[index].landOn(currentPlayer);
+
         System.out.println("This is new position: " + currentPlayer.getPosition() + " and new square color is: " + board[currentPlayer.getPosition()].getColor());
-         */
-        }
+
+
     }
 }

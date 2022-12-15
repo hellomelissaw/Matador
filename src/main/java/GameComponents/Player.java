@@ -2,6 +2,7 @@ package GameComponents;
 
 import Controllers.GuiController;
 import gui_fields.GUI_Player;
+import Translator.Text;
 
 /*
 ===================================================================================
@@ -10,8 +11,10 @@ This class is reused from our CDIO2 project and built upon.
  */
 public class Player {
     private boolean testing = true;
-    GUI_Player guiPlayer;
     GuiController guiController;
+    GUI_Player guiPlayer;
+
+    Text msg;
     private int squareIndex = 0;
     private String playerName;
     Account playerAccount = new Account();
@@ -22,14 +25,17 @@ public class Player {
 
     }
 
-    public void setGui(GUI_Player guiPlayer, GuiController guiController) {
+    public void setGui(GUI_Player guiPlayer, GuiController guiController, Text msg) {
         this.guiPlayer = guiPlayer;
+        playerAccount.setGuiAccount(guiPlayer);
         this.guiController = guiController;
+        this.msg = msg;
         testing = false;
     }
 
     public void setStartBalance(int startBalance) {
         playerAccount.deposit(startBalance);
+        guiPlayer.setBalance(startBalance);
     }
 
     /**
@@ -38,7 +44,6 @@ public class Player {
      */
     public void withdrawMoney(int newPoints) {
         playerAccount.withDraw(newPoints);
-        guiPlayer.setBalance(playerAccount.getBalance());
     }
 
     /**
@@ -47,7 +52,6 @@ public class Player {
      */
     public void depositMoney(int newPoints){
         playerAccount.deposit(newPoints);
-        guiPlayer.setBalance(playerAccount.getBalance());
     }
 
     public int getCurrentBalance(){
@@ -105,13 +109,16 @@ public class Player {
         return playerName;
     }
 
-    public void passedStartCheck(int oldPosition) {
+    public boolean passedStartCheck(int oldPosition) {
+        boolean hasPassed = false;
         // hvis newPosition er mindre end oldPosition, betyder det at man har passeret start
         if (squareIndex < oldPosition && oldPosition != 18) {
             playerAccount.deposit(2);
-            System.out.println("New balance after passing start is: " + playerAccount.getBalance());
+            msg.printText("passStart", "na");
+            hasPassed = true;
 
         }
+        return hasPassed;
     }
 
     // Methode is inspired from internet https://www.geeksforgeeks.org/java-program-for-program-to-find-largest-element-in-an-array/

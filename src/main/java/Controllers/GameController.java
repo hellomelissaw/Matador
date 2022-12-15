@@ -27,16 +27,20 @@ public class GameController {
             players = new Player[playerCount];
 
             players[0] = new Player("Marc"); // INITIALISE EACH PLAYER WITH NAME
+            players[0].setGui(guiController.createGuiPlayer(players[0]),guiController,msg);
             players[0].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
 
             players[1] = new Player("Germaine"); // INITIALISE EACH PLAYER WITH NAME
+            players[1].setGui(guiController.createGuiPlayer(players[1]),guiController,msg);
             players[1].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
 
             if (playerCount > 2) {
                 players[2] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
+                players[2].setGui(guiController.createGuiPlayer(players[2]),guiController,msg);
                 players[2].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
                 if (playerCount == 4) {
                     players[3] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
+                    players[3].setGui(guiController.createGuiPlayer(players[3]),guiController,msg);
                     players[3].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
                 }
             }
@@ -75,7 +79,9 @@ public class GameController {
                 System.out.println(msg.getText("enterName") + " " + playerNumber);
                 userInput = guiController.getUserString(playerNumber);
                 players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
+                players[i].setGui(guiController.createGuiPlayer(players[i]),guiController,msg);
                 players[i].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+
 
             }
         }
@@ -83,12 +89,12 @@ public class GameController {
         BoardInit board = new BoardInit(guiController, msg, players);
         square = board.getSquareArr();
 
-        guiController.addPlayerOnBoard(players);
-        GUI_Player[] guiPlayers = guiController.getGuiPlayersArr();
+
+       /* GUI_Player[] guiPlayers = guiController.getGuiPlayersArr();
         for(int i = 0 ; i < players.length ; i++) {
-            players[i].setGui(guiPlayers[i],guiController);
+            players[i].setGui(guiPlayers[i],guiController, msg);
             System.out.println("Gui Players are set");
-        }
+        }*/
 
         msg.printText("startGame", "na");
 
@@ -111,9 +117,8 @@ public class GameController {
 
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
                 msg.printText("rollDice", players[i].getPlayerName());
-                diceArr = cup.getSum();
-                int sum = diceArr[2];
-                System.out.println(players[i].getPlayerName() + " rolled a " + diceArr[0] + " and a " + diceArr[1] + ". Got moved " + sum + " squares.");
+                int sum = cup.getSum();
+                System.out.println(players[i].getPlayerName() + " got moved " + sum + " squares.");
 
                 int oldPosition = players[i].getPosition();
                 players[i].updatePosition(sum);

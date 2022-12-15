@@ -17,7 +17,7 @@ public class Cup {
 
     public Cup (GuiController guiController) {this.guiController = guiController;}
 
-    public int[] getSum () { // GETS THE SUM OF THE VALUE OF BOTH DICE
+    public int getSum () { // GETS THE SUM OF THE VALUE OF BOTH DICE
         int d1 = die1.roll();
         int d2 = die2.roll();
         guiController.setDice(d1,d2);
@@ -25,9 +25,9 @@ public class Cup {
         int sum;
         sum = d1 + d2;
         int DiceData[] = new int[3];
-        DiceData[0]=d1;
+       /* DiceData[0]=d1;
         DiceData[1]=d2;
-        DiceData[2]=sum;
-        return DiceData;
+        DiceData[2]=sum;*/
+        return sum;
     }
 }

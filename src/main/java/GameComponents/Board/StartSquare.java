@@ -11,6 +11,7 @@ public class StartSquare extends Square{
 
    public void landOn(Player currentPlayer) {
         currentPlayer.depositMoney(2);
+        msg.printText("passStart", "na");
 
     }
 
