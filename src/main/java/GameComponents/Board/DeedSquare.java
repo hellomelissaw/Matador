@@ -55,7 +55,7 @@ public class DeedSquare extends Square{
     }
 
     public void landOn(Player currentPlayer) {
-       if(freeDeed == false){ currentPlayer.withdrawMoney(deedPrice); }
+       if(freeDeed == false && currentPlayer != deed.getOwner()){ currentPlayer.withdrawMoney(deedPrice); }
 
         System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
 
