@@ -1,7 +1,6 @@
 package GameComponents.Board;
 import Controllers.GuiController;
 import GameComponents.Player;
-import gui_fields.GUI_Player;
 
 public class CardMoney extends ChanceCard {
     public CardMoney(String cardMessage, GuiController guiController, Player[] players) {
@@ -10,10 +9,10 @@ public class CardMoney extends ChanceCard {
 
     }
     public void playCard(Player currentPlayer){
-        if (cardMessage == "chance5") {
+        if (cardName == "chance5") {
             currentPlayer.withdrawMoney(2);
 
-        } else if (cardMessage == "chance6") {
+        } else if (cardName == "chance6") {
             int otherPlayers = players.length-1;
             currentPlayer.depositMoney(otherPlayers);
 
@@ -23,7 +22,7 @@ public class CardMoney extends ChanceCard {
                 }
             }
 
-        } else if (cardMessage == "chance7") {
+        } else if (cardName == "chance7") {
             currentPlayer.depositMoney(2);
         }
     }

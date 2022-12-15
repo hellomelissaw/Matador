@@ -5,7 +5,7 @@ import Translator.Text;
 import gui_fields.GUI_Player;
 
 public abstract class ChanceCard {
-    protected String cardMessage;
+    protected String cardName;
     GuiController guiController;
 
     protected Text msg;
@@ -14,8 +14,8 @@ public abstract class ChanceCard {
 
     boolean pickAgain;
 
-    public ChanceCard(String cardMessage, GuiController guiController){
-        this.cardMessage = cardMessage;
+    public ChanceCard(String cardName, GuiController guiController){
+        this.cardName = cardName;
         this.guiController = guiController;
         //guiPlayers = guiController.getGuiPlayersArr();
 
