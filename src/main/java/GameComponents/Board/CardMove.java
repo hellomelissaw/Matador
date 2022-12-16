@@ -30,12 +30,11 @@ public class CardMove extends ChanceCard {
                 } else {
                     pickAgain = true;
                 }
+
             } else {currentPlayer.updatePosition(move);}
 
-            } else {
-                    System.out.println("Card type not recognized.");
-                }
-            }
+        } else {System.out.println("Card type not recognized.");}
+    }
         /* if(cardName == "chance1" || cardName == "chance4") {
 
         }
