@@ -109,7 +109,7 @@ public class GameController {
         } else {
         cup = new Cup(guiController);}
 
-        int[] diceArr;
+        //int[] diceArr;
         int newPosition;
 
         boolean gameOver = false;
@@ -120,10 +120,10 @@ public class GameController {
                 int sum = cup.getSum();
                 System.out.println(players[i].getPlayerName() + " got moved " + sum + " squares.");
 
-                int oldPosition = players[i].getPosition();
+                //int oldPosition = players[i].getPosition();
                 players[i].updatePosition(sum);
                 newPosition = players[i].getPosition();
-                players[i].passedStartCheck(oldPosition);
+                //players[i].passedStartCheck();
 
                 square[newPosition].landOn(players[i]);
                 System.out.println(players[i].getPlayerName() + "has landed on" + square[newPosition].getSquareName() +  ", this is square #" + players[i].getPosition());

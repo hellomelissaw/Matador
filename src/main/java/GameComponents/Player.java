@@ -20,6 +20,8 @@ public class Player {
     Account playerAccount = new Account();
     private String winnerName;
 
+    private boolean hasPassedStart = false;
+
     public Player(String playerName) {
         this.playerName = playerName;
 
@@ -69,13 +71,17 @@ public class Player {
      */
     public void updatePosition(int distance) {
         System.out.println("Square Index before for loop: " + squareIndex);
+        hasPassedStart = false;
         int currentPos = squareIndex;
 
         for(int i = 0; i < distance; i++) {
             if (squareIndex < 23) {
                 squareIndex++;
+
             } else {
                 squareIndex = 0;
+                playerAccount.deposit(2);
+
             }
         }
         System.out.println("Square Index after for loop: " + squareIndex);
@@ -109,8 +115,11 @@ public class Player {
         return playerName;
     }
 
-    public boolean passedStartCheck(int oldPosition) {
-        boolean hasPassed = false;
+    public void passedStartCheck() {
+        if(hasPassedStart) {
+            playerAccount.deposit(2);
+        }
+       /* boolean hasPassed = false;
         // hvis newPosition er mindre end oldPosition, betyder det at man har passeret start
         if (squareIndex < oldPosition && oldPosition != 18) {
             playerAccount.deposit(2);
@@ -118,7 +127,9 @@ public class Player {
             hasPassed = true;
 
         }
-        return hasPassed;
+
+        */
+
     }
 
     // Methode is inspired from internet https://www.geeksforgeeks.org/java-program-for-program-to-find-largest-element-in-an-array/

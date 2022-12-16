@@ -33,6 +33,16 @@ public class CardMoveTest {
     }
 
     @Test
+    public void playCardMoveToStartGetM2() {
+        ChanceCard testChanceCard = new CardMove("chance1",guiController,0, "index");
+        //testChanceSquare.setLang("EnglishText");
+        testChanceCard.setCardLang(msg);
+        testPlayer1.updatePosition(3);
+        testChanceCard.playCard(testPlayer1);
+        assertEquals(2,testPlayer1.getCurrentBalance());
+    }
+
+    @Test
     public void playCardMoveToPromenade() {
         //testChanceSquare.setLang("EnglishText");
         ChanceCard testChanceCard = new CardMove("chance4",guiController,23, "index");

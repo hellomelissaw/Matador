@@ -49,6 +49,14 @@ public class LandOnSquareTest {
     }
 
     @Test
+    public void passStartTest() {
+        testPlayer1.updatePosition(22);
+        testPlayer1.updatePosition(10);
+
+        assertEquals(2,testPlayer1.getCurrentBalance());
+    }
+    @Test
     public void landOnStartSquare() {
+
     }
 }
