@@ -35,7 +35,7 @@ cinema; The Cinema
 toyStore; The Toy Store
 petShop; The Pet Shop
 jail; Go to Jail!
-movedToJail;You are going to jail now, press OK to be driven there.
+moveToJail;You are going to jail now, press OK to be driven there.
 movedToSquare; You have been moved to square #
 bowlingAlley; The Bowling Alley
 zoo; The Zoo

@@ -35,7 +35,7 @@ cinema; Biografen
 toyStore; Legetøjsbutik
 petShop; Dyrhandler
 jail; Gå i fængsel!
-movedToJail;Du går i fængsel nu. Tryk OK for at blive kørt dertil.
+moveToJail;Du går i fængsel nu. Tryk OK for at blive kørt dertil.
 movedToSquare; Du er blevet rykket til felt #
 bowlingAlley; Bowlingbanen
 zoo; Den zoologiske have
