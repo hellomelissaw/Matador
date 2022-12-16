@@ -3,29 +3,57 @@ import Controllers.GuiController;
 import GameComponents.Player;
 
 public class CardMove extends ChanceCard {
-    int distanceToMove;
+    private int move;
+    private String moveType;
 
-    public CardMove(String cardName, GuiController guiController, int distanceToMove) {
+
+    public CardMove(String cardName, GuiController guiController, int move, String moveType) {
         super(cardName, guiController);
-        this.distanceToMove = distanceToMove;
+        this.move = move;
+        this.moveType = moveType;
     }
 
     public void playCard(Player currentPlayer) {
-        if (distanceToMove == 24 || distanceToMove == 23) {
-            distanceToMove -= currentPlayer.getPosition();
+        if (moveType == "index"){
+            int distance = currentPlayer.getDistanceToMove(move, currentPlayer.getPosition());
+            currentPlayer.updatePosition(distance);
             pickAgain = false;
 
-        } else if (distanceToMove == 5) {
+        } else if(moveType == "distance") {
+            if(cardName == "chance3") {
+                String[] buttons = {"Move 1", "Pick again"};
+                String choice = guiController.getUserSelection(msg.getText("prompt"), buttons);
+                if (choice == "Move 1") {
+                    currentPlayer.updatePosition(move);
+                    pickAgain = false;
+
+                } else {
+                    pickAgain = true;
+                }
+            } else {currentPlayer.updatePosition(move);}
+
+            } else {
+                    System.out.println("Card type not recognized.");
+                }
+            }
+        /* if(cardName == "chance1" || cardName == "chance4") {
+
+        }
+        if (squareIndex == 24 || squareIndex == 23) {
+            squareIndex -= currentPlayer.getPosition();
             pickAgain = false;
 
-        } else if (distanceToMove == 1) {
+        } else if (squareIndex == 5) {
+            pickAgain = false;
+
+        } else if (squareIndex == 1) {
             String[] buttons = {"Move 1", "Pick again"};
             String choice = guiController.getUserSelection(msg.getText("prompt"), buttons);
             if (choice == "Move 1") {
                 pickAgain = false;
 
             } else {
-                distanceToMove -= 1;
+                squareIndex -= 1;
                 pickAgain = true;
 
             }
@@ -33,6 +61,8 @@ public class CardMove extends ChanceCard {
             }
 
             currentPlayer.updatePosition(distanceToMove);
-        }
-    }
+
+         */
+
+}
 
