@@ -27,7 +27,7 @@ public class CardMoneyTest {
 
 
         for (int i = 0 ; i < testPlayers.length ; i++) {
-            testPlayers[i].setGui(testGuiPlayers[i], guiController);
+            testPlayers[i].setGui(testGuiPlayers[i], guiController, msg);
         }
 
 

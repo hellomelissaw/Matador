@@ -1,6 +1,7 @@
 package GameComponents;
 
 import Controllers.GuiController;
+import Translator.Text;
 import gui_fields.GUI_Player;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -11,8 +12,10 @@ public class UpdatePlayerAccountTest {
 
     GuiController guiController = new GuiController();
 
+    Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
+
     public UpdatePlayerAccountTest() {
-        testPlayer.setGui(testGuiPlayer, guiController);
+        testPlayer.setGui(testGuiPlayer, guiController, msg);
     }
 
     @Test

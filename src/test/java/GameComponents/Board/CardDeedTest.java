@@ -45,10 +45,10 @@ public class CardDeedTest {
         testGuiPlayers[1] = new GUI_Player("Test Player 2");
 
         testPlayers[0] = new Player("Test Player1");
-        testPlayers[0].setGui(testGuiPlayers[0], guiController);
+        testPlayers[0].setGui(testGuiPlayers[0], guiController, msg);
 
         testPlayers[1] = new Player("Test Player2");
-        testPlayers[1].setGui(testGuiPlayers[1], guiController);
+        testPlayers[1].setGui(testGuiPlayers[1], guiController, msg);
 
         chanceCards[0] = new CardDeed("chance8", guiController, "na","na");
         chanceCards[1] = new CardDeed("chance9", guiController, "cyan", "red");

@@ -18,7 +18,7 @@ public class LandOnSquareTest {
     Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
 
     public LandOnSquareTest() {
-        testPlayer1.setGui(testGuiPlayer1, guiController);
+        testPlayer1.setGui(testGuiPlayer1, guiController, msg);
     }
     @Test
     public void landOnJailSquareAndPay1M() {

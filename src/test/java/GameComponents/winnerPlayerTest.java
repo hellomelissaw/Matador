@@ -1,6 +1,7 @@
 package GameComponents;
 
 import Controllers.GuiController;
+import Translator.Text;
 import gui_fields.GUI_Player;
 import org.junit.Test;
 
@@ -10,6 +11,8 @@ public class winnerPlayerTest {
     GuiController guiController = new GuiController();
     Player[] players = new Player[4];
     GUI_Player[] guiPlayers = new GUI_Player[4];
+
+    Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
 
     public winnerPlayerTest() {
         players[0] = new Player("A");
@@ -23,7 +26,7 @@ public class winnerPlayerTest {
         guiPlayers[3] = new GUI_Player("D");
 
         for (int i = 0 ; i < players.length ; i++)
-            players[i].setGui(guiPlayers[i], guiController);
+            players[i].setGui(guiPlayers[i], guiController, msg);
 
     }
 
