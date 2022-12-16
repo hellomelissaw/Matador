@@ -27,7 +27,7 @@ public class CardMove extends ChanceCard {
                     currentPlayer.updatePosition(move);
                     pickAgain = false;
 
-                } else {
+                } else if (choice == "Pick again") {
                     pickAgain = true;
                 }
 
