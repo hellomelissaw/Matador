@@ -9,19 +9,20 @@ import Translator.*;
 
 public class GameController {
     GuiController guiController = new GuiController();
-    public int playerCount = 0;
+    //private int playerCount = 0;
     String userInput;
     int balance = 0;
     Player[] players;
     Square[] square;
     Text msg;
+    int playerCount = 0;
 
     public void init() {
-        boolean testingInit = true;
+        boolean testingInit = false;
         if (testingInit){
             msg = new Text("src/main/java/Translator/EnglishText", guiController);
             guiController.initFieldTitles(msg);
-            playerCount = 2;
+            int playerCount = 2;
             balance = 20 - (playerCount - 2) * 2;
             //balance = 1; //TEST BALANCE, COMMENT OUT FOR NORMAL RUNNING OF GAME
             players = new Player[playerCount];
@@ -35,11 +36,11 @@ public class GameController {
             players[1].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
 
             if (playerCount > 2) {
-                players[2] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
+                players[2] = new Player("Harald FitzGerald"); // INITIALISE EACH PLAYER WITH NAME
                 players[2].setGui(guiController.createGuiPlayer(players[2]),guiController,msg);
                 players[2].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
                 if (playerCount == 4) {
-                    players[3] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
+                    players[3] = new Player("Melanie"); // INITIALISE EACH PLAYER WITH NAME
                     players[3].setGui(guiController.createGuiPlayer(players[3]),guiController,msg);
                     players[3].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
                 }
@@ -52,15 +53,16 @@ public class GameController {
             msg = new Text(langFile, guiController);
             guiController.initFieldTitles(msg);
 
-            String userInput;
+            //String userInput;
 
             //INITIALIZING PLAYERS
             //System.out.println(msg.getText("enterPlayerCount"));
+
             boolean playerCountInvalid = true;
             while (playerCountInvalid) {
                 // playerCount = userInput.nextInt();
                 //System.out.println(playerCount);
-                playerCount = guiController.getUserInteger(msg.getText("playerCount"));
+                playerCount = guiController.getUserInteger(msg.getText("enterPlayerCount"));
                 if (playerCount >= 2 && playerCount <= 4) {
                     playerCountInvalid = false;
 
