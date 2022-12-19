@@ -84,7 +84,10 @@ public class Player {
 
             } else {
                 squareIndex = 0;
-                if (getStartMoney) { playerAccount.deposit(2); }
+                if (getStartMoney) {
+                    msg.printText("passStart", "na");
+                    playerAccount.deposit(2);
+                }
 
             }
         }
