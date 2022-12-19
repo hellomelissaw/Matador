@@ -71,16 +71,20 @@ public class Player {
      */
     public void updatePosition(int distance) {
         System.out.println("Square Index before for loop: " + squareIndex);
-        //hasPassedStart = false;
+        boolean getStartMoney = true;
         int currentPos = squareIndex;
+        if(currentPos == 18) {getStartMoney = false;}
 
+        if (squareIndex == 18) {
+
+        }
         for(int i = 0; i < distance; i++) {
             if (squareIndex < 23) {
                 squareIndex++;
 
             } else {
                 squareIndex = 0;
-                playerAccount.deposit(2);
+                if (getStartMoney) { playerAccount.deposit(2); }
 
             }
         }
