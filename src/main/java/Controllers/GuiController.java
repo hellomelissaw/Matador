@@ -1,4 +1,5 @@
 package Controllers;
+import GameComponents.Board.Square;
 import GameComponents.Player;
 import Translator.Text;
 import gui_fields.*;
@@ -238,6 +239,22 @@ import java.awt.*;
 
      }
 
+     public Square getSelectedSquare(Square[] currentColorsArr) {
+         Square selectedSquare = null;
+         String[] currentColorSqrName = new String[currentColorsArr.length];
+         for(int i = 0 ; i < currentColorsArr.length ; i++){
+             currentColorSqrName[i] = currentColorsArr[i].getSquareName();
+
+         }
+         String userSelection = gui.getUserSelection(msg.getText("prompt"), currentColorSqrName);
+
+        for (int i = 0; i < currentColorsArr.length ; i++) {
+            if (userSelection == currentColorsArr[i].getSquareName()) {
+                selectedSquare = currentColorsArr[i];
+            }
+        }
+        return selectedSquare;
+     }
      public String getUserSelection(String message, String[] buttons) {
          return gui.getUserSelection(message, buttons);
      }

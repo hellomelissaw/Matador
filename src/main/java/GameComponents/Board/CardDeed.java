@@ -58,16 +58,19 @@ public class CardDeed extends ChanceCard {
                 }
             }
 
-            String[] currentColorSqrName = new String[currentColorsArr.length];
+            /*String[] currentColorSqrName = new String[currentColorsArr.length];
             for(int i = 0 ; i < currentColorsArr.length ; i++){
                 currentColorSqrName[i] = currentColorsArr[i].getSquareName();
 
-            }
+            }*/
 
-            String selectedSquare = guiController.getUserSelection(msg.getText("prompt"), currentColorSqrName);
+           Square selectedSquare = guiController.getSelectedSquare(currentColorsArr);
+           if(((DeedSquare)selectedSquare).hasDeed()){
+               ((DeedSquare)selectedSquare).setDeedToFree();
+           }
 
-            for(int i = 0 ; i < board.length ; i++) {
-                if (selectedSquare == board[i].getSquareName()) {
+           /* for(int i = 0 ; i < board.length ; i++) {
+                if (selectedSquare == board[i]) {
                     index = i ;
                     if(((DeedSquare)board[i]).hasDeed() == true) {
                         ((DeedSquare)board[i]).setDeedToFree();
@@ -75,7 +78,7 @@ public class CardDeed extends ChanceCard {
                     }
 
                 }
-            }
+            }*/
            System.out.println("Index is now: " + index);
                /*
             foundFreeSquare = ((DeedSquare) board[i]).hasDeed();
