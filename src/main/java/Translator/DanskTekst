@@ -58,7 +58,7 @@ chance12; GRATIS FELT! Ryk frem til cyan felt. Hvis det er ledigt, får du det G
 chance13; GRATIS FELT! Ryk frem til rødt felt. Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren
 chance14; GRATIS FELT! Ryk frem til orange eller grønt felt. Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren
 chance15; GRATIS FELT! Ryk frem til pink eller mørkeblåt felt. Hvis det er ledigt, får du det GRATIS! Ellers skal du BETALE leje til ejeren
-prompt; Tast 1 eller 2 for at vælge mellem
+prompt; Vælg mellem:
 lightgray; lysegrå
 cyan; cyan
 pink; pink
