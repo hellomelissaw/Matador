@@ -6,7 +6,6 @@ import gui_fields.GUI_Player;
 public class CardDeed_stub extends ChanceCard {
     private String color1;
     private String color2;
-    Square[] board;
 
     Square selectedSquare;
 
@@ -54,8 +53,13 @@ public class CardDeed_stub extends ChanceCard {
             if(((DeedSquare)selectedSquare).hasDeed()){
                 ((DeedSquare)selectedSquare).setDeedToFree();
             }
-            System.out.println("Index from getSquareIndex: " + index);
-            index = guiController.getSquareIndex(board);
+            for(int i = 0; i < board.length ; i++) {
+                if (selectedSquare.getSquareName() == board[i].getSquareName()) {
+                    index = i;
+                }
+            }
+
+
         } // end else
 
         distance = currentPlayer.getDistanceToMove(index, board.length);
