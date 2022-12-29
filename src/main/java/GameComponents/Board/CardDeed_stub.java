@@ -27,12 +27,12 @@ public class CardDeed_stub extends ChanceCard {
         System.out.println("The selected square's name is: " + selectedSquare.getSquareName());
     }
     public void playCard(Player currentPlayer) {
-        System.out.println("In playCard, the selected square's name is: " + selectedSquare.getSquareName());
         int distance;
         int index = 0;
 
         if (color1 == "na") {
             index = 10;
+            selectedSquare = board[index];
 
         } else {
             int arraySize = 0;
