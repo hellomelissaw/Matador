@@ -34,11 +34,11 @@ public class ChanceSquare extends Square{
 
     }
 
-    public void setBoard(Square[] board) {
+   /* public void setBoard(Square[] board) {
         for (int i = 0; i < chanceCards.length; i++) {
                 chanceCards[i].setBoard(board);
         }
-    }
+    }*/
 
     public void setChanceCards(Square[] board) {
 

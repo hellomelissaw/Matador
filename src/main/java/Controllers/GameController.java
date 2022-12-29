@@ -4,7 +4,6 @@ import GameComponents.Board.Square;
 import GameComponents.Cup;
 import GameComponents.Cup_stub;
 import GameComponents.Player;
-import gui_fields.GUI_Player;
 import Translator.*;
 
 public class GameController {
@@ -13,7 +12,7 @@ public class GameController {
     String userInput;
     int balance = 0;
     Player[] players;
-    Square[] square;
+    Square[] squares;
     Text msg;
     int playerCount = 0;
 
@@ -89,7 +88,8 @@ public class GameController {
         }
 
         BoardInit board = new BoardInit(guiController, msg, players);
-        square = board.getSquareArr();
+        squares = board.getSquareArr();
+        board.initChanceSquare(squares);
 
 
        /* GUI_Player[] guiPlayers = guiController.getGuiPlayersArr();
@@ -127,8 +127,8 @@ public class GameController {
                 newPosition = players[i].getPosition();
                 //players[i].passedStartCheck();
 
-                square[newPosition].landOn(players[i]);
-                System.out.println(players[i].getPlayerName() + "has landed on" + square[newPosition].getSquareName() +  ", this is square #" + players[i].getPosition());
+                squares[newPosition].landOn(players[i]);
+                System.out.println(players[i].getPlayerName() + "has landed on" + squares[newPosition].getSquareName() +  ", this is square #" + players[i].getPosition());
 
 
                     if(players[i].isBankrupt() == true) {

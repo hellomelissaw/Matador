@@ -5,8 +5,6 @@ import GameComponents.Player;
 public class CardMove extends ChanceCard {
     private int move;
     private String moveType;
-
-    Square[] board;
     public CardMove(String cardName, GuiController guiController, int move, String moveType) {
         super(cardName, guiController);
         this.move = move;

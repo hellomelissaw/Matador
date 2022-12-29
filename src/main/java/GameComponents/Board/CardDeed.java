@@ -6,7 +6,6 @@ import gui_fields.GUI_Player;
 public class CardDeed extends ChanceCard {
     private String color1;
     private String color2;
-    Square[] board;
     Square[] currentColorArr = new Square[0];
 
     public CardDeed(String cardName, GuiController guiController, String color1, String color2) {
@@ -17,6 +16,7 @@ public class CardDeed extends ChanceCard {
     }
 
     public void setOptionsArr() {
+        System.out.println(board);
         int arraySize = 0;
         for (int i = 0; i < board.length; i++) {
 
@@ -66,6 +66,7 @@ public class CardDeed extends ChanceCard {
                     distance = currentPlayer.getDistanceToMove(index, board.length);
                     currentPlayer.updatePosition(distance);
                     selectedSquare.landOn(currentPlayer);
+
 
         System.out.println("This is new position: " + currentPlayer.getPosition() + " and new square color is: " + board[currentPlayer.getPosition()].getColor());
 
