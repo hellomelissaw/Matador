@@ -136,64 +136,22 @@ public class CardDeedTest {
         assertEquals(-5, testPlayers[1].getCurrentBalance());
     }
 
-
-    @Test
-    public void Chance9GoToFreeCyanSquareFromSquare15() {
-
-        testPlayers[0].updatePosition(15);
-        chanceCards[0].playCard(testPlayers[0]);
-        assertEquals(10, testPlayers[0].getPosition());
-
-        chanceCards[1].playCard(testPlayers[0]);
-        assertEquals(4, testPlayers[0].getPosition());
-
-        chanceCards[2].playCard(testPlayers[0]);
-        assertEquals(1, testPlayers[0].getPosition());
-
-        chanceCards[3].playCard(testPlayers[0]);
-        assertEquals(11, testPlayers[0].getPosition());
-
-        chanceCards[4].playCard(testPlayers[0]);
-        assertEquals(5, testPlayers[0].getPosition());
-
-        chanceCards[5].playCard(testPlayers[0]);
-        assertEquals(13, testPlayers[0].getPosition());
-
-        chanceCards[6].playCard(testPlayers[0]);
-        assertEquals(19, testPlayers[0].getPosition());
-
-        chanceCards[7].playCard(testPlayers[0]);
-        assertEquals(7, testPlayers[0].getPosition());
-
-    }
-
     @Test
     public void playerGetsSkateParkForFree() {
 
-        testPlayers[0].depositMoney(3);
-
         ((CardDeed_stub)chanceCards[0]).setSquareTest(msg.getText("skatePark"));
+
         chanceCards[0].playCard(testPlayers[0]);
-        assertEquals(3,testPlayers[0].getCurrentBalance());
-
-
-    }
-
-    @Test
-    public void payRentIfNoAvailableSquare() {
-
-        ((DeedSquare)board[10]).setDeedOwner(testPlayers[0], 10);
-        ((DeedSquare)board[11]).setDeedOwner(testPlayers[0], 11);
-
-        chanceCards[3].playCard(testPlayers[1]);
-
-        assertEquals(-5, testPlayers[1].getCurrentBalance());
+        assertEquals(0,testPlayers[0].getCurrentBalance());
 
     }
 
     @Test
     public void player2PaysRentWhenPickingSquareOwnedByPlayer1() {
         chanceCards[0].playCard(testPlayers[0]);
+
+        ((CardDeed_stub) chanceCards[3]).setSquareTest(msg.getText("skatePark"));
+        ((CardDeed_stub) chanceCards[3]).setSelectedSquare(msg.getText("skatePark"));
         chanceCards[3].playCard(testPlayers[1]);
 
         assertEquals(-2, testPlayers[1].getCurrentBalance());
@@ -207,6 +165,7 @@ public class CardDeedTest {
         Player owner = ((DeedSquare)board[4]).getDeedOwner();
 
         assertEquals("Test Player 1", owner.getPlayerName());
+        assertEquals(0,testPlayers[0].getCurrentBalance());
     }
 }
 
