@@ -12,8 +12,9 @@ public class CardMove extends ChanceCard {
         this.move = move;
         this.moveType = moveType;
     }
-    public void setBoard(Square[] board) {
-        this.board = board;
+
+    public void setOptionsArr() {
+
     }
 
     public void playCard(Player currentPlayer) {

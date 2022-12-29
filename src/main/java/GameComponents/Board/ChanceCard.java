@@ -12,6 +12,7 @@ public abstract class ChanceCard {
     protected Player[] players;
     protected GUI_Player[] guiPlayers;
 
+    protected Square[] board;
     boolean pickAgain;
 
     public ChanceCard(String cardName, GuiController guiController){
@@ -20,6 +21,10 @@ public abstract class ChanceCard {
         //guiPlayers = guiController.getGuiPlayersArr();
 
 
+    }
+
+    public void setBoard(Square[] board) {
+        this.board = board;
     }
 
     protected void setCardLang(Text msg) {
@@ -38,6 +43,8 @@ public abstract class ChanceCard {
         msg.printText(card,"na");
 
     }
+
+    public abstract void setOptionsArr();
 
     public abstract void playCard(Player currentPlayer);
 

@@ -44,6 +44,8 @@ public class BoardInit {
         String[] colors = {"lightgrey", "cyan", "pink", "orange", "red", "yellow", "green", "darkblue"};
 
         for(int i = 0 ; i < board.length ; i+=3) {
+            board[i].setLang(msg);
+
             if(i % 2 == 0) {
                 board[i].setColor("white");
 
@@ -58,15 +60,23 @@ public class BoardInit {
         }
 
         for (int i = 0 ; i < board.length ; i++) {
-            board[i].setLang(msg);
             if(board[i] instanceof ChanceSquare){
+                //((ChanceSquare)board[i]).setBoard(board);
+                ((ChanceSquare)board[i]).setChanceCards(board);
                 ((ChanceSquare)board[i]).setCardLang();
-                ((ChanceSquare)board[i]).setBoard(board);
+
+
             }
         }
+
+    }
+
+    public void initChanceSquare(){
+
     }
     public Square[] getSquareArr() {
         return board;
     }
+
 
 }

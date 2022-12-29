@@ -3,12 +3,18 @@ import Controllers.GuiController;
 import GameComponents.Player;
 
 public class ChanceSquare extends Square{
+    boolean testing = false;
+    private int cardIndex;
+    private GuiController guiController;
+    Player[] players;
 
     private ChanceCard[] chanceCards = new ChanceCard[15];
 
     public ChanceSquare(String squareName, GuiController guiController, Player[] players) { //INITIALISES DECK OF CHANCE CARDS
-        super(squareName);
 
+        super(squareName);
+        this.guiController = guiController;
+        this.players = players;
         chanceCards[0] = new CardMove("chance1", guiController, 0,"index");
         chanceCards[1] = new CardMove("chance2", guiController,5, "distance");
         chanceCards[2] = new CardMove("chance3", guiController,1, "distance");
@@ -26,18 +32,23 @@ public class ChanceSquare extends Square{
         chanceCards[14] = new CardDeed("chance15", guiController, "pink", "darkblue");
 
 
-        for (int i = 0 ; i < chanceCards.length ; i++) { //SETS PLAYERS ARRAY FOR EACH CARD
-            chanceCards[i].setPlayers(players);
-
-        }
     }
 
     public void setBoard(Square[] board) {
         for (int i = 0; i < chanceCards.length; i++) {
-            if (chanceCards[i] instanceof CardDeed) {
-                ((CardDeed) chanceCards[i]).setBoard(board);
-            }
+                chanceCards[i].setBoard(board);
         }
+    }
+
+    public void setChanceCards(Square[] board) {
+
+        for (int i = 0 ; i < chanceCards.length ; i++) { //SETS PLAYERS ARRAY FOR EACH CARD
+            chanceCards[i].setBoard(board);
+            chanceCards[i].setPlayers(players);
+            chanceCards[i].setOptionsArr();
+
+        }
+
     }
 
     public void setCardLang() {
@@ -47,10 +58,18 @@ public class ChanceSquare extends Square{
         }
     }
 
+    public void isTesting(boolean testing, int testIndex) {
+        this.testing = testing;
+        cardIndex = testIndex;
+    }
+
     public void landOn(Player currentPlayer) {
         boolean pickAgain = true;
         while(pickAgain){
-            int cardIndex = (int) (Math.random() * (15 - 1));
+
+            if(!testing){
+                cardIndex = (int) (Math.random() * (15 - 1));
+            }
             chanceCards[cardIndex].printMessage(cardIndex);
             System.out.println("Card picked: " + cardIndex);
             chanceCards[cardIndex].playCard(currentPlayer);

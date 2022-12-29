@@ -7,6 +7,7 @@ public class CardDeed extends ChanceCard {
     private String color1;
     private String color2;
     Square[] board;
+    Square[] currentColorArr = new Square[0];
 
     public CardDeed(String cardName, GuiController guiController, String color1, String color2) {
         super(cardName, guiController);
@@ -14,9 +15,22 @@ public class CardDeed extends ChanceCard {
         this.color2 = color2;
 
     }
-    public void setBoard(Square[] board) {
-       this.board = board;
+
+    public void setOptionsArr() {
+        int arraySize = 0;
+        for (int i = 0; i < board.length; i++) {
+
+            if (board[i].getColor() == color1 || board[i].getColor() == color2) {
+                arraySize++;
+                Square[] updatedColorArr = new Square[arraySize];
+                updatedColorArr[0] = board[i];
+                System.arraycopy(currentColorArr, 0, updatedColorArr, 1, currentColorArr.length);
+                currentColorArr = updatedColorArr.clone();
+                System.out.println(currentColorArr);
+            }
+        }
     }
+
     public void playCard(Player currentPlayer) {
         int distance;
         int index = 0;
@@ -26,7 +40,7 @@ public class CardDeed extends ChanceCard {
            index = 10;
 
         } else {
-            int arraySize = 0;
+            /*int arraySize = 0;
             Square[] currentColorsArr = new Square[0];
             int[] indexArray = {};
             for (int i = 0; i < board.length; i++) {
@@ -38,9 +52,10 @@ public class CardDeed extends ChanceCard {
                     System.arraycopy(currentColorsArr, 0, updatedColorArr, 1, currentColorsArr.length);
                     currentColorsArr = updatedColorArr.clone();
                 }
-            }
+            }*/
+           //Square currentColorsArr = board
 
-           selectedSquare = guiController.getSelectedSquare(currentColorsArr);
+           selectedSquare = guiController.getSelectedSquare(currentColorArr);
            if(((DeedSquare)selectedSquare).hasDeed()){
                ((DeedSquare)selectedSquare).setDeedToFree();
            }
