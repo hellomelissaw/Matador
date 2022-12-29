@@ -16,6 +16,7 @@ public class CardDeedTest {
     Player[] testPlayers = new Player[2];
     Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
 
+    ChanceCard[] chanceCards = new ChanceCard[8];
     Square[] board;
 
     GUI_Player[] testGuiPlayers = new GUI_Player[2];
@@ -56,6 +57,21 @@ public class CardDeedTest {
         BoardInit testBoard = new BoardInit(guiController, msg, testPlayers);
         //testBoard.initChanceSquare(true);
         board = testBoard.getSquareArr();
+
+        chanceCards[0] = new CardDeed_stub("chance8", guiController, "na","na");
+        chanceCards[1] = new CardDeed_stub("chance9", guiController, "cyan", "red");
+        chanceCards[2] = new CardDeed_stub("chance10", guiController, "lightgrey", "yellow");
+        chanceCards[3] = new CardDeed_stub("chance11", guiController, "orange", "na");
+        chanceCards[4] = new CardDeed_stub("chance12", guiController, "cyan", "na");
+        chanceCards[5] = new CardDeed_stub("chance13", guiController, "red", "na");
+        chanceCards[6] = new CardDeed_stub("chance14", guiController, "orange", "green");
+        chanceCards[7] = new CardDeed_stub("chance15", guiController, "pink", "darkblue");
+
+        for(int i = 0 ; i < chanceCards.length ; i++) {
+            chanceCards[i].setBoard(board);
+            chanceCards[i].setCardLang(msg);
+            chanceCards[i].setPlayers(testPlayers);
+        }
 
        /* for (int i = 0 ; i < board.length ; i++) {
             board[i].setLang(msg);
