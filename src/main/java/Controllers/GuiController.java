@@ -13,7 +13,7 @@ import java.awt.*;
      private GUI_Field[] fields;
 
     private GUI_Player[] guiPlayers;
-
+    private int squareIndex = 0;
     public GuiController() {
 
          fields = new GUI_Field[]{
@@ -238,22 +238,34 @@ import java.awt.*;
          return gui.getUserInteger(message);
 
      }
-
+     String userSelection;
+     Square selectedSquare;
      public Square getSelectedSquare(Square[] currentColorsArr) {
-         Square selectedSquare = null;
+
          String[] currentColorSqrName = new String[currentColorsArr.length];
          for(int i = 0 ; i < currentColorsArr.length ; i++){
              currentColorSqrName[i] = currentColorsArr[i].getSquareName();
 
          }
-         String userSelection = gui.getUserSelection(msg.getText("prompt"), currentColorSqrName);
+        userSelection = gui.getUserSelection(msg.getText("prompt"), currentColorSqrName);
 
         for (int i = 0; i < currentColorsArr.length ; i++) {
             if (userSelection == currentColorsArr[i].getSquareName()) {
                 selectedSquare = currentColorsArr[i];
+
             }
         }
         return selectedSquare;
+     }
+
+     public int getSquareIndex(Square[] board) {
+         int index = 0;
+         for(int i = 0; i < board.length ; i++) {
+             if(selectedSquare.getSquareName() == board[i].getSquareName()){
+                 index = i;
+             }
+         }
+         return index;
      }
      public String getUserSelection(String message, String[] buttons) {
          return gui.getUserSelection(message, buttons);
@@ -266,9 +278,9 @@ import java.awt.*;
     public void setDice(int die1, int die2){
         gui.setDice(die1,die2);
     }
-    public String winner(){
+   /* public String winner(){
 
         return winner();
-    }
+    }*/
 
  }

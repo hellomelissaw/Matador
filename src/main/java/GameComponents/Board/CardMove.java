@@ -6,16 +6,19 @@ public class CardMove extends ChanceCard {
     private int move;
     private String moveType;
 
-
+    Square[] board;
     public CardMove(String cardName, GuiController guiController, int move, String moveType) {
         super(cardName, guiController);
         this.move = move;
         this.moveType = moveType;
     }
+    public void setBoard(Square[] board) {
+        this.board = board;
+    }
 
     public void playCard(Player currentPlayer) {
         if (moveType == "index"){
-            int distance = currentPlayer.getDistanceToMove(move, currentPlayer.getPosition());
+            int distance = currentPlayer.getDistanceToMove(move, board.length);
             currentPlayer.updatePosition(distance);
             pickAgain = false;
 

@@ -2,6 +2,7 @@ package GameComponents.Board;
 
 import Controllers.GuiController;
 import GameComponents.Player;
+import GameComponents.Board.BoardInit;
 import Translator.Text;
 import gui_fields.GUI_Player;
 import org.junit.Test;
@@ -15,14 +16,14 @@ public class CardDeedTest {
     Player[] testPlayers = new Player[2];
     Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
 
-    Square[] board = new Square[24];
+    Square[] board;
 
     GUI_Player[] testGuiPlayers = new GUI_Player[2];
 
     ChanceCard[] chanceCards = new ChanceCard[8];
     public CardDeedTest() {
 
-        for (int i = 0 ; i < board.length ; i++) {
+       /* for (int i = 0 ; i < board.length ; i++) {
             board[i] = new DeedSquare("Test Deed", 5, guiController);
         }
 
@@ -39,36 +40,40 @@ public class CardDeedTest {
             board[i+1].setColor(colors[i/3]);
             board[i+2].setColor(colors[i/3]);
 
-        }
+        }*/
 
         testGuiPlayers[0] = new GUI_Player("Test Player 1");
         testGuiPlayers[1] = new GUI_Player("Test Player 2");
 
-        testPlayers[0] = new Player("Test Player1");
+        testPlayers[0] = new Player("Test Player 1");
         testPlayers[0].setGui(testGuiPlayers[0], guiController, msg);
 
-        testPlayers[1] = new Player("Test Player2");
+        testPlayers[1] = new Player("Test Player 2");
         testPlayers[1].setGui(testGuiPlayers[1], guiController, msg);
 
-        chanceCards[0] = new CardDeed("chance8", guiController, "na","na");
-        chanceCards[1] = new CardDeed("chance9", guiController, "cyan", "red");
-        chanceCards[2] = new CardDeed("chance10", guiController, "lightgrey", "yellow");
-        chanceCards[3] = new CardDeed("chance11", guiController, "orange", "na");
-        chanceCards[4] = new CardDeed("chance12", guiController, "cyan", "na");
-        chanceCards[5] = new CardDeed("chance13", guiController, "red", "na");
-        chanceCards[6] = new CardDeed("chance14", guiController, "orange", "green");
-        chanceCards[7] = new CardDeed("chance15", guiController, "pink", "darkblue");
+        chanceCards[0] = new CardDeed_stub("chance8", guiController, "na","na");
+        chanceCards[1] = new CardDeed_stub("chance9", guiController, "cyan", "red");
+        chanceCards[2] = new CardDeed_stub("chance10", guiController, "lightgrey", "yellow");
+        chanceCards[3] = new CardDeed_stub("chance11", guiController, "orange", "na");
+        chanceCards[4] = new CardDeed_stub("chance12", guiController, "cyan", "na");
+        chanceCards[5] = new CardDeed_stub("chance13", guiController, "red", "na");
+        chanceCards[6] = new CardDeed_stub("chance14", guiController, "orange", "green");
+        chanceCards[7] = new CardDeed_stub("chance15", guiController, "pink", "darkblue");
 
-        for (int i = 0 ; i < board.length ; i++) {
+        BoardInit testBoard = new BoardInit(guiController, msg, testPlayers);
+
+        board = testBoard.getSquareArr();
+
+       /* for (int i = 0 ; i < board.length ; i++) {
             board[i].setLang(msg);
             if(board[i] instanceof ChanceSquare){
                 ((ChanceSquare)board[i]).setCardLang();
                 ((ChanceSquare)board[i]).setBoard(board);
             }
         }
-
+*/
         for(int i = 0 ; i < chanceCards.length ; i++) {
-            ((CardDeed)chanceCards[i]).setBoard(board);
+            ((CardDeed_stub)chanceCards[i]).setBoard(board);
             chanceCards[i].setCardLang(msg);
 
         }
@@ -163,15 +168,14 @@ public class CardDeedTest {
     }
 
     @Test
-    public void playerGetsSkateParkAndCyanSquareDeedForFree() {
+    public void playerGetsSkateParkForFree() {
 
         testPlayers[0].depositMoney(3);
 
+        ((CardDeed_stub)chanceCards[0]).setSquareTest(msg.getText("skatePark"));
         chanceCards[0].playCard(testPlayers[0]);
         assertEquals(3,testPlayers[0].getCurrentBalance());
 
-        chanceCards[1].playCard(testPlayers[0]);
-        assertEquals(3, testPlayers[0].getCurrentBalance());
 
     }
 
@@ -194,4 +198,15 @@ public class CardDeedTest {
 
         assertEquals(-2, testPlayers[1].getCurrentBalance());
     }
+
+    @Test
+    public void playerGetsCandyShopFree() {
+        ((CardDeed_stub) chanceCards[1]).setSquareTest(msg.getText("candyShop"));
+        ((CardDeed_stub) chanceCards[1]).setSelectedSquare(msg.getText("candyShop"));
+        chanceCards[1].playCard(testPlayers[0]);
+        Player owner = ((DeedSquare)board[4]).getDeedOwner();
+
+        assertEquals("Test Player 1", owner.getPlayerName());
+    }
 }
+

@@ -70,14 +70,11 @@ public class Player {
      * @return index of the Square that the Player is moved to after throwing dice
      */
     public void updatePosition(int distance) {
-        System.out.println("Square Index before for loop: " + squareIndex);
+        System.out.println("Current pos " + squareIndex);
         boolean getStartMoney = true;
         int currentPos = squareIndex;
         if(currentPos == 18) {getStartMoney = false;}
 
-        if (squareIndex == 18) {
-
-        }
         for(int i = 0; i < distance; i++) {
             if (squareIndex < 23) {
                 squareIndex++;
@@ -88,10 +85,9 @@ public class Player {
                     msg.printText("passStart", "na");
                     playerAccount.deposit(2);
                 }
-
             }
         }
-        System.out.println("Square Index after for loop: " + squareIndex);
+        System.out.println("New pos " + squareIndex);
 
         if(!testing){ guiController.move(guiPlayer, currentPos, squareIndex);}
     }
@@ -104,11 +100,11 @@ public class Player {
         int distance;
         if (squareIndex > newSquareIndex) {
             distance = boardLength - squareIndex + newSquareIndex;
-            System.out.println("New pos when currentPos > i: " + distance);
+            System.out.println("CurrentPos > i, dist to move:" + distance);
 
         } else {
             distance = boardLength - squareIndex - (boardLength - newSquareIndex);
-            System.out.println("New pos when i > currentPos: " + distance);
+            System.out.println("CurrentPos < i, dist to move: " + distance);
         }
         return distance;
     }

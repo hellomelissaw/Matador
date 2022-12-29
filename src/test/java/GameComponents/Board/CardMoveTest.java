@@ -3,7 +3,7 @@ package GameComponents.Board;
 import Controllers.GuiController;
 import GameComponents.Player;
 import Translator.Text;
-import gui_fields.GUI_Player;
+import GameComponents.Board.BoardInit;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -12,13 +12,15 @@ import static org.junit.Assert.*;
 
 public class CardMoveTest {
     GuiController guiController = new GuiController();
-    Player testPlayer1 = new Player("TestPlayer 1");
+    Player[] testPlayers = new Player[1];
 
    // Square testChanceSquare = new ChanceSquare("Testing Chance", guiController);
     Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
 
     public CardMoveTest() {
-        testPlayer1.setGui(guiController.createGuiPlayer(testPlayer1),guiController,msg);
+        testPlayers[0] = new Player("TestPlayer 1");
+        BoardInit board = new BoardInit(guiController, msg, testPlayers);
+        testPlayers[0].setGui(guiController.createGuiPlayer(testPlayers[0]),guiController,msg);
 
     }
 
@@ -27,9 +29,17 @@ public class CardMoveTest {
         ChanceCard testChanceCard = new CardMove("chance1",guiController,0, "index");
         //testChanceSquare.setLang("EnglishText");
         testChanceCard.setCardLang(msg);
-        testChanceCard.playCard(testPlayer1);
-        assertEquals(0, testPlayer1.getPosition());
+        testChanceCard.playCard(testPlayers[0]);
+        assertEquals(0, testPlayers[0].getPosition());
 
+    }
+    @Test
+    public void getM2WhenMoveToStartCard() {
+        ChanceCard testChanceCard = new CardMove("chance1",guiController,0, "index");
+        testChanceCard.setCardLang(msg);
+        testPlayers[0].updatePosition(20);
+        testChanceCard.playCard(testPlayers[0]);
+        assertEquals(2, testPlayers[0].getCurrentBalance());
     }
 
     @Test
@@ -37,9 +47,9 @@ public class CardMoveTest {
         ChanceCard testChanceCard = new CardMove("chance1",guiController,0, "index");
         //testChanceSquare.setLang("EnglishText");
         testChanceCard.setCardLang(msg);
-        testPlayer1.updatePosition(3);
-        testChanceCard.playCard(testPlayer1);
-        assertEquals(2,testPlayer1.getCurrentBalance());
+        testPlayers[0].updatePosition(3);
+        testChanceCard.playCard(testPlayers[0]);
+        assertEquals(2,testPlayers[0].getCurrentBalance());
     }
 
     @Test
@@ -47,8 +57,8 @@ public class CardMoveTest {
         //testChanceSquare.setLang("EnglishText");
         ChanceCard testChanceCard = new CardMove("chance4",guiController,23, "index");
         testChanceCard.setCardLang(msg);
-        testChanceCard.playCard(testPlayer1);
-        assertEquals(23, testPlayer1.getPosition());
+        testChanceCard.playCard(testPlayers[0]);
+        assertEquals(23, testPlayers[0].getPosition());
 
     }
     @Test
@@ -56,9 +66,9 @@ public class CardMoveTest {
         //testChanceSquare.setLang("EnglishText");
         ChanceCard testChanceCard = new CardMove("chance2",guiController,5, "distance");
         testChanceCard.setCardLang(msg);
-        testPlayer1.updatePosition(5);
-        testChanceCard.playCard(testPlayer1);
-        assertEquals(10, testPlayer1.getPosition());
+        testPlayers[0].updatePosition(5);
+        testChanceCard.playCard(testPlayers[0]);
+        assertEquals(10, testPlayers[0].getPosition());
 
     }
 
@@ -67,10 +77,10 @@ public class CardMoveTest {
         //testChanceSquare.setLang("EnglishText");
         ChanceCard testChanceCard = new CardMove("chance3",guiController,1, "distance");
         testChanceCard.setCardLang(msg);
-        testPlayer1.updatePosition(5);
-        testChanceCard.playCard(testPlayer1);
+        testPlayers[0].updatePosition(5);
+        testChanceCard.playCard(testPlayers[0]);
 
-        assertEquals(6, testPlayer1.getPosition());
+        assertEquals(6, testPlayers[0].getPosition());
 
     }
     @Test
@@ -78,10 +88,10 @@ public class CardMoveTest {
         //testChanceSquare.setLang("EnglishText");
         ChanceCard testChanceCard = new CardMove("chance3",guiController,1, "distance");
         testChanceCard.setCardLang(msg);
-        testPlayer1.updatePosition(5);
-        testChanceCard.playCard(testPlayer1);
+        testPlayers[0].updatePosition(5);
+        testChanceCard.playCard(testPlayers[0]);
 
-        assertEquals(5, testPlayer1.getPosition());
+        assertEquals(5, testPlayers[0].getPosition());
 
     }
 }

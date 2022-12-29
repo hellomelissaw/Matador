@@ -10,7 +10,6 @@ public class StartSquare extends Square{
     }
 
    public void landOn(Player currentPlayer) {
-
         msg.printText("passStart", "na");
 
     }
