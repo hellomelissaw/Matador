@@ -3,30 +3,33 @@ import Controllers.GuiController;
 import GameComponents.Player;
 
 public class CardMoney extends ChanceCard {
-    public CardMoney(String cardName, GuiController guiController, Player[] players) {
+    private String transactionType;
+    private int amount;
+    public CardMoney(String cardName, GuiController guiController, String transactionType, int amount) {
         super(cardName, guiController);
-        this.players = players;
+        this.transactionType = transactionType;
+        this.amount = amount;
 
     }
     public void setOptionsArr() {
 
     }
     public void playCard(Player currentPlayer){
-        if (cardName == "chance5") {
-            currentPlayer.withdrawMoney(2);
+        if (transactionType.equals("deposit")) {
+            currentPlayer.depositMoney(amount);
 
-        } else if (cardName == "chance6") {
-            int otherPlayers = players.length-1;
-            currentPlayer.depositMoney(otherPlayers);
+        } else if (transactionType.equals("withdraw")) {
+            currentPlayer.withdrawMoney(amount);
 
+        } else if (transactionType.equals("hybrid")) {
             for (int i = 0 ; i < players.length ; i++) {
                 if (players[i] != currentPlayer) {
-                    players[i].withdrawMoney(1);
+                    players[i].withdrawMoney(amount);
                 }
             }
+            int receive = amount * players.length-1;
+            currentPlayer.depositMoney(receive);
 
-        } else if (cardName == "chance7") {
-            currentPlayer.depositMoney(2);
         }
     }
 }
