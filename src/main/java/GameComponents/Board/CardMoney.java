@@ -27,7 +27,7 @@ public class CardMoney extends ChanceCard {
                     players[i].withdrawMoney(amount);
                 }
             }
-            int receive = amount * players.length-1;
+            int receive = amount * (players.length-1);
             currentPlayer.depositMoney(receive);
 
         }
