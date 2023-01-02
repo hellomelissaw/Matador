@@ -5,6 +5,8 @@ import GameComponents.Player;
 public class CardMove extends ChanceCard {
     private int move;
     private String moveType;
+    private String choice;
+    String[] buttons;
     public CardMove(String cardName, GuiController guiController, int move, String moveType) {
         super(cardName, guiController);
         this.move = move;
@@ -12,6 +14,7 @@ public class CardMove extends ChanceCard {
     }
 
     public void setOptionsArr() {
+        buttons = new String[]{"Move 1", "Pick again"};
 
     }
 
@@ -23,15 +26,11 @@ public class CardMove extends ChanceCard {
 
         } else if(moveType == "distance") {
             if(cardName == "chance3") {
-                String[] buttons = {"Move 1", "Pick again"};
-                String choice = guiController.getUserSelection(msg.getText("prompt"), buttons);
-                if (choice == "Move 1") {
-                    currentPlayer.updatePosition(move);
-                    pickAgain = false;
-
-                } else if (choice == "Pick again") {
+                choice = guiController.getUserSelection(msg.getText("prompt"), buttons);
+                if (choice == "Pick again") {
                     pickAgain = true;
-                }
+
+                } else {currentPlayer.updatePosition(move);}
 
             } else {currentPlayer.updatePosition(move);}
 
