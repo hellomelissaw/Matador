@@ -20,7 +20,7 @@ public class CardMove extends ChanceCard {
 
     public void playCard(Player currentPlayer) {
         if (moveType == "index"){
-            int distance = currentPlayer.getDistanceToMove(move, board.length);
+            int distance = currentPlayer.getDistanceToMove(move, 24);
             currentPlayer.updatePosition(distance);
             pickAgain = false;
 
