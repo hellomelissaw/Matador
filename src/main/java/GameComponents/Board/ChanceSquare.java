@@ -19,9 +19,9 @@ public class ChanceSquare extends Square{
         chanceCards[1] = new CardMove("chance2", guiController,5, "distance");
         chanceCards[2] = new CardMove("chance3", guiController,1, "distance");
         chanceCards[3] = new CardMove("chance4", guiController,23, "index");
-        chanceCards[4] = new CardMoney("chance5", guiController, players);
-        chanceCards[5] = new CardMoney("chance6", guiController, players);
-        chanceCards[6] = new CardMoney("chance7", guiController, players);
+        chanceCards[4] = new CardMoney("chance5", guiController, "withdraw", 2);
+        chanceCards[5] = new CardMoney("chance6", guiController, "hybrid", 1);
+        chanceCards[6] = new CardMoney("chance7", guiController, "deposit", 2);
         chanceCards[7] = new CardDeed("chance8", guiController, "na","na");
         chanceCards[8] = new CardDeed("chance9", guiController, "cyan", "red");
         chanceCards[9] = new CardDeed("chance10", guiController, "lightgrey", "yellow");

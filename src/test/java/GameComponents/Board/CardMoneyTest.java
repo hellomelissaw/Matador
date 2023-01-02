@@ -34,21 +34,20 @@ public class CardMoneyTest {
 
     }
     @Test
-    public void playChanceCard5Withdraw2() {
+    public void playChanceCardPay2() {
 
-        testPlayers[1].depositMoney(20);
-        ChanceCard testChanceCard = new CardMoney("chance5",guiController,testPlayers);
-        //testChanceSquare.setLang("EnglishText");
+        ChanceCard testChanceCard = new CardMoney("chance5",guiController,"withdraw",2);
         testChanceCard.setCardLang(msg);
         testChanceCard.playCard(testPlayers[1]);
-        assertEquals(18, testPlayers[1].getCurrentBalance());
+        assertEquals(-2, testPlayers[1].getCurrentBalance());
 
     }
 
     @Test
-    public void playChanceCard6CurrentPlayerGets3OthersWithdraw1() {
-        ChanceCard testChanceCard = new CardMoney("chance6",guiController,testPlayers);
+    public void playChanceCardCurrentPlayerGets3OthersPay1() {
+        ChanceCard testChanceCard = new CardMoney("chance6",guiController,"hybrid", 1);
         testChanceCard.setCardLang(msg);
+        testChanceCard.setPlayers(testPlayers);
         testChanceCard.playCard(testPlayers[0]);
         assertEquals(3, testPlayers[0].getCurrentBalance());
         assertEquals(-1, testPlayers[1].getCurrentBalance());
@@ -57,8 +56,8 @@ public class CardMoneyTest {
 
     }
     @Test
-    public void playChanceCard7Deposit2() {
-        ChanceCard testChanceCard = new CardMoney("chance7",guiController,testPlayers);
+    public void playChanceCardReceive2() {
+        ChanceCard testChanceCard = new CardMoney("chance7",guiController,"deposit", 2);
         testChanceCard.setCardLang(msg);
         testChanceCard.playCard(testPlayers[0]);
         assertEquals(2, testPlayers[0].getCurrentBalance());
