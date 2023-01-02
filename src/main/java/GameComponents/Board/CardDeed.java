@@ -15,7 +15,6 @@ public class CardDeed extends ChanceCard {
     }
 
     public void setOptionsArr() {
-        System.out.println(board);
         int arraySize = 0;
         for (int i = 0; i < board.length; i++) {
 
@@ -25,7 +24,7 @@ public class CardDeed extends ChanceCard {
                 updatedColorArr[0] = board[i];
                 System.arraycopy(currentColorArr, 0, updatedColorArr, 1, currentColorArr.length);
                 currentColorArr = updatedColorArr.clone();
-                System.out.println(currentColorArr);
+
             }
         }
     }
@@ -41,6 +40,7 @@ public class CardDeed extends ChanceCard {
         } else {
 
            selectedSquare = guiController.getSelectedSquare(currentColorArr);
+
            if(((DeedSquare)selectedSquare).hasDeed()){
                ((DeedSquare)selectedSquare).setDeedToFree();
            }
@@ -48,9 +48,9 @@ public class CardDeed extends ChanceCard {
            index = guiController.getSquareIndex(board);
                 } // end else
 
-                    distance = currentPlayer.getDistanceToMove(index, board.length);
-                    currentPlayer.updatePosition(distance);
-                    selectedSquare.landOn(currentPlayer);
+        distance = currentPlayer.getDistanceToMove(index, board.length);
+        currentPlayer.updatePosition(distance);
+        selectedSquare.landOn(currentPlayer);
 
 
         System.out.println("This is new position: " + currentPlayer.getPosition() + " and new square color is: " + board[currentPlayer.getPosition()].getColor());
