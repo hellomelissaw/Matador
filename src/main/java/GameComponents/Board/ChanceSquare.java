@@ -31,14 +31,7 @@ public class ChanceSquare extends Square{
         chanceCards[13] = new CardDeed("chance14", guiController, "orange", "green");
         chanceCards[14] = new CardDeed("chance15", guiController, "pink", "darkblue");
 
-
     }
-
-   /* public void setBoard(Square[] board) {
-        for (int i = 0; i < chanceCards.length; i++) {
-                chanceCards[i].setBoard(board);
-        }
-    }*/
 
     public void setChanceCards(Square[] board) {
 

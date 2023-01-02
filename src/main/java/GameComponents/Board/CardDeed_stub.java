@@ -1,7 +1,6 @@
 package GameComponents.Board;
 import Controllers.GuiController;
 import GameComponents.Player;
-import gui_fields.GUI_Player;
 
 public class CardDeed_stub extends ChanceCard {
     private String color1;
@@ -15,9 +14,6 @@ public class CardDeed_stub extends ChanceCard {
         this.color2 = color2;
 
     }
-    /*public void setBoard(Square[] board) {
-        this.board = board;
-    }*/
 
     public void setOptionsArr() {
 
@@ -49,7 +45,6 @@ public class CardDeed_stub extends ChanceCard {
                 }
             }
 
-           // selectedSquare = guiController.getSelectedSquare(currentColorsArr);
             if(((DeedSquare)selectedSquare).hasDeed()){
                 ((DeedSquare)selectedSquare).setDeedToFree();
             }

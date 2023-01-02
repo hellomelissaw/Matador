@@ -8,7 +8,6 @@ import gui_main.GUI;
 import java.awt.*;
  public class GuiController {
      private GUI gui;
-
      Text msg;
      private GUI_Field[] fields;
 
@@ -192,18 +191,6 @@ import java.awt.*;
          System.out.println("Gui Player is set");
          return guiPlayer;
     }
-     public void addPlayerOnBoard(GUI_Player guiPlayer, Player player){
-         guiPlayer.setBalance(player.getCurrentBalance());
-         fields[0].setCar(guiPlayer,true);
-         gui.addPlayer(guiPlayer);
-        /* guiPlayers = new GUI_Player[list.length];
-         for (int i = 0; i < list.length; i++) {
-             guiPlayers[i] = new GUI_Player(list[i].getPlayerName(),list[i].getCurrentBalance());
-             fields[0].setCar(guiPlayers[i],true);
-             gui.addPlayer(guiPlayers[i]);
-         }*/
-
-     }
 
      public GUI_Player[] getGuiPlayersArr() {
          return guiPlayers;
@@ -278,9 +265,6 @@ import java.awt.*;
     public void setDice(int die1, int die2){
         gui.setDice(die1,die2);
     }
-   /* public String winner(){
 
-        return winner();
-    }*/
 
  }

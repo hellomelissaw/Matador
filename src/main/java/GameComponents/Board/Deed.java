@@ -22,14 +22,8 @@ public class Deed {
         return owner;
     }
     public void setOwner(Player ownerName){
-
         this.owner = ownerName;
 
-
-    }
-
-    public int getDeedPrice() {
-        return deedPrice;
     }
 
     public String getDeedName() {

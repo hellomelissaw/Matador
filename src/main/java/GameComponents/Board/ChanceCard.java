@@ -18,8 +18,6 @@ public abstract class ChanceCard {
     public ChanceCard(String cardName, GuiController guiController){
         this.cardName = cardName;
         this.guiController = guiController;
-        //guiPlayers = guiController.getGuiPlayersArr();
-
 
     }
 
@@ -33,7 +31,6 @@ public abstract class ChanceCard {
 
     protected void setPlayers(Player[] players){
         this.players = players;
-        //this.guiPlayers = guiPlayers;
 
     }
 

@@ -90,14 +90,6 @@ public class GameController {
         BoardInit board = new BoardInit(guiController, msg, players);
         squares = board.getSquareArr();
         board.initChanceSquare(squares);
-
-
-       /* GUI_Player[] guiPlayers = guiController.getGuiPlayersArr();
-        for(int i = 0 ; i < players.length ; i++) {
-            players[i].setGui(guiPlayers[i],guiController, msg);
-            System.out.println("Gui Players are set");
-        }*/
-
         msg.printText("startGame", "na");
 
     }
@@ -111,7 +103,6 @@ public class GameController {
         } else {
         cup = new Cup(guiController);}
 
-        //int[] diceArr;
         int newPosition;
 
         boolean gameOver = false;
@@ -122,10 +113,8 @@ public class GameController {
                 int sum = cup.getSum();
                 System.out.println(players[i].getPlayerName() + " got moved " + sum + " squares.");
 
-                //int oldPosition = players[i].getPosition();
                 players[i].updatePosition(sum);
                 newPosition = players[i].getPosition();
-                //players[i].passedStartCheck();
 
                 squares[newPosition].landOn(players[i]);
                 System.out.println(players[i].getPlayerName() + "has landed on" + squares[newPosition].getSquareName() +  ", this is square #" + players[i].getPosition());

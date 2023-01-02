@@ -24,10 +24,6 @@ public class Cup {
         System.out.println("First die: " + d1 + " and second die: " + d2);
         int sum;
         sum = d1 + d2;
-        int DiceData[] = new int[3];
-       /* DiceData[0]=d1;
-        DiceData[1]=d2;
-        DiceData[2]=sum;*/
         return sum;
     }
 }

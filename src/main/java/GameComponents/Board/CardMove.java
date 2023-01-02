@@ -37,33 +37,6 @@ public class CardMove extends ChanceCard {
 
         } else {System.out.println("Card type not recognized.");}
     }
-        /* if(cardName == "chance1" || cardName == "chance4") {
-
-        }
-        if (squareIndex == 24 || squareIndex == 23) {
-            squareIndex -= currentPlayer.getPosition();
-            pickAgain = false;
-
-        } else if (squareIndex == 5) {
-            pickAgain = false;
-
-        } else if (squareIndex == 1) {
-            String[] buttons = {"Move 1", "Pick again"};
-            String choice = guiController.getUserSelection(msg.getText("prompt"), buttons);
-            if (choice == "Move 1") {
-                pickAgain = false;
-
-            } else {
-                squareIndex -= 1;
-                pickAgain = true;
-
-            }
-
-            }
-
-            currentPlayer.updatePosition(distanceToMove);
-
-         */
 
 }
 

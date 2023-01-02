@@ -21,18 +21,11 @@ public class DeedSquare extends Square{
         this.deedPrice = deedPrice;
         this.guiController = guiController;
     }
-    public Deed getDeed(){
-        return deed;
-    }
+
    public boolean hasDeed(){ // Checks if the square has a deed available to buy or if it's already sold
         return sellDeed;
     }
 
-    /*
-     * Sells the deed by setting sellDeed to false and setting owner name for the deed.
-     * @param player gives the current player whose turn it is
-     * @param currentSquareIndex gives the index of the Square that the current player is on
-     */
    public void setDeedOwner(Player currentPlayer, int deedIndex){
         sellDeed = false ;
         deed.setOwner(currentPlayer);

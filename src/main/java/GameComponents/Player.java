@@ -70,7 +70,6 @@ public class Player {
      * @return index of the Square that the Player is moved to after throwing dice
      */
     public void updatePosition(int distance) {
-        System.out.println("Current pos " + squareIndex);
         boolean getStartMoney = true;
         int currentPos = squareIndex;
         if(currentPos == 18) {getStartMoney = false;}
@@ -87,7 +86,6 @@ public class Player {
                 }
             }
         }
-        System.out.println("New pos " + squareIndex);
 
         if(!testing){ guiController.move(guiPlayer, currentPos, squareIndex);}
     }
@@ -117,23 +115,6 @@ public class Player {
     public String toString() {
         return playerName;
     }
-
-     /*public void passedStartCheck() {
-        if(hasPassedStart) {
-            playerAccount.deposit(2);
-        }
-       boolean hasPassed = false;
-        // hvis newPosition er mindre end oldPosition, betyder det at man har passeret start
-        if (squareIndex < oldPosition && oldPosition != 18) {
-            playerAccount.deposit(2);
-            msg.printText("passStart", "na");
-            hasPassed = true;
-
-        }
-
-
-
-    } */
 
     // Methode is inspired from internet https://www.geeksforgeeks.org/java-program-for-program-to-find-largest-element-in-an-array/
     public String winner(Player[] player) {
