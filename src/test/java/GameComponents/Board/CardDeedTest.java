@@ -125,6 +125,12 @@ public class CardDeedTest {
     }
 
     @Test
+    public void Chance8GoToSkateParkAndGetFree(){
+        chanceCards[0].playCard(testPlayers[0]);
+        assertEquals(0, testPlayers[0].getCurrentBalance());
+    }
+
+    @Test
     public void Chance8GoToSkateParkAndPayRent() {
         ((DeedSquare) board[10]).setDeedOwner(testPlayers[1], 10);
         //((CardDeed_stub) chanceCards[0]).setSelectedSquare(board[10]);

@@ -29,6 +29,9 @@ public class CardDeed_stub extends ChanceCard {
         if (color1 == "na") {
             index = 10;
             selectedSquare = board[index];
+            if(((DeedSquare)selectedSquare).hasDeed()){
+                ((DeedSquare)selectedSquare).setDeedToFree();
+            }
 
         } else {
             int arraySize = 0;

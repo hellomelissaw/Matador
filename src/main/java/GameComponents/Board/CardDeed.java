@@ -34,8 +34,12 @@ public class CardDeed extends ChanceCard {
         int index = 0;
         Square selectedSquare = null;
 
-       if (color1 == "na") {
+       if (color1.equals("na")) {
            index = 10;
+           selectedSquare = board[index];
+           if(((DeedSquare)selectedSquare).hasDeed()){
+               ((DeedSquare)selectedSquare).setDeedToFree();
+           }
 
         } else {
 
