@@ -76,8 +76,6 @@ public class GameController {
 
             for (int i = 0; i < playerCount; i++) {
                 int playerNumber = i + 1;
-                msg.printText("enterName", String.valueOf(playerNumber));
-
                 boolean duplicateName = true;
                 while(duplicateName) {
                     userInput = guiController.getUserString(playerNumber);
