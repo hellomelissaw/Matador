@@ -3,6 +3,7 @@ welcomeMessage; Welcome to Monopoly Junior game.
 enterPlayerCount; Enter number of player (2-4):
 invalidCount; Invalid player number, please enter an integer between 2 and 4 inclusively.
 enterName; Enter your name, Player
+duplicateName; That name is already taken. Please pick another name.
 startGame; Press OK to start the game!
 rollDice;, press OK to roll the die!
 passStart; COLLECT M2 SALARY AS YOU PASS START.

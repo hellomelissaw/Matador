@@ -77,7 +77,27 @@ public class GameController {
             for (int i = 0; i < playerCount; i++) {
                 int playerNumber = i + 1;
                 msg.printText("enterName", String.valueOf(playerNumber));
-                userInput = guiController.getUserString(playerNumber);
+
+                boolean duplicateName = true;
+                while(duplicateName) {
+                    userInput = guiController.getUserString(playerNumber);
+
+                    if (i == 0) {
+                        duplicateName = false;
+
+                    } else {
+                        for (int j = 0; j < i; j++) {
+                            String name = players[j].getPlayerName();
+                            if (name.equals(userInput)) {
+                                duplicateName = true;
+                                msg.printText("duplicateName", "na");
+                                break;
+
+                            } else {duplicateName = false;}
+                        }
+                    }
+                }
+
                 players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
                 players[i].setGui(guiController.createGuiPlayer(players[i]),guiController,msg);
                 players[i].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
