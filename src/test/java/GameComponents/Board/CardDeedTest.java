@@ -28,20 +28,14 @@ public class CardDeedTest {
        /* for (int i = 0 ; i < board.length ; i++) {
             board[i] = new DeedSquare("Test Deed", 5, guiController);
         }
-
-
         for(int i = 0 ; i < board.length ; i+=3) {
             if(i % 2 == 0) {
                 board[i].setColor("white");
-
             } else {
                 board[i].setColor("magenta");
-
             }
-
             board[i+1].setColor(colors[i/3]);
             board[i+2].setColor(colors[i/3]);
-
         }*/
 
         testGuiPlayers[0] = new GUI_Player("Test Player 1");
@@ -80,16 +74,13 @@ public class CardDeedTest {
                 ((ChanceSquare)board[i]).setBoard(board);
             }
         }
-
         for (int i = 0; i < chanceCards.length; i++) {
             ((CardDeed_stub) chanceCards[i]).setBoard(board);
             chanceCards[i].setCardLang(msg);
-
         }
              int arraySize = 0;
         Square[] currentColorsArr = new Square[0];
         for (int i = 0; i < board.length; i++) {
-
             if (board[i].getColor() == color1 || board[i].getColor() == color2) {
                 arraySize++;
                 Square[] updatedColorArr = new Square[arraySize];
@@ -224,7 +215,7 @@ public class CardDeedTest {
 
     @Test
     public void playerGetsPetShopFree() {
-       // ((CardDeed_stub) chanceCards[2]).setSquareTest(msg.getText("petShop"));
+        // ((CardDeed_stub) chanceCards[2]).setSquareTest(msg.getText("petShop"));
         ((CardDeed_stub) chanceCards[2]).setSelectedSquare(board[17]);
         chanceCards[2].playCard(testPlayers[0]);
         Player owner = ((DeedSquare) board[17]).getDeedOwner();
@@ -256,4 +247,3 @@ public class CardDeedTest {
     }
 
 }
-

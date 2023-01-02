@@ -77,7 +77,6 @@ public class GameController {
             for (int i = 0; i < playerCount; i++) {
                 int playerNumber = i + 1;
                 msg.printText("enterName", String.valueOf(playerNumber));
-                System.out.println(msg.getText("enterName") + " " + playerNumber);
                 userInput = guiController.getUserString(playerNumber);
                 players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
                 players[i].setGui(guiController.createGuiPlayer(players[i]),guiController,msg);
@@ -109,15 +108,14 @@ public class GameController {
         while(gameOver == false) {
 
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
+
                 msg.printText("rollDice", players[i].getPlayerName());
                 int sum = cup.getSum();
-                System.out.println(players[i].getPlayerName() + " got moved " + sum + " squares.");
 
                 players[i].updatePosition(sum);
                 newPosition = players[i].getPosition();
 
                 squares[newPosition].landOn(players[i]);
-                System.out.println(players[i].getPlayerName() + "has landed on" + squares[newPosition].getSquareName() +  ", this is square #" + players[i].getPosition());
 
 
                     if(players[i].isBankrupt() == true) {
