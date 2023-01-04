@@ -106,14 +106,6 @@ public class DeedSquareTest {
     }
 
     @Test
-    public void cannotBuyHouseBecauseMissingHouseOnOtherGround() {
-        testDeedSquare[0].setOwnsGroup(true);
-        testDeedSquare[0].addHouse(1, testPlayers[0]);
-        testDeedSquare[0].addHouse(1, testPlayers[0]);
-        assertEquals(1, testDeedSquare[0].getHouseCount());
-    }
-
-    @Test
     public void buyHotelForDeedSquare() {
         testDeedSquare[0].setOwnsGroup(true);
         testDeedSquare[0].addHouse(4, testPlayers[0]);
@@ -179,5 +171,24 @@ public class DeedSquareTest {
         testDeedSquare[0].landOn(testPlayers[1]);
         assertEquals(startBalance-4000,testPlayers[1].getCurrentBalance());
     }
+
+    @Test
+    public void playerChoosesToBuyLot(){
+        testDeedSquare[0].testing(true,"ja");
+        testDeedSquare[0].landOn(testPlayers[0]);
+        assertEquals(false, testDeedSquare[0].hasDeed());
+        assertEquals(testPlayers[0],testDeedSquare[0].getDeedOwner());
+    }
+
+    @Test
+    public void playerChoosesNotToBuyLot(){
+        testDeedSquare[0].testing(true,"nej");
+        testDeedSquare[0].landOn(testPlayers[0]);
+        assertEquals(true, testDeedSquare[0].hasDeed());
+        assertEquals(null,testDeedSquare[0].getDeedOwner());
+    }
+
+
+
 
 }

@@ -33,8 +33,8 @@ public class Player {
         if (guiOn) {
             this.guiPlayer = guiPlayer;
             playerAccount.setGuiAccount(guiPlayer);
+            this.guiController = guiController;
         }
-        this.guiController = guiController;
         this.msg = msg;
         testing = false;
     }

@@ -2,8 +2,12 @@ package GameComponents.Board;
 import Controllers.GuiController;
 import GameComponents.Player;
 
+import java.util.Scanner;
+
 public class DeedSquare extends Square{
     boolean guiOn = false;
+    boolean testing = false;
+    String buying;
     Deed deed;
     boolean sellDeed = true;
     boolean freeDeed = false;
@@ -15,8 +19,8 @@ public class DeedSquare extends Square{
     boolean ownsGroup = false;
     int houseCount;
     boolean hasHotel = false;
-
     int[] rent;
+    Scanner userInput = new Scanner(System.in);
 
     /**
      * Constructs a Square of type DeedSquare (ownable Square)
@@ -30,7 +34,14 @@ public class DeedSquare extends Square{
         this.deedPrice = deedPrice;
         this.buildingPrice = buildingPrice;
         this.rent = rent;
-        this.guiController = guiController;
+        if(guiOn){
+            this.guiController = guiController;
+        } else { this.guiController = null;}
+    }
+
+    public void testing(boolean testing, String answer) {
+        this.testing = testing;
+        buying = answer;
     }
 
    public boolean hasDeed(){ // Checks if the square has a deed available to buy or if it's already sold
@@ -65,13 +76,36 @@ public class DeedSquare extends Square{
             if (guiOn) {
                 String guiMessage = currentPlayer.getPlayerName() + msg.getText("haveBought") + deed.getDeedName();
                 guiController.showMessage(guiMessage); // CAN BE DELETED ONCE IMPLEMENT BORDER AROUND SQUARE
+            } else {
+                System.out.println("Vil du købe denne grund?");
             }
-            currentPlayer.withdrawMoney(deedPrice);
-            System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
-            sellDeed = false ;
-            freeDeed = false ;
-            deed.setOwner(currentPlayer);
-            if (guiOn) {guiController.setOwnerName(currentPlayer, currentPlayer.getPosition()); }
+
+            boolean valid = false;
+            while(!valid) {
+
+                if(!testing){
+                    buying = userInput.nextLine();
+                }
+
+                if (buying.equals("ja")) {
+                    valid = true;
+                    currentPlayer.withdrawMoney(deedPrice);
+                    System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
+                    sellDeed = false;
+                    freeDeed = false;
+                    deed.setOwner(currentPlayer);
+                    if (guiOn) {
+                        guiController.setOwnerName(currentPlayer, currentPlayer.getPosition());
+                    }
+
+                } else if (!(buying.equals("ja") || buying.equals("nej"))) {
+                    System.out.println("Ugyldigt svar. Indtast venligst ja eller nej");
+
+                } else {
+                    valid = true;
+                    System.out.println("Spilleren køber ikke grunden.");
+                }
+            }
 
         } else {
            Player deedOwner = deed.getOwner();
