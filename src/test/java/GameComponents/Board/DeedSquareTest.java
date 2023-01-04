@@ -64,15 +64,8 @@ public class DeedSquareTest {
     }
 
     @Test
-    public void playerOwnsGroup() {
-        testDeedSquare[0].setDeedOwner(testPlayers[0],0);
-        testDeedSquare[1].setDeedOwner(testPlayers[0],1);
-
-    }
-
-    @Test
-    public void buy1HouseForDeedSquare() {
-        testDeedSquare[0].ownsGroup();
+    public void buy1HouseForDeedSquareWhenPlayerOwnsLotGroup() {
+        testDeedSquare[0].setOwnsGroup();
         testDeedSquare[0].buyHouse(1);
         assertEquals(1, testDeedSquare[0].getHouseCount());
 
@@ -85,7 +78,7 @@ public class DeedSquareTest {
 
     @Test
     public void cannotBuyHouseBecauseMissingHouseOnOtherGround() {
-        testDeedSquare[0].ownsGroup();
+        testDeedSquare[0].setOwnsGroup();
         testDeedSquare[0].buyHouse(2);
         assertEquals(0, testDeedSquare[0].getHouseCount());
     }

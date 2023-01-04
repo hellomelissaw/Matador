@@ -86,7 +86,7 @@ public class DeedSquare extends Square{
 
     }
 
-    public void ownsGroup() {
+    public void setOwnsGroup() {
         ownsGroup = true;
     }
 
