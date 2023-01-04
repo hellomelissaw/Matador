@@ -70,10 +70,10 @@ public class Text {
 
         if(otherMessage == "na") {
             System.out.println(message);
-            guiController.showMessage(message);
+            //guiController.showMessage(message);
         } else {
             System.out.println(otherMessage + message);
-            guiController.showMessage(otherMessage + message);
+            //guiController.showMessage(otherMessage + message);
         }
 
     }

@@ -55,7 +55,7 @@ public class DeedSquare extends Square{
         if(sellDeed == true) {
 
             String guiMessage = currentPlayer.getPlayerName() + msg.getText("haveBought") + deed.getDeedName();
-            guiController.showMessage(guiMessage); // CAN BE DELETED ONCE IMPLEMENT BORDER AROUND SQUARE
+            //guiController.showMessage(guiMessage); // CAN BE DELETED ONCE IMPLEMENT BORDER AROUND SQUARE
 
             sellDeed = false ;
             freeDeed = false ;

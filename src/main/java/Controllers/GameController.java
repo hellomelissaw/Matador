@@ -20,7 +20,7 @@ public class GameController {
         boolean testingInit = false;
         if (testingInit){
             msg = new Text("src/main/java/Translator/EnglishText", guiController);
-            guiController.initFieldTitles(msg);
+            //guiController.initFieldTitles(msg);
             int playerCount = 2;
             balance = 20 - (playerCount - 2) * 2;
             //balance = 1; //TEST BALANCE, COMMENT OUT FOR NORMAL RUNNING OF GAME
@@ -46,11 +46,12 @@ public class GameController {
             }
 
         } else {
-            String[] lang = {"EnglishText", "DanskTekst"};
+            String[] lang = {"DanskTekst"};
             int langIndex = guiController.getUserInteger("You are in English mode. Enter 1 to keep English or enter 2 to switch to Danish."); //GETS USER TO CHOOSE LANGUAGE
-            String langFile = "src/main/java/Translator/" + lang[langIndex - 1];
+            String langFile = "src/main/java/Translator/" + lang[0];
             msg = new Text(langFile, guiController);
-            guiController.initFieldTitles(msg);
+
+            //guiController.initFieldTitles(msg);
 
             //String userInput;
 

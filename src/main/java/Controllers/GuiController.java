@@ -149,7 +149,7 @@ import java.awt.*;
       * @param msg The Text object used to set user-selected language throughout the program
       */
 
-     public void initFieldTitles(Text msg){
+     /*public void initFieldTitles(Text msg){
          this.msg = msg;
 
          gui.getFields()[0].setTitle(msg.getText("start"));
@@ -184,7 +184,7 @@ import java.awt.*;
 
      public void showMessage(String message){
         gui.showMessage(message);
-    }
+    }*/
 
     public GUI_Player createGuiPlayer(Player player) {
          GUI_Player guiPlayer = new GUI_Player(player.getPlayerName());
