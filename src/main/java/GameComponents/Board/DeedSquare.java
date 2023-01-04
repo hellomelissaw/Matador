@@ -99,7 +99,8 @@ public class DeedSquare extends Square{
     public void addHouse(int houseCount, Player currentPlayer) {
         if(ownsGroup) {
             int balanceToPay = houseCount * housePrice;
-            if(currentPlayer.getCurrentBalance() - balanceToPay >= 0){
+            int currentBalance = currentPlayer.getCurrentBalance();
+            if(currentBalance > 0 && currentBalance - balanceToPay >= 0){
                 currentPlayer.withdrawMoney(balanceToPay);
                 this.houseCount += houseCount;
             } else {
@@ -120,11 +121,19 @@ public class DeedSquare extends Square{
         return hasHotel;
     }
 
-    public void addHotel() {
+    public void addHotel(Player currentPlayer) {
         if(houseCount == 4) {
-            hasHotel = true;
+            int currentBalance = currentPlayer.getCurrentBalance();
+            if(currentBalance > 0 && currentBalance - housePrice >= 0){
+                currentPlayer.withdrawMoney(housePrice);
+                hasHotel = true;
+                houseCount = 0;
+            } else {
+                System.out.println("Du har ikke nok penge til at købe dette hotel.");
+            }
+
         } else {
-            System.out.println("Du har ikke nok huse til at købe et hotel.");
+            System.out.println("Du har ikke nok huse til at bygge et hotel.");
         }
     }
 }

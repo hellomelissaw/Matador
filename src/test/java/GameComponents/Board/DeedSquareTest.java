@@ -16,7 +16,7 @@ public class DeedSquareTest {
     DeedSquare[] testDeedSquare = new DeedSquare[2];
     Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
 
-    int startBalance = 6000;
+    int startBalance = 5000;
     int[] rent = {50,250,750,2250,4000,6000};
     public DeedSquareTest() {
         for(int i = 0 ; i < testDeedSquare.length ; i++) {
@@ -117,13 +117,22 @@ public class DeedSquareTest {
     public void buyHotelForDeedSquare() {
         testDeedSquare[0].setOwnsGroup(true);
         testDeedSquare[0].addHouse(4, testPlayers[0]);
-        testDeedSquare[0].addHotel();
+        testDeedSquare[0].addHotel(testPlayers[0]);
         assertEquals(true,testDeedSquare[0].hasHotel());
     }
 
     @Test
     public void errorMsgCannotBuyHotel() {
-        testDeedSquare[0].addHotel();
+        testDeedSquare[0].addHotel(testPlayers[0]);
+        assertEquals(false, testDeedSquare[0].hasHotel);
+    }
+
+    @Test
+    public void cannotBuyHotelBecauseLackOfFunds() {
+        testPlayers[0].withdrawMoney(1000);
+        testDeedSquare[0].setOwnsGroup(true);
+        testDeedSquare[0].addHouse(4, testPlayers[0]);
+        testDeedSquare[0].addHotel(testPlayers[0]);
         assertEquals(false, testDeedSquare[0].hasHotel);
     }
 
