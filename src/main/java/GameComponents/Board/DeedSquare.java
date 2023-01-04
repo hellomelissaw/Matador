@@ -10,7 +10,8 @@ public class DeedSquare extends Square{
     int deedPrice;
     GuiController guiController;
     int houseCount;
-    int hotelCount;
+
+    boolean hasHotel = false;
 
     /**
      * Constructs a Square of type DeedSquare (ownable Square)
@@ -88,8 +89,9 @@ public class DeedSquare extends Square{
         this.houseCount += houseCount;
     }
 
-    public int getProperty() {
-        int property = houseCount + hotelCount;
-        return property;
+
+    public int getHouseCount(){
+        return houseCount;
+
     }
 }

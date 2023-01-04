@@ -61,7 +61,10 @@ public class DeedSquareTest {
     @Test
     public void buy1HouseForDeedSquare() {
         testDeedSquare.buyHouse(1);
-        assertEquals(1, testDeedSquare.getProperty());
+        assertEquals(1, testDeedSquare.getHouseCount());
 
     }
+
+    @Test
+    public void
 }
