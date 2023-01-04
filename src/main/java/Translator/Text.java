@@ -5,6 +5,7 @@ import Controllers.GuiController;
 
 
 public class Text {
+    boolean guiOn = false;
     String file;
     GuiController guiController;
 
@@ -70,10 +71,10 @@ public class Text {
 
         if(otherMessage == "na") {
             System.out.println(message);
-            guiController.showMessage(message);
+            if (guiOn) { guiController.showMessage(message); }
         } else {
             System.out.println(otherMessage + message);
-            guiController.showMessage(otherMessage + message);
+            if (guiOn) { guiController.showMessage(otherMessage + message); }
         }
 
     }

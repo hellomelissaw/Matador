@@ -3,11 +3,14 @@ import Controllers.GuiController;
 import GameComponents.Player;
 
 public class DeedSquare extends Square{
+    boolean guiOn = false;
     Deed deed;
     boolean sellDeed = true;
     boolean freeDeed = false;
     int deedPrice;
     GuiController guiController;
+    int houseCount;
+    int hotelCount;
 
     /**
      * Constructs a Square of type DeedSquare (ownable Square)
@@ -29,7 +32,7 @@ public class DeedSquare extends Square{
    public void setDeedOwner(Player currentPlayer, int deedIndex){
         sellDeed = false ;
         deed.setOwner(currentPlayer);
-        guiController.setOwnerName(currentPlayer, deedIndex);
+        if (guiOn) {guiController.setOwnerName(currentPlayer, deedIndex); }
 
     }
 
@@ -54,13 +57,15 @@ public class DeedSquare extends Square{
 
         if(sellDeed == true) {
 
-            String guiMessage = currentPlayer.getPlayerName() + msg.getText("haveBought") + deed.getDeedName();
-            guiController.showMessage(guiMessage); // CAN BE DELETED ONCE IMPLEMENT BORDER AROUND SQUARE
+            if (guiOn) {
+                String guiMessage = currentPlayer.getPlayerName() + msg.getText("haveBought") + deed.getDeedName();
+                guiController.showMessage(guiMessage); // CAN BE DELETED ONCE IMPLEMENT BORDER AROUND SQUARE
+            }
 
             sellDeed = false ;
             freeDeed = false ;
             deed.setOwner(currentPlayer);
-            guiController.setOwnerName(currentPlayer, currentPlayer.getPosition());
+            if (guiOn) {guiController.setOwnerName(currentPlayer, currentPlayer.getPosition()); }
 
         } else {
            Player deedOwner = deed.getOwner();
@@ -79,4 +84,12 @@ public class DeedSquare extends Square{
 
     }
 
+    public void buyHouse(int houseCount) {
+        this.houseCount += houseCount;
+    }
+
+    public int getProperty() {
+        int property = houseCount + hotelCount;
+        return property;
+    }
 }

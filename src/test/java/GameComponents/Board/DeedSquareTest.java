@@ -17,6 +17,7 @@ public class DeedSquareTest {
     Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
 
     public DeedSquareTest() {
+        testDeedSquare.setLang(msg);
         testPlayers[0] = new Player("TestPlayer 1");
         testPlayers[1] = new Player("TestPlayer 2");
 
@@ -27,16 +28,17 @@ public class DeedSquareTest {
             testPlayers[i].setGui(testGuiPlayers[i], guiController, msg);
         }
     }
+
     @Test
     public void deedOwnerIsTestPlayer1AfterLandingOnIt() {
-        testDeedSquare.setLang(msg);
+
         testPlayers[0].updatePosition(1);
         testDeedSquare.landOn(testPlayers[0]);
         assertEquals(testPlayers[0], testDeedSquare.getDeedOwner());
     }
     @Test
     public void testPlayer2PaysRentToDeedOwner() {
-        testDeedSquare.setLang(msg);
+
         testPlayers[0].depositMoney(20);
         testPlayers[1].depositMoney(20);
         testPlayers[0].updatePosition(1);
@@ -49,10 +51,17 @@ public class DeedSquareTest {
 
     @Test
     public void playerGetsDeedForFree() {
-        testDeedSquare.setLang(msg);
+
         testDeedSquare.setDeedToFree();
         testDeedSquare.landOn(testPlayers[0]);
 
         assertEquals(0, testPlayers[0].getCurrentBalance());
+    }
+
+    @Test
+    public void buy1HouseForDeedSquare() {
+        testDeedSquare.buyHouse(1);
+        assertEquals(1, testDeedSquare.getProperty());
+
     }
 }
