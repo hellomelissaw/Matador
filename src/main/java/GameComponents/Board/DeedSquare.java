@@ -8,6 +8,8 @@ public class DeedSquare extends Square{
     boolean sellDeed = true;
     boolean freeDeed = false;
     int deedPrice;
+
+    int housePrice;
     GuiController guiController;
 
     boolean ownsGroup = false;
@@ -26,6 +28,7 @@ public class DeedSquare extends Square{
         super(deedName);
         this.deed = new Deed(deedPrice, housePrice, rent, deedName);
         this.deedPrice = deedPrice;
+        this.housePrice = housePrice;
         this.rent = rent;
         this.guiController = guiController;
     }
@@ -93,9 +96,11 @@ public class DeedSquare extends Square{
         ownsGroup = true;
     }
 
-    public void setHouseCount(int houseCount) {
+    public void setHouseCount(int houseCount, Player currentPlayer) {
         if(ownsGroup) {
+            currentPlayer.withdrawMoney(houseCount * housePrice);
             this.houseCount += houseCount;
+
         } else {
             System.out.println("Du ejer ikke alle grunde i gruppen, derfor kan du ikke bygge endnu.");}
     }
