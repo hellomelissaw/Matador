@@ -117,13 +117,13 @@ public class DeedSquareTest {
     public void buyHotelForDeedSquare() {
         testDeedSquare[0].setOwnsGroup(true);
         testDeedSquare[0].addHouse(4, testPlayers[0]);
-        testDeedSquare[0].buyHotel();
+        testDeedSquare[0].addHotel();
         assertEquals(true,testDeedSquare[0].hasHotel());
     }
 
     @Test
     public void errorMsgCannotBuyHotel() {
-        testDeedSquare[0].buyHotel();
+        testDeedSquare[0].addHotel();
         assertEquals(false, testDeedSquare[0].hasHotel);
     }
 

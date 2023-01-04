@@ -120,7 +120,7 @@ public class DeedSquare extends Square{
         return hasHotel;
     }
 
-    public void buyHotel() {
+    public void addHotel() {
         if(houseCount == 4) {
             hasHotel = true;
         } else {
