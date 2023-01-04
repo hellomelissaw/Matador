@@ -9,8 +9,9 @@ public class DeedSquare extends Square{
     boolean freeDeed = false;
     int deedPrice;
     GuiController guiController;
-    int houseCount;
 
+    boolean ownsGroup = false;
+    int houseCount;
     boolean hasHotel = false;
 
     /**
@@ -85,13 +86,32 @@ public class DeedSquare extends Square{
 
     }
 
+    public void ownsGroup() {
+        ownsGroup = true;
+    }
+
     public void buyHouse(int houseCount) {
-        this.houseCount += houseCount;
+        if(ownsGroup) {
+            this.houseCount += houseCount;
+        } else {
+            System.out.println("Du ejer ikke alle grunde i gruppen, derfor kan du ikke bygge endnu.");}
     }
 
 
     public int getHouseCount(){
         return houseCount;
 
+    }
+
+    public boolean hasHotel() {
+        return hasHotel;
+    }
+
+    public void buyHotel() {
+        if(houseCount == 4) {
+            hasHotel = true;
+        } else {
+            System.out.println("Du har ikke nok huse til at købe et hotel.");
+        }
     }
 }

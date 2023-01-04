@@ -60,11 +60,33 @@ public class DeedSquareTest {
 
     @Test
     public void buy1HouseForDeedSquare() {
+        testDeedSquare.ownsGroup();
         testDeedSquare.buyHouse(1);
         assertEquals(1, testDeedSquare.getHouseCount());
 
     }
+    @Test
+    public void cannotBuyHouseBecauseNotOwnerOfLotGroup() {
+        testDeedSquare.buyHouse(1);
+        assertEquals(0, testDeedSquare.getHouseCount());
+    }
 
     @Test
-    public void
+    public void cannotBuyHouseBecauseMissingHouseOnOtherGround() {
+
+    }
+
+    @Test
+    public void buyHotelForDeedSquare() {
+        testDeedSquare.buyHouse(4);
+        testDeedSquare.buyHotel();
+        assertEquals(true,testDeedSquare.hasHotel());
+    }
+
+    @Test
+    public void errorMsgCannotBuyHotel() {
+        testDeedSquare.buyHotel();
+        assertEquals(false, testDeedSquare.hasHotel);
+    }
+
 }
