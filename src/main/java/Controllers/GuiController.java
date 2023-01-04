@@ -144,6 +144,10 @@ import java.awt.*;
 
     }
 
+    public void setLang(Text msg) {
+        this.msg = msg;
+    }
+
      /**
       * Sets the titles on the Squares according to language chosen by user
       * @param msg The Text object used to set user-selected language throughout the program
