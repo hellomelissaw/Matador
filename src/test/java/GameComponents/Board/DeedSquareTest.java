@@ -18,7 +18,7 @@ public class DeedSquareTest {
 
     public DeedSquareTest() {
         for(int i = 0 ; i < testDeedSquare.length ; i++) {
-            testDeedSquare[i] = new DeedSquare("TestDeedSquare" + i, 1200, guiController);
+            testDeedSquare[i] = new DeedSquare("TestDeedSquare" + i, 1200, 1000, guiController);
             testDeedSquare[i].setLang(msg);
             testDeedSquare[i].setColor("red");
         }
@@ -79,8 +79,9 @@ public class DeedSquareTest {
     @Test
     public void cannotBuyHouseBecauseMissingHouseOnOtherGround() {
         testDeedSquare[0].setOwnsGroup();
-        testDeedSquare[0].buyHouse(2);
-        assertEquals(0, testDeedSquare[0].getHouseCount());
+        testDeedSquare[0].buyHouse(1);
+        testDeedSquare[0].buyHouse(1);
+        assertEquals(1, testDeedSquare[0].getHouseCount());
     }
 
     @Test
@@ -94,6 +95,14 @@ public class DeedSquareTest {
     public void errorMsgCannotBuyHotel() {
         testDeedSquare[0].buyHotel();
         assertEquals(false, testDeedSquare[0].hasHotel);
+    }
+
+    @Test
+    public void ownerHasNoHousesReceives50InRent() {
+        testDeedSquare[0].setDeedOwner(testPlayers[0],0);
+        testDeedSquare[0].setOwnsGroup();
+        testDeedSquare[0].landOn(testPlayers[1]);
+        assertEquals(-50,testPlayers[1].getCurrentBalance());
     }
 
 }

@@ -20,9 +20,9 @@ public class DeedSquare extends Square{
      * @param deedPrice the price of the deed, both for buying and amount of rent to pay once bought.
      * @param guiController The GuiController used throughout the classes.
      */
-    public DeedSquare(String deedName, int deedPrice, GuiController guiController) {
+    public DeedSquare(String deedName, int deedPrice, int housePrice, GuiController guiController) {
         super(deedName);
-        this.deed = new Deed(deedPrice, deedName);
+        this.deed = new Deed(deedPrice, housePrice, deedName);
         this.deedPrice = deedPrice;
         this.guiController = guiController;
     }
