@@ -16,9 +16,10 @@ public class DeedSquareTest {
     DeedSquare[] testDeedSquare = new DeedSquare[2];
     Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
 
+    int[] rent = {50,250,750,2250,4000,6000};
     public DeedSquareTest() {
         for(int i = 0 ; i < testDeedSquare.length ; i++) {
-            testDeedSquare[i] = new DeedSquare("TestDeedSquare" + i, 1200, 1000, guiController);
+            testDeedSquare[i] = new DeedSquare("TestDeedSquare" + i, 1200, 1000, rent, guiController);
             testDeedSquare[i].setLang(msg);
             testDeedSquare[i].setColor("red");
         }

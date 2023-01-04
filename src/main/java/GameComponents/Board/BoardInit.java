@@ -15,7 +15,7 @@ public class BoardInit {
      */
     public BoardInit(GuiController guiController, Text msg, Player[] players) {
         this.guiController = guiController;
-
+/*
         board[0] = new StartSquare(msg.getText("start"));
         board[1] = new DeedSquare(msg.getText("burgerBar"), 1,guiController);
         board[2] = new DeedSquare(msg.getText("pizzeria"), 1,guiController);
@@ -63,8 +63,10 @@ public class BoardInit {
             board[i+2].setColor(colors[i/3]);
 
         }
-
+ */
     }
+
+
 
     public void initChanceSquare(Square[] board){
         for (int i = 0 ; i < board.length ; i++) {

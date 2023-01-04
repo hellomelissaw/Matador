@@ -4,7 +4,7 @@ import GameComponents.Player;
 
 public class Deed {
     Player owner;
-    // int[] squarePrice; // i Matador mangler vi en array med alle priser på et skød
+    int[] rent;
     int deedPrice;
     int housePrice;
     String deedName;
@@ -14,10 +14,11 @@ public class Deed {
      * @param deedPrice price of the Deed
      * @param deedName name of the Deed (For example "The Skate Park")
      */
-    public Deed(int deedPrice, int housePrice, String deedName){
+    public Deed(int deedPrice, int housePrice, int[] rent, String deedName){
 
         this.deedPrice = deedPrice;
         this.housePrice = housePrice;
+        this.rent = rent;
         this.deedName = deedName;
     }
 

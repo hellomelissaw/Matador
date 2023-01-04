@@ -14,16 +14,19 @@ public class DeedSquare extends Square{
     int houseCount;
     boolean hasHotel = false;
 
+    int[] rent;
+
     /**
      * Constructs a Square of type DeedSquare (ownable Square)
      * @param deedName name of the Deed for the Square (for example "The Skate Park").
      * @param deedPrice the price of the deed, both for buying and amount of rent to pay once bought.
      * @param guiController The GuiController used throughout the classes.
      */
-    public DeedSquare(String deedName, int deedPrice, int housePrice, GuiController guiController) {
+    public DeedSquare(String deedName, int deedPrice, int housePrice, int[] rent, GuiController guiController) {
         super(deedName);
-        this.deed = new Deed(deedPrice, housePrice, deedName);
+        this.deed = new Deed(deedPrice, housePrice, rent, deedName);
         this.deedPrice = deedPrice;
+        this.rent = rent;
         this.guiController = guiController;
     }
 
@@ -53,9 +56,6 @@ public class DeedSquare extends Square{
     }
 
     public void landOn(Player currentPlayer) {
-       if(freeDeed == false && currentPlayer != deed.getOwner()){ currentPlayer.withdrawMoney(deedPrice); }
-
-        System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
 
         if(sellDeed == true) {
 
@@ -63,7 +63,8 @@ public class DeedSquare extends Square{
                 String guiMessage = currentPlayer.getPlayerName() + msg.getText("haveBought") + deed.getDeedName();
                 guiController.showMessage(guiMessage); // CAN BE DELETED ONCE IMPLEMENT BORDER AROUND SQUARE
             }
-
+            currentPlayer.withdrawMoney(deedPrice);
+            System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
             sellDeed = false ;
             freeDeed = false ;
             deed.setOwner(currentPlayer);
@@ -77,7 +78,9 @@ public class DeedSquare extends Square{
             } else {
 
                 msg.printText("payRent", "na");
+                currentPlayer.withdrawMoney(rent[houseCount]);
                 deedOwner.depositMoney(deedPrice);
+                System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
 
             }
 
