@@ -14,7 +14,7 @@ import java.awt.*;
     private GUI_Player[] guiPlayers;
     private int squareIndex = 0;
     public GuiController() {
-
+/*
          fields = new GUI_Field[]{
                  new GUI_Start(),
                  new GUI_Street(),
@@ -41,9 +41,9 @@ import java.awt.*;
                  new GUI_Street(),
                  new GUI_Street(),
          };
-
-        this.gui = new GUI(fields);
-
+*/
+        this.gui = new GUI();
+/*
         gui.getFields()[0].setTitle(" ");
         gui.getFields()[0].setBackGroundColor(Color.white);
         gui.getFields()[0].setSubText(" ");
@@ -139,6 +139,8 @@ import java.awt.*;
         gui.getFields()[23].setTitle("");
         gui.getFields()[23].setBackGroundColor(Color.blue);
         gui.getFields()[23].setSubText("M5");
+
+ */
 
     }
 
