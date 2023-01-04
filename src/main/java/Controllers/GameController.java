@@ -5,22 +5,27 @@ import GameComponents.Cup;
 import GameComponents.Cup_stub;
 import GameComponents.Player;
 import Translator.*;
+import gui_main.GUI;
 
 public class GameController {
     GuiController guiController = new GuiController();
+    GUI gui ;
     //private int playerCount = 0;
     String userInput;
     int balance = 0;
     Player[] players;
     Square[] squares;
-    Text msg = new Text("src/main/java/Translator/EnglishText",guiController);
+    Text msg = new Text("src/main/java/Translator/EnglishText",gui);
+
     int playerCount = 0;
 
     public void init() {
         guiController.setLang(msg);
         boolean testingInit = false;
         if (testingInit){
-            msg = new Text("src/main/java/Translator/EnglishText", guiController);
+            msg = new Text("src/main/java/Translator/EnglishText", gui);
+            gui.showMessage(" Enter players count: ");
+            //msg = new Text("src/main/java/Translator/EnglishText", guiController);
             //guiController.initFieldTitles(msg);
             int playerCount = 2;
             balance = 20 - (playerCount - 2) * 2;
@@ -30,6 +35,7 @@ public class GameController {
             players[0] = new Player("Marc"); // INITIALISE EACH PLAYER WITH NAME
             players[0].setGui(guiController.createGuiPlayer(players[0]),guiController,msg);
             players[0].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+
 
             players[1] = new Player("Germaine"); // INITIALISE EACH PLAYER WITH NAME
             players[1].setGui(guiController.createGuiPlayer(players[1]),guiController,msg);
@@ -63,6 +69,8 @@ public class GameController {
             while (playerCountInvalid) {
                 // playerCount = userInput.nextInt();
                 //System.out.println(playerCount);
+                //gui.showMessage("enterPlayerCount");
+                //playerCount = gui.getUserInteger("");
                 playerCount = guiController.getUserInteger(msg.getText("enterPlayerCount"));
                 if (playerCount >= 2 && playerCount <= 4) {
                     playerCountInvalid = false;
@@ -81,6 +89,7 @@ public class GameController {
                 boolean duplicateName = true;
                 while(duplicateName) {
                     userInput = guiController.getUserString(playerNumber);
+                    //userInput = guiController.getUserString(playerNumber);
 
                     if (i == 0) {
                         duplicateName = false;
@@ -118,9 +127,12 @@ public class GameController {
         Cup cup;
         if(testing){
            cup = new Cup_stub(guiController);
+            //cup = new Cup_stub(gui);
 
         } else {
-        cup = new Cup(guiController);}
+        cup = new Cup(guiController);
+           // cup = new Cup(gui);
+        }
 
         int newPosition;
 

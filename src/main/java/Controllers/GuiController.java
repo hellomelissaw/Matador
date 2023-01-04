@@ -156,7 +156,7 @@ import java.awt.*;
 
      /**
       * Sets the titles on the Squares according to language chosen by user
-      * @param msg The Text object used to set user-selected language throughout the program
+      * @param //msg The Text object used to set user-selected language throughout the program
       */
 
      /*public void initFieldTitles(Text msg){
@@ -199,6 +199,7 @@ import java.awt.*;
     public GUI_Player createGuiPlayer(Player player) {
          GUI_Player guiPlayer = new GUI_Player(player.getPlayerName());
          //fields[0].setCar(guiPlayer,true);
+        //GUI_Field field = gui.getFields()[0];
         guiPlayer.getCar().setPosition(fields[0]);
         //fields[0].setCar(guiPlayer,true);
          gui.addPlayer(guiPlayer);
@@ -221,8 +222,6 @@ import java.awt.*;
         fields[currentPositionIndex].setCar(currentPlayer,false);
         fields[newPosition].setCar(currentPlayer,true);
 
-         //fields[currentPositionIndex].setCar(currentPlayer,false);
-         //fields[newPosition].setCar(currentPlayer,true);
      }
 
      /**
@@ -283,4 +282,7 @@ import java.awt.*;
     }
 
 
+     public void showMessage(String s) {
+         gui.showMessage(s);
+     }
  }

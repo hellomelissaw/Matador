@@ -1,6 +1,7 @@
 package GameComponents;
 
 import Controllers.GuiController;
+import gui_main.GUI;
 
 public class Cup_stub extends Cup {
     private int testSum = 3;
@@ -8,6 +9,9 @@ public class Cup_stub extends Cup {
     public Cup_stub(GuiController guiController) {
         super(guiController);
     }
+    /*public Cup_stub(GUI gui) {
+        super(gui);
+    }*/
 
     public int getSum () { // GETS THE SUM OF THE VALUE OF BOTH DICE
         int d1 = 1;
