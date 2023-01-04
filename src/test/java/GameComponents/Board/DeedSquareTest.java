@@ -106,4 +106,40 @@ public class DeedSquareTest {
         assertEquals(-50,testPlayers[1].getCurrentBalance());
     }
 
+    @Test
+    public void ownerHas1HouseReceives250InRent() {
+        testDeedSquare[0].setDeedOwner(testPlayers[0],0);
+        testDeedSquare[0].setOwnsGroup();
+        testDeedSquare[0].buyHouse(1);
+        testDeedSquare[0].landOn(testPlayers[1]);
+        assertEquals(-250,testPlayers[1].getCurrentBalance());
+    }
+
+    @Test
+    public void ownerHas2HousesReceives750InRent() {
+        testDeedSquare[0].setDeedOwner(testPlayers[0],0);
+        testDeedSquare[0].setOwnsGroup();
+        testDeedSquare[0].buyHouse(2);
+        testDeedSquare[0].landOn(testPlayers[1]);
+        assertEquals(-750,testPlayers[1].getCurrentBalance());
+    }
+
+    @Test
+    public void ownerHas3HousesReceives2250InRent() {
+        testDeedSquare[0].setDeedOwner(testPlayers[0],0);
+        testDeedSquare[0].setOwnsGroup();
+        testDeedSquare[0].buyHouse(3);
+        testDeedSquare[0].landOn(testPlayers[1]);
+        assertEquals(-2250,testPlayers[1].getCurrentBalance());
+    }
+
+    @Test
+    public void ownerHas4HousesReceives4000InRent() {
+        testDeedSquare[0].setDeedOwner(testPlayers[0],0);
+        testDeedSquare[0].setOwnsGroup();
+        testDeedSquare[0].buyHouse(4);
+        testDeedSquare[0].landOn(testPlayers[1]);
+        assertEquals(-4000,testPlayers[1].getCurrentBalance());
+    }
+
 }
