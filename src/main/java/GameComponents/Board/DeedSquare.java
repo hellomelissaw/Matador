@@ -9,7 +9,7 @@ public class DeedSquare extends Square{
     boolean freeDeed = false;
     int deedPrice;
 
-    int housePrice;
+    int buildingPrice;
     GuiController guiController;
 
     boolean ownsGroup = false;
@@ -24,11 +24,11 @@ public class DeedSquare extends Square{
      * @param deedPrice the price of the deed, both for buying and amount of rent to pay once bought.
      * @param guiController The GuiController used throughout the classes.
      */
-    public DeedSquare(String deedName, int deedPrice, int housePrice, int[] rent, GuiController guiController) {
+    public DeedSquare(String deedName, int deedPrice, int buildingPrice, int[] rent, GuiController guiController) {
         super(deedName);
-        this.deed = new Deed(deedPrice, housePrice, rent, deedName);
+        this.deed = new Deed(deedPrice, buildingPrice, rent, deedName);
         this.deedPrice = deedPrice;
-        this.housePrice = housePrice;
+        this.buildingPrice = buildingPrice;
         this.rent = rent;
         this.guiController = guiController;
     }
@@ -98,7 +98,7 @@ public class DeedSquare extends Square{
 
     public void addHouse(int houseCount, Player currentPlayer) {
         if(ownsGroup) {
-            int balanceToPay = houseCount * housePrice;
+            int balanceToPay = houseCount * buildingPrice;
             int currentBalance = currentPlayer.getCurrentBalance();
             if(currentBalance > 0 && currentBalance - balanceToPay >= 0){
                 currentPlayer.withdrawMoney(balanceToPay);
@@ -124,8 +124,8 @@ public class DeedSquare extends Square{
     public void addHotel(Player currentPlayer) {
         if(houseCount == 4) {
             int currentBalance = currentPlayer.getCurrentBalance();
-            if(currentBalance > 0 && currentBalance - housePrice >= 0){
-                currentPlayer.withdrawMoney(housePrice);
+            if(currentBalance > 0 && currentBalance - buildingPrice >= 0){
+                currentPlayer.withdrawMoney(buildingPrice);
                 hasHotel = true;
                 houseCount = 0;
             } else {
