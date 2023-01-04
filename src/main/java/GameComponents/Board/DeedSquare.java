@@ -98,8 +98,13 @@ public class DeedSquare extends Square{
 
     public void addHouse(int houseCount, Player currentPlayer) {
         if(ownsGroup) {
-            currentPlayer.withdrawMoney(houseCount * housePrice);
-            this.houseCount += houseCount;
+            int balanceToPay = houseCount * housePrice;
+            if(currentPlayer.getCurrentBalance() - balanceToPay >= 0){
+                currentPlayer.withdrawMoney(balanceToPay);
+                this.houseCount += houseCount;
+            } else {
+                System.out.println("Du har ikke nok penge til at købe dette hus.");
+            }
 
         } else {
             System.out.println("Du ejer ikke alle grunde i gruppen, derfor kan du ikke bygge endnu.");}

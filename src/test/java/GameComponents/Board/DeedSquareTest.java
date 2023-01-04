@@ -16,6 +16,7 @@ public class DeedSquareTest {
     DeedSquare[] testDeedSquare = new DeedSquare[2];
     Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
 
+    int startBalance = 6000;
     int[] rent = {50,250,750,2250,4000,6000};
     public DeedSquareTest() {
         for(int i = 0 ; i < testDeedSquare.length ; i++) {
@@ -32,6 +33,7 @@ public class DeedSquareTest {
 
         for(int i = 0 ; i < testPlayers.length ; i++) {
             testPlayers[i].setGui(testGuiPlayers[i], guiController, msg);
+            testPlayers[i].depositMoney(startBalance);
         }
     }
 
@@ -76,7 +78,7 @@ public class DeedSquareTest {
     public void playerBuys1HouseFor1000() {
         testDeedSquare[0].setOwnsGroup(true);
         testDeedSquare[0].addHouse(1, testPlayers[0]);
-        assertEquals(-1000, testPlayers[0].getCurrentBalance());
+        assertEquals(startBalance - 1000, testPlayers[0].getCurrentBalance());
 
     }
 
@@ -84,10 +86,18 @@ public class DeedSquareTest {
     public void playerBuys1HouseThenAnotherFor1000Each() {
         testDeedSquare[0].setOwnsGroup(true);
         testDeedSquare[0].addHouse(1, testPlayers[0]);
-        assertEquals(-1000, testPlayers[0].getCurrentBalance());
+        assertEquals(startBalance - 1000, testPlayers[0].getCurrentBalance());
         testDeedSquare[0].addHouse(1, testPlayers[0]);
-        assertEquals(-2000, testPlayers[0].getCurrentBalance());
+        assertEquals(startBalance - 2000, testPlayers[0].getCurrentBalance());
 
+    }
+
+    @Test
+    public void cannotBuyHouseBecauseNotEnoughMoney() {
+        testPlayers[0].withdrawMoney(startBalance);
+        testDeedSquare[0].setOwnsGroup(true);
+        testDeedSquare[0].addHouse(1, testPlayers[0]);
+        assertEquals(0, testDeedSquare[0].getHouseCount());
     }
     @Test
     public void cannotBuyHouseBecauseNotOwnerOfLotGroup() {
@@ -105,6 +115,7 @@ public class DeedSquareTest {
 
     @Test
     public void buyHotelForDeedSquare() {
+        testDeedSquare[0].setOwnsGroup(true);
         testDeedSquare[0].addHouse(4, testPlayers[0]);
         testDeedSquare[0].buyHotel();
         assertEquals(true,testDeedSquare[0].hasHotel());
@@ -121,7 +132,7 @@ public class DeedSquareTest {
         testDeedSquare[0].setDeedOwner(testPlayers[0],0);
         testDeedSquare[0].setOwnsGroup(true);
         testDeedSquare[0].landOn(testPlayers[1]);
-        assertEquals(-50,testPlayers[1].getCurrentBalance());
+        assertEquals(startBalance-50,testPlayers[1].getCurrentBalance());
     }
 
     @Test
@@ -130,7 +141,7 @@ public class DeedSquareTest {
         testDeedSquare[0].setOwnsGroup(true);
         testDeedSquare[0].addHouse(1, testPlayers[0]);
         testDeedSquare[0].landOn(testPlayers[1]);
-        assertEquals(-250,testPlayers[1].getCurrentBalance());
+        assertEquals(startBalance-250,testPlayers[1].getCurrentBalance());
     }
 
     @Test
@@ -139,7 +150,7 @@ public class DeedSquareTest {
         testDeedSquare[0].setOwnsGroup(true);
         testDeedSquare[0].addHouse(2, testPlayers[0]);
         testDeedSquare[0].landOn(testPlayers[1]);
-        assertEquals(-750,testPlayers[1].getCurrentBalance());
+        assertEquals(startBalance-750,testPlayers[1].getCurrentBalance());
     }
 
     @Test
@@ -148,7 +159,7 @@ public class DeedSquareTest {
         testDeedSquare[0].setOwnsGroup(true);
         testDeedSquare[0].addHouse(3, testPlayers[0]);
         testDeedSquare[0].landOn(testPlayers[1]);
-        assertEquals(-2250,testPlayers[1].getCurrentBalance());
+        assertEquals(startBalance-2250,testPlayers[1].getCurrentBalance());
     }
 
     @Test
@@ -157,7 +168,7 @@ public class DeedSquareTest {
         testDeedSquare[0].setOwnsGroup(true);
         testDeedSquare[0].addHouse(4, testPlayers[0]);
         testDeedSquare[0].landOn(testPlayers[1]);
-        assertEquals(-4000,testPlayers[1].getCurrentBalance());
+        assertEquals(startBalance-4000,testPlayers[1].getCurrentBalance());
     }
 
 }
