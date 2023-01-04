@@ -13,11 +13,16 @@ public class DeedSquareTest {
 
     Player[] testPlayers = new Player[2];
     GUI_Player[] testGuiPlayers = new GUI_Player[2];
-    DeedSquare testDeedSquare = new DeedSquare("Test Deed 1",5,guiController);
+    DeedSquare[] testDeedSquare = new DeedSquare[2];
     Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
 
     public DeedSquareTest() {
-        testDeedSquare.setLang(msg);
+        for(int i = 0 ; i < testDeedSquare.length ; i++) {
+            testDeedSquare[i] = new DeedSquare("TestDeedSquare" + i, 1200, guiController);
+            testDeedSquare[i].setLang(msg);
+            testDeedSquare[i].setColor("red");
+        }
+
         testPlayers[0] = new Player("TestPlayer 1");
         testPlayers[1] = new Player("TestPlayer 2");
 
@@ -33,8 +38,8 @@ public class DeedSquareTest {
     public void deedOwnerIsTestPlayer1AfterLandingOnIt() {
 
         testPlayers[0].updatePosition(1);
-        testDeedSquare.landOn(testPlayers[0]);
-        assertEquals(testPlayers[0], testDeedSquare.getDeedOwner());
+        testDeedSquare[0].landOn(testPlayers[0]);
+        assertEquals(testPlayers[0], testDeedSquare[0].getDeedOwner());
     }
     @Test
     public void testPlayer2PaysRentToDeedOwner() {
@@ -42,9 +47,9 @@ public class DeedSquareTest {
         testPlayers[0].depositMoney(20);
         testPlayers[1].depositMoney(20);
         testPlayers[0].updatePosition(1);
-        testDeedSquare.landOn(testPlayers[0]);
+        testDeedSquare[0].landOn(testPlayers[0]);
         testPlayers[1].updatePosition(1);
-        testDeedSquare.landOn(testPlayers[1]);
+        testDeedSquare[0].landOn(testPlayers[1]);
         assertEquals(20, testPlayers[0].getCurrentBalance());
         assertEquals(15, testPlayers[1].getCurrentBalance());
     }
@@ -52,41 +57,50 @@ public class DeedSquareTest {
     @Test
     public void playerGetsDeedForFree() {
 
-        testDeedSquare.setDeedToFree();
-        testDeedSquare.landOn(testPlayers[0]);
+        testDeedSquare[0].setDeedToFree();
+        testDeedSquare[0].landOn(testPlayers[0]);
 
         assertEquals(0, testPlayers[0].getCurrentBalance());
     }
 
     @Test
+    public void playerOwnsGroup() {
+        testDeedSquare[0].setDeedOwner(testPlayers[0],0);
+        testDeedSquare[1].setDeedOwner(testPlayers[0],1);
+
+    }
+
+    @Test
     public void buy1HouseForDeedSquare() {
-        testDeedSquare.ownsGroup();
-        testDeedSquare.buyHouse(1);
-        assertEquals(1, testDeedSquare.getHouseCount());
+        testDeedSquare[0].ownsGroup();
+        testDeedSquare[0].buyHouse(1);
+        assertEquals(1, testDeedSquare[0].getHouseCount());
 
     }
     @Test
     public void cannotBuyHouseBecauseNotOwnerOfLotGroup() {
-        testDeedSquare.buyHouse(1);
-        assertEquals(0, testDeedSquare.getHouseCount());
+        testDeedSquare[0].buyHouse(1);
+        assertEquals(0, testDeedSquare[0].getHouseCount());
     }
 
     @Test
     public void cannotBuyHouseBecauseMissingHouseOnOtherGround() {
-
+        testDeedSquare[0].ownsGroup();
+        testDeedSquare[0].buyHouse(2);
+        assertEquals(0, testDeedSquare[0].getHouseCount());
     }
 
     @Test
     public void buyHotelForDeedSquare() {
-        testDeedSquare.buyHouse(4);
-        testDeedSquare.buyHotel();
-        assertEquals(true,testDeedSquare.hasHotel());
+        testDeedSquare[0].buyHouse(4);
+        testDeedSquare[0].buyHotel();
+        assertEquals(true,testDeedSquare[0].hasHotel());
     }
 
     @Test
     public void errorMsgCannotBuyHotel() {
-        testDeedSquare.buyHotel();
-        assertEquals(false, testDeedSquare.hasHotel);
+        testDeedSquare[0].buyHotel();
+        assertEquals(false, testDeedSquare[0].hasHotel);
     }
 
 }
