@@ -93,7 +93,7 @@ public class DeedSquare extends Square{
         ownsGroup = true;
     }
 
-    public void buyHouse(int houseCount) {
+    public void setHouseCount(int houseCount) {
         if(ownsGroup) {
             this.houseCount += houseCount;
         } else {
