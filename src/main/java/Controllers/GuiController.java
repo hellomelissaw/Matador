@@ -9,7 +9,7 @@ import java.awt.*;
  public class GuiController {
      private GUI gui;
      Text msg;
-     private GUI_Field[] fields;
+     private GUI_Field[] fields   ;
 
     private GUI_Player[] guiPlayers;
     private int squareIndex = 0;
@@ -43,6 +43,11 @@ import java.awt.*;
          };
 */
         this.gui = new GUI();
+        fields = gui.getFields();
+       //GUI_Field field;
+        //field = fields[0];
+
+
 /*
         gui.getFields()[0].setTitle(" ");
         gui.getFields()[0].setBackGroundColor(Color.white);
@@ -144,6 +149,7 @@ import java.awt.*;
 
     }
 
+
     public void setLang(Text msg) {
         this.msg = msg;
     }
@@ -192,7 +198,9 @@ import java.awt.*;
 
     public GUI_Player createGuiPlayer(Player player) {
          GUI_Player guiPlayer = new GUI_Player(player.getPlayerName());
-         fields[0].setCar(guiPlayer,true);
+         //fields[0].setCar(guiPlayer,true);
+        guiPlayer.getCar().setPosition(fields[0]);
+        //fields[0].setCar(guiPlayer,true);
          gui.addPlayer(guiPlayer);
          System.out.println("Gui Player is set");
          return guiPlayer;
@@ -213,6 +221,8 @@ import java.awt.*;
         fields[currentPositionIndex].setCar(currentPlayer,false);
         fields[newPosition].setCar(currentPlayer,true);
 
+         //fields[currentPositionIndex].setCar(currentPlayer,false);
+         //fields[newPosition].setCar(currentPlayer,true);
      }
 
      /**
