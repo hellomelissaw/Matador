@@ -233,12 +233,26 @@ public class DeedSquareTest {
 
         assertFalse(testDeedSquare[0].ownsGroup(testPlayers[0], testDeedSquare));
     }
+    @Test
+    public void playerBuildsTwoHousesOnEachLot() {
+        testDeedSquare[0].testing(true,"ja");
+        testDeedSquare[0].landOn(testPlayers[0]);
 
+        testDeedSquare[1].testing(true,"ja");
+        testDeedSquare[1].landOn(testPlayers[0]);
+
+        testDeedSquare[0].addHouse(1, testPlayers[0]);
+        testDeedSquare[1].addHouse(1, testPlayers[0]);
+
+        assertEquals(1, testDeedSquare[0].getHouseCount());
+        assertEquals(1, testDeedSquare[1].getHouseCount());
+    }
     @Test
     public void playerCannotBuildSecondHouseBecauseNoHouseOnOtherLotInGroup() {
         testPlayers[0].takeCard("deed", testDeedSquare[0].getDeed());
         testPlayers[0].takeCard("deed", testDeedSquare[1].getDeed());
-        testDeedSquare[0].addHouse(2, testPlayers[0]);
+        testDeedSquare[0].addHouse(1, testPlayers[0]);
+        testDeedSquare[0].addHouse(1, testPlayers[0]);
 
         assertEquals(1, testDeedSquare[0].getHouseCount());
     }

@@ -157,8 +157,9 @@ public class DeedSquare extends Square{
     }
 
     public void addHouse(int houseCount, Player currentPlayer) {
-        if(ownsGroup) {
-            boolean clearedForPurchase = currentPlayer.getBuildingClearance(color, deed);
+       boolean ownsGroup = currentPlayer.IsGroupOwner(color);
+       if(ownsGroup) {
+            boolean clearedForPurchase = currentPlayer.getBuildingClearance(color, deed, houseCount);
             if(clearedForPurchase) {
                 int balanceToPay = houseCount * buildingPrice;
                 int currentBalance = currentPlayer.getCurrentBalance();
