@@ -6,7 +6,7 @@ public class Deed {
     Player owner;
     int[] rent;
     int deedPrice;
-    int housePrice;
+    int buildingPrice;
     String deedName;
     String color;
     int groupSize;
@@ -20,13 +20,13 @@ public class Deed {
      * @param deedName  name of the Deed (For example "The Skate Park")
      * @param color
      */
-    public Deed(int deedPrice, int housePrice, int[] rent, String deedName){
+    public Deed(int deedPrice, int buildingPrice, int[] rent, String deedName){
 
         this.deedPrice = deedPrice;
-        this.housePrice = housePrice;
+        this.buildingPrice = buildingPrice;
         this.rent = rent;
         this.deedName = deedName;
-        this.color = color;
+        //this.color = color;
     }
 
     public Player getOwner() {
@@ -64,5 +64,9 @@ public class Deed {
 
     public int getHouseCount() {
         return houseCount;
+    }
+
+    public int getBuildingPrice() {
+        return buildingPrice;
     }
 }
