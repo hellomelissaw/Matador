@@ -114,13 +114,13 @@ public class DeedSquareTest {
         testDeedSquare[0].setOwnsGroup(true);
         testDeedSquare[0].addHouse(4, testPlayers[0]);
         testDeedSquare[0].addHotel(testPlayers[0]);
-        assertEquals(true,testDeedSquare[0].hasHotel());
+        assertTrue(testDeedSquare[0].hasHotel());
     }
 
     @Test
     public void errorMsgCannotBuyHotel() {
         testDeedSquare[0].addHotel(testPlayers[0]);
-        assertEquals(false, testDeedSquare[0].hasHotel);
+        assertFalse(testDeedSquare[0].hasHotel);
     }
 
     @Test
@@ -129,7 +129,7 @@ public class DeedSquareTest {
         testDeedSquare[0].setOwnsGroup(true);
         testDeedSquare[0].addHouse(4, testPlayers[0]);
         testDeedSquare[0].addHotel(testPlayers[0]);
-        assertEquals(false, testDeedSquare[0].hasHotel);
+        assertFalse(testDeedSquare[0].hasHotel);
     }
 
     @Test
@@ -180,7 +180,7 @@ public class DeedSquareTest {
     public void playerChoosesToBuyLot(){
         testDeedSquare[0].testing(true,"ja");
         testDeedSquare[0].landOn(testPlayers[0]);
-        assertEquals(false, testDeedSquare[0].hasDeed());
+        assertFalse(testDeedSquare[0].hasDeed());
         assertEquals(testPlayers[0],testDeedSquare[0].getDeedOwner());
     }
 
@@ -188,16 +188,16 @@ public class DeedSquareTest {
     public void playerChoosesNotToBuyLot(){
         testDeedSquare[0].testing(true,"nej");
         testDeedSquare[0].landOn(testPlayers[0]);
-        assertEquals(true, testDeedSquare[0].hasDeed());
-        assertEquals(null,testDeedSquare[0].getDeedOwner());
+        assertTrue(testDeedSquare[0].hasDeed());
+        assertNull(testDeedSquare[0].getDeedOwner());
     }
 
     @Test
     public void playerMakesTypo(){
         testDeedSquare[0].testing(true,"pizza");
         testDeedSquare[0].landOn(testPlayers[0]);
-        assertEquals(true, testDeedSquare[0].hasDeed());
-        assertEquals(null,testDeedSquare[0].getDeedOwner());
+        assertTrue(testDeedSquare[0].hasDeed());
+        assertNull(testDeedSquare[0].getDeedOwner());
     }
 
     @Test
@@ -220,7 +220,7 @@ public class DeedSquareTest {
         testDeedSquare[0].setDeedOwner(testPlayers[0], 0);
         testDeedSquare[1].setDeedOwner(testPlayers[0], 1);
 
-        assertEquals(true, testDeedSquare[0].ownsGroup(testPlayers[0], testDeedSquare));
+        assertTrue(testDeedSquare[0].ownsGroup(testPlayers[0], testDeedSquare));
     }
 
 }
