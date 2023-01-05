@@ -10,6 +10,7 @@ import java.awt.*;
      private GUI gui;
      Text msg;
      private GUI_Field[] fields;
+     GUI_Board board;
      GUI_Ownable[] ownable = new GUI_Ownable[40];
 
     private GUI_Player[] guiPlayers;
@@ -190,7 +191,7 @@ import java.awt.*;
 
        };
 
-       this.gui = new GUI(fields);
+       this.gui = new GUI(fields,Color.blue);
 
        gui.getFields()[0].setTitle("START");
        gui.getFields()[0].setBackGroundColor(Color.red);
