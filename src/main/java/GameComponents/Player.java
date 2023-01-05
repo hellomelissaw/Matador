@@ -152,8 +152,8 @@ public class Player {
         return deedList;
     }
 
-    public boolean getBuildingClearance(String color) {
-        boolean cleared = cardholder.houseCountIsLevel(color);
+    public boolean getBuildingClearance(String color, Deed deed) {
+        boolean cleared = cardholder.houseCountIsLevel(color, deed);
         return cleared;
     }
 }

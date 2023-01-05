@@ -58,12 +58,12 @@ public class Cardholder {
         return ownsGroup;
     }
 
-    public boolean houseCountIsLevel(String color) {
+    public boolean houseCountIsLevel(String color, Deed deed) {
         boolean countIsLevel = false;
 
-        for(int i = 1 ; i < deedCards.size() ; i++) {
+        for(int i = 0 ; i < deedCards.size() ; i++) {
 
-            if(deedCards.get(i).getHouseCount() == deedCards.get(i-1).getHouseCount()) {
+            if(deed.getHouseCount() <= deedCards.get(i).getHouseCount()) {
                 countIsLevel = true;
 
             } else { countIsLevel = false;
