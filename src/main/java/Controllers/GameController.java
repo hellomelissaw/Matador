@@ -21,25 +21,32 @@ public class GameController {
         guiController.initFieldTitles(msg);
         BoardInit board = new BoardInit(guiController,msg);
         square = board.getSquareArr();
-        playerCount = 2;
-        //balance = 20 - (playerCount - 2) * 2;
-        balance = 1; //TEST BALANCE, REMOVE FOR NORMAL RUNNING OF GAME
+        playerCount = 3;
+        balance = 30000;
         players = new Player[playerCount];
         guiPlayers = new GUI_Player[playerCount];
 
 
-        players[0] = new Player("Marc"); // INITIALISE EACH PLAYER WITH NAME
+        players[0] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
         players[0].depositMoney(balance); // DEPOSIT INITIAL BALANCE
 
-        players[1] = new Player("Germaine"); // INITIALISE EACH PLAYER WITH NAME
+        players[1] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
         players[1].depositMoney(balance); // DEPOSIT INITIAL BALANCE
 
-        if (playerCount > 2) {
-            players[2] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
-            players[2].depositMoney(balance); // DEPOSIT INITIAL BALANCE
-            if (playerCount == 4) {
-                players[3] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
-                players[3].depositMoney(balance); // DEPOSIT INITIAL BALANCE
+        players[2] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
+        players[2].depositMoney(balance); // DEPOSIT INITIAL BALANCE
+
+        if (playerCount > 3) {
+            players[3] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
+            players[3].depositMoney(balance); // DEPOSIT INITIAL BALANCE
+
+            players[4] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
+            players[4].depositMoney(balance); // DEPOSIT INITIAL BALANCE
+
+
+            if (playerCount == 6) {
+                players[5] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
+                players[5].depositMoney(balance); // DEPOSIT INITIAL BALANCE
             }
         }
         guiPlayers = guiController.addPlayerOnBoard(players);
@@ -64,7 +71,7 @@ public class GameController {
            // playerCount = userInput.nextInt();
             //System.out.println(playerCount);
             playerCount = guiController.getUserIntegerPlayerCount();
-            if (playerCount >= 2 && playerCount <= 4) {
+            if (playerCount >= 3 && playerCount <= 6) {
                 playerCountInvalid = false;
 
             } else {
@@ -72,7 +79,7 @@ public class GameController {
                 guiController.showMessage(msg.getText("invalidCount"));
             }
         }
-        balance = 20-(playerCount-2)*2; //SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
+        balance = 30000; //SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
 
 
         players = new Player[playerCount];
@@ -122,7 +129,7 @@ public class GameController {
 
                 // hvis newPosition er mindre end oldPosition, betyder det at man har passeret start
                 if (newPosition<oldPosition && oldPosition != 18) {
-                    players[i].depositMoney(2);
+                    players[i].depositMoney(4000);
                     int currentBalance = players[i].getCurrentBalance();
                     guiController.updateBalance(guiPlayers[i], currentBalance);
                     String passStart = players[i].getPlayerName()+ msg.getText("passStart") + currentBalance;
