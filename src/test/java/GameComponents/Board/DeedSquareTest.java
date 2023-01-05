@@ -227,4 +227,11 @@ public class DeedSquareTest {
         assertTrue(testDeedSquare[0].ownsGroup(testPlayers[0], testDeedSquare));
     }
 
+    @Test
+    public void playerDoesNotHaveAllLotsOfSameColour(){
+        testPlayers[0].addToCardholder("deed", testDeedSquare[0].getDeed());
+
+        assertFalse(testDeedSquare[0].ownsGroup(testPlayers[0], testDeedSquare));
+    }
+
 }
