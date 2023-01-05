@@ -46,10 +46,11 @@ public class GameController {
             }
 
         } else {
-            String[] lang = {"EnglishText", "DanskTekst"};
+            /*String[] lang = {"EnglishText", "DanskTekst"};
             int langIndex = guiController.getUserInteger("You are in English mode. Enter 1 to keep English or enter 2 to switch to Danish."); //GETS USER TO CHOOSE LANGUAGE
             String langFile = "src/main/java/Translator/" + lang[langIndex - 1];
-            msg = new Text(langFile, guiController);
+            msg = new Text(langFile, guiController);*/
+            msg = new Text("src/main/java/Translator/DanskTekst", guiController);
             guiController.initFieldTitles(msg);
 
             //String userInput;
