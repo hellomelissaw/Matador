@@ -1,6 +1,7 @@
 package GameComponents;
 
 import Controllers.GuiController;
+import GameComponents.Board.Deed;
 import gui_fields.GUI_Player;
 import Translator.Text;
 
@@ -140,6 +141,15 @@ public class Player {
     public boolean IsGroupOwner(String color) {
         boolean ownerStatus = cardholder.getOwnerStatus(color);
         return ownerStatus;
+    }
+
+    public void addToCardholder(String cardType, Deed deed) {
+        cardholder.addCard(cardType,deed);
+    }
+
+    public Deed[] getDeedList() {
+        Deed[] deedList = cardholder.getDeedList();
+        return deedList;
     }
 }
 

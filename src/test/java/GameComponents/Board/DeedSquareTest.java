@@ -201,6 +201,21 @@ public class DeedSquareTest {
     }
 
     @Test
+    public void playerHasTestDeedSquare1DeedInCardholder(){
+        boolean hasDeed = false;
+        testPlayers[0].addToCardholder("deed", testDeedSquare[0].getDeed());
+        testPlayers[0].addToCardholder("deed", testDeedSquare[1].getDeed());
+        Deed[] deedList = testPlayers[0].getDeedList();
+        for(int i = 0 ; i < deedList.length ; i++) {
+            if (deedList[i].getDeedName().equals("TestDeedSquare0")) {
+                hasDeed = true;
+                break;
+            }
+        }
+
+        assertTrue(hasDeed);
+    }
+    @Test
     public void playerHasAllLotsOfSameColour(){
         testDeedSquare[0].setDeedOwner(testPlayers[0], 0);
         testDeedSquare[1].setDeedOwner(testPlayers[0], 1);

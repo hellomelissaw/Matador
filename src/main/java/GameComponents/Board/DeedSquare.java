@@ -45,6 +45,10 @@ public class DeedSquare extends Square{
         buying = answer;
     }
 
+    public Deed getDeed() {
+        return deed;
+    }
+
     public void setSquaresInGroup(){
 
     };
@@ -99,6 +103,7 @@ public class DeedSquare extends Square{
                     sellDeed = false;
                     freeDeed = false;
                     deed.setOwner(currentPlayer);
+                    currentPlayer.addToCardholder("deed", deed);
                     if (guiOn) {
                         guiController.setOwnerName(currentPlayer, currentPlayer.getPosition());
                     }
