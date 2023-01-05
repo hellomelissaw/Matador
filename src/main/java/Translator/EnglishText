@@ -80,37 +80,24 @@ Chance2; The propertytaxes are rising.
          the additional expences are:
          800 kr pr house and 2300 kr pr hotel.
 
-Chance3; You've driven forward to "full stop",
-         Pay 1000 kr in penalty
-
+Chance3; You've driven forward to "full stop", Pay 1000 kr in penalty
 Chance4; Pay for your car wash and greasing for kr 300.
-
 Chance5; Pay kr 200 for delivery of 2 beer boxes.
-
 Chance6; Pay 3000 for reparation of your car.
-
 Chance7; Pay 3000 for reparation of your car.
-
-Chance8; De har købt 4 nye dæk til Deres vogn,
-         betal kr 1000.
-
-Chance9; You have recieved a parking ticket,
-         Pay kr 200 in penalty.
+Chance8; De har købt 4 nye dæk til Deres vogn, betal kr 1000.
+Chance9; You have recieved a parking ticket, Pay kr 200 in penalty.
 Chance10; Pay for your car insurance, kr 1000
-Chance11; You have been abroad and bought too many
-          packs of cigarettes pay 200 kr in tax.
+Chance11; You have been abroad and bought too many packs of cigarettes pay 200 kr in tax.
 Chance12; The dentist bill, pay kr 2000.
 Chance13; you've won the class lottery, receive 500 kr.
 Chance14; you've won the class lottery, receive 500 kr.
-Chance15; You are earning your stock dividends,
-          receive kr 1000 from the bank.
-Chance16; You are earning your stock dividends,
-          receive kr 1000 from the bank.
-Chance17; You are earning your stock dividends,
-          receive kr 1000 from the bank.
-Chance18; Kommunen har eftergivet et kvartals skat. Hæv i banken 3000 kr.
-Chance19; De have en række med elleve rigtige i tipning, modtag kl 1000
-Chance20; Grundet dyrtiden har De fået gageforhøjelse, modtag kr 1000.
+Chance15; You are earning your stock dividends, receive kr 1000 from the bank.
+Chance16; You are earning your stock dividends, receive kr 1000 from the bank.
+Chance17; You are earning your stock dividends, receive kr 1000 from the bank.
+Chance18; The municipality has waived one quarter's tax. withdraw 3000 kr in the bank.
+Chance19; They have a line of eleven correct in tipping, receive 1000 kr.
+Chance20; Due to the expencive time, you have received a wage increase, receive 1000 kr.
 Chance21; Deres præmieobligation er udtrykket. De modtager 1000 kr af banken.
 Chance22; Deres præmieobligation er udtrykket. De modtager 1000 kr af banken.
 Chance23; De har solg nogle gamle møbler på auktion. Modtag 1000 kr af banken.
