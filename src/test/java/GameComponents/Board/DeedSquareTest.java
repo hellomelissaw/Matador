@@ -207,8 +207,8 @@ public class DeedSquareTest {
     @Test
     public void playerHasTestDeedSquare1DeedInCardholder(){
         boolean hasDeed = false;
-        testPlayers[0].addToCardholder("deed", testDeedSquare[0].getDeed());
-        testPlayers[0].addToCardholder("deed", testDeedSquare[1].getDeed());
+        testPlayers[0].takeCard("deed", testDeedSquare[0].getDeed());
+        testPlayers[0].takeCard("deed", testDeedSquare[1].getDeed());
         Deed[] deedList = testPlayers[0].getDeedList();
         for(int i = 0 ; i < deedList.length ; i++) {
             if (deedList[i].getDeedName().equals("TestDeedSquare0")) {
@@ -221,22 +221,26 @@ public class DeedSquareTest {
     }
     @Test
     public void playerHasAllLotsOfSameColour(){
-        testPlayers[0].addToCardholder("deed", testDeedSquare[0].getDeed());
-        testPlayers[0].addToCardholder("deed", testDeedSquare[1].getDeed());
+        testPlayers[0].takeCard("deed", testDeedSquare[0].getDeed());
+        testPlayers[0].takeCard("deed", testDeedSquare[1].getDeed());
 
         assertTrue(testDeedSquare[0].ownsGroup(testPlayers[0], testDeedSquare));
     }
 
     @Test
     public void playerDoesNotHaveAllLotsOfSameColour(){
-        testPlayers[0].addToCardholder("deed", testDeedSquare[0].getDeed());
+        testPlayers[0].takeCard("deed", testDeedSquare[0].getDeed());
 
         assertFalse(testDeedSquare[0].ownsGroup(testPlayers[0], testDeedSquare));
     }
 
     @Test
     public void playerCannotBuildSecondHouseBecauseNoHouseOnOtherLotInGroup() {
+        testPlayers[0].takeCard("deed", testDeedSquare[0].getDeed());
+        testPlayers[0].takeCard("deed", testDeedSquare[1].getDeed());
+        testDeedSquare[0].addHouse(2, testPlayers[0]);
 
+        assertEquals(1, testDeedSquare[0].getHouseCount());
     }
 
 }

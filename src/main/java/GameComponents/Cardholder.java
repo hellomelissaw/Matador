@@ -57,4 +57,19 @@ public class Cardholder {
         }
         return ownsGroup;
     }
+
+    public boolean houseCountIsLevel(String color) {
+        boolean countIsLevel = false;
+        ArrayList<Deed> deedsInGroup = new ArrayList<Deed>();
+        for(Deed deed: deedCards) {
+            if (deed.getColor().equals(color)){
+                deedsInGroup.add(deed);
+            }
+        }
+
+        for(Deed deed: deedsInGroup) {
+
+        }
+        return countIsLevel;
+    }
 }

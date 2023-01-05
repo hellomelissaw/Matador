@@ -9,8 +9,9 @@ public class Deed {
     int housePrice;
     String deedName;
     String color;
-
     int groupSize;
+
+    int houseCount;
 
     /**
      * Constructs a Deed which can be owned by Player
@@ -55,5 +56,13 @@ public class Deed {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public void setHouseCount(int houseCount) {
+        this.houseCount = houseCount;
+    }
+
+    public int getHouseCount() {
+        return houseCount;
     }
 }

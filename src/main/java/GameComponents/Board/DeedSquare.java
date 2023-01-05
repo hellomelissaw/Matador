@@ -112,7 +112,7 @@ public class DeedSquare extends Square{
                     sellDeed = false;
                     freeDeed = false;
                     deed.setOwner(currentPlayer);
-                    currentPlayer.addToCardholder("deed", deed);
+                    currentPlayer.takeCard("deed", deed);
                     if (guiOn) {
                         guiController.setOwnerName(currentPlayer, currentPlayer.getPosition());
                     }
@@ -158,13 +158,20 @@ public class DeedSquare extends Square{
 
     public void addHouse(int houseCount, Player currentPlayer) {
         if(ownsGroup) {
-            int balanceToPay = houseCount * buildingPrice;
-            int currentBalance = currentPlayer.getCurrentBalance();
-            if(currentBalance > 0 && currentBalance - balanceToPay >= 0){
-                currentPlayer.withdrawMoney(balanceToPay);
-                this.houseCount += houseCount;
+            boolean clearedForPurchase = currentPlayer.getBuildingClearance(color);
+            if(clearedForPurchase) {
+                int balanceToPay = houseCount * buildingPrice;
+                int currentBalance = currentPlayer.getCurrentBalance();
+                if (currentBalance > 0 && currentBalance - balanceToPay >= 0) {
+                    currentPlayer.withdrawMoney(balanceToPay);
+                    this.houseCount += houseCount;
+                    System.out.println("There is now " + this.houseCount + " houses registered on the deed.");
+                    deed.setHouseCount(this.houseCount);
+                } else {
+                    System.out.println("Du har ikke nok penge til at købe dette hus.");
+                }
             } else {
-                System.out.println("Du har ikke nok penge til at købe dette hus.");
+                System.out.println("Du skal bygge en jævn mængde hus på alle grunde i gruppen før du kan bygge videre.");
             }
 
         } else {

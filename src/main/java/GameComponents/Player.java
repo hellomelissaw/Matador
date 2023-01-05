@@ -143,13 +143,18 @@ public class Player {
         return ownerStatus;
     }
 
-    public void addToCardholder(String cardType, Deed deed) {
+    public void takeCard(String cardType, Deed deed) { // TO DO: change Deed deed to accomodate all card types
         cardholder.addCard(cardType,deed);
     }
 
     public Deed[] getDeedList() {
         Deed[] deedList = cardholder.getDeedList();
         return deedList;
+    }
+
+    public boolean getBuildingClearance(String color) {
+        boolean cleared = cardholder.houseCountIsLevel(color);
+        return cleared;
     }
 }
 
