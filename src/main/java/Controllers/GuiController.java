@@ -10,198 +10,256 @@ import java.awt.*;
      private GUI gui;
      Text msg;
      private GUI_Field[] fields   ;
+     GUI_Ownable[] ownable = new GUI_Ownable[40];
 
     private GUI_Player[] guiPlayers;
     private int squareIndex = 0;
-    public GuiController() {
-/*
-         fields = new GUI_Field[]{
-                 new GUI_Start(),
-                 new GUI_Street(),
-                 new GUI_Street(),
-                 new GUI_Chance(),
-                 new GUI_Street(),
-                 new GUI_Street(),
-                 new GUI_Jail(),
-                 new GUI_Street(),
-                 new GUI_Street(),
-                 new GUI_Chance(),
-                 new GUI_Street(),
-                 new GUI_Street(),
-                 new GUI_Street(),
-                 new GUI_Street(),
-                 new GUI_Street(),
-                 new GUI_Chance(),
-                 new GUI_Street(),
-                 new GUI_Street(),
-                 new GUI_Street(),
-                 new GUI_Street(),
-                 new GUI_Street(),
-                 new GUI_Chance(),
-                 new GUI_Street(),
-                 new GUI_Street(),
-         };
-*/
-        this.gui = new GUI();
-        fields = gui.getFields();
-       //GUI_Field field;
-        //field = fields[0];
+
+   public GuiController() {
+
+       fields = new GUI_Field[]{
+               new GUI_Start(),
+               new GUI_Street(),
+               new GUI_Chance(),
+               new GUI_Street(),
+               new GUI_Tax(),
+               new GUI_Shipping(),
+               new GUI_Street(),
+               new GUI_Chance(),
+               new GUI_Street(),
+               new GUI_Street(),
+               new GUI_Jail(),
+               new GUI_Street(),
+               new GUI_Brewery(),
+               new GUI_Street(),
+               new GUI_Street(),
+               new GUI_Shipping(),
+               new GUI_Street(),
+               new GUI_Chance(),
+               new GUI_Street(),
+               new GUI_Street(),
+               new GUI_Refuge(),
+               new GUI_Street(),
+               new GUI_Chance(),
+               new GUI_Street(),
+               new GUI_Street(),
+               new GUI_Shipping(),
+               new GUI_Street(),
+               new GUI_Street(),
+               new GUI_Brewery(),
+               new GUI_Street(),
+               new GUI_Jail(),
+               new GUI_Street(),
+               new GUI_Street(),
+               new GUI_Chance(),
+               new GUI_Street(),
+               new GUI_Shipping(),
+               new GUI_Chance(),
+               new GUI_Street(),
+               new GUI_Tax(),
+               new GUI_Street()
+
+       };
+
+       this.gui = new GUI(fields,Color.blue);
+
+       gui.getFields()[0].setTitle("START");
+       gui.getFields()[0].setBackGroundColor(Color.red);
+       gui.getFields()[0].setSubText(" ");
+
+       gui.getFields()[1].setTitle("Rødorvrevej");
+       gui.getFields()[1].setBackGroundColor(Color.cyan);
+       ownable[1] = (GUI_Ownable)fields[1];
+       ownable[1].setSubText("1200");
 
 
-/*
-        gui.getFields()[0].setTitle(" ");
-        gui.getFields()[0].setBackGroundColor(Color.white);
-        gui.getFields()[0].setSubText(" ");
 
-        gui.getFields()[1].setTitle("");
-        gui.getFields()[1].setBackGroundColor(Color.lightGray);
-        gui.getFields()[1].setSubText("M1");
-
-        gui.getFields()[2].setTitle(" ");
-        gui.getFields()[2].setBackGroundColor(Color.lightGray);
-        gui.getFields()[2].setSubText("M1");
-
-        gui.getFields()[3].setTitle("?");
-        gui.getFields()[3].setBackGroundColor(Color.magenta);
-        gui.getFields()[3].setSubText(" ");
-
-        gui.getFields()[4].setTitle("");
-        gui.getFields()[4].setBackGroundColor(Color.cyan);
-        gui.getFields()[4].setSubText("M1");
-
-        gui.getFields()[5].setTitle("");
-        gui.getFields()[5].setBackGroundColor(Color.cyan);
-        gui.getFields()[5].setSubText("M1");
-
-        gui.getFields()[6].setTitle("");
-        gui.getFields()[6].setBackGroundColor(Color.white);
-        gui.getFields()[6].setSubText("");
-
-        gui.getFields()[7].setTitle("");
-        gui.getFields()[7].setBackGroundColor(Color.pink);
-        gui.getFields()[7].setSubText("M2");
-
-        gui.getFields()[8].setTitle("");
-        gui.getFields()[8].setBackGroundColor(Color.pink);
-        gui.getFields()[8].setSubText("M2");
-
-        gui.getFields()[9].setTitle("?");
-        gui.getFields()[9].setBackGroundColor(Color.magenta);
-        gui.getFields()[9].setSubText(" ");
-
-        gui.getFields()[10].setTitle("");
-        gui.getFields()[10].setBackGroundColor(Color.orange);
-        gui.getFields()[10].setSubText("M2");
-
-        gui.getFields()[11].setTitle("");
-        gui.getFields()[11].setBackGroundColor(Color.orange);
-        gui.getFields()[11].setSubText("M2");
-
-        gui.getFields()[12].setTitle("");
-        gui.getFields()[12].setBackGroundColor(Color.white);
-        gui.getFields()[12].setSubText("");
-
-        gui.getFields()[13].setTitle("");
-        gui.getFields()[13].setBackGroundColor(Color.red);
-        gui.getFields()[13].setSubText("M3");
-
-        gui.getFields()[14].setTitle("");
-        gui.getFields()[14].setBackGroundColor(Color.red);
-        gui.getFields()[14].setSubText("M3");
-
-        gui.getFields()[15].setTitle("?");
-        gui.getFields()[15].setBackGroundColor(Color.magenta);
-        gui.getFields()[15].setSubText(" ");
-
-        gui.getFields()[16].setTitle("");
-        gui.getFields()[16].setBackGroundColor(Color.yellow);
-        gui.getFields()[16].setSubText("M3");
-
-        gui.getFields()[17].setTitle("");
-        gui.getFields()[17].setBackGroundColor(Color.yellow);
-        gui.getFields()[17].setSubText("M3");
-
-        gui.getFields()[18].setTitle("");
-        gui.getFields()[18].setBackGroundColor(Color.white);
-        gui.getFields()[18].setSubText("");
-
-        gui.getFields()[19].setTitle("");
-        gui.getFields()[19].setBackGroundColor(Color.green);
-        gui.getFields()[19].setSubText("M4");
-
-        gui.getFields()[20].setTitle("");
-        gui.getFields()[20].setBackGroundColor(Color.green);
-        gui.getFields()[20].setSubText("M4");
-
-        gui.getFields()[21].setTitle("?");
-        gui.getFields()[21].setBackGroundColor(Color.magenta);
-        gui.getFields()[21].setSubText(" ");
-
-        gui.getFields()[22].setTitle("");
-        gui.getFields()[22].setBackGroundColor(Color.blue);
-        gui.getFields()[22].setSubText("M5");
-
-        gui.getFields()[23].setTitle("");
-        gui.getFields()[23].setBackGroundColor(Color.blue);
-        gui.getFields()[23].setSubText("M5");
-
- */
-
-    }
+       gui.getFields()[2].setBackGroundColor(Color.green);
+       gui.getFields()[2].setSubText("Prøv Lykken");
 
 
-    public void setLang(Text msg) {
-        this.msg = msg;
-    }
+       gui.getFields()[3].setTitle("Hvidovrevej");
+       gui.getFields()[3].setBackGroundColor(Color.cyan);
+       gui.getFields()[3].setSubText("1200");
+       ownable[3] = (GUI_Ownable)fields[3];
+       //ownable[3].setSubText("1200");
+
+       gui.getFields()[4].setTitle("Betale indkomst skat:");
+       gui.getFields()[4].setBackGroundColor(Color.gray);
+       gui.getFields()[4].setSubText("10% eller 4000 kr.");
+
+       gui.getFields()[5].setTitle("Scandlines");
+       gui.getFields()[5].setBackGroundColor(Color.white);
+       gui.getFields()[5].setSubText("4000 kr");
+
+       gui.getFields()[6].setTitle("Roskildevej");
+       gui.getFields()[6].setBackGroundColor(Color.orange);
+       ownable[6] = (GUI_Ownable)fields[6];
+       ownable[6].setSubText("2000 kr");
+
+
+       gui.getFields()[7].setBackGroundColor(Color.green);
+       gui.getFields()[7].setSubText("Prøv Lykken");
+
+       gui.getFields()[8].setTitle("Valby Langgade");
+       gui.getFields()[8].setBackGroundColor(Color.orange);
+       ownable[8] = (GUI_Ownable)fields[8];
+       ownable[8].setSubText("2000 kr");
+
+       gui.getFields()[9].setTitle("Allegade");
+       gui.getFields()[9].setBackGroundColor(Color.orange);
+       ownable[9] = (GUI_Ownable)fields[9];
+       ownable[9].setSubText("2400 kr");
+
+       gui.getFields()[10].setTitle("I fængsel");
+       gui.getFields()[10].setSubText("På besøge");
+
+       gui.getFields()[11].setTitle("Fredriksberg Alle");
+       gui.getFields()[11].setBackGroundColor(Color.yellow);
+       ownable[11] = (GUI_Ownable)fields[11];
+       ownable[11].setSubText("2800 kr");
+
+       gui.getFields()[12].setTitle("3000 kr");
+       //gui.getFields()[12].setBackGroundColor(Color.orange);
+       //gui.getFields()[12].setSubText("3000 kr");//????????????????
+
+       gui.getFields()[13].setTitle("Bullowsvej");
+       gui.getFields()[13].setBackGroundColor(Color.yellow);
+       ownable[13] = (GUI_Ownable)fields[13];
+       ownable[13].setSubText("2800 kr");
+
+       gui.getFields()[14].setTitle("Gl. Kongevej");
+       gui.getFields()[14].setBackGroundColor(Color.yellow);
+       ownable[14] = (GUI_Ownable)fields[14];
+       ownable[14].setSubText("3200 kr");
+
+       gui.getFields()[15].setTitle("Mols-Linien");
+       gui.getFields()[15].setBackGroundColor(Color.white);
+       gui.getFields()[15].setSubText("4000 kr");
+
+       gui.getFields()[16].setTitle("Bernstorffsvej");
+       gui.getFields()[16].setBackGroundColor(Color.gray);
+       ownable[16] = (GUI_Ownable)fields[16];
+       ownable[16].setSubText("3600 kr");
+
+       //gui.getFields()[17].setTitle("?");
+       gui.getFields()[17].setBackGroundColor(Color.green);
+       gui.getFields()[17].setSubText("Prøv Lykken");
+
+       gui.getFields()[18].setTitle("Hellerupvej");
+       gui.getFields()[18].setBackGroundColor(Color.gray);
+       ownable[18] = (GUI_Ownable)fields[18];
+       ownable[18].setSubText("3600 kr");
+
+       gui.getFields()[19].setTitle("Strandvejen");
+       gui.getFields()[19].setBackGroundColor(Color.gray);
+       ownable[19] = (GUI_Ownable)fields[19];
+       ownable[19].setSubText("4000 kr");
+
+
+       //gui.getFields()[20].setTitle("Parkering");
+       gui.getFields()[20].setSubText("Parkering!");
+       gui.getFields()[20].setBackGroundColor(Color.white);
+
+       gui.getFields()[21].setTitle("Trianglen");
+       gui.getFields()[21].setBackGroundColor(Color.red);
+       ownable[21] = (GUI_Ownable)fields[21];
+       ownable[21].setSubText("4400 kr");
+
+       gui.getFields()[22].setBackGroundColor(Color.green);
+       gui.getFields()[22].setSubText("Prøv Lykken");
+
+       gui.getFields()[23].setTitle("Østerbrogade");
+       gui.getFields()[23].setBackGroundColor(Color.red);
+       ownable[23] = (GUI_Ownable)fields[23];
+       ownable[23].setSubText("4400 kr");
+
+       gui.getFields()[24].setTitle("Grønningen");
+       gui.getFields()[24].setBackGroundColor(Color.red);
+       ownable[24] = (GUI_Ownable)fields[24];
+       ownable[24].setSubText("4800 kr");
+
+       gui.getFields()[25].setTitle("Scandlines");
+       gui.getFields()[25].setBackGroundColor(Color.white);
+       gui.getFields()[25].setSubText("4000 kr");
+
+
+
+       gui.getFields()[26].setTitle("Bredgade");
+       gui.getFields()[26].setBackGroundColor(Color.white);
+       ownable[26] = (GUI_Ownable)fields[26];
+       ownable[26].setSubText("5200 kr");
+
+       gui.getFields()[27].setTitle("Kgs. Nytorv");
+       gui.getFields()[27].setBackGroundColor(Color.white);
+       ownable[27] = (GUI_Ownable)fields[27];
+       ownable[27].setSubText("5200 kr");
+
+
+       gui.getFields()[28].setSubText("3000 kr");
+
+       gui.getFields()[29].setTitle("Østergade");
+       gui.getFields()[29].setBackGroundColor(Color.white);
+       ownable[29] = (GUI_Ownable)fields[29];
+       ownable[29].setSubText("5600 kr");
+
+       gui.getFields()[30].setTitle("");
+       gui.getFields()[30].setSubText("Gå i fængsel");
+
+       gui.getFields()[31].setTitle("Amagertorv");
+       gui.getFields()[31].setBackGroundColor(Color.yellow);
+       ownable[31] = (GUI_Ownable)fields[31];
+       ownable[31].setSubText("6000 kr");
+
+       gui.getFields()[32].setTitle("vimmelskaffet");
+       gui.getFields()[32].setBackGroundColor(Color.yellow);
+       ownable[32] = (GUI_Ownable)fields[32];
+       ownable[32].setSubText("6000 kr");
+
+       gui.getFields()[33].setBackGroundColor(Color.green);
+       gui.getFields()[33].setSubText("Prøv Lykken");
+
+       gui.getFields()[34].setTitle("Nygade");
+       gui.getFields()[34].setBackGroundColor(Color.yellow);
+       ownable[34] = (GUI_Ownable)fields[34];
+       ownable[34].setSubText("6400 kr");
+
+       gui.getFields()[35].setTitle("Scandlines");
+       gui.getFields()[35].setBackGroundColor(Color.white);
+       gui.getFields()[35].setSubText("4000 kr");
+
+       gui.getFields()[36].setBackGroundColor(Color.green);
+       gui.getFields()[36].setSubText("Prøv Lykken");
+
+       gui.getFields()[37].setTitle("Frederiksberggade");
+       gui.getFields()[37].setBackGroundColor(Color.pink);
+       ownable[37] = (GUI_Ownable) fields[37];
+       ownable[37].setSubText("7000 kr");
+
+       gui.getFields()[38].setTitle("Ekstra ordinær statskat:");
+       gui.getFields()[38].setBackGroundColor(Color.gray);
+       gui.getFields()[38].setSubText("Betal 2000 kr indkomst skat.");
+
+       gui.getFields()[39].setTitle("Rådhuspladsen");
+       gui.getFields()[39].setBackGroundColor(Color.pink);
+       ownable[39] = (GUI_Ownable)fields[39];
+       ownable[39].setSubText("8000 kr");
+
+
+   }
+
+     public void setLang(Text msg) {
+         this.msg = msg;
+     }
 
      /**
       * Sets the titles on the Squares according to language chosen by user
       * @param //msg The Text object used to set user-selected language throughout the program
       */
 
-     /*public void initFieldTitles(Text msg){
-         this.msg = msg;
-
-         gui.getFields()[0].setTitle(msg.getText("start"));
-         gui.getFields()[1].setTitle(msg.getText("burgerBar"));
-         gui.getFields()[2].setTitle(msg.getText("pizzeria"));
-         gui.getFields()[3].setSubText(msg.getText("chance"));
-         gui.getFields()[4].setTitle(msg.getText("candyShop"));
-         gui.getFields()[5].setTitle(msg.getText("iceCreamShop"));
-         gui.getFields()[6].setTitle(msg.getText("inJail"));
-         gui.getFields()[6].setSubText(msg.getText("onVisit"));
-         gui.getFields()[7].setTitle(msg.getText("museum"));
-         gui.getFields()[8].setTitle(msg.getText("library"));
-         gui.getFields()[9].setSubText(msg.getText("chance"));
-         gui.getFields()[10].setTitle(msg.getText("skatePark"));
-         gui.getFields()[11].setTitle(msg.getText("pool"));
-         gui.getFields()[12].setTitle(msg.getText("parking"));
-         gui.getFields()[12].setSubText(msg.getText("free"));
-         gui.getFields()[13].setTitle(msg.getText("playingHall"));
-         gui.getFields()[14].setTitle(msg.getText("cinema"));
-         gui.getFields()[15].setSubText(msg.getText("chance"));
-         gui.getFields()[16].setTitle(msg.getText("toyStore"));
-         gui.getFields()[17].setTitle(msg.getText("petShop"));
-         gui.getFields()[18].setTitle(msg.getText("jail"));
-         gui.getFields()[19].setTitle(msg.getText("bowlingAlley"));
-         gui.getFields()[20].setTitle(msg.getText("zoo"));
-         gui.getFields()[21].setSubText(msg.getText("chance"));
-         gui.getFields()[22].setTitle(msg.getText("waterPark"));
-         gui.getFields()[23].setTitle(msg.getText("boardWalk"));
-         gui.getUserButtonPressed(msg.getText("startGame"));
-         gui.showMessage(msg.getText("welcomeMessage"));
-     }
-
-     public void showMessage(String message){
-        gui.showMessage(message);
-    }*/
-
     public GUI_Player createGuiPlayer(Player player) {
          GUI_Player guiPlayer = new GUI_Player(player.getPlayerName());
-         //fields[0].setCar(guiPlayer,true);
-        //GUI_Field field = gui.getFields()[0];
-        guiPlayer.getCar().setPosition(fields[0]);
-        //fields[0].setCar(guiPlayer,true);
+         fields[0].setCar(guiPlayer,true);
          gui.addPlayer(guiPlayer);
          System.out.println("Gui Player is set");
          return guiPlayer;
@@ -282,7 +340,5 @@ import java.awt.*;
     }
 
 
-     public void showMessage(String s) {
-         gui.showMessage(s);
-     }
+
  }
