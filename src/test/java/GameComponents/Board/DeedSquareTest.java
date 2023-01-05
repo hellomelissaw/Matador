@@ -13,17 +13,21 @@ public class DeedSquareTest {
 
     Player[] testPlayers = new Player[2];
     GUI_Player[] testGuiPlayers = new GUI_Player[2];
-    DeedSquare[] testDeedSquare = new DeedSquare[2];
+    DeedSquare[] testDeedSquare = new DeedSquare[3];
     Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
 
     int startBalance = 5000;
     int[] rent = {50,250,750,2250,4000,6000};
     public DeedSquareTest() {
-        for(int i = 0 ; i < testDeedSquare.length ; i++) {
+        for(int i = 0 ; i < testDeedSquare.length - 1 ; i++) {
             testDeedSquare[i] = new DeedSquare("TestDeedSquare" + i, 1200, 1000, rent, guiController);
             testDeedSquare[i].setLang(msg);
             testDeedSquare[i].setColor("red");
         }
+
+        testDeedSquare[2] = new DeedSquare("TestDeedSquare 3 " , 1200, 1000, rent, guiController);
+        testDeedSquare[2].setLang(msg);
+        testDeedSquare[2].setColor("blue");
 
         testPlayers[0] = new Player("TestPlayer 1");
         testPlayers[1] = new Player("TestPlayer 2");
@@ -188,7 +192,20 @@ public class DeedSquareTest {
         assertEquals(null,testDeedSquare[0].getDeedOwner());
     }
 
+    @Test
+    public void playerMakesTypo(){
+        testDeedSquare[0].testing(true,"pizza");
+        testDeedSquare[0].landOn(testPlayers[0]);
+        assertEquals(true, testDeedSquare[0].hasDeed());
+        assertEquals(null,testDeedSquare[0].getDeedOwner());
+    }
 
+    @Test
+    public void playerHasAllLotsOfSameColour(){
+        testDeedSquare[0].setDeedOwner(testPlayers[0], 0);
+        testDeedSquare[1].setDeedOwner(testPlayers[0], 1);
 
+        assertEquals(true, testDeedSquare[0].ownsGroup(testPlayers[0], testDeedSquare));
+    }
 
 }

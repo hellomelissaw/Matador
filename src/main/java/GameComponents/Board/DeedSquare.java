@@ -16,6 +16,7 @@ public class DeedSquare extends Square{
     int buildingPrice;
     GuiController guiController;
 
+    int squareInGroup;
     boolean ownsGroup = false;
     int houseCount;
     boolean hasHotel = false;
@@ -43,6 +44,10 @@ public class DeedSquare extends Square{
         this.testing = testing;
         buying = answer;
     }
+
+    public void setSquaresInGroup(){
+
+    };
 
    public boolean hasDeed(){ // Checks if the square has a deed available to buy or if it's already sold
         return sellDeed;
@@ -126,8 +131,15 @@ public class DeedSquare extends Square{
 
     }
 
-    public void setOwnsGroup(boolean ownsGroup) {
-        this.ownsGroup = ownsGroup;
+    public void setOwnsGroup(boolean ownsIt) {
+       // if(currentPlayer.IsGroupOwner()) {
+            ownsGroup = ownsIt;
+       // }
+    }
+
+    public boolean ownsGroup(Player currentPlayer, Square[] board) {
+       ownsGroup = currentPlayer.IsGroupOwner(color);
+        return ownsGroup;
     }
 
     public void addHouse(int houseCount, Player currentPlayer) {
@@ -170,4 +182,6 @@ public class DeedSquare extends Square{
             System.out.println("Du har ikke nok huse til at bygge et hotel.");
         }
     }
+
+
 }

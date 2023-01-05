@@ -15,11 +15,12 @@ public class Player {
     private boolean testing = true;
     GuiController guiController;
     GUI_Player guiPlayer;
-
     Text msg;
     private int squareIndex = 0;
     private String playerName;
-    Account playerAccount = new Account();
+    private Account playerAccount = new Account();
+
+    private Cardholder cardholder = new Cardholder();
     private String winnerName;
 
    // private boolean hasPassedStart = false;
@@ -136,5 +137,9 @@ public class Player {
         return winnerName;
     }
 
+    public boolean IsGroupOwner(String color) {
+        boolean ownerStatus = cardholder.getOwnerStatus(color);
+        return ownerStatus;
+    }
 }
 
