@@ -23,6 +23,8 @@ public class DeedSquare extends Square{
     int[] rent;
     Scanner userInput = new Scanner(System.in);
 
+    int groupSize;
+
     /**
      * Constructs a Square of type DeedSquare (ownable Square)
      * @param deedName name of the Deed for the Square (for example "The Skate Park").
@@ -43,6 +45,13 @@ public class DeedSquare extends Square{
     public void testing(boolean testing, String answer) {
         this.testing = testing;
         buying = answer;
+    }
+
+    public void setGroup() {
+        deed.setColor(color);
+        if (color.equals("purple")) {
+            deed.setGroupSize(2);
+        } else { deed.setGroupSize(3);}
     }
 
     public Deed getDeed() {

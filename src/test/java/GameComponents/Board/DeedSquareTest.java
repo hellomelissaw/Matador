@@ -22,12 +22,16 @@ public class DeedSquareTest {
         for(int i = 0 ; i < testDeedSquare.length - 1 ; i++) {
             testDeedSquare[i] = new DeedSquare("TestDeedSquare" + i, 1200, 1000, rent, guiController);
             testDeedSquare[i].setLang(msg);
-            testDeedSquare[i].setColor("red");
+            testDeedSquare[i].setColor("purple");
         }
 
         testDeedSquare[2] = new DeedSquare("TestDeedSquare 3 " , 1200, 1000, rent, guiController);
         testDeedSquare[2].setLang(msg);
         testDeedSquare[2].setColor("blue");
+
+        for(int i = 0 ; i < testDeedSquare.length; i++) {
+            testDeedSquare[i].setGroup();
+        }
 
         testPlayers[0] = new Player("TestPlayer 1");
         testPlayers[1] = new Player("TestPlayer 2");
@@ -217,8 +221,8 @@ public class DeedSquareTest {
     }
     @Test
     public void playerHasAllLotsOfSameColour(){
-        testDeedSquare[0].setDeedOwner(testPlayers[0], 0);
-        testDeedSquare[1].setDeedOwner(testPlayers[0], 1);
+        testPlayers[0].addToCardholder("deed", testDeedSquare[0].getDeed());
+        testPlayers[0].addToCardholder("deed", testDeedSquare[1].getDeed());
 
         assertTrue(testDeedSquare[0].ownsGroup(testPlayers[0], testDeedSquare));
     }

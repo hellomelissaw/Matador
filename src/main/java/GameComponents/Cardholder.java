@@ -16,6 +16,22 @@ public class Cardholder {
 
     }
     public boolean getOwnerStatus(String color) {
+        int groupSize = 0;
+        boolean ownerStatus = false;
+        int cardCount = 0;
+
+        for(Deed deed : deedCards) {
+            System.out.println(deed.getDeedName());
+            if(deed.getColor().equals(color)) {
+                groupSize = deed.getGroupSize();
+                cardCount++;
+            }
+        }
+
+        if (cardCount == groupSize) {
+            ownerStatus = true;
+        }
+
         return ownerStatus;
     }
 
@@ -23,5 +39,22 @@ public class Cardholder {
         Deed[] deedCardsArray = new Deed[deedCards.size()];
         deedCardsArray = deedCards.toArray(deedCardsArray);
         return deedCardsArray;
+    }
+
+    public boolean ownsGroup(String color){
+        int groupSize = 0;
+        boolean ownsGroup = false;
+        int cardCount = 0;
+        for(Deed deed : deedCards) {
+            if(deed.getColor().equals(color)) {
+                groupSize = deed.getGroupSize();
+                cardCount++;
+            }
+        }
+
+        if (cardCount == groupSize) {
+            ownsGroup = true;
+        }
+        return ownsGroup;
     }
 }
