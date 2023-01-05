@@ -234,4 +234,9 @@ public class DeedSquareTest {
         assertFalse(testDeedSquare[0].ownsGroup(testPlayers[0], testDeedSquare));
     }
 
+    @Test
+    public void playerCannotBuildSecondHouseBecauseNoHouseOnOtherLotInGroup() {
+
+    }
+
 }
