@@ -2,12 +2,24 @@ package GameComponents.Board;
 import Controllers.GuiController;
 import GameComponents.Player;
 
+import java.util.Scanner;
+
 public class DeedSquare extends Square{
+    boolean guiOn = false;
+    boolean testing = false;
+    String buying;
     Deed deed;
     boolean sellDeed = true;
     boolean freeDeed = false;
     int deedPrice;
+    int buildingPrice;
     GuiController guiController;
+    boolean ownsGroup = false;
+    int houseCount;
+    boolean hasHotel = false;
+    int[] rent;
+    Scanner userInput = new Scanner(System.in);
+
 
     /**
      * Constructs a Square of type DeedSquare (ownable Square)
@@ -15,11 +27,37 @@ public class DeedSquare extends Square{
      * @param deedPrice the price of the deed, both for buying and amount of rent to pay once bought.
      * @param guiController The GuiController used throughout the classes.
      */
-    public DeedSquare(String deedName, int deedPrice, GuiController guiController) {
+    public DeedSquare(String deedName, int deedPrice, int buildingPrice, int[] rent, GuiController guiController) {
         super(deedName);
-        this.deed = new Deed(deedPrice, deedName);
+        this.deed = new Deed(deedPrice, buildingPrice, rent, deedName);
         this.deedPrice = deedPrice;
-        this.guiController = guiController;
+        this.buildingPrice = buildingPrice;
+        this.rent = rent;
+        if(guiOn){
+            this.guiController = guiController;
+        } else { this.guiController = null;}
+    }
+
+    public void testing(boolean testing, String answer) {
+        this.testing = testing;
+        buying = answer;
+    }
+
+    public void setGroup(boolean testing) {
+        deed.setColor(color);
+        if (color.equals("purple")) {
+            deed.setGroupSize(2);
+        } else {
+            if (testing) {
+                deed.setGroupSize(1);
+            } else {
+                deed.setGroupSize(3);
+            }
+        }
+    }
+
+    public Deed getDeed() {
+        return deed;
     }
 
    public boolean hasDeed(){ // Checks if the square has a deed available to buy or if it's already sold
@@ -29,7 +67,7 @@ public class DeedSquare extends Square{
    public void setDeedOwner(Player currentPlayer, int deedIndex){
         sellDeed = false ;
         deed.setOwner(currentPlayer);
-        guiController.setOwnerName(currentPlayer, deedIndex);
+        if (guiOn) {guiController.setOwnerName(currentPlayer, deedIndex); }
 
     }
 
@@ -48,19 +86,43 @@ public class DeedSquare extends Square{
     }
 
     public void landOn(Player currentPlayer) {
-       if(freeDeed == false && currentPlayer != deed.getOwner()){ currentPlayer.withdrawMoney(deedPrice); }
-
-        System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
 
         if(sellDeed == true) {
 
-            String guiMessage = currentPlayer.getPlayerName() + msg.getText("haveBought") + deed.getDeedName();
-            //guiController.showMessage(guiMessage); // CAN BE DELETED ONCE IMPLEMENT BORDER AROUND SQUARE
+            if (guiOn) {
+                String guiMessage = currentPlayer.getPlayerName() + msg.getText("haveBought") + deed.getDeedName();
+                guiController.showMessage(guiMessage); // CAN BE DELETED ONCE IMPLEMENT BORDER AROUND SQUARE
+            } else {
+                System.out.println("Vil du købe denne grund?");
+            }
 
-            sellDeed = false ;
-            freeDeed = false ;
-            deed.setOwner(currentPlayer);
-            guiController.setOwnerName(currentPlayer, currentPlayer.getPosition());
+            boolean valid = false;
+            while(!valid) {
+
+                if(!testing){
+                    buying = userInput.nextLine();
+                }
+
+                if (buying.equals("ja")) {
+                    valid = true;
+                    currentPlayer.withdrawMoney(deedPrice);
+                    System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
+                    sellDeed = false;
+                    freeDeed = false;
+                    deed.setOwner(currentPlayer);
+                    currentPlayer.takeCard("deed", deed);
+                    if (guiOn) {
+                        guiController.setOwnerName(currentPlayer, currentPlayer.getPosition());
+                    }
+
+                } else if (!(buying.equals("ja") || buying.equals("nej"))) {
+                    System.out.println("Ugyldigt svar. Indtast venligst ja eller nej");
+
+                } else {
+                    valid = true;
+                    System.out.println("Spilleren køber ikke grunden.");
+                }
+            }
 
         } else {
            Player deedOwner = deed.getOwner();
@@ -70,7 +132,9 @@ public class DeedSquare extends Square{
             } else {
 
                 msg.printText("payRent", "na");
+                currentPlayer.withdrawMoney(rent[houseCount]);
                 deedOwner.depositMoney(deedPrice);
+                System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
 
             }
 
@@ -79,4 +143,29 @@ public class DeedSquare extends Square{
 
     }
 
+
+    public boolean ownsGroup(Player currentPlayer) {
+       ownsGroup = currentPlayer.IsGroupOwner(color);
+        return ownsGroup;
+    }
+
+
+    public int getHouseCount(){
+        return houseCount;
+
+    }
+
+    public boolean hasHotel() {
+        return hasHotel;
+    }
+
+    public void setHouseCount(int count) {
+       houseCount = count;
+       deed.setHouseCount(count);
+    }
+
+    public void setHasHotel(boolean hasHotel) {
+       this.hasHotel = hasHotel;
+       deed.setHasHotel(hasHotel);
+    }
 }

@@ -12,8 +12,13 @@ loop [while Player != bankrupt]
   System  --> Player : move pawn
   alt #LightBlue [if property square]
   alt [if squareIsFree]
-  Player -> System : buy property
+  System -> Player : ask if buy property
+  Player -> System : give choice
+  alt [if choose buy]
   System --> Player : update property ownership
+  else [if choose not buy]
+  System --> Player : Set deed on auction
+  end
 
   else [if squareHasOwner]
     Player -> System : pay rent
@@ -54,10 +59,16 @@ end
 
     else #Lavender [if go-to-jail square]
       System --> Player : update player position
-
+      Player --> System : choose how to get out
+      alt [if pay fine]
+      System --> Player : update bank account
+      else [if use chance card]
+      System --> Player : remove card from player
+      else [if try ]
+      end
 
     end
-  end
+
 
 Player -> System : isBankrupt
 System --> Player : getOtherPlayerBalance
