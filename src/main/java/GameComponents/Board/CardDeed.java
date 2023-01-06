@@ -30,7 +30,16 @@ public class CardDeed extends ChanceCard {
     }
 
     public void playCard(Player currentPlayer) {
-        DeedSquare[] shipSquares = new DeedSquare[2];
+        int[] shipyardIndex = {5, 15, 25, 35};
+        int diff = 39;
+        for (int i = 0 ; i < shipyardIndex.length ; i++) {
+            int newDiff = Math.abs(currentPlayer.getPosition()-shipyardIndex[i]);
+
+            if(newDiff < diff) {
+                diff = newDiff;
+            }
+        }
+        currentPlayer.updatePosition(diff);
        /* int distance;
         int index = 0;
         Square selectedSquare = null;

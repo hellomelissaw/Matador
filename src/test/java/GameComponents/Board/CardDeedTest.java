@@ -27,11 +27,11 @@ public class CardDeedTest {
     }
 
     @Test
-    public void chanceCard31MoveBack3() {
-    testChanceSquare.isTesting(true,31);
-        System.out.println("Player is at index " + testPlayers[0].getPosition());
+    public void chanceCard34GoToShipyard6From2() {
+    testChanceSquare.isTesting(true,34);
+    testPlayers[0].updatePosition(2);
     testChanceSquare.landOn(testPlayers[0]);
-    assertEquals(37,testPlayers[0].getPosition());
+    assertEquals(5,testPlayers[0].getPosition());
 
     }
 
