@@ -27,6 +27,8 @@ public class Player {
 
     }
 
+    public
+
     public void setGui(GUI_Player guiPlayer, GuiController guiController, Text msg) {
         this.guiPlayer = guiPlayer;
         playerAccount.setGuiAccount(guiPlayer);
@@ -75,21 +77,31 @@ public class Player {
         if(currentPos == 30) {getStartMoney = false;}
 
         for(int i = 0; i < Math.abs(distance); i++) {
-            if (distance < 0 && squareIndex < 39) { squareIndex --;}
-            else if (squareIndex < 39) {
-                squareIndex++;
+            if (distance < 0) {
+                if(squareIndex > 0) {
+                    squareIndex--;
+                } else if (squareIndex == 0) {
+                    squareIndex = 39;
+                }
 
             } else {
-                squareIndex = 0;
+                if (squareIndex < 39) {
+                    squareIndex++;
+
+                } else {
+                    squareIndex = 0;
+                }
+            }
                 if (getStartMoney) {
                     msg.printText("passStart", "na");
                     playerAccount.deposit(4000);
                 }
             }
+            if(!testing){ guiController.move(guiPlayer, currentPos, squareIndex);}
         }
 
-        if(!testing){ guiController.move(guiPlayer, currentPos, squareIndex);}
-    }
+
+
 
     public int getPosition(){
         return squareIndex;
