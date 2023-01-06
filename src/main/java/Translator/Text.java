@@ -10,7 +10,7 @@ public class Text {
     GuiController guiController;
     GUI gui;
 
-    int lineCount = 71;
+    int lineCount = 101;
     String[] messages = new String[lineCount];
 
     String[] labels = new String[lineCount];
@@ -44,10 +44,10 @@ public class Text {
         }
 
     }*/
-    public Text(String file, GUI gui){
+    public Text(String file, GuiController guiController){
         this.file = file;
         this.guiController = guiController;
-        this.gui=gui;
+       // this.gui=gui;
         BufferedReader reader;
 
         try {

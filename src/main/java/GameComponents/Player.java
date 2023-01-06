@@ -72,17 +72,18 @@ public class Player {
     public void updatePosition(int distance) {
         boolean getStartMoney = true;
         int currentPos = squareIndex;
-        if(currentPos == 18) {getStartMoney = false;}
+        if(currentPos == 30) {getStartMoney = false;}
 
-        for(int i = 0; i < distance; i++) {
-            if (squareIndex < 23) {
+        for(int i = 0; i < Math.abs(distance); i++) {
+            if (distance < 0 && squareIndex < 39) { squareIndex --;}
+            else if (squareIndex < 39) {
                 squareIndex++;
 
             } else {
                 squareIndex = 0;
                 if (getStartMoney) {
                     msg.printText("passStart", "na");
-                    playerAccount.deposit(2);
+                    playerAccount.deposit(4000);
                 }
             }
         }

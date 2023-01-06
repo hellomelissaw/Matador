@@ -15,7 +15,7 @@ public class GameController {
     int balance = 0;
     Player[] players;
     Square[] squares;
-    Text msg = new Text("src/main/java/Translator/EnglishText",gui);
+    Text msg = new Text("src/main/java/Translator/Dansktekst", guiController);
 
     int playerCount = 0;
 
@@ -23,7 +23,7 @@ public class GameController {
         guiController.setLang(msg);
         boolean testingInit = false;
         if (testingInit){
-            msg = new Text("src/main/java/Translator/EnglishText", gui);
+            msg = new Text("src/main/java/Translator/EnglishText", guiController);
             gui.showMessage(" Enter players count: ");
             //msg = new Text("src/main/java/Translator/EnglishText", guiController);
             //guiController.initFieldTitles(msg);
