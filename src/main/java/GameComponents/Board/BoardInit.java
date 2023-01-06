@@ -4,8 +4,13 @@ import Controllers.GuiController;
 import GameComponents.Player;
 import Translator.Text;
 
+import java.io.BufferedReader;
+
+import static java.lang.Integer.valueOf;
+
 public class BoardInit {
-    Square[] board = new Square[40];
+    int boardSize = 40;
+    Square[] board = new Square[boardSize];
     GuiController guiController;
 
     /**
@@ -15,6 +20,54 @@ public class BoardInit {
      */
     public BoardInit(GuiController guiController, Text msg, Player[] players) {
         this.guiController = guiController;
+
+        BufferedReader reader;
+
+        try {
+            reader = new BufferedReader(new java.io.FileReader("src/main/java/GameComponents/Board/fields.csv"));
+            String line;
+
+            for (int i = 0; i < boardSize; i++) {
+
+                line = reader.readLine();
+                String[] squareInfo = line.split(",");
+
+                if(squareInfo[2].equals("start")) {
+                    board[i] = new StartSquare(squareInfo[0]);
+
+                } else if(squareInfo[2].equals("street")) {
+                    int[] rent = new int[6];
+                    for(int j = 0 ; j < 6 ; j++) {
+                       rent[j] = valueOf(squareInfo[j+5]);
+                    }
+
+                    board[i] = new DeedSquare(squareInfo[0], valueOf(squareInfo[3]), valueOf(squareInfo[4]), rent, guiController);
+
+                } else if (squareInfo[2].equals("chance")) {
+                    board[i] = new ChanceSquare(squareInfo[0], guiController, players);
+
+                } else if (squareInfo[2].equals("tax")) {
+                    board[i] = new TaxSquare(squareInfo[0], guiController, players);
+
+                } else if (squareInfo[2].equals("tax")) {
+                    board[i] = new FerrySquare(squareInfo[0], guiController, players);
+
+                } else if  (squareInfo[2].equals("jail")) {
+                    board[i] = new JailSquare(squareInfo[0], guiController);
+
+                } else if (squareInfo[2].equals("refuge")) {
+                    board[i] = new ParkingSquare(squareInfo[0]);
+
+                }
+
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
 
         board[0] = new StartSquare(msg.getText("start"));
         board[1] = new DeedSquare(msg.getText("Rødovrevej"), 1200,guiController);
