@@ -17,8 +17,8 @@ public class ChanceSquare extends Square{
         this.players = players;
 
 
-        chanceCards[0] = new CardMoney("chance1", guiController, "withdraw", 500); //betal 500 kr pr hus og 2000 pr hotel
-        chanceCards[1] = new CardMoney("chance2", guiController, "withdraw", 800); //betal 800 kr pr hus og 2300 pr hotel
+        chanceCards[0] = new CardMoney("chance1", guiController, "withdraw", 500); //betal 500 kr pr hus og 2000 pr hotel (venter på mels)
+        chanceCards[1] = new CardMoney("chance2", guiController, "withdraw", 800); //betal 800 kr pr hus og 2300 pr hotel (venter på mels)
         chanceCards[2] = new CardMoney("chance3", guiController, "withdraw", 1000);
         chanceCards[3] = new CardMoney("chance4", guiController, "withdraw", 300);
         chanceCards[4] = new CardMoney("chance5", guiController, "withdraw", 200);
@@ -41,7 +41,7 @@ public class ChanceSquare extends Square{
         chanceCards[21] = new CardMoney("chance22", guiController, "deposit", 1000);
         chanceCards[22] = new CardMoney("chance23", guiController, "deposit", 1000);
         chanceCards[23] = new CardMoney("chance24", guiController, "deposit", 200);
-        chanceCards[24] = new CardMoney("chance25", guiController, "deposit", 40000); //modtag fra banken et matador legat på 40.000 kun hvis værdier ikke overstiger 15.000
+        chanceCards[24] = new CardMoney("chance25", guiController, "deposit", 40000); //modtag fra banken et matador legat på 40.000 kun hvis værdier ikke overstiger 15.000 (spørger indtil de 15000)
         chanceCards[25] = new CardMoney("chance26", guiController, "hybrid", 200);
         chanceCards[26] = new CardMoney("chance27", guiController, "hybrid", 500);
         chanceCards[27] = new CardMoney("chance28", guiController, "hybrid", 500);
@@ -50,19 +50,19 @@ public class ChanceSquare extends Square{
         chanceCards[30] = new CardMove("chance31", guiController,3, "distance");
         chanceCards[31] = new CardMove("chance32", guiController,-3, "distance");
         chanceCards[32] = new CardMove("chance33", guiController,-3, "distance");
-        chanceCards[33] = new CardMove("chance34", guiController, 11,"index"); // Hvis De passere START, indkasser da 4000 kr
-        chanceCards[34] = new CardMove("chance35", guiController, 5,"index"); //ryk frem til nærmeste redderi og betal ejeren 2x den leje ejeren er berettiget til (felter 5, 25, 35)
-        chanceCards[35] = new CardMove("chance36", guiController, 5,"index"); //ryk frem til nærmeste redderi og betal ejeren 2x den leje ejeren er berettiget til (felter 5, 25, 35)
-        chanceCards[36] = new CardMove("chance37", guiController, 15,"index"); //Tag med Mols-Linien, flyt brikken frem og hvis De passerer START indkassér da kr 4000.
-        chanceCards[37] = new CardMove("chance38", guiController, 24,"index"); //Hvis De passere START, indkasser da 4000 kr
-        chanceCards[38] = new CardMove("chance39", guiController, 32,"index"); //Hvis De passere START, indkasser da 4000 kr
-        chanceCards[39] = new CardMove("chance40", guiController, 5,"index"); // Tag med den nærmeste færge, hvis de passerer start indkasser da kr 4000 (felter 5, 25, 35)
-        chanceCards[40] = new CardMove("chance41", guiController, 19,"index"); // Hvis De passere START, indkasser da 4000 kr
+        chanceCards[33] = new CardMove("chance34", guiController, 11,"index");
+        chanceCards[34] = new CardMove("chance35", guiController, 5,"index"); //ryk frem til nærmeste rederi og betal ejeren 2x den leje ejeren er berettiget til (felter 5, 25, 35) (waiting on the ferry square)
+        chanceCards[35] = new CardMove("chance36", guiController, 5,"index"); //ryk frem til nærmeste rederi og betal ejeren 2x den leje ejeren er berettiget til (felter 5, 25, 35)(waiting on the ferry square)
+        chanceCards[36] = new CardMove("chance37", guiController, 15,"index"); //Tag med Mols-Linjen, flyt brikken frem og hvis De passerer START indkassér da kr 4000. (test)
+        chanceCards[37] = new CardMove("chance38", guiController, 24,"index");
+        chanceCards[38] = new CardMove("chance39", guiController, 32,"index");
+        chanceCards[39] = new CardMove("chance40", guiController, 5,"index"); // Tag med den nærmeste færge, hvis de passerer start indkasser da kr 4000 (felter 5, 25, 35) (waiting on the ferry square)
+        chanceCards[40] = new CardMove("chance41", guiController, 19,"index");
         chanceCards[41] = new CardMove("chance42", guiController, 39,"index");
-        chanceCards[42] = new CardMove("chance43", guiController, 30,"index"); // I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det.
-        chanceCards[43] = new CardMove("chance44", guiController, 30,"index"); // I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det.
-        chanceCards[44] = new CardMove("chance45", guiController, 30,"index"); // Gå i fængsel, De indkasserer ikke 4000 kr for at passere start.
-        chanceCards[45] = new CardMove("chance46", guiController, 30,"index"); // Gå i fængsel, De indkasserer ikke 4000 kr for at passere start.
+        chanceCards[42] = new CardMove("chance43", guiController, 30,"index"); // I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det. (waiting on updated jailsquare)
+        chanceCards[43] = new CardMove("chance44", guiController, 30,"index"); // I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det. (waiting on updated jailsquare)
+        chanceCards[44] = new CardMove("chance45", guiController, 30,"index"); // Gå i fængsel, De indkasserer ikke 4000 kr for at passere start. (test)
+        chanceCards[45] = new CardMove("chance46", guiController, 30,"index"); // Gå i fængsel, De indkasserer ikke 4000 kr for at passere start. (test)
 
     }
 
