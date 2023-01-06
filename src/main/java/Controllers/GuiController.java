@@ -252,6 +252,10 @@ import java.awt.*;
          this.msg = msg;
      }
 
+     public void showMessage(String message){
+         gui.showMessage(message);
+     }
+
      /**
       * Sets the titles on the Squares according to language chosen by user
       * @param //msg The Text object used to set user-selected language throughout the program
