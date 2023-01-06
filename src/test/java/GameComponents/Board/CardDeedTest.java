@@ -18,7 +18,9 @@ public class CardDeedTest {
 
     public CardDeedTest() {
         testPlayers[0] = new Player("TestPlayer 1");
+        testPlayers[0].setLang(msg);
         testPlayers[1] = new Player("TestPlayer 2");
+        testPlayers[1].setLang(msg);
         testChanceSquare = new ChanceSquare("Chance Square", guiController, testPlayers);
         testChanceSquare.setLang(msg);
         testChanceSquare.setCardLang();

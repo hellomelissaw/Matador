@@ -27,7 +27,9 @@ public class Player {
 
     }
 
-    public
+    public void setLang(Text msg) {
+        this.msg = msg;
+    }
 
     public void setGui(GUI_Player guiPlayer, GuiController guiController, Text msg) {
         this.guiPlayer = guiPlayer;
