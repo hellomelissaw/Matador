@@ -5,7 +5,7 @@ import GameComponents.Player;
 import Translator.Text;
 
 public class BoardInit {
-    Square[] board = new Square[24];
+    Square[] board = new Square[40];
     GuiController guiController;
 
     /**
@@ -59,7 +59,7 @@ public class BoardInit {
         board[38] = new TaxSquare(msg.getText("Betal 2000 kr i skat"),guiController, players);
         board[39] = new DeedSquare(msg.getText("Rådhuspladsen"),8000,guiController);
 
-        String[] colors = {"lightgrey", "cyan", "pink", "orange", "red", "yellow", "green", "darkblue"};
+        /*String[] colors = {"lightgrey", "cyan", "pink", "orange", "red", "yellow", "green", "darkblue"};
 
 
         for(int i= 0 ; i< board.length ; i++) {
@@ -81,7 +81,7 @@ public class BoardInit {
             board[i+2].setColor(colors[i/3]);
 
         }
-
+*/
     }
 
     public void initChanceSquare(Square[] board){
