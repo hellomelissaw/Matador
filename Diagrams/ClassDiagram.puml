@@ -179,6 +179,8 @@ ChanceCard <|-down- MoneyCard
 
 ChanceCard <|-down- DeedCard
 
+ChanceCard <|-down- JailPassCard
+
 
 
 GameController <-right- Player
