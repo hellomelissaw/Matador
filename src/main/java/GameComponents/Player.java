@@ -25,6 +25,7 @@ public class Player {
     private Cardholder cardholder = new Cardholder();
     private String winnerName;
 
+
    // private boolean hasPassedStart = false;
 
     public Player(String playerName) {
@@ -195,6 +196,29 @@ public class Player {
                 } else {
                     System.out.println("Du ejer ikke alle grunde i gruppen, derfor kan du ikke bygge endnu.");
                 }
+            }
+        }
+    }
+
+    public void buyHotel(DeedSquare[] lotsToBuildOn) {
+        for (int i = 0; i < lotsToBuildOn.length; i++) {
+            Deed deed = lotsToBuildOn[i].getDeed();
+            int houseCount = lotsToBuildOn[i].getHouseCount();
+            if (houseCount == 4) {
+                int currentBalance = playerAccount.getBalance();
+                int buildingPrice = deed.getBuildingPrice();
+                if (currentBalance > 0 && currentBalance - buildingPrice >= 0) {
+                    playerAccount.withDraw(buildingPrice);
+                    deed.setHouseCount(0);
+                    deed.se
+                    hasHotel = true;
+                    houseCount = 0;
+                } else {
+                    System.out.println("Du har ikke nok penge til at købe dette hotel.");
+                }
+
+            } else {
+                System.out.println("Du har ikke nok huse til at bygge et hotel.");
             }
         }
     }

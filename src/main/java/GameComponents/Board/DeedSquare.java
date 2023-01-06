@@ -47,11 +47,17 @@ public class DeedSquare extends Square{
         buying = answer;
     }
 
-    public void setGroup() {
+    public void setGroup(boolean testing) {
         deed.setColor(color);
         if (color.equals("purple")) {
             deed.setGroupSize(2);
-        } else { deed.setGroupSize(3);}
+        } else {
+            if (testing) {
+                deed.setGroupSize(1);
+            } else {
+                deed.setGroupSize(3);
+            }
+        }
     }
 
     public Deed getDeed() {

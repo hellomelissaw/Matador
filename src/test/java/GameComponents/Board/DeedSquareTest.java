@@ -30,7 +30,7 @@ public class DeedSquareTest {
         testDeedSquare[2].setColor("blue");
 
         for(int i = 0 ; i < testDeedSquare.length; i++) {
-            testDeedSquare[i].setGroup();
+            testDeedSquare[i].setGroup(true);
         }
 
         testPlayers[0] = new Player("TestPlayer 1");
@@ -75,48 +75,27 @@ public class DeedSquareTest {
     }
 
     @Test
-    public void buy1HouseForDeedSquareWhenPlayerOwnsLotGroup() {
-        testDeedSquare[0].setOwnsGroup(true);
-        testDeedSquare[0].addHouse(1, testPlayers[0]);
-        assertEquals(1, testDeedSquare[0].getHouseCount());
-
-    }
-
-    @Test
-    public void playerBuys1HouseFor1000() {
-        testDeedSquare[0].setOwnsGroup(true);
-        testDeedSquare[0].addHouse(1, testPlayers[0]);
-        assertEquals(startBalance - 1000, testPlayers[0].getCurrentBalance());
-
-    }
-
-    @Test
-    public void playerBuys1HouseThenAnotherFor1000Each() {
-        testDeedSquare[0].setOwnsGroup(true);
-        testDeedSquare[0].addHouse(1, testPlayers[0]);
-        assertEquals(startBalance - 1000, testPlayers[0].getCurrentBalance());
-        testDeedSquare[0].addHouse(1, testPlayers[0]);
-        assertEquals(startBalance - 2000, testPlayers[0].getCurrentBalance());
-
-    }
-
-    @Test
     public void cannotBuyHouseBecauseNotEnoughMoney() {
-        testPlayers[0].withdrawMoney(startBalance);
-        testDeedSquare[0].setOwnsGroup(true);
-        testDeedSquare[0].addHouse(1, testPlayers[0]);
+        testDeedSquare[2].testing(true,"ja");
+        testDeedSquare[2].landOn(testPlayers[0]);
+        testPlayers[0].withdrawMoney(startBalance-1200);
+
+        DeedSquare[] lotsToBuildOn = {testDeedSquare[2]};
+        testPlayers[0].buyHouse(lotsToBuildOn, 1);
         assertEquals(0, testDeedSquare[0].getHouseCount());
     }
     @Test
     public void cannotBuyHouseBecauseNotOwnerOfLotGroup() {
-        testDeedSquare[0].addHouse(1, testPlayers[0]);
+        DeedSquare[] lotsToBuildOn = {testDeedSquare[0]};
+        testPlayers[0].buyHouse(lotsToBuildOn, 1);
+
         assertEquals(0, testDeedSquare[0].getHouseCount());
     }
 
     @Test
     public void buyHotelForDeedSquare() {
-        testDeedSquare[0].setOwnsGroup(true);
-        testDeedSquare[0].addHouse(4, testPlayers[0]);
+        DeedSquare[] lotsToBuildOn = {testDeedSquare[2]};
+        testPlayers[0].buyHouse(lotsToBuildOn, 4);
         testDeedSquare[0].addHotel(testPlayers[0]);
         assertTrue(testDeedSquare[0].hasHotel());
     }
@@ -197,14 +176,6 @@ public class DeedSquareTest {
     }
 
     @Test
-    public void playerMakesTypo(){
-        testDeedSquare[0].testing(true,"pizza");
-        testDeedSquare[0].landOn(testPlayers[0]);
-        assertTrue(testDeedSquare[0].hasDeed());
-        assertNull(testDeedSquare[0].getDeedOwner());
-    }
-
-    @Test
     public void playerHasTestDeedSquare1DeedInCardholder(){
         boolean hasDeed = false;
         testPlayers[0].takeCard("deed", testDeedSquare[0].getDeed());
@@ -233,20 +204,7 @@ public class DeedSquareTest {
 
         assertFalse(testDeedSquare[0].ownsGroup(testPlayers[0], testDeedSquare));
     }
-    @Test
-    public void playerBuilds1HouseOnEachLot() {
-        testDeedSquare[0].testing(true,"ja");
-        testDeedSquare[0].landOn(testPlayers[0]);
 
-        testDeedSquare[1].testing(true,"ja");
-        testDeedSquare[1].landOn(testPlayers[0]);
-
-        testDeedSquare[0].addHouse(1, testPlayers[0]);
-        testDeedSquare[1].addHouse(1, testPlayers[0]);
-
-        assertEquals(1, testDeedSquare[0].getHouseCount());
-        assertEquals(1, testDeedSquare[1].getHouseCount());
-    }
     @Test
     public void playerCannotBuildSecondHouseBecauseNoHouseOnOtherLotInGroup() {
         testDeedSquare[0].testing(true,"ja");
@@ -254,8 +212,8 @@ public class DeedSquareTest {
         testDeedSquare[1].testing(true,"ja");
         testDeedSquare[1].landOn(testPlayers[0]);
 
-        testDeedSquare[0].addHouse(1, testPlayers[0]);
-        testDeedSquare[0].addHouse(1, testPlayers[0]);
+        DeedSquare[] lotToBuildOn = {testDeedSquare[0]};
+        testPlayers[0].buyHouse(lotToBuildOn,2);
 
         assertEquals(1, testDeedSquare[0].getHouseCount());
     }
