@@ -44,10 +44,10 @@ public class Text {
         }
 
     }*/
-    public Text(String file, GUI gui){
+    public Text(String file, GuiController guiController){
         this.file = file;
         this.guiController = guiController;
-        this.gui=gui;
+       // this.gui=gui;
         BufferedReader reader;
 
         try {

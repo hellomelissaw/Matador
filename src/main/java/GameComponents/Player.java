@@ -72,10 +72,11 @@ public class Player {
     public void updatePosition(int distance) {
         boolean getStartMoney = true;
         int currentPos = squareIndex;
-        if(currentPos == 18) {getStartMoney = false;}
+        if(currentPos == 30) {getStartMoney = false;}
 
-        for(int i = 0; i < distance; i++) {
-            if (squareIndex < 23) {
+        for(int i = 0; i < Math.abs(distance); i++) {
+            if (distance < 0) {  }
+            if (squareIndex < 39) {
                 squareIndex++;
 
             } else {

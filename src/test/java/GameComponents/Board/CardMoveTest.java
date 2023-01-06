@@ -4,6 +4,7 @@ import Controllers.GuiController;
 import GameComponents.Player;
 import Translator.Text;
 import GameComponents.Board.BoardInit;
+import gui_main.GUI;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -100,13 +101,13 @@ public class CardMoveTest {
     @Test
     public void playCardMoveBack() {
         //testChanceSquare.setLang("EnglishText");
-        ChanceCard testChanceCard = new CardMove("chance3", guiController, -3, "distance");
+        ChanceCard testChanceCard = new CardMove("chance32", guiController, -3, "distance");
         testChanceCard.setCardLang(msg);
         testChanceCard.setOptionsArr();
         testPlayers[0].updatePosition(5);
         testChanceCard.playCard(testPlayers[0]);
 
-        assertEquals(2, testPlayers[0].getPosition());
+        assertEquals(8, testPlayers[0].getPosition());
     }
 
 }
