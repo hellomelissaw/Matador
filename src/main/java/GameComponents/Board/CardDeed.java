@@ -40,7 +40,7 @@ public class CardDeed extends ChanceCard {
             }
         }
         currentPlayer.updatePosition(diff);
-        board[diff].landOn(currentPlayer);
+        board[currentPlayer.getPosition() + diff].landOn(currentPlayer);
        /* int distance;
         int index = 0;
         Square selectedSquare = null;

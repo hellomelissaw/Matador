@@ -19,8 +19,10 @@ public class CardDeedTest {
     public CardDeedTest() {
         testPlayers[0] = new Player("TestPlayer 1");
         testPlayers[0].setLang(msg);
+        testPlayers[0].setStartBalance(6000);
         testPlayers[1] = new Player("TestPlayer 2");
         testPlayers[1].setLang(msg);
+        testPlayers[1].setStartBalance(6000);
 
         BoardInit squares = new BoardInit(guiController, msg, testPlayers);
         Square[] board = squares.getSquareArr();
@@ -38,6 +40,15 @@ public class CardDeedTest {
     testPlayers[0].updatePosition(2);
     testChanceSquare.landOn(testPlayers[0]);
     assertEquals(5,testPlayers[0].getPosition());
+
+    }
+
+    @Test
+    public void chanceCard34GoToShipyardAndBuyItFor4000() {
+        testChanceSquare.isTesting(true,34);
+        testPlayers[0].updatePosition(2);
+        testChanceSquare.landOn(testPlayers[0]);
+        assertEquals(5,testPlayers[0].getPosition());
 
     }
 
