@@ -16,7 +16,7 @@ public class DeedSquareTest {
     DeedSquare[] testDeedSquare = new DeedSquare[3];
     Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
 
-    int startBalance = 5000;
+    int startBalance = 7000;
     int[] rent = {50,250,750,2250,4000,6000};
     public DeedSquareTest() {
         for(int i = 0 ; i < testDeedSquare.length - 1 ; i++) {
@@ -94,10 +94,12 @@ public class DeedSquareTest {
 
     @Test
     public void buyHotelForDeedSquare() {
+        testDeedSquare[2].testing(true,"ja");
+        testDeedSquare[2].landOn(testPlayers[0]);
         DeedSquare[] lotsToBuildOn = {testDeedSquare[2]};
         testPlayers[0].buyHouse(lotsToBuildOn, 4);
         testPlayers[0].buyHotel(lotsToBuildOn);
-        assertTrue(testDeedSquare[0].hasHotel());
+        assertTrue(testDeedSquare[2].hasHotel());
     }
 
     @Test
