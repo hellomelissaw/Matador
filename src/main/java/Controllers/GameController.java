@@ -130,7 +130,7 @@ public class GameController {
 
         BoardInit board = new BoardInit(guiController, msg, players);
         squares = board.getSquareArr();
-        board.initChanceSquare(squares);
+       // board.initChanceSquare(squares);
         msg.printText("startGame", "na");
 
     }

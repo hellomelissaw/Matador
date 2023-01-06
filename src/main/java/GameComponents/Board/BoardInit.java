@@ -83,7 +83,7 @@ public class BoardInit {
 */
     }
 
-    public void initChanceSquare(Square[] board){
+    /*public void initChanceSquare(Square[] board){
         for (int i = 0 ; i < board.length ; i++) {
             if(board[i] instanceof ChanceSquare){
                 ((ChanceSquare)board[i]).setChanceCards(board);
@@ -91,7 +91,7 @@ public class BoardInit {
 
             }
         }
-    }
+    }*/
     public Square[] getSquareArr() {
         return board;
     }

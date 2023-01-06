@@ -67,7 +67,7 @@ public class ChanceSquare extends Square{
 
     }
 
-    public void setChanceCards(Square[] board) {
+    /*public void setChanceCards(Square[] board) {
 
         for (int i = 0 ; i < chanceCards.length ; i++) { //SETS PLAYERS ARRAY FOR EACH CARD
             chanceCards[i].setBoard(board);
@@ -76,7 +76,7 @@ public class ChanceSquare extends Square{
 
         }
 
-    }
+    }*/
 
     public void setCardLang() {
         for (int i = 0 ; i < chanceCards.length ; i++) { //SETS LANGUAGE FOR EACH CARD
