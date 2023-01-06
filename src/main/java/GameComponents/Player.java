@@ -10,6 +10,8 @@ This class is reused from our CDIO2 project and built upon.
 ===================================================================================
  */
 public class Player {
+
+    boolean guiOn = false;
     private boolean testing = true;
     GuiController guiController;
     GUI_Player guiPlayer;
@@ -33,7 +35,7 @@ public class Player {
 
     public void setGui(GUI_Player guiPlayer, GuiController guiController, Text msg) {
         this.guiPlayer = guiPlayer;
-        playerAccount.setGuiAccount(guiPlayer);
+        if(guiOn) { playerAccount.setGuiAccount(guiPlayer); }
         this.guiController = guiController;
         this.msg = msg;
         testing = false;
@@ -41,7 +43,7 @@ public class Player {
 
     public void setStartBalance(int startBalance) {
         playerAccount.deposit(startBalance);
-        guiPlayer.setBalance(startBalance);
+        if (guiOn) { guiPlayer.setBalance(startBalance); }
     }
 
     /**
@@ -99,7 +101,7 @@ public class Player {
                     playerAccount.deposit(4000);
                 }
             }
-            if(!testing){ guiController.move(guiPlayer, currentPos, squareIndex);}
+            if(!testing){ if(guiOn) { guiController.move(guiPlayer, currentPos, squareIndex); }}
         }
 
 
