@@ -10,7 +10,7 @@ public class Text {
     GuiController guiController;
     GUI gui;
 
-    int lineCount = 101;
+    int lineCount = 103;
     String[] messages = new String[lineCount];
 
     String[] labels = new String[lineCount];

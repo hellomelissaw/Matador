@@ -13,7 +13,7 @@ public class CardDeedTest {
     GuiController guiController = new GuiController();
     Player[] testPlayers = new Player[2];
 
-    Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
+    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
     ChanceSquare testChanceSquare;
 
     public CardDeedTest() {
