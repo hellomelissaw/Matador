@@ -52,7 +52,6 @@ public class ChanceSquare extends Square{
         chanceCards[32] = new CardMove("chance33", guiController,-3, "distance");
         chanceCards[33] = new CardMove("chance34", guiController, 11,"index");
         chanceCards[34] = new CardDeed("chance35", guiController);
-        chanceCards[34] = new CardMove("chance35", guiController, 5,"index"); //ryk frem til nærmeste rederi og betal ejeren 2x den leje ejeren er berettiget til (felter 5, 25, 35) (waiting on the ferry square)
         chanceCards[35] = new CardMove("chance36", guiController, 5,"index"); //ryk frem til nærmeste rederi og betal ejeren 2x den leje ejeren er berettiget til (felter 5, 25, 35)(waiting on the ferry square)
         chanceCards[36] = new CardMove("chance37", guiController, 15,"index"); //Tag med Mols-Linjen, flyt brikken frem og hvis De passerer START indkassér da kr 4000. (test)
         chanceCards[37] = new CardMove("chance38", guiController, 24,"index");
