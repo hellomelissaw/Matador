@@ -82,7 +82,7 @@ public class Player {
                 squareIndex = 0;
                 if (getStartMoney) {
                     msg.printText("passStart", "na");
-                    playerAccount.deposit(2);
+                    playerAccount.deposit(4000);
                 }
             }
         }
