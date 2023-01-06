@@ -270,11 +270,23 @@ public class DeedSquareTest {
         DeedSquare[] lotsToBuildOn = {testDeedSquare[0], testDeedSquare[1]};
         testPlayers[0].buyHouse(lotsToBuildOn,1);
 
-        //testDeedSquare[0].addHouse(2, testPlayers[0]);
-        //testDeedSquare[0].addHouse(2, testPlayers[0]);
-
         assertEquals(1, testDeedSquare[0].getHouseCount());
         assertEquals(1, testDeedSquare[1].getHouseCount());
+    }
+
+    @Test
+    public void playerBuilds2HousesOnTestDeedSquare0And1() {
+        testPlayers[0].depositMoney(2000);
+        testDeedSquare[0].testing(true,"ja");
+        testDeedSquare[0].landOn(testPlayers[0]);
+        testDeedSquare[1].testing(true,"ja");
+        testDeedSquare[1].landOn(testPlayers[0]);
+
+        DeedSquare[] lotsToBuildOn = {testDeedSquare[0], testDeedSquare[1]};
+        testPlayers[0].buyHouse(lotsToBuildOn,2);
+
+        assertEquals(2, testDeedSquare[0].getHouseCount());
+        assertEquals(2, testDeedSquare[1].getHouseCount());
     }
 
 }

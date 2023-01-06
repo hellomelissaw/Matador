@@ -183,6 +183,7 @@ public class Player {
                             deedsToBuildOn[i].setHouseCount(count);
                             lotsToBuildOn[i].setHouseCount(count);
                             System.out.println("There is now " + count + " houses on Square #" + i);
+                            System.out.println("Player's new balance is " + playerAccount.getBalance());
 
                         } else {
                             System.out.println("Du har ikke nok penge til at købe dette hus.");
