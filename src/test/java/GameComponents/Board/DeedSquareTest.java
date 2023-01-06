@@ -192,14 +192,14 @@ public class DeedSquareTest {
         testPlayers[0].takeCard("deed", testDeedSquare[0].getDeed());
         testPlayers[0].takeCard("deed", testDeedSquare[1].getDeed());
 
-        assertTrue(testDeedSquare[0].ownsGroup(testPlayers[0], testDeedSquare));
+        assertTrue(testDeedSquare[0].ownsGroup(testPlayers[0]));
     }
 
     @Test
     public void playerDoesNotHaveAllLotsOfSameColour(){
         testPlayers[0].takeCard("deed", testDeedSquare[0].getDeed());
 
-        assertFalse(testDeedSquare[0].ownsGroup(testPlayers[0], testDeedSquare));
+        assertFalse(testDeedSquare[0].ownsGroup(testPlayers[0]));
     }
 
     @Test

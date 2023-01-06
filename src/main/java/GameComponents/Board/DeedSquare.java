@@ -12,18 +12,14 @@ public class DeedSquare extends Square{
     boolean sellDeed = true;
     boolean freeDeed = false;
     int deedPrice;
-
     int buildingPrice;
     GuiController guiController;
-
-    int squareInGroup;
     boolean ownsGroup = false;
     int houseCount;
     boolean hasHotel = false;
     int[] rent;
     Scanner userInput = new Scanner(System.in);
 
-    int groupSize;
 
     /**
      * Constructs a Square of type DeedSquare (ownable Square)
@@ -63,10 +59,6 @@ public class DeedSquare extends Square{
     public Deed getDeed() {
         return deed;
     }
-
-    public void setSquaresInGroup(){
-
-    };
 
    public boolean hasDeed(){ // Checks if the square has a deed available to buy or if it's already sold
         return sellDeed;
@@ -151,38 +143,10 @@ public class DeedSquare extends Square{
 
     }
 
-    public void setOwnsGroup(boolean ownsIt) {
-       // if(currentPlayer.IsGroupOwner()) {
-            ownsGroup = ownsIt;
-       // }
-    }
 
-    public boolean ownsGroup(Player currentPlayer, Square[] board) {
+    public boolean ownsGroup(Player currentPlayer) {
        ownsGroup = currentPlayer.IsGroupOwner(color);
         return ownsGroup;
-    }
-
-    public void addHouse(int houseCount, Player currentPlayer) {
-       boolean ownsGroup = currentPlayer.IsGroupOwner(color);
-       if(ownsGroup) {
-            boolean clearedForPurchase = currentPlayer.getBuildingClearance(color, deed, houseCount);
-            if(clearedForPurchase) {
-                int balanceToPay = houseCount * buildingPrice;
-                int currentBalance = currentPlayer.getCurrentBalance();
-                if (currentBalance > 0 && currentBalance - balanceToPay >= 0) {
-                    currentPlayer.withdrawMoney(balanceToPay);
-                    this.houseCount += houseCount;
-                    System.out.println("There is now " + this.houseCount + " houses registered on the deed.");
-                    deed.setHouseCount(this.houseCount);
-                } else {
-                    System.out.println("Du har ikke nok penge til at købe dette hus.");
-                }
-            } else {
-                System.out.println("Du skal bygge en jævn mængde hus på alle grunde i gruppen før du kan bygge videre.");
-            }
-
-        } else {
-            System.out.println("Du ejer ikke alle grunde i gruppen, derfor kan du ikke bygge endnu.");}
     }
 
 
@@ -194,23 +158,6 @@ public class DeedSquare extends Square{
     public boolean hasHotel() {
         return hasHotel;
     }
-
-    public void addHotel(Player currentPlayer) {
-        if(houseCount == 4) {
-            int currentBalance = currentPlayer.getCurrentBalance();
-            if(currentBalance > 0 && currentBalance - buildingPrice >= 0){
-                currentPlayer.withdrawMoney(buildingPrice);
-                hasHotel = true;
-                houseCount = 0;
-            } else {
-                System.out.println("Du har ikke nok penge til at købe dette hotel.");
-            }
-
-        } else {
-            System.out.println("Du har ikke nok huse til at bygge et hotel.");
-        }
-    }
-
 
     public void setHouseCount(int count) {
        houseCount = count;

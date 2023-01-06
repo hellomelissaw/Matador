@@ -25,9 +25,6 @@ public class Player {
     private Cardholder cardholder = new Cardholder();
     private String winnerName;
 
-
-   // private boolean hasPassedStart = false;
-
     public Player(String playerName) {
         this.playerName = playerName;
 
@@ -154,11 +151,6 @@ public class Player {
         return deedList;
     }
 
-    public boolean getBuildingClearance(String color, Deed deed, int houseCount) {
-        boolean cleared = cardholder.houseCountIsLevel(color, deed);
-        return cleared;
-    }
-
     public void buyHouse(DeedSquare[] lotsToBuildOn, int housesToBuy) {
         Deed[] deedsToBuildOn = new Deed[lotsToBuildOn.length];
         for(int i = 0; i < lotsToBuildOn.length; i++) {
@@ -174,13 +166,11 @@ public class Player {
                     boolean clearedForPurchase = cardholder.houseCountIsLevel(color, deedsToBuildOn[i]);
                     if (clearedForPurchase) {
                         int buildingPrice = deedsToBuildOn[i].getBuildingPrice();
-                        //int balanceToPay = housesToBuy * buildingPrice;
                         int currentBalance = playerAccount.getBalance();
                         if (currentBalance > 0 && currentBalance - buildingPrice >= 0) {
                             playerAccount.withDraw(buildingPrice);
                             int count = deedsToBuildOn[i].getHouseCount();
                             count++;
-                            //deedsToBuildOn[i].setHouseCount(count + housesToBuy);
                             deedsToBuildOn[i].setHouseCount(count);
                             lotsToBuildOn[i].setHouseCount(count);
                             System.out.println("There is now " + count + " houses on Square #" + i);

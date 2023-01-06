@@ -5,7 +5,6 @@ import GameComponents.Board.Deed;
 import java.util.ArrayList;
 
 public class Cardholder {
-    boolean ownerStatus;
 
     ArrayList<Deed> deedCards = new ArrayList<Deed>();
 
@@ -40,23 +39,6 @@ public class Cardholder {
         return deedCardsArray;
     }
 
-    public boolean ownsGroup(String color){
-        int groupSize = 0;
-        boolean ownsGroup = false;
-        int cardCount = 0;
-        for(Deed deed : deedCards) {
-            if(deed.getColor().equals(color)) {
-                groupSize = deed.getGroupSize();
-                cardCount++;
-            }
-        }
-
-        if (cardCount == groupSize) {
-            ownsGroup = true;
-        }
-        return ownsGroup;
-    }
-
     public boolean houseCountIsLevel(String color, Deed deed) {
         boolean countIsLevel = false;
         int newCount = deed.getHouseCount() + 1;
@@ -64,7 +46,6 @@ public class Cardholder {
         for(int i = 0 ; i < deedCards.size() ; i++) {
             if(deedCards.get(i).getColor().equals(color)) {
                 if ((newCount - deedCards.get(i).getHouseCount()) <= 1) {
-                // if (deed.getHouseCount() <= deedCards.get(i).getHouseCount()) {
                     countIsLevel = true;
 
                 } else {
