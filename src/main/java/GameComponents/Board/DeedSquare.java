@@ -206,4 +206,7 @@ public class DeedSquare extends Square{
     }
 
 
+    public void setHouseCount(int count) {
+       houseCount = count;
+    }
 }

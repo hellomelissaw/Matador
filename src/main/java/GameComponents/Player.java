@@ -181,6 +181,7 @@ public class Player {
                             count++;
                             //deedsToBuildOn[i].setHouseCount(count + housesToBuy);
                             deedsToBuildOn[i].setHouseCount(count);
+                            lotsToBuildOn[i].setHouseCount(count);
                             System.out.println("There is now " + count + " houses on Square #" + i);
 
                         } else {

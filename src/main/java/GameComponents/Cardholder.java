@@ -21,7 +21,6 @@ public class Cardholder {
         int cardCount = 0;
 
         for(Deed deed : deedCards) {
-            System.out.println(deed.getDeedName());
             if(deed.getColor().equals(color)) {
                 groupSize = deed.getGroupSize();
                 cardCount++;
