@@ -7,15 +7,15 @@ public class CardDeed extends ChanceCard {
     private String color2;
     Square[] currentColorArr = new Square[0];
 
-    public CardDeed(String cardName, GuiController guiController, String color1, String color2) {
+    public CardDeed(String cardName, GuiController guiController) {
         super(cardName, guiController);
-        this.color1 = color1;
-        this.color2 = color2;
+        /*this.color1 = color1;
+        this.color2 = color2;*/
 
     }
 
     public void setOptionsArr() {
-        int arraySize = 0;
+       /* int arraySize = 0;
         for (int i = 0; i < board.length; i++) {
 
             if (board[i].getColor() == color1 || board[i].getColor() == color2) {
@@ -26,11 +26,12 @@ public class CardDeed extends ChanceCard {
                 currentColorArr = updatedColorArr.clone();
 
             }
-        }
+        }*/
     }
 
     public void playCard(Player currentPlayer) {
-        int distance;
+        DeedSquare[] shipSquares = new DeedSquare[2];
+       /* int distance;
         int index = 0;
         Square selectedSquare = null;
 
@@ -58,7 +59,7 @@ public class CardDeed extends ChanceCard {
 
 
         System.out.println("This is new position: " + currentPlayer.getPosition() + " and new square color is: " + board[currentPlayer.getPosition()].getColor());
-
+*/
 
     }
 }
