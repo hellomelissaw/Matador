@@ -2,6 +2,7 @@ package GameComponents;
 
 import Controllers.GuiController;
 import GameComponents.Board.Deed;
+import GameComponents.Board.DeedSquare;
 import gui_fields.GUI_Player;
 import Translator.Text;
 
@@ -157,7 +158,12 @@ public class Player {
         return cleared;
     }
 
-    public void buyHouse(Deed[] deedsToBuildOn, int housesToBuy) {
+    public void buyHouse(DeedSquare[] lotsToBuildOn, int housesToBuy) {
+        Deed[] deedsToBuildOn = new Deed[lotsToBuildOn.length];
+        for(int i = 0; i < lotsToBuildOn.length; i++) {
+            deedsToBuildOn[i] = lotsToBuildOn[i].getDeed();
+        }
+
         for (int j = 0; j < housesToBuy; j++) {
             for (int i = 0; i < deedsToBuildOn.length; i++) {
                 String color = deedsToBuildOn[i].getColor();

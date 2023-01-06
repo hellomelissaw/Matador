@@ -267,15 +267,14 @@ public class DeedSquareTest {
         testDeedSquare[1].testing(true,"ja");
         testDeedSquare[1].landOn(testPlayers[0]);
 
-        Deed[] ownedDeeds = testPlayers[0].getDeedList();
-        Deed[] buildOn = {ownedDeeds[0], ownedDeeds[1]};
-        testPlayers[0].buyHouse(buildOn,2);
+        DeedSquare[] lotsToBuildOn = {testDeedSquare[0], testDeedSquare[1]};
+        testPlayers[0].buyHouse(lotsToBuildOn,1);
 
         //testDeedSquare[0].addHouse(2, testPlayers[0]);
         //testDeedSquare[0].addHouse(2, testPlayers[0]);
 
-        assertEquals(2, testDeedSquare[0].getHouseCount());
-        assertEquals(2, testDeedSquare[1].getHouseCount());
+        assertEquals(1, testDeedSquare[0].getHouseCount());
+        assertEquals(1, testDeedSquare[1].getHouseCount());
     }
 
 }

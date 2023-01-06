@@ -64,7 +64,7 @@ public class Cardholder {
 
         for(int i = 0 ; i < deedCards.size() ; i++) {
             if(deedCards.get(i).getColor().equals(color)) {
-                if (newCount - deedCards.get(i).getHouseCount() <= 1) {
+                if ((newCount - deedCards.get(i).getHouseCount()) <= 1) {
                 // if (deed.getHouseCount() <= deedCards.get(i).getHouseCount()) {
                     countIsLevel = true;
 
