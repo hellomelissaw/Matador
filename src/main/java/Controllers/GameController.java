@@ -27,9 +27,9 @@ public class GameController {
             gui.showMessage(" Enter players count: ");
             //msg = new Text("src/main/java/Translator/EnglishText", guiController);
             //guiController.initFieldTitles(msg);
-            int playerCount = 2;
-            balance = 20 - (playerCount - 2) * 2;
-            //balance = 1; //TEST BALANCE, COMMENT OUT FOR NORMAL RUNNING OF GAME
+            int playerCount = 3;
+            balance = 30000;
+
             players = new Player[playerCount];
 
             players[0] = new Player("Marc"); // INITIALISE EACH PLAYER WITH NAME
@@ -41,14 +41,27 @@ public class GameController {
             players[1].setGui(guiController.createGuiPlayer(players[1]),guiController,msg);
             players[1].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
 
-            if (playerCount > 2) {
-                players[2] = new Player("Harald FitzGerald"); // INITIALISE EACH PLAYER WITH NAME
-                players[2].setGui(guiController.createGuiPlayer(players[2]),guiController,msg);
-                players[2].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
-                if (playerCount == 4) {
-                    players[3] = new Player("Melanie"); // INITIALISE EACH PLAYER WITH NAME
-                    players[3].setGui(guiController.createGuiPlayer(players[3]),guiController,msg);
-                    players[3].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+            players[2] = new Player("Harry"); // INITIALISE EACH PLAYER WITH NAME
+            players[2].setGui(guiController.createGuiPlayer(players[2]),guiController,msg);
+            players[2].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+
+            if (playerCount > 3) {
+                players[3] = new Player("Sara"); // INITIALISE EACH PLAYER WITH NAME
+                players[3].setGui(guiController.createGuiPlayer(players[3]),guiController,msg);
+                players[3].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+
+                players[4] = new Player("Megan"); // INITIALISE EACH PLAYER WITH NAME
+                players[4].setGui(guiController.createGuiPlayer(players[4]),guiController,msg);
+                players[4].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+
+                players[5] = new Player("Danny"); // INITIALISE EACH PLAYER WITH NAME
+                players[5].setGui(guiController.createGuiPlayer(players[3]),guiController,msg);
+                players[5].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+
+                if (playerCount == 6) {
+                    players[6] = new Player("Adam"); // INITIALISE EACH PLAYER WITH NAME
+                    players[6].setGui(guiController.createGuiPlayer(players[6]),guiController,msg);
+                    players[6].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
                 }
             }
 
@@ -72,7 +85,7 @@ public class GameController {
                 //gui.showMessage("enterPlayerCount");
                 //playerCount = gui.getUserInteger("");
                 playerCount = guiController.getUserInteger(msg.getText("enterPlayerCount"));
-                if (playerCount >= 2 && playerCount <= 4) {
+                if (playerCount >= 3 && playerCount <= 6) {
                     playerCountInvalid = false;
 
                 } else {
@@ -80,7 +93,7 @@ public class GameController {
 
                 }
             }
-            balance = 20 - (playerCount - 2) * 2; //SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
+            balance = 30000;//SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
 
             players = new Player[playerCount];
 

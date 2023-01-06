@@ -112,7 +112,7 @@ import java.awt.*;
        ownable[9].setSubText("2400 kr");
 
        gui.getFields()[10].setTitle("I fængsel");
-       gui.getFields()[10].setSubText("På besøge");
+       gui.getFields()[10].setSubText("På besøg");
 
        gui.getFields()[11].setTitle("Fredriksberg Alle");
        gui.getFields()[11].setBackGroundColor(Color.yellow);
