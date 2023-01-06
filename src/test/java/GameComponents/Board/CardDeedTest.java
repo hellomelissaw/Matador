@@ -12,18 +12,24 @@ import static org.junit.Assert.*;
 public class CardDeedTest {
     GuiController guiController = new GuiController();
     Player[] testPlayers = new Player[2];
-
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
     ChanceSquare testChanceSquare;
+
 
     public CardDeedTest() {
         testPlayers[0] = new Player("TestPlayer 1");
         testPlayers[0].setLang(msg);
         testPlayers[1] = new Player("TestPlayer 2");
         testPlayers[1].setLang(msg);
+
+        BoardInit squares = new BoardInit(guiController, msg, testPlayers);
+        Square[] board = squares.getSquareArr();
         testChanceSquare = new ChanceSquare("Chance Square", guiController, testPlayers);
         testChanceSquare.setLang(msg);
         testChanceSquare.setCardLang();
+        testChanceSquare.setChanceCards(board);
+
+
     }
 
     @Test
