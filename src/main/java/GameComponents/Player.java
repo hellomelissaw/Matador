@@ -75,8 +75,8 @@ public class Player {
         if(currentPos == 30) {getStartMoney = false;}
 
         for(int i = 0; i < Math.abs(distance); i++) {
-            if (distance < 0) {  }
-            if (squareIndex < 39) {
+            if (distance < 0 && squareIndex < 39) { squareIndex --;}
+            else if (squareIndex < 39) {
                 squareIndex++;
 
             } else {

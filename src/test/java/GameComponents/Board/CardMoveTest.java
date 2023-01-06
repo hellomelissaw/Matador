@@ -107,7 +107,7 @@ public class CardMoveTest {
         testPlayers[0].updatePosition(5);
         testChanceCard.playCard(testPlayers[0]);
 
-        assertEquals(8, testPlayers[0].getPosition());
+        assertEquals(2, testPlayers[0].getPosition());
     }
 
 }
