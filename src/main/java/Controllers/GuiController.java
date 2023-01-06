@@ -119,9 +119,9 @@ import java.awt.*;
        ownable[11] = (GUI_Ownable)fields[11];
        ownable[11].setSubText("2800 kr");
 
-       gui.getFields()[12].setTitle("3000 kr");
-       //gui.getFields()[12].setBackGroundColor(Color.orange);
-       //gui.getFields()[12].setSubText("3000 kr");//????????????????
+       gui.getFields()[12].setTitle("Sqush");
+       gui.getFields()[12].setBackGroundColor(Color.orange);
+       gui.getFields()[12].setSubText("3000 kr");
 
        gui.getFields()[13].setTitle("Bullowsvej");
        gui.getFields()[13].setBackGroundColor(Color.yellow);
@@ -142,7 +142,7 @@ import java.awt.*;
        ownable[16] = (GUI_Ownable)fields[16];
        ownable[16].setSubText("3600 kr");
 
-       //gui.getFields()[17].setTitle("?");
+
        gui.getFields()[17].setBackGroundColor(Color.green);
        gui.getFields()[17].setSubText("Prøv Lykken");
 
@@ -157,7 +157,6 @@ import java.awt.*;
        ownable[19].setSubText("4000 kr");
 
 
-       //gui.getFields()[20].setTitle("Parkering");
        gui.getFields()[20].setSubText("Parkering!");
        gui.getFields()[20].setBackGroundColor(Color.white);
 
@@ -195,7 +194,8 @@ import java.awt.*;
        ownable[27] = (GUI_Ownable)fields[27];
        ownable[27].setSubText("5200 kr");
 
-
+       gui.getFields()[28].setTitle("Coca Cola");
+       gui.getFields()[28].setBackGroundColor(Color.orange);
        gui.getFields()[28].setSubText("3000 kr");
 
        gui.getFields()[29].setTitle("Østergade");
