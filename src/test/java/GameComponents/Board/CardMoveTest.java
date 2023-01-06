@@ -100,7 +100,6 @@ public class CardMoveTest {
     }
     @Test
     public void playCardMoveBack() {
-        //testChanceSquare.setLang("EnglishText");
         ChanceCard testChanceCard = new CardMove("chance32", guiController, -3, "distance");
         testChanceCard.setCardLang(msg);
         testChanceCard.setOptionsArr();
@@ -110,4 +109,14 @@ public class CardMoveTest {
         assertEquals(2, testPlayers[0].getPosition());
     }
 
+    @Test
+    public void PassStartGet4000() {
+        ChanceCard testChanceCard = new CardMove("chance34", guiController, 3, "distance");
+        testChanceCard.setCardLang(msg);
+        testChanceCard.setOptionsArr();
+        testPlayers[0].updatePosition(39);
+        testChanceCard.playCard(testPlayers[0]);
+
+        assertEquals(4000, testPlayers[0].getCurrentBalance());
+    }
 }

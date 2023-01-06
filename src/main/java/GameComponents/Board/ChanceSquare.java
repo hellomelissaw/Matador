@@ -48,8 +48,8 @@ public class ChanceSquare extends Square{
         chanceCards[28] = new CardMove("chance29", guiController, 0,"index");
         chanceCards[29] = new CardMove("chance30", guiController, 0,"index");
         chanceCards[30] = new CardMove("chance31", guiController,3, "distance");
-        chanceCards[31] = new CardMove("chance32", guiController,-3, "distance"); // hvordan rykker man 3 felter tilbage?
-        chanceCards[32] = new CardMove("chance33", guiController,-3, "distance"); // hvordan rykker man 3 felter tilbage?
+        chanceCards[31] = new CardMove("chance32", guiController,-3, "distance");
+        chanceCards[32] = new CardMove("chance33", guiController,-3, "distance");
         chanceCards[33] = new CardMove("chance34", guiController, 11,"index"); // Hvis De passere START, indkasser da 4000 kr
         chanceCards[34] = new CardMove("chance35", guiController, 5,"index"); //ryk frem til nærmeste redderi og betal ejeren 2x den leje ejeren er berettiget til (felter 5, 25, 35)
         chanceCards[35] = new CardMove("chance36", guiController, 5,"index"); //ryk frem til nærmeste redderi og betal ejeren 2x den leje ejeren er berettiget til (felter 5, 25, 35)
