@@ -22,11 +22,12 @@ public class Cup {
     public int getSum () { // GETS THE SUM OF THE VALUE OF BOTH DICE
         int d1 = die1.roll();
         int d2 = die2.roll();
-        //guiController.setDice(d1,d2);
-        gui.setDice(d1,d2);
+        guiController.setDice(d1,d2);
+        //gui.setDice(d1,d2);
         System.out.println("First die: " + d1 + " and second die: " + d2);
         int sum;
         sum = d1 + d2;
         return sum;
+
     }
 }
