@@ -209,10 +209,9 @@ public class Player {
                 int buildingPrice = deed.getBuildingPrice();
                 if (currentBalance > 0 && currentBalance - buildingPrice >= 0) {
                     playerAccount.withDraw(buildingPrice);
-                    deed.setHouseCount(0);
-                    deed.se
-                    hasHotel = true;
-                    houseCount = 0;
+                    lotsToBuildOn[i].setHouseCount(0);
+                    lotsToBuildOn[i].setHasHotel(true);
+
                 } else {
                     System.out.println("Du har ikke nok penge til at købe dette hotel.");
                 }

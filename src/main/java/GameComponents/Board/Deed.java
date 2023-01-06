@@ -13,6 +13,8 @@ public class Deed {
 
     int houseCount;
 
+    boolean hasHotel = false;
+
     /**
      * Constructs a Deed which can be owned by Player
      *
@@ -68,5 +70,9 @@ public class Deed {
 
     public int getBuildingPrice() {
         return buildingPrice;
+    }
+
+    public void setHasHotel(boolean hasHotel) {
+        this.hasHotel = hasHotel;
     }
 }

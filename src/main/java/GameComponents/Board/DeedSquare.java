@@ -214,5 +214,11 @@ public class DeedSquare extends Square{
 
     public void setHouseCount(int count) {
        houseCount = count;
+       deed.setHouseCount(count);
+    }
+
+    public void setHasHotel(boolean hasHotel) {
+       this.hasHotel = hasHotel;
+       deed.setHasHotel(hasHotel);
     }
 }

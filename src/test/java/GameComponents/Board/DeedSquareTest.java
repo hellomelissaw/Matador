@@ -96,7 +96,7 @@ public class DeedSquareTest {
     public void buyHotelForDeedSquare() {
         DeedSquare[] lotsToBuildOn = {testDeedSquare[2]};
         testPlayers[0].buyHouse(lotsToBuildOn, 4);
-        testDeedSquare[0].addHotel(testPlayers[0]);
+        testPlayers[0].buyHotel(lotsToBuildOn);
         assertTrue(testDeedSquare[0].hasHotel());
     }
 
