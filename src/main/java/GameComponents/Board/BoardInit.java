@@ -32,30 +32,41 @@ public class BoardInit {
                 line = reader.readLine();
                 String[] squareInfo = line.split(",");
 
-                if(squareInfo[2].equals("start")) {
+                if(squareInfo[2].equals(" start")) {
                     board[i] = new StartSquare(squareInfo[0]);
 
-                } else if(squareInfo[2].equals("street")) {
+                } else if(squareInfo[2].equals(" street")) {
                     int[] rent = new int[6];
                     for(int j = 0 ; j < 6 ; j++) {
-                       rent[j] = valueOf(squareInfo[j+5]);
+                       rent[j] = valueOf(squareInfo[j+4]);
                     }
 
                     board[i] = new DeedSquare(squareInfo[0], valueOf(squareInfo[3]), valueOf(squareInfo[4]), rent, guiController);
 
-                } else if (squareInfo[2].equals("chance")) {
+                } else if (squareInfo[2].equals(" chance")) {
                     board[i] = new ChanceSquare(squareInfo[0], guiController, players);
 
-                } else if (squareInfo[2].equals("tax")) {
+                } else if (squareInfo[2].equals(" tax")) {
                     board[i] = new TaxSquare(squareInfo[0], guiController, players);
 
-                } else if (squareInfo[2].equals("tax")) {
-                    board[i] = new FerrySquare(squareInfo[0], guiController, players);
+                } else if (squareInfo[2].equals(" ferry")) {
+                    int[] rent = new int[4];
+                    for(int j = 0 ; j < 4 ; j++) {
+                        rent[j] = valueOf(squareInfo[j+4]);
+                    }
+                    board[i] = new FerrySquare(squareInfo[0], valueOf(squareInfo[3]), rent, guiController);
 
-                } else if  (squareInfo[2].equals("jail")) {
+                } else if  (squareInfo[2].equals(" jail")) {
                     board[i] = new JailSquare(squareInfo[0], guiController);
 
-                } else if (squareInfo[2].equals("refuge")) {
+                } else if (squareInfo[2].equals(" brewery")) {
+                    int[] rent = new int[2];
+                    for(int j = 0 ; j < 2 ; j++) {
+                        rent[j] = valueOf(squareInfo[j+4]);
+                    }
+                    board[i] = new BrewerySquare(squareInfo[0], valueOf(squareInfo[3]), rent, guiController);
+
+                } else if (squareInfo[2].equals(" refuge")) {
                     board[i] = new ParkingSquare(squareInfo[0]);
 
                 }
@@ -68,7 +79,7 @@ public class BoardInit {
 
         }
 
-
+/*
         board[0] = new StartSquare(msg.getText("start"));
         board[1] = new DeedSquare(msg.getText("Rødovrevej"), 1200,guiController);
         board[2] = new ChanceSquare(msg.getText("Prøv lykken"),guiController, players);
@@ -111,7 +122,7 @@ public class BoardInit {
         board[37] = new DeedSquare(msg.getText("Frederiksberggade"),7000,guiController);
         board[38] = new TaxSquare(msg.getText("Betal 2000 kr i skat"),guiController, players);
         board[39] = new DeedSquare(msg.getText("Rådhuspladsen"),8000,guiController);
-
+*/
         for(int i= 0 ; i< board.length ; i++) {
             board[i].setLang(msg);
         }
