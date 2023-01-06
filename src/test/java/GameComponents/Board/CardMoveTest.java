@@ -119,4 +119,16 @@ public class CardMoveTest {
 
         assertEquals(4000, testPlayers[0].getCurrentBalance());
     }
+
+    @Test
+    public void PassStartMolsLinje() {
+        ChanceCard testChanceCard = new CardMove("chance37", guiController, 17, "distance");
+        testChanceCard.setCardLang(msg);
+        testChanceCard.setOptionsArr();
+        testPlayers[0].updatePosition(39);
+        testChanceCard.playCard(testPlayers[0]);
+
+        assertEquals(4000, testPlayers[0].getCurrentBalance());
+    }
+
 }
