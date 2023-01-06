@@ -34,6 +34,7 @@ public class BoardInit {
 
                 if(squareInfo[2].equals(" start")) {
                     board[i-1] = new StartSquare(squareInfo[0]);
+                    board[i-1].setLang(msg);
 
                 } else if(squareInfo[2].equals(" street")) {
                     int[] rent = new int[6];
@@ -42,12 +43,15 @@ public class BoardInit {
                     }
 
                     board[i-1] = new DeedSquare(squareInfo[0], valueOf(squareInfo[3]), valueOf(squareInfo[4]), rent, guiController);
+                    board[i-1].setLang(msg);
 
                 } else if (squareInfo[2].equals(" chance")) {
                     board[i-1] = new ChanceSquare(squareInfo[0], guiController, players);
+                    board[i-1].setLang(msg);
 
                 } else if (squareInfo[2].equals(" tax")) {
                     board[i-1] = new TaxSquare(squareInfo[0], guiController, players);
+                    board[i-1].setLang(msg);
 
                 } else if (squareInfo[2].equals(" ferry")) {
                     int[] rent = new int[4];
@@ -55,9 +59,11 @@ public class BoardInit {
                         rent[j] = valueOf(squareInfo[j+5]);
                     }
                     board[i-1] = new FerrySquare(squareInfo[0], valueOf(squareInfo[3]), rent, guiController);
+                    board[i-1].setLang(msg);
 
                 } else if  (squareInfo[2].equals(" jail")) {
                     board[i-1] = new JailSquare(squareInfo[0], guiController);
+                    board[i-1].setLang(msg);
 
                 } else if (squareInfo[2].equals(" brewery")) {
                     int[] rent = new int[2];
@@ -65,9 +71,11 @@ public class BoardInit {
                         rent[j] = valueOf(squareInfo[j+5]);
                     }
                     board[i-1] = new BrewerySquare(squareInfo[0], valueOf(squareInfo[3]), rent, guiController);
+                    board[i-1].setLang(msg);
 
                 } else if (squareInfo[2].equals(" refuge")) {
                     board[i-1] = new ParkingSquare(squareInfo[0]);
+                    board[i-1].setLang(msg);
 
                 }
 
@@ -78,8 +86,7 @@ public class BoardInit {
             e.printStackTrace();
 
         }
-        int[] theRent = {1000,4000,12000,28000,34000,40000};
-        board[39] = new DeedSquare("Raadhus", 8000, 4000, theRent, guiController);
+
 /*
         board[0] = new StartSquare(msg.getText("start"));
         board[1] = new DeedSquare(msg.getText("Rødovrevej"), 1200,guiController);
@@ -125,9 +132,6 @@ public class BoardInit {
         board[39] = new DeedSquare(msg.getText("Rådhuspladsen"),8000,guiController);
 */
 
-        for(int i= 0 ; i< board.length ; i++) {
-            board[i].setLang(msg);
-        }
 
         /*String[] colors = {"lightgrey", "cyan", "pink", "orange", "red", "yellow", "green", "darkblue"};
 
