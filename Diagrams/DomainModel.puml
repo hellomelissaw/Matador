@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/class-diagram
+package "Domain Model"{
+
+class Cup
+class Dice
+class MatadorGame
+class Player
+class Squares
+class SquareDescriptions
+class BankKonto
+class Bank
+
+MatadorGame "1"-left-> "1" Cup : Play with >
+MatadorGame "1" -right- "3..6" Player : player
+MatadorGame "1" -- "40" Squares : Has >
+MatadorGame "1" -up- "1" Bank
+Squares "1" -- "1" SquareDescriptions : Shows >
+Player "1" -down- "1" BankKonto : Has >
+Cup "1" -- "2" Dice : Rolls >
+
+
+}
+
+
+@enduml
