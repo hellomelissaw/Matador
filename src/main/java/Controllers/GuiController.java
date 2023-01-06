@@ -6,7 +6,10 @@ import gui_fields.*;
 import gui_main.GUI;
 
 import java.awt.*;
- public class GuiController {
+
+import static java.awt.Color.blue;
+
+public class GuiController {
      private GUI gui;
      Text msg;
      private GUI_Field[] fields;
@@ -190,7 +193,7 @@ import java.awt.*;
 
        };
 
-       this.gui = new GUI(fields);
+       this.gui = new GUI(fields, blue);
 
        gui.getFields()[0].setTitle("START");
        gui.getFields()[0].setBackGroundColor(Color.red);
