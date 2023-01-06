@@ -27,47 +27,47 @@ public class BoardInit {
             reader = new BufferedReader(new java.io.FileReader("src/main/java/GameComponents/Board/fields.csv"));
             String line;
 
-            for (int i = 0; i < boardSize; i++) {
+            for (int i = 0; i < boardSize+1; i++) {
 
                 line = reader.readLine();
                 String[] squareInfo = line.split(",");
 
                 if(squareInfo[2].equals(" start")) {
-                    board[i] = new StartSquare(squareInfo[0]);
+                    board[i-1] = new StartSquare(squareInfo[0]);
 
                 } else if(squareInfo[2].equals(" street")) {
                     int[] rent = new int[6];
                     for(int j = 0 ; j < 6 ; j++) {
-                       rent[j] = valueOf(squareInfo[j+4]);
+                       rent[j] = valueOf(squareInfo[j+5]);
                     }
 
-                    board[i] = new DeedSquare(squareInfo[0], valueOf(squareInfo[3]), valueOf(squareInfo[4]), rent, guiController);
+                    board[i-1] = new DeedSquare(squareInfo[0], valueOf(squareInfo[3]), valueOf(squareInfo[4]), rent, guiController);
 
                 } else if (squareInfo[2].equals(" chance")) {
-                    board[i] = new ChanceSquare(squareInfo[0], guiController, players);
+                    board[i-1] = new ChanceSquare(squareInfo[0], guiController, players);
 
                 } else if (squareInfo[2].equals(" tax")) {
-                    board[i] = new TaxSquare(squareInfo[0], guiController, players);
+                    board[i-1] = new TaxSquare(squareInfo[0], guiController, players);
 
                 } else if (squareInfo[2].equals(" ferry")) {
                     int[] rent = new int[4];
                     for(int j = 0 ; j < 4 ; j++) {
-                        rent[j] = valueOf(squareInfo[j+4]);
+                        rent[j] = valueOf(squareInfo[j+5]);
                     }
-                    board[i] = new FerrySquare(squareInfo[0], valueOf(squareInfo[3]), rent, guiController);
+                    board[i-1] = new FerrySquare(squareInfo[0], valueOf(squareInfo[3]), rent, guiController);
 
                 } else if  (squareInfo[2].equals(" jail")) {
-                    board[i] = new JailSquare(squareInfo[0], guiController);
+                    board[i-1] = new JailSquare(squareInfo[0], guiController);
 
                 } else if (squareInfo[2].equals(" brewery")) {
                     int[] rent = new int[2];
                     for(int j = 0 ; j < 2 ; j++) {
-                        rent[j] = valueOf(squareInfo[j+4]);
+                        rent[j] = valueOf(squareInfo[j+5]);
                     }
-                    board[i] = new BrewerySquare(squareInfo[0], valueOf(squareInfo[3]), rent, guiController);
+                    board[i-1] = new BrewerySquare(squareInfo[0], valueOf(squareInfo[3]), rent, guiController);
 
                 } else if (squareInfo[2].equals(" refuge")) {
-                    board[i] = new ParkingSquare(squareInfo[0]);
+                    board[i-1] = new ParkingSquare(squareInfo[0]);
 
                 }
 
@@ -78,7 +78,8 @@ public class BoardInit {
             e.printStackTrace();
 
         }
-
+        int[] theRent = {1000,4000,12000,28000,34000,40000};
+        board[39] = new DeedSquare("Raadhus", 8000, 4000, theRent, guiController);
 /*
         board[0] = new StartSquare(msg.getText("start"));
         board[1] = new DeedSquare(msg.getText("Rødovrevej"), 1200,guiController);
@@ -123,6 +124,7 @@ public class BoardInit {
         board[38] = new TaxSquare(msg.getText("Betal 2000 kr i skat"),guiController, players);
         board[39] = new DeedSquare(msg.getText("Rådhuspladsen"),8000,guiController);
 */
+
         for(int i= 0 ; i< board.length ; i++) {
             board[i].setLang(msg);
         }
