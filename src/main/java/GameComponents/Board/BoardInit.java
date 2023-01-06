@@ -59,6 +59,10 @@ public class BoardInit {
         board[38] = new TaxSquare(msg.getText("Betal 2000 kr i skat"), guiController, players);
         board[39] = new DeedSquare(msg.getText("Rådhuspladsen"), 8000, guiController);
 
+        for(int i= 0 ; i< board.length ; i++) {
+            board[i].setLang(msg);
+        }
+
        /* board[0] = new StartSquare(msg.getText("start"));
         board[1] = new DeedSquare(msg.getText("burgerBar"), 1,guiController);
         board[2] = new DeedSquare(msg.getText("pizzeria"), 1,guiController);
