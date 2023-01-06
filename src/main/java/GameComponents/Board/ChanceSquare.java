@@ -8,7 +8,7 @@ public class ChanceSquare extends Square{
     private GuiController guiController;
     Player[] players;
 
-    private ChanceCard[] chanceCards = new ChanceCard[15];
+    private ChanceCard[] chanceCards = new ChanceCard[46];
 
     public ChanceSquare(String squareName, GuiController guiController, Player[] players) { //INITIALISES DECK OF CHANCE CARDS
 
