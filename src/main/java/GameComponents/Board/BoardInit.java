@@ -59,12 +59,11 @@ public class BoardInit {
         board[38] = new TaxSquare(msg.getText("Betal 2000 kr i skat"),guiController, players);
         board[39] = new DeedSquare(msg.getText("Rådhuspladsen"),8000,guiController);
 
-        /*String[] colors = {"lightgrey", "cyan", "pink", "orange", "red", "yellow", "green", "darkblue"};
-
-
         for(int i= 0 ; i< board.length ; i++) {
             board[i].setLang(msg);
         }
+
+        /*String[] colors = {"lightgrey", "cyan", "pink", "orange", "red", "yellow", "green", "darkblue"};
 
 
         for(int i = 0 ; i < board.length ; i+=3) {
