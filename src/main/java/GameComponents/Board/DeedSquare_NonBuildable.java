@@ -5,7 +5,6 @@ import GameComponents.Player;
 
 public class DeedSquare_NonBuildable extends DeedSquare {
     Deed_NonBuildable deed;
-    int[] rent;
     //GuiController guiController;
 
 
@@ -14,25 +13,28 @@ public class DeedSquare_NonBuildable extends DeedSquare {
         deed = new Deed_NonBuildable(deedPrice, rent, deedName);
         deed.setDeedGroup(color, groupSize);
 
+
     }
 
     public void landOn(Player currentPlayer) {
 
-        if(sellDeed == true) {
 
+        if(sellDeed == true) {
             if (guiOn) {
-                String guiMessage = currentPlayer.getPlayerName() + msg.getText("haveBought") + deed.getDeedName();
-                guiController.showMessage(guiMessage); // CAN BE DELETED ONCE IMPLEMENT BORDER AROUND SQUARE
+                String[] choices = {"ja", "nej"};
+                if(!testing) {
+                    buying = guiController.getUserSelection(msg.getText("buyLot") + " " + deed.getDeedName() + "?", choices);
+                }
+                /*String guiMessage = currentPlayer.getPlayerName() + msg.getText("haveBought") + deed.getDeedName();
+                guiController.showMessage(guiMessage); // CAN BE DELETED ONCE IMPLEMENT BORDER AROUND SQUARE*/
             } else {
                 System.out.println("Vil du købe denne grund?");
-            }
-
-            boolean valid = false;
-            while(!valid) {
-
                 if(!testing){
                     buying = userInput.nextLine();
                 }
+            }
+            boolean valid = false;
+            while(!valid) {
 
                 if (buying.equals("ja")) {
                     valid = true;
@@ -45,7 +47,7 @@ public class DeedSquare_NonBuildable extends DeedSquare {
                     if (guiOn) {
                         guiController.setOwnerName(currentPlayer, currentPlayer.getPosition());
                     }
-
+                    System.out.println("Made it through the whole if statement");
                 } else if (!(buying.equals("ja") || buying.equals("nej"))) {
                     System.out.println("Ugyldigt svar. Indtast venligst ja eller nej");
 
