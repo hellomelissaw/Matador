@@ -14,7 +14,7 @@ This class is reused from our CDIO2 project and built upon.
 public class Player {
 
     boolean guiOn = true;
-    private boolean testing = true;
+    private boolean testing = off;
     GuiController guiController;
     GUI_Player guiPlayer;
     Text msg;
