@@ -19,7 +19,7 @@ public abstract class Deed {
      *
      * @param deedPrice price of the Deed
      * @param deedName  name of the Deed (For example "The Skate Park")
-     * @param color
+     * @param rent
      */
     public Deed(int deedPrice, int[] rent, String deedName){
 
@@ -56,6 +56,11 @@ public abstract class Deed {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public void setDeedGroup(String color, int groupSize) {
+        this.color = color;
+        this.groupSize = groupSize;
     }
 
 }

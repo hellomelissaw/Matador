@@ -12,6 +12,7 @@ public class DeedSquare_NonBuildable extends DeedSquare {
     public DeedSquare_NonBuildable(String deedName, int deedPrice, int[] rent) {
         super(deedName, deedPrice, rent);
         deed = new Deed_NonBuildable(deedPrice, rent, deedName);
+        deed.setDeedGroup(color, groupSize);
 
     }
 

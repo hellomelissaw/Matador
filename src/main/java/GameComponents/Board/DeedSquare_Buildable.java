@@ -17,7 +17,7 @@ public class DeedSquare_Buildable extends DeedSquare {
         super(deedName, deedPrice, rent);
         this.buildingPrice = buildingPrice;
         deed = new Deed_Buildable(deedPrice, rent, deedName, buildingPrice);
-
+        deed.setDeedGroup(color, groupSize);
     }
 
 
