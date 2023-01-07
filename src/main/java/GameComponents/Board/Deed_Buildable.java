@@ -2,6 +2,7 @@ package GameComponents.Board;
 
 public class Deed_Buildable extends Deed{
     int buildingPrice;
+
     /**
      * Constructs a Deed which can be owned by Player
      *

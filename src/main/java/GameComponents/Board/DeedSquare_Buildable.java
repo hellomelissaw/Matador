@@ -17,7 +17,7 @@ public class DeedSquare_Buildable extends DeedSquare {
         super(deedName, deedPrice, rent);
         this.buildingPrice = buildingPrice;
         deed = new Deed_Buildable(deedPrice, rent, deedName, buildingPrice);
-        deed.setDeedGroup(color, groupSize);
+
     }
 
 
@@ -106,4 +106,11 @@ public class DeedSquare_Buildable extends DeedSquare {
     public Player getDeedOwner() {
         return deed.getOwner();
     }
+
+    public void setGroup(String color, int groupSize) {
+        this.color = color;
+        this.groupSize = groupSize;
+        deed.setDeedGroup(color, groupSize);
+    }
+
 }

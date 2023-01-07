@@ -38,9 +38,15 @@ public class Cardholder {
         return ownerStatus;
     }
 
-    public Deed_NonBuildable[] getDeedList() {
+    public Deed_NonBuildable[] getNonBuildable() {
         Deed_NonBuildable[] deedCardsArray = new  Deed_NonBuildable[deedCards_NonBuildable.size()];
         deedCardsArray = deedCards_NonBuildable.toArray(deedCardsArray);
+        return deedCardsArray;
+    }
+
+    public Deed_Buildable[] getBuildable() {
+        Deed_Buildable[] deedCardsArray = new  Deed_Buildable[deedCards_Buildable.size()];
+        deedCardsArray = deedCards_Buildable.toArray(deedCardsArray);
         return deedCardsArray;
     }
 

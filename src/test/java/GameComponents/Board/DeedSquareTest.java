@@ -27,7 +27,7 @@ public class DeedSquareTest {
             testStreetSquare[i].setGroup("blue", 2);
         }
 
-        testStreetSquare[2] = new DeedSquare_Buildable("TestDeedSquare 3", 1500, rent, 1200);
+        testStreetSquare[2] = new DeedSquare_Buildable("TestDeedSquare 3", 1200, rent, 1000);
         testStreetSquare[2].setLang(msg);
         testStreetSquare[2].setGroup("red",1);
         testStreetSquare[2].setGuiController(guiController);
@@ -176,7 +176,7 @@ public class DeedSquareTest {
         boolean hasDeed = false;
         testPlayers[0].takeBuildableDeed(testStreetSquare[0].getDeed());
         testPlayers[0].takeBuildableDeed(testStreetSquare[0].getDeed());
-        Deed[] deedList = testPlayers[0].getDeedList();
+        Deed_Buildable[] deedList = testPlayers[0].getBuildableDeeds();
         for(int i = 0 ; i < deedList.length ; i++) {
             if (deedList[i].getDeedName().equals("TestDeedSquare0")) {
                 hasDeed = true;

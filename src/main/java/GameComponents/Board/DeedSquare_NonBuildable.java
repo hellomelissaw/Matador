@@ -80,4 +80,10 @@ public class DeedSquare_NonBuildable extends DeedSquare {
         return deed.getOwner();
     }
 
+    public void setGroup(String color, int groupSize) {
+        this.color = color;
+        this.groupSize = groupSize;
+        deed.setDeedGroup(color, groupSize);
+    }
+
 }

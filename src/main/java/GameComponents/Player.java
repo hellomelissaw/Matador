@@ -162,8 +162,8 @@ public class Player {
         cardholder.addDeedNonBuildable(deed);
     }
 
-    public Deed[] getDeedList() {
-        Deed[] deedList = cardholder.getDeedList();
+    public Deed_Buildable[] getBuildableDeeds() {
+        Deed_Buildable[] deedList = cardholder.getBuildable();
         return deedList;
     }
 
