@@ -5,7 +5,7 @@ import Controllers.GuiController;
 
 
 public class Text {
-    boolean guiOn = false;
+    boolean guiOn = true;
     String file;
     GuiController guiController;
 

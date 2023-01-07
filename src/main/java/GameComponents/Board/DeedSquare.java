@@ -5,7 +5,7 @@ import GameComponents.Player;
 import java.util.Scanner;
 
 public class DeedSquare extends Square{
-    boolean guiOn = false;
+    boolean guiOn = true;
     boolean testing = false;
     String buying;
     Deed deed;

@@ -4,7 +4,7 @@ import gui_fields.GUI_Player;
 
 public class Account {
 
-    boolean guiOn = false;
+    boolean guiOn = true;
     private int balance;
     private boolean isBankrupt = false;
     GUI_Player guiPlayer;

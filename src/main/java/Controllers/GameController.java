@@ -24,7 +24,7 @@ public class GameController {
         boolean testingInit = false;
         if (testingInit){
             msg = new Text("src/main/java/Translator/EnglishText", guiController);
-            gui.showMessage(" Enter players count: ");
+            msg.printText("startGame", "na");
             //msg = new Text("src/main/java/Translator/EnglishText", guiController);
             //guiController.initFieldTitles(msg);
             int playerCount = 3;
@@ -77,7 +77,7 @@ public class GameController {
 
             //INITIALIZING PLAYERS
             //System.out.println(msg.getText("enterPlayerCount"));
-
+            msg.printText("welcomeMessage", "na");
             boolean playerCountInvalid = true;
             while (playerCountInvalid) {
                 // playerCount = userInput.nextInt();
