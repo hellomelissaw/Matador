@@ -94,7 +94,7 @@ public class ChanceSquare extends Square{
         while(pickAgain){
 
             if(!testing){
-                cardIndex = (int) (Math.random() * (15 - 1));
+                cardIndex = (int) (Math.random() * (45 - 1));
             }
             chanceCards[cardIndex].printMessage(cardIndex);
             System.out.println("Card picked: " + cardIndex);
