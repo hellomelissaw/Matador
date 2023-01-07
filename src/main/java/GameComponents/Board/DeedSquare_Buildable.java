@@ -8,7 +8,7 @@ public class DeedSquare_Buildable extends DeedSquare {
     int houseCount = 0;
     boolean hasHotel = false;
 
-    DeedBuildable deed;
+    Deed_Buildable deed;
     /**
      * Constructs a Square of type DeedSquare (ownable Square)
      *
@@ -19,8 +19,14 @@ public class DeedSquare_Buildable extends DeedSquare {
      */
     public DeedSquare_Buildable(String deedName, int deedPrice, int[] rent, GuiController guiController, int buildingPrice) {
         super(deedName, deedPrice, rent, guiController);
-        this.deed = new DeedBuildable(deedPrice, rent, deedName, buildingPrice);
         this.buildingPrice = buildingPrice;
+        this.deed = new Deed_Buildable(deedPrice, rent, deedName, buildingPrice);
+
+    }
+
+
+    public Deed getDeed() {
+        return deed;
     }
 
     public void landOn(Player currentPlayer) {
@@ -48,7 +54,7 @@ public class DeedSquare_Buildable extends DeedSquare {
                     sellDeed = false;
                     freeDeed = false;
                     deed.setOwner(currentPlayer);
-                    currentPlayer.takeCard("deed", deed);
+                    currentPlayer.takeBuildableDeed(deed);
                     if (guiOn) {
                         guiController.setOwnerName(currentPlayer, currentPlayer.getPosition());
                     }
@@ -79,11 +85,6 @@ public class DeedSquare_Buildable extends DeedSquare {
             System.out.println("");
         }
 
-    }
-
-
-    public Deed getDeed() {
-        return deed;
     }
 
 

@@ -2,8 +2,9 @@ package GameComponents;
 
 import Controllers.GuiController;
 import GameComponents.Board.Deed;
-import GameComponents.Board.DeedBuildable;
+import GameComponents.Board.Deed_Buildable;
 import GameComponents.Board.DeedSquare_Buildable;
+import GameComponents.Board.Deed_NonBuildable;
 import GameComponents.Board.StreetSquare;
 import gui_fields.GUI_Player;
 import Translator.Text;
@@ -154,8 +155,12 @@ public class Player {
         return ownerStatus;
     }
 
-    public void takeCard(String cardType, Deed deed) { // TO DO: change Deed deed to accomodate all card types
-        cardholder.addCard(cardType,deed);
+    public void takeBuildableDeed(Deed_Buildable deed) {
+        cardholder.addDeedBuildable(deed);
+    }
+
+    public void takeNonBuildableDeed(Deed_NonBuildable deed) {
+        cardholder.addDeedNonBuildable(deed);
     }
 
     public Deed[] getDeedList() {
@@ -164,7 +169,7 @@ public class Player {
     }
 
     public void buyHouse(DeedSquare_Buildable[] lotsToBuildOn, int housesToBuy) {
-        DeedBuildable[] deedsToBuildOn = new DeedBuildable[lotsToBuildOn.length];
+        Deed_Buildable[] deedsToBuildOn = new Deed_Buildable[lotsToBuildOn.length];
         for(int i = 0; i < lotsToBuildOn.length; i++) {
             deedsToBuildOn[i] = lotsToBuildOn[i].getDeed();
         }
