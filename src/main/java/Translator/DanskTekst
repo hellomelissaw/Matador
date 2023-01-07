@@ -9,7 +9,7 @@ rollDice;, tryk OK til at kaste terningen.
 passStart; MODTAG EN BELØNNING PÅ M2 FORDI DU PASSERER START. Din nye saldo er:
 position;, du er landet på feltet:
 squareNum;, felt #
-haveBought;, du har købt
+buyLot; Vil du købe
 newBalance; Din bankkonto har nu saldo:
 ownerOfDeed; Min ven, du ejer det her felt! Du betaler ikke noget.
 payRent; ejer feltet. Du skal betale husleje.

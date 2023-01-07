@@ -302,7 +302,7 @@ import java.awt.*;
          return gui.getUserInteger(message);
 
      }
-     String userSelection;
+    /* String userSelection;
      Square selectedSquare;
      public Square getSelectedSquare(Square[] currentColorsArr) {
 
@@ -320,9 +320,9 @@ import java.awt.*;
             }
         }
         return selectedSquare;
-     }
+     }*/
 
-     public int getSquareIndex(Square[] board) {
+     /*public int getSquareIndex(Square[] board) {
          int index = 0;
          for(int i = 0; i < board.length ; i++) {
              if(selectedSquare.getSquareName() == board[i].getSquareName()){
@@ -330,7 +330,7 @@ import java.awt.*;
              }
          }
          return index;
-     }
+     }*/
      public String getUserSelection(String message, String[] buttons) {
          return gui.getUserSelection(message, buttons);
      }

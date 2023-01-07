@@ -30,18 +30,21 @@ public class DeedSquare_Buildable extends DeedSquare {
         if(sellDeed == true) {
 
             if (guiOn) {
-                String guiMessage = currentPlayer.getPlayerName() + msg.getText("haveBought") + deed.getDeedName();
-                guiController.showMessage(guiMessage); // CAN BE DELETED ONCE IMPLEMENT BORDER AROUND SQUARE
+                String[] choices = {"ja", "nej"};
+                if(!testing) {
+                    buying = guiController.getUserSelection("buyLot", choices);
+                }
+                /*String guiMessage = currentPlayer.getPlayerName() + msg.getText("haveBought") + deed.getDeedName();
+                guiController.showMessage(guiMessage); // CAN BE DELETED ONCE IMPLEMENT BORDER AROUND SQUARE*/
             } else {
                 System.out.println("Vil du købe denne grund?");
+                if(!testing){
+                    buying = userInput.nextLine();
+                }
             }
 
             boolean valid = false;
             while(!valid) {
-
-                if(!testing){
-                    buying = userInput.nextLine();
-                }
 
                 if (buying.equals("ja")) {
                     valid = true;
