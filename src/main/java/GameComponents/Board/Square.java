@@ -14,6 +14,8 @@ public abstract class Square {
 
     int groupSize;
 
+    GuiController guiController;
+
     Square(String squareName){
         this.squareName = squareName;
 
@@ -41,6 +43,12 @@ public abstract class Square {
         this.color = color;
         this.groupSize = groupSize;
     }
+
+
+    public void setGuiController(GuiController guiController) {
+        this.guiController = guiController;
+    }
+
 
 }
 

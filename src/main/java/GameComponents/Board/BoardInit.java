@@ -42,8 +42,9 @@ public class BoardInit {
                        rent[j] = valueOf(squareInfo[j+5]);
                     }
 
-                    board[i-1] = new DeedSquare_Buildable(squareInfo[0], valueOf(squareInfo[3]), rent, guiController, valueOf(squareInfo[4]));
+                    board[i-1] = new DeedSquare_Buildable(squareInfo[0], valueOf(squareInfo[3]), rent, valueOf(squareInfo[4]));
                     board[i-1].setLang(msg);
+                    board[i-1].setGuiController(guiController);
 
                 } else if (squareInfo[2].equals(" chance")) {
                     board[i-1] = new ChanceSquare(squareInfo[0], guiController, players);
@@ -58,9 +59,10 @@ public class BoardInit {
                     for(int j = 0 ; j < 4 ; j++) {
                         rent[j] = valueOf(squareInfo[j+5]);
                     }
-                    board[i-1] = new DeedSquare_NonBuildable(squareInfo[0], valueOf(squareInfo[3]), rent, guiController);
+                    board[i-1] = new DeedSquare_NonBuildable(squareInfo[0], valueOf(squareInfo[3]), rent);
                     board[i-1].setLang(msg);
                     board[i-1].setGroup("blue", 4);
+                    board[i-1].setGuiController(guiController);
 
                 } else if  (squareInfo[2].equals(" jail")) {
                     board[i-1] = new JailSquare(squareInfo[0], guiController);
@@ -71,9 +73,10 @@ public class BoardInit {
                     for(int j = 0 ; j < 2 ; j++) {
                         rent[j] = valueOf(squareInfo[j+5]);
                     }
-                    board[i-1] = new DeedSquare_NonBuildable(squareInfo[0], valueOf(squareInfo[3]), rent, guiController);
+                    board[i-1] = new DeedSquare_NonBuildable(squareInfo[0], valueOf(squareInfo[3]), rent);
                     board[i-1].setLang(msg);
                     board[i-1].setGroup("red", 2);
+                    board[i-1].setGuiController(guiController);
 
                 } else if (squareInfo[2].equals(" refuge")) {
                     board[i-1] = new ParkingSquare(squareInfo[0]);

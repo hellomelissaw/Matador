@@ -16,8 +16,8 @@ public class DeedSquare_Buildable extends DeedSquare {
      * @param rent
      * @param guiController The GuiController used throughout the classes.
      */
-    public DeedSquare_Buildable(String deedName, int deedPrice, int[] rent, GuiController guiController, int buildingPrice) {
-        super(deedName, deedPrice, rent, guiController);
+    public DeedSquare_Buildable(String deedName, int deedPrice, int[] rent, int buildingPrice) {
+        super(deedName, deedPrice, rent);
         this.buildingPrice = buildingPrice;
         deed = new Deed_Buildable(deedPrice, rent, deedName, buildingPrice);
 
