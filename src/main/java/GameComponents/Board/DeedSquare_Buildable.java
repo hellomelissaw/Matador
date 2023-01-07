@@ -1,6 +1,4 @@
 package GameComponents.Board;
-
-import Controllers.GuiController;
 import GameComponents.Player;
 
 public class DeedSquare_Buildable extends DeedSquare {
@@ -14,7 +12,6 @@ public class DeedSquare_Buildable extends DeedSquare {
      * @param deedName      name of the Deed for the Square (for example "The Skate Park").
      * @param deedPrice     the price of the deed, both for buying and amount of rent to pay once bought.
      * @param rent
-     * @param guiController The GuiController used throughout the classes.
      */
     public DeedSquare_Buildable(String deedName, int deedPrice, int[] rent, int buildingPrice) {
         super(deedName, deedPrice, rent);
@@ -104,5 +101,9 @@ public class DeedSquare_Buildable extends DeedSquare {
     public void setHasHotel(boolean hasHotel) {
         this.hasHotel = hasHotel;
         deed.setHasHotel(hasHotel);
+    }
+
+    public Player getDeedOwner() {
+        return deed.getOwner();
     }
 }
