@@ -75,4 +75,8 @@ public class DeedSquare_NonBuildable extends DeedSquare {
 
     }
 
+    public Player getDeedOwner() {
+        return deed.getOwner();
+    }
+
 }
