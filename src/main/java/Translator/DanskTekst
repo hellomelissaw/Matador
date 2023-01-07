@@ -3,6 +3,7 @@ welcomeMessage; Velkommen til spillet Monopoly Junior.
 enterPlayerCount; Indtast antallet af spiller (2-4):
 invalidCount; Ugyldig indtastning, indtast venligst et tal mellem 2 og 4 inklusivt.
 enterName; Indtast dit navn, Spiller
+duplicateName; Dette navn er allerede i brug. Venligst vælg et andet navn.
 startGame; Tryk OK til at starte spillet!
 rollDice;, tryk OK til at kaste terningen.
 passStart; MODTAG EN BELØNNING PÅ M2 FORDI DU PASSERER START. Din nye saldo er:
