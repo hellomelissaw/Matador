@@ -4,8 +4,18 @@ import Controllers.GuiController;
 import GameComponents.Player;
 
 public class DeedSquare_NonBuildable extends DeedSquare {
+    Deed_NonBuildable deed;
+    String deedName;
+    int deedPrice;
+    int[] rent;
+    GuiController guiController;
+
     public DeedSquare_NonBuildable(String deedName, int deedPrice, int[] rent, GuiController guiController) {
         super(deedName, deedPrice, rent, guiController);
+        deed = new Deed_NonBuildable(deedPrice, rent, deedName);
+        this.deedName = deedName;
+        this.deedPrice = deedPrice;
+        this.guiController = guiController;
     }
 
     public void landOn(Player currentPlayer) {
@@ -67,4 +77,9 @@ public class DeedSquare_NonBuildable extends DeedSquare {
         }
 
     }
+
+    public void setGroup(boolean testing) {
+      if(deedName.equals"")
+    }
+
 }

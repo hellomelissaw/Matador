@@ -13,14 +13,14 @@ public class DeedSquareTest {
 
     Player[] testPlayers = new Player[2];
     GUI_Player[] testGuiPlayers = new GUI_Player[2];
-    StreetSquare[] testStreetSquare = new StreetSquare[3];
+    DeedSquare_Buildable[] testStreetSquare = new DeedSquare_Buildable[3];
     Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
 
     int startBalance = 7000;
     int[] rent = {50,250,750,2250,4000,6000};
     public DeedSquareTest() {
         for(int i = 0; i < testStreetSquare.length - 1 ; i++) {
-            testStreetSquare[i] = new StreetSquare("TestDeedSquare" + i, 1200, 1000, rent, guiController);
+            testStreetSquare[i] = new DeedSquare_Buildable("TestDeedSquare" + i, 1200, 1000, rent, guiController);
             testStreetSquare[i].setLang(msg);
             testStreetSquare[i].setColor("purple");
         }

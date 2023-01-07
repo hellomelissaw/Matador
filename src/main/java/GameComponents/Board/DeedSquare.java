@@ -36,19 +36,6 @@ public abstract class DeedSquare extends Square{
         buying = answer;
     }
 
-    public void setGroup(boolean testing) {
-        deed.setColor(color);
-        if (color.equals("purple")) {
-            deed.setGroupSize(2);
-        } else {
-            if (testing) {
-                deed.setGroupSize(1);
-            } else {
-                deed.setGroupSize(3);
-            }
-        }
-    }
-
 
     public boolean hasDeed(){ // Checks if the square has a deed available to buy or if it's already sold
         return sellDeed;
