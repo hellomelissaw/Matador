@@ -164,7 +164,7 @@ public class GameController {
                 squares[newPosition].landOn(players[i]);
 
 
-                    if(players[i].isBankrupt() == true) {
+                   if(players[i].isBankrupt()) {
                         gameOver = true;
                         String winnerName = players[i].winner(players) + " ";
                         msg.printText("gameOver", winnerName);
