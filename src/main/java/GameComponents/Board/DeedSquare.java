@@ -43,17 +43,6 @@ public abstract class DeedSquare extends Square{
         return sellDeed;
     }
 
-    public void setDeedOwner(Player currentPlayer, int deedIndex){
-        sellDeed = false ;
-        deed.setOwner(currentPlayer);
-        if (guiOn) {guiController.setOwnerName(currentPlayer, deedIndex); }
-
-    }
-
-    public Player getDeedOwner() {
-        return deed.getOwner();
-    }
-
     @Override
     public String toString() {
         String priceString = Integer.toString(deedPrice);
