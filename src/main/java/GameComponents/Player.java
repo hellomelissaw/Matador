@@ -81,7 +81,7 @@ public class Player {
      * @return index of the Square that the Player is moved to after throwing dice
      */
     public void updatePosition(int distance) {
-        boolean getStartMoney = true;
+        boolean getStartMoney = false;
         int currentPos = squareIndex;
         if(currentPos == 30 || currentPos == 0) {getStartMoney = false;}
 
@@ -99,6 +99,7 @@ public class Player {
 
                 } else {
                     squareIndex = 0;
+                    getStartMoney = true;
                 }
             }
         }
