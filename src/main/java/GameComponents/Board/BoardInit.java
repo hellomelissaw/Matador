@@ -53,12 +53,12 @@ public class BoardInit {
                     board[i-1] = new TaxSquare(squareInfo[0], guiController, players);
                     board[i-1].setLang(msg);
 
-                } else if (squareInfo[2].equals(" ferry")) {
+                } else if (squareInfo[2].equals(" ferry" )) {
                     int[] rent = new int[4];
                     for(int j = 0 ; j < 4 ; j++) {
                         rent[j] = valueOf(squareInfo[j+5]);
                     }
-                    board[i-1] = new FerrySquare(squareInfo[0], valueOf(squareInfo[3]), rent, guiController);
+                    board[i-1] = new DeedSquare_NonBuildable(squareInfo[0], valueOf(squareInfo[3]), rent, guiController);
                     board[i-1].setLang(msg);
 
                 } else if  (squareInfo[2].equals(" jail")) {
@@ -70,7 +70,7 @@ public class BoardInit {
                     for(int j = 0 ; j < 2 ; j++) {
                         rent[j] = valueOf(squareInfo[j+5]);
                     }
-                    board[i-1] = new BrewerySquare(squareInfo[0], valueOf(squareInfo[3]), rent, guiController);
+                    board[i-1] = new DeedSquare_NonBuildable(squareInfo[0], valueOf(squareInfo[3]), rent, guiController);
                     board[i-1].setLang(msg);
 
                 } else if (squareInfo[2].equals(" refuge")) {
