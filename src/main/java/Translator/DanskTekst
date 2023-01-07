@@ -1,7 +1,7 @@
 label; message
 welcomeMessage; Velkommen til spillet Monopoly Junior.
-enterPlayerCount; Indtast antallet af spiller (2-4):
-invalidCount; Ugyldig indtastning, indtast venligst et tal mellem 2 og 4 inklusivt.
+enterPlayerCount; Indtast antallet af spiller (3-6):
+invalidCount; Ugyldig indtastning, indtast venligst et tal mellem 3 og 6 inklusivt.
 enterName; Indtast dit navn, Spiller
 duplicateName; Dette navn er allerede i brug. Venligst vælg et andet navn.
 startGame; Tryk OK til at starte spillet!
