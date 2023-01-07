@@ -81,7 +81,7 @@ public class Player {
     public void updatePosition(int distance) {
         boolean getStartMoney = true;
         int currentPos = squareIndex;
-        if(currentPos == 30) {getStartMoney = false;}
+        if(currentPos == 30 || currentPos == 0) {getStartMoney = false;}
 
         for(int i = 0; i < Math.abs(distance); i++) {
             if (distance < 0) {
@@ -99,11 +99,12 @@ public class Player {
                     squareIndex = 0;
                 }
             }
-                if (getStartMoney) {
-                    msg.printText("passStart", "na");
-                    playerAccount.deposit(4000);
-                }
-            }
+        }
+
+        if (getStartMoney) {
+            msg.printText("passStart", "na");
+            playerAccount.deposit(4000);
+        }
             if(!testing){ if(guiOn) { guiController.move(guiPlayer, currentPos, squareIndex); }}
         }
 
