@@ -13,24 +13,24 @@ public class DeedSquareTest {
 
     Player[] testPlayers = new Player[2];
     GUI_Player[] testGuiPlayers = new GUI_Player[2];
-    DeedSquare[] testDeedSquare = new DeedSquare[3];
+    StreetSquare[] testStreetSquare = new StreetSquare[3];
     Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
 
     int startBalance = 7000;
     int[] rent = {50,250,750,2250,4000,6000};
     public DeedSquareTest() {
-        for(int i = 0 ; i < testDeedSquare.length - 1 ; i++) {
-            testDeedSquare[i] = new DeedSquare("TestDeedSquare" + i, 1200, 1000, rent, guiController);
-            testDeedSquare[i].setLang(msg);
-            testDeedSquare[i].setColor("purple");
+        for(int i = 0; i < testStreetSquare.length - 1 ; i++) {
+            testStreetSquare[i] = new StreetSquare("TestDeedSquare" + i, 1200, 1000, rent, guiController);
+            testStreetSquare[i].setLang(msg);
+            testStreetSquare[i].setColor("purple");
         }
 
-        testDeedSquare[2] = new DeedSquare("TestDeedSquare 3 " , 1200, 1000, rent, guiController);
-        testDeedSquare[2].setLang(msg);
-        testDeedSquare[2].setColor("blue");
+        testStreetSquare[2] = new StreetSquare("TestDeedSquare 3 " , 1200, 1000, rent, guiController);
+        testStreetSquare[2].setLang(msg);
+        testStreetSquare[2].setColor("blue");
 
-        for(int i = 0 ; i < testDeedSquare.length; i++) {
-            testDeedSquare[i].setGroup(true);
+        for(int i = 0; i < testStreetSquare.length; i++) {
+            testStreetSquare[i].setGroup(true);
         }
 
         testPlayers[0] = new Player("TestPlayer 1");
@@ -48,61 +48,61 @@ public class DeedSquareTest {
 
     @Test
     public void cannotBuyHouseBecauseNotEnoughMoney() {
-        testDeedSquare[2].testing(true,"ja");
-        testDeedSquare[2].landOn(testPlayers[0]);
+        testStreetSquare[2].testing(true,"ja");
+        testStreetSquare[2].landOn(testPlayers[0]);
         testPlayers[0].withdrawMoney(startBalance-1200);
 
-        DeedSquare[] lotsToBuildOn = {testDeedSquare[2]};
+        StreetSquare[] lotsToBuildOn = {testStreetSquare[2]};
         testPlayers[0].buyHouse(lotsToBuildOn, 1);
-        assertEquals(0, testDeedSquare[0].getHouseCount());
+        assertEquals(0, testStreetSquare[0].getHouseCount());
     }
     @Test
     public void cannotBuyHouseBecauseNotOwnerOfLotGroup() {
-        DeedSquare[] lotsToBuildOn = {testDeedSquare[0]};
+        StreetSquare[] lotsToBuildOn = {testStreetSquare[0]};
         testPlayers[0].buyHouse(lotsToBuildOn, 1);
 
-        assertEquals(0, testDeedSquare[0].getHouseCount());
+        assertEquals(0, testStreetSquare[0].getHouseCount());
     }
 
     @Test
     public void buyHotelForDeedSquare() {
-        testDeedSquare[2].testing(true,"ja");
-        testDeedSquare[2].landOn(testPlayers[0]);
-        DeedSquare[] lotsToBuildOn = {testDeedSquare[2]};
+        testStreetSquare[2].testing(true,"ja");
+        testStreetSquare[2].landOn(testPlayers[0]);
+        StreetSquare[] lotsToBuildOn = {testStreetSquare[2]};
         testPlayers[0].buyHouse(lotsToBuildOn, 4);
         testPlayers[0].buyHotel(lotsToBuildOn);
 
-        assertTrue(testDeedSquare[2].hasHotel());
+        assertTrue(testStreetSquare[2].hasHotel());
     }
 
     @Test
     public void errorMsgCannotBuyHotel() {
-        testDeedSquare[2].testing(true,"ja");
-        testDeedSquare[2].landOn(testPlayers[0]);
-        DeedSquare[] lotsToBuildOn = {testDeedSquare[2]};
+        testStreetSquare[2].testing(true,"ja");
+        testStreetSquare[2].landOn(testPlayers[0]);
+        StreetSquare[] lotsToBuildOn = {testStreetSquare[2]};
         testPlayers[0].buyHotel(lotsToBuildOn);
 
-        assertFalse(testDeedSquare[2].hasHotel);
+        assertFalse(testStreetSquare[2].hasHotel);
     }
 
     @Test
     public void cannotBuyHotelBecauseLackOfFunds() {
         testPlayers[0].withdrawMoney(1000);
-        testDeedSquare[2].testing(true,"ja");
-        testDeedSquare[2].landOn(testPlayers[0]);
-        DeedSquare[] lotsToBuildOn = {testDeedSquare[2]};
+        testStreetSquare[2].testing(true,"ja");
+        testStreetSquare[2].landOn(testPlayers[0]);
+        StreetSquare[] lotsToBuildOn = {testStreetSquare[2]};
         testPlayers[0].buyHouse(lotsToBuildOn, 4);
         testPlayers[0].buyHotel(lotsToBuildOn);
 
-        assertFalse(testDeedSquare[0].hasHotel);
+        assertFalse(testStreetSquare[0].hasHotel);
     }
 
     @Test
     public void ownerHasNoHousesReceives50InRent() {
-        testDeedSquare[2].testing(true,"ja");
-        testDeedSquare[2].landOn(testPlayers[0]);
+        testStreetSquare[2].testing(true,"ja");
+        testStreetSquare[2].landOn(testPlayers[0]);
 
-        testDeedSquare[2].landOn(testPlayers[1]);
+        testStreetSquare[2].landOn(testPlayers[1]);
 
         assertEquals(startBalance-50,testPlayers[1].getCurrentBalance());
     }
@@ -110,73 +110,73 @@ public class DeedSquareTest {
     @Test
     public void ownerHas1HouseReceives250InRent() {
 
-        testDeedSquare[2].testing(true,"ja");
-        testDeedSquare[2].landOn(testPlayers[0]);
-        DeedSquare[] lotsToBuildOn = {testDeedSquare[2]};
+        testStreetSquare[2].testing(true,"ja");
+        testStreetSquare[2].landOn(testPlayers[0]);
+        StreetSquare[] lotsToBuildOn = {testStreetSquare[2]};
         testPlayers[0].buyHouse(lotsToBuildOn, 1);
 
-        testDeedSquare[2].landOn(testPlayers[1]);
+        testStreetSquare[2].landOn(testPlayers[1]);
 
         assertEquals(startBalance-250,testPlayers[1].getCurrentBalance());
     }
 
     @Test
     public void ownerHas2HousesReceives750InRent() {
-        testDeedSquare[2].testing(true,"ja");
-        testDeedSquare[2].landOn(testPlayers[0]);
-        DeedSquare[] lotsToBuildOn = {testDeedSquare[2]};
+        testStreetSquare[2].testing(true,"ja");
+        testStreetSquare[2].landOn(testPlayers[0]);
+        StreetSquare[] lotsToBuildOn = {testStreetSquare[2]};
         testPlayers[0].buyHouse(lotsToBuildOn, 2);
 
-        testDeedSquare[2].landOn(testPlayers[1]);
+        testStreetSquare[2].landOn(testPlayers[1]);
 
         assertEquals(startBalance-750,testPlayers[1].getCurrentBalance());
     }
 
     @Test
     public void ownerHas3HousesReceives2250InRent() {
-        testDeedSquare[2].testing(true,"ja");
-        testDeedSquare[2].landOn(testPlayers[0]);
-        DeedSquare[] lotsToBuildOn = {testDeedSquare[2]};
+        testStreetSquare[2].testing(true,"ja");
+        testStreetSquare[2].landOn(testPlayers[0]);
+        StreetSquare[] lotsToBuildOn = {testStreetSquare[2]};
         testPlayers[0].buyHouse(lotsToBuildOn, 3);
 
-        testDeedSquare[2].landOn(testPlayers[1]);
+        testStreetSquare[2].landOn(testPlayers[1]);
 
         assertEquals(startBalance-2250,testPlayers[1].getCurrentBalance());
     }
 
     @Test
     public void ownerHas4HousesReceives4000InRent() {
-        testDeedSquare[2].testing(true,"ja");
-        testDeedSquare[2].landOn(testPlayers[0]);
-        DeedSquare[] lotsToBuildOn = {testDeedSquare[2]};
+        testStreetSquare[2].testing(true,"ja");
+        testStreetSquare[2].landOn(testPlayers[0]);
+        StreetSquare[] lotsToBuildOn = {testStreetSquare[2]};
         testPlayers[0].buyHouse(lotsToBuildOn, 4);
 
-        testDeedSquare[2].landOn(testPlayers[1]);
+        testStreetSquare[2].landOn(testPlayers[1]);
 
         assertEquals(startBalance-4000,testPlayers[1].getCurrentBalance());
     }
 
     @Test
     public void playerChoosesToBuyLot(){
-        testDeedSquare[0].testing(true,"ja");
-        testDeedSquare[0].landOn(testPlayers[0]);
-        assertFalse(testDeedSquare[0].hasDeed());
-        assertEquals(testPlayers[0],testDeedSquare[0].getDeedOwner());
+        testStreetSquare[0].testing(true,"ja");
+        testStreetSquare[0].landOn(testPlayers[0]);
+        assertFalse(testStreetSquare[0].hasDeed());
+        assertEquals(testPlayers[0], testStreetSquare[0].getDeedOwner());
     }
 
     @Test
     public void playerChoosesNotToBuyLot(){
-        testDeedSquare[0].testing(true,"nej");
-        testDeedSquare[0].landOn(testPlayers[0]);
-        assertTrue(testDeedSquare[0].hasDeed());
-        assertNull(testDeedSquare[0].getDeedOwner());
+        testStreetSquare[0].testing(true,"nej");
+        testStreetSquare[0].landOn(testPlayers[0]);
+        assertTrue(testStreetSquare[0].hasDeed());
+        assertNull(testStreetSquare[0].getDeedOwner());
     }
 
     @Test
     public void playerHasTestDeedSquare1DeedInCardholder(){
         boolean hasDeed = false;
-        testPlayers[0].takeCard("deed", testDeedSquare[0].getDeed());
-        testPlayers[0].takeCard("deed", testDeedSquare[1].getDeed());
+        testPlayers[0].takeCard("deed", testStreetSquare[0].getDeed());
+        testPlayers[0].takeCard("deed", testStreetSquare[1].getDeed());
         Deed[] deedList = testPlayers[0].getDeedList();
         for(int i = 0 ; i < deedList.length ; i++) {
             if (deedList[i].getDeedName().equals("TestDeedSquare0")) {
@@ -189,59 +189,59 @@ public class DeedSquareTest {
     }
     @Test
     public void playerHasAllLotsOfSameColour(){
-        testPlayers[0].takeCard("deed", testDeedSquare[0].getDeed());
-        testPlayers[0].takeCard("deed", testDeedSquare[1].getDeed());
+        testPlayers[0].takeCard("deed", testStreetSquare[0].getDeed());
+        testPlayers[0].takeCard("deed", testStreetSquare[1].getDeed());
 
-        assertTrue(testDeedSquare[0].ownsGroup(testPlayers[0]));
+        assertTrue(testStreetSquare[0].ownsGroup(testPlayers[0]));
     }
 
     @Test
     public void playerDoesNotHaveAllLotsOfSameColour(){
-        testPlayers[0].takeCard("deed", testDeedSquare[0].getDeed());
+        testPlayers[0].takeCard("deed", testStreetSquare[0].getDeed());
 
-        assertFalse(testDeedSquare[0].ownsGroup(testPlayers[0]));
+        assertFalse(testStreetSquare[0].ownsGroup(testPlayers[0]));
     }
 
     @Test
     public void playerCannotBuildSecondHouseBecauseNoHouseOnOtherLotInGroup() {
-        testDeedSquare[0].testing(true,"ja");
-        testDeedSquare[0].landOn(testPlayers[0]);
-        testDeedSquare[1].testing(true,"ja");
-        testDeedSquare[1].landOn(testPlayers[0]);
+        testStreetSquare[0].testing(true,"ja");
+        testStreetSquare[0].landOn(testPlayers[0]);
+        testStreetSquare[1].testing(true,"ja");
+        testStreetSquare[1].landOn(testPlayers[0]);
 
-        DeedSquare[] lotToBuildOn = {testDeedSquare[0]};
+        StreetSquare[] lotToBuildOn = {testStreetSquare[0]};
         testPlayers[0].buyHouse(lotToBuildOn,2);
 
-        assertEquals(1, testDeedSquare[0].getHouseCount());
+        assertEquals(1, testStreetSquare[0].getHouseCount());
     }
 
     @Test
     public void playerBuilds1HouseOnTestDeedSquare0And1() {
-        testDeedSquare[0].testing(true,"ja");
-        testDeedSquare[0].landOn(testPlayers[0]);
-        testDeedSquare[1].testing(true,"ja");
-        testDeedSquare[1].landOn(testPlayers[0]);
+        testStreetSquare[0].testing(true,"ja");
+        testStreetSquare[0].landOn(testPlayers[0]);
+        testStreetSquare[1].testing(true,"ja");
+        testStreetSquare[1].landOn(testPlayers[0]);
 
-        DeedSquare[] lotsToBuildOn = {testDeedSquare[0], testDeedSquare[1]};
+        StreetSquare[] lotsToBuildOn = {testStreetSquare[0], testStreetSquare[1]};
         testPlayers[0].buyHouse(lotsToBuildOn,1);
 
-        assertEquals(1, testDeedSquare[0].getHouseCount());
-        assertEquals(1, testDeedSquare[1].getHouseCount());
+        assertEquals(1, testStreetSquare[0].getHouseCount());
+        assertEquals(1, testStreetSquare[1].getHouseCount());
     }
 
     @Test
     public void playerBuilds2HousesOnTestDeedSquare0And1() {
         testPlayers[0].depositMoney(2000);
-        testDeedSquare[0].testing(true,"ja");
-        testDeedSquare[0].landOn(testPlayers[0]);
-        testDeedSquare[1].testing(true,"ja");
-        testDeedSquare[1].landOn(testPlayers[0]);
+        testStreetSquare[0].testing(true,"ja");
+        testStreetSquare[0].landOn(testPlayers[0]);
+        testStreetSquare[1].testing(true,"ja");
+        testStreetSquare[1].landOn(testPlayers[0]);
 
-        DeedSquare[] lotsToBuildOn = {testDeedSquare[0], testDeedSquare[1]};
+        StreetSquare[] lotsToBuildOn = {testStreetSquare[0], testStreetSquare[1]};
         testPlayers[0].buyHouse(lotsToBuildOn,2);
 
-        assertEquals(2, testDeedSquare[0].getHouseCount());
-        assertEquals(2, testDeedSquare[1].getHouseCount());
+        assertEquals(2, testStreetSquare[0].getHouseCount());
+        assertEquals(2, testStreetSquare[1].getHouseCount());
     }
 
 }

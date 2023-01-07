@@ -4,7 +4,7 @@ import GameComponents.Player;
 
 import java.util.Scanner;
 
-public abstract class DeedSquare extends Square{
+public class StreetSquare extends DeedSquare{
     boolean guiOn = true;
     boolean testing = false;
     String buying;
@@ -15,6 +15,8 @@ public abstract class DeedSquare extends Square{
     int buildingPrice;
     GuiController guiController;
     boolean ownsGroup = false;
+    int houseCount;
+    boolean hasHotel = false;
     int[] rent;
     Scanner userInput = new Scanner(System.in);
 
@@ -25,10 +27,11 @@ public abstract class DeedSquare extends Square{
      * @param deedPrice the price of the deed, both for buying and amount of rent to pay once bought.
      * @param guiController The GuiController used throughout the classes.
      */
-    public DeedSquare(String deedName, int deedPrice, int[] rent, GuiController guiController) {
-        super(deedName);
+    public StreetSquare(String deedName, int deedPrice, int[] rent, GuiController guiController, int buildingPrice) {
+        super(deedName, deedPrice, rent, guiController);
         this.deed = new Deed(deedPrice, buildingPrice, rent, deedName);
         this.deedPrice = deedPrice;
+        this.buildingPrice = buildingPrice;
         this.rent = rent;
         if(guiOn){
             this.guiController = guiController;
@@ -57,11 +60,11 @@ public abstract class DeedSquare extends Square{
         return deed;
     }
 
-    public boolean hasDeed(){ // Checks if the square has a deed available to buy or if it's already sold
+   public boolean hasDeed(){ // Checks if the square has a deed available to buy or if it's already sold
         return sellDeed;
     }
 
-    public void setDeedOwner(Player currentPlayer, int deedIndex){
+   public void setDeedOwner(Player currentPlayer, int deedIndex){
         sellDeed = false ;
         deed.setOwner(currentPlayer);
         if (guiOn) {guiController.setOwnerName(currentPlayer, deedIndex); }
@@ -73,7 +76,7 @@ public abstract class DeedSquare extends Square{
     }
 
     public void setDeedToFree() {
-        freeDeed = true;
+       freeDeed = true;
     }
 
     @Override
@@ -122,7 +125,7 @@ public abstract class DeedSquare extends Square{
             }
 
         } else {
-            Player deedOwner = deed.getOwner();
+           Player deedOwner = deed.getOwner();
             if (currentPlayer==deedOwner) {
                 msg.printText("ownerOfDeed", "na");
 
@@ -142,7 +145,7 @@ public abstract class DeedSquare extends Square{
 
 
     public boolean ownsGroup(Player currentPlayer) {
-        ownsGroup = currentPlayer.IsGroupOwner(color);
+       ownsGroup = currentPlayer.IsGroupOwner(color);
         return ownsGroup;
     }
 
@@ -157,12 +160,12 @@ public abstract class DeedSquare extends Square{
     }
 
     public void setHouseCount(int count) {
-        houseCount = count;
-        deed.setHouseCount(count);
+       houseCount = count;
+       deed.setHouseCount(count);
     }
 
     public void setHasHotel(boolean hasHotel) {
-        this.hasHotel = hasHotel;
-        deed.setHasHotel(hasHotel);
+       this.hasHotel = hasHotel;
+       deed.setHasHotel(hasHotel);
     }
 }

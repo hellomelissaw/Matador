@@ -29,8 +29,8 @@ public class CardDeed_stub extends ChanceCard {
         if (color1 == "na") {
             index = 10;
             selectedSquare = board[index];
-            if(((DeedSquare)selectedSquare).hasDeed()){
-                ((DeedSquare)selectedSquare).setDeedToFree();
+            if(((StreetSquare)selectedSquare).hasDeed()){
+                ((StreetSquare)selectedSquare).setDeedToFree();
             }
 
         } else {
@@ -48,8 +48,8 @@ public class CardDeed_stub extends ChanceCard {
                 }
             }
 
-            if(((DeedSquare)selectedSquare).hasDeed()){
-                ((DeedSquare)selectedSquare).setDeedToFree();
+            if(((StreetSquare)selectedSquare).hasDeed()){
+                ((StreetSquare)selectedSquare).setDeedToFree();
             }
             for(int i = 0; i < board.length ; i++) {
                 if (selectedSquare.getSquareName() == board[i].getSquareName()) {

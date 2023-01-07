@@ -42,7 +42,7 @@ public class BoardInit {
                        rent[j] = valueOf(squareInfo[j+5]);
                     }
 
-                    board[i-1] = new DeedSquare(squareInfo[0], valueOf(squareInfo[3]), valueOf(squareInfo[4]), rent, guiController);
+                    board[i-1] = new StreetSquare(squareInfo[0], valueOf(squareInfo[3]), valueOf(squareInfo[4]), rent, guiController);
                     board[i-1].setLang(msg);
 
                 } else if (squareInfo[2].equals(" chance")) {

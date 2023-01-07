@@ -2,7 +2,7 @@ package GameComponents;
 
 import Controllers.GuiController;
 import GameComponents.Board.Deed;
-import GameComponents.Board.DeedSquare;
+import GameComponents.Board.StreetSquare;
 import gui_fields.GUI_Player;
 import Translator.Text;
 
@@ -161,7 +161,7 @@ public class Player {
         return deedList;
     }
 
-    public void buyHouse(DeedSquare[] lotsToBuildOn, int housesToBuy) {
+    public void buyHouse(StreetSquare[] lotsToBuildOn, int housesToBuy) {
         Deed[] deedsToBuildOn = new Deed[lotsToBuildOn.length];
         for(int i = 0; i < lotsToBuildOn.length; i++) {
             deedsToBuildOn[i] = lotsToBuildOn[i].getDeed();
@@ -200,7 +200,7 @@ public class Player {
         }
     }
 
-    public void buyHotel(DeedSquare[] lotsToBuildOn) {
+    public void buyHotel(StreetSquare[] lotsToBuildOn) {
         for (int i = 0; i < lotsToBuildOn.length; i++) {
             Deed deed = lotsToBuildOn[i].getDeed();
             int houseCount = lotsToBuildOn[i].getHouseCount();
