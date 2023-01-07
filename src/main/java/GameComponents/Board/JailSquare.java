@@ -26,15 +26,15 @@ public class JailSquare extends Square{
         Scanner scan = new Scanner(System.in);
 
         //The player get moved to jail square and visit jail square
-        if(currentPosition==31);
+        if(currentPosition==31)
         {
         msg.printText("moveToJail", "na");
         currentPlayer.updatePosition(20);
 
-        }else
-        System.out.println(msg.getText("visitJail"));
+        }
+        else
         {
-
+            System.out.println(msg.getText("visitJail"));
         }
         //They get the opportunity to pay a 1000 $ fine to leave jail, you choose whether to try your luck with dice rolling or immediately paying.
         System.out.println("Would you like to pay a fine to leave jail. Enter: Yes or No?");
@@ -51,20 +51,26 @@ public class JailSquare extends Square{
 
 
         //The player chooses not to pay bail and is instead betting on rolling the dice
-        }
-        else
-            System.out.println("You have chosen to try your luck instead!");
+        }else
         {
+            System.out.println("You have chosen to try your luck instead!");
+        }
+    }
+
+}
 
 
-         ;
-            //If they land on visit jail, the player gets a round where they have a break
-        // }else{
-        //System.out.println(msg.getText("visitJail"));
 
 
-        //If the player while in prison rolls the dice of the same value, they get an extra as well as leaving prison
-      //  while(currentPosition==31);
+
+
+
+
+
+
+//If the player while in prison rolls the dice of the same value, they get an extra as well as leaving prison
+            //while(currentPosition==31)
+
         //if (d1==d2){
           //  System.out.println("Lucky shark, you get to leave jail and get an extra turn!");
           //  i = i + 1;
@@ -83,7 +89,3 @@ public class JailSquare extends Square{
         //If they land on visit jail, the player gets a round where they have a break
        // }else{
          //   System.out.println(msg.getText("visitJail"));
-        }
-    }
-
-}

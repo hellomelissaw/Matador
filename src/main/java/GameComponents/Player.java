@@ -14,6 +14,10 @@ public class Player {
     GuiController guiController;
     GUI_Player guiPlayer;
 
+    private boolean inJail = false;
+
+    int counter = 0;
+
     Text msg;
     private int squareIndex = 0;
     private String playerName;
@@ -111,6 +115,25 @@ public class Player {
         return playerAccount.getAccountStatus();
 
     }
+    public void moveToJail(){
+        inJail = true;
+
+    }
+    public void moveOutJail(){
+        inJail = false;
+
+    }
+    public boolean isInJail(){
+        return inJail;
+    }
+    public int jailCounter(){
+        return counter;
+    }
+
+    public void jailIncrement(){
+        counter = counter + 1;
+
+    }
     @Override
     public String toString() {
         return playerName;
@@ -127,6 +150,7 @@ public class Player {
         }
         return winnerName;
     }
+
 
 }
 
