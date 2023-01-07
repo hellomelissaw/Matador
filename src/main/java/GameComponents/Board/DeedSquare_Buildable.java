@@ -20,7 +20,6 @@ public class DeedSquare_Buildable extends DeedSquare {
     public DeedSquare_Buildable(String deedName, int deedPrice, int[] rent, GuiController guiController, int buildingPrice) {
         super(deedName, deedPrice, rent, guiController);
         this.deed = new DeedBuildable(deedPrice, rent, deedName, buildingPrice);
-        this.deedPrice = deedPrice;
         this.buildingPrice = buildingPrice;
     }
 
@@ -86,6 +85,7 @@ public class DeedSquare_Buildable extends DeedSquare {
     public Deed getDeed() {
         return deed;
     }
+
 
     public int getHouseCount(){
         return houseCount;

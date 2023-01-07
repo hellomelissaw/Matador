@@ -27,6 +27,7 @@ public abstract class DeedSquare extends Square{
      */
     public DeedSquare(String deedName, int deedPrice, int[] rent, GuiController guiController) {
         super(deedName);
+        this.deedPrice = deedPrice;
         this.rent = rent;
         if(guiOn){
             this.guiController = guiController;

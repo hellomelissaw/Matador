@@ -14,9 +14,7 @@ public class DeedSquare_NonBuildable extends DeedSquare {
     public DeedSquare_NonBuildable(String deedName, int deedPrice, int[] rent, GuiController guiController) {
         super(deedName, deedPrice, rent, guiController);
         deed = new Deed_NonBuildable(deedPrice, rent, deedName);
-        this.deedName = deedName;
-        this.deedPrice = deedPrice;
-        this.guiController = guiController;
+
     }
 
     public void landOn(Player currentPlayer) {
