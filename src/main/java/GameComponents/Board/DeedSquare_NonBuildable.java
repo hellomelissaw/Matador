@@ -47,7 +47,7 @@ public class DeedSquare_NonBuildable extends DeedSquare {
                     if (guiOn) {
                         guiController.setOwnerName(currentPlayer, currentPlayer.getPosition());
                     }
-                    System.out.println("Made it through the whole if statement");
+
                 } else if (!(buying.equals("ja") || buying.equals("nej"))) {
                     System.out.println("Ugyldigt svar. Indtast venligst ja eller nej");
 
@@ -64,7 +64,7 @@ public class DeedSquare_NonBuildable extends DeedSquare {
 
             } else {
 
-                msg.printText("payRent", "na");
+                msg.printText("payRent", deedOwner.getPlayerName());
                 int rentPrice;
 
                 currentPlayer.withdrawMoney(rent[0]); //TO DO: CHECK IF PLAYER OWNS OTHER LOTS IN GROUP TO CHANGE RENT
