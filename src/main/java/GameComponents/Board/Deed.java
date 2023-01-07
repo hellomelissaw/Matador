@@ -2,11 +2,10 @@ package GameComponents.Board;
 
 import GameComponents.Player;
 
-public class Deed {
+public abstract class Deed {
     Player owner;
     int[] rent;
     int deedPrice;
-    int buildingPrice;
     String deedName;
     String color;
     int groupSize;
@@ -22,10 +21,9 @@ public class Deed {
      * @param deedName  name of the Deed (For example "The Skate Park")
      * @param color
      */
-    public Deed(int deedPrice, int buildingPrice, int[] rent, String deedName){
+    public Deed(int deedPrice, int[] rent, String deedName){
 
         this.deedPrice = deedPrice;
-        this.buildingPrice = buildingPrice;
         this.rent = rent;
         this.deedName = deedName;
         //this.color = color;
@@ -60,19 +58,4 @@ public class Deed {
         this.color = color;
     }
 
-    public void setHouseCount(int houseCount) {
-        this.houseCount = houseCount;
-    }
-
-    public int getHouseCount() {
-        return houseCount;
-    }
-
-    public int getBuildingPrice() {
-        return buildingPrice;
-    }
-
-    public void setHasHotel(boolean hasHotel) {
-        this.hasHotel = hasHotel;
-    }
 }

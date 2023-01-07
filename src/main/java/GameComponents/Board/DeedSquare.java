@@ -8,7 +8,6 @@ public abstract class DeedSquare extends Square{
     boolean guiOn = true;
     boolean testing = false;
     String buying;
-    Deed deed;
     boolean sellDeed = true;
     boolean freeDeed = false;
     int deedPrice;
@@ -50,9 +49,6 @@ public abstract class DeedSquare extends Square{
         }
     }
 
-    public Deed getDeed() {
-        return deed;
-    }
 
     public boolean hasDeed(){ // Checks if the square has a deed available to buy or if it's already sold
         return sellDeed;
@@ -67,10 +63,6 @@ public abstract class DeedSquare extends Square{
 
     public Player getDeedOwner() {
         return deed.getOwner();
-    }
-
-    public void setDeedToFree() {
-        freeDeed = true;
     }
 
     @Override
