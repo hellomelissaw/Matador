@@ -16,6 +16,8 @@ public abstract class DeedSquare extends Square{
     int[] rent;
     Scanner userInput = new Scanner(System.in);
 
+    int groupSize;
+
 
     /**
      * Constructs a Square of type DeedSquare (ownable Square)
@@ -65,5 +67,6 @@ public abstract class DeedSquare extends Square{
         ownsGroup = currentPlayer.IsGroupOwner(color);
         return ownsGroup;
     }
+
 
 }

@@ -12,6 +12,8 @@ public abstract class Square {
 
     String color;
 
+    int groupSize;
+
     Square(String squareName){
         this.squareName = squareName;
 
@@ -34,6 +36,11 @@ public abstract class Square {
     }
 
     public String getColor() { return color;}
+
+    public void setGroup(String color, int groupSize) {
+        this.color = color;
+        this.groupSize = groupSize;
+    }
 
 }
 

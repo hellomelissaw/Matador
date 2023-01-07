@@ -60,6 +60,7 @@ public class BoardInit {
                     }
                     board[i-1] = new DeedSquare_NonBuildable(squareInfo[0], valueOf(squareInfo[3]), rent, guiController);
                     board[i-1].setLang(msg);
+                    board[i-1].setGroup("blue", 4);
 
                 } else if  (squareInfo[2].equals(" jail")) {
                     board[i-1] = new JailSquare(squareInfo[0], guiController);
@@ -72,6 +73,7 @@ public class BoardInit {
                     }
                     board[i-1] = new DeedSquare_NonBuildable(squareInfo[0], valueOf(squareInfo[3]), rent, guiController);
                     board[i-1].setLang(msg);
+                    board[i-1].setGroup("red", 2);
 
                 } else if (squareInfo[2].equals(" refuge")) {
                     board[i-1] = new ParkingSquare(squareInfo[0]);

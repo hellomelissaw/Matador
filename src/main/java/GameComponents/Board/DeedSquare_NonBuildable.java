@@ -10,6 +10,7 @@ public class DeedSquare_NonBuildable extends DeedSquare {
     int[] rent;
     GuiController guiController;
 
+
     public DeedSquare_NonBuildable(String deedName, int deedPrice, int[] rent, GuiController guiController) {
         super(deedName, deedPrice, rent, guiController);
         deed = new Deed_NonBuildable(deedPrice, rent, deedName);
@@ -76,10 +77,6 @@ public class DeedSquare_NonBuildable extends DeedSquare {
             System.out.println("");
         }
 
-    }
-
-    public void setGroup(boolean testing) {
-      if(deedName.equals"")
     }
 
 }
