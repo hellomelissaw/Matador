@@ -1,6 +1,6 @@
 package GameComponents.Board;
 
-public class DeedBuildable extends Deed{
+public class Deed_Buildable extends Deed{
     int buildingPrice;
     /**
      * Constructs a Deed which can be owned by Player
@@ -10,7 +10,7 @@ public class DeedBuildable extends Deed{
      * @param rent
      * @param deedName      name of the Deed (For example "The Skate Park")
      */
-    public DeedBuildable(int deedPrice, int[] rent, String deedName, int buildingPrice) {
+    public Deed_Buildable(int deedPrice, int[] rent, String deedName, int buildingPrice) {
         super(deedPrice, rent, deedName);
         this.buildingPrice = buildingPrice;
     }
