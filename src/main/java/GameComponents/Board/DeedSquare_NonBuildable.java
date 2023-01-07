@@ -5,8 +5,6 @@ import GameComponents.Player;
 
 public class DeedSquare_NonBuildable extends DeedSquare {
     Deed_NonBuildable deed;
-    String deedName;
-    int deedPrice;
     int[] rent;
     GuiController guiController;
 

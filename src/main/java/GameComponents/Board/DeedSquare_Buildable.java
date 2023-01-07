@@ -7,7 +7,6 @@ public class DeedSquare_Buildable extends DeedSquare {
     int buildingPrice;
     int houseCount = 0;
     boolean hasHotel = false;
-
     Deed_Buildable deed;
     /**
      * Constructs a Square of type DeedSquare (ownable Square)
@@ -20,12 +19,12 @@ public class DeedSquare_Buildable extends DeedSquare {
     public DeedSquare_Buildable(String deedName, int deedPrice, int[] rent, GuiController guiController, int buildingPrice) {
         super(deedName, deedPrice, rent, guiController);
         this.buildingPrice = buildingPrice;
-        this.deed = new Deed_Buildable(deedPrice, rent, deedName, buildingPrice);
+        deed = new Deed_Buildable(deedPrice, rent, deedName, buildingPrice);
 
     }
 
 
-    public Deed getDeed() {
+    public Deed_Buildable getDeed() {
         return deed;
     }
 

@@ -5,7 +5,6 @@ import GameComponents.Board.Deed;
 import GameComponents.Board.Deed_Buildable;
 import GameComponents.Board.DeedSquare_Buildable;
 import GameComponents.Board.Deed_NonBuildable;
-import GameComponents.Board.StreetSquare;
 import gui_fields.GUI_Player;
 import Translator.Text;
 
@@ -209,7 +208,7 @@ public class Player {
 
     public void buyHotel(DeedSquare_Buildable[] lotsToBuildOn) {
         for (int i = 0; i < lotsToBuildOn.length; i++) {
-            Deed deed = lotsToBuildOn[i].getDeed();
+            Deed_Buildable deed = lotsToBuildOn[i].getDeed();
             int houseCount = lotsToBuildOn[i].getHouseCount();
             if (houseCount == 4) {
                 int currentBalance = playerAccount.getBalance();
