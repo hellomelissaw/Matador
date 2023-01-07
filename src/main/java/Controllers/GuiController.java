@@ -60,8 +60,8 @@ import java.awt.*;
                new GUI_Street()
 
        };
-
-       this.gui = new GUI(fields,Color.blue);
+        Color back = new Color(64, 153, 255);
+       this.gui = new GUI(fields,back);
 
        gui.getFields()[0].setTitle("START");
        gui.getFields()[0].setBackGroundColor(Color.red);
