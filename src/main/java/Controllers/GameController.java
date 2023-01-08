@@ -17,6 +17,8 @@ public class GameController {
     Text msg;
     int playerCount = 0;
 
+    Bank bank = new Bank();
+
     public void init() {
         boolean testingInit = false;
         if (testingInit){
@@ -72,7 +74,8 @@ public class GameController {
 
                 }
             }
-            balance = 20 - (playerCount - 2) * 2; //SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
+            //balance = 20 - (playerCount - 2) * 2; //SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
+            balance = 30000;
 
             players = new Player[playerCount];
 
@@ -101,6 +104,7 @@ public class GameController {
                 players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
                 players[i].setGui(guiController.createGuiPlayer(players[i]),guiController,msg);
                 players[i].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+                bank.takeMoneyFromBank(balance);
 
 
             }

@@ -4,7 +4,6 @@ public class Bank {
 
     private int gameBalance;
     private int houses;
-
     private int hotels;
 
     public Bank(){
@@ -14,12 +13,11 @@ public class Bank {
 
     }
 
-
-    public void giveMoney (int amount){
+    public void giveMoneyToBank (int amount){
         gameBalance -= amount;
     }
 
-    public void takeMoney (int amount){
+    public void takeMoneyFromBank (int amount){
         gameBalance += amount;
     }
 
