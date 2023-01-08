@@ -44,25 +44,43 @@ public class Account {
         return isBankrupt;
     }
 
-    public void acquireHouse(int acquiredHouses){
+    public void acquireHouse(int acquiredHouses, int price){
+        if(balance > price){
+            houses += acquiredHouses;
+            System.out.println("Du har nu købt " +acquiredHouses + " hus(e)");
+            System.out.println("Der er blevet trukket " + price + "fra din konto");
+            System.out.println("Du har " + balance + "stående på kontoen");
+        }
+        else{
+            System.out.println("Du har ikke nok penge stående på kontoen for at udføre denne handling");
+        }
 
-        houses += acquiredHouses;
     }
+
     public void sellHouses(int soldHouses){
         if(houses <= 0) {
             System.out.println("Du har ingen huse at sælge");
         }
         else if (soldHouses > houses){
-            System.out.println("Du har kun " + houses + "huse du kan sælge. Vælg et andet antal");
+            System.out.println("Du har kun " + houses + " huse du kan sælge. Vælg et andet antal");
         }else {
             houses -= soldHouses;
         }
 
     }
     public void acquireHotel(int acquiredHotels, int price){
+        if(balance > price){
+            balance -= price;
+            hotels += acquiredHotels;
+            System.out.println("Du har nu købt " +acquiredHotels + " hotel(ler)");
+            System.out.println("Der er blevet trukket " + price + "fra din konto");
+            System.out.println("Du har " + balance + "stående på kontoen");
+        }
+        else{
+            System.out.println("Du har ikke nok penge stående på kontoen for at udføre denne handling");
+        }
 
-        hotels += acquiredHotels;
-        balance -= price;
+
     }
     public void sellHotel(int soldHotels, int price){
         if(hotels <= 0) {
@@ -74,7 +92,6 @@ public class Account {
             hotels -= soldHotels;
             balance += price;
         }
-
     }
 
 

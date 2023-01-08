@@ -34,38 +34,33 @@ public class Bank {
         }
         return price;
     }
-    public void sellHouse(int amount, int position){
+    public void sellHouseToBank(int amount, int position){
         int price = priceCalculator(position);
-        gameBalance += (price * amount);
-        houses -= amount;
-
-    }
-    public void sellHotel(int amount, int position){
-        int price = priceCalculator(position);
-        gameBalance += (price * amount);
-        hotels -= amount;
-
-    }
-    public void buyHouse(int amount, int position){
-        int price = priceCalculator(position);
-        gameBalance -= (price * amount);
+        gameBalance -= ((price * 0.5) * amount);
         houses += amount;
 
     }
-    public void buyHotel(int amount, int position){
+    public void sellHotelToBank(int amount, int position){
         int price = priceCalculator(position);
-        gameBalance -= (price * amount);
+        gameBalance -= (((5 * price )* 0.5) * amount);
         hotels += amount;
 
     }
+    public int buyHouseFromBank(int amount, int position){
+        int price = priceCalculator(position);
+        int finalPrice = (price * amount);
+        gameBalance += finalPrice;
+        houses -= amount;
 
+        return finalPrice;
+    }
+    public int buyHotelFromBank(int amount, int position){
+        int price = priceCalculator(position);
+        int finalPrice = ((5 * price) * amount);
+        gameBalance += finalPrice;
+        hotels -= amount;
 
-
-
-
-
-
-
-
+        return finalPrice;
+    }
 
 }
