@@ -34,31 +34,82 @@ public class Bank {
         }
         return price;
     }
-    public void sellHouseToBank(int amount, int position){
+
+    //Use getHouses method from the player and insert into playerHouses
+    //Get player's position or location of the house to determine price
+    public int sellHouseToBank(int amount, int position, int playerHouses){
         int price = priceCalculator(position);
-        gameBalance -= ((price * 0.5) * amount);
+        int finalPrice= (int) ((price * 0.5) * amount);
         houses += amount;
 
-    }
-    public void sellHotelToBank(int amount, int position){
-        int price = priceCalculator(position);
-        gameBalance -= (((5 * price )* 0.5) * amount);
-        hotels += amount;
-
-    }
-    public int buyHouseFromBank(int amount, int position){
-        int price = priceCalculator(position);
-        int finalPrice = (price * amount);
-        gameBalance += finalPrice;
-        houses -= amount;
+        if(playerHouses == 0) {
+            System.out.println("Du har ingen huse at sælge");
+            finalPrice = 0;
+        }
+        else if (amount > playerHouses){
+            System.out.println("Du har kun " + playerHouses + " huse du kan sælge. Vælg et andet antal");
+            finalPrice = 0;
+        }else {
+            houses += amount;
+            gameBalance -= finalPrice;
+        }
 
         return finalPrice;
     }
-    public int buyHotelFromBank(int amount, int position){
+
+    public int sellHotelToBank(int amount, int position, int playerHotels){
+        int price = priceCalculator(position);
+        int finalPrice = (int) (((5 * price )* 0.5) * amount);
+
+        if(playerHotels == 0) {
+            System.out.println("Du har ingen hoteller at sælge");
+            finalPrice = 0;
+        }
+        else if (amount > playerHotels){
+            System.out.println("Du har kun " + playerHotels + " hoteller du kan sælge. Vælg et andet antal");
+            finalPrice = 0;
+        }else {
+            hotels += amount;
+            gameBalance -= finalPrice;
+        }
+
+        return finalPrice;
+
+    }
+    public int buyHouseFromBank(int amount, int position, int playerBalance){
+
+        int price = priceCalculator(position);
+        int finalPrice = (price * amount);
+
+        if(playerBalance > finalPrice){
+            gameBalance += finalPrice;
+            houses -= amount;
+            System.out.println("Du har nu købt " + amount + " hus(e)");
+            System.out.println("Der er blevet trukket " + finalPrice + "fra din konto");
+            System.out.println("Du har " + playerBalance + "stående på kontoen");
+        }
+        else{
+            System.out.println("Du har ikke nok penge stående på kontoen for at udføre denne handling");
+            finalPrice = 0;
+        }
+
+        return finalPrice;
+    }
+    public int buyHotelFromBank(int amount, int position, int playerBalance){
         int price = priceCalculator(position);
         int finalPrice = ((5 * price) * amount);
-        gameBalance += finalPrice;
-        hotels -= amount;
+
+        if(playerBalance > price){
+            gameBalance += finalPrice;
+            hotels -= amount;
+            System.out.println("Du har nu købt " +amount + " hotel(ler)");
+            System.out.println("Der er blevet trukket " + finalPrice + "fra din konto");
+            System.out.println("Du har " +playerBalance+ "stående på kontoen");
+        }
+        else{
+            System.out.println("Du har ikke nok penge stående på kontoen for at udføre denne handling");
+            finalPrice = 0;
+        }
 
         return finalPrice;
     }

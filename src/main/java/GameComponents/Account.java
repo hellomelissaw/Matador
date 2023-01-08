@@ -44,53 +44,48 @@ public class Account {
         return isBankrupt;
     }
 
-    public void acquireHouse(int acquiredHouses, int price){
-        if(balance > price){
+    public int getHouses(){
+        return houses;
+    }
+
+    public int getHotels(){
+        return hotels;
+    }
+
+    public void acquireHouse(int acquiredHouses, int price){ //Price is the returned finalPrice from the buy methods in bank class
+        if (price > 0)
+        {
             houses += acquiredHouses;
-            System.out.println("Du har nu købt " +acquiredHouses + " hus(e)");
-            System.out.println("Der er blevet trukket " + price + "fra din konto");
-            System.out.println("Du har " + balance + "stående på kontoen");
-        }
-        else{
-            System.out.println("Du har ikke nok penge stående på kontoen for at udføre denne handling");
-        }
-
-    }
-
-    public void sellHouses(int soldHouses){
-        if(houses <= 0) {
-            System.out.println("Du har ingen huse at sælge");
-        }
-        else if (soldHouses > houses){
-            System.out.println("Du har kun " + houses + " huse du kan sælge. Vælg et andet antal");
-        }else {
-            houses -= soldHouses;
-        }
-
-    }
-    public void acquireHotel(int acquiredHotels, int price){
-        if(balance > price){
             balance -= price;
-            hotels += acquiredHotels;
-            System.out.println("Du har nu købt " +acquiredHotels + " hotel(ler)");
-            System.out.println("Der er blevet trukket " + price + "fra din konto");
-            System.out.println("Du har " + balance + "stående på kontoen");
-        }
-        else{
-            System.out.println("Du har ikke nok penge stående på kontoen for at udføre denne handling");
-        }
 
+        }
 
     }
-    public void sellHotel(int soldHotels, int price){
-        if(hotels <= 0) {
-            System.out.println("Du har ingen hoteller at sælge");
+
+    //Price is the returned finalPrice from the sell method in bank class
+    //Make sure that soldHouses is the same as amount set in the bank method
+    public void sellHouses(int soldHouses, int price){
+        if (price > 0)
+        {
+            houses -= soldHouses;
+            balance += price;
+
         }
-        else if (soldHotels > hotels){
-            System.out.println("Du har kun " + hotels + "hoteller du kan sælge. Vælg et andet antal");
-        }else {
+    }
+    public void acquireHotel(int acquiredHotels, int price){ //Price is the returned finalPrice from the buy method in bank class
+            if (price > 0)
+            {
+                hotels += acquiredHotels;
+                balance -= price;
+
+            }
+    }
+    public void sellHotel(int soldHotels, int price){ //Price is the returned finalPrice from the sell method in bank class
+        if (price > 0)
+        {
             hotels -= soldHotels;
             balance += price;
+
         }
     }
 
