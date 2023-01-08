@@ -59,11 +59,12 @@ public class Account {
         }
 
     }
-    public void acquireHotel(int acquiredHotels){
+    public void acquireHotel(int acquiredHotels, int price){
 
         hotels += acquiredHotels;
+        balance -= price;
     }
-    public void sellHotel(int soldHotels){
+    public void sellHotel(int soldHotels, int price){
         if(hotels <= 0) {
             System.out.println("Du har ingen hoteller at sælge");
         }
@@ -71,6 +72,7 @@ public class Account {
             System.out.println("Du har kun " + hotels + "hoteller du kan sælge. Vælg et andet antal");
         }else {
             hotels -= soldHotels;
+            balance += price;
         }
 
     }
