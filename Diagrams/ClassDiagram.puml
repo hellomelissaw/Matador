@@ -36,13 +36,6 @@ guiPlayers: GUI_Player[]
 
 }
 
-class LandOnSquare {
-+landOnDeedSquare()
-+landOnStartSquare()
-+landOnJailSquare()
-+landOnParkingSquare()
-}
-
 class Player{
 -PlayerAccount : Account
 -playerName: String
@@ -130,7 +123,7 @@ move(): void
 displayOwnerName(): void
 updateBalance(): void
 receiveRent(): void
-getUserIntiger(): int
+getUserInteger(): int
 getUserString(): String
 setDice(): void
 winner(): String
@@ -147,15 +140,9 @@ class MoveCard {
 
 GameController -up- Game
 
-GuiController -right Game
+GuiController -down- GameController
 
-GameController <-down- LandOnSquare
-
-GuiController -left GameController
-
-LandOnSquare <-down- BoardInit
-
-LandOnSquare <-right- Player
+GameController <-down- BoardInit
 
 BoardInit <|-down- Square
 
