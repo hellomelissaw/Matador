@@ -72,7 +72,7 @@ abstract class Square {
 - name : String
 }
 
-class DeedSquare {
+abstract class DeedSquare {
 deed: Deed()
 deedSold: boolean false
 +hasDeed():boolean
@@ -80,11 +80,21 @@ deedSold: boolean false
 
 }
 
-class Deed {
+class DeedSquare_Buildable {
+
+}
+
+class DeedSquare_NonBuildable {}
+
+abstract class Deed {
 ownerName: Player
 price: int
 
 }
+
+class Deed_Buildable{}
+
+class Deed_NonBuildable{}
 
 class Player {
 name: String
@@ -138,6 +148,8 @@ class MoveCard {
 
 }
 
+class Cardholder {}
+
 GameController -up- Game
 
 GuiController -down- GameController
@@ -148,7 +160,18 @@ BoardInit <|-down- Square
 
 Square <|-down- DeedSquare
 
-DeedSquare <-down- Deed
+DeedSquare <|-down- DeedSquare_Buildable
+
+DeedSquare <|-down- DeedSquare_NonBuildable
+
+DeedSquare_Buildable <-down- Deed
+
+DeedSquare_NonBuildable <-down- Deed
+
+
+Deed <|-down- Deed_Buildable
+
+Deed <|-down- Deed_NonBuildable
 
 Square  <|-down- ChanceSquare
 
@@ -166,11 +189,15 @@ ChanceCard <|-down- MoneyCard
 
 ChanceCard <|-down- DeedCard
 
+Player <-left- Cardholder
+
+Cardholder <-down- Deed
 
 
-GameController <-right- Player
 
-GameController "1" -left- "1" Cup
+GameController <-left- Player
+
+GameController "1" -right- "1" Cup
 
 
 
