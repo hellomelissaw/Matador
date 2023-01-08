@@ -141,7 +141,6 @@ public class GameController {
 
                 squares[newPosition].landOn(players[i]);
 
-
                     if(players[i].isBankrupt() == true) {
                         gameOver = true;
                         String winnerName = players[i].winner(players) + " ";

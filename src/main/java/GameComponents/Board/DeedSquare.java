@@ -1,5 +1,6 @@
 package GameComponents.Board;
 import Controllers.GuiController;
+import GameComponents.Bank;
 import GameComponents.Player;
 
 public class DeedSquare extends Square{

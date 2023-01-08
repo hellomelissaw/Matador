@@ -1,5 +1,6 @@
 package GameComponents.Board;
 import Controllers.GuiController;
+import GameComponents.Bank;
 import GameComponents.Player;
 import Translator.Text;
 import gui_fields.GUI_Player;
@@ -11,6 +12,7 @@ public abstract class ChanceCard {
     protected Text msg;
     protected Player[] players;
     protected GUI_Player[] guiPlayers;
+
 
     protected Square[] board;
     boolean pickAgain;
@@ -33,6 +35,7 @@ public abstract class ChanceCard {
         this.players = players;
 
     }
+
 
     public void printMessage(int cardIndex) {
         int cardNr = cardIndex+1;

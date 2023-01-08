@@ -1,4 +1,5 @@
 package GameComponents.Board;
+import GameComponents.Bank;
 import GameComponents.Player;
 import Controllers.GuiController;
 import Translator.*;
