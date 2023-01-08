@@ -13,57 +13,75 @@ public class GameController {
     int balance = 0;
     Player[] players;
     Square[] squares;
-    Text msg;
+    Text msg = new Text("src/main/java/Translator/Dansktekst", guiController);
+
     int playerCount = 0;
 
     public void init() {
+        guiController.setLang(msg);
         boolean testingInit = false;
         if (testingInit){
             msg = new Text("src/main/java/Translator/EnglishText", guiController);
-            guiController.initFieldTitles(msg);
-            int playerCount = 2;
-            balance = 20 - (playerCount - 2) * 2;
-            //balance = 1; //TEST BALANCE, COMMENT OUT FOR NORMAL RUNNING OF GAME
+            msg.printText("startGame", "na");
+            //msg = new Text("src/main/java/Translator/EnglishText", guiController);
+            //guiController.initFieldTitles(msg);
+            int playerCount = 3;
+            balance = 30000;
+
             players = new Player[playerCount];
 
             players[0] = new Player("Marc"); // INITIALISE EACH PLAYER WITH NAME
             players[0].setGui(guiController.createGuiPlayer(players[0]),guiController,msg);
             players[0].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
 
+
             players[1] = new Player("Germaine"); // INITIALISE EACH PLAYER WITH NAME
             players[1].setGui(guiController.createGuiPlayer(players[1]),guiController,msg);
             players[1].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
 
-            if (playerCount > 2) {
-                players[2] = new Player("Harald FitzGerald"); // INITIALISE EACH PLAYER WITH NAME
-                players[2].setGui(guiController.createGuiPlayer(players[2]),guiController,msg);
-                players[2].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
-                if (playerCount == 4) {
-                    players[3] = new Player("Melanie"); // INITIALISE EACH PLAYER WITH NAME
-                    players[3].setGui(guiController.createGuiPlayer(players[3]),guiController,msg);
-                    players[3].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+            players[2] = new Player("Harry"); // INITIALISE EACH PLAYER WITH NAME
+            players[2].setGui(guiController.createGuiPlayer(players[2]),guiController,msg);
+            players[2].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+
+            if (playerCount > 3) {
+                players[3] = new Player("Sara"); // INITIALISE EACH PLAYER WITH NAME
+                players[3].setGui(guiController.createGuiPlayer(players[3]),guiController,msg);
+                players[3].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+
+                players[4] = new Player("Megan"); // INITIALISE EACH PLAYER WITH NAME
+                players[4].setGui(guiController.createGuiPlayer(players[4]),guiController,msg);
+                players[4].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+
+                players[5] = new Player("Danny"); // INITIALISE EACH PLAYER WITH NAME
+                players[5].setGui(guiController.createGuiPlayer(players[3]),guiController,msg);
+                players[5].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+
+                if (playerCount == 6) {
+                    players[6] = new Player("Adam"); // INITIALISE EACH PLAYER WITH NAME
+                    players[6].setGui(guiController.createGuiPlayer(players[6]),guiController,msg);
+                    players[6].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
                 }
             }
 
         } else {
-            /*String[] lang = {"EnglishText", "DanskTekst"};
-            int langIndex = guiController.getUserInteger("You are in English mode. Enter 1 to keep English or enter 2 to switch to Danish."); //GETS USER TO CHOOSE LANGUAGE
-            String langFile = "src/main/java/Translator/" + lang[langIndex - 1];
-            msg = new Text(langFile, guiController);*/
-            msg = new Text("src/main/java/Translator/DanskTekst", guiController);
-            guiController.initFieldTitles(msg);
+            //String[] lang = {"DanskTekst"};
+            //int langIndex = guiController.getUserInteger("You are in English mode. Enter 1 to keep English or enter 2 to switch to Danish."); //GETS USER TO CHOOSE LANGUAGE
+           // String langFile = "src/main/java/Translator/" + lang[0];
+            //msg = new Text(langFile, guiController);
+
+            //guiController.initFieldTitles(msg);
 
             //String userInput;
 
             //INITIALIZING PLAYERS
             //System.out.println(msg.getText("enterPlayerCount"));
-
+            msg.printText("welcomeMessage", "na");
             boolean playerCountInvalid = true;
             while (playerCountInvalid) {
                 // playerCount = userInput.nextInt();
                 //System.out.println(playerCount);
                 playerCount = guiController.getUserInteger(msg.getText("enterPlayerCount"));
-                if (playerCount >= 2 && playerCount <= 4) {
+                if (playerCount >= 3 && playerCount <= 6) {
                     playerCountInvalid = false;
 
                 } else {
@@ -71,7 +89,7 @@ public class GameController {
 
                 }
             }
-            balance = 20 - (playerCount - 2) * 2; //SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
+            balance = 30000;//SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
 
             players = new Player[playerCount];
 
@@ -83,6 +101,7 @@ public class GameController {
 
                     if (i == 0) {
                         duplicateName = false;
+                        System.out.println("First Player");
 
                     } else {
                         for (int j = 0; j < i; j++) {
@@ -137,7 +156,7 @@ public class GameController {
                 squares[newPosition].landOn(players[i]);
 
 
-                    if(players[i].isBankrupt() == true) {
+                   if(players[i].isBankrupt()) {
                         gameOver = true;
                         String winnerName = players[i].winner(players) + " ";
                         msg.printText("gameOver", winnerName);

@@ -5,10 +5,11 @@ import Controllers.GuiController;
 
 
 public class Text {
+    boolean guiOn = true;
     String file;
     GuiController guiController;
 
-    int lineCount = 71;
+    int lineCount = 104;
     String[] messages = new String[lineCount];
 
     String[] labels = new String[lineCount];
@@ -70,10 +71,10 @@ public class Text {
 
         if(otherMessage == "na") {
             System.out.println(message);
-            guiController.showMessage(message);
+            if (guiOn) { guiController.showMessage(message); }
         } else {
             System.out.println(otherMessage + message);
-            guiController.showMessage(otherMessage + message);
+            if (guiOn) { guiController.showMessage(otherMessage + message); }
         }
 
     }

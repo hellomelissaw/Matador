@@ -11,52 +11,33 @@ import static org.junit.Assert.*;
 
 public class LandOnSquareTest {
 
-    Player testPlayer1 = new Player("TestPlayer 1");
+    Player[] testPlayers = new Player[1];
+
     GUI_Player testGuiPlayer1 = new GUI_Player("TestGuiPlayer 1");
     GuiController guiController = new GuiController();
-    JailSquare testJail = new JailSquare("Jail", guiController);
-    Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
+    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+    Square[] board;
 
     public LandOnSquareTest() {
-        testPlayer1.setGui(testGuiPlayer1, guiController, msg);
-    }
-    @Test
-    public void landOnJailSquareAndPay1M() {
-        testJail.setLang(msg);
-        testPlayer1.depositMoney(20);
-        testPlayer1.updatePosition(18);
-        testJail.landOn(testPlayer1);
-        assertEquals(19, testPlayer1.getCurrentBalance());
-
+        testPlayers[0] = new Player("TestPlayer 1");
+        testPlayers[0].setGui(testGuiPlayer1, guiController, msg);
+        BoardInit squares = new BoardInit(guiController, msg, testPlayers);
+        board = squares.getSquareArr();
     }
 
     @Test
-    public void updatePlayerPositionToIndex6AfterJail(){
-        testJail.setLang(msg);
-        testPlayer1.updatePosition(18);
-        testJail.landOn(testPlayer1);
-        assertEquals(6,testPlayer1.getPosition());
+    public void RoedovrevejNameIsCorrectlyInitiated() {
+        assertEquals("Rødovrevej", board[1].getSquareName());
+
 
     }
 
     @Test
-    public void landOnVisitJailAndDontPay() {
-        testJail.setLang(msg);
-        testPlayer1.depositMoney(20);
-        testPlayer1.updatePosition(6);
-        testJail.landOn(testPlayer1);
-        assertEquals(20,testPlayer1.getCurrentBalance());
-    }
+    public void TuborgSquashNameIsCorrectlyInitiated() {
+        assertEquals("Tuborg Squash", board[12].getSquareName());
 
-    @Test
-    public void passStartTest() {
-        testPlayer1.updatePosition(22);
-        testPlayer1.updatePosition(10);
-
-        assertEquals(2,testPlayer1.getCurrentBalance());
-    }
-    @Test
-    public void landOnStartSquare() {
 
     }
+
+
 }

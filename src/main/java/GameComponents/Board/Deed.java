@@ -2,20 +2,31 @@ package GameComponents.Board;
 
 import GameComponents.Player;
 
-public class Deed {
+public abstract class Deed {
     Player owner;
-    // int[] squarePrice; // i Matador mangler vi en array med alle priser på et skød
+    int[] rent;
     int deedPrice;
     String deedName;
+    String color;
+    int groupSize;
+
+    int houseCount;
+
+    boolean hasHotel = false;
 
     /**
      * Constructs a Deed which can be owned by Player
+     *
      * @param deedPrice price of the Deed
-     * @param deedName name of the Deed (For example "The Skate Park")
+     * @param deedName  name of the Deed (For example "The Skate Park")
+     * @param rent
      */
-    public Deed(int deedPrice,String deedName){
+    public Deed(int deedPrice, int[] rent, String deedName){
+
         this.deedPrice = deedPrice;
+        this.rent = rent;
         this.deedName = deedName;
+        //this.color = color;
     }
 
     public Player getOwner() {
@@ -28,6 +39,28 @@ public class Deed {
 
     public String getDeedName() {
         return deedName;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public int getGroupSize() {
+        return groupSize;
+    }
+
+    public void setGroupSize(int groupSize) {
+        this.groupSize = groupSize;
+
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setDeedGroup(String color, int groupSize) {
+        this.color = color;
+        this.groupSize = groupSize;
     }
 
 }

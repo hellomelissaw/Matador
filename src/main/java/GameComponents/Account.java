@@ -3,6 +3,8 @@ import Controllers.GuiController;
 import gui_fields.GUI_Player;
 
 public class Account {
+
+    boolean guiOn = true;
     private int balance;
     private boolean isBankrupt = false;
     GUI_Player guiPlayer;
@@ -19,12 +21,12 @@ public class Account {
 
     public void deposit(int amount) {
         balance += amount;
-        guiPlayer.setBalance(balance);
+        if(guiOn) {guiPlayer.setBalance(balance);}
     }
 
     public void withDraw(int amount) {
         balance -= amount;
-        guiPlayer.setBalance(balance);
+        if(guiOn) {guiPlayer.setBalance(balance);}
         if (balance < 0) {
             isBankrupt = true;
         }

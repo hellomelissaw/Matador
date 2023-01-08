@@ -20,19 +20,12 @@ public class CardMove extends ChanceCard {
 
     public void playCard(Player currentPlayer) {
         if (moveType == "index"){
-            int distance = currentPlayer.getDistanceToMove(move, 24);
+            int distance = currentPlayer.getDistanceToMove(move, 40);
             currentPlayer.updatePosition(distance);
             pickAgain = false;
 
         } else if(moveType == "distance") {
-            if(cardName == "chance3") {
-                choice = guiController.getUserSelection(msg.getText("prompt"), buttons);
-                if (choice == "Pick again") {
-                    pickAgain = true;
-
-                } else {currentPlayer.updatePosition(move);}
-
-            } else {currentPlayer.updatePosition(move);}
+            {currentPlayer.updatePosition(move);}
 
         } else {System.out.println("Card type not recognized.");}
     }
