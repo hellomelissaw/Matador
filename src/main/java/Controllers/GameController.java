@@ -4,6 +4,7 @@ import GameComponents.Board.Square;
 import GameComponents.Cup;
 import GameComponents.Cup_stub;
 import GameComponents.Player;
+import GameComponents.Bank;
 import Translator.*;
 
 public class GameController {
