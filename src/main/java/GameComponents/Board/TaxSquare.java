@@ -10,6 +10,7 @@ public class TaxSquare extends Square{
     int balance;
     int newBalance;
     Player[] players;
+    int withdrawMoney;
 
     TaxSquare(String squareName , GuiController guiController , Player[] players) {
         super(squareName);
@@ -22,13 +23,13 @@ public class TaxSquare extends Square{
         int currentPosition = currentPlayer.getPosition();
 
         if (currentPosition==4){
-            msg.printText("betaleSka", "na");
+            msg.printText("betaleSkat", "na");
             userInput = guiController.getUserInteger("indkomstSkat");
             if(userInput == 1) {
                 balance = (currentPlayer.getCurrentBalance());
-                newBalance = (int) (balance/100) * 10 ;
-                currentPlayer.withdrawMoney(newBalance);
-                currentPlayer.getCurrentBalance();
+                withdrawMoney = (int) (balance/100) * 10 ;
+                currentPlayer.withdrawMoney(withdrawMoney);
+                newBalance = currentPlayer.getCurrentBalance();
                 msg.printText("newBalance","na");
                 System.out.println(msg.getText("newBalance")+ newBalance);
             }
