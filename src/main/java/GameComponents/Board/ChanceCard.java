@@ -41,8 +41,6 @@ public abstract class ChanceCard {
 
     }
 
-    public abstract void setOptionsArr();
-
     public abstract void playCard(Player currentPlayer);
 
     public boolean checkPickAgain() {

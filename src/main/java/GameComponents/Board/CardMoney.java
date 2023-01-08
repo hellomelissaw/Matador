@@ -11,9 +11,7 @@ public class CardMoney extends ChanceCard {
         this.amount = amount;
 
     }
-    public void setOptionsArr() {
 
-    }
     public void playCard(Player currentPlayer){
         if (transactionType.equals("deposit")) {
             currentPlayer.depositMoney(amount);

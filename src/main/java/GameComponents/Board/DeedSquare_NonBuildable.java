@@ -5,8 +5,6 @@ import GameComponents.Player;
 
 public class DeedSquare_NonBuildable extends DeedSquare {
     Deed_NonBuildable deed;
-    //GuiController guiController;
-
 
     public DeedSquare_NonBuildable(String deedName, int deedPrice, int[] rent) {
         super(deedName, deedPrice, rent);
@@ -25,8 +23,7 @@ public class DeedSquare_NonBuildable extends DeedSquare {
                 if(!testing) {
                     buying = guiController.getUserSelection(msg.getText("buyLot") + " " + deed.getDeedName() + "?", choices);
                 }
-                /*String guiMessage = currentPlayer.getPlayerName() + msg.getText("haveBought") + deed.getDeedName();
-                guiController.showMessage(guiMessage); // CAN BE DELETED ONCE IMPLEMENT BORDER AROUND SQUARE*/
+
             } else {
                 System.out.println("Vil du købe denne grund?");
                 if(!testing){

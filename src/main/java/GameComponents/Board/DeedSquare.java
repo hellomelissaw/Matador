@@ -11,7 +11,6 @@ public abstract class DeedSquare extends Square{
     boolean sellDeed = true;
     boolean freeDeed = false;
     int deedPrice;
-    //GuiController guiController;
     boolean ownsGroup = false;
     int[] rent;
     Scanner userInput = new Scanner(System.in);
@@ -28,9 +27,7 @@ public abstract class DeedSquare extends Square{
         super(deedName);
         this.deedPrice = deedPrice;
         this.rent = rent;
-        /*if(guiOn){
-            this.guiController = guiController;
-        } else { this.guiController = null;}*/
+
     }
 
     public void testing(boolean testing, String answer) {

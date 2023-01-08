@@ -13,11 +13,6 @@ public class CardMove extends ChanceCard {
         this.moveType = moveType;
     }
 
-    public void setOptionsArr() {
-        buttons = new String[]{"Move 1", "Pick again"};
-
-    }
-
     public void playCard(Player currentPlayer) {
         if (moveType == "index"){
             int distance = currentPlayer.getDistanceToMove(move, 40);
