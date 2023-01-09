@@ -35,12 +35,12 @@ public class CardMoveTest {
 
     }
     @Test
-    public void getM2WhenMoveToStartCard() {
+    public void get4000WhenMoveToStartCard() {
         ChanceCard testChanceCard = new CardMove("chance1",guiController,0, "index");
         testChanceCard.setCardLang(msg);
         testPlayers[0].updatePosition(20);
         testChanceCard.playCard(testPlayers[0]);
-        assertEquals(2, testPlayers[0].getCurrentBalance());
+        assertEquals(4000, testPlayers[0].getCurrentBalance());
     }
 
     @Test
@@ -78,7 +78,6 @@ public class CardMoveTest {
         //testChanceSquare.setLang("EnglishText");
         ChanceCard testChanceCard = new CardMove("chance3",guiController,1, "distance");
         testChanceCard.setCardLang(msg);
-        testChanceCard.setOptionsArr();
         testPlayers[0].updatePosition(5);
         testChanceCard.playCard(testPlayers[0]);
 
@@ -90,7 +89,6 @@ public class CardMoveTest {
         //testChanceSquare.setLang("EnglishText");
         ChanceCard testChanceCard = new CardMove("chance3",guiController,1, "distance");
         testChanceCard.setCardLang(msg);
-        testChanceCard.setOptionsArr();
 
         testPlayers[0].updatePosition(5);
         testChanceCard.playCard(testPlayers[0]);
@@ -102,7 +100,6 @@ public class CardMoveTest {
     public void playCardMoveBack() {
         ChanceCard testChanceCard = new CardMove("chance32", guiController, -3, "distance");
         testChanceCard.setCardLang(msg);
-        testChanceCard.setOptionsArr();
         testPlayers[0].updatePosition(5);
         testChanceCard.playCard(testPlayers[0]);
 
@@ -113,10 +110,11 @@ public class CardMoveTest {
     public void PassStartGet4000() {
         ChanceCard testChanceCard = new CardMove("chance34", guiController, 3, "distance");
         testChanceCard.setCardLang(msg);
-        testChanceCard.setOptionsArr();
         testPlayers[0].updatePosition(39);
         testChanceCard.playCard(testPlayers[0]);
 
         assertEquals(4000, testPlayers[0].getCurrentBalance());
     }
+
+
 }
