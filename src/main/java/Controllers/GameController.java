@@ -4,6 +4,7 @@ import GameComponents.Board.Square;
 import GameComponents.Cup;
 import GameComponents.Cup_stub;
 import GameComponents.Player;
+import GameComponents.Bank;
 import Translator.*;
 
 public class GameController {
@@ -16,6 +17,8 @@ public class GameController {
     Text msg = new Text("src/main/java/Translator/Dansktekst", guiController);
 
     int playerCount = 0;
+
+    Bank bank = new Bank();
 
     public void init() {
         guiController.setLang(msg);
@@ -133,6 +136,7 @@ public class GameController {
         Cup cup;
         if(testing){
            cup = new Cup_stub(guiController);
+
         } else {
         cup = new Cup(guiController);}
 

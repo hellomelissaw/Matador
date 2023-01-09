@@ -230,5 +230,26 @@ public class Player {
     }
 
 
+    public int getHouses() {
+        return playerAccount.getHouses();
+    }
+    public int getHotels(){
+        return playerAccount.getHotels();
+    }
+    public void acquireHouse(int acquiredHouses, int price) {
+        playerAccount.acquireHouse(acquiredHouses,price);
+    }
+
+    public void sellHouses(int soldHouses, int price){
+        playerAccount.sellHouses(soldHouses,price);
+    }
+
+    public void acquireHotel(int acquiredHotels, int price){
+        playerAccount.acquireHotel(acquiredHotels,price);
+    }
+
+    public void sellHotel(int soldHotels, int price){
+        playerAccount.sellHotel(soldHotels,price);
+    }
 }
 
