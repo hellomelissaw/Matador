@@ -71,7 +71,7 @@ public class DeedSquare_NonBuildable extends DeedSquare {
                 int rentPrice;
 
                 currentPlayer.withdrawMoney(rent[0]); //TO DO: CHECK IF PLAYER OWNS OTHER LOTS IN GROUP TO CHANGE RENT
-                deedOwner.depositMoney(deedPrice);
+                deedOwner.depositMoney(rent[0]);
                 System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
 
             }
