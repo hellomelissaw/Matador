@@ -23,15 +23,15 @@ public class TaxSquare extends Square{
         int currentPosition = currentPlayer.getPosition();
 
         if (currentPosition==4){
-            msg.printText("betaleSkat", "na");
-            userInput = guiController.getUserInteger("indkomstSkat");
+            msg.printText("betalingSkat", "na");
+            userInput = guiController.getUserInteger("Tast 1 for at betale 10% af alle dine værdier eller Tast 2 for at betale 4000 kr i skat. Beslut dig her og nu!");
             if(userInput == 1) {
                 balance = (currentPlayer.getCurrentBalance());
                 withdrawMoney = (int) (balance/100) * 10 ;
                 currentPlayer.withdrawMoney(withdrawMoney);
                 newBalance = currentPlayer.getCurrentBalance();
                 msg.printText("newBalance","na");
-                System.out.println(msg.getText("newBalance")+ newBalance);
+                System.out.println(msg.getText("newBalance"+newBalance));
             }
             else {
                 balance = currentPlayer.getCurrentBalance();
