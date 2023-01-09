@@ -13,7 +13,7 @@ public class GameController {
     int balance = 0;
     Player[] players;
     Square[] squares;
-    Text msg = new Text("src/main/java/Translator/Dansktekst", guiController);
+    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
 
     int playerCount = 0;
 

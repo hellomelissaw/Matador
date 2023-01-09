@@ -14,7 +14,7 @@ public class ParkingSquare extends Square{
     public void landOn(Player currentPlayer) {
         int currentPosition = currentPlayer.getPosition();
         if (currentPosition == 20) {
-            System.out.println(msg.getText("freeParking"));
+           msg.printText("freeParking","na");
         }
     }
 }
