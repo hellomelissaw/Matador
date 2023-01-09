@@ -24,7 +24,7 @@ public class JailSquare extends Square{
 
 
         //The player get moved to jail square and gets instructions on how to leave. If the player didn't land on jail square, then they're just visiting.
-        if(currentPosition==31)
+        if(currentPosition==30)
         {
         msg.printText("moveToJail","\"Du skal i fængsel og har kun følgende muligheder for at komme ud af fængsel! Valg en valgmulighed: Betal bøde på 1000 kr med det samme? eller Prøv heldet med terningekast!\"");
         currentPlayer.updatePosition(20);
