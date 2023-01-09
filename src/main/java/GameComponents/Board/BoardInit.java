@@ -94,6 +94,10 @@ public class BoardInit {
 
     }
 
+    /**
+     * Initiates a Chance Square by setting its chance cards' language and the game's board
+     * @param board All the squares on the game's board are passed to the chance cards so they can use them
+     */
     public void initChanceSquare(Square[] board){
         for (int i = 0 ; i < board.length ; i++) {
             if(board[i] instanceof ChanceSquare){
@@ -103,6 +107,11 @@ public class BoardInit {
             }
         }
     }
+
+    /**
+     * Returnering all squares on the board as an array of Square
+     * @return
+     */
     public Square[] getSquareArr() {
         return board;
     }

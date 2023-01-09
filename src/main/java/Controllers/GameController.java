@@ -136,7 +136,7 @@ public class GameController {
         Cup cup;
         if(testing){
            cup = new Cup_stub(guiController);
-
+git
         } else {
         cup = new Cup(guiController);}
 

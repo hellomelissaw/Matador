@@ -7,8 +7,8 @@ public class Deed_Buildable extends Deed{
      * Constructs a Deed which can be owned by Player
      *
      * @param deedPrice     price of the Deed
-     * @param buildingPrice
-     * @param rent
+     * @param buildingPrice the cost of building one house or hotel
+     * @param rent          an array of rent amounts player can receive according to buildings on lot
      * @param deedName      name of the Deed (For example "The Skate Park")
      */
     public Deed_Buildable(int deedPrice, int[] rent, String deedName, int buildingPrice) {

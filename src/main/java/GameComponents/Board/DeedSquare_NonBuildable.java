@@ -5,7 +5,13 @@ import GameComponents.Player;
 
 public class DeedSquare_NonBuildable extends DeedSquare {
     Deed_NonBuildable deed;
-
+    /**
+     * Constructs a Square of type DeedSquare which cannot be built on
+     *
+     * @param deedName      name of the Deed for the Square (for example "The Skate Park").
+     * @param deedPrice     the price it costs to buy the deed to a lot
+     * @param rent          an array of rent amounts player can receive according to buildings on lot
+     */
     public DeedSquare_NonBuildable(String deedName, int deedPrice, int[] rent) {
         super(deedName, deedPrice, rent);
         deed = new Deed_NonBuildable(deedPrice, rent, deedName);
@@ -17,7 +23,7 @@ public class DeedSquare_NonBuildable extends DeedSquare {
     public void landOn(Player currentPlayer) {
 
 
-        if(sellDeed == true) {
+        if(sellDeed == true) { // IF DEED IS AVAILABLE TO BUY
             if (guiOn) {
                 String[] choices = {"ja", "nej"};
                 if(!testing) {
@@ -54,12 +60,12 @@ public class DeedSquare_NonBuildable extends DeedSquare {
                 }
             }
 
-        } else {
+        } else { // IF DEED IS ALREADY OWNED
             Player deedOwner = deed.getOwner();
-            if (currentPlayer==deedOwner) {
+            if (currentPlayer==deedOwner) { // IF PLAYER HAS LANDED ON A LOT THAT THEY OWN
                 msg.printText("ownerOfDeed", "na");
 
-            } else {
+            } else { // IF A PLAYER LANDS ON A LOT THAT ANOTHER PLAYER OWNS
 
                 msg.printText("payRent", deedOwner.getPlayerName());
                 int rentPrice;

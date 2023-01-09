@@ -7,11 +7,12 @@ public class DeedSquare_Buildable extends DeedSquare {
     boolean hasHotel = false;
     Deed_Buildable deed;
     /**
-     * Constructs a Square of type DeedSquare (ownable Square)
+     * Constructs a Square of type DeedSquare which one can build on
      *
      * @param deedName      name of the Deed for the Square (for example "The Skate Park").
-     * @param deedPrice     the price of the deed, both for buying and amount of rent to pay once bought.
-     * @param rent
+     * @param deedPrice     the price it costs to buy the deed to a lot
+     * @param rent          an array of rent amounts player can receive according to buildings on lot
+     * @param buildingPrice the cost of building one house or hotel
      */
     public DeedSquare_Buildable(String deedName, int deedPrice, int[] rent, int buildingPrice) {
         super(deedName, deedPrice, rent);
@@ -25,9 +26,10 @@ public class DeedSquare_Buildable extends DeedSquare {
         return deed;
     }
 
+
     public void landOn(Player currentPlayer) {
 
-        if(sellDeed == true) {
+        if(sellDeed == true) { // IF DEED IS AVAILABLE TO BUY
 
             if (guiOn) {
                 String[] choices = {"ja", "nej"};
@@ -66,12 +68,12 @@ public class DeedSquare_Buildable extends DeedSquare {
                 }
             }
 
-        } else {
+        } else { // IF DEED IS ALREADY OWNED
             Player deedOwner = deed.getOwner();
-            if (currentPlayer==deedOwner) {
+            if (currentPlayer==deedOwner) { // IF PLAYER HAS LANDED ON A LOT THAT THEY OWN
                 msg.printText("ownerOfDeed", "na");
 
-            } else {
+            } else { // IF A PLAYER LANDS ON A LOT THAT ANOTHER PLAYER OWNS
 
                 msg.printText("payRent",  deedOwner.getPlayerName());
                 currentPlayer.withdrawMoney(rent[houseCount]);
@@ -91,13 +93,13 @@ public class DeedSquare_Buildable extends DeedSquare {
 
     }
 
-    public boolean hasHotel() {
-        return hasHotel;
-    }
-
     public void setHouseCount(int count) {
         houseCount = count;
         deed.setHouseCount(count);
+    }
+
+    public boolean hasHotel() {
+        return hasHotel;
     }
 
     public void setHasHotel(boolean hasHotel) {
@@ -109,6 +111,11 @@ public class DeedSquare_Buildable extends DeedSquare {
         return deed.getOwner();
     }
 
+    /**
+     * Sets the group which this square belongs to according to its color and the group's size
+     * @param color the square's color
+     * @param groupSize amount of squares which have same color
+     */
     public void setGroup(String color, int groupSize) {
         this.color = color;
         this.groupSize = groupSize;
