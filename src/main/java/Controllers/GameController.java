@@ -3,9 +3,9 @@ import GameComponents.Board.*;
 import GameComponents.Board.Square;
 import GameComponents.Cup;
 import GameComponents.Cup_stub;
+import GameComponents.Board.JailSquare;
 import GameComponents.Player;
 import Translator.*;
-
 public class GameController {
     GuiController guiController = new GuiController();
     //private int playerCount = 0;
@@ -16,6 +16,10 @@ public class GameController {
     Text msg = new Text("src/main/java/Translator/Dansktekst", guiController);
 
     int playerCount = 0;
+
+    int counter = 0;
+
+
 
     public void init() {
         guiController.setLang(msg);
@@ -98,7 +102,6 @@ public class GameController {
 
                     if (i == 0) {
                         duplicateName = false;
-                        System.out.println("First Player");
 
                     } else {
                         for (int j = 0; j < i; j++) {
@@ -129,7 +132,7 @@ public class GameController {
     }
 
     public void run() {
-        boolean testing = false; // SET TO TRUE WHEN TESTING LANDING ON SPECIFIC SQUARE (SET SUM IN Cup_stub)
+        boolean testing = true; // SET TO TRUE WHEN TESTING LANDING ON SPECIFIC SQUARE (SET SUM IN Cup_stub)
         Cup cup;
         if(testing){
            cup = new Cup_stub(guiController);
@@ -143,8 +146,19 @@ public class GameController {
 
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
 
+                boolean isInJail = players[i].checkInJail();
+
+
                 msg.printText("rollDice", players[i].getPlayerName());
                 int sum = cup.getSum();
+
+                boolean sameValue = cup.checkEqualValueOfDice();
+
+                if(isInJail)  {
+
+                }
+
+
 
                 players[i].updatePosition(sum);
                 newPosition = players[i].getPosition();

@@ -19,6 +19,11 @@ public class Player {
     private boolean testing = false;
     GuiController guiController;
     GUI_Player guiPlayer;
+
+    private boolean inJail = false;
+
+    int counter = 0;
+
     Text msg;
     private int squareIndex = 0;
     private String playerName;
@@ -26,6 +31,8 @@ public class Player {
 
     private Cardholder cardholder = new Cardholder();
     private String winnerName;
+
+   // private boolean hasPassedStart = false;
 
     public Player(String playerName) {
         this.playerName = playerName;
@@ -131,6 +138,27 @@ public class Player {
 
     public boolean isBankrupt() {
         return playerAccount.getAccountStatus();
+
+    }
+    public void moveToJail(){
+        inJail = true;
+
+    }
+    public void moveOutJail(){
+        inJail = false;
+
+    }
+
+    public boolean checkInJail(){
+
+        return inJail;
+    }
+    public int jailCounter(){
+        return counter;
+    }
+
+    public void jailIncrement(){
+        counter = counter + 1;
 
     }
     @Override
