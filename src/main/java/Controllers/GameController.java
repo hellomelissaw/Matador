@@ -25,7 +25,7 @@ public class GameController {
             msg.printText("startGame", "na");
             //msg = new Text("src/main/java/Translator/EnglishText", guiController);
             //guiController.initFieldTitles(msg);
-            int playerCount = 3;
+            playerCount = 3;
             balance = 30000;
 
             players = new Player[playerCount];
