@@ -26,7 +26,7 @@ public class GameController {
             //msg = new Text("src/main/java/Translator/EnglishText", guiController);
             //guiController.initFieldTitles(msg);
             playerCount = 3;
-            balance = 30000;
+            balance = 3000;
 
             players = new Player[playerCount];
 
@@ -129,7 +129,7 @@ public class GameController {
     }
 
     public void run() {
-        boolean testing = true; // SET TO TRUE WHEN TESTING LANDING ON SPECIFIC SQUARE (SET SUM IN Cup_stub)
+        boolean testing = false; // SET TO TRUE WHEN TESTING LANDING ON SPECIFIC SQUARE (SET SUM IN Cup_stub)
         Cup cup;
         if(testing){
            cup = new Cup_stub(guiController);
