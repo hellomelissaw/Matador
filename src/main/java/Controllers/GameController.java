@@ -19,9 +19,9 @@ public class GameController {
 
     public void init() {
         guiController.setLang(msg);
-        boolean testingInit = false;
+        boolean testingInit = true;
         if (testingInit){
-            msg = new Text("src/main/java/Translator/EnglishText", guiController);
+            msg = new Text("src/main/java/Translator/DanskTekst", guiController);
             msg.printText("startGame", "na");
             //msg = new Text("src/main/java/Translator/EnglishText", guiController);
             //guiController.initFieldTitles(msg);
@@ -52,14 +52,11 @@ public class GameController {
                 players[4].setGui(guiController.createGuiPlayer(players[4]),guiController,msg);
                 players[4].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
 
-                players[5] = new Player("Danny"); // INITIALISE EACH PLAYER WITH NAME
-                players[5].setGui(guiController.createGuiPlayer(players[3]),guiController,msg);
-                players[5].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
 
                 if (playerCount == 6) {
-                    players[6] = new Player("Adam"); // INITIALISE EACH PLAYER WITH NAME
-                    players[6].setGui(guiController.createGuiPlayer(players[6]),guiController,msg);
-                    players[6].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+                    players[5] = new Player("Adam"); // INITIALISE EACH PLAYER WITH NAME
+                    players[5].setGui(guiController.createGuiPlayer(players[5]),guiController,msg);
+                    players[5].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
                 }
             }
 
