@@ -140,30 +140,63 @@ public class GameController {
         cup = new Cup(guiController);}
 
         int newPosition;
+        int fine = 1000;
 
         boolean gameOver = false;
         while(gameOver == false) {
 
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
+                int sum;
 
                 boolean isInJail = players[i].checkInJail();
-
-
-                msg.printText("rollDice", players[i].getPlayerName());
-                int sum = cup.getSum();
-
-                boolean sameValue = cup.checkEqualValueOfDice();
+                msg.printText("fængsel","na");
 
                 if(isInJail)  {
+                    msg.printText("moveToJail","na");
+                    String[] jailOptions = {"Betal bøde?","Kast terninger?"};
+                    String name;
+                    name = guiController.getUserSelection("Betal bøde på 1000 kr med det samme? eller Prøv heldet med terningekast!",jailOptions);
 
-                }
+                if(players[i].jailCounter() < 3)
+                {
+
+                    if(name == "Betal bøde?")
+                    {
+                        players[i].withdrawMoney(fine);
+                        int currentBalance = players[i].getCurrentBalance();
+                        System.out.println(msg.getText("newBalance")+ currentBalance);
+                        msg.printText("forladfængsel","\"Du har nu betalt bøden, du kan nu forlade fængsel!\"");
+                    }else if(name == "Kast terninger?"){
+
+                        msg.printText("rollDice", players[i].getPlayerName());
+                        sum = cup.getSum();
+
+                        boolean sameValue = cup.checkEqualValueOfDice();
 
 
+                        if(sameValue == true){
+                            players[i].moveOutJail();
+                            //ekstra turn when leaving...
+                        }else{
+                            players[i].jailIncrement();
+                        }
 
+                    }else{
+                        msg.printText("spildt3runder","na");
+                        players[i].withdrawMoney(fine);
+                        int currentBalance = players[i].getCurrentBalance();
+                        System.out.println(msg.getText("newBalance")+ currentBalance);
+                        msg.printText("forladfængsel", "na");
+
+                    }
+
+                msg.printText("rollDice", players[i].getPlayerName());
+                    sum = cup.getSum();
                 players[i].updatePosition(sum);
                 newPosition = players[i].getPosition();
 
                 squares[newPosition].landOn(players[i]);
+
 
 
                    if(players[i].isBankrupt()) {
@@ -181,4 +214,10 @@ public class GameController {
             }
 
     }
+
+
+}
+
+    }
+
 }

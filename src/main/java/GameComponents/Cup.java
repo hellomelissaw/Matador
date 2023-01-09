@@ -23,7 +23,6 @@ public class Cup {
     //public Cup (GUI gui) {this.gui = gui;}
 
     public boolean checkEqualValueOfDice(){
-
         return d1 == d2;
     }
 
