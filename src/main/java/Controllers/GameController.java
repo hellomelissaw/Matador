@@ -3,9 +3,9 @@ import GameComponents.Board.*;
 import GameComponents.Board.Square;
 import GameComponents.Cup;
 import GameComponents.Cup_stub;
+import GameComponents.Board.JailSquare;
 import GameComponents.Player;
 import Translator.*;
-
 public class GameController {
     GuiController guiController = new GuiController();
     //private int playerCount = 0;
@@ -16,8 +16,12 @@ public class GameController {
     Text msg;
     int playerCount = 0;
 
+    int counter = 0;
+
+
+
     public void init() {
-        boolean testingInit = false;
+        boolean testingInit = true;
         if (testingInit){
             msg = new Text("src/main/java/Translator/EnglishText", guiController);
             guiController.initFieldTitles(msg);
@@ -127,8 +131,19 @@ public class GameController {
 
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
 
+                boolean isInJail = players[i].checkInJail();
+
+
                 msg.printText("rollDice", players[i].getPlayerName());
                 int sum = cup.getSum();
+
+                boolean sameValue = cup.checkEqualValueOfDice();
+
+                if(isInJail)  {
+
+                }
+
+
 
                 players[i].updatePosition(sum);
                 newPosition = players[i].getPosition();
@@ -148,7 +163,16 @@ public class GameController {
 
                 }
 
+
+
+
+
             }
 
+
+
+
+        }
+
     }
-}
+

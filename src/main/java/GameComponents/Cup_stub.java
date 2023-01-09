@@ -3,7 +3,8 @@ package GameComponents;
 import Controllers.GuiController;
 
 public class Cup_stub extends Cup {
-    private int testSum = 3;
+    private int testSum = 31;
+
 
     public Cup_stub(GuiController guiController) {
         super(guiController);

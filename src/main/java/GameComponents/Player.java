@@ -123,7 +123,9 @@ public class Player {
         inJail = false;
 
     }
-    public boolean isInJail(){
+
+    public boolean checkInJail(){
+
         return inJail;
     }
     public int jailCounter(){

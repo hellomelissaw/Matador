@@ -15,11 +15,19 @@ public class Cup {
     Die die2 = new Die();
     GuiController guiController;
 
+    int d1;
+    int d2;
+
     public Cup (GuiController guiController) {this.guiController = guiController;}
 
+    public boolean checkEqualValueOfDice(){
+
+        return d1 == d2;
+    }
+
     public int getSum () { // GETS THE SUM OF THE VALUE OF BOTH DICE
-        int d1 = die1.roll();
-        int d2 = die2.roll();
+         d1 = die1.roll();
+         d2 = die2.roll();
         guiController.setDice(d1,d2);
         System.out.println("First die: " + d1 + " and second die: " + d2);
         int sum;
