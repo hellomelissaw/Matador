@@ -8,7 +8,7 @@ public class TextTest {
 GuiController guiController = new GuiController();
     @Test
     public void getTextChecksLabelReturnsMessage() {
-        Text reader = new Text("src/main/java/Translator/EnglishText", guiController);
+        Text reader = new Text("src/main/java/Translator/Dansktekst", guiController);
 
         String testMessage = " message";
         assertEquals(testMessage,reader.getText("label"));

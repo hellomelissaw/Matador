@@ -150,6 +150,13 @@ class MoveCard {
 
 class Cardholder {}
 
+class Bank {
+}
+
+Bank <-down- GameController
+
+Bank <-down- Player
+
 GameController -up- Game
 
 GuiController -down- GameController
