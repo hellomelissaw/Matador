@@ -1,12 +1,12 @@
 label; message
-welcomeMessage; Velkommen til spillet Monopoly Junior.
+welcomeMessage; Velkommen til Matador.
 enterPlayerCount; Indtast antallet af spiller (3-6):
 invalidCount; Ugyldig indtastning, indtast venligst et tal mellem 3 og 6 inklusivt.
 enterName; Indtast dit navn, Spiller
 duplicateName; Dette navn er allerede i brug. Venligst vælg et andet navn.
 startGame; Tryk OK til at starte spillet!
 rollDice;, tryk OK til at kaste terningen.
-passStart; MODTAG EN BELØNNING PÅ M2 FORDI DU PASSERER START. Din nye saldo er:
+passStart; MODTAG EN BELØNNING PÅ 4000 FORDI DU PASSERER START. Din nye saldo er:
 position;, du er landet på feltet:
 squareNum;, felt #
 buyLot; Vil du købe
@@ -14,34 +14,17 @@ newBalance; Din bankkonto har nu saldo:
 ownerOfDeed; Min ven, du ejer det her felt! Du betaler ikke noget.
 payRent; ejer feltet. Du skal betale husleje.
 start; Start
-burgerBar; Burgerbaren
-pizzeria; Pizzeriet
 chance; Prøv lykke
 pickChance;, du er landet på Prøv Lykke. Tryk OK til at tage et kort.
-candyShop; Slikbutikken
-iceCreamShop; Isbutikken
 inJail; I fængsel
 onVisit; På besøg!
 visitJail; Du besøger nu fænglset.
-museum; Museet
-library; Biblioteket
-skatePark; Skateparken
-pool; Poolen
-playingHall; Spillehallen
 parking; Parkering
 free; Gratis!
 freeParking; Du har nu gratis parkering.
-arcade; Arcaden
-cinema; Biografen
-toyStore; Legetøjsbutik
-petShop; Dyrhandler
 jail; Gå i fængsel!
 movedToJail;Du går i fængsel nu. Tryk OK for at blive kørt dertil.
 movedToSquare; Du er blevet rykket til felt #
-bowlingAlley; Bowlingbanen
-zoo; Den zoologiske have
-waterPark; Aqualand
-boardWalk; Promenaden
 gameOver; Spillet er slut og vinderen er:
 Chancekort; .
 chance1; Oliepriserne er steget, og De skal betale kr 500 pr hus og kr 2000 pr hotel.
