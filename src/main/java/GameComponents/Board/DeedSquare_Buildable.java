@@ -77,7 +77,7 @@ public class DeedSquare_Buildable extends DeedSquare {
 
                 msg.printText("payRent",  deedOwner.getPlayerName());
                 currentPlayer.withdrawMoney(rent[houseCount]);
-                deedOwner.depositMoney(deedPrice);
+                deedOwner.depositMoney(rent[houseCount]);
                 System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
 
             }

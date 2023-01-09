@@ -39,7 +39,7 @@ import static java.lang.Integer.valueOf;
                 } else if(squareInfo[2].equals(" street")) {
                     int[] rent = new int[6];
                     for(int j = 0 ; j < 6 ; j++) {
-                       rent[j] = valueOf(squareInfo[j+5]);
+                       rent[j] = valueOf(squareInfo[j+4]);
                     }
 
                     board[i-1] = new DeedSquare_Buildable(squareInfo[0], valueOf(squareInfo[3]), rent, valueOf(squareInfo[4]));

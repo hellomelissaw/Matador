@@ -4,6 +4,8 @@ import Controllers.GuiController;
 import gui_fields.GUI_Player;
 
 public class StartSquare extends Square{
+
+
     public StartSquare(String startSquare) {
         super(startSquare);
 
