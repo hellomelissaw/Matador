@@ -138,15 +138,12 @@ public class Bank {
         return hotels;
     }
 
-    public void addHouse(int count) {
-        houses = houses+count;
+    public void setHouseCount(int count) {
+        houses = count;
     }
 
-    public void removeHouse(int count) {
-        houses = houses-count;
+    public void setHotelCount(int count) {
+        hotels = count;
     }
 
-    public void removeHotel() {
-        hotels--;
-    }
 }

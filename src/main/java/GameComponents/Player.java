@@ -252,6 +252,8 @@ public class Player {
     }
 
     public void buyHotel(DeedSquare_Buildable[] lotsToBuildOn) {
+        int currentHotelCount = bank.getHotelCount();
+        if (currentHotelCount > 0){
         for (int i = 0; i < lotsToBuildOn.length; i++) {
             Deed_Buildable deed = lotsToBuildOn[i].getDeed();
             int houseCount = lotsToBuildOn[i].getHouseCount();
@@ -272,6 +274,7 @@ public class Player {
                 System.out.println("Du har ikke nok huse til at bygge et hotel.");
             }
         }
+    } else {System.out.println("Der er ikke nok hoteller i banken til at opfylde din ordre");}
     }
 
     public void sellHouseToBank(DeedSquare_Buildable[] lotsToSellFrom, int housesToSell) { // in gui make sure there is not the option to sell houses one does not own
@@ -296,6 +299,13 @@ public class Player {
             playerAccount.deposit(halfPrice);
             bank.sellHotelToBank(1,halfPrice);
         }
+    }
+
+    public void setHouseCount(int count){
+        bank.setHouseCount(count);
+    }
+    public void setHotelCount(int count) {
+        bank.setHotelCount(count);
     }
 }
 

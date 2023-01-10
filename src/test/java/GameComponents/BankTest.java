@@ -111,4 +111,28 @@ public class BankTest {
 
         assertEquals(11, testPlayers[0].getBankDetails("hotelCount"));
     }
+
+    @Test
+    public void cannotBuyHouseBecauseNotEnoughInBank(){
+        testPlayers[0].setHouseCount(3);
+        testSquare[0].testing(true,"ja");
+        testSquare[0].landOn(testPlayers[0]);
+        testPlayers[0].buyHouse(testSquare,4);
+
+        assertEquals(0, testSquare[0].getHouseCount());
+
+    }
+
+    @Test
+    public void cannotBuyHotelBecauseNotEnoughInBank(){
+        testPlayers[0].setHotelCount(0);
+        testSquare[0].testing(true,"ja");
+        testSquare[0].landOn(testPlayers[0]);
+        testPlayers[0].buyHouse(testSquare,4);
+        testPlayers[0].buyHotel(testSquare);
+
+
+        assertEquals(false, testSquare[0].hasHotel());
+
+    }
 }
