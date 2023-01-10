@@ -228,8 +228,9 @@ public class Player {
                                 playerAccount.withDraw(buildingPrice);
                                 int count = deedsToBuildOn[i].getHouseCount();
                                 count++;
-                                deedsToBuildOn[i].setHouseCount(count);
+                                deedsToBuildOn[i].setHouseCount(count); // Maybe set the house count for deed in the square's setHouseCount??
                                 lotsToBuildOn[i].setHouseCount(count);
+                                bank.removeHouse(count);
                                 System.out.println("There is now " + count + " houses on Square #" + i);
                                 System.out.println("Player's new balance is " + playerAccount.getBalance());
 
@@ -261,6 +262,7 @@ public class Player {
                     playerAccount.withDraw(buildingPrice);
                     lotsToBuildOn[i].setHouseCount(0);
                     lotsToBuildOn[i].setHasHotel(true);
+                    bank.removeHotel();
 
                 } else {
                     System.out.println("Du har ikke nok penge til at købe dette hotel.");
