@@ -36,6 +36,12 @@ public class Player {
 
     }
 
+    public void guiOn(boolean guiIsOn) {
+        if(guiIsOn) {
+            guiOn = true;
+        } else {guiOn = false;}
+    }
+
     public void setLang(Text msg) {
         this.msg = msg;
     }
