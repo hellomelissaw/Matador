@@ -119,4 +119,11 @@ public class Bank {
         return gameBalance;
     }
 
+    public int getHouseCount(){
+       return houses;
+    }
+
+    public int getHotelCount() {
+        return hotels;
+    }
 }
