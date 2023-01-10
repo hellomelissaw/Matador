@@ -274,6 +274,17 @@ public class Player {
         }
     }
 
+    public void sellHouseToBank(DeedSquare_Buildable[] lotsToSellFrom, int housesToSell) {
+        for (int i = 0; i < lotsToSellFrom.length; i++) {
+            int currentHouseCount = lotsToSellFrom[i].getDeed().getHouseCount();
+            int newHouseCount = currentHouseCount - housesToSell;
+            lotsToSellFrom[i].setHouseCount(newHouseCount);
+            lotsToSellFrom[i].getDeed().setHouseCount(newHouseCount);
+            bank.sellHouseToBank(housesToSell,lotsToSellFrom[i].getDeed().getBuildingPrice());
+        }
 
+
+
+    }
 }
 
