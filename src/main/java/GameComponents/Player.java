@@ -1,7 +1,6 @@
 package GameComponents;
 
 import Controllers.GuiController;
-import GameComponents.Board.Deed;
 import GameComponents.Board.Deed_Buildable;
 import GameComponents.Board.DeedSquare_Buildable;
 import GameComponents.Board.Deed_NonBuildable;
@@ -84,6 +83,10 @@ public class Player {
         } else if (transactionType.equals("withdraw")) {
             bank.giveMoneyToBank(amount);
         }
+    }
+
+    public int getBankBalance() {
+        return bank.getBalance();
     }
 
     public int getCurrentBalance(){

@@ -114,4 +114,8 @@ public class Bank {
         return finalPrice;
     }
 
+    public int getBalance() {
+        return gameBalance;
+    }
+
 }
