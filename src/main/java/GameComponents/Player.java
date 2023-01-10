@@ -204,7 +204,6 @@ public class Player {
                 for (int i = 0; i < deedsToBuildOn.length; i++) {
                     String color = deedsToBuildOn[i].getColor();
                     boolean ownsGroup = cardholder.getOwnerStatus(color);
-
                     if (ownsGroup) {
                         boolean clearedForPurchase = cardholder.houseCountIsLevel(color, deedsToBuildOn[i]);
                         if (clearedForPurchase) {
@@ -212,7 +211,7 @@ public class Player {
                             int currentBalance = playerAccount.getBalance();
                             if (currentBalance > 0 && currentBalance - buildingPrice >= 0) {
                                 playerAccount.withDraw(buildingPrice);
-                                bank.giveMoneyToBank(buildingPrice);
+                                bank.buyHouseFromBank(1,buildingPrice);
                                 int count = deedsToBuildOn[i].getHouseCount();
                                 count++;
                                 deedsToBuildOn[i].setHouseCount(count);
