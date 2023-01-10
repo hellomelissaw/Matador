@@ -3,10 +3,10 @@ import GameComponents.Board.*;
 import GameComponents.Board.Square;
 import GameComponents.Cup;
 import GameComponents.Cup_stub;
-import GameComponents.Board.JailSquare;
 import GameComponents.Player;
 import Translator.*;
 public class GameController {
+    boolean useCupStub = false;
     GuiController guiController = new GuiController();
     //private int playerCount = 0;
     String userInput;
@@ -134,9 +134,9 @@ public class GameController {
     }
 
     public void run() {
-        boolean testing = false; // SET TO TRUE WHEN TESTING LANDING ON SPECIFIC SQUARE (SET SUM IN Cup_stub)
+         // SET TO TRUE WHEN TESTING LANDING ON SPECIFIC SQUARE (SET SUM IN Cup_stub)
         Cup cup;
-        if (testing) {
+        if (useCupStub) {
             cup = new Cup_stub(guiController);
         } else {
             cup = new Cup(guiController);
