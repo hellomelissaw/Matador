@@ -36,7 +36,7 @@ public class Player {
 
     }
 
-    public void guiOn(boolean guiIsOn) {
+    public void guiIsOn(boolean guiIsOn) {
         if(guiIsOn) {
             guiOn = true;
         } else {guiOn = false;}
