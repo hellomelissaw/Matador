@@ -126,4 +126,16 @@ public class Bank {
     public int getHotelCount() {
         return hotels;
     }
+
+    public void addHouse(int count) {
+        houses = houses+count;
+    }
+
+    public void removeHouse(int count) {
+        houses = houses-count;
+    }
+
+    public void removeHotel() {
+        hotels--;
+    }
 }
