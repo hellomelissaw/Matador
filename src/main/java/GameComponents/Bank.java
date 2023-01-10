@@ -35,23 +35,6 @@ public class Bank {
         return cashedOutMoney;
     }
 
-
-
-   /* public int priceCalculator(int position){
-        int price = 0;
-        if (position > 10){
-            price = 1000;
-        }else if (10 < position && position > 20) {
-            price = 2000;
-        }else if (20 < position && position > 30){
-            price = 3000;
-        }else if (30 < position) {
-            price = 4000;
-        }
-        return price;
-    }
-    */
-
     public boolean areThereStillHotels(){
         boolean areThereHotels = false;
 
@@ -73,58 +56,22 @@ public class Bank {
         return enoughHouses;
     }
 
-    //Use getHouses method from the player and insert into playerHouses
-    //Get player's position or location of the house to determine price
-    public int sellHouseToBank(int amount, int position, int playerHouses){
-        //int price = priceCalculator(position);
-        int finalPrice= (int) ((price * 0.5) * amount);
+    public void sellHouseToBank(int amount, int price){
+        gameBalance -= price;
         houses += amount;
-
-        if(playerHouses == 0) {
-            System.out.println("Du har ingen huse at sælge");
-            finalPrice = 0;
-        }
-        else if (amount > playerHouses){
-            System.out.println("Du har kun " + playerHouses + " huse du kan sælge. Vælg et andet antal");
-            finalPrice = 0;
-        }else {
-            houses += amount;
-            gameBalance -= finalPrice;
-        }
-
-        return finalPrice;
     }
 
-    public int sellHotelToBank(int amount, int position, int playerHotels){
-        int price = priceCalculator(position);
-        int finalPrice = (int) (((5 * price )* 0.5) * amount);
-
-        if(playerHotels == 0) {
-            System.out.println("Du har ingen hoteller at sælge");
-            finalPrice = 0;
-        }
-        else if (amount > playerHotels){
-            System.out.println("Du har kun " + playerHotels + " hoteller du kan sælge. Vælg et andet antal");
-            finalPrice = 0;
-        }else {
-            hotels += amount;
-            gameBalance -= finalPrice;
-        }
-
-        return finalPrice;
-
+    public void sellHotelToBank(int amount, int price){
+        gameBalance -= price;
+        hotels += amount;
     }
-    public void buyHouseFromBank(int amount, int finalPrice){
-
-        gameBalance += finalPrice;
-        hotels-= amount;
-
+    public void buyHouseFromBank(int amount, int price){
+        gameBalance += price;
+        hotels -= amount;
     }
-    public void buyHotelFromBank(int amount, int finalPrice){
-
-            gameBalance += finalPrice;
+    public void buyHotelFromBank(int amount, int price){
+            gameBalance += price;
             hotels -= amount;
-
     }
 
 }

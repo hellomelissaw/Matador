@@ -261,6 +261,8 @@ public class Player {
     }
 
 
+
+/*
     public int getHouses() {
         return playerAccount.getHouses();
     }
@@ -282,5 +284,6 @@ public class Player {
     public void sellHotel(int soldHotels, int price){
         playerAccount.sellHotel(soldHotels,price);
     }
+    */
 }
 

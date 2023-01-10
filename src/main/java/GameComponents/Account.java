@@ -16,8 +16,8 @@ public class Account {
     public Account(){
 
         balance = 0;
-        houses = 0;
-        hotels = 0;
+       // houses = 0;
+       // hotels = 0;
     }
 
     public void setGuiAccount(GUI_Player guiPlayer) {
@@ -46,6 +46,8 @@ public class Account {
         return isBankrupt;
     }
 
+
+    /*
     public int getHouses(){
         return houses;
     }
@@ -90,7 +92,7 @@ public class Account {
 
         }
     }
-
+*/
 
 }
 
