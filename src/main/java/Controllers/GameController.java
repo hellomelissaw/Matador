@@ -7,6 +7,7 @@ import GameComponents.Player;
 import Translator.*;
 public class GameController {
     boolean useCupStub = false;
+    boolean testingInit = true;
     GuiController guiController = new GuiController();
     //private int playerCount = 0;
     String userInput;
@@ -24,7 +25,6 @@ public class GameController {
 
     public void init() {
         guiController.setLang(msg);
-        boolean testingInit = true;
         if (testingInit){
             msg = new Text("src/main/java/Translator/DanskTekst", guiController);
             msg.printText("startGame", "na");
