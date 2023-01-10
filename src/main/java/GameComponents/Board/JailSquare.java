@@ -17,7 +17,7 @@ public class JailSquare extends Square{
             msg.printText("moveToJail", "na");
 
 
-            currentPlayer.withdrawMoney(1);
+            currentPlayer.withdrawMoney(1, true);
             int currentBalance = currentPlayer.getCurrentBalance();
             System.out.println(msg.getText("newBalance")+ currentBalance);
 

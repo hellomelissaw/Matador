@@ -28,14 +28,14 @@ public class TaxSquare extends Square{
             if(userInput == 1) {
                 balance = (currentPlayer.getCurrentBalance());
                 withdrawMoney = (int) (balance/100) * 10 ;
-                currentPlayer.withdrawMoney(withdrawMoney);
+                currentPlayer.withdrawMoney(withdrawMoney, true);
                 newBalance = currentPlayer.getCurrentBalance();
                 msg.printText("newBalance","na");
                 System.out.println(msg.getText("newBalance"+newBalance));
             }
             else {
                 balance = currentPlayer.getCurrentBalance();
-                currentPlayer.withdrawMoney(4000);
+                currentPlayer.withdrawMoney(4000, true);
                 newBalance = currentPlayer.getCurrentBalance();
                 msg.printText("newBalance","na");
                 System.out.println(msg.getText("newBalance")+ newBalance);
@@ -47,7 +47,7 @@ public class TaxSquare extends Square{
         }
         if (currentPosition == 38){
             balance = currentPlayer.getCurrentBalance();
-            currentPlayer.withdrawMoney(2000);
+            currentPlayer.withdrawMoney(2000, true);
             newBalance = currentPlayer.getCurrentBalance();
             msg.printText("newBalance","na");
             System.out.println(msg.getText("newBalance")+ newBalance);

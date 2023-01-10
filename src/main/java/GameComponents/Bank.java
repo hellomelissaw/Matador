@@ -21,7 +21,7 @@ public class Bank {
         gameBalance += amount;
     }
 
-    public int priceCalculator(int position){
+   /* public int priceCalculator(int position){
         int price = 0;
         if (position > 10){
             price = 1000;
@@ -34,11 +34,33 @@ public class Bank {
         }
         return price;
     }
+    */
+
+    public boolean areThereStillHotels(){
+        boolean areThereHotels = false;
+
+        if (hotels !=0){
+            areThereHotels = true;
+        }
+        return areThereHotels;
+    }
+
+    public boolean areThereEnoughHouses(int amountOfHousesToBuy){
+        boolean enoughHouses = false;
+
+        if (amountOfHousesToBuy < houses){
+            enoughHouses = true;
+        }else if(amountOfHousesToBuy > houses && houses != 0){
+            System.out.println("Der er kun " + houses + " tilbage i banken.");
+            System.out.println("Køb et andet antal huse");
+        }
+        return enoughHouses;
+    }
 
     //Use getHouses method from the player and insert into playerHouses
     //Get player's position or location of the house to determine price
     public int sellHouseToBank(int amount, int position, int playerHouses){
-        int price = priceCalculator(position);
+        //int price = priceCalculator(position);
         int finalPrice= (int) ((price * 0.5) * amount);
         houses += amount;
 
@@ -76,42 +98,17 @@ public class Bank {
         return finalPrice;
 
     }
-    public int buyHouseFromBank(int amount, int position, int playerBalance){
+    public void buyHouseFromBank(int amount, int finalPrice){
 
-        int price = priceCalculator(position);
-        int finalPrice = (price * amount);
+        gameBalance += finalPrice;
+        hotels-= amount;
 
-        if(playerBalance > finalPrice){
-            gameBalance += finalPrice;
-            houses -= amount;
-            System.out.println("Du har nu købt " + amount + " hus(e)");
-            System.out.println("Der er blevet trukket " + finalPrice + "fra din konto");
-            System.out.println("Du har " + playerBalance + "stående på kontoen");
-        }
-        else{
-            System.out.println("Du har ikke nok penge stående på kontoen for at udføre denne handling");
-            finalPrice = 0;
-        }
-
-        return finalPrice;
     }
-    public int buyHotelFromBank(int amount, int position, int playerBalance){
-        int price = priceCalculator(position);
-        int finalPrice = ((5 * price) * amount);
+    public void buyHotelFromBank(int amount, int finalPrice){
 
-        if(playerBalance > price){
             gameBalance += finalPrice;
             hotels -= amount;
-            System.out.println("Du har nu købt " +amount + " hotel(ler)");
-            System.out.println("Der er blevet trukket " + finalPrice + "fra din konto");
-            System.out.println("Du har " +playerBalance+ "stående på kontoen");
-        }
-        else{
-            System.out.println("Du har ikke nok penge stående på kontoen for at udføre denne handling");
-            finalPrice = 0;
-        }
 
-        return finalPrice;
     }
 
 }

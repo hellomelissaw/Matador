@@ -49,7 +49,7 @@ public class DeedSquare_Buildable extends DeedSquare {
 
                 if (buying.equals("ja")) {
                     valid = true;
-                    currentPlayer.withdrawMoney(deedPrice);
+                    currentPlayer.withdrawMoney(deedPrice, true);
                     System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
                     sellDeed = false;
                     freeDeed = false;
@@ -76,8 +76,8 @@ public class DeedSquare_Buildable extends DeedSquare {
             } else { // IF A PLAYER LANDS ON A LOT THAT ANOTHER PLAYER OWNS
 
                 msg.printText("payRent",  deedOwner.getPlayerName());
-                currentPlayer.withdrawMoney(rent[houseCount]);
-                deedOwner.depositMoney(deedPrice);
+                currentPlayer.withdrawMoney(rent[houseCount], false);
+                deedOwner.depositMoney(deedPrice, false);
                 System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
 
             }
