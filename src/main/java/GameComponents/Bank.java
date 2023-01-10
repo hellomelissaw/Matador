@@ -13,6 +13,10 @@ public class Bank {
 
     }
 
+    public int getBankBalance(){
+        return gameBalance;
+    }
+
     public void giveMoneyToBank (int amount){
         gameBalance += amount;
     }
