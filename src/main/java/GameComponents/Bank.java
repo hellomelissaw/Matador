@@ -7,7 +7,7 @@ public class Bank {
     private int hotels;
 
     public Bank(){
-        gameBalance = 150000;
+        gameBalance = 374500;
         houses = 32;
         hotels = 12;
 

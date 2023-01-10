@@ -262,6 +262,41 @@ public class Player {
 
 
 
+   //Me attempting to make a sell hotel from the buyhotel method
+   /* public void sellHotel(DeedSquare_Buildable[] lotsToBuildOn,int hotelsToSell) {
+        for (int i = 0; i < lotsToBuildOn.length; i++) {
+            Deed_Buildable deed = lotsToBuildOn[i].getDeed();
+            int houseCount = lotsToBuildOn[i].getHouseCount();
+
+
+            if (hotel> hotelsToSell || h) {
+
+                int currentBalance = playerAccount.getBalance();
+                int buildingPrice = deed.getBuildingPrice();
+                if (currentBalance > 0 && currentBalance - buildingPrice >= 0) {
+                    playerAccount.withDraw(buildingPrice);
+                    bank.buyHotelFromBank(1,buildingPrice);
+                    lotsToBuildOn[i].setHouseCount(0);
+                    lotsToBuildOn[i].setHasHotel(true);
+
+                } else {
+                    System.out.println("Du har ikke nok penge til at købe dette hotel.");
+                }
+
+            } else if (!availableHotels) {
+                System.out.println("Der er ikke flere hoteller i banken");
+            } else {
+                System.out.println("Du har ikke nok huse til at bygge et hotel.");
+            }
+        }
+    }
+
+    */
+
+
+
+
+
 /*
     public int getHouses() {
         return playerAccount.getHouses();
