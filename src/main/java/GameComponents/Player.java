@@ -18,6 +18,12 @@ public class Player {
     private boolean testing = false;
     GuiController guiController;
     GUI_Player guiPlayer;
+
+
+    private boolean inJail = false;
+
+    int counter = 0;
+
     Text msg;
 
     private Bank bank = new Bank();
@@ -165,6 +171,31 @@ public class Player {
         return playerAccount.getAccountStatus();
 
     }
+    public void moveToJail(){
+        inJail = true;
+
+    }
+    public void moveOutJail(){
+        inJail = false;
+        counter = 0;
+    }
+
+    public boolean checkInJail(){
+        return inJail;
+    }
+    public int jailCounter(){
+        return counter;
+    }
+
+    public void jailIncrement(){
+        counter = counter + 1;
+
+    }
+    public void setInJail(boolean inJail) {
+        this.inJail = inJail;
+    }
+
+
     @Override
     public String toString() {
         return playerName;

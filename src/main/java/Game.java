@@ -1,4 +1,5 @@
 import Controllers.*;
+import GameComponents.Cup;
 
 
 public class Game {
@@ -8,6 +9,7 @@ public class Game {
 
         game.init();
         game.run();
+        //game.run(new Cup());
 
     }
 }
