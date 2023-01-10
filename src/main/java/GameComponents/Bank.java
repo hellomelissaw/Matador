@@ -38,7 +38,10 @@ public class Bank {
 
     //Use getHouses method from the player and insert into playerHouses
     //Get player's position or location of the house to determine price
-    public int sellHouseToBank(int amount, int position, int playerHouses){
+    public void sellHouseToBank(int amount, int price){
+        houses = houses - amount;
+        gameBalance = gameBalance - price*amount;
+    /*public int sellHouseToBank(int amount, int position, int playerHouses){
         int price = priceCalculator(position);
         int finalPrice= (int) ((price * 0.5) * amount);
         houses += amount;
@@ -55,7 +58,7 @@ public class Bank {
             gameBalance -= finalPrice;
         }
 
-        return finalPrice;
+        return finalPrice;*/
     }
 
     public int sellHotelToBank(int amount, int position, int playerHotels){
