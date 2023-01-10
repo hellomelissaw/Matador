@@ -9,7 +9,7 @@ public class ParkingSquare extends Square{
 
     }
     public void landOn(Player currentPlayer) {
-        System.out.println(msg.getText("freeParking"));
+        msg.printText("gratisParkering", "na");
     }
 }
 

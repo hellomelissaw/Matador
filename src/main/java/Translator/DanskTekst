@@ -103,6 +103,8 @@ or; eller
 pick; Du har valgt farven
 betalingSkat; Du skal betale skat!
 indkomstSkat; Tast 1 for at betale 4000 kr i skat eller Tast 2 for at betale 10% af alle dine værdier. Beslut dig her og nu!
-fængsel; Du er i fængsel og har kun følgende muligheder for at komme ud af fængsel! Valg en valgmulighed: Betal bøde på 1000 kr med det samme? eller Prøv heldet med terningekast!
-forladfængsel; Du kan nu forlade fængsel, om du har tabt penge eller ej så er friheden nok det værd!
-spildt3runder; Du har opbrugt dine forsøg, betal straks bøden!
+fængsel; Du er i fængsel og har kun følgende muligheder for at komme ud af fængsel! Vælg en valgmulighed: Betal bøde på 1000 kr med det samme? eller Prøv dit held ved terningekast!
+gratisParkering; Du er landet på gratis parkering, nyd en velfortjent pause!
+kastOgForladFængsel; Heldige dig, du slipper for at skulle betale fængselsbøden for du har heldet med dig!
+forladFængsel; Du kan nu forlade fængsel, om du har tabt penge eller ej så er friheden nok det værd!
+spildt3Runder; Du har opbrugt dine forsøg, betal straks bøden!

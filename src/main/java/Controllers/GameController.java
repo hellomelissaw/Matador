@@ -17,13 +17,14 @@ public class GameController {
 
     int playerCount = 0;
 
-    int counter = 0;
+    int jailCounter = 0;
 
+    int counter = 0;
 
 
     public void init() {
         guiController.setLang(msg);
-        boolean testingInit = true;
+        boolean testingInit = false;
         if (testingInit){
             msg = new Text("src/main/java/Translator/DanskTekst", guiController);
             msg.printText("startGame", "na");
@@ -145,14 +146,15 @@ public class GameController {
         boolean gameOver = false;
         while(gameOver == false) {
 
+
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
                 int sum;
-
                 boolean isInJail = players[i].checkInJail();
-                msg.printText("fængsel","na");
+
 
                 if(isInJail)  {
-                    msg.printText("moveToJail","na");
+
+                    msg.printText("fængsel","na");
                     String[] jailOptions = {"Betal bøde?","Kast terninger?"};
                     String name;
                     name = guiController.getUserSelection("Betal bøde på 1000 kr med det samme? eller Prøv heldet med terningekast!",jailOptions);
@@ -165,38 +167,41 @@ public class GameController {
                         players[i].withdrawMoney(fine);
                         int currentBalance = players[i].getCurrentBalance();
                         System.out.println(msg.getText("newBalance")+ currentBalance);
-                        msg.printText("forladfængsel","\"Du har nu betalt bøden, du kan nu forlade fængsel!\"");
+                        msg.printText("forladFængsel","Du har nu betalt bøden, du kan nu forlade fængsel!");
+                        players[i].moveOutJail();
                     }else if(name == "Kast terninger?"){
 
                         msg.printText("rollDice", players[i].getPlayerName());
-                        sum = cup.getSum();
+                        cup.getSum();
 
                         boolean sameValue = cup.checkEqualValueOfDice();
 
 
                         if(sameValue == true){
                             players[i].moveOutJail();
-                            //ekstra turn when leaving...
+                            msg.printText("kastOgForladFængsel","na");
+                            //Extra turn when leaving jail missing! maybe have done to final product!
                         }else{
                             players[i].jailIncrement();
                         }
 
                     }else{
-                        msg.printText("spildt3runder","na");
+                        msg.printText("spildt3Runder","na");
                         players[i].withdrawMoney(fine);
                         int currentBalance = players[i].getCurrentBalance();
                         System.out.println(msg.getText("newBalance")+ currentBalance);
-                        msg.printText("forladfængsel", "na");
+                        msg.printText("forladFængsel", "na");
+                        players[i].moveOutJail();
 
                     }
+                }
+                }
 
-                msg.printText("rollDice", players[i].getPlayerName());
+                    msg.printText("rollDice", players[i].getPlayerName());
                     sum = cup.getSum();
-                players[i].updatePosition(sum);
-                newPosition = players[i].getPosition();
-
-                squares[newPosition].landOn(players[i]);
-
+                    players[i].updatePosition(sum);
+                    newPosition = players[i].getPosition();
+                    squares[newPosition].landOn(players[i]);
 
 
                    if(players[i].isBankrupt()) {
@@ -209,7 +214,7 @@ public class GameController {
                 System.out.println("");
                 System.out.println("");
 
-                }
+
 
             }
 
@@ -220,4 +225,3 @@ public class GameController {
 
     }
 
-}

@@ -9,7 +9,7 @@ public class Text {
     String file;
     GuiController guiController;
 
-    int lineCount = 108;
+    int lineCount = 110;
     String[] messages = new String[lineCount];
 
     String[] labels = new String[lineCount];

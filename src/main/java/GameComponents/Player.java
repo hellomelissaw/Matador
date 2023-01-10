@@ -20,6 +20,7 @@ public class Player {
     GuiController guiController;
     GUI_Player guiPlayer;
 
+
     private boolean inJail = false;
 
     int counter = 0;
@@ -160,6 +161,9 @@ public class Player {
     public void jailIncrement(){
         counter = counter + 1;
 
+    }
+    public void setInJail(boolean inJail) {
+        this.inJail = inJail;
     }
 
 

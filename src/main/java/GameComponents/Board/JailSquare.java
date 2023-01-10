@@ -26,8 +26,9 @@ public class JailSquare extends Square{
         if(currentPosition==30)
         {
             currentPlayer.updatePosition(20);
+            currentPlayer.setInJail(true);
 
-            }else{
+        }else{
             System.out.println(msg.getText("visitJail"));
        }
 
