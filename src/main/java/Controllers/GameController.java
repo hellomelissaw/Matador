@@ -133,7 +133,7 @@ public class GameController {
     }
 
     public void run() {
-        boolean testing = true; // SET TO TRUE WHEN TESTING LANDING ON SPECIFIC SQUARE (SET SUM IN Cup_stub)
+        boolean testing = false; // SET TO TRUE WHEN TESTING LANDING ON SPECIFIC SQUARE (SET SUM IN Cup_stub)
         Cup cup;
         if(testing){
            cup = new Cup_stub(guiController);
@@ -177,7 +177,7 @@ public class GameController {
                         boolean sameValue = cup.checkEqualValueOfDice();
 
 
-                        if(sameValue == true){
+                        if(sameValue){
                             players[i].moveOutJail();
                             msg.printText("kastOgForladFængsel","na");
                             //Extra turn when leaving jail missing! maybe have done to final product!

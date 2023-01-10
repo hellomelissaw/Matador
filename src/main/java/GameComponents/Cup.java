@@ -20,6 +20,10 @@ public class Cup {
     int d2;
 
     public Cup (GuiController guiController) {this.guiController = guiController;}
+
+    public Cup() {
+
+    }
     //public Cup (GUI gui) {this.gui = gui;}
 
     public boolean checkEqualValueOfDice(){
