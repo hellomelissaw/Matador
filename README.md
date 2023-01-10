@@ -2,7 +2,7 @@
 
 Hej til den nysgerrige seer, her findes informationer angående vores implementering og udvikling af Matador projekt.
 
-- gui: Som her benyttes som vores visuelle interface som har samme funktion som det originale brætspil. 
+- GUI: Som her benyttes som vores visuelle interface som har samme funktion som det originale brætspil. 
   Herinde findes en visuel repræsentation af brikkerne , terningerne, felter samt feltteksten.
   
 - Inde i vores Matador mappe i IntelliJ findes alt kodeudviklingen der er blevet lavet under projektet. 
