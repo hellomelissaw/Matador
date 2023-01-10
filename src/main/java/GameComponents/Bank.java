@@ -13,12 +13,13 @@ public class Bank {
 
     }
 
+
     public void giveMoneyToBank (int amount){
-        gameBalance -= amount;
+        gameBalance += amount;
     }
 
     public void takeMoneyFromBank (int amount){
-        gameBalance += amount;
+        gameBalance -= amount;
     }
 
     public int priceCalculator(int position){

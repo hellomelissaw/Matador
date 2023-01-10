@@ -20,6 +20,14 @@ public class Account {
         hotels = 0;
     }
 
+    public void guiIsOn(boolean guiIsOn){
+        if(guiIsOn) {
+            guiOn = true;
+        } else if(!guiIsOn) {
+            guiOn = false;
+        }
+    }
+
     public void setGuiAccount(GUI_Player guiPlayer) {
         this.guiPlayer = guiPlayer;
 
