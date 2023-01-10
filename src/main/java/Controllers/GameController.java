@@ -18,7 +18,7 @@ public class GameController {
 
     int playerCount = 0;
 
-    Bank bank = new Bank();
+    //Bank bank = new Bank();
 
     public void init() {
         guiController.setLang(msg);
@@ -118,7 +118,7 @@ public class GameController {
                 players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
                 players[i].setGui(guiController.createGuiPlayer(players[i]),guiController,msg);
                 players[i].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
-                bank.takeMoneyFromBank(balance);
+                //bank.takeMoneyFromBank(balance);
 
 
             }
