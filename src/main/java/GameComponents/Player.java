@@ -137,7 +137,9 @@ public class Player {
 
                 } else {
                     squareIndex = 0;
-                    getStartMoney = true;
+                    if(!(currentPos==30)) { // solution broche-a-foin... to be fixed
+                        getStartMoney = true;
+                    }
                 }
             }
         }
