@@ -68,10 +68,12 @@ public class Player {
      * @param transactionToBankParameter is true if the transaction is with the bank and not other players
      */
     public void withdrawMoney(int newPoints, boolean transactionToBankParameter) {
-        playerAccount.withDraw(newPoints);
 
         if (transactionToBankParameter){
+            playerAccount.withDraw(newPoints);
             bank.giveMoneyToBank(newPoints);
+        }else if (!transactionToBankParameter){
+            playerAccount.withDraw(newPoints);
         }
     }
 
@@ -81,10 +83,11 @@ public class Player {
      * @param transactionToBankParameter true if the transaction is with the bank and not other players
      */
     public void depositMoney(int newPoints, boolean transactionToBankParameter){
-        playerAccount.deposit(newPoints);
-
         if (transactionToBankParameter){
-            bank.takeMoneyFromBank(newPoints);
+            int cashedOutMoney = bank.takeMoneyFromBank(newPoints);
+            playerAccount.deposit(cashedOutMoney);
+        }else if (!transactionToBankParameter){
+            playerAccount.deposit(newPoints);
         }
     }
 

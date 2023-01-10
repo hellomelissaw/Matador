@@ -14,12 +14,28 @@ public class Bank {
     }
 
     public void giveMoneyToBank (int amount){
-        gameBalance -= amount;
-    }
-
-    public void takeMoneyFromBank (int amount){
         gameBalance += amount;
     }
+
+    public int takeMoneyFromBank (int amount){
+        int cashedOutMoney = 0;
+
+        if (gameBalance > 0 && gameBalance > amount){
+            gameBalance -= amount;
+            cashedOutMoney = amount;
+        }else if (gameBalance > 0 && gameBalance < amount)
+        {
+            cashedOutMoney = gameBalance;
+            System.out.println("Der er ikke nok penge i banken til at udbetale den fulde sum");
+            System.out.println("Der kan kun udbetales " + cashedOutMoney + " ud af" + amount);
+            gameBalance = 0;
+        }else if (gameBalance == 0){
+            System.out.println("Banken har ikke flere penge at udbetale");
+        }
+        return cashedOutMoney;
+    }
+
+
 
    /* public int priceCalculator(int position){
         int price = 0;
