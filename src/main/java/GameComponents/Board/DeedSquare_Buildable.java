@@ -21,7 +21,6 @@ public class DeedSquare_Buildable extends DeedSquare {
 
     }
 
-
     public Deed_Buildable getDeed() {
         return deed;
     }
@@ -31,7 +30,7 @@ public class DeedSquare_Buildable extends DeedSquare {
 
         if(sellDeed == true) { // IF DEED IS AVAILABLE TO BUY
 
-            if (guiOn) {
+            if (guiIsOn) {
                 String[] choices = {"ja", "nej"};
                 if(!testing) {
                     buying = guiController.getUserSelection(msg.getText("buyLot") + " " + deed.getDeedName() + "?", choices);
@@ -55,7 +54,7 @@ public class DeedSquare_Buildable extends DeedSquare {
                     freeDeed = false;
                     deed.setOwner(currentPlayer);
                     currentPlayer.takeBuildableDeed(deed);
-                    if (guiOn) {
+                    if (guiIsOn) {
                         guiController.setOwnerName(currentPlayer, currentPlayer.getPosition());
                     }
 
