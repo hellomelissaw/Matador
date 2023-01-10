@@ -1,7 +1,6 @@
 package GameComponents;
 
 import Controllers.GuiController;
-import GameComponents.Board.Deed;
 import GameComponents.Board.Deed_Buildable;
 import GameComponents.Board.DeedSquare_Buildable;
 import GameComponents.Board.Deed_NonBuildable;
@@ -20,6 +19,8 @@ public class Player {
     GuiController guiController;
     GUI_Player guiPlayer;
     Text msg;
+
+    private Bank bank = new Bank();
     private int squareIndex = 0;
     private String playerName;
     private Account playerAccount = new Account();
@@ -27,8 +28,16 @@ public class Player {
     private Cardholder cardholder = new Cardholder();
     private String winnerName;
 
+
+
     public Player(String playerName) {
         this.playerName = playerName;
+
+    }
+
+    public void guiIsOn(boolean guiIsOn) {
+            guiOn = guiIsOn;
+            playerAccount.guiIsOn(guiIsOn);
 
     }
 
@@ -48,6 +57,7 @@ public class Player {
 
     public void setStartBalance(int startBalance) {
         playerAccount.deposit(startBalance);
+        bank.takeMoneyFromBank(startBalance);
         if (guiOn) {guiPlayer.setBalance(startBalance); }
     }
 
@@ -65,6 +75,28 @@ public class Player {
      */
     public void depositMoney(int newPoints){
         playerAccount.deposit(newPoints);
+    }
+
+    public void updateBank(int amount, String transactionType) {
+        if(transactionType.equals("deposit")) {
+            bank.takeMoneyFromBank(amount);
+        } else if (transactionType.equals("withdraw")) {
+            bank.giveMoneyToBank(amount);
+        }
+    }
+
+    public int getBankDetails(String typeOfInfo) {
+        int info = 0;
+        if(typeOfInfo.equals("balance")){
+            info = bank.getBalance();
+        } else if (typeOfInfo.equals("houseCount")) {
+            info = bank.getHouseCount();
+        } else if(typeOfInfo.equals("hotelCount")) {
+            info = bank.getHotelCount();
+        } else {
+            System.out.println("This type of information is not available. It might be top secret... or u might have just made a typo...");
+        }
+        return info;
     }
 
     public int getCurrentBalance(){
@@ -155,6 +187,10 @@ public class Player {
         return ownerStatus;
     }
 
+    public void setIsGroupOwner(){
+
+    }
+
     public void takeBuildableDeed(Deed_Buildable deed) {
         cardholder.addDeedBuildable(deed);
     }
@@ -169,41 +205,49 @@ public class Player {
     }
 
     public void buyHouse(DeedSquare_Buildable[] lotsToBuildOn, int housesToBuy) {
-        Deed_Buildable[] deedsToBuildOn = new Deed_Buildable[lotsToBuildOn.length];
-        for(int i = 0; i < lotsToBuildOn.length; i++) {
-            deedsToBuildOn[i] = lotsToBuildOn[i].getDeed();
-        }
+        int housesAvailable = bank.getHouseCount();
 
-        for (int j = 0; j < housesToBuy; j++) {
-            for (int i = 0; i < deedsToBuildOn.length; i++) {
-                String color = deedsToBuildOn[i].getColor();
-                boolean ownsGroup = cardholder.getOwnerStatus(color);
+        if(housesAvailable >= housesToBuy) {
 
-                if (ownsGroup) {
-                    boolean clearedForPurchase = cardholder.houseCountIsLevel(color, deedsToBuildOn[i]);
-                    if (clearedForPurchase) {
-                        int buildingPrice = deedsToBuildOn[i].getBuildingPrice();
-                        int currentBalance = playerAccount.getBalance();
-                        if (currentBalance > 0 && currentBalance - buildingPrice >= 0) {
-                            playerAccount.withDraw(buildingPrice);
-                            int count = deedsToBuildOn[i].getHouseCount();
-                            count++;
-                            deedsToBuildOn[i].setHouseCount(count);
-                            lotsToBuildOn[i].setHouseCount(count);
-                            System.out.println("There is now " + count + " houses on Square #" + i);
-                            System.out.println("Player's new balance is " + playerAccount.getBalance());
+            Deed_Buildable[] deedsToBuildOn = new Deed_Buildable[lotsToBuildOn.length];
+            for (int i = 0; i < lotsToBuildOn.length; i++) {
+                deedsToBuildOn[i] = lotsToBuildOn[i].getDeed();
+            }
 
+            for (int j = 0; j < housesToBuy; j++) {
+                for (int i = 0; i < deedsToBuildOn.length; i++) {
+                    String color = deedsToBuildOn[i].getColor();
+                    boolean ownsGroup = cardholder.getOwnerStatus(color);
+
+                    if (ownsGroup) {
+                        boolean clearedForPurchase = cardholder.houseCountIsLevel(color, deedsToBuildOn[i]);
+                        if (clearedForPurchase) {
+                            int buildingPrice = deedsToBuildOn[i].getBuildingPrice();
+                            int currentBalance = playerAccount.getBalance();
+                            if (currentBalance > 0 && currentBalance - buildingPrice >= 0) {
+                                playerAccount.withDraw(buildingPrice);
+                                int count = deedsToBuildOn[i].getHouseCount();
+                                count++;
+                                deedsToBuildOn[i].setHouseCount(count); // Maybe set the house count for deed in the square's setHouseCount??
+                                lotsToBuildOn[i].setHouseCount(count);
+                                bank.buyHouseFromBank(count,buildingPrice);
+                                System.out.println("There is now " + count + " houses on Square #" + i);
+                                System.out.println("Player's new balance is " + playerAccount.getBalance());
+
+                            } else {
+                                System.out.println("Du har ikke nok penge til at købe dette hus.");
+                            }
                         } else {
-                            System.out.println("Du har ikke nok penge til at købe dette hus.");
+                            System.out.println("Du skal bygge en jævn mængde hus på alle grunde i gruppen før du kan bygge videre.");
                         }
-                    } else {
-                        System.out.println("Du skal bygge en jævn mængde hus på alle grunde i gruppen før du kan bygge videre.");
-                    }
 
-                } else {
-                    System.out.println("Du ejer ikke alle grunde i gruppen, derfor kan du ikke bygge endnu.");
+                    } else {
+                        System.out.println("Du ejer ikke alle grunde i gruppen, derfor kan du ikke bygge endnu.");
+                    }
                 }
             }
+        } else {
+            System.out.println("Banken har ikke nok huse til at opfylde din ordre.");
         }
     }
 
@@ -218,6 +262,7 @@ public class Player {
                     playerAccount.withDraw(buildingPrice);
                     lotsToBuildOn[i].setHouseCount(0);
                     lotsToBuildOn[i].setHasHotel(true);
+                    bank.buyHotelFromBank(buildingPrice);
 
                 } else {
                     System.out.println("Du har ikke nok penge til at købe dette hotel.");
@@ -229,6 +274,28 @@ public class Player {
         }
     }
 
+    public void sellHouseToBank(DeedSquare_Buildable[] lotsToSellFrom, int housesToSell) { // in gui make sure there is not the option to sell houses one does not own
 
+        for (int i = 0; i < lotsToSellFrom.length; i++) {
+            int currentHouseCount = lotsToSellFrom[i].getDeed().getHouseCount();
+            int newHouseCount = currentHouseCount - housesToSell;
+            lotsToSellFrom[i].setHouseCount(newHouseCount);
+            lotsToSellFrom[i].getDeed().setHouseCount(newHouseCount);
+            int halfPrice = Math.round(lotsToSellFrom[i].getDeed().getBuildingPrice()/2);
+            playerAccount.deposit(halfPrice);
+            bank.sellHouseToBank(housesToSell,halfPrice);
+        }
+    }
+
+    public void sellHotelToBank(DeedSquare_Buildable[] lotsToSellFrom) { // in gui make sure there is not the option to sell houses one does not own
+
+        for (int i = 0; i < lotsToSellFrom.length; i++) {
+            lotsToSellFrom[i].setHasHotel(false);
+            lotsToSellFrom[i].getDeed().setHasHotel(false);
+            int halfPrice = Math.round(lotsToSellFrom[i].getDeed().getBuildingPrice()/2);
+            playerAccount.deposit(halfPrice);
+            bank.sellHotelToBank(1,halfPrice);
+        }
+    }
 }
 

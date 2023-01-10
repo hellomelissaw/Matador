@@ -4,6 +4,7 @@ import GameComponents.Board.Square;
 import GameComponents.Cup;
 import GameComponents.Cup_stub;
 import GameComponents.Player;
+import GameComponents.Bank;
 import Translator.*;
 
 public class GameController {
@@ -16,6 +17,8 @@ public class GameController {
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
 
     int playerCount = 0;
+
+    //Bank bank = new Bank();
 
     public void init() {
         guiController.setLang(msg);
@@ -98,7 +101,6 @@ public class GameController {
 
                     if (i == 0) {
                         duplicateName = false;
-                        System.out.println("First Player");
 
                     } else {
                         for (int j = 0; j < i; j++) {
@@ -116,6 +118,7 @@ public class GameController {
                 players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
                 players[i].setGui(guiController.createGuiPlayer(players[i]),guiController,msg);
                 players[i].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+                //bank.takeMoneyFromBank(balance);
 
 
             }
@@ -129,7 +132,7 @@ public class GameController {
     }
 
     public void run() {
-        boolean testing = true; // SET TO TRUE WHEN TESTING LANDING ON SPECIFIC SQUARE (SET SUM IN Cup_stub)
+        boolean testing = false; // SET TO TRUE WHEN TESTING LANDING ON SPECIFIC SQUARE (SET SUM IN Cup_stub)
         Cup cup;
         if(testing){
            cup = new Cup_stub(guiController);
@@ -151,8 +154,7 @@ public class GameController {
 
                 squares[newPosition].landOn(players[i]);
 
-
-                   if(players[i].isBankrupt()) {
+                    if(players[i].isBankrupt() == true) {
                         gameOver = true;
                         String winnerName = players[i].winner(players) + " ";
                         msg.printText("gameOver", winnerName);

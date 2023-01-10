@@ -23,9 +23,11 @@ public class CardMoney extends ChanceCard {
     public void playCard(Player currentPlayer){
         if (transactionType.equals("deposit")) { // PLAYER RECEIVES MONEY FROM THE BANK
             currentPlayer.depositMoney(amount);
+            currentPlayer.updateBank(amount, "deposit");
 
         } else if (transactionType.equals("withdraw")) { // PLAYER PAYS MONEY TO THE BANK
             currentPlayer.withdrawMoney(amount);
+            currentPlayer.updateBank(amount, "withdraw");
 
         } else if (transactionType.equals("hybrid")) { // PLAYER RECEIVES MONEY FROM OTHER PLAYERS
             for (int i = 0 ; i < players.length ; i++) {
