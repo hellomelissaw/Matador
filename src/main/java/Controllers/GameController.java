@@ -211,9 +211,6 @@ public class GameController {
                     sum = cup.getSum();
                     players[i].updatePosition(sum);
                     newPosition = players[i].getPosition();
-                    if (newPosition == 20){
-                        newPosition = 21;
-                    }
                     squares[newPosition].landOn(players[i]);
                 }
 
