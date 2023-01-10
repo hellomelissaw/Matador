@@ -49,6 +49,7 @@ public class DeedSquare_Buildable extends DeedSquare {
                 if (buying.equals("ja")) {
                     valid = true;
                     currentPlayer.withdrawMoney(deedPrice);
+                    currentPlayer.updateBank(deedPrice,"withdraw");
                     System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
                     sellDeed = false;
                     freeDeed = false;

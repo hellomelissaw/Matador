@@ -39,8 +39,8 @@ public class Bank {
     //Use getHouses method from the player and insert into playerHouses
     //Get player's position or location of the house to determine price
     public void sellHouseToBank(int amount, int price){
-        houses = houses - amount;
-        gameBalance = gameBalance - price*amount;
+        houses = houses + amount;
+         gameBalance = gameBalance - price;
     /*public int sellHouseToBank(int amount, int position, int playerHouses){
         int price = priceCalculator(position);
         int finalPrice= (int) ((price * 0.5) * amount);
@@ -61,8 +61,11 @@ public class Bank {
         return finalPrice;*/
     }
 
-    public int sellHotelToBank(int amount, int position, int playerHotels){
-        int price = priceCalculator(position);
+    //public int sellHotelToBank(int amount, int position, int playerHotels){
+        public void sellHotelToBank(int amount, int price){
+        hotels = hotels + amount;
+        gameBalance = gameBalance - price;
+       /* int price = priceCalculator(position);
         int finalPrice = (int) (((5 * price )* 0.5) * amount);
 
         if(playerHotels == 0) {
@@ -78,9 +81,12 @@ public class Bank {
         }
 
         return finalPrice;
-
+*/
     }
-    public int buyHouseFromBank(int amount, int position, int playerBalance){
+    public void buyHouseFromBank(int amount, int moneyBack){
+        houses = houses - amount;
+        gameBalance = gameBalance + moneyBack;
+    /*public int buyHouseFromBank(int amount, int position, int playerBalance){
 
         int price = priceCalculator(position);
         int finalPrice = (price * amount);
@@ -97,10 +103,12 @@ public class Bank {
             finalPrice = 0;
         }
 
-        return finalPrice;
+        return finalPrice;*/
     }
-    public int buyHotelFromBank(int amount, int position, int playerBalance){
-        int price = priceCalculator(position);
+    public void buyHotelFromBank(int price){
+        hotels--;
+        gameBalance = gameBalance + price;
+        /*int price = priceCalculator(position);
         int finalPrice = ((5 * price) * amount);
 
         if(playerBalance > price){
@@ -115,7 +123,7 @@ public class Bank {
             finalPrice = 0;
         }
 
-        return finalPrice;
+        return finalPrice;*/
     }
 
     public int getBalance() {

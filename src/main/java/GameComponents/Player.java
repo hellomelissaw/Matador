@@ -230,7 +230,7 @@ public class Player {
                                 count++;
                                 deedsToBuildOn[i].setHouseCount(count); // Maybe set the house count for deed in the square's setHouseCount??
                                 lotsToBuildOn[i].setHouseCount(count);
-                                bank.removeHouse(count);
+                                bank.buyHouseFromBank(count,buildingPrice);
                                 System.out.println("There is now " + count + " houses on Square #" + i);
                                 System.out.println("Player's new balance is " + playerAccount.getBalance());
 
@@ -262,7 +262,7 @@ public class Player {
                     playerAccount.withDraw(buildingPrice);
                     lotsToBuildOn[i].setHouseCount(0);
                     lotsToBuildOn[i].setHasHotel(true);
-                    bank.removeHotel();
+                    bank.buyHotelFromBank(buildingPrice);
 
                 } else {
                     System.out.println("Du har ikke nok penge til at købe dette hotel.");
@@ -274,17 +274,28 @@ public class Player {
         }
     }
 
-    public void sellHouseToBank(DeedSquare_Buildable[] lotsToSellFrom, int housesToSell) {
+    public void sellHouseToBank(DeedSquare_Buildable[] lotsToSellFrom, int housesToSell) { // in gui make sure there is not the option to sell houses one does not own
+
         for (int i = 0; i < lotsToSellFrom.length; i++) {
             int currentHouseCount = lotsToSellFrom[i].getDeed().getHouseCount();
             int newHouseCount = currentHouseCount - housesToSell;
             lotsToSellFrom[i].setHouseCount(newHouseCount);
             lotsToSellFrom[i].getDeed().setHouseCount(newHouseCount);
-            bank.sellHouseToBank(housesToSell,lotsToSellFrom[i].getDeed().getBuildingPrice());
+            int halfPrice = Math.round(lotsToSellFrom[i].getDeed().getBuildingPrice()/2);
+            playerAccount.deposit(halfPrice);
+            bank.sellHouseToBank(housesToSell,halfPrice);
         }
+    }
 
+    public void sellHotelToBank(DeedSquare_Buildable[] lotsToSellFrom) { // in gui make sure there is not the option to sell houses one does not own
 
-
+        for (int i = 0; i < lotsToSellFrom.length; i++) {
+            lotsToSellFrom[i].setHasHotel(false);
+            lotsToSellFrom[i].getDeed().setHasHotel(false);
+            int halfPrice = Math.round(lotsToSellFrom[i].getDeed().getBuildingPrice()/2);
+            playerAccount.deposit(halfPrice);
+            bank.sellHotelToBank(1,halfPrice);
+        }
     }
 }
 
