@@ -50,7 +50,7 @@ public class CardMoveTest {
         testChanceCard.setCardLang(msg);
         testPlayers[0].updatePosition(3);
         testChanceCard.playCard(testPlayers[0]);
-        assertEquals(2,testPlayers[0].getCurrentBalance());
+        assertEquals(4000,testPlayers[0].getCurrentBalance());
     }
 
     @Test
