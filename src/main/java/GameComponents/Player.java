@@ -20,12 +20,16 @@ public class Player {
     GuiController guiController;
     GUI_Player guiPlayer;
     Text msg;
+
+    private Bank bank = new Bank();
     private int squareIndex = 0;
     private String playerName;
     private Account playerAccount = new Account();
 
     private Cardholder cardholder = new Cardholder();
     private String winnerName;
+
+
 
     public Player(String playerName) {
         this.playerName = playerName;
@@ -48,6 +52,7 @@ public class Player {
 
     public void setStartBalance(int startBalance) {
         playerAccount.deposit(startBalance);
+        bank.takeMoneyFromBank(startBalance);
         if (guiOn) {guiPlayer.setBalance(startBalance); }
     }
 
@@ -65,6 +70,14 @@ public class Player {
      */
     public void depositMoney(int newPoints){
         playerAccount.deposit(newPoints);
+    }
+
+    public void updateBank(int amount, String transactionType) {
+        if(transactionType.equals("deposit")) {
+            bank.takeMoneyFromBank(amount);
+        } else if (transactionType.equals("withdraw")) {
+            bank.giveMoneyToBank(amount);
+        }
     }
 
     public int getCurrentBalance(){
