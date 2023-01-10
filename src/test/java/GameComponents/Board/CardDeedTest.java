@@ -18,9 +18,12 @@ public class CardDeedTest {
 
     public CardDeedTest() {
         testPlayers[0] = new Player("TestPlayer 1");
+        testPlayers[0].guiIsOn(false);
         testPlayers[0].setLang(msg);
         testPlayers[0].setStartBalance(6000);
+
         testPlayers[1] = new Player("TestPlayer 2");
+        testPlayers[1].guiIsOn(false);
         testPlayers[1].setLang(msg);
         testPlayers[1].setStartBalance(6000);
 

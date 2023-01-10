@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 public class CardMoneyTest {
     GuiController guiController = new GuiController();
     Player[] testPlayers = new Player[4];
-    Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
+    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
     GUI_Player[] testGuiPlayers = new GUI_Player[4];
 
     public CardMoneyTest() {
