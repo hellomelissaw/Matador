@@ -147,11 +147,10 @@ public class Player {
     }
     public void moveOutJail(){
         inJail = false;
-
+        counter = 0;
     }
 
     public boolean checkInJail(){
-
         return inJail;
     }
     public int jailCounter(){

@@ -26,8 +26,19 @@ public class Cup {
     }
     //public Cup (GUI gui) {this.gui = gui;}
 
-    public boolean checkEqualValueOfDice(){
-        return d1 == d2;
+    public boolean rollAndCheckEqualValueOfDice(){
+
+        boolean equalValue = false;
+
+        d1 = die1.roll();
+        d2 = die2.roll();
+        guiController.setDice(d1,d2);
+        System.out.println("First die: " + d1 + " and second die: " + d2);
+
+        if (d1 == d2){
+            equalValue = true;
+        }
+        return equalValue;
     }
 
     public int getSum () { // GETS THE SUM OF THE VALUE OF BOTH DICE
