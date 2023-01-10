@@ -31,7 +31,7 @@ public class Bank {
         {
             cashedOutMoney = gameBalance;
             System.out.println("Der er ikke nok penge i banken til at udbetale den fulde sum");
-            System.out.println("Der kan kun udbetales " + cashedOutMoney + " ud af" + amount);
+            System.out.println("Der kan kun udbetales " + cashedOutMoney + " ud af " + amount);
             gameBalance = 0;
         }else if (gameBalance == 0){
             System.out.println("Banken har ikke flere penge at udbetale");
@@ -71,7 +71,7 @@ public class Bank {
     }
     public void buyHouseFromBank(int amount, int price){
         gameBalance += price;
-        hotels -= amount;
+        houses -= amount;
     }
     public void buyHotelFromBank(int amount, int price){
             gameBalance += price;
