@@ -338,10 +338,11 @@ public class GuiController {
          return gui.getUserSelection(message, buttons);
      }
 
-     public String getUserString(int currentPlayer){
-        return gui.getUserString(msg.getText("enterName") + " " + currentPlayer);
+     public String getUserString( String message , int currentPlayer){
+        return gui.getUserString(msg.getText(message) + " " + currentPlayer);
 
      }
+
     public void setDice(int die1, int die2){
         gui.setDice(die1,die2);
     }

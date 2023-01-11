@@ -99,7 +99,7 @@ public class GameController {
                 int playerNumber = i + 1;
                 boolean duplicateName = true;
                 while(duplicateName) {
-                    userInput = guiController.getUserString(playerNumber);
+                    userInput = guiController.getUserString("enterName",playerNumber);
 
                     if (i == 0) {
                         duplicateName = false;
