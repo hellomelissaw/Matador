@@ -1,6 +1,7 @@
 package GameComponents.Board;
 
 import Controllers.GuiController;
+import GameComponents.Bank;
 import GameComponents.Player;
 import Translator.Text;
 import gui_fields.GUI_Player;
@@ -14,11 +15,17 @@ public class CardMoneyTest {
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
     GUI_Player[] testGuiPlayers = new GUI_Player[4];
 
+    Bank bank = new Bank();
+
     public CardMoneyTest() {
         testPlayers[0] = new Player("TestPlayer 1");
+        testPlayers[0].setBank(bank);
         testPlayers[1] = new Player("TestPlayer 2");
+        testPlayers[1].setBank(bank);
         testPlayers[2] = new Player("TestPlayer 3");
+        testPlayers[2].setBank(bank);
         testPlayers[3] = new Player("TestPlayer 4");
+        testPlayers[3].setBank(bank);
 
         testGuiPlayers[0] = new GUI_Player("TestPlayer 1");
         testGuiPlayers[1] = new GUI_Player("TestPlayer 2");

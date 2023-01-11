@@ -40,7 +40,7 @@ public class DeedSquare_NonBuildable extends DeedSquare {
 
                 if (buying.equals("ja")) {
                     valid = true;
-                    currentPlayer.withdrawMoney(deedPrice);
+                    currentPlayer.withdrawMoney(deedPrice, true);
                     System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
                     sellDeed = false;
                     freeDeed = false;
@@ -69,8 +69,8 @@ public class DeedSquare_NonBuildable extends DeedSquare {
                 msg.printText("payRent", deedOwner.getPlayerName());
                 int rentPrice;
 
-                currentPlayer.withdrawMoney(rent[0]); //TO DO: CHECK IF PLAYER OWNS OTHER LOTS IN GROUP TO CHANGE RENT
-                deedOwner.depositMoney(deedPrice);
+                currentPlayer.withdrawMoney(rent[0], false); //TO DO: CHECK IF PLAYER OWNS OTHER LOTS IN GROUP TO CHANGE RENT
+                deedOwner.depositMoney(deedPrice, false);
                 System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
 
             }

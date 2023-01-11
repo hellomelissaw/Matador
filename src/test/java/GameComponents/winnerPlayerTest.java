@@ -33,10 +33,10 @@ public class winnerPlayerTest {
     @Test
     public void winner() {
 
-        players[0].depositMoney(12);
-        players[1].depositMoney(140);
-        players[2].depositMoney(18);
-        players[3].depositMoney(20);
+        players[0].depositMoney(12,false);
+        players[1].depositMoney(140,false);
+        players[2].depositMoney(18,false);
+        players[3].depositMoney(20,false);
 
         for (int i = 0; i < players.length; i++) {
             assertEquals("B",players[i].winner(players));

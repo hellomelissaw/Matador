@@ -1,6 +1,7 @@
 package GameComponents.Board;
 
 import Controllers.GuiController;
+import GameComponents.Bank;
 import GameComponents.Player;
 import Translator.Text;
 import gui_fields.GUI_Player;
@@ -15,6 +16,8 @@ public class DeedSquareTest {
     GUI_Player[] testGuiPlayers = new GUI_Player[2];
     DeedSquare_Buildable[] testStreetSquare = new DeedSquare_Buildable[3];
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+
+    Bank bank = new Bank();
 
     int startBalance = 7000;
     int[] rent = {50,250,750,2250,4000,6000};
@@ -33,14 +36,16 @@ public class DeedSquareTest {
         testStreetSquare[2].setGuiController(guiController);
 
         testPlayers[0] = new Player("TestPlayer 1");
+        testPlayers[0].setBank(bank);
         testPlayers[1] = new Player("TestPlayer 2");
+        testPlayers[1].setBank(bank);
 
         testGuiPlayers[0] = new GUI_Player("TestPlayer 1");
         testGuiPlayers[1] = new GUI_Player("TestPlayer 2");
 
         for(int i = 0 ; i < testPlayers.length ; i++) {
             testPlayers[i].setGui(testGuiPlayers[i], guiController, msg);
-            testPlayers[i].depositMoney(startBalance);
+            testPlayers[i].depositMoney(startBalance,false);
         }
     }
 
@@ -49,7 +54,7 @@ public class DeedSquareTest {
     public void cannotBuyHouseBecauseNotEnoughMoney() {
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
-        testPlayers[0].withdrawMoney(startBalance-1200);
+        testPlayers[0].withdrawMoney(startBalance-1200,false);
 
         DeedSquare_Buildable[] lotsToBuildOn = {testStreetSquare[2]};
         testPlayers[0].buyHouse(lotsToBuildOn, 1);
@@ -86,7 +91,7 @@ public class DeedSquareTest {
 
     @Test
     public void cannotBuyHotelBecauseLackOfFunds() {
-        testPlayers[0].withdrawMoney(1000);
+        testPlayers[0].withdrawMoney(1000,false);
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
         DeedSquare_Buildable[] lotsToBuildOn = {testStreetSquare[2]};
@@ -230,7 +235,7 @@ public class DeedSquareTest {
 
     @Test
     public void playerBuilds2HousesOnTestDeedSquare0And1() {
-        testPlayers[0].depositMoney(2000);
+        testPlayers[0].depositMoney(2000,false);
         testStreetSquare[0].testing(true,"ja");
         testStreetSquare[0].landOn(testPlayers[0]);
         testStreetSquare[1].testing(true,"ja");

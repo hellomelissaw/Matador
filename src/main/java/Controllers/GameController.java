@@ -5,6 +5,7 @@ import GameComponents.Cup;
 import GameComponents.Cup_stub;
 import GameComponents.Player;
 import Translator.*;
+import GameComponents.Bank;
 public class GameController {
     boolean useCupStub = false;
     boolean testingInit = true;
@@ -22,9 +23,11 @@ public class GameController {
 
     int counter = 0;
 
+    Bank bank = new Bank();
 
     public void init() {
         guiController.setLang(msg);
+        boolean testingInit = true;
         if (testingInit){
             msg = new Text("src/main/java/Translator/DanskTekst", guiController);
             msg.printText("startGame", "na");
@@ -37,31 +40,37 @@ public class GameController {
 
             players[0] = new Player("Marc"); // INITIALISE EACH PLAYER WITH NAME
             players[0].setGui(guiController.createGuiPlayer(players[0]),guiController,msg);
-            players[0].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+            players[0].setBank(bank); //INITIALISE BANK WITHIN PLAYER
+            players[0].setStartBalance(balance,true); // DEPOSIT INITIAL BALANCE
 
 
             players[1] = new Player("Germaine"); // INITIALISE EACH PLAYER WITH NAME
             players[1].setGui(guiController.createGuiPlayer(players[1]),guiController,msg);
-            players[1].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+            players[1].setBank(bank); //INITIALISE BANK WITHIN PLAYER
+            players[1].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
 
             players[2] = new Player("Harry"); // INITIALISE EACH PLAYER WITH NAME
             players[2].setGui(guiController.createGuiPlayer(players[2]),guiController,msg);
-            players[2].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+            players[2].setBank(bank); //INITIALISE BANK WITHIN PLAYER
+            players[2].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
 
             if (playerCount > 3) {
                 players[3] = new Player("Sara"); // INITIALISE EACH PLAYER WITH NAME
                 players[3].setGui(guiController.createGuiPlayer(players[3]),guiController,msg);
-                players[3].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+                players[3].setBank(bank); //INITIALISE BANK WITHIN PLAYER
+                players[3].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
 
                 players[4] = new Player("Megan"); // INITIALISE EACH PLAYER WITH NAME
                 players[4].setGui(guiController.createGuiPlayer(players[4]),guiController,msg);
-                players[4].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+                players[4].setBank(bank); //INITIALISE BANK WITHIN PLAYER
+                players[4].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
 
 
                 if (playerCount == 6) {
                     players[5] = new Player("Adam"); // INITIALISE EACH PLAYER WITH NAME
                     players[5].setGui(guiController.createGuiPlayer(players[5]),guiController,msg);
-                    players[5].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+                    players[5].setBank(bank); //INITIALISE BANK WITHIN PLAYER
+                    players[5].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
                 }
             }
 
@@ -120,7 +129,8 @@ public class GameController {
 
                 players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
                 players[i].setGui(guiController.createGuiPlayer(players[i]),guiController,msg);
-                players[i].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+                players[i].setBank(bank); //INITIALISE BANK WITHIN PLAYER
+                players[i].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
 
 
             }
@@ -149,7 +159,6 @@ public class GameController {
 
         while (gameOver == false) {
 
-
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
                 int sum;
                 boolean isInJail = players[i].checkInJail();
@@ -165,7 +174,7 @@ public class GameController {
                     if (players[i].jailCounter() < 3) {
 
                         if (name == "Betal bøde?") {
-                            players[i].withdrawMoney(fine);
+                            players[i].withdrawMoney(fine, true);
                             int currentBalance = players[i].getCurrentBalance();
                             System.out.println(msg.getText("newBalance") + currentBalance);
                             msg.printText("forladFængsel", "Du har nu betalt bøden, du kan nu forlade fængsel!");
@@ -196,7 +205,7 @@ public class GameController {
                         }
                     } else if (players[i].jailCounter() == 3) {
                         msg.printText("spildt3Runder", "na");
-                        players[i].withdrawMoney(fine);
+                        players[i].withdrawMoney(fine, true);
                         int currentBalance = players[i].getCurrentBalance();
                         System.out.println(msg.getText("newBalance") + currentBalance);
                         msg.printText("forladFængsel", "na");
@@ -212,7 +221,8 @@ public class GameController {
                     squares[newPosition].landOn(players[i]);
                 }
 
-                    if (players[i].isBankrupt()) {
+                   if(players[i].isBankrupt()) {
+
                         gameOver = true;
                         String winnerName = players[i].winner(players) + " ";
                         msg.printText("gameOver", winnerName);

@@ -1,6 +1,7 @@
 package GameComponents.Board;
 
 import Controllers.GuiController;
+import GameComponents.Bank;
 import GameComponents.Player;
 import GameComponents.Board.BoardInit;
 import Translator.Text;
@@ -15,17 +16,21 @@ public class CardDeedTest {
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
     ChanceSquare testChanceSquare;
 
+    Bank bank = new Bank();
+
 
     public CardDeedTest() {
         testPlayers[0] = new Player("TestPlayer 1");
         testPlayers[0].guiIsOn(false);
         testPlayers[0].setLang(msg);
-        testPlayers[0].setStartBalance(6000);
+        testPlayers[0].setBank(bank);
+        testPlayers[0].setStartBalance(6000, true);
 
         testPlayers[1] = new Player("TestPlayer 2");
         testPlayers[1].guiIsOn(false);
         testPlayers[1].setLang(msg);
-        testPlayers[1].setStartBalance(6000);
+        testPlayers[1].setBank(bank);
+        testPlayers[1].setStartBalance(6000, true);
 
         BoardInit squares = new BoardInit(guiController, msg, testPlayers);
         Square[] board = squares.getSquareArr();

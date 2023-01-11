@@ -1,138 +1,76 @@
 package GameComponents;
 
-import GameComponents.Board.DeedSquare_Buildable;
-import Translator.Text;
-import org.junit.Test;
 
+import Controllers.GuiController;
+import Translator.Text;
+import gui_fields.GUI_Player;
+import org.junit.Test;
 import static org.junit.Assert.*;
 
+
 public class BankTest {
-    private Player[] testPlayers = new Player[1];
-    private int startBalance = 100;
-    private int deedPrice = 5;
-    private int[] rent = {2,3,4,5,6};
-    private int buildingPrice = 5;
-
-    private Text msg = new Text("src/main/java/Translator/DanskTekst", null);
 
 
-    DeedSquare_Buildable[] testSquare = new DeedSquare_Buildable[1];
+    Bank bank = new Bank();
+    Player testPlayer = new Player("Test Player");
+    GUI_Player testGuiPlayer = new GUI_Player("Test Player");
+    GuiController guiController = new GuiController();
+    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
     public BankTest() {
-        msg.setGuiIsOn(false);
-        testPlayers[0] = new Player("Test Player 1");
-        testPlayers[0].guiIsOn(false);
-        testPlayers[0].setStartBalance(startBalance);
-
-        testSquare[0] = new DeedSquare_Buildable("Test Square", deedPrice, rent, buildingPrice);
-        testSquare[0].setGuiOn(false);
-        testSquare[0].setGroup("blue", 1);
-        testSquare[0].setLang(msg);
-
+        testPlayer.setGui(testGuiPlayer, guiController, msg);
     }
-   @Test
-   public void startBalanceIsWithdrawnFromBank(){
-        assertEquals(150000-startBalance, testPlayers[0].getBankDetails("balance"));
-   }
 
+    //The bank is set to have
+    //gameBalance = 374500;
+    //houses = 32;
+    //hotels = 12;
     @Test
-    public void playerReceives10FromBank() {
-        testPlayers[0].depositMoney(10);
-        testPlayers[0].updateBank(10, "deposit");
-
-        assertEquals(startBalance+10, testPlayers[0].getCurrentBalance());
-        assertEquals(150000-startBalance-10, testPlayers[0].getBankDetails("balance"));
+    public void testGiveMoneyToBank(){
+        int deposit = 1000;
+        bank.giveMoneyToBank(deposit);
+        assertEquals(bank.getBankBalance(),375500);
 
     }
 
     @Test
-    public void playerPays10toTheBank() {
-        testPlayers[0].withdrawMoney(10);
-        testPlayers[0].updateBank(10, "withdraw");
+    public void testBankKeepsTheRestOfTheMoney(){
+        int startBalance = 30000;
 
-        assertEquals(startBalance-10, testPlayers[0].getCurrentBalance());
-        assertEquals(150000-startBalance+10, testPlayers[0].getBankDetails("balance"));
-    }
-
-    @Test
-    public void priceCalculator() {
-    }
-
-    @Test
-    public void playerSells1HouseToBankForHalfPrice() {
-        testSquare[0].testing(true,"ja");
-        testSquare[0].landOn(testPlayers[0]);
-        testPlayers[0].buyHouse(testSquare,1);
-        int balanceBeforeSale = testPlayers[0].getCurrentBalance();
-        testPlayers[0].sellHouseToBank(testSquare,1);
-        assertEquals(balanceBeforeSale+buildingPrice/2, testPlayers[0].getCurrentBalance());
-        assertEquals(32, testPlayers[0].getBankDetails("houseCount"));
-        assertEquals(150000-startBalance+deedPrice+buildingPrice-Math.round((buildingPrice/2)), testPlayers[0].getBankDetails("balance"));
-    }
-
-    @Test
-    public void playerBuys4housesFromBank(){
-        testSquare[0].testing(true,"ja");
-        testSquare[0].landOn(testPlayers[0]);
-        testPlayers[0].buyHouse(testSquare,4);
-
-        int balanceBeforeSale = testPlayers[0].getCurrentBalance();
-        assertEquals(150000-startBalance+deedPrice+buildingPrice*4,testPlayers[0].getBankDetails("balance"));
-    }
-
-    @Test
-    public void sellHotelToBank() {
-        testSquare[0].testing(true,"ja");
-        testSquare[0].landOn(testPlayers[0]);
-        testPlayers[0].buyHouse(testSquare,4);
-        testPlayers[0].buyHotel(testSquare);
-        int balanceBeforeSale = testPlayers[0].getCurrentBalance();
-        System.out.println("Currentbank balance" + testPlayers[0].getBankDetails("balance"));
-        testPlayers[0].sellHotelToBank(testSquare);
-        assertEquals(balanceBeforeSale+buildingPrice/2, testPlayers[0].getCurrentBalance());
-        assertEquals(12, testPlayers[0].getBankDetails("hotelCount"));
-        assertEquals(150000-startBalance+deedPrice+buildingPrice*5-Math.round((buildingPrice/2)), testPlayers[0].getBankDetails("balance"));
-    }
-
-    @Test
-    public void playerBuys1HouseSo1LessHouseInBank() {
-        testSquare[0].testing(true,"ja");
-        testSquare[0].landOn(testPlayers[0]);
-        testPlayers[0].buyHouse(testSquare,1);
-
-        assertEquals(31, testPlayers[0].getBankDetails("houseCount"));
-    }
-
-    @Test
-    public void buyHotelFromBank() {
-        testSquare[0].testing(true,"ja");
-        testSquare[0].landOn(testPlayers[0]);
-        testPlayers[0].buyHouse(testSquare,4);
-        testPlayers[0].buyHotel(testSquare);
-
-        assertEquals(11, testPlayers[0].getBankDetails("hotelCount"));
-    }
-
-    @Test
-    public void cannotBuyHouseBecauseNotEnoughInBank(){
-        testPlayers[0].setHouseCount(3);
-        testSquare[0].testing(true,"ja");
-        testSquare[0].landOn(testPlayers[0]);
-        testPlayers[0].buyHouse(testSquare,4);
-
-        assertEquals(0, testSquare[0].getHouseCount());
+        testPlayer.setBank(bank);
+        testPlayer.depositMoney(startBalance,true);
+        assertEquals(bank.getBankBalance(),344500);
 
     }
 
     @Test
-    public void cannotBuyHotelBecauseNotEnoughInBank(){
-        testPlayers[0].setHotelCount(0);
-        testSquare[0].testing(true,"ja");
-        testSquare[0].landOn(testPlayers[0]);
-        testPlayers[0].buyHouse(testSquare,4);
-        testPlayers[0].buyHotel(testSquare);
-
-
-        assertEquals(false, testSquare[0].hasHotel());
-
+    public void testBankWillOnlyGiveTheMoneyItHas(){
+        int withdrawAmount = 374600;
+        testPlayer.setBank(bank);
+        testPlayer.depositMoney(withdrawAmount,true);
+        assertEquals(bank.getBankBalance(),0);
     }
+
+    @Test
+    public void testBankOnlyHas32Houses(){
+        //The two lines under will buy out all houses
+        int boughtHouses = 32;
+        bank.buyHouseFromBank(boughtHouses,0);
+
+        //Given that the player attempts to buy a certain amount of houses, the bank will check if there are enough.
+        //Since all houses are bought out, it should be false
+        int buyHouses = 3;
+        assertFalse(bank.areThereEnoughHouses(buyHouses));
+    }
+
+    @Test
+    public void testBankOnlyHas12Hotels(){
+
+        int boughtHotels = 12;
+        bank.buyHotelFromBank(boughtHotels,0);
+
+        assertFalse(bank.areThereStillHotels());
+    }
+
 }
+
+
