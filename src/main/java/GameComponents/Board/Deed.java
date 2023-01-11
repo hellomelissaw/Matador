@@ -63,4 +63,8 @@ public abstract class Deed {
         this.groupSize = groupSize;
     }
 
+    public int getDeedPrice (String deedName){
+
+    }
+
 }

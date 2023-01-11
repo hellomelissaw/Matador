@@ -1,9 +1,7 @@
 package GameComponents;
 
 import Controllers.GuiController;
-import GameComponents.Board.Deed_Buildable;
-import GameComponents.Board.DeedSquare_Buildable;
-import GameComponents.Board.Deed_NonBuildable;
+import GameComponents.Board.*;
 import gui_fields.GUI_Player;
 import Translator.Text;
 
@@ -18,13 +16,15 @@ public class Player {
     private boolean testing = false;
     GuiController guiController;
     GUI_Player guiPlayer;
-
+    DeedSquare deedSquare;
+    int squareCount = 40;
 
     private boolean inJail = false;
 
     int counter = 0;
 
     Text msg;
+
 
     private Bank bank = new Bank();
     private int squareIndex = 0;
@@ -33,6 +33,7 @@ public class Player {
 
     private Cardholder cardholder = new Cardholder();
     private String winnerName;
+    Deed deed;
 
 
 
@@ -340,5 +341,49 @@ public class Player {
     public void setHotelCount(int count) {
         bank.setHotelCount(count);
     }
-}
+
+
+
+    public void selLot(Player[] players) {
+        String choosenButton = guiController.getUserButtonPressed();
+        if (choosenButton == "Ja") {
+
+            Deed_Buildable[] ownedBuildableDeeds = cardholder.getBuildable();
+            String[] buildablePropertyName = new String[ownedBuildableDeeds.length];
+            for(int i = 0 ; i < ownedBuildableDeeds.length ; i++) {
+                buildablePropertyName[i] = ownedBuildableDeeds[i].getDeedName();
+            }
+                Deed_NonBuildable[] ownedNonBuildableDeeds = cardholder.getNonBuildable();
+                String[] nonBuildablePropertyName = new String[ownedNonBuildableDeeds.length];
+                for (int j = 0; j < ownedNonBuildableDeeds.length; j++) {
+                    nonBuildablePropertyName[j] = ownedNonBuildableDeeds[j].getDeedName();
+                }
+            for (int i = 0; i < ownedBuildableDeeds.length+ownedNonBuildableDeeds.length; i++) {
+                String[] propertiesName = new String[ownedBuildableDeeds.length+ownedNonBuildableDeeds.length];
+                for (int j = 0; j < ownedBuildableDeeds.length; j++) {
+                    for (int k = ownedBuildableDeeds.length+1  ; k <ownedNonBuildableDeeds.length ; k++) {
+                        propertiesName[i] = buildablePropertyName[i] + nonBuildablePropertyName[k];
+                    }
+
+                }
+    int deedPrice =0 ;
+                    String userSelection = guiController.getUserSelection(propertiesName[i]);
+                for (int j = 0; j <propertiesName.length ; j++) {
+                    guiController.getUserButtonPressed();
+                    //if()
+                    if(userSelection.equals(ownedBuildableDeeds[i].getDeedName()))
+                    deedPrice = ownedBuildableDeeds[i].getDeedPrice(userSelection);
+                    if (userSelection.equals(ownedNonBuildableDeeds[i].getDeedName()))
+                        deedPrice = ownedNonBuildableDeeds[i].getDeedPrice(userSelection);
+
+                }
+
+            }
+
+        }
+
+    }
+    }
+
+
 

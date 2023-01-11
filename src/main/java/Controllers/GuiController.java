@@ -346,6 +346,12 @@ public class GuiController {
         gui.setDice(die1,die2);
     }
 
+    public  String getUserButtonPressed(){
+        return gui.getUserButtonPressed("Vil du salge noget?" , "Ja" , "Nej");
+    }
 
+    public String getUserSelection(String userSelection){
+         return gui.getUserSelection("Hvilken ground vil du salge?");
+    }
 
  }
