@@ -13,11 +13,13 @@ public class GuiControllerTest {
 
     @Test
     public void addPlayerOnBoard() {
-        GUI_Player[] guiPlayer = new GUI_Player[3];
+        Player[] player = new Player[3];
+
         for (int i = 0; i < 3; i++) {
-            guiPlayer[i] = new GUI_Player("ava");
-            GUI gui = new GUI();
-            gui.addPlayer(guiPlayer[i]);
+            player[i] = new Player("ava");
+            GuiController guiController = new GuiController();
+            guiController.createGuiPlayer(player[i]);
+
         }
         assertEquals(3,3);
     }
