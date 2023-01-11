@@ -154,10 +154,9 @@ public class GameController {
                 int sum;
                 boolean isInJail = players[i].checkInJail();
 
-
                 if (isInJail) {
 
-                    msg.printText("fængsel", "na");
+                    msg.printText(players[i].getPlayerName() + "fængsel" , "na");
                     String[] jailOptions = {"Betal bøde?", "Kast terninger?"};
                     String name;
                     name = guiController.getUserSelection("Betal bøde på 1000 kr med det samme? eller Prøv heldet med terningekast!", jailOptions);
@@ -203,14 +202,31 @@ public class GameController {
                         players[i].moveOutJail();
                     }
                 }
-
                 if (!isInJail){
-                    msg.printText("rollDice", players[i].getPlayerName());
-                    sum = cup.getSum();
-                    players[i].updatePosition(sum);
-                    newPosition = players[i].getPosition();
-                    squares[newPosition].landOn(players[i]);
+                    boolean equalValue = true;
+                    counter = 3;
+
+                    while (equalValue && counter !=0) {
+                        msg.printText("rollDice", players[i].getPlayerName());
+                        sum = cup.getSum();
+
+                        equalValue = cup.CheckForEqualValueOfDice();
+                        if (equalValue){
+                            counter --;
+                        }
+                        players[i].updatePosition(sum);
+                        newPosition = players[i].getPosition();
+                        squares[newPosition].landOn(players[i]);
+                    }
+                    if (equalValue && counter == 0)
+                    {
+                        players[i].moveToJail();
+                        newPosition = players[i].getDistanceToMove(30,40);
+                        squares[newPosition].landOn(players[i]);
+                    }
+
                 }
+
 
                     if (players[i].isBankrupt()) {
                         gameOver = true;

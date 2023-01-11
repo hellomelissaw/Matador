@@ -52,4 +52,13 @@ public class Cup {
         return sum;
 
     }
+    public boolean CheckForEqualValueOfDice(){
+
+        boolean equalValue = false;
+
+        if (d1 == d2){
+            equalValue = true;
+        }
+        return equalValue;
+    }
 }
