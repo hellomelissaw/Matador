@@ -1,13 +1,11 @@
 package Controllers;
-import GameComponents.Board.Square;
+import GameComponents.Board.Deed_Buildable;
 import GameComponents.Player;
 import Translator.Text;
 import gui_fields.*;
 import gui_main.GUI;
 
 import java.awt.*;
-
-import static java.awt.Color.blue;
 
 public class GuiController {
      private GUI gui;
@@ -318,6 +316,19 @@ public class GuiController {
      }*/
      public String getUserSelection(String message, String[] buttons) {
          return gui.getUserSelection(message, buttons);
+     }
+
+     public String getUserLot(Player currentPlayer) {
+         Deed_Buildable[] deeds = currentPlayer.getBuildableDeeds();
+         String[] deedNames = new String[deeds.length];
+         for (int i = 0 ; i < deeds.length ; i++) {
+             deedNames[i] = new String(deeds[i].getDeedName());
+         }
+         return gui.getUserSelection(msg.getText("whichLots"), deedNames);
+     }
+
+     public boolean getUserBoolean(String message) {
+         return gui.getUserLeftButtonPressed(message, "Ja", "Nej");
      }
 
      public String getUserString(int currentPlayer){
