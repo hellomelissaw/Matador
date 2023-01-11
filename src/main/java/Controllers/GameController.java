@@ -30,7 +30,6 @@ public class GameController {
         boolean testingInit = true;
         if (testingInit){
             msg = new Text("src/main/java/Translator/DanskTekst", guiController);
-            msg.printText("startGame", "na");
             //msg = new Text("src/main/java/Translator/EnglishText", guiController);
             //guiController.initFieldTitles(msg);
             playerCount = 3;
