@@ -174,7 +174,7 @@ public class GameController {
                     if (players[i].jailCounter() < 3) {
 
                         if (name == "Betal bøde?") {
-                            players[i].withdrawMoney(fine);
+                            players[i].withdrawMoney(fine, true);
                             int currentBalance = players[i].getCurrentBalance();
                             System.out.println(msg.getText("newBalance") + currentBalance);
                             msg.printText("forladFængsel", "Du har nu betalt bøden, du kan nu forlade fængsel!");
@@ -205,7 +205,7 @@ public class GameController {
                         }
                     } else if (players[i].jailCounter() == 3) {
                         msg.printText("spildt3Runder", "na");
-                        players[i].withdrawMoney(fine);
+                        players[i].withdrawMoney(fine, true);
                         int currentBalance = players[i].getCurrentBalance();
                         System.out.println(msg.getText("newBalance") + currentBalance);
                         msg.printText("forladFængsel", "na");
@@ -222,7 +222,7 @@ public class GameController {
                 }
 
                    if(players[i].isBankrupt()) {
->>>>>>>>> Temporary merge branch 2
+
                         gameOver = true;
                         String winnerName = players[i].winner(players) + " ";
                         msg.printText("gameOver", winnerName);
