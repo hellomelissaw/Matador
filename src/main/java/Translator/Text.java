@@ -29,8 +29,9 @@ public class Text {
 
             while(counter.readLine() != null){
                 lineCount++;
+
             }
-            lineCount--;
+            System.out.println(lineCount);
             labels = new String[lineCount];
             messages = new String[lineCount];
             reader = new BufferedReader(new java.io.FileReader(file));
