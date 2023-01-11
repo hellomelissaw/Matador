@@ -9,10 +9,10 @@ public class Text {
     String file;
     GuiController guiController;
 
-    int lineCount = 93;
-    String[] messages = new String[lineCount];
+    int lineCount = 0;
+    String[] labels;
+    String[] messages;
 
-    String[] labels = new String[lineCount];
 
     /***
      * Reads a text file and parses each line into labels and their corresponding messages
@@ -25,9 +25,16 @@ public class Text {
         BufferedReader reader;
 
         try {
+            BufferedReader counter = new BufferedReader(new java.io.FileReader(file));
+
+            while(counter.readLine() != null){
+                lineCount++;
+            }
+
+            labels = new String[lineCount];
+            messages = new String[lineCount];
             reader = new BufferedReader(new java.io.FileReader(file));
             String line;
-
             for (int i = 0; i < lineCount; i++) {
 
                 line = reader.readLine();
