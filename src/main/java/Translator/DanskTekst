@@ -92,7 +92,9 @@ kastOgForladFængsel; Heldige dig, du slipper for at skulle betale fængselsbød
 forladFængsel; Du kan nu forlade fængsel, om du har tabt penge eller ej så er friheden nok det værd!
 invalidInput; Du skal indtaste 1 eller 2.
 spildt3Runder; Du har opbrugt dine forsøg, betal straks bøden!
-chooseAction; Vælg venligst én af de tre følgende muligheder:
+chooseAction; Vælg venligst én af de tre følgende muligheder
 whichLots; Hvilke grunde vil du bygge på?
+selectMoreLots; Vil du vælge flere grunde?
 houseOrHotel; Hvilken type bygning vil du bygge?
 howManyBuildings; Hvor mange bygninger vil du bygge på hver af de valgte grunde?
+

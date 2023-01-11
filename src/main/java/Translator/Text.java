@@ -30,7 +30,7 @@ public class Text {
             while(counter.readLine() != null){
                 lineCount++;
             }
-
+            lineCount--;
             labels = new String[lineCount];
             messages = new String[lineCount];
             reader = new BufferedReader(new java.io.FileReader(file));
