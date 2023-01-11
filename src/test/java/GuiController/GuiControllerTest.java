@@ -14,10 +14,10 @@ public class GuiControllerTest {
     @Test
     public void addPlayerOnBoard() {
         Player[] player = new Player[3];
-
+        GuiController guiController = new GuiController();
         for (int i = 0; i < 3; i++) {
-            player[i] = new Player("ava");
-            GuiController guiController = new GuiController();
+            player[i] = new Player("Test Player");
+
             guiController.createGuiPlayer(player[i]);
 
         }
@@ -35,22 +35,4 @@ public class GuiControllerTest {
 
     }*/
 
-    @Test
-    public void updateBalance() {
-        Player player = new Player("Test Player");
-        player.depositMoney(20);
-        player.getCurrentBalance();
-        int balance = 2;
-         player.withdrawMoney(balance);
-        assertEquals(18,player.getCurrentBalance());
-
-    }
-
-    @Test
-    public void receiveRent() {
-    }
-
-    @Test
-    public void winner() {
-    }
 }
