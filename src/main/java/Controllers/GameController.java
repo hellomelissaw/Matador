@@ -214,6 +214,8 @@ public class GameController {
                 }
 
                 if (!isInJail){
+                    String userChoice = guiController.getUserAction();
+                    System.out.println(userChoice);
                     msg.printText("rollDice", players[i].getPlayerName());
                     sum = cup.getSum();
                     players[i].updatePosition(sum);

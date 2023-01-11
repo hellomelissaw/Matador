@@ -272,10 +272,6 @@ public class GuiController {
          return guiPlayer;
     }
 
-     public GUI_Player[] getGuiPlayersArr() {
-         return guiPlayers;
-     }
-
      /**
       * Moves the GUI_car object to a new square for current player
       * @param currentPlayer current GUI_Player to be moved
@@ -305,25 +301,11 @@ public class GuiController {
          return gui.getUserInteger(message);
 
      }
-    /* String userSelection;
-     Square selectedSquare;
-     public Square getSelectedSquare(Square[] currentColorsArr) {
 
-         String[] currentColorSqrName = new String[currentColorsArr.length];
-         for(int i = 0 ; i < currentColorsArr.length ; i++){
-             currentColorSqrName[i] = currentColorsArr[i].getSquareName();
+     public String getUserAction() {
+        return gui.getUserButtonPressed(msg.getText("chooseAction"), "Byg", "Sælg", "Kast terninger");
+     }
 
-         }
-        userSelection = gui.getUserSelection(msg.getText("prompt"), currentColorSqrName);
-
-        for (int i = 0; i < currentColorsArr.length ; i++) {
-            if (userSelection == currentColorsArr[i].getSquareName()) {
-                selectedSquare = currentColorsArr[i];
-
-            }
-        }
-        return selectedSquare;
-     }*/
 
      /*public int getSquareIndex(Square[] board) {
          int index = 0;
