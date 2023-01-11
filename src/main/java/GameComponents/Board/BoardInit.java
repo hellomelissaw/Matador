@@ -9,8 +9,8 @@ import java.io.BufferedReader;
 import static java.lang.Integer.valueOf;
 
     public class BoardInit {
-    int boardSize = 40;
-    Square[] board = new Square[boardSize];
+    public final int boardSize = 40;
+    private Square[] board = new Square[boardSize];
     GuiController guiController;
 
     /**
