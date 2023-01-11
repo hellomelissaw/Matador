@@ -1,6 +1,7 @@
 package GameComponents.Board;
 
 import Controllers.GuiController;
+import GameComponents.Bank;
 import GameComponents.Player;
 import Translator.Text;
 import gui_fields.GUI_Player;
@@ -15,6 +16,8 @@ public class DeedSquareTest {
     GUI_Player[] testGuiPlayers = new GUI_Player[2];
     DeedSquare_Buildable[] testStreetSquare = new DeedSquare_Buildable[3];
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+
+    Bank bank = new Bank();
 
     int startBalance = 7000;
     int[] rent = {50,250,750,2250,4000,6000};
@@ -33,7 +36,9 @@ public class DeedSquareTest {
         testStreetSquare[2].setGuiController(guiController);
 
         testPlayers[0] = new Player("TestPlayer 1");
+        testPlayers[0].setBank(bank);
         testPlayers[1] = new Player("TestPlayer 2");
+        testPlayers[1].setBank(bank);
 
         testGuiPlayers[0] = new GUI_Player("TestPlayer 1");
         testGuiPlayers[1] = new GUI_Player("TestPlayer 2");
