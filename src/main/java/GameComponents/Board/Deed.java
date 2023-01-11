@@ -64,7 +64,13 @@ public abstract class Deed {
     }
 
     public int getDeedPrice (String deedName){
-
+        Deed deed = null;
+        this.deedName = deedName;
+    int deedPrice = 0;
+    //deedPrice = ((Deed)deedName).deedPrice;
+    if (deed.getDeedName() == deedName)
+        deedPrice = deed.getDeedPrice(deedName);
+    return deedPrice;
     }
 
 }

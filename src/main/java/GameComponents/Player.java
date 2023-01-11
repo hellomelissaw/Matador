@@ -68,6 +68,10 @@ public class Player {
         if (guiOn) {guiPlayer.setBalance(startBalance); }
     }
 
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+
     /**
      * Deposits money in Player's Account
      * @param newPoints amount of Monopoly money to deposit
@@ -82,6 +86,17 @@ public class Player {
      */
     public void depositMoney(int newPoints){
         playerAccount.deposit(newPoints);
+    }
+    public String[] playerNameList (Player[] players) {
+
+        String[] playerNameArray = new String[players.length];
+        for (int i = 0; i < players.length; i++) {
+            //playerNameArray = new String[players.length];
+            playerNameArray[i] = players[i].getPlayerName();
+
+
+        }
+        return playerNameArray;
     }
 
     public void updateBank(int amount, String transactionType) {
@@ -371,6 +386,7 @@ public class Player {
                 for (int j = 0; j <propertiesName.length ; j++) {
                     String choosenButton_1 = guiController.getUserButtonPressed("erDerEnKøber");
                     if(choosenButton_1 == "Ja" ){
+                        //String buyerName = guiController.getUserSelection();
                        String[] playersName = new String[players.length];
                         for (int k = 0; k < playersName.length; k++) {
                             if (!players[k].getPlayerName().equals(playersName)){
