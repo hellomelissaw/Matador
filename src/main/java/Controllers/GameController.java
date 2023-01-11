@@ -206,6 +206,7 @@ public class GameController {
 
                 if (!isInJail){
                     msg.printText("rollDice", players[i].getPlayerName());
+                    players[i].selLot(players);
                     sum = cup.getSum();
                     players[i].updatePosition(sum);
                     newPosition = players[i].getPosition();

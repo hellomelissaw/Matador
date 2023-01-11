@@ -400,7 +400,7 @@ public class Player {
                                     if (userSelection.equals(ownedNonBuildableDeeds[i].getDeedName()))
                                         deedPrice = ownedNonBuildableDeeds[i].getDeedPrice(userSelection);
                                     players[k].withdrawMoney(deedPrice);
-                                    players[players].depositMoney(deedPrice);
+                                    //players[players].depositMoney(deedPrice);
                                 }
                             }
                         }
