@@ -68,8 +68,9 @@ public class Player {
         if (guiOn) {guiPlayer.setBalance(startBalance); }
     }
 
-    public void setPlayerName(String playerName) {
+    public String setPlayerName(String playerName) {
         this.playerName = playerName;
+        return playerName;
     }
 
     /**
@@ -387,17 +388,24 @@ public class Player {
                     String choosenButton_1 = guiController.getUserButtonPressed("erDerEnKøber");
                     if(choosenButton_1 == "Ja" ){
                         //String buyerName = guiController.getUserSelection();
+                        //String buyerName = guiController.getUserString("Indtast dit navn",players);
                        String[] playersName = new String[players.length];
                         for (int k = 0; k < playersName.length; k++) {
                             if (!players[k].getPlayerName().equals(playersName)){
                                 playersName[k] = new String(players[k].getPlayerName());
+                                String buyerName = guiController.getUserSelection("Valge dit navn", playersName);
+                                if(players[k].getPlayerName() ==buyerName){
+                                    if(userSelection.equals(ownedBuildableDeeds[i].getDeedName()))
+                                        deedPrice = ownedBuildableDeeds[i].getDeedPrice(userSelection);
+                                    if (userSelection.equals(ownedNonBuildableDeeds[i].getDeedName()))
+                                        deedPrice = ownedNonBuildableDeeds[i].getDeedPrice(userSelection);
+                                    players[k].withdrawMoney(deedPrice);
+                                    players[players].depositMoney(deedPrice);
+                                }
                             }
                         }
 
-                    if(userSelection.equals(ownedBuildableDeeds[i].getDeedName()))
-                    deedPrice = ownedBuildableDeeds[i].getDeedPrice(userSelection);
-                    if (userSelection.equals(ownedNonBuildableDeeds[i].getDeedName()))
-                        deedPrice = ownedNonBuildableDeeds[i].getDeedPrice(userSelection);
+
 
                 }
 
