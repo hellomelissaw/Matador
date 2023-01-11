@@ -347,8 +347,8 @@ public class GuiController {
         gui.setDice(die1,die2);
     }
 
-    public  String getUserButtonPressed(){
-        return gui.getUserButtonPressed("Vil du salge noget?" , "Ja" , "Nej");
+    public  String getUserButtonPressed(String message){
+        return gui.getUserButtonPressed(message , "Ja" , "Nej");
     }
 
     public String getUserSelection(String userSelection){

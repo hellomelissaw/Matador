@@ -345,7 +345,7 @@ public class Player {
 
 
     public void selLot(Player[] players) {
-        String choosenButton = guiController.getUserButtonPressed();
+        String choosenButton = guiController.getUserButtonPressed("salgeGround");
         if (choosenButton == "Ja") {
 
             Deed_Buildable[] ownedBuildableDeeds = cardholder.getBuildable();
@@ -369,8 +369,15 @@ public class Player {
     int deedPrice =0 ;
                     String userSelection = guiController.getUserSelection(propertiesName[i]);
                 for (int j = 0; j <propertiesName.length ; j++) {
-                    guiController.getUserButtonPressed();
-                    //if()
+                    String choosenButton_1 = guiController.getUserButtonPressed("erDerEnKøber");
+                    if(choosenButton_1 == "Ja" ){
+                       String[] playersName = new String[players.length];
+                        for (int k = 0; k < playersName.length; k++) {
+                            if (!players[k].getPlayerName().equals(playersName)){
+                                playersName[k] = new String(players[k].getPlayerName());
+                            }
+                        }
+
                     if(userSelection.equals(ownedBuildableDeeds[i].getDeedName()))
                     deedPrice = ownedBuildableDeeds[i].getDeedPrice(userSelection);
                     if (userSelection.equals(ownedNonBuildableDeeds[i].getDeedName()))
@@ -380,7 +387,7 @@ public class Player {
 
             }
 
-        }
+        }}
 
     }
     }
