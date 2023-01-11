@@ -6,7 +6,7 @@ import GameComponents.Cup_stub;
 import GameComponents.Player;
 import Translator.*;
 public class GameController {
-    boolean useCupStub = false;
+    boolean useCupStub = true;
     boolean testingInit = true;
     GuiController guiController = new GuiController();
     //private int playerCount = 0;

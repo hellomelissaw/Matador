@@ -3,7 +3,7 @@ package GameComponents.Board;
 import Controllers.GuiController;
 import GameComponents.Player;
 
-public class TaxSquare extends Square{
+public class TaxSquare extends Square {
 
     GuiController guiController;
     int userInput;
@@ -12,7 +12,7 @@ public class TaxSquare extends Square{
     Player[] players;
     int withdrawMoney;
 
-    TaxSquare(String squareName , GuiController guiController , Player[] players) {
+    TaxSquare(String squareName, GuiController guiController, Player[] players) {
         super(squareName);
         this.guiController = guiController;
         this.players = players;
@@ -22,37 +22,45 @@ public class TaxSquare extends Square{
     public void landOn(Player currentPlayer) {
         int currentPosition = currentPlayer.getPosition();
 
-        if (currentPosition==4){
-            msg.printText("betalingSkat", "na");
-            userInput = guiController.getUserInteger("Tast 1 for at betale 10% af alle dine værdier eller Tast 2 for at betale 4000 kr i skat. Beslut dig her og nu!");
-            if(userInput == 1) {
-                balance = (currentPlayer.getCurrentBalance());
-                withdrawMoney = (int) (balance/100) * 10 ;
-                currentPlayer.withdrawMoney(withdrawMoney);
-                newBalance = currentPlayer.getCurrentBalance();
-                msg.printText("newBalance","na");
-                System.out.println(msg.getText("newBalance"+newBalance));
+        if (currentPosition == 4) {
+            //boolean userInputInvalid = true;
+            while (userInput != 1 || userInput != 2) {
+                msg.printText("betalingSkat", "na");
+                userInput = guiController.getUserInteger("Tast 1 for at betale 10% af alle dine værdier eller Tast 2 for at betale 4000 kr i skat. Beslut dig her og nu!");
+
+
+                if (userInput == 1) {
+                    balance = (currentPlayer.getCurrentBalance());
+                    withdrawMoney = (int) (balance / 100) * 10;
+                    currentPlayer.withdrawMoney(withdrawMoney);
+                    newBalance = currentPlayer.getCurrentBalance();
+                    msg.printText("newBalance", "na");
+                    System.out.println(msg.getText("newBalance" + newBalance));
+                    break;
+                } else if (userInput == 2) {
+                    balance = currentPlayer.getCurrentBalance();
+                    currentPlayer.withdrawMoney(4000);
+                    newBalance = currentPlayer.getCurrentBalance();
+                    msg.printText("newBalance", "na");
+                    System.out.println(msg.getText("newBalance") + newBalance);
+                    break;
+
+                } else {
+
+                    msg.printText("invalidInput", "na");
+                }
+
             }
-            else {
+
+            if (currentPosition == 38) {
                 balance = currentPlayer.getCurrentBalance();
-                currentPlayer.withdrawMoney(4000);
+                currentPlayer.withdrawMoney(2000);
                 newBalance = currentPlayer.getCurrentBalance();
-                msg.printText("newBalance","na");
-                System.out.println(msg.getText("newBalance")+ newBalance);
+                msg.printText("newBalance", "na");
+                System.out.println(msg.getText("newBalance") + newBalance);
 
             }
 
-
-
         }
-        if (currentPosition == 38){
-            balance = currentPlayer.getCurrentBalance();
-            currentPlayer.withdrawMoney(2000);
-            newBalance = currentPlayer.getCurrentBalance();
-            msg.printText("newBalance","na");
-            System.out.println(msg.getText("newBalance")+ newBalance);
-
-        }
-
     }
 }
