@@ -6,9 +6,13 @@ import GameComponents.Cup_stub;
 import GameComponents.Player;
 import Translator.*;
 import GameComponents.Bank;
+
+import java.util.ArrayList;
+
 public class GameController {
     boolean useCupStub = true;
     boolean testingInit = true;
+
     GuiController guiController = new GuiController();
     //private int playerCount = 0;
     String userInput;
@@ -158,6 +162,8 @@ public class GameController {
 
         while (gameOver == false) {
 
+
+
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
                 int sum;
                 boolean isInJail = players[i].checkInJail();
@@ -213,17 +219,29 @@ public class GameController {
                 }
 
                 if (!isInJail){
-                    boolean rollDice = false;
-                    while(!rollDice) {
-                        String userChoice = guiController.getUserAction(players[i].getPlayerName());
+                    setOwnerForTesting(i);
 
-                        if(userChoice.equals("Byg")){
-                           int houseCount = guiController.getUserSelection()
+                    if(players[i].getBuildableDeeds().length > 0) {
+                        boolean rollDice = false;
+                        while (!rollDice) {
+                            String userChoice = guiController.getUserAction(players[i].getPlayerName());
 
-                        } else if (userChoice.equals("Sælg")) {
-                            System.out.println("player chose saelg");
+                            if (userChoice.equals("Byg")) {
 
-                        } else { rollDice = true;}
+                                ArrayList<String> selectedLots = new ArrayList<String>();
+                                while (guiController.getUserBoolean(msg.getText("selectMoreLots"))) {
+                                    String userLot = guiController.getUserLot(players[i]);
+                                    selectedLots.add(userLot);
+                                }
+                                System.out.println(selectedLots);
+
+                            } else if (userChoice.equals("Sælg")) {
+                                System.out.println("player chose saelg");
+
+                            } else {
+                                rollDice = true;
+                            }
+                        }
                     }
                     msg.printText("rollDice", players[i].getPlayerName());
                     sum = cup.getSum();
@@ -246,6 +264,22 @@ public class GameController {
 
                 }
 
+            }
+
+        }
+
+        private void setOwnerForTesting(int i) {
+            ((DeedSquare_Buildable)squares[6]).setOwnerForTesting(players[i]);
+            ((DeedSquare_Buildable)squares[8]).setOwnerForTesting(players[i]);
+            ((DeedSquare_Buildable)squares[9]).setOwnerForTesting(players[i]);
+
+            Deed_Buildable[] testDeeds = players[i].getBuildableDeeds();
+            if(players[i].getBuildableDeeds().length > 0){
+                for(int j = 0 ; j < testDeeds.length ; j++) {
+                    System.out.println(testDeeds[j].getDeedName());
+                }
+            } else {
+                System.out.println("No deeds");
             }
 
         }

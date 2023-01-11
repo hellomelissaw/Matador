@@ -121,4 +121,9 @@ public class DeedSquare_Buildable extends DeedSquare {
         deed.setDeedGroup(color, groupSize);
     }
 
+    public void setOwnerForTesting(Player player){
+        deed.setOwner(player);
+        player.takeBuildableDeed(deed);
+    }
+
 }
