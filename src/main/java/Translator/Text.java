@@ -5,11 +5,11 @@ import Controllers.GuiController;
 
 
 public class Text {
-    boolean guiOn = true;
+    boolean guiIsOn = true;
     String file;
     GuiController guiController;
 
-    int lineCount = 87;
+    int lineCount = 92;
     String[] messages = new String[lineCount];
 
     String[] labels = new String[lineCount];
@@ -44,6 +44,10 @@ public class Text {
 
     }
 
+    public void setGuiIsOn(boolean guiIsOn) {
+        this.guiIsOn = guiIsOn;
+    }
+
     /**
      * Takes the label given as parameter and finds corresponding message
      * @param label the label for a specific message (The label is the same for every language)
@@ -71,10 +75,10 @@ public class Text {
 
         if(otherMessage == "na") {
             System.out.println(message);
-            if (guiOn) { guiController.showMessage(message); }
+            if (guiIsOn) { guiController.showMessage(message); }
         } else {
             System.out.println(otherMessage + message);
-            if (guiOn) { guiController.showMessage(otherMessage + message); }
+            if (guiIsOn) { guiController.showMessage(otherMessage + message); }
         }
 
     }

@@ -1,4 +1,5 @@
 package GameComponents.Board;
+import GameComponents.Bank;
 import GameComponents.Player;
 import Controllers.GuiController;
 import Translator.*;
@@ -22,6 +23,7 @@ public abstract class Square {
     }
 
     public abstract void landOn(Player currentPlayer);
+
 
     public String getSquareName() {
         return squareName;

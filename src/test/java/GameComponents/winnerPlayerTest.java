@@ -12,7 +12,7 @@ public class winnerPlayerTest {
     Player[] players = new Player[4];
     GUI_Player[] guiPlayers = new GUI_Player[4];
 
-    Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
+    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
 
     public winnerPlayerTest() {
         players[0] = new Player("A");

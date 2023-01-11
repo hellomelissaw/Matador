@@ -1,6 +1,5 @@
 package GameComponents.Board;
 
-import Controllers.GuiController;
 import GameComponents.Player;
 
 public class DeedSquare_NonBuildable extends DeedSquare {
@@ -24,7 +23,7 @@ public class DeedSquare_NonBuildable extends DeedSquare {
 
 
         if(sellDeed == true) { // IF DEED IS AVAILABLE TO BUY
-            if (guiOn) {
+            if (guiIsOn) {
                 String[] choices = {"ja", "nej"};
                 if(!testing) {
                     buying = guiController.getUserSelection(msg.getText("buyLot") + " " + deed.getDeedName() + "?", choices);
@@ -47,7 +46,7 @@ public class DeedSquare_NonBuildable extends DeedSquare {
                     freeDeed = false;
                     deed.setOwner(currentPlayer);
                     currentPlayer.takeNonBuildableDeed(deed);
-                    if (guiOn) {
+                    if (guiIsOn) {
                         guiController.setOwnerName(currentPlayer, currentPlayer.getPosition());
                     }
 

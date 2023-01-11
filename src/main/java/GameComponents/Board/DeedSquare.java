@@ -1,11 +1,10 @@
 package GameComponents.Board;
-import Controllers.GuiController;
 import GameComponents.Player;
 
 import java.util.Scanner;
 
 public abstract class DeedSquare extends Square{
-    boolean guiOn = true;
+    boolean guiIsOn = true;
     boolean testing = false;
     String buying;
     boolean sellDeed = true;
@@ -28,6 +27,10 @@ public abstract class DeedSquare extends Square{
         this.deedPrice = deedPrice;
         this.rent = rent;
 
+    }
+
+    public void setGuiOn(boolean guiIsOn) {
+        this.guiIsOn = guiIsOn;
     }
 
     public void testing(boolean testing, String answer) {

@@ -1,10 +1,18 @@
 package GameComponents.Board;
-
+import java.util.Scanner;
 import GameComponents.Player;
 import Controllers.GuiController;
-
+import GameComponents.Cup;
+import GameComponents.Die;
+import GameComponents.Player;
 public class JailSquare extends Square{
     GuiController guiController;
+
+    Die  die1 = new Die();
+    Die die2 = new Die();
+    int counter = 0;
+
+
     public JailSquare(String jailSquare, GuiController guiController) {
         super(jailSquare);
         this.guiController = guiController;
@@ -13,23 +21,20 @@ public class JailSquare extends Square{
 
     public void landOn(Player currentPlayer) {
         int currentPosition = currentPlayer.getPosition();
-        if (currentPosition==18){
-            msg.printText("moveToJail", "na");
 
+        //The player get moved to jail square and gets instructions on how to leave. If the player didn't land on jail square, then they're just visiting.
+        if(currentPosition==30)
+        {
+            msg.printText("movedToJail", "na");
+            currentPlayer.updatePosition(20);
+            currentPlayer.setInJail(true);
 
-            currentPlayer.withdrawMoney(1);
-            int currentBalance = currentPlayer.getCurrentBalance();
-            System.out.println(msg.getText("newBalance")+ currentBalance);
-
-            currentPlayer.updatePosition(12);
-
-            System.out.println(msg.getText("movedToSquare") + currentPlayer.getPosition() );
-
-        }  else  {
+        }else{
             System.out.println(msg.getText("visitJail"));
+       }
+
+
         }
+
     }
-
-}
-
 
