@@ -40,7 +40,7 @@ public class DeedSquareTest {
 
         for(int i = 0 ; i < testPlayers.length ; i++) {
             testPlayers[i].setGui(testGuiPlayers[i], guiController, msg);
-            testPlayers[i].depositMoney(startBalance);
+            testPlayers[i].depositMoney(startBalance,false);
         }
     }
 
@@ -49,7 +49,7 @@ public class DeedSquareTest {
     public void cannotBuyHouseBecauseNotEnoughMoney() {
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
-        testPlayers[0].withdrawMoney(startBalance-1200);
+        testPlayers[0].withdrawMoney(startBalance-1200,false);
 
         DeedSquare_Buildable[] lotsToBuildOn = {testStreetSquare[2]};
         testPlayers[0].buyHouse(lotsToBuildOn, 1);
@@ -86,7 +86,7 @@ public class DeedSquareTest {
 
     @Test
     public void cannotBuyHotelBecauseLackOfFunds() {
-        testPlayers[0].withdrawMoney(1000);
+        testPlayers[0].withdrawMoney(1000,false);
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
         DeedSquare_Buildable[] lotsToBuildOn = {testStreetSquare[2]};
@@ -230,7 +230,7 @@ public class DeedSquareTest {
 
     @Test
     public void playerBuilds2HousesOnTestDeedSquare0And1() {
-        testPlayers[0].depositMoney(2000);
+        testPlayers[0].depositMoney(2000,false);
         testStreetSquare[0].testing(true,"ja");
         testStreetSquare[0].landOn(testPlayers[0]);
         testStreetSquare[1].testing(true,"ja");

@@ -25,20 +25,20 @@ public class UpdatePlayerAccountTest {
 
     @Test
     public void deposit10() {
-        testPlayer.depositMoney(10);
+        testPlayer.depositMoney(10,false);
         assertEquals(10,testPlayer.getCurrentBalance());
     }
 
     @Test
     public void ifBalanceNegativeDeclarePlayerBankrupt() {
-        testPlayer.withdrawMoney(3);
+        testPlayer.withdrawMoney(3,false);
         assertEquals(true,testPlayer.isBankrupt());
     }
 
     @Test
     public void deposit10withdraw3() {
-        testPlayer.depositMoney(10);
-        testPlayer.withdrawMoney(3);
+        testPlayer.depositMoney(10,false);
+        testPlayer.withdrawMoney(3,false);
         assertEquals(7,testPlayer.getCurrentBalance());
     }
 

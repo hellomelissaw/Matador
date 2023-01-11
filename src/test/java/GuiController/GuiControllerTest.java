@@ -36,10 +36,10 @@ public class GuiControllerTest {
     @Test
     public void updateBalance() {
         Player player = new Player("Test Player");
-        player.depositMoney(20);
+        player.depositMoney(20,false);
         player.getCurrentBalance();
         int balance = 2;
-         player.withdrawMoney(balance);
+         player.withdrawMoney(balance,false);
         assertEquals(18,player.getCurrentBalance());
 
     }
