@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class GameController {
     boolean useCupStub = true;
     boolean testingInit = true;
-
+    boolean testingActionButtons = true;
     GuiController guiController = new GuiController();
     //private int playerCount = 0;
     String userInput;
@@ -219,7 +219,7 @@ public class GameController {
                 }
 
                 if (!isInJail){
-                    setOwnerForTesting(i);
+                    if(testingActionButtons){setOwnerForTesting(i);}
 
                     if(players[i].getBuildableDeeds().length > 0) {
                         boolean rollDice = false;
