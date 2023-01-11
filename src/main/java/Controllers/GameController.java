@@ -213,8 +213,18 @@ public class GameController {
                 }
 
                 if (!isInJail){
-                    String userChoice = guiController.getUserAction();
-                    System.out.println(userChoice);
+                    boolean rollDice = false;
+                    while(!rollDice) {
+                        String userChoice = guiController.getUserAction();
+                        System.out.println(userChoice);
+                        if(userChoice.equals("Byg")){
+                            System.out.println("Player chose byg");
+
+                        } else if (userChoice.equals("Sælg")) {
+                            System.out.println("player chose saelg");
+
+                        } else { rollDice = true;}
+                    }
                     msg.printText("rollDice", players[i].getPlayerName());
                     sum = cup.getSum();
                     players[i].updatePosition(sum);
