@@ -302,8 +302,8 @@ public class GuiController {
 
      }
 
-     public String getUserAction() {
-        return gui.getUserButtonPressed(msg.getText("chooseAction"), "Byg", "Sælg", "Kast terninger");
+     public String getUserAction(String currentPlayerName) {
+        return gui.getUserButtonPressed(currentPlayerName + ", " + msg.getText("chooseAction"), "Byg", "Sælg", "Kast terninger");
      }
 
 

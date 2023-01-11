@@ -215,10 +215,10 @@ public class GameController {
                 if (!isInJail){
                     boolean rollDice = false;
                     while(!rollDice) {
-                        String userChoice = guiController.getUserAction();
-                        System.out.println(userChoice);
+                        String userChoice = guiController.getUserAction(players[i].getPlayerName());
+
                         if(userChoice.equals("Byg")){
-                            System.out.println("Player chose byg");
+                           int houseCount = guiController.getUserSelection()
 
                         } else if (userChoice.equals("Sælg")) {
                             System.out.println("player chose saelg");
