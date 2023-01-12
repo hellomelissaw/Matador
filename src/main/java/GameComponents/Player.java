@@ -235,14 +235,14 @@ public class Player {
         return deedList;
     }
 
-    public void buyHouse(DeedSquare_Buildable[] lotsToBuildOn, int housesToBuy) {
 
+        public void buyHouse(Deed_Buildable[] deedsToBuildOn, int housesToBuy) {
 
-            Deed_Buildable[] deedsToBuildOn = new Deed_Buildable[lotsToBuildOn.length];
+            /*DeedSquare_Buildable[] deedsToBuildOn = new Deed_Buildable[lotsToBuildOn.length];
 
             for (int i = 0; i < lotsToBuildOn.length; i++) {
                 deedsToBuildOn[i] = lotsToBuildOn[i].getDeed();
-            }
+            }*/
 
         boolean enoughHouses = bank.areThereEnoughHouses(housesToBuy);
         if (enoughHouses) {
@@ -261,7 +261,7 @@ public class Player {
                                 int count = deedsToBuildOn[i].getHouseCount();
                                 count++;
                                 deedsToBuildOn[i].setHouseCount(count);
-                                lotsToBuildOn[i].setHouseCount(count);
+                                //lotsToBuildOn[i].setHouseCount(count);
                                 System.out.println("There is now " + count + " houses on Square #" + i);
                                 System.out.println("Player's new balance is " + playerAccount.getBalance());
 
@@ -280,19 +280,21 @@ public class Player {
         }
     }
 
-    public void buyHotel(DeedSquare_Buildable[] lotsToBuildOn) {
-        for (int i = 0; i < lotsToBuildOn.length; i++) {
-            Deed_Buildable deed = lotsToBuildOn[i].getDeed();
-            int houseCount = lotsToBuildOn[i].getHouseCount();
+
+
+        public void buyHotel(Deed_Buildable[] deedsToBuildOn) {
+        for (int i = 0; i < deedsToBuildOn.length; i++) {
+           // Deed_Buildable deed = lotsToBuildOn[i].getDeed();
+            int houseCount = deedsToBuildOn[i].getHouseCount();
             boolean availableHotels = bank.areThereStillHotels();
             if (houseCount == 4 && availableHotels) {
                 int currentBalance = playerAccount.getBalance();
-                int buildingPrice = deed.getBuildingPrice();
+                int buildingPrice =  deedsToBuildOn[i].getBuildingPrice();
                 if (currentBalance > 0 && currentBalance - buildingPrice >= 0) {
                     playerAccount.withDraw(buildingPrice);
                     bank.buyHotelFromBank(1,buildingPrice);
-                    lotsToBuildOn[i].setHouseCount(0);
-                    lotsToBuildOn[i].setHasHotel(true);
+                    deedsToBuildOn[i].setHouseCount(0);
+                    deedsToBuildOn[i].setHasHotel(true);
 
                 } else {
                     System.out.println("Du har ikke nok penge til at købe dette hotel.");
