@@ -235,7 +235,10 @@ public class GameController {
                                     selectedLots.add(getDeedFromName(userLot, i));
                                     selectingMoreLots = guiController.getUserBoolean(msg.getText("selectMoreLots"));
                                 }
-                                System.out.println(selectedLots);
+
+                                Deed_Buildable[] selectedLotsArr = new Deed_Buildable[selectedLots.size()];
+                                selectedLotsArr = selectedLots.toArray(selectedLotsArr);
+
                                 String[] buildOptions = {"Hus", "Hotel"};
                                 String buildingType = guiController.getUserSelection(msg.getText("houseOrHotel"), buildOptions);
 
@@ -245,9 +248,13 @@ public class GameController {
                                     int houseCount = Integer.parseInt(userHouseCount);
                                     System.out.println("House count: " + houseCount);
 
-                                    Deed_Buildable[] selectedLotsArr = new Deed_Buildable[selectedLots.size()];
-                                    selectedLotsArr = selectedLots.toArray(selectedLotsArr);
                                     players[i].buyHouse(selectedLotsArr, houseCount);
+
+                                } else {
+                                    if(testingActionButtons){setHouseCountForTesting(4,i);}
+
+                                    players[i].buyHotel(selectedLotsArr);
+
 
                                 }
 
@@ -285,6 +292,7 @@ public class GameController {
         }
 
         private void setOwnerForTesting(int i) {
+
             ((DeedSquare_Buildable)squares[6]).setOwnerForTesting(players[i]);
             ((DeedSquare_Buildable)squares[8]).setOwnerForTesting(players[i]);
             ((DeedSquare_Buildable)squares[9]).setOwnerForTesting(players[i]);
@@ -298,6 +306,12 @@ public class GameController {
                 System.out.println("No deeds");
             }
 
+        }
+
+        private void setHouseCountForTesting(int houseCountForTesting, int i) {
+
+            Deed_Buildable[] deeds = players[i].getBuildableDeeds();
+            players[i].buyHouse(deeds,houseCountForTesting);
         }
 
         private Deed_Buildable getDeedFromName(String deedName, int currentPlayerIndex) {
