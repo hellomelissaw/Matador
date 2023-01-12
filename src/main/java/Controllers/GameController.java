@@ -236,6 +236,16 @@ public class GameController {
                                     selectingMoreLots = guiController.getUserBoolean(msg.getText("selectMoreLots"));
                                 }
                                 System.out.println(selectedLots);
+                                String[] buildOptions = {"Hus", "Hotel"};
+                                String buildingType = guiController.getUserSelection(msg.getText("houseOrHotel"), buildOptions);
+
+                                if(buildingType.equals("Hus")){
+                                    String[] countOptions = {"1", "2", "3", "4"};
+                                    String userHouseCount = guiController.getUserSelection(msg.getText("howManyBuildings"), countOptions);
+                                    int houseCount = Integer.parseInt(userHouseCount);
+
+
+                                }
 
                             } else if (userChoice.equals("Sælg")) {
                                 System.out.println("player chose saelg");
