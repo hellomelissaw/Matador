@@ -228,12 +228,11 @@ public class GameController {
 
                             if (userChoice.equals("Byg")) {
 
-                                ArrayList<String> selectedLots = new ArrayList<String>();
+                                ArrayList<DeedSquare_Buildable> selectedLots = new ArrayList<DeedSquare_Buildable>();
                                 boolean selectingMoreLots = true;
                                 while (selectingMoreLots) {
                                     String userLot = guiController.getUserLot(players[i]);
-
-                                    selectedLots.add(userLot);
+                                    selectedLots.add(getDeedFromName(userLot, i));
                                     selectingMoreLots = guiController.getUserBoolean(msg.getText("selectMoreLots"));
                                 }
                                 System.out.println(selectedLots);

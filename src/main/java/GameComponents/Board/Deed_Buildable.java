@@ -19,6 +19,8 @@ public class Deed_Buildable extends Deed{
 
     public void setHouseCount(int houseCount) {
         this.houseCount = houseCount;
+
+
     }
 
     public int getHouseCount() {
