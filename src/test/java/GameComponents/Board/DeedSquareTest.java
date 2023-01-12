@@ -25,7 +25,6 @@ public class DeedSquareTest {
         for(int i = 0; i < testStreetSquare.length - 1 ; i++) {
             testStreetSquare[i] = new DeedSquare_Buildable("TestDeedSquare" + i, 1200, rent, 1000);
             testStreetSquare[i].setLang(msg);
-            testStreetSquare[i].setColor("purple");
             testStreetSquare[i].setGuiController(guiController);
             testStreetSquare[i].setGroup("blue", 2);
         }
