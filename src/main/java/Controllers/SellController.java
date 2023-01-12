@@ -22,6 +22,9 @@ public class SellController {
     int deedPrice =0 ;
     int playerCount = 0;
     String[] playersName;
+    int boughtDeedPrice = 0;
+    Player buyerPlayer;
+    //String buyerName;
 
     public void sellLot(Player seller, Player[] players){
         if (seller.getPropertiesDeed().length < 1) return;
@@ -43,6 +46,12 @@ public class SellController {
                 }
                 String buyerName = guiController.getUserSelection("Vælg dit navn: ", buyerArray);
 
+                for (int i = 0; i <playerCount; i++) {
+                    players[i].getPlayerName();
+                    if(players[i].getPlayerName() == buyerName)
+                        buyerPlayer = players[i];
+                }
+
                 String[] deedNames = new String[seller.getPropertiesDeed().length];
                 int[] deedPrices = new int[seller.getPropertiesDeed().length];
                 String[] messages = new String[seller.getPropertiesDeed().length];
@@ -53,15 +62,22 @@ public class SellController {
                     //messages[i] = deedNames[i] + deedPrices[i];
                     deedNames[i] = seller.getOwnedFields()[i].getDeedName();
                     deedPrices[i] = seller.getOwnedFields()[i].getDeedPrice();
+                    boughtDeedPrice = seller.getOwnedFields()[i].getDeedPrice();
                     messages[i] = deedNames[i] + deedPrices[i];
 
                 }
 
                 String boughtDeed = guiController.getUserSelection("Hvilken grund vil du købe? ", messages);
+                //String boughtDeed = guiController.getUserSelection("Hvilken grund vil du købe? ", deedNames);
+                //System.out.println(seller.getCurrentBalance());;
+                seller.depositMoney(boughtDeedPrice);
+                //System.out.println(seller.getCurrentBalance());;
+                //System.out.println(buyerPlayer.getCurrentBalance());
+                buyerPlayer.withdrawMoney(boughtDeedPrice);
+                //System.out.println(buyerPlayer.getCurrentBalance());
 
 
-                //String userSelection = guiController.getUserSelection("",players.getPropertiesDeed());
-                //players.getPropertiesDeed();
+
             }
         }
     }

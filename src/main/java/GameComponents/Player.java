@@ -263,7 +263,8 @@ public class Player {
         return deedList;
     }
 
-
+    //public Player getPlayer(String playerName){
+    //}
     public void addToOwnedFields(Deed deed){
         ownedFields.add(deed);
     }
