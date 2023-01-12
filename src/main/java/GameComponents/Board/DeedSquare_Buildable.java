@@ -3,7 +3,7 @@ import GameComponents.Player;
 
 public class DeedSquare_Buildable extends DeedSquare {
     int buildingPrice;
-    int houseCount = 0;
+    //int houseCount = 0;
     boolean hasHotel = false;
     Deed_Buildable deed;
     /**
@@ -75,7 +75,7 @@ public class DeedSquare_Buildable extends DeedSquare {
             } else { // IF A PLAYER LANDS ON A LOT THAT ANOTHER PLAYER OWNS
 
                 msg.printText("payRent",  deedOwner.getPlayerName());
-                currentPlayer.withdrawMoney(rent[houseCount], false);
+                currentPlayer.withdrawMoney(rent[deed.getHouseCount()], false);
                 deedOwner.depositMoney(deedPrice, false);
                 System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
 
@@ -87,16 +87,15 @@ public class DeedSquare_Buildable extends DeedSquare {
     }
 
 
-    public int getHouseCount(){
+   /* public int getHouseCount(){
         return houseCount;
 
-    }
+    }*/
 
-    public void setHouseCount(int count) {
-        houseCount = count;
-        deed.setHouseCount(count);
+    /*public void setHouseCount() {
+        houseCount = deed.getHouseCount();
     }
-
+*/
     public boolean hasHotel() {
         return hasHotel;
     }
