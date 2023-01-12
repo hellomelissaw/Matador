@@ -6,7 +6,7 @@ import GameComponents.Cup_stub;
 import GameComponents.Player;
 import Translator.*;
 public class GameController {
-    boolean useCupStub = false;
+    boolean useCupStub = true;
     boolean testingInit = true;
     GuiController guiController = new GuiController();
     //private int playerCount = 0;
@@ -206,7 +206,7 @@ public class GameController {
 
                 if (!isInJail){
                     msg.printText("rollDice", players[i].getPlayerName());
-                    players[i].selLot(players);
+                    //players[i].sellLot(players);
                     sum = cup.getSum();
                     players[i].updatePosition(sum);
                     newPosition = players[i].getPosition();

@@ -337,6 +337,9 @@ public class GuiController {
      public String getUserSelection(String message, String[] buttons) {
          return gui.getUserSelection(message, buttons);
      }
+    public String getUserSelection(String message, String buttons) {
+        return gui.getUserSelection(message, buttons);
+    }
 
      public String getUserString( String message , int currentPlayer){
         return gui.getUserString(msg.getText(message) + " " + currentPlayer);

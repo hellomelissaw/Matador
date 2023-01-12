@@ -10,7 +10,7 @@ public class Cardholder {
 
     ArrayList<Deed_Buildable> deedCards_Buildable = new ArrayList<Deed_Buildable>();
     ArrayList<Deed_NonBuildable> deedCards_NonBuildable = new ArrayList<Deed_NonBuildable>();
-
+    ArrayList<Deed> deedCards_Properties = new ArrayList<Deed>();
     boolean isOwner = false;
 
     public void addDeedBuildable(Deed_Buildable deed) {
@@ -19,6 +19,11 @@ public class Cardholder {
 
     public void addDeedNonBuildable(Deed_NonBuildable deed) {
         deedCards_NonBuildable.add(deed);
+    }
+    public void addProperties (Deed_Buildable deedBuildable , Deed_NonBuildable deedNonBuildable){
+         deedCards_Properties.add(deedBuildable) ;
+         deedCards_Properties.add(deedNonBuildable);
+
     }
     public boolean getOwnerStatus(String color) {
         int groupSize = 0;
@@ -52,6 +57,11 @@ public class Cardholder {
     public Deed_Buildable[] getBuildable() {
         Deed_Buildable[] deedCardsArray = new  Deed_Buildable[deedCards_Buildable.size()];
         deedCardsArray = deedCards_Buildable.toArray(deedCardsArray);
+        return deedCardsArray;
+    }
+    public Deed[] getProperties(){
+        Deed[] deedCardsArray = new Deed[deedCards_Buildable.size()+deedCards_NonBuildable.size()];
+        deedCardsArray = deedCards_Properties.toArray(deedCardsArray);
         return deedCardsArray;
     }
 

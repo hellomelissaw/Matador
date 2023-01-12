@@ -253,6 +253,14 @@ public class Player {
         Deed_Buildable[] deedList = cardholder.getBuildable();
         return deedList;
     }
+    public Deed_NonBuildable[] getNonBuildableDeeds() {
+        Deed_NonBuildable[] deedList = cardholder.getNonBuildable();
+        return deedList;
+    }
+    public Deed[] getPropertiesDeed(){
+        Deed[] deedList = cardholder.getProperties();
+        return deedList;
+    }
 
     public void buyHouse(DeedSquare_Buildable[] lotsToBuildOn, int housesToBuy) {
         int housesAvailable = bank.getHouseCount();
@@ -360,16 +368,35 @@ public class Player {
 
 
 
-    public void selLot(Player[] players) {
+    /*public void sellLot(Player[] players) {
         String choosenButton = guiController.getUserButtonPressed("salgeGround");
         if (choosenButton == "Ja") {
 
             Deed_Buildable[] ownedBuildableDeeds = cardholder.getBuildable();
+            Deed_NonBuildable[] ownedNonBuildableDeeds = cardholder.getNonBuildable();
+
+            // combiner dem til et
+
+
+
+            // combinerede array[i-n].getDeedName()
+            //.getdeedprice
+
+            // vise drop down med navnene
+
+            // vælger brugeren et navn
+
+            // loop igennem combinered array .. .equals()
+
+
+
+
+
             String[] buildablePropertyName = new String[ownedBuildableDeeds.length];
             for(int i = 0 ; i < ownedBuildableDeeds.length ; i++) {
                 buildablePropertyName[i] = ownedBuildableDeeds[i].getDeedName();
             }
-                Deed_NonBuildable[] ownedNonBuildableDeeds = cardholder.getNonBuildable();
+                //Deed_NonBuildable[] ownedNonBuildableDeeds = cardholder.getNonBuildable();
                 String[] nonBuildablePropertyName = new String[ownedNonBuildableDeeds.length];
                 for (int j = 0; j < ownedNonBuildableDeeds.length; j++) {
                     nonBuildablePropertyName[j] = ownedNonBuildableDeeds[j].getDeedName();
@@ -383,7 +410,7 @@ public class Player {
 
                 }
     int deedPrice =0 ;
-                    String userSelection = guiController.getUserSelection(propertiesName[i]);
+                    String userSelection = guiController.getUserSelection("",propertiesName[i]);
                 for (int j = 0; j <propertiesName.length ; j++) {
                     String choosenButton_1 = guiController.getUserButtonPressed("erDerEnKøber");
                     if(choosenButton_1 == "Ja" ){
@@ -413,7 +440,7 @@ public class Player {
 
         }}
 
-    }
+    }*/
     }
 
 

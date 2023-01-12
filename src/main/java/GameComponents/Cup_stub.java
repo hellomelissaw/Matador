@@ -4,7 +4,7 @@ import Controllers.GuiController;
 import gui_main.GUI;
 
 public class Cup_stub extends Cup {
-    private int testSum = 30;
+    private int testSum = 5;
 
     public Cup_stub(GuiController guiController) {
         super(guiController);

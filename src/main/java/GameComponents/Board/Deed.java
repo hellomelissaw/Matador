@@ -63,13 +63,8 @@ public abstract class Deed {
         this.groupSize = groupSize;
     }
 
-    public int getDeedPrice (String deedName){
-        Deed deed = null;
-        this.deedName = deedName;
-    int deedPrice = 0;
-    //deedPrice = ((Deed)deedName).deedPrice;
-    if (deed.getDeedName() == deedName)
-        deedPrice = deed.getDeedPrice(deedName);
+    public int getDeedPrice (){
+
     return deedPrice;
     }
 
