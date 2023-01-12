@@ -5,26 +5,22 @@ import GameComponents.Board.Deed_Buildable;
 import GameComponents.Board.Deed_NonBuildable;
 import GameComponents.Cardholder;
 import GameComponents.Player;
+import Translator.Text;
 
 public class SellController {
-    public SellController(GuiController guiController ) {
+    public SellController(GuiController guiController , Text msg ) {
         this.guiController = guiController;
+        this.msg = msg;
 
     }
-
-    Deed deed;
-    Player[] players;
     GuiController guiController;
-    Deed_Buildable deedBuildable;
-    Deed_NonBuildable deedNonBuildable;
-    //Deed deeds[] ;
-    Cardholder cardholder;
+    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+
     int deedPrice =0 ;
     int playerCount = 0;
-    String[] playersName;
     int boughtDeedPrice = 0;
     Player buyerPlayer;
-    //String buyerName;
+
 
     public void sellLot(Player seller, Player[] players){
         if (seller.getPropertiesDeed().length < 1) return;
@@ -46,6 +42,7 @@ public class SellController {
                 }
                 String buyerName = guiController.getUserSelection("Vælg dit navn: ", buyerArray);
 
+                // Find the buyer player
                 for (int i = 0; i <playerCount; i++) {
                     players[i].getPlayerName();
                     if(players[i].getPlayerName() == buyerName)
@@ -70,11 +67,13 @@ public class SellController {
                 String boughtDeed = guiController.getUserSelection("Hvilken grund vil du købe? ", messages);
                 //String boughtDeed = guiController.getUserSelection("Hvilken grund vil du købe? ", deedNames);
                 //System.out.println(seller.getCurrentBalance());;
+                msg.printText("erKøbt",buyerName);
                 seller.depositMoney(boughtDeedPrice);
                 //System.out.println(seller.getCurrentBalance());;
                 //System.out.println(buyerPlayer.getCurrentBalance());
                 buyerPlayer.withdrawMoney(boughtDeedPrice);
                 //System.out.println(buyerPlayer.getCurrentBalance());
+                msg.printText("overført",seller.getPlayerName());
 
 
 

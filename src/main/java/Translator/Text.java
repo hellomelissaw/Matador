@@ -2,14 +2,16 @@ package Translator;/*import java.io.BufferedReader;
 import java.io.FileReader;*/
 import java.io.*;
 import Controllers.GuiController;
+import Controllers.SellController;
 
 
 public class Text {
     boolean guiIsOn = true;
     String file;
     GuiController guiController;
+    SellController sellController ;
 
-    int lineCount = 94;
+    int lineCount = 96;
     String[] messages = new String[lineCount];
 
     String[] labels = new String[lineCount];
