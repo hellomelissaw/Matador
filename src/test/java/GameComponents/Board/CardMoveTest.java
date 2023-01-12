@@ -26,17 +26,19 @@ public class CardMoveTest {
     }
 
     @Test
-    public void playCardMoveToStart() {
-        ChanceCard testChanceCard = new CardMove("chance1",guiController,0, "index");
-        //testChanceSquare.setLang("EnglishText");
+    // start på "start" feltet og ryk videre, modtag ingen yderligere belønninger
+    public void playCardDontGet4000() {
+        ChanceCard testChanceCard = new CardMove("Start",guiController,0, "index");
         testChanceCard.setCardLang(msg);
         testChanceCard.playCard(testPlayers[0]);
         assertEquals(0, testPlayers[0].getPosition());
 
     }
     @Test
+    //passér start og modtag 4000 kr.
     public void get4000WhenMoveToStartCard() {
-        ChanceCard testChanceCard = new CardMove("chance1",guiController,0, "index");
+        System.out.println(testPlayers[0].getCurrentBalance());
+        ChanceCard testChanceCard = new CardMove("chance29",guiController,0, "index");
         testChanceCard.setCardLang(msg);
         testPlayers[0].updatePosition(20);
         testChanceCard.playCard(testPlayers[0]);
@@ -44,59 +46,18 @@ public class CardMoveTest {
     }
 
     @Test
-    public void playCardMoveToStartGetM2() {
-        ChanceCard testChanceCard = new CardMove("chance1",guiController,0, "index");
-        //testChanceSquare.setLang("EnglishText");
-        testChanceCard.setCardLang(msg);
-        testPlayers[0].updatePosition(3);
-        testChanceCard.playCard(testPlayers[0]);
-        assertEquals(2,testPlayers[0].getCurrentBalance());
-    }
-
-    @Test
-    public void playCardMoveToPromenade() {
-        //testChanceSquare.setLang("EnglishText");
-        ChanceCard testChanceCard = new CardMove("chance4",guiController,23, "index");
+    //chancecard 42, flyt brik til rådhuspladsen
+    public void playCardMoveToRådhusplads() {
+        ChanceCard testChanceCard = new CardMove("chance42",guiController,39, "index");
         testChanceCard.setCardLang(msg);
         testChanceCard.playCard(testPlayers[0]);
-        assertEquals(23, testPlayers[0].getPosition());
-
-    }
-    @Test
-    public void playCardMove5() {
-        //testChanceSquare.setLang("EnglishText");
-        ChanceCard testChanceCard = new CardMove("chance2",guiController,5, "distance");
-        testChanceCard.setCardLang(msg);
-        testPlayers[0].updatePosition(5);
-        testChanceCard.playCard(testPlayers[0]);
-        assertEquals(10, testPlayers[0].getPosition());
+        assertEquals(39, testPlayers[0].getPosition());
 
     }
 
+
     @Test
-    public void playCardMove1() {
-        //testChanceSquare.setLang("EnglishText");
-        ChanceCard testChanceCard = new CardMove("chance3",guiController,1, "distance");
-        testChanceCard.setCardLang(msg);
-        testPlayers[0].updatePosition(5);
-        testChanceCard.playCard(testPlayers[0]);
-
-        assertEquals(6, testPlayers[0].getPosition());
-
-    }
-    @Test
-    public void playCardPickAgain() {
-        //testChanceSquare.setLang("EnglishText");
-        ChanceCard testChanceCard = new CardMove("chance3",guiController,1, "distance");
-        testChanceCard.setCardLang(msg);
-
-        testPlayers[0].updatePosition(5);
-        testChanceCard.playCard(testPlayers[0]);
-
-        assertEquals(5, testPlayers[0].getPosition());
-
-    }
-    @Test
+    // chancecard 32, Ryk 3 felter tilbage
     public void playCardMoveBack() {
         ChanceCard testChanceCard = new CardMove("chance32", guiController, -3, "distance");
         testChanceCard.setCardLang(msg);
@@ -107,6 +68,7 @@ public class CardMoveTest {
     }
 
     @Test
+    // chancecard 34, ryk frem til frederiksberg Allé, Hvis de passerer start, modtager du 4000 kr
     public void PassStartGet4000() {
         ChanceCard testChanceCard = new CardMove("chance34", guiController, 3, "distance");
         testChanceCard.setCardLang(msg);
@@ -114,6 +76,17 @@ public class CardMoveTest {
         testChanceCard.playCard(testPlayers[0]);
 
         assertEquals(4000, testPlayers[0].getCurrentBalance());
+    }
+
+    @Test
+    // chancecard 32, Ryk 3 felter frem
+    public void playCardMove3Squares() {
+        ChanceCard testChanceCard = new CardMove("chance32", guiController, 3, "distance");
+        testChanceCard.setCardLang(msg);
+        testPlayers[0].updatePosition(5);
+        testChanceCard.playCard(testPlayers[0]);
+
+        assertEquals(8, testPlayers[0].getPosition());
     }
 
 

@@ -12,7 +12,7 @@ public class UpdatePlayerAccountTest {
 
     GuiController guiController = new GuiController();
 
-    Text msg = new Text("src/main/java/Translator/EnglishText", guiController);
+    Text msg = new Text("src/main/java/Translator/Dansktekst", guiController);
 
     public UpdatePlayerAccountTest() {
         testPlayer.setGui(testGuiPlayer, guiController, msg);

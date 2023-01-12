@@ -33,17 +33,18 @@ public class CardMoneyTest {
 
 
     }
+
     @Test
     public void playChanceCardPay500() {
-
-        ChanceCard testChanceCard = new CardMoney("chance1",guiController,"withdraw",500);
+        // chancecard 1, spiller skal betale 500 kr til banken
+        ChanceCard testChanceCard = new CardMoney("Chance1",guiController,"withdraw",500);
         testChanceCard.setCardLang(msg);
         testChanceCard.playCard(testPlayers[1]);
         assertEquals(-500, testPlayers[1].getCurrentBalance());
-
     }
 
     @Test
+    //chancecard 26, spiller modtager 200 kr fra resterende spillere
     public void playChanceCardCurrentPlayergets200fromeachplayer() {
         ChanceCard testChanceCard = new CardMoney("chance26",guiController,"hybrid", 200);
         testChanceCard.setCardLang(msg);
@@ -56,6 +57,7 @@ public class CardMoneyTest {
 
     }
     @Test
+    // chancecard 13, spiller skal kunne modtage 500 kr fra banken
     public void playChanceCardReceive500() {
         ChanceCard testChanceCard = new CardMoney("chance13",guiController,"deposit", 500);
         testChanceCard.setCardLang(msg);
