@@ -27,17 +27,18 @@ public class DeedSquareTest {
             testStreetSquare[i].setLang(msg);
             testStreetSquare[i].setGuiController(guiController);
             testStreetSquare[i].setGroup("blue", 2);
+            testStreetSquare[i].setGuiOn(false);
         }
 
         testStreetSquare[2] = new DeedSquare_Buildable("TestDeedSquare 3", 1200, rent, 1000);
         testStreetSquare[2].setLang(msg);
         testStreetSquare[2].setGroup("red",1);
         testStreetSquare[2].setGuiController(guiController);
+        testStreetSquare[2].setGuiOn(false);
 
         testPlayers[0] = new Player("TestPlayer 1");
-        testPlayers[0].setBank(bank);
         testPlayers[1] = new Player("TestPlayer 2");
-        testPlayers[1].setBank(bank);
+
 
         testGuiPlayers[0] = new GUI_Player("TestPlayer 1");
         testGuiPlayers[1] = new GUI_Player("TestPlayer 2");
@@ -45,6 +46,8 @@ public class DeedSquareTest {
         for(int i = 0 ; i < testPlayers.length ; i++) {
             testPlayers[i].setGui(testGuiPlayers[i], guiController, msg);
             testPlayers[i].depositMoney(startBalance,false);
+            testPlayers[i].setBank(bank);
+            testPlayers[i].guiIsOn(false);
         }
     }
 
@@ -70,6 +73,7 @@ public class DeedSquareTest {
     @Test
     public void buyHotelForDeedSquare() {
         testStreetSquare[2].testing(true,"ja");
+        System.out.println("Group size is: " + testStreetSquare[2].getDeed().getGroupSize());
         testStreetSquare[2].landOn(testPlayers[0]);
         Deed_Buildable[] deedsToBuildOn = {testStreetSquare[2].getDeed()};
         testPlayers[0].buyHouse(deedsToBuildOn, 4);
