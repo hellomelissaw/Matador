@@ -232,6 +232,7 @@ public class GameController {
                                 boolean selectingMoreLots = true;
                                 while (selectingMoreLots) {
                                     String userLot = guiController.getUserLot(players[i]);
+
                                     selectedLots.add(userLot);
                                     selectingMoreLots = guiController.getUserBoolean(msg.getText("selectMoreLots"));
                                 }
@@ -243,7 +244,11 @@ public class GameController {
                                     String[] countOptions = {"1", "2", "3", "4"};
                                     String userHouseCount = guiController.getUserSelection(msg.getText("howManyBuildings"), countOptions);
                                     int houseCount = Integer.parseInt(userHouseCount);
+                                    System.out.println("House count: " + houseCount);
 
+                                    DeedSquare_Buildable[] selectedLotsArr = new DeedSquare_Buildable[selectedLots.size()];
+                                    selectedLotsArr = selectedLots.toArray(selectedLotsArr);
+                                    players[i].buyHouse(selectedLotsArr, houseCount);
 
                                 }
 
@@ -294,6 +299,18 @@ public class GameController {
                 System.out.println("No deeds");
             }
 
+        }
+
+        private Deed_Buildable getDeedFromName(String deedName, int currentPlayerIndex) {
+            int deedToBuildOnIndex = 0;
+            Deed_Buildable[] deeds = players[currentPlayerIndex].getBuildableDeeds();
+            for(int k = 0 ; k < deeds.length ; k++) {
+                if(deedName.equals(deeds[k].getDeedName())){
+                    deedToBuildOnIndex = k;
+                }
+            }
+            Deed_Buildable deedToBuildOn = deeds[deedToBuildOnIndex];
+            return deedToBuildOn;
         }
 
     }
