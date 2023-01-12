@@ -15,7 +15,7 @@ public class GameController {
     boolean testingActionButtons = true;
     boolean testingHouseCount = false;
 
-    boolean testStartBalance = true;
+    boolean testStartBalance = false;
     GuiController guiController = new GuiController();
     //private int playerCount = 0;
     String userInput;
@@ -41,7 +41,7 @@ public class GameController {
             //guiController.initFieldTitles(msg);
             playerCount = 3;
             if(testStartBalance){
-                balance = 2000;
+                balance = 4000;
 
             } else { balance = 30000; }
 
@@ -316,6 +316,9 @@ public class GameController {
             ((DeedSquare_Buildable)squares[6]).setOwnerForTesting(players[i]);
             ((DeedSquare_Buildable)squares[8]).setOwnerForTesting(players[i]);
             ((DeedSquare_Buildable)squares[9]).setOwnerForTesting(players[i]);
+            ((DeedSquare_Buildable)squares[11]).setOwnerForTesting(players[i]);
+            ((DeedSquare_Buildable)squares[13]).setOwnerForTesting(players[i]);
+            ((DeedSquare_Buildable)squares[14]).setOwnerForTesting(players[i]);
 
             Deed_Buildable[] testDeeds = players[i].getBuildableDeeds();
             if(players[i].getBuildableDeeds().length > 0){

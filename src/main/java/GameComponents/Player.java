@@ -246,7 +246,9 @@ public class Player {
 
         boolean enoughHouses = bank.areThereEnoughHouses(housesToBuy);
         if (enoughHouses) {
+
             for (int j = 0; j < housesToBuy; j++) {
+
                 for (int i = 0; i < deedsToBuildOn.length; i++) {
                     String color = deedsToBuildOn[i].getColor();
                     boolean ownsGroup = cardholder.getOwnerStatus(color);
@@ -262,7 +264,7 @@ public class Player {
                                 count++;
                                 deedsToBuildOn[i].setHouseCount(count);
                                 //lotsToBuildOn[i].setHouseCount(count);
-                                System.out.println("There is now " + count + " houses on Square #" + i);
+                                System.out.println("There is now " + count + " houses on Square " + deedsToBuildOn[i].getDeedName());
                                 System.out.println("Player's new balance is " + playerAccount.getBalance());
 
                             } else {
@@ -284,7 +286,7 @@ public class Player {
         }
     }
 
-    /*private boolean clearedForPurchase(){
+  /*  private boolean clearedForPurchase(Deed_Buildable deeds){
         boolean cleared = false;
         if(cardholder.getOwnerStatus() && cardholder.houseCountIsLevel()){
             cleared = true;

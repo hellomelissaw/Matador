@@ -326,20 +326,6 @@ public class GuiController {
          return gui.getUserSelection(message, buttons);
      }
 
-     public String getUserLot(Player currentPlayer, ArrayList<Deed_Buildable> updatedDeedList) {
-
-         Deed_Buildable[] deeds = new Deed_Buildable[updatedDeedList.size()];
-         deeds = updatedDeedList.toArray(deeds);
-
-         String[] deedNames = new String[deeds.length];
-         for (int i = 0 ; i < deeds.length ; i++) {
-                 deedNames[i] = deeds[i].getDeedName();
-             }
-
-
-         return gui.getUserSelection(msg.getText("whichLots"), deedNames);
-     }
-
      public boolean getUserBoolean(String message) {
          return gui.getUserLeftButtonPressed(message, "Ja", "Nej");
      }
@@ -350,6 +336,25 @@ public class GuiController {
      }
     public void setDice(int die1, int die2){
         gui.setDice(die1,die2);
+    }
+
+    // METHODS FOR HOUSES AND HOTELS
+    public String getUserLot(Player currentPlayer, ArrayList<Deed_Buildable> updatedDeedList) {
+
+        Deed_Buildable[] deeds = new Deed_Buildable[updatedDeedList.size()];
+        deeds = updatedDeedList.toArray(deeds);
+
+        String[] deedNames = new String[deeds.length];
+        for (int i = 0 ; i < deeds.length ; i++) {
+            deedNames[i] = deeds[i].getDeedName();
+        }
+
+
+        return gui.getUserSelection(msg.getText("whichLots"), deedNames);
+    }
+
+    public void setHouseOnLot(int houseCount){
+
     }
 
 
