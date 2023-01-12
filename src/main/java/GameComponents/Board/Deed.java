@@ -64,7 +64,7 @@ public abstract class Deed {
     }
 
     public int getDeedPrice (String deedName){
-
+        return deedPrice;
     }
 
 }

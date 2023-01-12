@@ -344,7 +344,7 @@ public class Player {
 
 
 
-    public void selLot(Player[] players) {
+    public void sellLot(Player[] players) {
         String choosenButton = guiController.getUserButtonPressed("salgeGround");
         if (choosenButton == "Ja") {
 
