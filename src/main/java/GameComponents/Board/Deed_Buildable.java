@@ -3,6 +3,8 @@ package GameComponents.Board;
 public class Deed_Buildable extends Deed{
     int buildingPrice;
 
+    int index;
+
     /**
      * Constructs a Deed which can be owned by Player
      *
@@ -37,5 +39,13 @@ public class Deed_Buildable extends Deed{
 
     public boolean hasHotel() {
         return hasHotel;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int i) {
+        index = i;
     }
 }

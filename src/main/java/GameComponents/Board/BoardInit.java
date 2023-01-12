@@ -46,6 +46,7 @@ import static java.lang.Integer.valueOf;
                     board[i-1].setLang(msg);
                     board[i-1].setGroup(squareInfo[11], valueOf(squareInfo[12]));
                     board[i-1].setGuiController(guiController);
+                    ((DeedSquare_Buildable)board[i-1]).setDeedIndex(i-1);
 
                 } else if (squareInfo[2].equals(" chance")) {
                     board[i-1] = new ChanceSquare(squareInfo[0], guiController, players);

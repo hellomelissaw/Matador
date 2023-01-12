@@ -1,5 +1,6 @@
 package Controllers;
 import GameComponents.Board.Deed_Buildable;
+import GameComponents.Board.Square;
 import GameComponents.Player;
 import Translator.Text;
 import gui_fields.*;
@@ -312,16 +313,6 @@ public class GuiController {
         return gui.getUserButtonPressed(currentPlayerName + ", " + msg.getText("chooseAction"), "Byg", "Sælg", "Kast terninger");
      }
 
-
-     /*public int getSquareIndex(Square[] board) {
-         int index = 0;
-         for(int i = 0; i < board.length ; i++) {
-             if(selectedSquare.getSquareName() == board[i].getSquareName()){
-                 index = i;
-             }
-         }
-         return index;
-     }*/
      public String getUserSelection(String message, String[] buttons) {
          return gui.getUserSelection(message, buttons);
      }
@@ -353,9 +344,10 @@ public class GuiController {
         return gui.getUserSelection(msg.getText("whichLots"), deedNames);
     }
 
-    public void setHouseOnLot(int houseCount){
-
+    public void setHouseOnLot(int index, int houseCount){
+        ((GUI_Street)gui.getFields()[index]).setHouses(houseCount);
     }
+
 
 
 

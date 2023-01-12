@@ -27,6 +27,10 @@ public class DeedSquare_Buildable extends DeedSquare {
         deed.setDeedGroup(color, groupSize);
     }
 
+    public void setDeedIndex(int i) {
+        deed.setIndex(i);
+    }
+
     public Deed_Buildable getDeed() {
         return deed;
     }
