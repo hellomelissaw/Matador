@@ -62,6 +62,11 @@ public class GuiController {
 
        };
         Color back = new Color(64, 153, 255);
+        Color lavender = new Color(171,150,255);
+        Color orange = new Color(255,153,51);
+        Color pearl = new Color(237,229,202);
+        Color fuchsia = new Color(214,122,208);
+
        this.gui = new GUI(fields,back);
 
        gui.getFields()[0].setTitle("START");
@@ -86,7 +91,7 @@ public class GuiController {
        //ownable[3].setSubText("1200");
 
        gui.getFields()[4].setTitle("Betale indkomst skat:");
-       gui.getFields()[4].setBackGroundColor(Color.gray);
+       gui.getFields()[4].setBackGroundColor(Color.lightGray);
        gui.getFields()[4].setSubText("10% eller 4000 kr.");
 
        gui.getFields()[5].setTitle("Scandlines");
@@ -94,7 +99,7 @@ public class GuiController {
        gui.getFields()[5].setSubText("4000 kr");
 
        gui.getFields()[6].setTitle("Roskildevej");
-       gui.getFields()[6].setBackGroundColor(Color.orange);
+       gui.getFields()[6].setBackGroundColor(orange);
        ownable[6] = (GUI_Ownable)fields[6];
        ownable[6].setSubText("2000 kr");
 
@@ -103,12 +108,12 @@ public class GuiController {
        gui.getFields()[7].setSubText("Prøv Lykken");
 
        gui.getFields()[8].setTitle("Valby Langgade");
-       gui.getFields()[8].setBackGroundColor(Color.orange);
+       gui.getFields()[8].setBackGroundColor(orange);
        ownable[8] = (GUI_Ownable)fields[8];
        ownable[8].setSubText("2000 kr");
 
        gui.getFields()[9].setTitle("Allegade");
-       gui.getFields()[9].setBackGroundColor(Color.orange);
+       gui.getFields()[9].setBackGroundColor(orange);
        ownable[9] = (GUI_Ownable)fields[9];
        ownable[9].setSubText("2400 kr");
 
@@ -121,7 +126,7 @@ public class GuiController {
        ownable[11].setSubText("2800 kr");
 
        gui.getFields()[12].setTitle("Sqush");
-       gui.getFields()[12].setBackGroundColor(Color.orange);
+       gui.getFields()[12].setBackGroundColor(lavender);
        gui.getFields()[12].setSubText("3000 kr");
 
        gui.getFields()[13].setTitle("Bullowsvej");
@@ -186,21 +191,21 @@ public class GuiController {
 
 
        gui.getFields()[26].setTitle("Bredgade");
-       gui.getFields()[26].setBackGroundColor(Color.white);
+       gui.getFields()[26].setBackGroundColor(pearl);
        ownable[26] = (GUI_Ownable)fields[26];
        ownable[26].setSubText("5200 kr");
 
        gui.getFields()[27].setTitle("Kgs. Nytorv");
-       gui.getFields()[27].setBackGroundColor(Color.white);
+       gui.getFields()[27].setBackGroundColor(pearl);
        ownable[27] = (GUI_Ownable)fields[27];
        ownable[27].setSubText("5200 kr");
 
        gui.getFields()[28].setTitle("Coca Cola");
-       gui.getFields()[28].setBackGroundColor(Color.orange);
+       gui.getFields()[28].setBackGroundColor(lavender);
        gui.getFields()[28].setSubText("3000 kr");
 
        gui.getFields()[29].setTitle("Østergade");
-       gui.getFields()[29].setBackGroundColor(Color.white);
+       gui.getFields()[29].setBackGroundColor(pearl);
        ownable[29] = (GUI_Ownable)fields[29];
        ownable[29].setSubText("5600 kr");
 
@@ -208,12 +213,12 @@ public class GuiController {
        gui.getFields()[30].setSubText("Gå i fængsel");
 
        gui.getFields()[31].setTitle("Amagertorv");
-       gui.getFields()[31].setBackGroundColor(Color.yellow);
+       gui.getFields()[31].setBackGroundColor(fuchsia);
        ownable[31] = (GUI_Ownable)fields[31];
        ownable[31].setSubText("6000 kr");
 
        gui.getFields()[32].setTitle("vimmelskaffet");
-       gui.getFields()[32].setBackGroundColor(Color.yellow);
+       gui.getFields()[32].setBackGroundColor(fuchsia);
        ownable[32] = (GUI_Ownable)fields[32];
        ownable[32].setSubText("6000 kr");
 
@@ -221,7 +226,7 @@ public class GuiController {
        gui.getFields()[33].setSubText("Prøv Lykken");
 
        gui.getFields()[34].setTitle("Nygade");
-       gui.getFields()[34].setBackGroundColor(Color.yellow);
+       gui.getFields()[34].setBackGroundColor(fuchsia);
        ownable[34] = (GUI_Ownable)fields[34];
        ownable[34].setSubText("6400 kr");
 
@@ -238,7 +243,7 @@ public class GuiController {
        ownable[37].setSubText("7000 kr");
 
        gui.getFields()[38].setTitle("Ekstra ordinær statskat:");
-       gui.getFields()[38].setBackGroundColor(Color.gray);
+       gui.getFields()[38].setBackGroundColor(Color.lightGray);
        gui.getFields()[38].setSubText("Betal 2000 kr indkomst skat.");
 
        gui.getFields()[39].setTitle("Rådhuspladsen");
