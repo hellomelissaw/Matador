@@ -44,6 +44,7 @@ import static java.lang.Integer.valueOf;
 
                     board[i-1] = new DeedSquare_Buildable(squareInfo[0], valueOf(squareInfo[3]), rent, valueOf(squareInfo[4]));
                     board[i-1].setLang(msg);
+                    board[i-1].setGroup(squareInfo[11], valueOf(squareInfo[12]));
                     board[i-1].setGuiController(guiController);
 
                 } else if (squareInfo[2].equals(" chance")) {
@@ -61,7 +62,7 @@ import static java.lang.Integer.valueOf;
                     }
                     board[i-1] = new DeedSquare_NonBuildable(squareInfo[0], valueOf(squareInfo[3]), rent);
                     board[i-1].setLang(msg);
-                    board[i-1].setGroup("blue", 4);
+                    board[i-1].setGroup(squareInfo[11], valueOf(squareInfo[12]));
                     board[i-1].setGuiController(guiController);
 
                 } else if  (squareInfo[2].equals(" jail")) {
@@ -75,7 +76,7 @@ import static java.lang.Integer.valueOf;
                     }
                     board[i-1] = new DeedSquare_NonBuildable(squareInfo[0], valueOf(squareInfo[3]), rent);
                     board[i-1].setLang(msg);
-                    board[i-1].setGroup("red", 2);
+                    board[i-1].setGroup(squareInfo[11], valueOf(squareInfo[12]));
                     board[i-1].setGuiController(guiController);
 
                 } else if (squareInfo[2].equals(" refuge")) {
