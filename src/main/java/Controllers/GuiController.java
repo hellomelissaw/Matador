@@ -325,9 +325,11 @@ public class GuiController {
         return gui.getUserString(msg.getText("enterName") + " " + currentPlayer);
 
      }
+
     public void setDice(int die1, int die2){
         gui.setDice(die1,die2);
     }
+
 
     // METHODS FOR HOUSES AND HOTELS
     public String getUserLot(Player currentPlayer, ArrayList<Deed_Buildable> updatedDeedList) {
@@ -351,5 +353,13 @@ public class GuiController {
 
     public void setHasHotel(int index, boolean hasHotel) {
         ((GUI_Street)gui.getFields()[index]).setHotel(hasHotel);
+    }
+
+    public  String getUserButtonPressed(String message){
+        return gui.getUserButtonPressed(message , "Ja" , "Nej");
+    }
+
+    public String getUserSelection(String userSelection){
+        return gui.getUserSelection("Hvilken ground vil du salge?");
     }
 }
