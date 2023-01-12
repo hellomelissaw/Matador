@@ -1,6 +1,7 @@
 package GameComponents;
 
 import Controllers.GuiController;
+import Controllers.SellController;
 import GameComponents.Board.*;
 import gui_fields.GUI_Player;
 import Translator.Text;
@@ -34,6 +35,7 @@ public class Player {
     private Cardholder cardholder = new Cardholder();
     private String winnerName;
     Deed deed;
+    //SellController sellController = new SellController();
 
 
 
@@ -261,6 +263,7 @@ public class Player {
         Deed[] deedList = cardholder.getProperties();
         return deedList;
     }
+
 
     public void buyHouse(DeedSquare_Buildable[] lotsToBuildOn, int housesToBuy) {
         int housesAvailable = bank.getHouseCount();

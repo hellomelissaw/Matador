@@ -14,6 +14,7 @@ public class GuiController {
      Text msg;
      private GUI_Field[] fields   ;
      GUI_Ownable[] ownable = new GUI_Ownable[40];
+    //SellController sellController = new SellController();
 
     private GUI_Player[] guiPlayers;
     private int squareIndex = 0;

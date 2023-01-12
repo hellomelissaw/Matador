@@ -11,7 +11,8 @@ public class SellControllerTest {
 
     @Test
     public void sellLot() {
-        SellController sellController = new SellController();
+        GuiController guiController = new GuiController();
+        SellController sellController = new SellController(guiController);
         Player player = new Player("TestPlayer");
         int[] array = {50,20,10,5,50,20,};
         Deed_NonBuildable deed = new Deed_NonBuildable(100,array,"Shipping");

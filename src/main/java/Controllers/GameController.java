@@ -6,10 +6,13 @@ import GameComponents.Cup_stub;
 import GameComponents.Player;
 import Translator.*;
 public class GameController {
+    GuiController guiController = new GuiController();
+    SellController sellController = new SellController(guiController);
     boolean useCupStub = true;
     boolean testingInit = true;
-    GuiController guiController = new GuiController();
+    //GuiController guiController = new GuiController();
     //private int playerCount = 0;
+
     String userInput;
     int balance = 0;
     Player[] players;
@@ -23,7 +26,9 @@ public class GameController {
     int counter = 0;
 
 
+
     public void init() {
+     //guiController = new GuiController();
         guiController.setLang(msg);
         if (testingInit){
             msg = new Text("src/main/java/Translator/DanskTekst", guiController);
@@ -207,6 +212,7 @@ public class GameController {
                 if (!isInJail){
                     msg.printText("rollDice", players[i].getPlayerName());
                     //players[i].sellLot(players);
+                    sellController.sellLot(players[i]);
                     sum = cup.getSum();
                     players[i].updatePosition(sum);
                     newPosition = players[i].getPosition();
