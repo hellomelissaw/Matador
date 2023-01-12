@@ -56,37 +56,37 @@ public class DeedSquareTest {
         testStreetSquare[2].landOn(testPlayers[0]);
         testPlayers[0].withdrawMoney(startBalance-1200,false);
 
-        DeedSquare_Buildable[] lotsToBuildOn = {testStreetSquare[2]};
-        testPlayers[0].buyHouse(lotsToBuildOn, 1);
-        assertEquals(0, testStreetSquare[0].getHouseCount());
+        Deed_Buildable[] deedsToBuildOn = {testStreetSquare[2].getDeed()};
+        testPlayers[0].buyHouse(deedsToBuildOn, 1);
+        assertEquals(0, testStreetSquare[0].getDeed().getHouseCount());
     }
     @Test
     public void cannotBuyHouseBecauseNotOwnerOfLotGroup() {
-        DeedSquare_Buildable[] lotsToBuildOn = {testStreetSquare[0]};
-        testPlayers[0].buyHouse(lotsToBuildOn, 1);
+        Deed_Buildable[] deedsToBuildOn = {testStreetSquare[0].getDeed()};
+        testPlayers[0].buyHouse(deedsToBuildOn, 1);
 
-        assertEquals(0, testStreetSquare[0].getHouseCount());
+        assertEquals(0, testStreetSquare[0].getDeed().getHouseCount());
     }
 
     @Test
     public void buyHotelForDeedSquare() {
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
-        DeedSquare_Buildable[] lotsToBuildOn = {testStreetSquare[2]};
-        testPlayers[0].buyHouse(lotsToBuildOn, 4);
-        testPlayers[0].buyHotel(lotsToBuildOn);
+        Deed_Buildable[] deedsToBuildOn = {testStreetSquare[2].getDeed()};
+        testPlayers[0].buyHouse(deedsToBuildOn, 4);
+        testPlayers[0].buyHotel(deedsToBuildOn);
 
-        assertTrue(testStreetSquare[2].hasHotel());
+        assertTrue(testStreetSquare[2].getDeed().hasHotel());
     }
 
     @Test
     public void errorMsgCannotBuyHotel() {
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
-        DeedSquare_Buildable[] lotsToBuildOn = {testStreetSquare[2]};
-        testPlayers[0].buyHotel(lotsToBuildOn);
+        Deed_Buildable[] deedsToBuildOn = {testStreetSquare[2].getDeed()};
+        testPlayers[0].buyHotel(deedsToBuildOn);
 
-        assertFalse(testStreetSquare[2].hasHotel);
+        assertFalse(testStreetSquare[2].getDeed().hasHotel());
     }
 
     @Test
@@ -94,11 +94,11 @@ public class DeedSquareTest {
         testPlayers[0].withdrawMoney(1000,false);
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
-        DeedSquare_Buildable[] lotsToBuildOn = {testStreetSquare[2]};
-        testPlayers[0].buyHouse(lotsToBuildOn, 4);
-        testPlayers[0].buyHotel(lotsToBuildOn);
+        Deed_Buildable[] deedsToBuildOn = {testStreetSquare[2].getDeed()};
+        testPlayers[0].buyHouse(deedsToBuildOn, 4);
+        testPlayers[0].buyHotel(deedsToBuildOn);
 
-        assertFalse(testStreetSquare[0].hasHotel);
+        assertFalse(testStreetSquare[2].getDeed().hasHotel());
     }
 
     @Test
@@ -116,8 +116,8 @@ public class DeedSquareTest {
 
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
-        DeedSquare_Buildable[] lotsToBuildOn = {testStreetSquare[2]};
-        testPlayers[0].buyHouse(lotsToBuildOn, 1);
+        Deed_Buildable[] deedsToBuildOn = {testStreetSquare[2].getDeed()};
+        testPlayers[0].buyHouse(deedsToBuildOn, 1);
 
         testStreetSquare[2].landOn(testPlayers[1]);
 
@@ -128,8 +128,8 @@ public class DeedSquareTest {
     public void ownerHas2HousesReceives750InRent() {
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
-        DeedSquare_Buildable[] lotsToBuildOn = {testStreetSquare[2]};
-        testPlayers[0].buyHouse(lotsToBuildOn, 2);
+        Deed_Buildable[] deedsToBuildOn = {testStreetSquare[2].getDeed()};
+        testPlayers[0].buyHouse(deedsToBuildOn, 2);
 
         testStreetSquare[2].landOn(testPlayers[1]);
 
@@ -140,8 +140,8 @@ public class DeedSquareTest {
     public void ownerHas3HousesReceives2250InRent() {
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
-        DeedSquare_Buildable[] lotsToBuildOn = {testStreetSquare[2]};
-        testPlayers[0].buyHouse(lotsToBuildOn, 3);
+        Deed_Buildable[] deedsToBuildOn = {testStreetSquare[2].getDeed()};
+        testPlayers[0].buyHouse(deedsToBuildOn, 3);
 
         testStreetSquare[2].landOn(testPlayers[1]);
 
@@ -152,8 +152,8 @@ public class DeedSquareTest {
     public void ownerHas4HousesReceives4000InRent() {
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
-        DeedSquare_Buildable[] lotsToBuildOn = {testStreetSquare[2]};
-        testPlayers[0].buyHouse(lotsToBuildOn, 4);
+        Deed_Buildable[] deedsToBuildOn = {testStreetSquare[2].getDeed()};
+        testPlayers[0].buyHouse(deedsToBuildOn, 4);
 
         testStreetSquare[2].landOn(testPlayers[1]);
 
@@ -213,10 +213,10 @@ public class DeedSquareTest {
         testStreetSquare[1].testing(true,"ja");
         testStreetSquare[1].landOn(testPlayers[0]);
 
-        DeedSquare_Buildable[] lotToBuildOn = {testStreetSquare[0]};
-        testPlayers[0].buyHouse(lotToBuildOn,2);
+        Deed_Buildable[] deedsToBuildOn = {testStreetSquare[0].getDeed()};
+        testPlayers[0].buyHouse(deedsToBuildOn,2);
 
-        assertEquals(1, testStreetSquare[0].getHouseCount());
+        assertEquals(1, testStreetSquare[0].getDeed().getHouseCount());
     }
 
     @Test
@@ -226,11 +226,11 @@ public class DeedSquareTest {
         testStreetSquare[1].testing(true,"ja");
         testStreetSquare[1].landOn(testPlayers[0]);
 
-        DeedSquare_Buildable[] lotsToBuildOn = {testStreetSquare[0], testStreetSquare[1]};
-        testPlayers[0].buyHouse(lotsToBuildOn,1);
+        Deed_Buildable[] deedsToBuildOn = {testStreetSquare[0].getDeed(), testStreetSquare[1].getDeed()};
+        testPlayers[0].buyHouse(deedsToBuildOn,1);
 
-        assertEquals(1, testStreetSquare[0].getHouseCount());
-        assertEquals(1, testStreetSquare[1].getHouseCount());
+        assertEquals(1, testStreetSquare[0].getDeed().getHouseCount());
+        assertEquals(1, testStreetSquare[1].getDeed().getHouseCount());
     }
 
     @Test
@@ -241,11 +241,11 @@ public class DeedSquareTest {
         testStreetSquare[1].testing(true,"ja");
         testStreetSquare[1].landOn(testPlayers[0]);
 
-        DeedSquare_Buildable[] lotsToBuildOn = {testStreetSquare[0], testStreetSquare[1]};
-        testPlayers[0].buyHouse(lotsToBuildOn,2);
+        Deed_Buildable[] deedsToBuildOn = {testStreetSquare[0].getDeed(), testStreetSquare[1].getDeed()};
+        testPlayers[0].buyHouse(deedsToBuildOn,2);
 
-        assertEquals(2, testStreetSquare[0].getHouseCount());
-        assertEquals(2, testStreetSquare[1].getHouseCount());
+        assertEquals(2, testStreetSquare[0].getDeed().getHouseCount());
+        assertEquals(2, testStreetSquare[1].getDeed().getHouseCount());
     }
 
 }
