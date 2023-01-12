@@ -13,6 +13,9 @@ public class GameController {
     boolean useCupStub = true;
     boolean testingInit = true;
     boolean testingActionButtons = true;
+    boolean testingHouseCount = false;
+
+    boolean testStartBalance = true;
     GuiController guiController = new GuiController();
     //private int playerCount = 0;
     String userInput;
@@ -31,13 +34,17 @@ public class GameController {
 
     public void init() {
         guiController.setLang(msg);
-        boolean testingInit = true;
+        testingInit = true;
         if (testingInit){
             msg = new Text("src/main/java/Translator/DanskTekst", guiController);
             //msg = new Text("src/main/java/Translator/EnglishText", guiController);
             //guiController.initFieldTitles(msg);
             playerCount = 3;
-            balance = 30000;
+            if(testStartBalance){
+                balance = 2000;
+
+            } else { balance = 30000; }
+
 
             players = new Player[playerCount];
 
@@ -227,13 +234,25 @@ public class GameController {
                             String userChoice = guiController.getUserAction(players[i].getPlayerName());
 
                             if (userChoice.equals("Byg")) {
+                                ArrayList<Deed_Buildable> updatedDeedList = new ArrayList<Deed_Buildable>();
+                                Deed_Buildable[] playerDeeds = players[i].getBuildableDeeds();
+                                for(int j = 0 ; j < players[i].getBuildableDeeds().length ; j++) {
+                                    updatedDeedList.add(playerDeeds[j]);
+                                }
 
                                 ArrayList<Deed_Buildable> selectedLots = new ArrayList<Deed_Buildable>();
+
                                 boolean selectingMoreLots = true;
                                 while (selectingMoreLots) {
-                                    String userLot = guiController.getUserLot(players[i]);
+
+                                    String userLot = guiController.getUserLot(players[i], updatedDeedList);
                                     selectedLots.add(getDeedFromName(userLot, i));
-                                    selectingMoreLots = guiController.getUserBoolean(msg.getText("selectMoreLots"));
+                                    updatedDeedList.remove(getDeedFromName(userLot, i));
+                                    if(updatedDeedList.size()==0){
+                                        selectingMoreLots = false;
+                                    } else {
+                                        selectingMoreLots = guiController.getUserBoolean(msg.getText("selectMoreLots"));
+                                    }
                                 }
 
                                 Deed_Buildable[] selectedLotsArr = new Deed_Buildable[selectedLots.size()];
@@ -251,7 +270,7 @@ public class GameController {
                                     players[i].buyHouse(selectedLotsArr, houseCount);
 
                                 } else {
-                                    if(testingActionButtons){setHouseCountForTesting(4,i);}
+                                    if(testingHouseCount){setHouseCountForTesting(4,i);}
 
                                     players[i].buyHotel(selectedLotsArr);
 
@@ -290,6 +309,7 @@ public class GameController {
             }
 
         }
+
 
         private void setOwnerForTesting(int i) {
 

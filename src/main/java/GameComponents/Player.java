@@ -266,19 +266,31 @@ public class Player {
                                 System.out.println("Player's new balance is " + playerAccount.getBalance());
 
                             } else {
-                                System.out.println("Du har ikke nok penge til at købe dette hus.");
+                                msg.printText("insufficientFunds", "na");
+
                             }
                         } else {
-                            System.out.println("Du skal bygge en jævn mængde hus på alle grunde i gruppen før du kan bygge videre.");
+                            msg.printText("houseCountUnequal","na");
+                            break;
+
                         }
 
                     } else {
-                        System.out.println("Du ejer ikke alle grunde i gruppen, derfor kan du ikke bygge endnu.");
+                        msg.printText("notGroupOwner","na");
+
                     }
                 }
             }
         }
     }
+
+    /*private boolean clearedForPurchase(){
+        boolean cleared = false;
+        if(cardholder.getOwnerStatus() && cardholder.houseCountIsLevel()){
+            cleared = true;
+        }
+        return cleared;
+    }*/
 
 
 
@@ -297,13 +309,16 @@ public class Player {
                     deedsToBuildOn[i].setHasHotel(true);
 
                 } else {
-                    System.out.println("Du har ikke nok penge til at købe dette hotel.");
+                    msg.printText("insufficientFunds","na");
+
                 }
 
             } else if (!availableHotels) {
-                System.out.println("Der er ikke flere hoteller i banken");
+                msg.printText("insufficientHotelsInBank", "na");
+
             } else {
-                System.out.println("Du har ikke nok huse til at bygge et hotel.");
+                msg.printText("insufficientHouses", "na");
+
             }
         }
     }

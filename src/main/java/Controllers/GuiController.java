@@ -6,6 +6,7 @@ import gui_fields.*;
 import gui_main.GUI;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class GuiController {
      private GUI gui;
@@ -15,6 +16,8 @@ public class GuiController {
 
     private GUI_Player[] guiPlayers;
     private int squareIndex = 0;
+
+    ArrayList<Deed_Buildable> updatedDeeds = new ArrayList<Deed_Buildable>();
 
    public GuiController() {
 
@@ -323,12 +326,23 @@ public class GuiController {
          return gui.getUserSelection(message, buttons);
      }
 
-     public String getUserLot(Player currentPlayer) {
-         Deed_Buildable[] deeds = currentPlayer.getBuildableDeeds();
+     public String getUserLot(Player currentPlayer, ArrayList<Deed_Buildable> updatedDeedList) {
+
+         /*String[] selectedDeedNames = new String[alreadySelected.size()];
+         for (int i = 0 ; i < alreadySelected.size() ; i++) {
+             selectedDeedNames[i] = alreadySelected.get(i).getDeedName();
+         }*/
+
+         //Deed_Buildable[] deeds = currentPlayer.getBuildableDeeds();
+         Deed_Buildable[] deeds = new Deed_Buildable[updatedDeedList.size()];
+         deeds = updatedDeedList.toArray(deeds);
+
          String[] deedNames = new String[deeds.length];
          for (int i = 0 ; i < deeds.length ; i++) {
-             deedNames[i] = deeds[i].getDeedName();
-         }
+                 deedNames[i] = deeds[i].getDeedName();
+             }
+
+
          return gui.getUserSelection(msg.getText("whichLots"), deedNames);
      }
 
