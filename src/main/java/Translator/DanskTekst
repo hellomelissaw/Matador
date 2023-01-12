@@ -97,3 +97,9 @@ whichLots; Hvilke grunde vil du bygge på?
 selectMoreLots; Vil du vælge flere grunde?
 houseOrHotel; Hvilken type bygning vil du bygge?
 howManyBuildings; Hvor mange bygninger vil du bygge på hver af de valgte grunde?
+insufficientFunds; Du har ikke nok penge til at bygge det hele.
+houseCountUnequal; Du skal bygge en jævn mængde hus på alle grunde i gruppen før du kan bygge videre.
+thanksForPurchase; Tak for dit køb! Tryk OK til at fortsætte.
+notGroupOwner; Du ejer ikke alle grunde i gruppen, derfor kan du ikke bygge endnu.
+insufficientHotelsInBank; Der er ikke nok hoteller i banken.
+insufficientHouses; Du har ikke nok huse til at bygge et hotel.
