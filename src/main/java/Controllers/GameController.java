@@ -228,7 +228,7 @@ public class GameController {
 
                             if (userChoice.equals("Byg")) {
 
-                                ArrayList<DeedSquare_Buildable> selectedLots = new ArrayList<DeedSquare_Buildable>();
+                                ArrayList<Deed_Buildable> selectedLots = new ArrayList<Deed_Buildable>();
                                 boolean selectingMoreLots = true;
                                 while (selectingMoreLots) {
                                     String userLot = guiController.getUserLot(players[i]);
@@ -245,7 +245,7 @@ public class GameController {
                                     int houseCount = Integer.parseInt(userHouseCount);
                                     System.out.println("House count: " + houseCount);
 
-                                    DeedSquare_Buildable[] selectedLotsArr = new DeedSquare_Buildable[selectedLots.size()];
+                                    Deed_Buildable[] selectedLotsArr = new Deed_Buildable[selectedLots.size()];
                                     selectedLotsArr = selectedLots.toArray(selectedLotsArr);
                                     players[i].buyHouse(selectedLotsArr, houseCount);
 
