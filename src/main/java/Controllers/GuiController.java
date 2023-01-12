@@ -322,7 +322,7 @@ public class GuiController {
          Deed_Buildable[] deeds = currentPlayer.getBuildableDeeds();
          String[] deedNames = new String[deeds.length];
          for (int i = 0 ; i < deeds.length ; i++) {
-             deedNames[i] = new String(deeds[i].getDeedName());
+             deedNames[i] = deeds[i].getDeedName();
          }
          return gui.getUserSelection(msg.getText("whichLots"), deedNames);
      }

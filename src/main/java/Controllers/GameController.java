@@ -229,9 +229,11 @@ public class GameController {
                             if (userChoice.equals("Byg")) {
 
                                 ArrayList<String> selectedLots = new ArrayList<String>();
-                                while (guiController.getUserBoolean(msg.getText("selectMoreLots"))) {
+                                boolean selectingMoreLots = true;
+                                while (selectingMoreLots) {
                                     String userLot = guiController.getUserLot(players[i]);
                                     selectedLots.add(userLot);
+                                    selectingMoreLots = guiController.getUserBoolean(msg.getText("selectMoreLots"));
                                 }
                                 System.out.println(selectedLots);
 
