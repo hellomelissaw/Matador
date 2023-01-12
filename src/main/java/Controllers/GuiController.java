@@ -328,12 +328,6 @@ public class GuiController {
 
      public String getUserLot(Player currentPlayer, ArrayList<Deed_Buildable> updatedDeedList) {
 
-         /*String[] selectedDeedNames = new String[alreadySelected.size()];
-         for (int i = 0 ; i < alreadySelected.size() ; i++) {
-             selectedDeedNames[i] = alreadySelected.get(i).getDeedName();
-         }*/
-
-         //Deed_Buildable[] deeds = currentPlayer.getBuildableDeeds();
          Deed_Buildable[] deeds = new Deed_Buildable[updatedDeedList.size()];
          deeds = updatedDeedList.toArray(deeds);
 
