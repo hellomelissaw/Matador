@@ -254,7 +254,7 @@ public class Player {
                                 int count = deedsToBuildOn[i].getHouseCount();
                                 count++;
                                 deedsToBuildOn[i].setHouseCount(count);
-                                guiController.setHouseCount(deedsToBuildOn[i].getIndex(),count);
+                                if(guiOn){guiController.setHouseCount(deedsToBuildOn[i].getIndex(),count);}
                                 //lotsToBuildOn[i].setHouseCount(count);
                                 System.out.println("There is now " + count + " houses on Square " + deedsToBuildOn[i].getDeedName());
                                 System.out.println("Player's new balance is " + playerAccount.getBalance());
