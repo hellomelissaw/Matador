@@ -232,6 +232,11 @@ public class Player {
     }
 
 
+    public Deed_NonBuildable[] getNonBuildableDeeds() {
+        Deed_NonBuildable[] deedList = cardholder.getNonBuildable();
+        return deedList;
+    }
+
         public void buyHouse(Deed_Buildable[] deedsToBuildOn, int housesToBuy) {
 
         boolean enoughHouses = bank.areThereEnoughHouses(housesToBuy);
