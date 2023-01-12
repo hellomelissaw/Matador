@@ -35,62 +35,39 @@ public class DeedSquare_Buildable extends DeedSquare {
         return deed;
     }
 
-    public void landOn(Player currentPlayer) {
+    @Override
+    protected String userInputBuying(boolean testing) {
+        String[] choices = {"ja", "nej"};
+        if(!testing) {
+            buying = guiController.getUserSelection(msg.getText("buyLot") + " " + deed.getDeedName() + "?", choices);
+        }
+        return buying;
+    }
 
-        if(sellDeed == true) { // IF DEED IS AVAILABLE TO BUY
+    protected void buyingLot(Player currentPlayer) {
+        currentPlayer.withdrawMoney(deedPrice, true);
+        System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
+        sellDeed = false;
+        freeDeed = false;
+        deed.setOwner(currentPlayer);
+        currentPlayer.takeBuildableDeed(deed);
+        if (guiIsOn) {
+            guiController.setOwnerName(currentPlayer, currentPlayer.getPosition());
+        }
+    }
 
-            if (guiIsOn) {
-                String[] choices = {"ja", "nej"};
-                if(!testing) {
-                    buying = guiController.getUserSelection(msg.getText("buyLot") + " " + deed.getDeedName() + "?", choices);
-                }
+    protected void lotIsOwned(Player currentPlayer){
+        Player deedOwner = deed.getOwner();
+        if (currentPlayer==deedOwner) { // IF PLAYER HAS LANDED ON A LOT THAT THEY OWN
+            msg.printText("ownerOfDeed", "na");
 
-            } else {
-                System.out.println("Vil du købe denne grund?");
-                if(!testing){
-                    buying = userInput.nextLine();
-                }
-            }
+        } else { // IF A PLAYER LANDS ON A LOT THAT ANOTHER PLAYER OWNS
 
-            boolean valid = false;
-            while(!valid) {
+            msg.printText("payRent",  deedOwner.getPlayerName());
+            currentPlayer.withdrawMoney(rent[deed.getHouseCount()], false);
+            deedOwner.depositMoney(deedPrice, false);
+            System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
 
-                if (buying.equals("ja")) {
-                    valid = true;
-                    currentPlayer.withdrawMoney(deedPrice, true);
-                    System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
-                    sellDeed = false;
-                    freeDeed = false;
-                    deed.setOwner(currentPlayer);
-                    currentPlayer.takeBuildableDeed(deed);
-                    if (guiIsOn) {
-                        guiController.setOwnerName(currentPlayer, currentPlayer.getPosition());
-                    }
-
-                } else if (!(buying.equals("ja") || buying.equals("nej"))) {
-                    System.out.println("Ugyldigt svar. Indtast venligst ja eller nej");
-
-                } else {
-                    valid = true;
-                    System.out.println("Spilleren køber ikke grunden.");
-                }
-            }
-
-        } else { // IF DEED IS ALREADY OWNED
-            Player deedOwner = deed.getOwner();
-            if (currentPlayer==deedOwner) { // IF PLAYER HAS LANDED ON A LOT THAT THEY OWN
-                msg.printText("ownerOfDeed", "na");
-
-            } else { // IF A PLAYER LANDS ON A LOT THAT ANOTHER PLAYER OWNS
-
-                msg.printText("payRent",  deedOwner.getPlayerName());
-                currentPlayer.withdrawMoney(rent[deed.getHouseCount()], false);
-                deedOwner.depositMoney(deedPrice, false);
-                System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
-
-            }
-
-            System.out.println("");
         }
 
     }

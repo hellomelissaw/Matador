@@ -49,8 +49,48 @@ public abstract class DeedSquare extends Square{
         return priceString;
     }
 
-    public abstract void landOn(Player currentPlayer);
+    public void landOn(Player currentPlayer) {
+        if(sellDeed == true) { // IF DEED IS AVAILABLE TO BUY
 
+            if (guiIsOn) {
+               buying = userInputBuying(testing);
+
+            } else {
+                System.out.println("Vil du købe denne grund?");
+                if(!testing){
+                    buying = userInput.nextLine();
+                }
+            }
+
+            boolean valid = false;
+            while(!valid) {
+
+                if (buying.equals("ja")) {
+                    valid = true;
+                    buyingLot(currentPlayer);
+
+                } else if (!(buying.equals("ja") || buying.equals("nej"))) {
+                    System.out.println("Ugyldigt svar. Indtast venligst ja eller nej");
+
+                } else {
+                    valid = true;
+                    System.out.println("Spilleren køber ikke grunden.");
+                }
+            }
+
+        } else { // IF DEED IS ALREADY OWNED
+            lotIsOwned(currentPlayer);
+
+            System.out.println("");
+        }
+
+
+    }
+
+    protected abstract String userInputBuying(boolean testing);
+    protected abstract void buyingLot(Player currentPlayer);
+
+    protected abstract void lotIsOwned(Player currentPlayer);
 
     public boolean ownsGroup(Player currentPlayer) {
         ownsGroup = currentPlayer.IsGroupOwner(color);
