@@ -54,9 +54,6 @@ public class SellController {
                 String[] messages = new String[seller.getPropertiesDeed().length];
 
                 for (int i = 0; i < (seller.getPropertiesDeed()).length; i++) { // showes all the properties
-                    //deedNames[i] = seller.getPropertiesDeed()[i].getDeedName();
-                    //deedPrices[i] = seller.getPropertiesDeed()[i].getDeedPrice();
-                    //messages[i] = deedNames[i] + deedPrices[i];
                     deedNames[i] = seller.getOwnedFields()[i].getDeedName();
                     deedPrices[i] = seller.getOwnedFields()[i].getDeedPrice();
                     boughtDeedPrice = seller.getOwnedFields()[i].getDeedPrice();
@@ -65,14 +62,9 @@ public class SellController {
                 }
 
                 String boughtDeed = guiController.getUserSelection("Hvilken grund vil du købe? ", messages);
-                //String boughtDeed = guiController.getUserSelection("Hvilken grund vil du købe? ", deedNames);
-                //System.out.println(seller.getCurrentBalance());;
                 msg.printText("erKøbt",buyerName);
                 seller.depositMoney(boughtDeedPrice);
-                //System.out.println(seller.getCurrentBalance());;
-                //System.out.println(buyerPlayer.getCurrentBalance());
                 buyerPlayer.withdrawMoney(boughtDeedPrice);
-                //System.out.println(buyerPlayer.getCurrentBalance());
                 msg.printText("overført",seller.getPlayerName());
 
 
