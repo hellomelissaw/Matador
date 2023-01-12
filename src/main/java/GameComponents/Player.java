@@ -245,6 +245,7 @@ public class Player {
             }*/
 
         boolean enoughHouses = bank.areThereEnoughHouses(housesToBuy);
+        boolean abortMission = false;
         if (enoughHouses) {
 
             for (int j = 0; j < housesToBuy; j++) {
@@ -270,10 +271,13 @@ public class Player {
 
                             } else {
                                 msg.printText("insufficientFunds", "na");
+                                abortMission = true;
+                                break;
 
                             }
                         } else {
                             msg.printText("houseCountUnequal","na");
+                            abortMission = true;
                             break;
 
                         }
@@ -283,8 +287,10 @@ public class Player {
 
                     }
                 }
+                if(abortMission) { break; }
             }
         }
+
     }
 
   /*  private boolean clearedForPurchase(Deed_Buildable deeds){
