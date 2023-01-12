@@ -6,6 +6,8 @@ import GameComponents.Board.*;
 import gui_fields.GUI_Player;
 import Translator.Text;
 
+import java.util.ArrayList;
+
 /*
 ===================================================================================
 This class is reused from our CDIO2 project and built upon.
@@ -34,7 +36,8 @@ public class Player {
 
     private Cardholder cardholder = new Cardholder();
     private String winnerName;
-    Deed deed;
+
+    ArrayList<Deed> ownedFields= new ArrayList<>();
     //SellController sellController = new SellController();
 
 
@@ -259,9 +262,20 @@ public class Player {
         Deed_NonBuildable[] deedList = cardholder.getNonBuildable();
         return deedList;
     }
+
+
+    public void addToOwnedFields(Deed deed){
+        ownedFields.add(deed);
+    }
+    public Deed[] getOwnedFields() {
+        Deed[] deeds = new Deed[ownedFields.size()];
+        for (int i = 0; i < ownedFields.size(); i++) {
+            deeds[i] = ownedFields.get(i);
+        }
+        return deeds;
+    }
     public Deed[] getPropertiesDeed(){
-        Deed[] deedList = cardholder.getProperties();
-        return deedList;
+        return cardholder.getProperties();
     }
 
 

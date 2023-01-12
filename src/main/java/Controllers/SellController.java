@@ -34,7 +34,7 @@ public class SellController {
 
                 String[] buyerArray = new String[playerCount-1];
 
-                for (int i = 0; i < playerCount ; i++) {
+                for (int i = 0; i < playerCount ; i++) { // showes player's name in a drop-down menu
                     if (players[i] != seller){
 
                         buyerArray[i-1] = players[i].getPlayerName();

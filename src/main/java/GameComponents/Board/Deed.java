@@ -32,8 +32,9 @@ public abstract class Deed {
     public Player getOwner() {
         return owner;
     }
-    public void setOwner(Player ownerName){
-        this.owner = ownerName;
+    public void setOwner(Player owner){
+        this.owner = owner;
+        //owner.addToOwnedFields(deed);
 
     }
 
