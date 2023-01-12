@@ -46,11 +46,28 @@ public class DeedSquare_NonBuildable extends DeedSquare {
 
         } else { // IF A PLAYER LANDS ON A LOT THAT ANOTHER PLAYER OWNS
 
-            msg.printText("payRent", deedOwner.getPlayerName());
-            int rentPrice;
+            int rentIndex = 0;
+            int counter = 0;
 
-            currentPlayer.withdrawMoney(rent[0], false); //TO DO: CHECK IF PLAYER OWNS OTHER LOTS IN GROUP TO CHANGE RENT
-            deedOwner.depositMoney(deedPrice, false);
+            Deed_NonBuildable[] deeds = deedOwner.getNonBuildableDeeds();
+            for(int j = 0 ; j < deeds.length ; j++) {
+                if(deeds[j].getColor().equals(deed.getColor())){
+                    counter++;
+                }
+            }
+
+            if(counter > 1) {
+                rentIndex = counter;
+                msg.printText("payHigherRent", deedOwner.getPlayerName());
+            } else {
+                msg.printText("payRent",  deedOwner.getPlayerName());
+            }
+
+            int rentOwed = rent[rentIndex];
+
+
+            currentPlayer.withdrawMoney(rentOwed, false); //TO DO: CHECK IF PLAYER OWNS OTHER LOTS IN GROUP TO CHANGE RENT
+            deedOwner.depositMoney(rentOwed, false);
             System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
 
         }
