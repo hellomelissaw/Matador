@@ -379,12 +379,12 @@ public class Player {
         }
     }*/
 
-    public void sellHotelToBank(DeedSquare_Buildable[] lotsToSellFrom) { // in gui make sure there is not the option to sell houses one does not own
+    public void sellHotelToBank(Deed_Buildable[] deedsToBuildOn) { // in gui make sure there is not the option to sell houses one does not own
 
-        for (int i = 0; i < lotsToSellFrom.length; i++) {
-            lotsToSellFrom[i].setHasHotel(false);
-            lotsToSellFrom[i].getDeed().setHasHotel(false);
-            int halfPrice = Math.round(lotsToSellFrom[i].getDeed().getBuildingPrice()/2);
+        for (int i = 0; i < deedsToBuildOn.length; i++) {
+            deedsToBuildOn[i].setHasHotel(false);
+            deedsToBuildOn[i].setHasHotel(false);
+            int halfPrice = Math.round(deedsToBuildOn[i].getBuildingPrice()/2);
             playerAccount.deposit(halfPrice);
             bank.sellHotelToBank(1,halfPrice);
         }
