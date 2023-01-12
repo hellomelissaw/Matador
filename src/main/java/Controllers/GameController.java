@@ -169,7 +169,7 @@ public class GameController {
 
                     if (players[i].jailCounter() < 3) {
 
-                        if (name == "Betal bøde?") {
+                        if (name.equals("Betal bøde?")) {
                             players[i].withdrawMoney(fine);
                             int currentBalance = players[i].getCurrentBalance();
                             System.out.println(msg.getText("newBalance") + currentBalance);
@@ -212,7 +212,7 @@ public class GameController {
                 if (!isInJail){
                     msg.printText("rollDice", players[i].getPlayerName());
                     //players[i].sellLot(players);
-                    sellController.sellLot(players[i]);
+                    sellController.sellLot(players[i], players);
                     sum = cup.getSum();
                     players[i].updatePosition(sum);
                     newPosition = players[i].getPosition();
