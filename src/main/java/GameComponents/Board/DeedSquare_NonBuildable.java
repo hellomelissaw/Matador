@@ -57,11 +57,12 @@ public class DeedSquare_NonBuildable extends DeedSquare {
             }
 
             if(counter > 1) {
-                rentIndex = counter;
+                rentIndex = counter-1;
                 msg.printText("payHigherRent", deedOwner.getPlayerName());
             } else {
                 msg.printText("payRent",  deedOwner.getPlayerName());
             }
+            System.out.println("Rent index is: " + rentIndex);
 
             int rentOwed = rent[rentIndex];
 
