@@ -118,7 +118,7 @@ public class GameController {
                 int playerNumber = i + 1;
                 boolean duplicateName = true;
                 while(duplicateName) {
-                    userInput = guiController.getUserString("enterName",playerNumber);
+                    userInput = guiController.getUserString(playerNumber);
 
                     if (i == 0) {
                         duplicateName = false;
@@ -279,6 +279,7 @@ public class GameController {
 
                             } else if (userChoice.equals("Sælg")) {
                                 System.out.println("player chose saelg");
+                                players[i].sellLot(players);
 
                             } else {
                                 rollDice = true;
