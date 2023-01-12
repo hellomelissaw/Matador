@@ -6,8 +6,11 @@ import GameComponents.Cup_stub;
 import GameComponents.Player;
 import Translator.*;
 import GameComponents.Bank;
+
+import java.util.Objects;
+
 public class GameController {
-    boolean useCupStub = true;
+    boolean useCupStub = false;
     boolean testingInit = true;
     GuiController guiController = new GuiController();
     //private int playerCount = 0;
@@ -166,10 +169,16 @@ public class GameController {
 
                 if (isInJail) {
 
-                    msg.printText("fængsel", "na");
-                    String[] jailOptions = {"Betal bøde?", "Kast terninger?"};
+                    guiController.showMessage(players[i].getPlayerName() + " Du er i fængsel og har kun følgende muligheder for at komme ud af fængsel! Vælg en valgmulighed: Betal bøde på 1000 kr med det samme? eller Prøv dit held ved terningekast!");
                     String name;
-                    name = guiController.getUserSelection("Betal bøde på 1000 kr med det samme? eller Prøv heldet med terningekast!", jailOptions);
+                    if (players[i].getJailPass() > 0){
+                        guiController.showMessage("Du har " + players[i].getJailPass() + " kom ud af fængsel kort.");
+                        String[] jailOptions = {"Betal bøde?", "Kast terninger?", "Brug et kom ud af fængsel kort"};
+                        name = guiController.getUserSelection("Betal bøde på 1000 kr med det samme?, Prøv heldet med terningekast? eller Kom ud af fængslet med det samme ", jailOptions);
+                    }else {
+                        String[] jailOptions = {"Betal bøde?", "Kast terninger?"};
+                        name = guiController.getUserSelection("Betal bøde på 1000 kr med det samme? eller Prøv heldet med terningekast!", jailOptions);
+                    }
 
                     if (players[i].jailCounter() < 3) {
 
@@ -200,6 +209,15 @@ public class GameController {
 
                             } else {
                                 System.out.println("Vent til næste runde");
+                            }
+
+                        } else if (Objects.equals(name, "Brug et kom ud af fængsel kort")){
+                            int jailPasses = players[i].getJailPass();
+
+                            if (jailPasses > 0) {
+                                players[i].useJailPass();
+                                guiController.showMessage(players[i].getPlayerName()+ " Du er nu ude af fængslet");
+                                players[i].moveOutJail();
                             }
 
                         }

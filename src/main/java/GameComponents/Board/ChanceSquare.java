@@ -59,7 +59,7 @@ public class ChanceSquare extends Square{
         chanceCards[39] = new CardMove("chance40", guiController, 5,"index"); // Tag med den nærmeste færge, hvis de passerer start indkasser da kr 4000 (felter 5, 25, 35) (waiting on the ferry square)
         chanceCards[40] = new CardMove("chance41", guiController, 19,"index");
         chanceCards[41] = new CardMove("chance42", guiController, 39,"index");
-        chanceCards[42] = new CardMove("chance43", guiController, 30,"index"); // I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det. (waiting on updated jailsquare)
+        chanceCards[42] = new CardJailPass("chance43",guiController) ; // I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det. (waiting on updated jailsquare)
         chanceCards[43] = new CardMove("chance44", guiController, 30,"index"); // I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det. (waiting on updated jailsquare)
         chanceCards[44] = new CardMove("chance45", guiController, 30,"index"); // Gå i fængsel, De indkasserer ikke 4000 kr for at passere start. (test)
         chanceCards[45] = new CardMove("chance46", guiController, 30,"index"); // Gå i fængsel, De indkasserer ikke 4000 kr for at passere start. (test)

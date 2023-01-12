@@ -10,7 +10,6 @@ public class CardJailPass extends ChanceCard {
 
     @Override
     public void playCard(Player currentPlayer) {
-
-
+        currentPlayer.giveJailPass();
     }
 }

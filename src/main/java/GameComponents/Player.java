@@ -304,6 +304,19 @@ public class Player {
                 System.out.println("Du har ikke nok huse til at bygge et hotel.");
             }
         }
+
+    }
+
+    public int getJailPass(){
+        return playerAccount.getJailPasses();
+    }
+
+    public void giveJailPass(){
+        playerAccount.giveJailPass();
+    }
+
+    public Boolean useJailPass(){
+        return playerAccount.useJailPass();
     }
 
 
