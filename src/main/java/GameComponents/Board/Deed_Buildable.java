@@ -35,6 +35,7 @@ public class Deed_Buildable extends Deed{
 
     public void setHasHotel(boolean hasHotel) {
         this.hasHotel = hasHotel;
+
     }
 
     public boolean hasHotel() {

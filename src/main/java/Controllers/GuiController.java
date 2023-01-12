@@ -344,11 +344,12 @@ public class GuiController {
         return gui.getUserSelection(msg.getText("whichLots"), deedNames);
     }
 
-    public void setHouseOnLot(int index, int houseCount){
+    public void setHouseCount(int index, int houseCount){
         ((GUI_Street)gui.getFields()[index]).setHouses(houseCount);
     }
 
 
-
-
- }
+    public void setHasHotel(int index, boolean hasHotel) {
+        ((GUI_Street)gui.getFields()[index]).setHotel(hasHotel);
+    }
+}

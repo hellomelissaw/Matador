@@ -263,7 +263,7 @@ public class Player {
                                 int count = deedsToBuildOn[i].getHouseCount();
                                 count++;
                                 deedsToBuildOn[i].setHouseCount(count);
-                                guiController.setHouseOnLot(deedsToBuildOn[i].getIndex(),count);
+                                guiController.setHouseCount(deedsToBuildOn[i].getIndex(),count);
                                 //lotsToBuildOn[i].setHouseCount(count);
                                 System.out.println("There is now " + count + " houses on Square " + deedsToBuildOn[i].getDeedName());
                                 System.out.println("Player's new balance is " + playerAccount.getBalance());
@@ -307,9 +307,20 @@ public class Player {
                 int buildingPrice =  deedsToBuildOn[i].getBuildingPrice();
                 if (currentBalance > 0 && currentBalance - buildingPrice >= 0) {
                     playerAccount.withDraw(buildingPrice);
-                    bank.buyHotelFromBank(1,buildingPrice);
+
+                    int index = deedsToBuildOn[i].getIndex();
+
                     deedsToBuildOn[i].setHouseCount(0);
+                    bank.sellHouseToBank(4,0);
+
+                    bank.buyHotelFromBank(1,buildingPrice);
                     deedsToBuildOn[i].setHasHotel(true);
+
+                    if(guiOn){
+                        guiController.setHouseCount(index, 0);
+                        guiController.setHasHotel(index, true);
+
+                    }
 
                 } else {
                     msg.printText("insufficientFunds","na");
@@ -397,16 +408,43 @@ public class Player {
         }
     }*/
 
-    public void sellHotelToBank(Deed_Buildable[] deedsToBuildOn) { // in gui make sure there is not the option to sell houses one does not own
+    public void sellHotelToBank(Deed_Buildable[] deedsToSellFrom) { // in gui make sure there is not the option to sell houses one does not own
 
-        for (int i = 0; i < deedsToBuildOn.length; i++) {
-            deedsToBuildOn[i].setHasHotel(false);
-            deedsToBuildOn[i].setHasHotel(false);
-            int halfPrice = Math.round(deedsToBuildOn[i].getBuildingPrice()/2);
+        for (int i = 0; i < deedsToSellFrom.length; i++) {
+
+            deedsToSellFrom[i].setHasHotel(false);
+            int halfPrice = Math.round(deedsToSellFrom[i].getBuildingPrice()/2);
             playerAccount.deposit(halfPrice);
             bank.sellHotelToBank(1,halfPrice);
+
+            if(guiOn) {
+                int index = deedsToSellFrom[i].getIndex();
+                guiController.setHasHotel(index, false);
+            }
         }
     }
+
+    public void sellHouseToBank(Deed_Buildable[] deedsToSellFrom, int houseCount) { // in gui make sure there is not the option to sell houses one does not own
+
+        for (int i = 0; i < deedsToSellFrom.length; i++) {
+            int currentHouseCount = deedsToSellFrom[i].getHouseCount();
+            if(houseCount > currentHouseCount){
+                msg.printText("toFewHouses","na");
+            } else {
+                deedsToSellFrom[i].setHouseCount(currentHouseCount - houseCount);
+            }
+
+            int halfPrice = Math.round(deedsToSellFrom[i].getBuildingPrice()/2);
+            playerAccount.deposit(halfPrice);
+            bank.sellHouseToBank(houseCount, halfPrice);
+
+            if(guiOn) {
+                int index = deedsToSellFrom[i].getIndex();
+                guiController.setHouseCount(index, currentHouseCount - houseCount);
+            }
+        }
+    }
+
 /*
     public void setHouseCount(int count){
         bank.setHouseCount(count);
