@@ -48,8 +48,11 @@ public class SellController {
                 String[] messages = new String[seller.getPropertiesDeed().length];
 
                 for (int i = 0; i < (seller.getPropertiesDeed()).length; i++) { // showes all the properties
-                    deedNames[i] = seller.getPropertiesDeed()[i].getDeedName();
-                    deedPrices[i] = seller.getPropertiesDeed()[i].getDeedPrice();
+                    //deedNames[i] = seller.getPropertiesDeed()[i].getDeedName();
+                    //deedPrices[i] = seller.getPropertiesDeed()[i].getDeedPrice();
+                    //messages[i] = deedNames[i] + deedPrices[i];
+                    deedNames[i] = seller.getOwnedFields()[i].getDeedName();
+                    deedPrices[i] = seller.getOwnedFields()[i].getDeedPrice();
                     messages[i] = deedNames[i] + deedPrices[i];
 
                 }
