@@ -21,10 +21,15 @@ public class DeedSquare_Buildable extends DeedSquare {
 
     }
 
+    public void setGroup(String color, int groupSize) {
+        this.color = color;
+        this.groupSize = groupSize;
+        deed.setDeedGroup(color, groupSize);
+    }
+
     public Deed_Buildable getDeed() {
         return deed;
     }
-
 
     public void landOn(Player currentPlayer) {
 
@@ -96,29 +101,19 @@ public class DeedSquare_Buildable extends DeedSquare {
         houseCount = deed.getHouseCount();
     }
 */
-    public boolean hasHotel() {
+   /* public boolean hasHotel() {
         return hasHotel;
-    }
+    }*/
 
-    public void setHasHotel(boolean hasHotel) {
+   /* public void setHasHotel(boolean hasHotel) {
         this.hasHotel = hasHotel;
         deed.setHasHotel(hasHotel);
-    }
+    }*/
 
     public Player getDeedOwner() {
         return deed.getOwner();
     }
 
-    /**
-     * Sets the group which this square belongs to according to its color and the group's size
-     * @param color the square's color
-     * @param groupSize amount of squares which have same color
-     */
-    public void setGroup(String color, int groupSize) {
-        this.color = color;
-        this.groupSize = groupSize;
-        deed.setDeedGroup(color, groupSize);
-    }
 
     public void setOwnerForTesting(Player player){
         deed.setOwner(player);
