@@ -218,10 +218,6 @@ public class Player {
         return ownerStatus;
     }
 
-    public void setIsGroupOwner(){
-
-    }
-
     public void takeBuildableDeed(Deed_Buildable deed) {
         cardholder.addDeedBuildable(deed);
     }
@@ -237,12 +233,6 @@ public class Player {
 
 
         public void buyHouse(Deed_Buildable[] deedsToBuildOn, int housesToBuy) {
-
-            /*DeedSquare_Buildable[] deedsToBuildOn = new Deed_Buildable[lotsToBuildOn.length];
-
-            for (int i = 0; i < lotsToBuildOn.length; i++) {
-                deedsToBuildOn[i] = lotsToBuildOn[i].getDeed();
-            }*/
 
         boolean enoughHouses = bank.areThereEnoughHouses(housesToBuy);
         boolean abortMission = false;
@@ -293,15 +283,6 @@ public class Player {
 
     }
 
-  /*  private boolean clearedForPurchase(Deed_Buildable deeds){
-        boolean cleared = false;
-        if(cardholder.getOwnerStatus() && cardholder.houseCountIsLevel()){
-            cleared = true;
-        }
-        return cleared;
-    }*/
-
-
 
         public void buyHotel(Deed_Buildable[] deedsToBuildOn) {
         for (int i = 0; i < deedsToBuildOn.length; i++) {
@@ -344,76 +325,6 @@ public class Player {
     }
 
 
-
-   //Me attempting to make a sell hotel from the buyhotel method
-   /* public void sellHotel(DeedSquare_Buildable[] lotsToBuildOn,int hotelsToSell) {
-        for (int i = 0; i < lotsToBuildOn.length; i++) {
-            Deed_Buildable deed = lotsToBuildOn[i].getDeed();
-            int houseCount = lotsToBuildOn[i].getHouseCount();
-
-
-            if (hotel> hotelsToSell || h) {
-
-                int currentBalance = playerAccount.getBalance();
-                int buildingPrice = deed.getBuildingPrice();
-                if (currentBalance > 0 && currentBalance - buildingPrice >= 0) {
-                    playerAccount.withDraw(buildingPrice);
-                    bank.buyHotelFromBank(1,buildingPrice);
-                    lotsToBuildOn[i].setHouseCount(0);
-                    lotsToBuildOn[i].setHasHotel(true);
-
-                } else {
-                    System.out.println("Du har ikke nok penge til at købe dette hotel.");
-                }
-
-            } else if (!availableHotels) {
-                System.out.println("Der er ikke flere hoteller i banken");
-            } else {
-                System.out.println("Du har ikke nok huse til at bygge et hotel.");
-            }
-        }
-    }
-
-    */
-
-
-
-
-
-/*
-    public int getHouses() {
-        return playerAccount.getHouses();
-    }
-    public int getHotels(){
-        return playerAccount.getHotels();
-    }
-    public void acquireHouse(int acquiredHouses, int price) {
-        playerAccount.acquireHouse(acquiredHouses,price);
-    }
-
-    public void sellHouses(int soldHouses, int price){
-        playerAccount.sellHouses(soldHouses,price);
-    }
-
-    public void acquireHotel(int acquiredHotels, int price){
-        playerAccount.acquireHotel(acquiredHotels,price);
-    }
- */
-  /*  public void sellHotel(int soldHotels, int price){
-        playerAccount.sellHotel(soldHotels,price);
-    }*/
-
-        /*for (int i = 0; i < lotsToSellFrom.length; i++) {
-            int currentHouseCount = lotsToSellFrom[i].getDeed().getHouseCount();
-            int newHouseCount = currentHouseCount - housesToSell;
-            lotsToSellFrom[i].setHouseCount(newHouseCount);
-            lotsToSellFrom[i].getDeed().setHouseCount(newHouseCount);
-            int halfPrice = Math.round(lotsToSellFrom[i].getDeed().getBuildingPrice()/2);
-            playerAccount.deposit(halfPrice);
-            bank.sellHouseToBank(housesToSell,halfPrice);
-        }
-    }*/
-
     public void sellHotelToBank(Deed_Buildable[] deedsToSellFrom) { // in gui make sure there is not the option to sell houses one does not own
 
         for (int i = 0; i < deedsToSellFrom.length; i++) {
@@ -451,14 +362,5 @@ public class Player {
         }
     }
 
-/*
-    public void setHouseCount(int count){
-        bank.setHouseCount(count);
-    }
-    public void setHotelCount(int count) {
-        bank.setHotelCount(count);
-    }
-
- */
 }
 
