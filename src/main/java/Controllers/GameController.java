@@ -7,13 +7,10 @@ import GameComponents.Player;
 import Translator.*;
 import GameComponents.Bank;
 
-import java.util.ArrayList;
-
 public class GameController {
-    boolean useCupStub = true;
+    boolean useCupStub = false;
     boolean testingInit = true;
-    boolean testingActionButtons = true;
-
+    boolean testingBuildButton = false;
     boolean testStartBalance = false;
     GuiController guiController = new GuiController();
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
@@ -273,7 +270,7 @@ public class GameController {
 
         private String[] setActionButtons(int i) {
             String[] actionButtons;
-            if(testingActionButtons){setOwnerForTesting(i);}
+            if(testingBuildButton){setOwnerForTesting(i);}
 
             if(players[i].getPropertiesDeed().length > 0) {
                 if(players[i].getBuildableDeeds().length > 0) {
