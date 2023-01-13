@@ -100,6 +100,8 @@ public class DeedSquare_Buildable extends DeedSquare {
     public void setOwnerForTesting(Player player){
         deed.setOwner(player);
         player.takeBuildableDeed(deed);
+        player.addToOwnedFields(deed);
+
     }
 
 }

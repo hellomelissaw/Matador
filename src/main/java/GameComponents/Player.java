@@ -1,7 +1,6 @@
 package GameComponents;
 
 import Controllers.GuiController;
-import Controllers.SellController;
 import GameComponents.Board.*;
 import gui_fields.GUI_Player;
 import Translator.Text;
@@ -254,11 +253,12 @@ public class Player {
     }
 
     public void takeBuildableDeed(Deed_Buildable deed) {
-        cardholder.addDeedBuildable(deed);
+        cardholder.addDeed_Buildable(deed);
+
     }
 
     public void takeNonBuildableDeed(Deed_NonBuildable deed) {
-        cardholder.addDeedNonBuildable(deed);
+        cardholder.addDeedNon_Buildable(deed);
     }
 
     public Deed_Buildable[] getBuildableDeeds() {
@@ -321,6 +321,10 @@ public class Player {
                                 //lotsToBuildOn[i].setHouseCount(count);
                                 System.out.println("There is now " + count + " houses on Square " + deedsToBuildOn[i].getDeedName());
                                 System.out.println("Player's new balance is " + playerAccount.getBalance());
+                                Deed_Buildable[] deed_buildables = cardholder.getBuildable();
+                               for(int k = 0 ; k < deed_buildables.length ; k++){
+                                System.out.println(playerName + " owns " + deed_buildables[k].getDeedName() + "after buying house.");
+                                }
 
                             } else {
                                 msg.printText("insufficientFunds", "na");
@@ -426,6 +430,24 @@ public class Player {
             }
         }
     }
+
+    public void addToCardholder(Deed boughtDeed) {
+        if (boughtDeed instanceof Deed_Buildable) {
+            cardholder.addDeed_Buildable((Deed_Buildable) boughtDeed);
+        } else if (boughtDeed instanceof  Deed_NonBuildable) {
+            cardholder.addDeedNon_Buildable((Deed_NonBuildable) boughtDeed);
+        } else {
+            System.out.println("Card type not recognised");
+        }
+    }
+    public void removeFromCardholder(Deed boughtDeed) {
+        if (boughtDeed instanceof Deed_Buildable) {
+            cardholder.removeDeed_Buildable((Deed_Buildable) boughtDeed);
+        } else if (boughtDeed instanceof  Deed_NonBuildable) {
+            cardholder.removeDeed_NonBuildable((Deed_NonBuildable) boughtDeed);
+        }
+    }
+
 
 
 

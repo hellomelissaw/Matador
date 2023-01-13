@@ -71,10 +71,14 @@ public class SellController {
                     System.out.println("Owned fields before removal: " + seller.getOwnedFields()[k].getDeedName());
                 }
                 seller.removeFromOwnedFields(boughtDeed);
+                seller.removeFromCardholder(boughtDeed);
                 for(int k = 0 ; k < seller.getOwnedFields().length ; k++){
                     System.out.println("Owned fields after removal: " + seller.getOwnedFields()[k].getDeedName());
+
                 }
                 buyerPlayer.addToOwnedFields(boughtDeed);
+                buyerPlayer.addToCardholder(boughtDeed);
+
                 msg.printText("erKøbt",buyerName);
                 seller.depositMoney(boughtDeedPrice, false);
                 buyerPlayer.withdrawMoney(boughtDeedPrice, false);

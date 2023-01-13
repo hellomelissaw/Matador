@@ -10,7 +10,7 @@ import GameComponents.Bank;
 public class GameController {
     boolean useCupStub = false;
     boolean testingInit = true;
-    boolean testingBuildButton = false;
+    boolean testingBuildButton = true;
     boolean testStartBalance = false;
     GuiController guiController = new GuiController();
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
@@ -225,7 +225,7 @@ public class GameController {
                 }
 
                 if (!isInJail){
-
+                    if(testingBuildButton){setOwnerForTesting();}
                         boolean rollDice = false;
                         while (!rollDice) {
                             String[] userActionButtons = setActionButtons(i);
@@ -271,7 +271,6 @@ public class GameController {
 
         private String[] setActionButtons(int i) {
             String[] actionButtons;
-            if(testingBuildButton){setOwnerForTesting(i);}
 
             if(players[i].getOwnedFields().length > 0) {
                 if(players[i].getBuildableDeeds().length > 0) {
@@ -294,7 +293,7 @@ public class GameController {
         }
 
 
-        private void setOwnerForTesting(int i) {
+        private void setOwnerForTesting() {
 
             ((DeedSquare_Buildable)squares[6]).setOwnerForTesting(players[0]);
             ((DeedSquare_Buildable)squares[8]).setOwnerForTesting(players[0]);
@@ -303,14 +302,6 @@ public class GameController {
             ((DeedSquare_Buildable)squares[13]).setOwnerForTesting(players[1]);
             ((DeedSquare_Buildable)squares[14]).setOwnerForTesting(players[2]);
 
-            Deed_Buildable[] testDeeds = players[i].getBuildableDeeds();
-            if(players[i].getBuildableDeeds().length > 0){
-                for(int j = 0 ; j < testDeeds.length ; j++) {
-                    System.out.println(testDeeds[j].getOwner().getPlayerName() + " owns " + testDeeds[j].getDeedName());
-                }
-            } else {
-                System.out.println("No deeds");
-            }
 
         }
 

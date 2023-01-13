@@ -13,12 +13,21 @@ public class Cardholder {
     ArrayList<Deed> deedCards_Properties = new ArrayList<Deed>();
     boolean isOwner = false;
 
-    public void addDeedBuildable(Deed_Buildable deed) {
+    public void addDeed_Buildable(Deed_Buildable deed) {
         deedCards_Buildable.add(deed);
     }
 
-    public void addDeedNonBuildable(Deed_NonBuildable deed) {
+    public void removeDeed_Buildable(Deed_Buildable deed) {
+        deedCards_Buildable.remove(deed);
+    }
+
+    public void addDeedNon_Buildable(Deed_NonBuildable deed) {
         deedCards_NonBuildable.add(deed);
+    }
+
+    public void removeDeed_NonBuildable(Deed_NonBuildable deed) {
+        deedCards_NonBuildable.remove(deed);
+
     }
     public void addProperties (Deed_Buildable deedBuildable , Deed_NonBuildable deedNonBuildable){
          deedCards_Properties.add(deedBuildable) ;
@@ -82,4 +91,6 @@ public class Cardholder {
         }
         return countIsLevel;
     }
+
+
 }
