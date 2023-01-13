@@ -1,62 +1,18 @@
 @startuml
 
 title Class Diagram
-
-class Game{
-game: GameController()
+package "Controllers"{
+class BuildController{
+}
+class GameController{
 }
 
-
-class Cup{
-die1: Die
-die2 : Die
-guiController: GuiController
-+getSum():int
+class GuiController{}
+class SellController{}
 }
 
-class Die {
--resultRoll: int
-
-+roll(): random int
-+toString(): String
-}
-
-class GameController {
-guiController: GuiController
--playerCount : int
--player[playerCount]: Players[]
--board : BoardInit
--cup: Cup
-+balance: int
-square: Square[]
-guiPlayers: GUI_Player[]
-
-+run(): void
-+init(): void
-
-}
-
-class Player{
--PlayerAccount : Account
--playerName: String
--squareIndex: int
-+Player()
-+withdrawMoney(): void
-+depositMoney(): int
-+getCurrentBalance(): int
-+getPlayerName(): String
-+UpdatePosision(): int
-+getPosision(): int
-+toString(): String
-
-}
-
-class Account{
--balance: int
-+updateBalance()
-
-}
-
+package "GameComponent"{
+package "Board"{
 class Square {
 -pointsValue[]: int
 -description[]: String
@@ -95,6 +51,81 @@ price: int
 class Deed_Buildable{}
 
 class Deed_NonBuildable{}
+class ChanceSquare {}
+
+class ChanceCard {}
+
+class JailSquare {}
+
+class StartSquare {}
+
+class ParkingSquare {}
+class TaxSquare{}
+}
+
+class Cup{
+die1: Die
+die2 : Die
+guiController: GuiController
++getSum():int
+}
+
+class Die {
+-resultRoll: int
+
++roll(): random int
++toString(): String
+}
+
+class Player{
+-PlayerAccount : Account
+-playerName: String
+-squareIndex: int
++Player()
++withdrawMoney(): void
++depositMoney(): int
++getCurrentBalance(): int
++getPlayerName(): String
++UpdatePosision(): int
++getPosision(): int
++toString(): String
+
+}
+
+class Account{
+-balance: int
++updateBalance()
+
+}
+
+}
+package "Translator"{}
+class Game{
+game: GameController()
+}
+
+
+
+
+
+class GameController {
+guiController: GuiController
+-playerCount : int
+-player[playerCount]: Players[]
+-board : BoardInit
+-cup: Cup
++balance: int
+square: Square[]
+guiPlayers: GUI_Player[]
+
++run(): void
++init(): void
+
+}
+
+
+
+
 
 class Player {
 name: String
@@ -111,15 +142,7 @@ class Account {
 
 }
 
-class ChanceSquare {}
 
-class ChanceCard {}
-
-class JailSquare {}
-
-class StartSquare {}
-
-class ParkingSquare {}
 
 class GuiController{
 -gui: GUI
