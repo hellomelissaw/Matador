@@ -32,11 +32,12 @@ public class SellController {
             if (choosenButton_1.equals("Ja")) {
 
                 String[] buyerArray = new String[playerCount-1];
-
+                int indexCount = -1;
                 for (int i = 0; i < playerCount ; i++) { // showes player's name in a drop-down menu
-                    if (players[i] != seller){
 
-                        buyerArray[i-1] = players[i].getPlayerName();
+                    if (players[i] != seller){
+                        indexCount++;
+                        buyerArray[indexCount] = players[i].getPlayerName();
                     }
 
                 }
