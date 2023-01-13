@@ -5,6 +5,7 @@ import GameComponents.Board.Deed;
 import GameComponents.Board.Deed_Buildable;
 import GameComponents.Board.DeedSquare_Buildable;
 import GameComponents.Board.Deed_NonBuildable;
+import gui_fields.GUI_Car;
 import gui_fields.GUI_Player;
 import Translator.Text;
 
@@ -21,6 +22,7 @@ public class Player {
     private boolean testing = false;
     GuiController guiController;
     GUI_Player guiPlayer;
+    GUI_Player[] guiPlayers;
     Text msg;
     private int squareIndex = 0;
     private String playerName;
@@ -28,6 +30,7 @@ public class Player {
 
     private Cardholder cardholder = new Cardholder();
     private String winnerName;
+    Color[] colors = {Color.cyan,Color.green,Color.pink,Color.green,Color.red,Color.yellow};
 
     public Player(String playerName) {
         this.playerName = playerName;
@@ -43,11 +46,16 @@ public class Player {
             this.guiPlayer = guiPlayer;
             playerAccount.setGuiAccount(guiPlayer);
             this.guiController = guiController;
+
         }
         this.msg = msg;
         testing = false;
     }
 
+    public void setCarColor(Color color){
+        guiPlayer.getCar().setPrimaryColor(color);
+
+    }
     public void setStartBalance(int startBalance) {
         playerAccount.deposit(startBalance);
         if (guiOn) {guiPlayer.setBalance(startBalance); }

@@ -5,6 +5,9 @@ import GameComponents.Cup;
 import GameComponents.Cup_stub;
 import GameComponents.Player;
 import Translator.*;
+import gui_fields.GUI_Car;
+
+import java.awt.*;
 
 public class GameController {
     GuiController guiController = new GuiController();
@@ -14,12 +17,15 @@ public class GameController {
     Player[] players;
     Square[] squares;
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+    String carCalor;
 
     int playerCount = 0;
+    Color[] colors = {Color.cyan,Color.green,Color.pink,Color.green,Color.red,Color.yellow};
+    String[] color = {"cyan" , "pink" , "yellow" , "green" ,"red" ,"blue"};
 
     public void init() {
         guiController.setLang(msg);
-        boolean testingInit = true;
+        boolean testingInit = false;
         if (testingInit){
             msg = new Text("src/main/java/Translator/DanskTekst", guiController);
             msg.printText("startGame", "na");
@@ -32,15 +38,20 @@ public class GameController {
 
             players[0] = new Player("Marc"); // INITIALISE EACH PLAYER WITH NAME
             players[0].setGui(guiController.createGuiPlayer(players[0]),guiController,msg);
+            players[0].setCarColor(Color.red);
             players[0].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+
+
 
             players[1] = new Player("Germaine"); // INITIALISE EACH PLAYER WITH NAME
             players[1].setGui(guiController.createGuiPlayer(players[1]),guiController,msg);
             players[1].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+            players[1].setCarColor(Color.yellow);
 
             players[2] = new Player("Harry"); // INITIALISE EACH PLAYER WITH NAME
             players[2].setGui(guiController.createGuiPlayer(players[2]),guiController,msg);
             players[2].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+            players[2].setCarColor(Color.pink);
 
             if (playerCount > 3) {
                 players[3] = new Player("Sara"); // INITIALISE EACH PLAYER WITH NAME
@@ -115,6 +126,22 @@ public class GameController {
                 players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
                 players[i].setGui(guiController.createGuiPlayer(players[i]),guiController,msg);
                 players[i].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+                //String userSelection = players[i].get
+                    switch (carCalor){
+                        case "pink":
+                            players[i].setCarColor(Color.pink);
+                        case "yellow":
+                            players[i].setCarColor(Color.yellow);
+                        case "green":
+                            players[i].setCarColor(Color.green);
+                        case "blue":
+                            players[i].setCarColor(Color.blue);
+                        case "white":
+                            players[i].setCarColor(Color.white);
+                        case "cyan":
+                            players[i].setCarColor(Color.cyan);
+                    }
+
 
 
             }

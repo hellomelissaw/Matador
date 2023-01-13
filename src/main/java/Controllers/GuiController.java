@@ -269,6 +269,13 @@ public class GuiController {
          GUI_Player guiPlayer = new GUI_Player(player.getPlayerName());
          fields[0].setCar(guiPlayer,true);
          gui.addPlayer(guiPlayer);
+
+        /*if((guiPlayer.getCar().getPrimaryColor()) != Color.red)
+         guiPlayer.getCar().setPrimaryColor(Color.red);
+        if((guiPlayer.getCar().getPrimaryColor()) != Color.yellow)
+            guiPlayer.getCar().setPrimaryColor(Color.yellow);
+        else if((guiPlayer.getCar().getPrimaryColor()) != Color.pink)
+            guiPlayer.getCar().setPrimaryColor(Color.pink);*/
          System.out.println("Gui Player is set");
          return guiPlayer;
     }
@@ -279,7 +286,7 @@ public class GuiController {
       guiPlayers[3].getCar().setPrimaryColor(Color.yellow);
       guiPlayers[4].getCar().setPrimaryColor(Color.pink);
       guiPlayers[5].getCar().setPrimaryColor(Color.cyan);
-      guiPlayers
+
     }
 
      public GUI_Player[] getGuiPlayersArr() {
