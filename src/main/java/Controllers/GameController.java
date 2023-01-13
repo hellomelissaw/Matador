@@ -34,7 +34,6 @@ public class GameController {
             players[0].setGui(guiController.createGuiPlayer(players[0]),guiController,msg);
             players[0].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
 
-
             players[1] = new Player("Germaine"); // INITIALISE EACH PLAYER WITH NAME
             players[1].setGui(guiController.createGuiPlayer(players[1]),guiController,msg);
             players[1].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
