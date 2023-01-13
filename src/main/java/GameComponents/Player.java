@@ -96,7 +96,7 @@ public class Player {
         if (transactionToBankParameter) {
             playerAccount.withDraw(newPoints);
             bank.giveMoneyToBank(newPoints);
-        } else if (!transactionToBankParameter) {
+        } else  {
             playerAccount.withDraw(newPoints);
         }
     }
@@ -111,7 +111,7 @@ public class Player {
         if (transactionToBankParameter) {
             int cashedOutMoney = bank.takeMoneyFromBank(newPoints);
             playerAccount.deposit(cashedOutMoney);
-        } else if (!transactionToBankParameter) {
+        } else  {
             playerAccount.deposit(newPoints);
         }
     }
