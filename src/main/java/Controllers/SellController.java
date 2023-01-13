@@ -25,10 +25,10 @@ public class SellController {
     public void sellLot(Player seller, Player[] players){
         if (seller.getPropertiesDeed().length < 1) return;
         playerCount = players.length;
-        String choosenButton = guiController.getUserButtonPressed("salgeGround");
+        String choosenButton = guiController.getUserButtonPressed(msg.getText("salgeGround"));
         if (choosenButton.equals("Ja")) {
             // Who wants to buy
-            String choosenButton_1 = guiController.getUserButtonPressed("erDerEnKøber");
+            String choosenButton_1 = guiController.getUserButtonPressed(msg.getText("erDerEnKøber"));
             if (choosenButton_1.equals("Ja")) {
 
                 String[] buyerArray = new String[playerCount-1];
@@ -68,8 +68,8 @@ public class SellController {
                 }
                 buyerPlayer.addToOwnedFields(boughtDeed);
                 msg.printText("erKøbt",buyerName);
-                seller.depositMoney(boughtDeedPrice);
-                buyerPlayer.withdrawMoney(boughtDeedPrice);
+                seller.depositMoney(boughtDeedPrice, false);
+                buyerPlayer.withdrawMoney(boughtDeedPrice, false);
                 msg.printText("overført",seller.getPlayerName());
 
 
