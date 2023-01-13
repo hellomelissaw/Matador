@@ -275,6 +275,11 @@ public class Player {
     public void addToOwnedFields(Deed deed){
         ownedFields.add(deed);
     }
+
+
+    public void removeFromOwnedFields(Deed deed) {
+        ownedFields.remove(deed);
+    }
     public Deed[] getOwnedFields() {
         Deed[] deeds = new Deed[ownedFields.size()];
         for (int i = 0; i < ownedFields.size(); i++) {
@@ -421,6 +426,7 @@ public class Player {
             }
         }
     }
+
 
 
 

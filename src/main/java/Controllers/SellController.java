@@ -50,22 +50,29 @@ public class SellController {
                         buyerPlayer = players[i];
                 }
 
-                String[] deedNames = new String[seller.getPropertiesDeed().length];
-                int[] deedPrices = new int[seller.getPropertiesDeed().length];
-                String[] messages = new String[seller.getPropertiesDeed().length];
+                String[] deedNames = new String[ seller.getOwnedFields().length];
+                int[] deedPrices = new int[ seller.getOwnedFields().length];
+                String[] messages = new String[ seller.getOwnedFields().length];
 
-                for (int i = 0; i < (seller.getPropertiesDeed()).length; i++) { // showes all the properties
+                for (int i = 0; i < ( seller.getOwnedFields()).length; i++) { // showes all the properties
                     deedNames[i] = seller.getOwnedFields()[i].getDeedName();
                     deedPrices[i] = seller.getOwnedFields()[i].getDeedPrice();
                     boughtDeedPrice = seller.getOwnedFields()[i].getDeedPrice();
-                    messages[i] = deedNames[i] + deedPrices[i];
+                    //messages[i] = deedNames[i] + deedPrices[i];
 
                 }
 
-                String boughtDeedName = guiController.getUserSelection("Hvilken grund vil du købe? ", messages);
-                for (int i = 0; i < (seller.getPropertiesDeed()).length; i++){
+                String boughtDeedName = guiController.getUserSelection("Hvilken grund vil du købe? ", deedNames);
+                for (int i = 0; i <  seller.getOwnedFields().length; i++){
                     if(seller.getOwnedFields()[i].getDeedName() == boughtDeedName)
                         boughtDeed = seller.getOwnedFields()[i];
+                }
+                for(int k = 0 ; k < seller.getOwnedFields().length ; k++){
+                    System.out.println("Owned fields before removal: " + seller.getOwnedFields()[k].getDeedName());
+                }
+                seller.removeFromOwnedFields(boughtDeed);
+                for(int k = 0 ; k < seller.getOwnedFields().length ; k++){
+                    System.out.println("Owned fields after removal: " + seller.getOwnedFields()[k].getDeedName());
                 }
                 buyerPlayer.addToOwnedFields(boughtDeed);
                 msg.printText("erKøbt",buyerName);
