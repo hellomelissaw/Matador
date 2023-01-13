@@ -105,13 +105,22 @@ public class DeedSquareTest {
     }
 
     @Test
-    public void ownerHasNoHousesReceives50InRent() {
+    public void ownerHasNoHousesAndNotOwnerOfLotGroupReceives50InRent() {
+        testStreetSquare[0].testing(true,"ja");
+        testStreetSquare[0].landOn(testPlayers[0]);
+
+        testStreetSquare[0].landOn(testPlayers[1]);
+        assertEquals(startBalance-50,testPlayers[1].getCurrentBalance());
+    }
+
+    @Test
+    public void ownerHasNoHousesButOwnerOfLotGroupReceives100InRent() {
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
 
         testStreetSquare[2].landOn(testPlayers[1]);
 
-        assertEquals(startBalance-50,testPlayers[1].getCurrentBalance());
+        assertEquals(startBalance-50*2,testPlayers[1].getCurrentBalance());
     }
 
     @Test

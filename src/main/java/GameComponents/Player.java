@@ -365,7 +365,7 @@ public class Player {
                 int currentBalance = playerAccount.getBalance();
                 int buildingPrice = deedsToBuildOn[i].getBuildingPrice();
                 if (currentBalance > 0 && currentBalance - buildingPrice >= 0) {
-                    playerAccount.withDraw(buildingPrice);
+                    playerAccount.withDraw(buildingPrice*5);
 
                     int index = deedsToBuildOn[i].getIndex();
 
