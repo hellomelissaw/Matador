@@ -38,11 +38,21 @@ public class SellControllerTest {
     @Test
     public void testChangeOwner(){
 
-        testPlayer.depositMoney(2000);
-        buyerPlayer.depositMoney(2000);
+        testPlayer.depositMoney(2000,false);
+        buyerPlayer.depositMoney(2000,false);
         assertEquals(2000, testPlayer.getCurrentBalance());
         assertEquals(2000,buyerPlayer.getCurrentBalance());
 
         testPlayer.addToOwnedFields(deedBuildable);
+        testPlayer.withdrawMoney(deedBuildable.getDeedPrice(),false);
+        assertEquals(800,testPlayer.getCurrentBalance());
+
+        testPlayer.removeFromOwnedFields(deedBuildable);
+        testPlayer.depositMoney(deedBuildable.getDeedPrice(),false);
+        buyerPlayer.addToOwnedFields(deedBuildable);
+        buyerPlayer.withdrawMoney(deedBuildable.getDeedPrice(),false);
+        assertEquals(2000,testPlayer.getCurrentBalance());
+        assertEquals(800,buyerPlayer.getCurrentBalance());
+
     }
 }
