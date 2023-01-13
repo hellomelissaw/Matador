@@ -1,21 +1,22 @@
 package Controllers;
-import GameComponents.Board.Square;
 import GameComponents.Player;
 import Translator.Text;
 import gui_fields.*;
 import gui_main.GUI;
 
+import javax.swing.*;
 import java.awt.*;
-
-import static java.awt.Color.blue;
 
 public class GuiController {
      private GUI gui;
+    private GUI_Player[] guiPlayers;
+    int playerCount;
+     private GUI_Car[] guiCar = new GUI_Car[playerCount];
      Text msg;
      private GUI_Field[] fields   ;
      GUI_Ownable[] ownable = new GUI_Ownable[40];
 
-    private GUI_Player[] guiPlayers;
+
     private int squareIndex = 0;
 
    public GuiController() {
@@ -259,7 +260,7 @@ public class GuiController {
          gui.showMessage(message);
      }
 
-     /**
+    /**
       * Sets the titles on the Squares according to language chosen by user
       * @param //msg The Text object used to set user-selected language throughout the program
       */
@@ -270,6 +271,14 @@ public class GuiController {
          gui.addPlayer(guiPlayer);
          System.out.println("Gui Player is set");
          return guiPlayer;
+    }
+    public void setColorCar(){
+      guiPlayers[0].getCar().setPrimaryColor(Color.red);
+      guiPlayers[1].getCar().setPrimaryColor(Color.green);
+      guiPlayers[2].getCar().setPrimaryColor(Color.blue);
+      guiPlayers[3].getCar().setPrimaryColor(Color.yellow);
+      guiPlayers[4].getCar().setPrimaryColor(Color.pink);
+      guiPlayers[5].getCar().setPrimaryColor(Color.cyan);
     }
 
      public GUI_Player[] getGuiPlayersArr() {
@@ -345,7 +354,6 @@ public class GuiController {
     public void setDice(int die1, int die2){
         gui.setDice(die1,die2);
     }
-
 
 
  }

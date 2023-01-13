@@ -8,6 +8,8 @@ import GameComponents.Board.Deed_NonBuildable;
 import gui_fields.GUI_Player;
 import Translator.Text;
 
+import java.awt.*;
+
 /*
 ===================================================================================
 This class is reused from our CDIO2 project and built upon.
