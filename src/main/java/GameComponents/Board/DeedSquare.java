@@ -29,7 +29,7 @@ public abstract class DeedSquare extends Square{
 
     }
 
-    public void setGuiOn(boolean guiIsOn) {
+    public void  setGuiOn(boolean guiIsOn) {
         this.guiIsOn = guiIsOn;
     }
 

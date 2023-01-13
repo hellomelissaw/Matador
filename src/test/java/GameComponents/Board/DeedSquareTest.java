@@ -23,7 +23,7 @@ public class DeedSquareTest {
 
     Bank bank = new Bank();
 
-    int startBalance = 7000;
+    int startBalance = 30000;
     int[] rentStreet = {50,250,750,2250,4000,6000};
 
     int shippingDeedPrice = 4000;
@@ -280,13 +280,61 @@ public class DeedSquareTest {
 
     @Test
     public void playerOwns1ShippingLotAndRentIs500() {
-        testStreetSquare[0].testing(true,"ja");
+        testShippingSquare[0].testing(true,"ja");
         testShippingSquare[0].landOn(testPlayers[0]);
 
         testShippingSquare[0].landOn(testPlayers[1]);
 
         assertEquals(startBalance-500, testPlayers[1].getCurrentBalance());
         assertEquals(startBalance-shippingDeedPrice+500, testPlayers[0].getCurrentBalance());
+
+    }
+
+    @Test
+    public void playerOwns2ShippingLotsAndRentIs1000() {
+        testShippingSquare[0].testing(true,"ja");
+        testShippingSquare[0].landOn(testPlayers[0]);
+        testShippingSquare[1].testing(true,"ja");
+        testShippingSquare[1].landOn(testPlayers[0]);
+
+        testShippingSquare[0].landOn(testPlayers[1]);
+
+        assertEquals(startBalance-1000, testPlayers[1].getCurrentBalance());
+        assertEquals(startBalance-shippingDeedPrice*2+1000, testPlayers[0].getCurrentBalance());
+
+    }
+
+    @Test
+    public void playerOwns3ShippingLotsAndRentIs2000() {
+        testShippingSquare[0].testing(true,"ja");
+        testShippingSquare[0].landOn(testPlayers[0]);
+        testShippingSquare[1].testing(true,"ja");
+        testShippingSquare[1].landOn(testPlayers[0]);
+        testShippingSquare[2].testing(true,"ja");
+        testShippingSquare[2].landOn(testPlayers[0]);
+
+        testShippingSquare[0].landOn(testPlayers[1]);
+
+        assertEquals(startBalance-2000, testPlayers[1].getCurrentBalance());
+        assertEquals(startBalance-shippingDeedPrice*3+2000, testPlayers[0].getCurrentBalance());
+
+    }
+
+    @Test
+    public void playerOwns4ShippingLotsAndRentIs4000() {
+        testShippingSquare[0].testing(true,"ja");
+        testShippingSquare[0].landOn(testPlayers[0]);
+        testShippingSquare[1].testing(true,"ja");
+        testShippingSquare[1].landOn(testPlayers[0]);
+        testShippingSquare[2].testing(true,"ja");
+        testShippingSquare[2].landOn(testPlayers[0]);
+        testShippingSquare[3].testing(true,"ja");
+        testShippingSquare[3].landOn(testPlayers[0]);
+
+        testShippingSquare[0].landOn(testPlayers[1]);
+
+        assertEquals(startBalance-4000, testPlayers[1].getCurrentBalance());
+        assertEquals(startBalance-shippingDeedPrice*4+4000, testPlayers[0].getCurrentBalance());
 
     }
 

@@ -64,7 +64,8 @@ public class DeedSquare_Buildable extends DeedSquare {
 
         } else { // IF A PLAYER LANDS ON A LOT THAT ANOTHER PLAYER OWNS
             int rentOwed = rent[deed.getHouseCount()];
-            if(deedOwner.IsGroupOwner(deed.getColor()) && deed.getHouseCount() == 0){ // PLAYER OWNS ALL LOTS IN COLOR GROUP BUT DOES NOT HAVE BUILDINGS ON IT
+            boolean doubleRentCondition = deedOwner.IsGroupOwner(deed.getColor()) && deed.getHouseCount() == 0 && deed.hasHotel == false;
+            if(doubleRentCondition){ // PLAYER OWNS ALL LOTS IN COLOR GROUP BUT DOES NOT HAVE BUILDINGS ON IT
                 rentOwed = rentOwed * 2;
                 msg.printText("payDoubleRent", deedOwner.getPlayerName());
             } else {
