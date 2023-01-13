@@ -10,7 +10,7 @@ import GameComponents.Bank;
 public class GameController {
     boolean useCupStub = false;
     boolean testingInit = true;
-    boolean testingBuildButton = true;
+    boolean testingBuildButton = false;
     boolean testStartBalance = false;
     GuiController guiController = new GuiController();
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
