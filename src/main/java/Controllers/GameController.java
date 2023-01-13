@@ -5,7 +5,6 @@ import GameComponents.Cup;
 import GameComponents.Cup_stub;
 import GameComponents.Player;
 import Translator.*;
-import gui_fields.GUI_Car;
 
 import java.awt.*;
 
@@ -17,11 +16,11 @@ public class GameController {
     Player[] players;
     Square[] squares;
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
-    String carCalor;
+    String carColor;
 
     int playerCount = 0;
     Color[] colors = {Color.cyan,Color.green,Color.pink,Color.green,Color.red,Color.yellow};
-    String[] color = {"cyan" , "pink" , "yellow" , "green" ,"red" ,"blue"};
+    String[] color = {"cyan" , "pink" , "yellow" , "green" ,"red" ,"blue","white"};
 
     public void init() {
         guiController.setLang(msg);
@@ -126,21 +125,28 @@ public class GameController {
                 players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
                 players[i].setGui(guiController.createGuiPlayer(players[i]),guiController,msg);
                 players[i].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
-                //String userSelection = players[i].get
-                    switch (carCalor){
-                        case "pink":
-                            players[i].setCarColor(Color.pink);
-                        case "yellow":
-                            players[i].setCarColor(Color.yellow);
-                        case "green":
-                            players[i].setCarColor(Color.green);
-                        case "blue":
-                            players[i].setCarColor(Color.blue);
-                        case "white":
-                            players[i].setCarColor(Color.white);
-                        case "cyan":
-                            players[i].setCarColor(Color.cyan);
-                    }
+                carColor = guiController.getUserSelection("Hvilke farve skal være din bil?",color);
+                switch (carColor){
+                    case "pink":
+                        players[i].setCarColor(Color.pink);
+                        break;
+                    case "yellow":
+                        players[i].setCarColor(Color.yellow);
+                        break;
+                    case "green":
+                        players[i].setCarColor(Color.green);
+                        break;
+                    case "blue":
+                        players[i].setCarColor(Color.blue);
+                        break;
+                    case "white":
+                        players[i].setCarColor(Color.white);
+                        break;
+                    case "cyan":
+                        players[i].setCarColor(Color.cyan);
+                        break;
+                }
+
 
 
 
