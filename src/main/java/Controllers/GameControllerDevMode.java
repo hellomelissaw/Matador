@@ -172,7 +172,7 @@ public class GameControllerDevMode {
 
                 if (isInJail) {
 
-                    guiController.showMessage(players[i].getPlayerName() + " Du er i fængsel og har kun følgende muligheder for at komme ud af fængsel! Vælg en valgmulighed: Betal bøde på 1000 kr med det samme? eller Prøv dit held ved terningekast!");
+                    guiController.showMessage(players[i].getPlayerName() + " Du er i fængsel og har kun følgende muligheder for at komme ud af fængsel! Vælg en valgmulighed: Betal bøde på 1000 kr med det samme? eller Prøv dit held ved terningekast! Du kan også bruge et kom ud af fængsel kort, hvis du har et");
                     String name = "";
                     if (players[i].getJailPass() > 0){
                         guiController.showMessage("Du har " + players[i].getJailPass() + " kom ud af fængsel kort.");
