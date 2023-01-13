@@ -15,6 +15,7 @@ public class GuiController {
      private GUI_Field[] fields   ;
      GUI_Ownable[] ownable = new GUI_Ownable[40];
 
+
     private GUI_Player[] guiPlayers;
     private int squareIndex = 0;
 
@@ -316,6 +317,9 @@ public class GuiController {
      public String getUserSelection(String message, String[] buttons) {
          return gui.getUserSelection(message, buttons);
      }
+    public String getUserSelection(String message, String buttons) {
+        return gui.getUserSelection(message, buttons);
+    }
 
      public boolean getUserBoolean(String message) {
          return gui.getUserLeftButtonPressed(message, "Ja", "Nej");

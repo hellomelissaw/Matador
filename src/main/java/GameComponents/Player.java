@@ -1,9 +1,12 @@
 package GameComponents;
 
 import Controllers.GuiController;
+import Controllers.SellController;
 import GameComponents.Board.*;
 import gui_fields.GUI_Player;
 import Translator.Text;
+
+import java.util.ArrayList;
 
 /*
 ===================================================================================
@@ -30,7 +33,9 @@ public class Player {
 
     private Cardholder cardholder = new Cardholder();
     private String winnerName;
-    Deed deed;
+
+    ArrayList<Deed> ownedFields= new ArrayList<>();
+    //SellController sellController = new SellController();
 
     Bank bank;
 
@@ -75,6 +80,11 @@ public class Player {
 
     }
 
+    public String setPlayerName(String playerName) {
+        this.playerName = playerName;
+        return playerName;
+    }
+
     /**
      * Deposits money in Player's Account
      *
@@ -103,7 +113,17 @@ public class Player {
             playerAccount.deposit(cashedOutMoney);
         } else if (!transactionToBankParameter) {
             playerAccount.deposit(newPoints);
+
+    public String[] playerNameList (Player[] players) {
+
+        String[] playerNameArray = new String[players.length];
+        for (int i = 0; i < players.length; i++) {
+            //playerNameArray = new String[players.length];
+            playerNameArray[i] = players[i].getPlayerName();
+
+
         }
+        return playerNameArray;
     }
 
     public int getCurrentBalance() {
@@ -116,7 +136,6 @@ public class Player {
 
     /**
      * Updates the position of the Player according to the sum of the dice in rings from square 0 to 23
-     *
      * @param distance amount of squares to move player's car
      * @return index of the Square that the Player is moved to after throwing dice
      */
@@ -244,6 +263,26 @@ public class Player {
         Deed_Buildable[] deedList = cardholder.getBuildable();
         return deedList;
     }
+    public Deed_NonBuildable[] getNonBuildableDeeds() {
+        Deed_NonBuildable[] deedList = cardholder.getNonBuildable();
+        return deedList;
+    }
+
+    //public Player getPlayer(String playerName){
+    //}
+    public void addToOwnedFields(Deed deed){
+        ownedFields.add(deed);
+    }
+    public Deed[] getOwnedFields() {
+        Deed[] deeds = new Deed[ownedFields.size()];
+        for (int i = 0; i < ownedFields.size(); i++) {
+            deeds[i] = ownedFields.get(i);
+        }
+        return deeds;
+    }
+    public Deed[] getPropertiesDeed(){
+        return cardholder.getProperties();
+    }
 
 
     public void buyHouse(Deed_Buildable[] deedsToBuildOn, int housesToBuy) {
@@ -257,6 +296,7 @@ public class Player {
                 for (int i = 0; i < deedsToBuildOn.length; i++) {
                     String color = deedsToBuildOn[i].getColor();
                     boolean ownsGroup = cardholder.getOwnerStatus(color);
+
                     if (ownsGroup) {
                         boolean clearedForPurchase = cardholder.houseCountIsLevel(color, deedsToBuildOn[i]);
                         if (clearedForPurchase) {
@@ -382,16 +422,35 @@ public class Player {
 
 
 
-    public void sellLot(Player[] players) {
+    /*public void sellLot(Player[] players) {
         String choosenButton = guiController.getUserButtonPressed("salgeGround");
         if (choosenButton == "Ja") {
 
             Deed_Buildable[] ownedBuildableDeeds = cardholder.getBuildable();
+            Deed_NonBuildable[] ownedNonBuildableDeeds = cardholder.getNonBuildable();
+
+            // combiner dem til et
+
+
+
+            // combinerede array[i-n].getDeedName()
+            //.getdeedprice
+
+            // vise drop down med navnene
+
+            // vælger brugeren et navn
+
+            // loop igennem combinered array .. .equals()
+
+
+
+
+
             String[] buildablePropertyName = new String[ownedBuildableDeeds.length];
             for(int i = 0 ; i < ownedBuildableDeeds.length ; i++) {
                 buildablePropertyName[i] = ownedBuildableDeeds[i].getDeedName();
             }
-                Deed_NonBuildable[] ownedNonBuildableDeeds = cardholder.getNonBuildable();
+                //Deed_NonBuildable[] ownedNonBuildableDeeds = cardholder.getNonBuildable();
                 String[] nonBuildablePropertyName = new String[ownedNonBuildableDeeds.length];
                 for (int j = 0; j < ownedNonBuildableDeeds.length; j++) {
                     nonBuildablePropertyName[j] = ownedNonBuildableDeeds[j].getDeedName();
@@ -405,21 +464,29 @@ public class Player {
 
                 }
     int deedPrice =0 ;
-                    String userSelection = guiController.getUserSelection(propertiesName[i]);
+                    String userSelection = guiController.getUserSelection("",propertiesName[i]);
                 for (int j = 0; j <propertiesName.length ; j++) {
                     String choosenButton_1 = guiController.getUserButtonPressed("erDerEnKøber");
                     if(choosenButton_1 == "Ja" ){
+                        //String buyerName = guiController.getUserSelection();
+                        //String buyerName = guiController.getUserString("Indtast dit navn",players);
                        String[] playersName = new String[players.length];
                         for (int k = 0; k < playersName.length; k++) {
                             if (!players[k].getPlayerName().equals(playersName)){
                                 playersName[k] = new String(players[k].getPlayerName());
+                                String buyerName = guiController.getUserSelection("Valge dit navn", playersName);
+                                if(players[k].getPlayerName() ==buyerName){
+                                    if(userSelection.equals(ownedBuildableDeeds[i].getDeedName()))
+                                        deedPrice = ownedBuildableDeeds[i].getDeedPrice(userSelection);
+                                    if (userSelection.equals(ownedNonBuildableDeeds[i].getDeedName()))
+                                        deedPrice = ownedNonBuildableDeeds[i].getDeedPrice(userSelection);
+                                    players[k].withdrawMoney(deedPrice);
+                                    //players[players].depositMoney(deedPrice);
+                                }
                             }
                         }
 
-                    if(userSelection.equals(ownedBuildableDeeds[i].getDeedName()))
-                    deedPrice = ownedBuildableDeeds[i].getDeedPrice(userSelection);
-                    if (userSelection.equals(ownedNonBuildableDeeds[i].getDeedName()))
-                        deedPrice = ownedNonBuildableDeeds[i].getDeedPrice(userSelection);
+
 
                 }
 
@@ -427,7 +494,7 @@ public class Player {
 
         }}
 
-    }
+    }*/
     }
 
 

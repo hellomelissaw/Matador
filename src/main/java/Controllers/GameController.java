@@ -17,12 +17,16 @@ public class GameController {
 
     boolean testStartBalance = false;
     GuiController guiController = new GuiController();
-    //private int playerCount = 0;
+    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+    SellController sellController = new SellController(guiController,msg);
+    boolean useCupStub = true;
+    boolean testingInit = true;
+
     String userInput;
     int balance = 0;
     Player[] players;
     Square[] squares;
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+
 
     int playerCount = 0;
 
@@ -32,9 +36,9 @@ public class GameController {
 
     Bank bank = new Bank();
 
+
     public void init() {
         guiController.setLang(msg);
-        testingInit = true;
         if (testingInit){
             msg = new Text("src/main/java/Translator/DanskTekst", guiController);
             //msg = new Text("src/main/java/Translator/EnglishText", guiController);
@@ -185,8 +189,8 @@ public class GameController {
 
                     if (players[i].jailCounter() < 3) {
 
-                        if (name == "Betal bøde?") {
-                            players[i].withdrawMoney(fine, true);
+                        if (name.equals("Betal bøde?")) {
+                            players[i].withdrawMoney(fine);
                             int currentBalance = players[i].getCurrentBalance();
                             System.out.println(msg.getText("newBalance") + currentBalance);
                             msg.printText("forladFængsel", "Du har nu betalt bøden, du kan nu forlade fængsel!");
@@ -279,7 +283,7 @@ public class GameController {
 
                             } else if (userChoice.equals("Sælg")) {
                                 System.out.println("player chose saelg");
-                                players[i].sellLot(players);
+                                sellController.sellLot(players[i], players);
 
                             } else {
                                 rollDice = true;

@@ -3,7 +3,7 @@ import gui_fields.GUI_Player;
 
 public class Account {
 
-    boolean guiIsOn = true;
+    boolean guiIsOn = false;
     private int balance;
 
     private int houses;

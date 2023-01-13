@@ -63,8 +63,9 @@ public abstract class Deed {
         this.groupSize = groupSize;
     }
 
-    public int getDeedPrice (String deedName){
-        return deedPrice;
+    public int getDeedPrice (){
+
+    return deedPrice;
     }
 
 }

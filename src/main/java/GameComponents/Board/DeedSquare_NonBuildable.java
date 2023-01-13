@@ -32,6 +32,7 @@ public class DeedSquare_NonBuildable extends DeedSquare {
         sellDeed = false;
         freeDeed = false;
         deed.setOwner(currentPlayer);
+        currentPlayer.addToOwnedFields(deed);
         currentPlayer.takeNonBuildableDeed(deed);
         if (guiIsOn) {
             guiController.setOwnerName(currentPlayer, currentPlayer.getPosition());

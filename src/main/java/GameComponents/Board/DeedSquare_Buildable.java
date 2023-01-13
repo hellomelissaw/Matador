@@ -50,6 +50,7 @@ public class DeedSquare_Buildable extends DeedSquare {
         sellDeed = false;
         freeDeed = false;
         deed.setOwner(currentPlayer);
+        currentPlayer.addToOwnedFields(deed); // from new methode
         currentPlayer.takeBuildableDeed(deed);
         if (guiIsOn) {
             guiController.setOwnerName(currentPlayer, currentPlayer.getPosition());
