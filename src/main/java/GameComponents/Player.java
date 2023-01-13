@@ -113,6 +113,8 @@ public class Player {
             playerAccount.deposit(cashedOutMoney);
         } else if (!transactionToBankParameter) {
             playerAccount.deposit(newPoints);
+        }
+    }
 
     public String[] playerNameList (Player[] players) {
 
