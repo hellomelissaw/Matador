@@ -279,7 +279,7 @@ public class GuiController {
       guiPlayers[3].getCar().setPrimaryColor(Color.yellow);
       guiPlayers[4].getCar().setPrimaryColor(Color.pink);
       guiPlayers[5].getCar().setPrimaryColor(Color.cyan);
-      guiPlay
+      guiPlayers
     }
 
      public GUI_Player[] getGuiPlayersArr() {
