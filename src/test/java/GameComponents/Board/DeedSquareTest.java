@@ -15,22 +15,31 @@ public class DeedSquareTest {
     Player[] testPlayers = new Player[2];
     GUI_Player[] testGuiPlayers = new GUI_Player[2];
     DeedSquare_Buildable[] testStreetSquare = new DeedSquare_Buildable[3];
+
+    DeedSquare_NonBuildable[] testShippingSquare = new DeedSquare_NonBuildable[4];
+
+    DeedSquare_NonBuildable[] testBrewerySquare = new DeedSquare_NonBuildable[2];
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
 
     Bank bank = new Bank();
 
     int startBalance = 7000;
-    int[] rent = {50,250,750,2250,4000,6000};
+    int[] rentStreet = {50,250,750,2250,4000,6000};
+
+    int shippingDeedPrice = 4000;
+    int[] rentShipping = {500, 1000, 2000, 4000};
+
+
     public DeedSquareTest() {
         for(int i = 0; i < testStreetSquare.length - 1 ; i++) {
-            testStreetSquare[i] = new DeedSquare_Buildable("TestDeedSquare" + i, 1200, rent, 1000);
+            testStreetSquare[i] = new DeedSquare_Buildable("TestDeedSquare" + i, 1200, rentStreet, 1000);
             testStreetSquare[i].setLang(msg);
             testStreetSquare[i].setGuiController(guiController);
             testStreetSquare[i].setGroup("blue", 2);
             testStreetSquare[i].setGuiOn(false);
         }
 
-        testStreetSquare[2] = new DeedSquare_Buildable("TestDeedSquare 3", 1200, rent, 1000);
+        testStreetSquare[2] = new DeedSquare_Buildable("TestDeedSquare 3", 1200, rentStreet, 1000);
         testStreetSquare[2].setLang(msg);
         testStreetSquare[2].setGroup("red",1);
         testStreetSquare[2].setGuiController(guiController);
@@ -42,6 +51,15 @@ public class DeedSquareTest {
 
         testGuiPlayers[0] = new GUI_Player("TestPlayer 1");
         testGuiPlayers[1] = new GUI_Player("TestPlayer 2");
+
+        for(int i = 0; i < testShippingSquare.length; i++) {
+            testShippingSquare[i] = new DeedSquare_NonBuildable("TestShipping", shippingDeedPrice, rentShipping);
+            testShippingSquare[i].setLang(msg);
+            testShippingSquare[i].setGroup("white", 4);
+            testShippingSquare[i].setGuiController(guiController);
+            testShippingSquare[i].setGuiOn(false);
+
+        }
 
         for(int i = 0 ; i < testPlayers.length ; i++) {
             testPlayers[i].setGui(testGuiPlayers[i], guiController, msg);
@@ -258,6 +276,18 @@ public class DeedSquareTest {
 
         assertEquals(2, testStreetSquare[0].getDeed().getHouseCount());
         assertEquals(2, testStreetSquare[1].getDeed().getHouseCount());
+    }
+
+    @Test
+    public void playerOwns1ShippingLotAndRentIs500() {
+        testStreetSquare[0].testing(true,"ja");
+        testShippingSquare[0].landOn(testPlayers[0]);
+
+        testShippingSquare[0].landOn(testPlayers[1]);
+
+        assertEquals(startBalance-500, testPlayers[1].getCurrentBalance());
+        assertEquals(startBalance-shippingDeedPrice+500, testPlayers[0].getCurrentBalance());
+
     }
 
 }
