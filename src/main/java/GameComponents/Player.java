@@ -43,7 +43,7 @@ public class Player {
 
     public void setCarColor (Color color){
         guiPlayer.getCar().setPrimaryColor(color);
-    }
+    }//SETS COLOR FOR THE CARS
 
 
     public void setLang(Text msg) {

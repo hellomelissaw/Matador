@@ -17,10 +17,6 @@ public class GameController {
     int balance = 0;
     Player[] players;
     Square[] squares;
-    GUI_Player guiPlayer;
-
-
-
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
 
     int playerCount = 0;
@@ -101,7 +97,7 @@ public class GameController {
             }
             balance = 30000;//SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
 
-            Color[] COLORSset = {Color.red, Color.white, Color.blue, Color.yellow, Color.pink, Color.black};
+            Color[] COLORSset = {Color.red, Color.white, Color.blue, Color.yellow, Color.pink, Color.black};//COLOR ARRAY FOR THE CAR
             players = new Player[playerCount];
 
             for (int i = 0; i < playerCount; i++) {
@@ -131,7 +127,7 @@ public class GameController {
                 players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
                 players[i].setGui(guiController.createGuiPlayer(players[i]),guiController,msg);
                 players[i].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
-                players[i].setCarColor(COLORSset[i]);
+                players[i].setCarColor(COLORSset[i]);// SET CAR COLOR FOR EACH PLAYER
 
 
             }
