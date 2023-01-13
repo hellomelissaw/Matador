@@ -5,6 +5,10 @@ import GameComponents.Cup;
 import GameComponents.Cup_stub;
 import GameComponents.Player;
 import Translator.*;
+import gui_fields.GUI_Player;
+
+import java.awt.*;
+
 
 public class GameController {
     GuiController guiController = new GuiController();
@@ -13,52 +17,62 @@ public class GameController {
     int balance = 0;
     Player[] players;
     Square[] squares;
+    GUI_Player guiPlayer;
+
+
+
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
 
     int playerCount = 0;
 
     public void init() {
         guiController.setLang(msg);
-        boolean testingInit = true;
-        if (testingInit){
+        boolean testingInit = false;
+        if (testingInit) {
             msg = new Text("src/main/java/Translator/DanskTekst", guiController);
             msg.printText("startGame", "na");
             //msg = new Text("src/main/java/Translator/EnglishText", guiController);
             //guiController.initFieldTitles(msg);
-            playerCount = 3;
+            playerCount = 6;
             balance = 30000;
 
             players = new Player[playerCount];
 
             players[0] = new Player("Marc"); // INITIALISE EACH PLAYER WITH NAME
-            players[0].setGui(guiController.createGuiPlayer(players[0]),guiController,msg);
+            players[0].setGui(guiController.createGuiPlayer(players[0]), guiController, msg);
             players[0].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+            players[0].setCarColor(Color.red);
 
             players[1] = new Player("Germaine"); // INITIALISE EACH PLAYER WITH NAME
-            players[1].setGui(guiController.createGuiPlayer(players[1]),guiController,msg);
+            players[1].setGui(guiController.createGuiPlayer(players[1]), guiController, msg);
             players[1].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+            players[1].setCarColor(Color.white);
 
             players[2] = new Player("Harry"); // INITIALISE EACH PLAYER WITH NAME
-            players[2].setGui(guiController.createGuiPlayer(players[2]),guiController,msg);
+            players[2].setGui(guiController.createGuiPlayer(players[2]), guiController, msg);
             players[2].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+            players[2].setCarColor(Color.orange);
 
             if (playerCount > 3) {
                 players[3] = new Player("Sara"); // INITIALISE EACH PLAYER WITH NAME
-                players[3].setGui(guiController.createGuiPlayer(players[3]),guiController,msg);
+                players[3].setGui(guiController.createGuiPlayer(players[3]), guiController, msg);
                 players[3].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+                players[3].setCarColor(Color.pink);
 
+                if (playerCount > 4){
                 players[4] = new Player("Megan"); // INITIALISE EACH PLAYER WITH NAME
-                players[4].setGui(guiController.createGuiPlayer(players[4]),guiController,msg);
+                players[4].setGui(guiController.createGuiPlayer(players[4]), guiController, msg);
                 players[4].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+                players[4].setCarColor(Color.yellow);
+            }}
 
+            if (playerCount == 6) {
+                players[5] = new Player("Adam"); // INITIALISE EACH PLAYER WITH NAME
+                players[5].setGui(guiController.createGuiPlayer(players[5]), guiController, msg);
+                players[5].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+                players[5].setCarColor(Color.blue);
 
-                if (playerCount == 6) {
-                    players[5] = new Player("Adam"); // INITIALISE EACH PLAYER WITH NAME
-                    players[5].setGui(guiController.createGuiPlayer(players[5]),guiController,msg);
-                    players[5].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
-                }
             }
-
         } else {
             //String[] lang = {"DanskTekst"};
             //int langIndex = guiController.getUserInteger("You are in English mode. Enter 1 to keep English or enter 2 to switch to Danish."); //GETS USER TO CHOOSE LANGUAGE
@@ -87,6 +101,7 @@ public class GameController {
             }
             balance = 30000;//SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
 
+            Color[] COLORSset = {Color.red, Color.white, Color.blue, Color.yellow, Color.pink, Color.black};
             players = new Player[playerCount];
 
             for (int i = 0; i < playerCount; i++) {
@@ -112,9 +127,11 @@ public class GameController {
                     }
                 }
 
+
                 players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
                 players[i].setGui(guiController.createGuiPlayer(players[i]),guiController,msg);
                 players[i].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+                players[i].setCarColor(COLORSset[i]);
 
 
             }

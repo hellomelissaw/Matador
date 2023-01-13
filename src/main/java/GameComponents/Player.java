@@ -1,10 +1,10 @@
 package GameComponents;
 
 import Controllers.GuiController;
-import GameComponents.Board.Deed;
 import GameComponents.Board.Deed_Buildable;
 import GameComponents.Board.DeedSquare_Buildable;
 import GameComponents.Board.Deed_NonBuildable;
+import gui_fields.GUI_Car;
 import gui_fields.GUI_Player;
 import Translator.Text;
 
@@ -21,6 +21,7 @@ public class Player {
     private boolean testing = false;
     GuiController guiController;
     GUI_Player guiPlayer;
+    private GUI_Car guiCar = new GUI_Car();
     Text msg;
     private int squareIndex = 0;
     private String playerName;
@@ -29,20 +30,32 @@ public class Player {
     private Cardholder cardholder = new Cardholder();
     private String winnerName;
 
+
+    public GUI_Car getGuiCar() {
+
+        return guiCar;
+    }
+
     public Player(String playerName) {
         this.playerName = playerName;
 
     }
 
+    public void setCarColor (Color color){
+        guiPlayer.getCar().setPrimaryColor(color);
+    }
+
+
     public void setLang(Text msg) {
         this.msg = msg;
     }
 
-    public void setGui(GUI_Player guiPlayer, GuiController guiController, Text msg) {
+    public void setGui(GUI_Player guiPlayer, GuiController guiController, Text msg){
         if (guiOn) {
             this.guiPlayer = guiPlayer;
             playerAccount.setGuiAccount(guiPlayer);
             this.guiController = guiController;
+
         }
         this.msg = msg;
         testing = false;

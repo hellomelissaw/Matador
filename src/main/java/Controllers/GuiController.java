@@ -3,15 +3,14 @@ import GameComponents.Player;
 import Translator.Text;
 import gui_fields.*;
 import gui_main.GUI;
-
-import javax.swing.*;
 import java.awt.*;
 
 public class GuiController {
      private GUI gui;
     private GUI_Player[] guiPlayers;
     int playerCount;
-     private GUI_Car[] guiCar = new GUI_Car[playerCount];
+
+    private GUI_Car guiCar[] = new GUI_Car[playerCount];
      Text msg;
      private GUI_Field[] fields   ;
      GUI_Ownable[] ownable = new GUI_Ownable[40];
@@ -265,6 +264,8 @@ public class GuiController {
       * @param //msg The Text object used to set user-selected language throughout the program
       */
 
+
+
     public GUI_Player createGuiPlayer(Player player) {
          GUI_Player guiPlayer = new GUI_Player(player.getPlayerName());
          fields[0].setCar(guiPlayer,true);
@@ -272,21 +273,12 @@ public class GuiController {
          System.out.println("Gui Player is set");
          return guiPlayer;
     }
-    public void setColorCar(){
-      guiPlayers[0].getCar().setPrimaryColor(Color.red);
-      guiPlayers[1].getCar().setPrimaryColor(Color.green);
-      guiPlayers[2].getCar().setPrimaryColor(Color.blue);
-      guiPlayers[3].getCar().setPrimaryColor(Color.yellow);
-      guiPlayers[4].getCar().setPrimaryColor(Color.pink);
-      guiPlayers[5].getCar().setPrimaryColor(Color.cyan);
-      guiPlayers
-    }
+
 
      public GUI_Player[] getGuiPlayersArr() {
          return guiPlayers;
      }
-
-     /**
+       /**
       * Moves the GUI_car object to a new square for current player
       * @param currentPlayer current GUI_Player to be moved
       * @param currentPositionIndex index of Square GUI_Player is located on, so their car can stop being displayed there
