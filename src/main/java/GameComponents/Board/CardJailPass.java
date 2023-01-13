@@ -8,7 +8,7 @@ public class CardJailPass extends ChanceCard {
         super(cardName, guiController);
     }
 
-    @Override
+
     public void playCard(Player currentPlayer) {
         currentPlayer.giveJailPass();
     }

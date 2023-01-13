@@ -57,7 +57,7 @@ public class Account {
     }
 
     public void giveJailPass(){
-        jailPasses++;
+        jailPasses += 1;
     }
 
     public boolean useJailPass(){
