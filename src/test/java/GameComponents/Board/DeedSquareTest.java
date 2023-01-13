@@ -24,22 +24,29 @@ public class DeedSquareTest {
     Bank bank = new Bank();
 
     int startBalance = 30000;
+
+    int streetDeedPrice = 1200;
     int[] rentStreet = {50,250,750,2250,4000,6000};
+
+    int buildingPrice = 1000;
 
     int shippingDeedPrice = 4000;
     int[] rentShipping = {500, 1000, 2000, 4000};
 
+    int breweryDeedPrice = 3000;
+
+    int[] breweryRent ={100,200};
 
     public DeedSquareTest() {
         for(int i = 0; i < testStreetSquare.length - 1 ; i++) {
-            testStreetSquare[i] = new DeedSquare_Buildable("TestDeedSquare" + i, 1200, rentStreet, 1000);
+            testStreetSquare[i] = new DeedSquare_Buildable("TestDeedSquare" + i, streetDeedPrice, rentStreet, buildingPrice);
             testStreetSquare[i].setLang(msg);
             testStreetSquare[i].setGuiController(guiController);
             testStreetSquare[i].setGroup("blue", 2);
             testStreetSquare[i].setGuiOn(false);
         }
 
-        testStreetSquare[2] = new DeedSquare_Buildable("TestDeedSquare 3", 1200, rentStreet, 1000);
+        testStreetSquare[2] = new DeedSquare_Buildable("TestDeedSquare 3", streetDeedPrice, rentStreet, buildingPrice);
         testStreetSquare[2].setLang(msg);
         testStreetSquare[2].setGroup("red",1);
         testStreetSquare[2].setGuiController(guiController);
@@ -58,6 +65,15 @@ public class DeedSquareTest {
             testShippingSquare[i].setGroup("white", 4);
             testShippingSquare[i].setGuiController(guiController);
             testShippingSquare[i].setGuiOn(false);
+
+        }
+
+        for(int i = 0; i < testBrewerySquare.length; i++) {
+            testBrewerySquare[i] = new DeedSquare_NonBuildable("TestBrewery", breweryDeedPrice, breweryRent);
+            testBrewerySquare[i].setLang(msg);
+            testBrewerySquare[i].setGroup("lavender", 2);
+            testBrewerySquare[i].setGuiController(guiController);
+            testBrewerySquare[i].setGuiOn(false);
 
         }
 
@@ -112,7 +128,8 @@ public class DeedSquareTest {
 
     @Test
     public void cannotBuyHotelBecauseLackOfFunds() {
-        testPlayers[0].withdrawMoney(1000,false);
+        int amount = startBalance-streetDeedPrice-(buildingPrice*4);
+        testPlayers[0].withdrawMoney(amount,false);
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
         Deed_Buildable[] deedsToBuildOn = {testStreetSquare[2].getDeed()};
@@ -335,6 +352,32 @@ public class DeedSquareTest {
 
         assertEquals(startBalance-4000, testPlayers[1].getCurrentBalance());
         assertEquals(startBalance-shippingDeedPrice*4+4000, testPlayers[0].getCurrentBalance());
+
+    }
+
+    @Test
+    public void playerOwns1breweryRentIs100() {
+        testBrewerySquare[0].testing(true,"ja");
+        testBrewerySquare[0].landOn(testPlayers[0]);
+
+        testBrewerySquare[0].landOn(testPlayers[1]);
+
+        assertEquals(startBalance-100, testPlayers[1].getCurrentBalance());
+        assertEquals(startBalance-breweryDeedPrice+100, testPlayers[0].getCurrentBalance());
+
+    }
+    @Test
+    public void playerOwns2breweryRentIs200() {
+        testBrewerySquare[0].testing(true,"ja");
+        testBrewerySquare[0].landOn(testPlayers[0]);
+        testBrewerySquare[1].testing(true,"ja");
+        testBrewerySquare[1].landOn(testPlayers[0]);
+
+
+        testBrewerySquare[0].landOn(testPlayers[1]);
+
+        assertEquals(startBalance-200, testPlayers[1].getCurrentBalance());
+        assertEquals(startBalance-breweryDeedPrice*2+200, testPlayers[0].getCurrentBalance());
 
     }
 
