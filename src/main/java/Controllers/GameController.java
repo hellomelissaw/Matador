@@ -19,9 +19,6 @@ public class GameController {
     GuiController guiController = new GuiController();
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
     SellController sellController = new SellController(guiController,msg);
-    boolean useCupStub = true;
-    boolean testingInit = true;
-
     String userInput;
     int balance = 0;
     Player[] players;
@@ -190,7 +187,7 @@ public class GameController {
                     if (players[i].jailCounter() < 3) {
 
                         if (name.equals("Betal bøde?")) {
-                            players[i].withdrawMoney(fine);
+                            players[i].withdrawMoney(fine, true);
                             int currentBalance = players[i].getCurrentBalance();
                             System.out.println(msg.getText("newBalance") + currentBalance);
                             msg.printText("forladFængsel", "Du har nu betalt bøden, du kan nu forlade fængsel!");
