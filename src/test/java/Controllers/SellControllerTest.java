@@ -20,6 +20,10 @@ public class SellControllerTest {
     Deed_Buildable deedBuildable = new Deed_Buildable(1200 ,array,"Rødorvrevej",500);
     GUI_Player testGuiPlayer = new GUI_Player("Test Player");
 
+    public SellControllerTest() {
+        testPlayer.guiIsOn(false);
+        buyerPlayer.guiIsOn(false);
+    }
 
     @Test
     public void testPlayerTakeNonBuildableDeed() {
@@ -38,8 +42,8 @@ public class SellControllerTest {
     @Test
     public void testChangeOwner(){
 
-        testPlayer.depositMoney(2000);
-        buyerPlayer.depositMoney(2000);
+        testPlayer.depositMoney(2000, false);
+        buyerPlayer.depositMoney(2000, false);
         assertEquals(2000, testPlayer.getCurrentBalance());
         assertEquals(2000,buyerPlayer.getCurrentBalance());
 
