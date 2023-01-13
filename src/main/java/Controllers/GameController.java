@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class GameController {
     boolean useCupStub = true;
     boolean testingInit = true;
-    boolean testingActionButtons = true;
+    boolean testingActionButtons = false;
     boolean testingHouseCount = false;
 
     boolean testStartBalance = false;
@@ -228,11 +228,28 @@ public class GameController {
 
                 if (!isInJail){
                     if(testingActionButtons){setOwnerForTesting(i);}
+                    String[] userActionButtons;
+                    if(players[i].getPropertiesDeed().length > 0) {
+                        if(players[i].getBuildableDeeds().length > 0) {
+                            userActionButtons = new String[3];
+                            userActionButtons[0] = "Byg";
+                            userActionButtons[1] = "Sælg";
+                            userActionButtons[2] = "Kast terningerne";
+                        }  else {
+                            userActionButtons = new String[2];
+                            userActionButtons[0] = "Sælg";
+                            userActionButtons[1] = "Kast terningerne";
+                        }
 
-                    if(players[i].getBuildableDeeds().length > 0) {
+                    } else {
+                        userActionButtons = new String[1];
+                        userActionButtons[0] = "Kast terningerne";
+
+                    }
+
                         boolean rollDice = false;
                         while (!rollDice) {
-                            String userChoice = guiController.getUserAction(players[i].getPlayerName());
+                            String userChoice = guiController.getUserAction(players[i].getPlayerName(), userActionButtons);
 
                             if (userChoice.equals("Byg")) {
                                 ArrayList<Deed_Buildable> updatedDeedList = new ArrayList<Deed_Buildable>();
@@ -286,7 +303,7 @@ public class GameController {
                                 rollDice = true;
                             }
                         }
-                    }
+
                     msg.printText("rollDice", players[i].getPlayerName());
                     sum = cup.getSum();
                     players[i].updatePosition(sum);
@@ -315,17 +332,17 @@ public class GameController {
 
         private void setOwnerForTesting(int i) {
 
-            ((DeedSquare_Buildable)squares[6]).setOwnerForTesting(players[i]);
-            ((DeedSquare_Buildable)squares[8]).setOwnerForTesting(players[i]);
-            ((DeedSquare_Buildable)squares[9]).setOwnerForTesting(players[i]);
-            ((DeedSquare_Buildable)squares[11]).setOwnerForTesting(players[i]);
-            ((DeedSquare_Buildable)squares[13]).setOwnerForTesting(players[i]);
-            ((DeedSquare_Buildable)squares[14]).setOwnerForTesting(players[i]);
+            ((DeedSquare_Buildable)squares[6]).setOwnerForTesting(players[0]);
+            ((DeedSquare_Buildable)squares[8]).setOwnerForTesting(players[0]);
+            ((DeedSquare_Buildable)squares[9]).setOwnerForTesting(players[0]);
+            ((DeedSquare_Buildable)squares[11]).setOwnerForTesting(players[1]);
+            ((DeedSquare_Buildable)squares[13]).setOwnerForTesting(players[1]);
+            ((DeedSquare_Buildable)squares[14]).setOwnerForTesting(players[2]);
 
             Deed_Buildable[] testDeeds = players[i].getBuildableDeeds();
             if(players[i].getBuildableDeeds().length > 0){
                 for(int j = 0 ; j < testDeeds.length ; j++) {
-                    System.out.println(testDeeds[j].getDeedName());
+                    System.out.println(testDeeds[j].getOwner().getPlayerName() + " owns " + testDeeds[j].getDeedName());
                 }
             } else {
                 System.out.println("No deeds");
