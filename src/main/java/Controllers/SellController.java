@@ -20,7 +20,7 @@ public class SellController {
     int playerCount = 0;
     int boughtDeedPrice = 0;
     Player buyerPlayer;
-
+    Deed boughtDeed;
 
     public void sellLot(Player seller, Player[] players){
         if (seller.getPropertiesDeed().length < 1) return;
@@ -61,7 +61,12 @@ public class SellController {
 
                 }
 
-                String boughtDeed = guiController.getUserSelection("Hvilken grund vil du købe? ", messages);
+                String boughtDeedName = guiController.getUserSelection("Hvilken grund vil du købe? ", messages);
+                for (int i = 0; i < (seller.getPropertiesDeed()).length; i++){
+                    if(seller.getOwnedFields()[i].getDeedName() == boughtDeedName)
+                        boughtDeed = seller.getOwnedFields()[i];
+                }
+                buyerPlayer.addToOwnedFields(boughtDeed);
                 msg.printText("erKøbt",buyerName);
                 seller.depositMoney(boughtDeedPrice);
                 buyerPlayer.withdrawMoney(boughtDeedPrice);
