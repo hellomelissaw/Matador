@@ -12,12 +12,13 @@ import java.util.ArrayList;
 public class GameController {
     boolean useCupStub = true;
     boolean testingInit = true;
-    boolean testingActionButtons = false;
-    boolean testingHouseCount = false;
+    boolean testingActionButtons = true;
 
     boolean testStartBalance = false;
     GuiController guiController = new GuiController();
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+
+    BuildController buildController = new BuildController(guiController, msg);
     SellController sellController = new SellController(guiController,msg);
     String userInput;
     int balance = 0;
@@ -227,73 +228,14 @@ public class GameController {
                 }
 
                 if (!isInJail){
-                    if(testingActionButtons){setOwnerForTesting(i);}
-                    String[] userActionButtons;
-                    if(players[i].getPropertiesDeed().length > 0) {
-                        if(players[i].getBuildableDeeds().length > 0) {
-                            userActionButtons = new String[3];
-                            userActionButtons[0] = "Byg";
-                            userActionButtons[1] = "Sælg";
-                            userActionButtons[2] = "Kast terningerne";
-                        }  else {
-                            userActionButtons = new String[2];
-                            userActionButtons[0] = "Sælg";
-                            userActionButtons[1] = "Kast terningerne";
-                        }
-
-                    } else {
-                        userActionButtons = new String[1];
-                        userActionButtons[0] = "Kast terningerne";
-
-                    }
-
+                        String[] userActionButtons = setActionButtons(i);
                         boolean rollDice = false;
                         while (!rollDice) {
                             String userChoice = guiController.getUserAction(players[i].getPlayerName(), userActionButtons);
 
                             if (userChoice.equals("Byg")) {
-                                ArrayList<Deed_Buildable> updatedDeedList = new ArrayList<Deed_Buildable>();
-                                Deed_Buildable[] playerDeeds = players[i].getBuildableDeeds();
-                                for(int j = 0 ; j < players[i].getBuildableDeeds().length ; j++) {
-                                    updatedDeedList.add(playerDeeds[j]);
-                                }
-
-                                ArrayList<Deed_Buildable> selectedLots = new ArrayList<Deed_Buildable>();
-
-                                boolean selectingMoreLots = true;
-                                while (selectingMoreLots) {
-
-                                    String userLot = guiController.getUserLot(players[i], updatedDeedList);
-                                    selectedLots.add(getDeedFromName(userLot, i));
-                                    updatedDeedList.remove(getDeedFromName(userLot, i));
-                                    if(updatedDeedList.size()==0){
-                                        selectingMoreLots = false;
-                                    } else {
-                                        selectingMoreLots = guiController.getUserBoolean(msg.getText("selectMoreLots"));
-                                    }
-                                }
-
-                                Deed_Buildable[] selectedLotsArr = new Deed_Buildable[selectedLots.size()];
-                                selectedLotsArr = selectedLots.toArray(selectedLotsArr);
-
-                                String[] buildOptions = {"Hus", "Hotel"};
-                                String buildingType = guiController.getUserSelection(msg.getText("houseOrHotel"), buildOptions);
-
-                                if(buildingType.equals("Hus")){
-                                    String[] countOptions = {"1", "2", "3", "4"};
-                                    String userHouseCount = guiController.getUserSelection(msg.getText("howManyBuildings"), countOptions);
-                                    int houseCount = Integer.parseInt(userHouseCount);
-                                    System.out.println("House count: " + houseCount);
-
-                                    players[i].buyHouse(selectedLotsArr, houseCount);
-
-                                } else {
-                                    if(testingHouseCount){setHouseCountForTesting(4,i);}
-
-                                    players[i].buyHotel(selectedLotsArr);
-
-
-                                }
+                                buildController.setCurrentPlayer(players[i]);
+                                buildController.build();
 
                             } else if (userChoice.equals("Sælg")) {
                                 System.out.println("player chose saelg");
@@ -329,6 +271,30 @@ public class GameController {
 
         }
 
+        private String[] setActionButtons(int i) {
+            String[] actionButtons;
+            if(testingActionButtons){setOwnerForTesting(i);}
+
+            if(players[i].getPropertiesDeed().length > 0) {
+                if(players[i].getBuildableDeeds().length > 0) {
+                    actionButtons = new String[3];
+                    actionButtons[0] = "Byg";
+                    actionButtons[1] = "Sælg";
+                    actionButtons[2] = "Kast terningerne";
+                }  else {
+                    actionButtons = new String[2];
+                    actionButtons[0] = "Sælg";
+                    actionButtons[1] = "Kast terningerne";
+                }
+
+            } else {
+                actionButtons = new String[1];
+                actionButtons[0] = "Kast terningerne";
+
+            }
+            return actionButtons;
+        }
+
 
         private void setOwnerForTesting(int i) {
 
@@ -350,23 +316,6 @@ public class GameController {
 
         }
 
-        private void setHouseCountForTesting(int houseCountForTesting, int i) {
-
-            Deed_Buildable[] deeds = players[i].getBuildableDeeds();
-            players[i].buyHouse(deeds,houseCountForTesting);
-        }
-
-        private Deed_Buildable getDeedFromName(String deedName, int currentPlayerIndex) {
-            int deedToBuildOnIndex = 0;
-            Deed_Buildable[] deeds = players[currentPlayerIndex].getBuildableDeeds();
-            for(int k = 0 ; k < deeds.length ; k++) {
-                if(deedName.equals(deeds[k].getDeedName())){
-                    deedToBuildOnIndex = k;
-                }
-            }
-            Deed_Buildable deedToBuildOn = deeds[deedToBuildOnIndex];
-            return deedToBuildOn;
-        }
 
     }
 
