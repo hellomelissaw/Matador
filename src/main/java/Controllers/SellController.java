@@ -23,7 +23,7 @@ public class SellController {
     Deed boughtDeed;
 
     public void sellLot(Player seller, Player[] players){
-        if (seller.getPropertiesDeed().length < 1) return;
+        //if (seller.getPropertiesDeed().length < 1) return;
         playerCount = players.length;
         String choosenButton = guiController.getUserButtonPressed(msg.getText("salgeGround"));
         if (choosenButton.equals("Ja")) {
@@ -85,5 +85,4 @@ public class SellController {
             }
         }
     }
-
 }

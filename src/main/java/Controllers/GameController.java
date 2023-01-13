@@ -225,9 +225,10 @@ public class GameController {
                 }
 
                 if (!isInJail){
-                        String[] userActionButtons = setActionButtons(i);
+
                         boolean rollDice = false;
                         while (!rollDice) {
+                            String[] userActionButtons = setActionButtons(i);
                             String userChoice = guiController.getUserAction(players[i].getPlayerName(), userActionButtons);
 
                             if (userChoice.equals("Byg")) {
@@ -272,7 +273,7 @@ public class GameController {
             String[] actionButtons;
             if(testingBuildButton){setOwnerForTesting(i);}
 
-            if(players[i].getPropertiesDeed().length > 0) {
+            if(players[i].getOwnedFields().length > 0) {
                 if(players[i].getBuildableDeeds().length > 0) {
                     actionButtons = new String[3];
                     actionButtons[0] = "Byg";
