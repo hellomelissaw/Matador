@@ -63,9 +63,15 @@ public class DeedSquare_Buildable extends DeedSquare {
             msg.printText("ownerOfDeed", "na");
 
         } else { // IF A PLAYER LANDS ON A LOT THAT ANOTHER PLAYER OWNS
-
+            int rentOwed = rent[deed.getHouseCount()];
+            if(deedOwner.IsGroupOwner(deed.getColor())){
+                rentOwed = rentOwed * 2;
+                msg.printText("payDoubleRent", deedOwner.getPlayerName());
+            } else {
             msg.printText("payRent",  deedOwner.getPlayerName());
-            currentPlayer.withdrawMoney(rent[deed.getHouseCount()], false);
+            }
+
+            currentPlayer.withdrawMoney(rent[rentOwed], false);
             deedOwner.depositMoney(deedPrice, false);
             System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
 
