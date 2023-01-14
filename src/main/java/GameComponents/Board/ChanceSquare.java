@@ -3,10 +3,10 @@ import Controllers.GuiController;
 import GameComponents.Player;
 
 public class ChanceSquare extends Square{
-    boolean testing = false;
+    private boolean testing = false;
     private int cardIndex;
     private GuiController guiController;
-    Player[] players;
+    private Player[] players;
 
     private ChanceCard[] chanceCards = new ChanceCard[46];
 
