@@ -89,4 +89,9 @@ public class SellController {
             }
         }
     }
+
+    public void buyLot(Player buyer) {
+
+
+    }
 }

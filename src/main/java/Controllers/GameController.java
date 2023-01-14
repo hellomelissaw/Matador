@@ -248,9 +248,19 @@ public class GameController {
                                 buildController.setCurrentPlayer(players[i]);
                                 buildController.build();
 
-                            } else if (userChoice.equals("Sælg")) {
-                                System.out.println("player chose saelg");
-                                sellController.sellLot(players[i], players);
+                            } else if (userChoice.equals("Handle")) {
+                                System.out.println("player chose handle");
+                                String[] userDealButtons = setDealButtons(i);
+                                String dealChoice = guiController.getUserAction(players[i].getPlayerName(), userDealButtons);
+
+                                if (dealChoice.equals("Køb")) {
+                                    sellController.buyLot(players[i]);
+
+                                } else if (dealChoice.equals("Sælg")) {
+                                    sellController.sellLot(players[i], players);
+
+                                } else {
+                                    System.out.println("Player wants to trade");/*sellController.tradeLot(players[i], players);*/}
 
                             } else {
                                 rollDice = true;
@@ -289,7 +299,7 @@ public class GameController {
                 if(players[i].getBuildableDeeds().length > 0) {
                     actionButtons = new String[3];
                     actionButtons[0] = "Byg";
-                    actionButtons[1] = "Sælg";
+                    actionButtons[1] = "Handle";
                     actionButtons[2] = "Kast terningerne";
                 }  else {
                     actionButtons = new String[2];
@@ -303,6 +313,23 @@ public class GameController {
 
             }
             return actionButtons;
+        }
+
+        private String[] setDealButtons(int i) {
+           String[] dealButtons;
+           boolean hasDeeds = players[i].getBuildableDeeds().length > 0 || players[i].getNonBuildableDeeds().length > 0;
+            if(hasDeeds){
+                dealButtons = new String[3];
+                dealButtons[0] = "Køb";
+                dealButtons[1] = "Sælg";
+                dealButtons[2] = "Bytte";
+
+            } else {
+                dealButtons = new String[1];
+                dealButtons[0] = "Køb";
+
+            }
+
         }
 
 
