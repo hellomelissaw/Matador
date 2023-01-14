@@ -310,6 +310,10 @@ public class Player {
         return cardholder.getProperties();
     }
 
+    public int getPropertyCount() {
+        return cardholder.getPropertyCount();
+    }
+
     public void buyHouse(Deed_Buildable[] deedsToBuildOn, int housesToBuy) {
 
         boolean enoughHouses = bank.areThereEnoughHouses(housesToBuy);
