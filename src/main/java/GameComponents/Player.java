@@ -4,8 +4,10 @@ import Controllers.GuiController;
 import GameComponents.Board.*;
 import gui_fields.GUI_Player;
 import Translator.Text;
-
+import gui_fields.GUI_Car;
 import java.util.ArrayList;
+
+import java.awt.*;
 
 /*
 ===================================================================================
@@ -25,6 +27,7 @@ public class Player {
 
     int counter = 0;
 
+    private GUI_Car guiCar = new GUI_Car();
     Text msg;
     private int squareIndex = 0;
     private String playerName;
@@ -32,6 +35,12 @@ public class Player {
 
     private Cardholder cardholder = new Cardholder();
     private String winnerName;
+
+
+    public GUI_Car getGuiCar() {
+
+        return guiCar;
+    }
 
     ArrayList<Deed> ownedFields = new ArrayList<>();
     //SellController sellController = new SellController();
@@ -49,15 +58,21 @@ public class Player {
 
     }
 
+    public void setCarColor (Color color){
+        guiPlayer.getCar().setPrimaryColor(color);
+    }//SETS COLOR FOR THE CARS
+
+
     public void setLang(Text msg) {
         this.msg = msg;
     }
 
-    public void setGui(GUI_Player guiPlayer, GuiController guiController, Text msg) {
+    public void setGui(GUI_Player guiPlayer, GuiController guiController, Text msg){
         if (guiOn) {
             this.guiPlayer = guiPlayer;
             playerAccount.setGuiAccount(guiPlayer);
             this.guiController = guiController;
+
         }
         this.msg = msg;
         testing = false;

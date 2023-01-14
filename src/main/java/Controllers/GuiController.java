@@ -5,15 +5,20 @@ import GameComponents.Player;
 import Translator.Text;
 import gui_fields.*;
 import gui_main.GUI;
-
 import java.awt.*;
 import java.util.ArrayList;
 
+
 public class GuiController {
      private GUI gui;
+    private GUI_Player[] guiPlayers;
+    int playerCount;
+
+    private GUI_Car guiCar[] = new GUI_Car[playerCount];
      Text msg;
      private GUI_Field[] fields   ;
      GUI_Ownable[] ownable = new GUI_Ownable[40];
+
 
 
     private GUI_Player[] guiPlayers;
@@ -267,10 +272,12 @@ public class GuiController {
          gui.showMessage(message);
      }
 
-     /**
+    /**
       * Sets the titles on the Squares according to language chosen by user
       * @param //msg The Text object used to set user-selected language throughout the program
       */
+
+
 
     public GUI_Player createGuiPlayer(Player player) {
          GUI_Player guiPlayer = new GUI_Player(player.getPlayerName());
@@ -281,6 +288,11 @@ public class GuiController {
     }
 
      /**
+
+     public GUI_Player[] getGuiPlayersArr() {
+         return guiPlayers;
+     }
+       /**
       * Moves the GUI_car object to a new square for current player
       * @param currentPlayer current GUI_Player to be moved
       * @param currentPositionIndex index of Square GUI_Player is located on, so their car can stop being displayed there

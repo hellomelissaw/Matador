@@ -6,6 +6,10 @@ import GameComponents.Cup_stub;
 import GameComponents.Player;
 import Translator.*;
 import GameComponents.Bank;
+import gui_fields.GUI_Player;
+
+import java.awt.*;
+
 
 public class GameController {
     boolean useCupStub = false;
@@ -38,7 +42,7 @@ public class GameController {
             msg = new Text("src/main/java/Translator/DanskTekst", guiController);
             //msg = new Text("src/main/java/Translator/EnglishText", guiController);
             //guiController.initFieldTitles(msg);
-            playerCount = 3;
+            playerCount = 6;
             if(testStartBalance){
                 balance = 4000;
 
@@ -48,41 +52,47 @@ public class GameController {
             players = new Player[playerCount];
 
             players[0] = new Player("Marc"); // INITIALISE EACH PLAYER WITH NAME
-            players[0].setGui(guiController.createGuiPlayer(players[0]),guiController,msg);
+            players[0].setGui(guiController.createGuiPlayer(players[0]), guiController, msg);
+            players[0].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
+            players[0].setCarColor(Color.red);
             players[0].setBank(bank); //INITIALISE BANK WITHIN PLAYER
-            players[0].setStartBalance(balance,true); // DEPOSIT INITIAL BALANCE
 
 
             players[1] = new Player("Germaine"); // INITIALISE EACH PLAYER WITH NAME
-            players[1].setGui(guiController.createGuiPlayer(players[1]),guiController,msg);
+            players[1].setGui(guiController.createGuiPlayer(players[1]), guiController, msg);
+            players[1].setCarColor(Color.white);
             players[1].setBank(bank); //INITIALISE BANK WITHIN PLAYER
             players[1].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
 
             players[2] = new Player("Harry"); // INITIALISE EACH PLAYER WITH NAME
-            players[2].setGui(guiController.createGuiPlayer(players[2]),guiController,msg);
+            players[2].setGui(guiController.createGuiPlayer(players[2]), guiController, msg);
+            players[2].setCarColor(Color.orange);
             players[2].setBank(bank); //INITIALISE BANK WITHIN PLAYER
             players[2].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
 
             if (playerCount > 3) {
                 players[3] = new Player("Sara"); // INITIALISE EACH PLAYER WITH NAME
-                players[3].setGui(guiController.createGuiPlayer(players[3]),guiController,msg);
+                players[3].setGui(guiController.createGuiPlayer(players[3]), guiController, msg);
+                players[3].setCarColor(Color.pink);
                 players[3].setBank(bank); //INITIALISE BANK WITHIN PLAYER
                 players[3].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
 
+                if (playerCount > 4){
                 players[4] = new Player("Megan"); // INITIALISE EACH PLAYER WITH NAME
                 players[4].setGui(guiController.createGuiPlayer(players[4]),guiController,msg);
                 players[4].setBank(bank); //INITIALISE BANK WITHIN PLAYER
                 players[4].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
+                players[4].setCarColor(Color.yellow);
+            }}
 
+            if (playerCount == 6) {
+                players[5] = new Player("Adam"); // INITIALISE EACH PLAYER WITH NAME
+                players[5].setGui(guiController.createGuiPlayer(players[5]), guiController, msg);
+                players[5].setBank(bank);
+                players[5].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
+                players[5].setCarColor(Color.blue);
 
-                if (playerCount == 6) {
-                    players[5] = new Player("Adam"); // INITIALISE EACH PLAYER WITH NAME
-                    players[5].setGui(guiController.createGuiPlayer(players[5]),guiController,msg);
-                    players[5].setBank(bank); //INITIALISE BANK WITHIN PLAYER
-                    players[5].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
-                }
             }
-
         } else {
             //String[] lang = {"DanskTekst"};
             //int langIndex = guiController.getUserInteger("You are in English mode. Enter 1 to keep English or enter 2 to switch to Danish."); //GETS USER TO CHOOSE LANGUAGE
@@ -111,6 +121,7 @@ public class GameController {
             }
             balance = 30000;//SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
 
+            Color[] COLORSset = {Color.red, Color.white, Color.blue, Color.yellow, Color.pink, Color.black};//COLOR ARRAY FOR THE CAR
             players = new Player[playerCount];
 
             for (int i = 0; i < playerCount; i++) {
@@ -136,10 +147,12 @@ public class GameController {
                     }
                 }
 
+
                 players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
                 players[i].setGui(guiController.createGuiPlayer(players[i]),guiController,msg);
                 players[i].setBank(bank); //INITIALISE BANK WITHIN PLAYER
                 players[i].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
+                players[i].setCarColor(COLORSset[i]);// SET CAR COLOR FOR EACH PLAYER
 
 
             }
@@ -153,7 +166,7 @@ public class GameController {
     }
 
     public void run() {
-         // SET TO TRUE WHEN TESTING LANDING ON SPECIFIC SQUARE (SET SUM IN Cup_stub)
+
         Cup cup;
         if (useCupStub) {
             cup = new Cup_stub(guiController);
