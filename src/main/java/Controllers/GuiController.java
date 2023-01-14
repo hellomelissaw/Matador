@@ -10,18 +10,14 @@ import java.util.ArrayList;
 
 
 public class GuiController {
-     private GUI gui;
+    private GUI gui;
     private GUI_Player[] guiPlayers;
     int playerCount;
-
     private GUI_Car guiCar[] = new GUI_Car[playerCount];
-     Text msg;
-     private GUI_Field[] fields   ;
-     GUI_Ownable[] ownable = new GUI_Ownable[40];
+    Text msg;
+    private GUI_Field[] fields   ;
+    GUI_Ownable[] ownable = new GUI_Ownable[40];
 
-
-
-    private GUI_Player[] guiPlayers;
     private int squareIndex = 0;
 
     ArrayList<Deed_Buildable> updatedDeeds = new ArrayList<Deed_Buildable>();

@@ -53,21 +53,21 @@ public class GameController {
 
             players[0] = new Player("Marc"); // INITIALISE EACH PLAYER WITH NAME
             players[0].setGui(guiController.createGuiPlayer(players[0]), guiController, msg);
-            players[0].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
-            players[0].setCarColor(Color.red);
             players[0].setBank(bank); //INITIALISE BANK WITHIN PLAYER
+            players[0].setStartBalance(balance,false); // DEPOSIT INITIAL BALANCE
+            players[0].setCarColor(Color.red);
 
 
             players[1] = new Player("Germaine"); // INITIALISE EACH PLAYER WITH NAME
             players[1].setGui(guiController.createGuiPlayer(players[1]), guiController, msg);
-            players[1].setCarColor(Color.white);
             players[1].setBank(bank); //INITIALISE BANK WITHIN PLAYER
+            players[1].setCarColor(Color.white);
             players[1].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
 
             players[2] = new Player("Harry"); // INITIALISE EACH PLAYER WITH NAME
             players[2].setGui(guiController.createGuiPlayer(players[2]), guiController, msg);
-            players[2].setCarColor(Color.orange);
             players[2].setBank(bank); //INITIALISE BANK WITHIN PLAYER
+            players[2].setCarColor(Color.orange);
             players[2].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
 
             if (playerCount > 3) {
