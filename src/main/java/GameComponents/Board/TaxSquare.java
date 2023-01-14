@@ -5,12 +5,12 @@ import GameComponents.Player;
 
 public class TaxSquare extends Square {
 
-    GuiController guiController;
-    int userInput;
-    int balance;
-    int newBalance;
-    Player[] players;
-    int withdrawMoney;
+    private GuiController guiController;
+    private int userInput;
+    private int balance;
+    private int newBalance;
+    private Player[] players;
+    private int withdrawMoney;
 
     TaxSquare(String squareName, GuiController guiController, Player[] players) {
         super(squareName);

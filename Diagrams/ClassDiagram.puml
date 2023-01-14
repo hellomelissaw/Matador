@@ -8,7 +8,17 @@ class GameController{
 }
 
 class GuiController{}
-class SellController{}
+class SellController{
+- guiController : GuiController
+- msg : Text
+- deedPrice : int
+- playerCount : int
+- boughtDeedPrice : int
+- buyerPlayer : player
+- boughtDeed : Deed
+
++ sellLot() : void
+}
 }
 
 package "GameComponent"{
@@ -47,7 +57,16 @@ ownerName: Player
 price: int
 
 }
+class ChanceCard {
+currentPlayer: Player
 
+}
+
+class CardMove {
+
+}
+
+class Cardholder {}
 class Deed_Buildable{}
 
 class Deed_NonBuildable{}
@@ -60,7 +79,17 @@ class JailSquare {}
 class StartSquare {}
 
 class ParkingSquare {}
-class TaxSquare{}
+class TaxSquare{
+guiController : GuiController
+- userInput : int
+- balance : int
+- newBalance : int
+- players : Player[]
+- withdrawMoney : int
+
+TaxSquare()
++ LandOn() : void
+}
 }
 
 class Cup{
@@ -96,6 +125,8 @@ class Account{
 -balance: int
 +updateBalance()
 
+}
+class Bank {
 }
 
 }
@@ -162,19 +193,9 @@ setDice(): void
 winner(): String
 }
 
-class ChanceCard {
-currentPlayer: Player
 
-}
 
-class MoveCard {
 
-}
-
-class Cardholder {}
-
-class Bank {
-}
 
 Bank <-down- GameController
 
@@ -189,6 +210,8 @@ GameController <-down- BoardInit
 BoardInit <|-down- Square
 
 Square <|-down- DeedSquare
+
+Square <|-down- TaxSquare
 
 DeedSquare <|-down- DeedSquare_Buildable
 

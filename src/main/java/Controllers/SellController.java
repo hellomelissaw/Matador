@@ -13,14 +13,14 @@ public class SellController {
         this.msg = msg;
 
     }
-    GuiController guiController;
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+    private GuiController guiController;
+    private Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
 
-    int deedPrice =0 ;
-    int playerCount = 0;
-    int boughtDeedPrice = 0;
-    Player buyerPlayer;
-    Deed boughtDeed;
+    private int deedPrice =0 ;
+    private int playerCount = 0;
+    private int boughtDeedPrice = 0;
+    private Player buyerPlayer;
+    private Deed boughtDeed;
 
     public void sellLot(Player seller, Player[] players){
         //if (seller.getPropertiesDeed().length < 1) return;
