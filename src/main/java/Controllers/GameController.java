@@ -329,7 +329,7 @@ public class GameController {
                 dealButtons[0] = "Køb";
 
             }
-
+            return dealButtons;
         }
 
 
