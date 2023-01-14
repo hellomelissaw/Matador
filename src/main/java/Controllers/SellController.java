@@ -7,6 +7,9 @@ import GameComponents.Cardholder;
 import GameComponents.Player;
 import Translator.Text;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class SellController {
     public SellController(GuiController guiController , Text msg ) {
         this.guiController = guiController;
@@ -89,9 +92,41 @@ public class SellController {
             }
         }
     }
+    String[] lotOptions;
+    public void buyLot(Player buyer, Player[] players) {
+        String[] options = setLotOptions(buyer, players);
+        guiController.getUserSelection(msg.getText("whichLotBuy"), options);
 
-    public void buyLot(Player buyer) {
+    }
+    private String[] setLotOptions(Player currentPlayer, Player[] allPlayers) {
+        ArrayList<String> lotArrList = new ArrayList<String>();
+        System.out.println("Players arr length: " + allPlayers.length);
 
+        for (int m = 0 ; m < allPlayers.length ; m++) {
+            if(!allPlayers[m].equals(currentPlayer)) {
 
+                Deed_Buildable[] bd = allPlayers[m].getBuildableDeeds();
+                Deed_NonBuildable[] nbd = allPlayers[m].getNonBuildableDeeds();
+
+                if(bd.length>0) {
+                    for (int l = 0; l < bd.length; l++) {
+                        lotArrList.add(bd[l].getDeedName());
+                    }
+                }
+
+                if(nbd.length > 0) {
+                    for (int l = 0; l < nbd.length; l++) {
+                        lotArrList.add(nbd[l].getDeedName());
+                    }
+                }
+            }
+        }
+        lotOptions = new String[lotArrList.size()];
+        lotOptions = lotArrList.toArray(lotOptions);
+        return lotOptions;
+    }
+
+    public String[] getLotOptions() {
+        return lotOptions;
     }
 }

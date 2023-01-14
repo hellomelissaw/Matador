@@ -254,7 +254,7 @@ public class GameController {
                                 String dealChoice = guiController.getUserAction(players[i].getPlayerName(), userDealButtons);
 
                                 if (dealChoice.equals("Køb")) {
-                                    sellController.buyLot(players[i]);
+                                    sellController.buyLot(players[i], players);
 
                                 } else if (dealChoice.equals("Sælg")) {
                                     sellController.sellLot(players[i], players);
