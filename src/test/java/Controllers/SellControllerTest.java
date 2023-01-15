@@ -92,22 +92,24 @@ public class SellControllerTest {
 
     @Test
     public void player0BuysBunnyPalaceFromPlayer1For1000(){
-        Deed[] deeds = players[1].getOwnedFields();
-        String[] player1OwnedFields = new String[1];
-
-        for (int i = 0 ; i < deeds.length ; i++) {
-            //player0OwnedFields[i] = players[0].getOwnedFields()[i].getDeedName();
-            player1OwnedFields[i] = deeds[i].getDeedName();
-        }
-
-        System.out.println("Player 1 owned fields: " + player1OwnedFields[0]);
-
         sellController.setTestingBuyLot(true,"Bunny Palace", 1000, true);
         sellController.buyLot(players[0], players);
 
         assertEquals(startBalance-1000,players[0].getCurrentBalance());
         assertEquals(startBalance+1000, players[1].getCurrentBalance());
         assertEquals(players[0], bunnyPalace.getDeedOwner());
+
+
+    }
+
+    @Test
+    public void player0TriesToBuyBunnyPalaceFor1000ButOfferDeclined(){
+        sellController.setTestingBuyLot(true,"Bunny Palace", 1000, false);
+        sellController.buyLot(players[0], players);
+
+        assertEquals(startBalance, players[0].getCurrentBalance());
+        assertEquals(startBalance, players[1].getCurrentBalance());
+        assertEquals(players[1], bunnyPalace.getDeedOwner());
 
 
     }

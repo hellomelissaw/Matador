@@ -107,13 +107,14 @@ public class SellController {
 
         boolean insufficientFunds = offeredPrice > buyer.getCurrentBalance();
         while(insufficientFunds) {
+
             offeredPrice = guiController.getUserInteger(msg.getText("giveLowerPrice"));
 
             if(offeredPrice <= buyer.getCurrentBalance()){
                 insufficientFunds = false;
             }
         }
-                // String deedType = getDeedType();
+
                 Deed chosenDeed = getDeedFromName(chosenDeedName, players);
                 Player owner = chosenDeed.getOwner();
                 String ownerName = owner.getPlayerName();
@@ -186,7 +187,7 @@ public class SellController {
         this.testingBuyLot = testingBuyLot;
         this.chosenDeedName = chosenDeedName;
         this.offeredPrice = offeredPrice;
-        offerAccepted = true;
+        offerAccepted = accept;
 
     }
 
