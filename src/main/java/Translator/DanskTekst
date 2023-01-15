@@ -95,10 +95,10 @@ indkomstSkat; Tast 1 for at betale 4000 kr i skat eller Tast 2 for at betale 10%
 fængsel; Du er i fængsel og har kun følgende muligheder for at komme ud af fængsel! Vælg en valgmulighed: Betal bøde på 1000 kr med det samme? eller Prøv dit held ved terningekast!
 gratisParkering; Du er landet på gratis parkering, nyd en velfortjent pause!
 kastOgForladFængsel; Heldige dig, du slipper for at skulle betale fængselsbøden for du har heldet med dig!
-forladFængsel; Du kan nu forlade fængsel, om du har tabt penge eller ej så er friheden nok det værd!
+forladFængsel; Du kan nu forlade fængselet, om du har tabt penge eller ej så er friheden nok det værd!
 invalidInput; Du skal indtaste 1 eller 2.
 spildt3Runder; Du har opbrugt dine forsøg, betal straks bøden!
-salgeGround; Vil du salge en af dine ground?
+salgeGround; Vil du sælge en af dine grunde?
 erDerEnKøber; Er der nogen der vil købe?
 chooseAction; vælg venligst én handling
 whichLots; Hvilke grunde vil du bygge på?
@@ -106,7 +106,7 @@ selectMoreLots; Vil du vælge flere grunde?
 houseOrHotel; Hvilken type bygning vil du bygge?
 howManyBuildings; Hvor mange bygninger vil du bygge på hver af de valgte grunde?
 insufficientFunds; Du har ikke nok penge til at bygge det hele.
-houseCountUnequal; Du skal bygge en jævn mængde hus på alle grunde i gruppen før du kan bygge videre.
+houseCountUnequal; Du skal bygge en jævn mængde huse på alle grunde i gruppen før du kan bygge videre.
 thanksForPurchase; Tak for dit køb! Tryk OK til at fortsætte.
 notGroupOwner; Du ejer ikke alle grunde i gruppen, derfor kan du ikke bygge endnu.
 insufficientHotelsInBank; Der er ikke nok hoteller i banken.
