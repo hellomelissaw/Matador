@@ -113,6 +113,6 @@ insufficientHotelsInBank; Der er ikke nok hoteller i banken.
 insufficientHouses; Du har ikke nok huse til at bygge et hotel.
 whichLotBuy; Hvilken grund vil du anmode at købe?
 enterOfferedPrice; Til hvilken pris vil du købe grunden?
-offerAccept; , accepterer du tilbuddet?
+acceptOffer; , accepterer du tilbuddet?
 giveLowerPrice; Du har ikke nok penge. Kom venligst med et lavere tilbud.
 offerNotAccepted; Dit tilbud er desværre blev afvist.
