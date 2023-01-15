@@ -91,8 +91,12 @@ public class SellControllerTest {
     }
 
     @Test
-    public void getDeedFromNameReturnsBunnyPalaceDeed(){
+    public void player1BuysBunnyPalaceFromPlayer2(){
+        sellController.setTestingBuyLot(true,"Bunny Palace", 1000, true);
         sellController.buyLot(players[0], players);
+
+        assertEquals(players[0], bunnyPalace.getDeedOwner());
+
 
     }
 }

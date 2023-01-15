@@ -92,11 +92,19 @@ public class SellController {
             }
         }
     }
+    boolean testingBuyLot;
+    String chosenDeedName = "";
+    int offeredPrice = 0;
+
+    boolean offerAccepted;
     String[] lotOptions;
     public void buyLot(Player buyer, Player[] players) {
         String[] options = setLotOptions(buyer, players);
-        String chosenDeedName = guiController.getUserSelection(msg.getText("whichLotBuy"), options);
-        int offeredPrice = guiController.getUserInteger(msg.getText("enterOfferedPrice"));
+
+        if(!testingBuyLot) {
+            chosenDeedName = guiController.getUserSelection(msg.getText("whichLotBuy"), options);
+            offeredPrice = guiController.getUserInteger(msg.getText("enterOfferedPrice"));
+        }
 
         boolean insufficientFunds = offeredPrice > buyer.getCurrentBalance();
         while(insufficientFunds) {
@@ -111,7 +119,9 @@ public class SellController {
                 Player owner = chosenDeed.getOwner();
                 String ownerName = owner.getPlayerName();
 
-                boolean offerAccepted = guiController.getUserBoolean(ownerName + msg.getText("acceptOffer"));
+                if(!testingBuyLot) {
+                    offerAccepted = guiController.getUserBoolean(ownerName + msg.getText("acceptOffer"));
+                }
 
                 if (offerAccepted) {
                         buyer.withdrawMoney(offeredPrice, false);
@@ -165,7 +175,7 @@ public class SellController {
                 if(nbd.length > 0) {
                     for (int l = 0; l < nbd.length; l++) {
                         lotArrList.add(nbd[l].getDeedName());
-                        playersDeeds.add(bd[l]);
+                        playersDeeds.add(nbd[l]);
                     }
                 }
             }
@@ -175,12 +185,12 @@ public class SellController {
         return lotOptions;
     }
 
+    public void setTestingBuyLot(boolean testingBuyLot, String chosenDeedName, int offeredPrice, boolean accept) {
+        this.testingBuyLot = testingBuyLot;
+        this.chosenDeedName = chosenDeedName;
+        this.offeredPrice = offeredPrice;
 
-   /* private String getDeedType() {
-        return String
-    }*/
-
-
+    }
 
     public String[] getLotOptions() {
         return lotOptions;
