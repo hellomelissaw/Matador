@@ -95,9 +95,37 @@ public class SellController {
     String[] lotOptions;
     public void buyLot(Player buyer, Player[] players) {
         String[] options = setLotOptions(buyer, players);
-        guiController.getUserSelection(msg.getText("whichLotBuy"), options);
-
+        String chosenDeedName = guiController.getUserSelection(msg.getText("whichLotBuy"), options);
+       // String deedType = getDeedType();
+        Deed chosenDeed = getDeedFromName(chosenDeedName, players);
+        if(chosenDeed instanceof Deed_Buildable){
+            Deed_Buildable deed = (Deed_Buildable) chosenDeed;
+        } else if (chosenDeed instanceof Deed_NonBuildable) {
+            Deed_NonBuildable deed = (Deed_NonBuildable) chosenDeed;
+        } else {
+            System.out.println("Deed type not recognized");
+        }
+        /*if(deedType.equals("buildable")){
+            Deed_Buildable deed = getDeedFromName(String deedName);
+        } else if (deedType.equals("nonBuildable")) {
+            Deed_NonBuildable deed = getDeedFromName(String deedName);
+        } else {
+            System.out.println("Deed type not recognized");
+        }*/
     }
+    ArrayList<Deed> playersDeeds = new ArrayList<Deed>();
+    private Deed getDeedFromName(String chosenDeedName, Player[] allPlayers) {
+    int currentDeedIndex = 0;
+        for(int i = 0 ; i < playersDeeds.size() ; i++) {
+            String currentDeedName = playersDeeds.get(i).getDeedName();
+            if(currentDeedName.equals(chosenDeedName)){
+               currentDeedIndex = i;
+            }
+        }
+        Deed deed = playersDeeds.get(currentDeedIndex);
+        return deed;
+    }
+
     private String[] setLotOptions(Player currentPlayer, Player[] allPlayers) {
         ArrayList<String> lotArrList = new ArrayList<String>();
         System.out.println("Players arr length: " + allPlayers.length);
@@ -111,12 +139,14 @@ public class SellController {
                 if(bd.length>0) {
                     for (int l = 0; l < bd.length; l++) {
                         lotArrList.add(bd[l].getDeedName());
+                        playersDeeds.add(bd[l]);
                     }
                 }
 
                 if(nbd.length > 0) {
                     for (int l = 0; l < nbd.length; l++) {
                         lotArrList.add(nbd[l].getDeedName());
+                        playersDeeds.add(bd[l]);
                     }
                 }
             }
@@ -125,6 +155,13 @@ public class SellController {
         lotOptions = lotArrList.toArray(lotOptions);
         return lotOptions;
     }
+
+
+   /* private String getDeedType() {
+        return String
+    }*/
+
+
 
     public String[] getLotOptions() {
         return lotOptions;

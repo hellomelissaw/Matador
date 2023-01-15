@@ -8,6 +8,7 @@ import GameComponents.Player;
 import Translator.Text;
 import gui_fields.GUI_Player;
 import org.junit.Test;
+import org.junit.experimental.theories.suppliers.TestedOn;
 
 import static org.junit.Assert.*;
 
@@ -73,6 +74,25 @@ public class SellControllerTest {
         sellController.buyLot(players[0], players);
         String[] expected = {"Bunny Palace", "Rat Kingdom"};
         assertEquals(expected, sellController.getLotOptions());
+
+    }
+
+    public void player1BuysBunnyPalaceFromPlayer2For500() {
+        sellController.buyLot(players[0], players);
+
+        assertEquals(bunnyPalace.getDeedOwner(), players[0]);
+
+    }
+
+    @Test
+    public void deedIsOfTypeDeed_Buildable() {
+       Deed_Buildable deed = bunnyPalace.getDeed();
+        System.out.println(bunnyPalace.getDeedType(deed));
+    }
+
+    @Test
+    public void getDeedFromNameReturnsBunnyPalaceDeed(){
+        sellController.buyLot(players[0], players);
 
     }
 }
