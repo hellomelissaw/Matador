@@ -245,8 +245,8 @@ public class GameController {
                             String userChoice = guiController.getUserAction(players[i].getPlayerName(), userActionButtons);
 
                             if (userChoice.equals("Byg")) {
-                                buildController.setCurrentPlayer(players[i]);
-                                buildController.build();
+                                //buildController.setCurrentPlayer(players[i]);
+                                buildController.build(players[i]);
 
                             } else if (userChoice.equals("Handle")) {
                                 System.out.println("player chose handle");

@@ -12,6 +12,9 @@ public class BuildController {
     Text msg;
     Player currentPlayer;
     boolean testingHouseCount = false;
+    String buildingType;
+    int houseCount = 0;
+    boolean testing = false;
 
     public BuildController(GuiController guiController, Text msg) {
         this.guiController = guiController;
@@ -19,18 +22,23 @@ public class BuildController {
 
     }
 
-    public void setCurrentPlayer(Player currentPlayer) {
+    /*public void setCurrentPlayer(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
-    }
+    }*/
 
-    public void build() {
-        Deed_Buildable[] selectedLotsArr = selectLots();
+    public void build(Player currentPlayer) {
+        Deed_Buildable[] selectedLotsArr = selectLots(currentPlayer);
 
         String[] buildOptions = {"Hus", "Hotel"};
-        String buildingType = guiController.getUserSelection(msg.getText("houseOrHotel"), buildOptions);
+
+        if(!testing)
+        buildingType = guiController.getUserSelection(msg.getText("houseOrHotel"), buildOptions);
 
         if (buildingType.equals("Hus")) {
-            int houseCount = getHouseCount("build");
+
+            if(!testing){
+                houseCount = getHouseCount("build");
+            }
             currentPlayer.buyHouse(selectedLotsArr, houseCount);
 
         } else {
@@ -43,14 +51,19 @@ public class BuildController {
         }
     }
 
-    public void demolish() {
-        Deed_Buildable[] selectedLotsArr = selectLots();
+    public void demolish(Player currentPlayer) {
+        Deed_Buildable[] selectedLotsArr = selectLots(currentPlayer);
 
         String[] demolishOptions = {"Hus", "Hotel"};
-        String buildingType = guiController.getUserSelection(msg.getText("houseOrHotelDemo"), demolishOptions);
+
+        if(!testing) {
+            buildingType = guiController.getUserSelection(msg.getText("houseOrHotelDemo"), demolishOptions);
+        }
 
         if (buildingType.equals("Hus")) {
-            int houseCount = getHouseCount("demolish");
+            if(!testing){
+                houseCount = getHouseCount("demolish");
+            }
             currentPlayer.sellHouseToBank(selectedLotsArr, houseCount);
 
         } else {
@@ -62,6 +75,13 @@ public class BuildController {
 
         }
     }
+
+    public void testing(boolean testing, String buildingType, int houseCount) {
+        this.testing = testing;
+        this.buildingType = buildingType;
+        this.houseCount = houseCount;
+    }
+
 
     private Deed_Buildable getDeedFromName(String deedName, Player currentPlayer) {
         int deedToBuildOnIndex = 0;
@@ -75,7 +95,7 @@ public class BuildController {
         return deedToBuildOn;
     }
 
-    private Deed_Buildable[] selectLots() {
+    private Deed_Buildable[] selectLots(Player currentPlayer) {
         ArrayList<Deed_Buildable> updatedDeedList = new ArrayList<Deed_Buildable>();
         Deed_Buildable[] playerDeeds = currentPlayer.getBuildableDeeds();
         for (int j = 0; j < currentPlayer.getBuildableDeeds().length; j++) {
