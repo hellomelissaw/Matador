@@ -13,7 +13,7 @@ import java.awt.*;
 
 public class GameController {
     boolean useCupStub = false;
-    boolean testingInit = true;
+    boolean testingInit = false;
     boolean testingBuildButton = false;
     boolean testStartBalance = false;
     GuiController guiController = new GuiController();
