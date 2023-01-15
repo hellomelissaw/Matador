@@ -14,6 +14,7 @@ public class JailSquare extends Square{
 
 
     public JailSquare(String jailSquare, GuiController guiController) {
+
         super(jailSquare);
         this.guiController = guiController;
 
