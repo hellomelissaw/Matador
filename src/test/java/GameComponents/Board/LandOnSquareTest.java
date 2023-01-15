@@ -39,5 +39,12 @@ public class LandOnSquareTest {
 
     }
 
+    @Test
+    //Land i fængsel
+    public void JailNameIsCorrectlyInitiated() {
+        assertEquals("Fængsel", board[30].getSquareName());
+
+    }
+
 
 }

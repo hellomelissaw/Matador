@@ -40,34 +40,36 @@ public class CardMoneyTest {
 
 
     }
-    @Test
-    public void playChanceCardPay2() {
 
-        ChanceCard testChanceCard = new CardMoney("chance5",guiController,"withdraw",2);
+    @Test
+    public void playChanceCardPay500() {
+        // chancecard 1, spiller skal betale 500 kr til banken
+        ChanceCard testChanceCard = new CardMoney("Chance1",guiController,"withdraw",500);
         testChanceCard.setCardLang(msg);
         testChanceCard.playCard(testPlayers[1]);
-        assertEquals(-2, testPlayers[1].getCurrentBalance());
-
+        assertEquals(-500, testPlayers[1].getCurrentBalance());
     }
 
     @Test
-    public void playChanceCardCurrentPlayerGets3OthersPay1() {
-        ChanceCard testChanceCard = new CardMoney("chance6",guiController,"hybrid", 1);
+    //chancecard 26, spiller modtager 200 kr fra resterende spillere
+    public void playChanceCardCurrentPlayergets200fromeachplayer() {
+        ChanceCard testChanceCard = new CardMoney("chance26",guiController,"hybrid", 200);
         testChanceCard.setCardLang(msg);
         testChanceCard.setPlayers(testPlayers);
         testChanceCard.playCard(testPlayers[0]);
-        assertEquals(3, testPlayers[0].getCurrentBalance());
-        assertEquals(-1, testPlayers[1].getCurrentBalance());
-        assertEquals(-1, testPlayers[2].getCurrentBalance());
-        assertEquals(-1, testPlayers[3].getCurrentBalance());
+        assertEquals(600, testPlayers[0].getCurrentBalance());
+        assertEquals(-200, testPlayers[1].getCurrentBalance());
+        assertEquals(-200, testPlayers[2].getCurrentBalance());
+        assertEquals(-200, testPlayers[3].getCurrentBalance());
 
     }
     @Test
-    public void playChanceCardReceive2() {
-        ChanceCard testChanceCard = new CardMoney("chance7",guiController,"deposit", 2);
+    // chancecard 13, spiller skal kunne modtage 500 kr fra banken
+    public void playChanceCardReceive500() {
+        ChanceCard testChanceCard = new CardMoney("chance13",guiController,"deposit", 500);
         testChanceCard.setCardLang(msg);
         testChanceCard.playCard(testPlayers[0]);
-        assertEquals(2, testPlayers[0].getCurrentBalance());
+        assertEquals(500, testPlayers[0].getCurrentBalance());
 
     }
 }
