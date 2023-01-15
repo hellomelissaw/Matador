@@ -1,9 +1,6 @@
 package Controllers;
 
-import GameComponents.Board.DeedSquare_Buildable;
-import GameComponents.Board.DeedSquare_NonBuildable;
-import GameComponents.Board.Deed_Buildable;
-import GameComponents.Board.Deed_NonBuildable;
+import GameComponents.Board.*;
 import GameComponents.Player;
 import Translator.Text;
 import gui_fields.GUI_Player;
@@ -29,6 +26,7 @@ public class SellControllerTest {
     DeedSquare_NonBuildable ratKingdom = new DeedSquare_NonBuildable("Rat Kingdom", 1000, array);
     GUI_Player testGuiPlayer = new GUI_Player("Test Player");
 
+    int startBalance = 7000;
     public SellControllerTest() {
         testPlayer.guiIsOn(false);
         buyerPlayer.guiIsOn(false);
@@ -36,7 +34,7 @@ public class SellControllerTest {
         for(int i = 0 ; i < players.length ; i++) {
             players[i] = new Player("TestPlayer"+i);
             players[i].guiIsOn(false);
-            players[i].setStartBalance(7000, false);
+            players[i].setStartBalance(startBalance, false);
         }
 
         bunnyPalace.setOwnerForTesting(players[1]);
@@ -70,7 +68,8 @@ public class SellControllerTest {
     }
 
     @Test
-    public void player1WantsToBuyAndPlayer2And3LotsShownInArray() {
+    public void player0WantsToBuyAndPlayer1And2LotsShownInArray() {
+        sellController.setTestingBuyLot(true,"Bunny Palace", 1000, true);
         sellController.buyLot(players[0], players);
         String[] expected = {"Bunny Palace", "Rat Kingdom"};
         assertEquals(expected, sellController.getLotOptions());
@@ -78,6 +77,7 @@ public class SellControllerTest {
     }
 
     public void player1BuysBunnyPalaceFromPlayer2For500() {
+
         sellController.buyLot(players[0], players);
 
         assertEquals(bunnyPalace.getDeedOwner(), players[0]);
@@ -91,10 +91,22 @@ public class SellControllerTest {
     }
 
     @Test
-    public void player1BuysBunnyPalaceFromPlayer2(){
+    public void player0BuysBunnyPalaceFromPlayer1For1000(){
+        Deed[] deeds = players[1].getOwnedFields();
+        String[] player1OwnedFields = new String[1];
+
+        for (int i = 0 ; i < deeds.length ; i++) {
+            //player0OwnedFields[i] = players[0].getOwnedFields()[i].getDeedName();
+            player1OwnedFields[i] = deeds[i].getDeedName();
+        }
+
+        System.out.println("Player 1 owned fields: " + player1OwnedFields[0]);
+
         sellController.setTestingBuyLot(true,"Bunny Palace", 1000, true);
         sellController.buyLot(players[0], players);
 
+        assertEquals(startBalance-1000,players[0].getCurrentBalance());
+        assertEquals(startBalance+1000, players[1].getCurrentBalance());
         assertEquals(players[0], bunnyPalace.getDeedOwner());
 
 

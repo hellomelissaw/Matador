@@ -95,8 +95,7 @@ public class SellController {
     boolean testingBuyLot;
     String chosenDeedName = "";
     int offeredPrice = 0;
-
-    boolean offerAccepted;
+    boolean offerAccepted = false;
     String[] lotOptions;
     public void buyLot(Player buyer, Player[] players) {
         String[] options = setLotOptions(buyer, players);
@@ -128,19 +127,12 @@ public class SellController {
                         owner.depositMoney(offeredPrice, false);
                         owner.removeFromOwnedFields(chosenDeed);
                         owner.removeFromCardholder(chosenDeed);
-                        buyerPlayer.addToOwnedFields(chosenDeed);
-                        buyerPlayer.addToCardholder(chosenDeed);
+                        chosenDeed.setOwner(buyer);
+                        buyer.addToOwnedFields(chosenDeed);
+                        buyer.addToCardholder(chosenDeed);
 
                 } else {msg.printText("offerNotAccepted", "na");}
 
-
-        /*if(deedType.equals("buildable")){
-            Deed_Buildable deed = getDeedFromName(String deedName);
-        } else if (deedType.equals("nonBuildable")) {
-            Deed_NonBuildable deed = getDeedFromName(String deedName);
-        } else {
-            System.out.println("Deed type not recognized");
-        }*/
     }
     ArrayList<Deed> playersDeeds = new ArrayList<Deed>();
     private Deed getDeedFromName(String chosenDeedName, Player[] allPlayers) {
@@ -162,7 +154,7 @@ public class SellController {
         for (int m = 0 ; m < allPlayers.length ; m++) {
             if(!allPlayers[m].equals(currentPlayer)) {
 
-                Deed_Buildable[] bd = allPlayers[m].getBuildableDeeds();
+               Deed_Buildable[] bd = allPlayers[m].getBuildableDeeds();
                 Deed_NonBuildable[] nbd = allPlayers[m].getNonBuildableDeeds();
 
                 if(bd.length>0) {
@@ -178,17 +170,23 @@ public class SellController {
                         playersDeeds.add(nbd[l]);
                     }
                 }
+
+
             }
+
+
         }
         lotOptions = new String[lotArrList.size()];
         lotOptions = lotArrList.toArray(lotOptions);
         return lotOptions;
     }
 
+
     public void setTestingBuyLot(boolean testingBuyLot, String chosenDeedName, int offeredPrice, boolean accept) {
         this.testingBuyLot = testingBuyLot;
         this.chosenDeedName = chosenDeedName;
         this.offeredPrice = offeredPrice;
+        offerAccepted = true;
 
     }
 

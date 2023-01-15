@@ -290,11 +290,13 @@ public class Player {
     //public Player getPlayer(String playerName){
     //}
     public void addToOwnedFields(Deed deed) {
+
         ownedFields.add(deed);
     }
 
 
     public void removeFromOwnedFields(Deed deed) {
+
         ownedFields.remove(deed);
     }
 
