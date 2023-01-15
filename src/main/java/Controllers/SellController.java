@@ -96,15 +96,34 @@ public class SellController {
     public void buyLot(Player buyer, Player[] players) {
         String[] options = setLotOptions(buyer, players);
         String chosenDeedName = guiController.getUserSelection(msg.getText("whichLotBuy"), options);
-       // String deedType = getDeedType();
-        Deed chosenDeed = getDeedFromName(chosenDeedName, players);
-        if(chosenDeed instanceof Deed_Buildable){
-            Deed_Buildable deed = (Deed_Buildable) chosenDeed;
-        } else if (chosenDeed instanceof Deed_NonBuildable) {
-            Deed_NonBuildable deed = (Deed_NonBuildable) chosenDeed;
-        } else {
-            System.out.println("Deed type not recognized");
+        int offeredPrice = guiController.getUserInteger(msg.getText("enterOfferedPrice"));
+
+        boolean insufficientFunds = offeredPrice > buyer.getCurrentBalance();
+        while(insufficientFunds) {
+            offeredPrice = guiController.getUserInteger(msg.getText("giveLowerPrice"));
+
+            if(offeredPrice <= buyer.getCurrentBalance()){
+                insufficientFunds = false;
+            }
         }
+                // String deedType = getDeedType();
+                Deed chosenDeed = getDeedFromName(chosenDeedName, players);
+                Player owner = chosenDeed.getOwner();
+                String ownerName = owner.getPlayerName();
+
+                boolean offerAccepted = guiController.getUserBoolean(ownerName + msg.getText("acceptOffer"));
+
+                if (offerAccepted) {
+                        buyer.withdrawMoney(offeredPrice, false);
+                        owner.depositMoney(offeredPrice, false);
+                        owner.removeFromOwnedFields(chosenDeed);
+                        owner.removeFromCardholder(chosenDeed);
+                        buyerPlayer.addToOwnedFields(chosenDeed);
+                        buyerPlayer.addToCardholder(chosenDeed);
+
+                } else {msg.printText("offerNotAccepted", "na");}
+
+
         /*if(deedType.equals("buildable")){
             Deed_Buildable deed = getDeedFromName(String deedName);
         } else if (deedType.equals("nonBuildable")) {
