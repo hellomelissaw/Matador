@@ -6,7 +6,7 @@ import java.util.List;
 
 //public class JailTest {
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
 
         GameController game = new GameController();
 
@@ -20,3 +20,5 @@ import java.util.List;
         });
     }
 }
+}
+    */
