@@ -27,7 +27,7 @@ public class BuildController {
     }*/
 
     public void build(Player currentPlayer) {
-        Deed_Buildable[] selectedLotsArr = selectLots(currentPlayer);
+        Deed_Buildable[] selectedLotsArr = selectLots(currentPlayer, "build");
 
         String[] buildOptions = {"Hus", "Hotel"};
 
@@ -52,7 +52,7 @@ public class BuildController {
     }
 
     public void demolish(Player currentPlayer) {
-        Deed_Buildable[] selectedLotsArr = selectLots(currentPlayer);
+        Deed_Buildable[] selectedLotsArr = selectLots(currentPlayer,"demolish");
 
         String[] demolishOptions = {"Hus", "Hotel"};
 
@@ -95,7 +95,7 @@ public class BuildController {
         return deedToBuildOn;
     }
 
-    private Deed_Buildable[] selectLots(Player currentPlayer) {
+    private Deed_Buildable[] selectLots(Player currentPlayer, String actionType) {
         ArrayList<Deed_Buildable> updatedDeedList = new ArrayList<Deed_Buildable>();
         Deed_Buildable[] playerDeeds = currentPlayer.getBuildableDeeds();
         for (int j = 0; j < currentPlayer.getBuildableDeeds().length; j++) {
@@ -107,7 +107,7 @@ public class BuildController {
         boolean selectingMoreLots = true;
         while (selectingMoreLots) {
 
-            String userLot = guiController.getUserLot(currentPlayer, updatedDeedList);
+            String userLot = guiController.getUserLot(currentPlayer, updatedDeedList, actionType);
             selectedLots.add(getDeedFromName(userLot, currentPlayer));
             updatedDeedList.remove(getDeedFromName(userLot, currentPlayer));
             if (updatedDeedList.size() == 0) {

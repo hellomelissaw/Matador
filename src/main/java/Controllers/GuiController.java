@@ -344,7 +344,7 @@ public class GuiController {
 
 
     // METHODS FOR HOUSES AND HOTELS
-    public String getUserLot(Player currentPlayer, ArrayList<Deed_Buildable> updatedDeedList) {
+    public String getUserLot(Player currentPlayer, ArrayList<Deed_Buildable> updatedDeedList, String actionType) {
 
         Deed_Buildable[] deeds = new Deed_Buildable[updatedDeedList.size()];
         deeds = updatedDeedList.toArray(deeds);
@@ -354,8 +354,10 @@ public class GuiController {
             deedNames[i] = deeds[i].getDeedName();
         }
 
-
-        return gui.getUserSelection(msg.getText("whichLots"), deedNames);
+        if(actionType.equals("build")) {
+            return gui.getUserSelection(msg.getText("whichLots"), deedNames);
+        } else { return gui.getUserSelection(msg.getText("whichLotsDemo"), deedNames);
+        }
     }
 
     public void setHouseCount(int index, int houseCount){
