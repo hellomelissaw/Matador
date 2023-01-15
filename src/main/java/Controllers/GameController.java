@@ -294,6 +294,13 @@ public class GameController {
 
         private String[] setActionButtons(int i) {
             String[] actionButtons;
+            boolean anyPlayerHasDeeds = false;
+            for(int k = 0 ; k < players.length ; k++) {
+                if (players[k].getPropertyCount() > 0) {
+                    anyPlayerHasDeeds = true;
+                    break;
+                }
+            }
 
             if(players[i].getOwnedFields().length > 0) {
                 if(players[i].getBuildableDeeds().length > 0) {
@@ -307,7 +314,13 @@ public class GameController {
                     actionButtons[1] = "Kast terningerne";
                 }
 
-            } else {
+            } else if (anyPlayerHasDeeds){
+                actionButtons = new String[2];
+                actionButtons[0] = "Handle";
+                actionButtons[1] = "Kast terningerne";
+            }
+
+            else {
                 actionButtons = new String[1];
                 actionButtons[0] = "Kast terningerne";
 
@@ -317,14 +330,15 @@ public class GameController {
 
         private String[] setDealButtons(int i) {
            String[] dealButtons;
-           boolean hasDeeds = players[i].getBuildableDeeds().length > 0 || players[i].getNonBuildableDeeds().length > 0;
-            if(hasDeeds){
+           boolean currentPlayerHasDeeds = players[i].getBuildableDeeds().length > 0 || players[i].getNonBuildableDeeds().length > 0;
+
+           if(currentPlayerHasDeeds){
                 dealButtons = new String[3];
                 dealButtons[0] = "Køb";
                 dealButtons[1] = "Sælg";
                 dealButtons[2] = "Bytte";
 
-            } else {
+           } else {
                 dealButtons = new String[1];
                 dealButtons[0] = "Køb";
 

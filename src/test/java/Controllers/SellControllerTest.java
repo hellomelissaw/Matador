@@ -24,6 +24,7 @@ public class SellControllerTest {
     //Deed_Buildable ratKingdom = new Deed_Buildable(1000, array, "Rat Kingdom", 500);
     DeedSquare_Buildable bunnyPalace = new DeedSquare_Buildable("Bunny Palace", 1200, array, 500);
     DeedSquare_NonBuildable ratKingdom = new DeedSquare_NonBuildable("Rat Kingdom", 1000, array);
+    DeedSquare_Buildable boulevardOfBrokenDreams = new DeedSquare_Buildable("Boulevard of Broken Dreams", 1000, array, 500);
     GUI_Player testGuiPlayer = new GUI_Player("Test Player");
 
     int startBalance = 7000;
@@ -39,6 +40,7 @@ public class SellControllerTest {
 
         bunnyPalace.setOwnerForTesting(players[1]);
         ratKingdom.setOwnerForTesting(players[2]);
+        boulevardOfBrokenDreams.setOwnerForTesting(players[2]);
 
     }
 
@@ -71,7 +73,7 @@ public class SellControllerTest {
     public void player0WantsToBuyAndPlayer1And2LotsShownInArray() {
         sellController.setTestingBuyLot(true,"Bunny Palace", 1000, true);
         sellController.buyLot(players[0], players);
-        String[] expected = {"Bunny Palace", "Rat Kingdom"};
+        String[] expected = {"Bunny Palace", "Boulevard of Broken Dreams", "Rat Kingdom"};
         assertEquals(expected, sellController.getLotOptions());
 
     }
