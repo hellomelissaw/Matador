@@ -30,7 +30,7 @@ public class BuildController {
         String buildingType = guiController.getUserSelection(msg.getText("houseOrHotel"), buildOptions);
 
         if (buildingType.equals("Hus")) {
-            int houseCount = getHouseCount();
+            int houseCount = getHouseCount("build");
             currentPlayer.buyHouse(selectedLotsArr, houseCount);
 
         } else {
@@ -39,6 +39,26 @@ public class BuildController {
             }
 
             currentPlayer.buyHotel(selectedLotsArr);
+
+        }
+    }
+
+    public void demolish() {
+        Deed_Buildable[] selectedLotsArr = selectLots();
+
+        String[] demolishOptions = {"Hus", "Hotel"};
+        String buildingType = guiController.getUserSelection(msg.getText("houseOrHotelDemo"), demolishOptions);
+
+        if (buildingType.equals("Hus")) {
+            int houseCount = getHouseCount("demolish");
+            currentPlayer.sellHouseToBank(selectedLotsArr, houseCount);
+
+        } else {
+            if (testingHouseCount) {
+                setHouseCountForTesting(currentPlayer, 4);
+            }
+
+            currentPlayer.sellHotelToBank(selectedLotsArr);
 
         }
     }
@@ -81,9 +101,13 @@ public class BuildController {
         return selectedLots.toArray(selected);
     }
 
-    private int getHouseCount() {
+    private int getHouseCount(String action) {
         String[] countOptions = {"1", "2", "3", "4"};
-        String userHouseCount = guiController.getUserSelection(msg.getText("howManyBuildings"), countOptions);
+        String userHouseCount;
+        if(action.equals("build")) {
+            userHouseCount = guiController.getUserSelection(msg.getText("howManyBuildings"), countOptions);
+        } else { userHouseCount = guiController.getUserSelection(msg.getText("howManyBuildingsDemo"),countOptions);
+        }
         int houseCount = Integer.parseInt(userHouseCount);
         System.out.println("House count: " + houseCount);
 

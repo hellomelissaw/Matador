@@ -104,7 +104,9 @@ chooseAction; vælg venligst én handling
 whichLots; Hvilke grunde vil du bygge på?
 selectMoreLots; Vil du vælge flere grunde?
 houseOrHotel; Hvilken type bygning vil du bygge?
+houseOrHotelDemo; Hvilken type bygning vil du sælge tilbage til banken?
 howManyBuildings; Hvor mange bygninger vil du bygge på hver af de valgte grunde?
+howManyBuildingsDemo; Hvor mange bygninger vil du sælge tilbage fra hver at de valgte grunde?
 insufficientFunds; Du har ikke nok penge til at bygge det hele.
 houseCountUnequal; Du skal bygge en jævn mængde hus på alle grunde i gruppen før du kan bygge videre.
 thanksForPurchase; Tak for dit køb! Tryk OK til at fortsætte.
