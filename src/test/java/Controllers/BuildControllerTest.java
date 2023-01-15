@@ -45,10 +45,29 @@ public class BuildControllerTest {
         Deed_Buildable[] deeds = new Deed_Buildable[1];
         deeds[0] = ponyFarm.getDeed();
         buildController.build(testPlayer);
+        assertEquals(2, ponyFarm.getDeed().getHouseCount());
 
         buildController.testing(true,"Hus",1);
         buildController.demolish(testPlayer);
         assertEquals(1, ponyFarm.getDeed().getHouseCount());
+    }
+
+    @Test
+    public void playerHas1HotelOnPonyFarmAndSellsItBackToBank() {
+        buildController.testing(true,"Hus",4);
+        Deed_Buildable[] deeds = new Deed_Buildable[1];
+        deeds[0] = ponyFarm.getDeed();
+        buildController.build(testPlayer);
+        assertEquals(4,ponyFarm.getDeed().getHouseCount());
+
+        buildController.testing(true,"Hotel",0);
+        buildController.build(testPlayer);
+        assertEquals(0,ponyFarm.getDeed().getHouseCount());
+        assertTrue(ponyFarm.getDeed().hasHotel());
+
+        buildController.testing(true,"Hotel",0);
+        buildController.demolish(testPlayer);
+        assertFalse(ponyFarm.getDeed().hasHotel());
     }
 
 }
