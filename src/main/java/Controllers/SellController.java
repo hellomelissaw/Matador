@@ -194,4 +194,5 @@ public class SellController {
     public String[] getLotOptions() {
         return lotOptions;
     }
+
 }
