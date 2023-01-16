@@ -39,5 +39,8 @@ public class LandOnSquareTest {
 
     }
 
-
+    @Test
+    public void landOnParking() {
+        assertEquals("Parkering", board[20].getSquareName());
+    }
 }
