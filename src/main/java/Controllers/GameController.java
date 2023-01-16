@@ -286,7 +286,8 @@ public class GameController {
                                     sellController.sellLot(players[i], players);
 
                                 } else {
-                                    System.out.println("Player wants to trade");/*sellController.tradeLot(players[i], players);*/}
+                                    sellController.tradeLot(players[i], players);
+                                }
 
                             } else {
                                 rollDice = true;
