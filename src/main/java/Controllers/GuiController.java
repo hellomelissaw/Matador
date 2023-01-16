@@ -13,7 +13,7 @@ public class GuiController {
     private GUI gui;
     private GUI_Player[] guiPlayers;
     int playerCount;
-    private GUI_Car guiCar[] = new GUI_Car[playerCount];
+
     Text msg;
     private GUI_Field[] fields   ;
     GUI_Ownable[] ownable = new GUI_Ownable[40];

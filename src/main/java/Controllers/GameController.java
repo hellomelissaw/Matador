@@ -13,7 +13,7 @@ import java.awt.*;
 
 public class GameController {
     boolean useCupStub = false;
-    boolean testingInit = true;
+    boolean testingInit = false;
     boolean testingBuildButton = false;
     boolean testStartBalance = false;
     GuiController guiController = new GuiController();
@@ -26,7 +26,8 @@ public class GameController {
     Player[] players;
     Square[] squares;
 
-
+    String[] color = {"Cyan" , "Lyserød" , "Gul" , "Grøn" ,"Rød" ,"Blå","Hvid"};
+    String carColor;
     int playerCount = 0;
 
     int jailCounter = 0;
@@ -111,6 +112,8 @@ public class GameController {
                 // playerCount = userInput.nextInt();
                 //System.out.println(playerCount);
                 playerCount = guiController.getUserInteger(msg.getText("enterPlayerCount"));
+
+
                 if (playerCount >= 3 && playerCount <= 6) {
                     playerCountInvalid = false;
 
@@ -121,7 +124,7 @@ public class GameController {
             }
             balance = 30000;//SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
 
-            Color[] COLORSset = {Color.red, Color.white, Color.blue, Color.yellow, Color.pink, Color.black};//COLOR ARRAY FOR THE CAR
+            //Color[] COLORSset = {Color.red, Color.white, Color.blue, Color.yellow, Color.pink, Color.black};//COLOR ARRAY FOR THE CAR
             players = new Player[playerCount];
 
             for (int i = 0; i < playerCount; i++) {
@@ -129,7 +132,22 @@ public class GameController {
                 boolean duplicateName = true;
                 while(duplicateName) {
                     userInput = guiController.getUserString(playerNumber);
-
+                    carColor = guiController.getUserSelection("Hvilke farve skal være din bil?", color);
+                    for (int j = 0; j < color.length; j++) {// check color duplicated, and remove the color from the color array, and the next player is not allowed to choos the same color
+                        if (color[j] != null && color[j].equals(carColor)) {
+                            color[j] = null;
+                            String[] tempColor = new String[color.length-1];
+                            boolean foundColor = false;
+                            for (int k = 0; k < color.length-1; k++) {
+                                if (color[k] == null || foundColor) {
+                                    foundColor = true;
+                                    tempColor[k] = color[k+1];
+                                }
+                                else tempColor[k] = color[k];
+                            }
+                            color = tempColor;
+                        }
+                    }
                     if (i == 0) {
                         duplicateName = false;
                         System.out.println("First Player");
@@ -152,7 +170,8 @@ public class GameController {
                 players[i].setGui(guiController.createGuiPlayer(players[i]),guiController,msg);
                 players[i].setBank(bank); //INITIALISE BANK WITHIN PLAYER
                 players[i].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
-                players[i].setCarColor(COLORSset[i]);// SET CAR COLOR FOR EACH PLAYER
+                //players[i].setCarColor(COLORSset[i]);// SET CAR COLOR FOR EACH PLAYER
+                setCarColor(carColor, players[i]);
 
 
             }
@@ -318,8 +337,28 @@ public class GameController {
 
         }
 
+    public void setCarColor(String color, Player player) {
+        switch (carColor) {
 
-    }
+            case "Lyserød":
+                player.setCarColor(Color.pink);
+                break;
+            case "Gul":
+                player.setCarColor(Color.yellow);
+                break;
+            case "Grøn":
+                player.setCarColor(Color.green);
+                break;
+            case "Blå":
+                player.setCarColor(Color.blue);
+                break;
+            case "Hvid":
+                player.setCarColor(Color.white);
+                break;
+            case "Cyan":
+                player.setCarColor(Color.cyan);
+                break;
+    }}}
 
 
 
