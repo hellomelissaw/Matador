@@ -165,15 +165,14 @@ public class GameController {
 
     }
 
-    public void run() {
+    public void run(Cup cup) {
 
-        Cup cup;
-        if (useCupStub) {
+        /*if (useCupStub) {
             cup = new Cup_stub(guiController);
         } else {
             cup = new Cup(guiController);
         }
-
+*/
         int newPosition;
         int fine = 1000;
 
