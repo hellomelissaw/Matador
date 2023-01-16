@@ -16,7 +16,7 @@ public abstract class DeedSquare extends Square{
 
     int groupSize;
 
-
+    boolean startAuction = false;
     /**
      * Constructs a Square of type DeedSquare (ownable Square)
      * @param deedName name of the Deed for the Square (for example "The Skate Park").
@@ -74,6 +74,7 @@ public abstract class DeedSquare extends Square{
 
                 } else {
                     valid = true;
+                    startAuction = true;
                     System.out.println("Spilleren køber ikke grunden.");
                 }
             }
@@ -100,5 +101,9 @@ public abstract class DeedSquare extends Square{
 
     public Class getDeedType(Deed deed){
         return deed.getClass();
+    }
+
+    public boolean auctionIsStarting() {
+        return startAuction;
     }
 }
