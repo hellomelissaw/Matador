@@ -6,7 +6,6 @@ import GameComponents.Cup_stub;
 import GameComponents.Player;
 import Translator.*;
 import GameComponents.Bank;
-import gui_fields.GUI_Player;
 
 import java.awt.*;
 
@@ -246,6 +245,7 @@ public class GameController {
 
                             if (userChoice.equals("Byg")) {
                                 //buildController.setCurrentPlayer(players[i]);
+                                String[] buildingsButtons = setBuildButtons(i);
                                 buildController.build(players[i]);
 
                             } else if (userChoice.equals("Handle")) {
@@ -327,6 +327,38 @@ public class GameController {
             }
             return actionButtons;
         }
+
+        private String[] setBuildButtons(int i) {
+            String[] buildingButtons;
+            boolean hasHouses = false;
+            boolean hasHotels = false;
+            Deed_Buildable[] deeds = players[i].getBuildableDeeds();
+            for (int j = 0; j < deeds.length; j++) {
+                if (deeds[j].getHouseCount() > 0) {
+                    hasHouses = true;
+                    break;
+                } else if (deeds[j].hasHotel()) {
+                    hasHotels = true;
+                }
+            }
+
+            if(hasHouses && hasHotels) {
+                buildingButtons = new String[2];
+                buildingButtons[0] = "Hus";
+                buildingButtons[1] = "Hotel";
+            } else if (hasHouses && !hasHotels) {
+                buildingButtons = new String[1];
+                buildingButtons[0] = "Hus";
+            } else if (!hasHouses && hasHotels) {
+                buildingButtons = new String[1];
+                buildingButtons[0] = "Hotel";
+            } else {
+                System.out.println("Player has no buildings");
+                buildingButtons = new String[0];}
+
+            return buildingButtons;
+        }
+
 
         private String[] setDealButtons(int i) {
            String[] dealButtons;
