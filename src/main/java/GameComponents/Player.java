@@ -23,6 +23,8 @@ public class Player {
     DeedSquare deedSquare;
     int squareCount = 40;
 
+    public int netWorth;
+
     private boolean inJail = false;
 
     int counter = 0;
@@ -84,6 +86,7 @@ public class Player {
 
     public void setStartBalance(int startBalance, boolean transactionToBankParameter) {
         playerAccount.deposit(startBalance);
+        netWorth += startBalance;
         if (guiOn) {
             guiPlayer.setBalance(startBalance);
         }
