@@ -1,13 +1,10 @@
 package Controllers;
 
-import GameComponents.Bank;
+import GameComponents.*;
 import GameComponents.Board.BoardInit;
 import GameComponents.Board.ChanceCard;
 import GameComponents.Board.ChanceSquare;
 import GameComponents.Board.Square;
-import GameComponents.Cup;
-import GameComponents.Cup_stub;
-import GameComponents.Player;
 import Translator.Text;
 
 import java.util.Objects;
@@ -149,14 +146,7 @@ public class GameControllerDevMode {
 
     }
 
-    public void run() {
-         // SET TO TRUE WHEN TESTING LANDING ON SPECIFIC SQUARE (SET SUM IN Cup_stub)
-        Cup cup;
-        if (useCupStub) {
-            cup = new Cup_stub(guiController);
-        } else {
-            cup = new Cup(guiController);
-        }
+    public void run(Cup2 cup) {
 
         int newPosition;
         int fine = 1000;
@@ -196,7 +186,7 @@ public class GameControllerDevMode {
 
                             msg.printText("rollDice", players[i].getPlayerName());
 
-                            boolean sameValue = cup.rollAndCheckEqualValueOfDice();
+                            boolean sameValue = cup.roll().isSame();
                             players[i].jailIncrement();
 
                             if (sameValue) {

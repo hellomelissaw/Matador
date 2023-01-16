@@ -1,4 +1,7 @@
 import Controllers.GameControllerDevMode;
+import GameComponents.RandomCup;
+
+import java.util.Random;
 
 
 public class Game_DevMode {
@@ -7,8 +10,7 @@ public class Game_DevMode {
         GameControllerDevMode game = new GameControllerDevMode();
 
         game.init();
-        game.run();
-        //game.run(new Cup());
+        game.run(new RandomCup(new Random()));
 
     }
 }
