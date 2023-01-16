@@ -19,6 +19,7 @@ public class SellControllerTest {
 
     Player[] players = new Player[3];
     int[] array = {1000,50,250,750,2250,4000,6000};
+    int[] arrayBuildable = {1000,50,250,750,2250,4000,6000};
     Deed_Buildable deedBuildable = new Deed_Buildable(1200 ,array,"Rødorvrevej",500);
     //Deed_NonBuildable bunnyPalace = new Deed_NonBuildable(1000, array, "Bunny Palace");
     //Deed_Buildable ratKingdom = new Deed_Buildable(1000, array, "Rat Kingdom", 500);
@@ -50,6 +51,11 @@ public class SellControllerTest {
         Deed_NonBuildable deed = new Deed_NonBuildable(100,array,"Shipping");
         testPlayer.takeNonBuildableDeed(deed);
         assertEquals("Shipping" , testPlayer.getNonBuildableDeeds()[0].getDeedName());
+    }
+    @Test
+    public void testPlayerTakeBuildableDeed(){
+        testPlayer.takeBuildableDeed(deedBuildable);
+        assertEquals("Rødorvrevej",testPlayer.getBuildableDeeds()[0].getDeedName());
     }
     @Test
     public void testGetOwnedFields(){
