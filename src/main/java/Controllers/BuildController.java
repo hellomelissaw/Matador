@@ -139,4 +139,61 @@ public class BuildController {
         Deed_Buildable[] deeds = currentPlayer.getBuildableDeeds();
         currentPlayer.buyHouse(deeds,houseCountForTesting);
     }
+
+    private String[] setDemolishButtons(int i) {
+        String[] demolishButtons;
+        boolean hasHouses = false;
+        boolean hasHotels = false;
+        Deed_Buildable[] deeds = currentPlayer.getBuildableDeeds();
+        for (int j = 0; j < deeds.length; j++) {
+            if (deeds[j].getHouseCount() > 0) {
+                hasHouses = true;
+                break;
+            } else if (deeds[j].hasHotel()) {
+                hasHotels = true;
+            }
+        }
+        if(hasHouses && hasHotels) {
+            demolishButtons = new String[2];
+            demolishButtons[0] = "Hus";
+            demolishButtons[1] = "Hotel";
+
+        } else if (hasHouses && !hasHotels) {
+            demolishButtons = new String[1];
+            demolishButtons[0] = "Hus";
+        } else if (!hasHouses && hasHotels) {
+            demolishButtons = new String[1];
+            demolishButtons[0] = "Hotel";
+        } else {
+            System.out.println("Player has no buildings");
+            demolishButtons = new String[0];}
+
+        return demolishButtons;
+    }
+
+    private String[] setBuildButtons(int i) {
+        String[] buildButtons;
+        boolean hasFourHouses = false;
+        Deed_Buildable[] deeds = currentPlayer.getBuildableDeeds();
+        for (int j = 0; j < deeds.length; j++) {
+
+            if (deeds[j].getHouseCount() == 4) {
+                hasFourHouses = true;
+            }
+        }
+
+        if(deeds.length > 0) {
+            if(hasFourHouses) {
+                buildButtons = new String[2];
+                buildButtons[0] = "Hus";
+                buildButtons[1] = "Hotel";
+            } else {
+                buildButtons = new String[1];
+                buildButtons[0] = "Hus";
+            }
+        } else {buildButtons = new String[0];
+            System.out.println("Player does not owns lots");}
+        return buildButtons;
+
+    }
 }
