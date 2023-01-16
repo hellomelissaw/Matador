@@ -247,11 +247,13 @@ public class GameController {
                                 //buildController.setCurrentPlayer(players[i]);
                                 String[] constructionOptions = setConstructionButtons(i);
                                 String constructChoice = guiController.getUserSelection(msg.getText("buildOrDemo"), constructionOptions);
+
                                 if (constructChoice.equals("Byg")){
                                    buildController.build(players[i]);
 
-                                } else { buildController.demolish(players[i]);}
-                                buildController.demolish(players[i]);
+                                } else { buildController.demolish(players[i]);
+
+                                }
 
 
                             } else if (userChoice.equals("Handle")) {
