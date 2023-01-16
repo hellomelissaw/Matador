@@ -17,15 +17,19 @@ public class CardDeed extends ChanceCard {
     public void playCard(Player currentPlayer) { //
         int[] shipyardIndex = {5, 15, 25, 35};
         int diff = 39;
-        for (int i = 0 ; i < shipyardIndex.length ; i++) { // CALCULATES WHICH SHIPYARD IS THE NEAREST TO PLAYER
-            int newDiff = Math.abs(currentPlayer.getPosition()-shipyardIndex[i]);
+        if (currentPlayer.getPosition() == 2 || currentPlayer.getPosition() == 36 ){
+            currentPlayer.updatePosition(shipyardIndex[0]-currentPlayer.getPosition());
 
-            if(newDiff < diff) {
-                diff = newDiff;
-            }
+        } if (currentPlayer.getPosition() == 7) {
+            currentPlayer.updatePosition(shipyardIndex[1] - currentPlayer.getPosition());
+
+        } if (currentPlayer.getPosition() == 17 || currentPlayer.getPosition() == 22 ) {
+            currentPlayer.updatePosition(shipyardIndex[2] - currentPlayer.getPosition());
+
+        } if (currentPlayer.getPosition() == 33) {
+            currentPlayer.updatePosition(shipyardIndex[3] - currentPlayer.getPosition());
         }
-        currentPlayer.updatePosition(diff);
-        board[currentPlayer.getPosition() + diff].landOn(currentPlayer);
 
     }
+
 }

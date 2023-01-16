@@ -21,8 +21,9 @@ public class CardMove extends ChanceCard {
         this.moveType = moveType;
     }
 
+
     public void playCard(Player currentPlayer) {
-        if (moveType == "index"){ // MOVES PLAYER TO A GIVEN INDEX
+        if (moveType == "index") { // MOVES PLAYER TO A GIVEN INDEX
             int distance = currentPlayer.getDistanceToMove(move, 40);
             currentPlayer.updatePosition(distance);
             pickAgain = false;

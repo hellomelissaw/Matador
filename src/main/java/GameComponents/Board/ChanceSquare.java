@@ -51,12 +51,12 @@ public class ChanceSquare extends Square{
         chanceCards[31] = new CardMove("chance32", guiController,-3, "distance");
         chanceCards[32] = new CardMove("chance33", guiController,-3, "distance");
         chanceCards[33] = new CardMove("chance34", guiController, 11,"index");
-        chanceCards[34] = new CardDeed("chance35", guiController);
-        chanceCards[35] = new CardDeed("chance36", guiController);
+        chanceCards[34] = new CardDeed("chance35", guiController);// Ryk frem til det nærmeste rederi og betal ejeren to gange den leje han ellers er berettiget til, hvis selskabet ikke ejes af nogen kan De selv købe det.
+        chanceCards[35] = new CardDeed("chance36", guiController); //Ryk frem til det nærmeste rederi og betal ejeren to gange den leje han ellers er berettiget til, hvis selskabet ikke ejes af nogen kan De selv købe det.
         chanceCards[36] = new CardMove("chance37", guiController, 15,"index"); //Tag med Mols-Linjen, flyt brikken frem og hvis De passerer START indkassér da kr 4000. (test)
         chanceCards[37] = new CardMove("chance38", guiController, 24,"index");
         chanceCards[38] = new CardMove("chance39", guiController, 32,"index");
-        chanceCards[39] = new CardMove("chance40", guiController, 5, "index"); // Tag med den nærmeste færge, hvis de passerer start indkasser da kr 4000 (felter 5, 25, 35) (waiting on the ferry square)
+        chanceCards[39] = new CardDeed("chance40", guiController); // Tag med den nærmeste færge, hvis de passerer start indkasser da kr 4000 (felter 5, 25, 35) (waiting on the ferry square)
         chanceCards[40] = new CardMove("chance41", guiController, 19,"index");
         chanceCards[41] = new CardMove("chance42", guiController, 39,"index");
         chanceCards[42] = new CardMove("chance43", guiController, 30,"index"); // I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det. (waiting on updated jailsquare)
@@ -93,7 +93,8 @@ public class ChanceSquare extends Square{
         while(pickAgain){
 
             if(!testing){
-                cardIndex = (int) (Math.random() * (45 - 1));
+                //(int) (Math.random() * (45 - 1));
+                cardIndex = 35;
             }
             chanceCards[cardIndex].printMessage(cardIndex);
             System.out.println("Card picked: " + cardIndex);
