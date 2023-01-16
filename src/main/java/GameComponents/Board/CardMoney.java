@@ -37,8 +37,10 @@ public class CardMoney extends ChanceCard {
             currentPlayer.netWorth += amount;
             //currentPlayer.updateBank(amount, "deposit");
 
-        } else if (transactionType.equals("withdraw")) { // PLAYER PAYS MONEY TO THE BANK
+        }
+        else if (transactionType.equals("withdraw")) { // PLAYER PAYS MONEY TO THE BANK
             currentPlayer.withdrawMoney(amount, true);
+            currentPlayer.netWorth += amount;
             //currentPlayer.updateBank(amount, "withdraw");
 
             if(cardName.equals("chance1") || cardName.equals("chance2")) {
@@ -53,7 +55,9 @@ public class CardMoney extends ChanceCard {
 
                 int newAmount = amount*houseCounter + alternativeAmount*hotelCounter;
                 currentPlayer.withdrawMoney(newAmount, true);
+                currentPlayer.netWorth += amount;
             } else currentPlayer.withdrawMoney(amount, true);
+            currentPlayer.netWorth += amount;
 
         } else if (transactionType.equals("hybrid")) { // PLAYER RECEIVES MONEY FROM OTHER PLAYERS
             for (int i = 0 ; i < players.length ; i++) {
@@ -64,6 +68,9 @@ public class CardMoney extends ChanceCard {
             int receive = amount * (players.length-1);
             currentPlayer.depositMoney(receive, false);
 
+        }
+        if(cardName.equals("chance25")){
+            guiController.showMessage("din netværdi er: " + currentPlayer.netWorth);
         }
     }
 }

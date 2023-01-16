@@ -60,6 +60,10 @@ public class Player {
 
     }
 
+    public int getNetWorth(){
+        return netWorth;
+    }
+
     public void setCarColor (Color color){
         guiPlayer.getCar().setPrimaryColor(color);
     }//SETS COLOR FOR THE CARS
