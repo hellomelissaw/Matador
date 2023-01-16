@@ -297,11 +297,12 @@ public class SellController {
         int playerIndex = 0;
         for(int i = 0 ; i < players.length ; i++) {
             if(players[i].getPlayerName().equals(bidderName)){
-               indexCount = i;
+                playerIndex = i;
             }
         }
         Player auctionWinner = players[playerIndex];
         auctionWinner.withdrawMoney(offer, true);
+        deed.setOwner(auctionWinner);
         auctionWinner.addToCardholder(deed);
         auctionWinner.addToOwnedFields(deed);
         msg.printText("soldHighestBidder", "Tillykke " + bidderName + "! ");
