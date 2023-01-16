@@ -85,4 +85,11 @@ public class DeedSquare_NonBuildable extends DeedSquare {
         deed.setDeedGroup(color, groupSize);
     }
 
+    public void setOwnerForTesting(Player player){
+        deed.setOwner(player);
+        player.takeNonBuildableDeed(deed);
+        player.addToOwnedFields(deed);
+
+    }
+
 }

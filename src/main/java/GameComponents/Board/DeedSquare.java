@@ -98,4 +98,7 @@ public abstract class DeedSquare extends Square{
     }
 
 
+    public Class getDeedType(Deed deed){
+        return deed.getClass();
+    }
 }
