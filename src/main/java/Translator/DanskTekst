@@ -122,3 +122,6 @@ giveLowerPrice; Du har ikke nok penge. Kom venligst med et lavere tilbud.
 offerNotAccepted; Dit tilbud er desværre blev afvist.
 whichLotToTrade; Vælg venligst hvilken af dine grunde, du vil bytte.
 whichLotToGet; Vælg venligst den grund, du vil anmode om at få retur.
+higherBidder; Er der nogen, der vil give mere for grunden?
+soldHighestBidder; Solgt til højstbydende!
+lowerThanPrevious; Du har budt lavere end den foregående tilbud, derfor bliver dit bud forkastet.

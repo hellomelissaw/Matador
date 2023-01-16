@@ -99,7 +99,7 @@ public class SellController {
 
             }
 
-
+    // BUY LOT METHOD AND HELPER METHODS
     boolean testingBuyLot;
     String chosenDeedName = "";
     boolean offerAccepted = false;
@@ -201,6 +201,8 @@ public class SellController {
     public String[] getLotOptions() {
         return lotOptions;
     }
+
+    // TRADE LOT METHOD AND HELPER METHODS
     boolean testingTradeLot = false;
     String currentPlayerDeed;
     String otherPlayerDeed;
@@ -261,4 +263,43 @@ public class SellController {
         this.offerAccepted = offerAccepted;
     }
 
+    //  AUCTION LOT METHOD AND HELPER METHODS
+    boolean testingAuctionLot = false;
+    String bidderName;
+    int offer;
+    boolean higherBidder;
+    public void auctionLot(Player nonParticipant, Player[] players) {
+        String[] bidderArray = new String[players.length - 1];
+        int indexCount = -1;
+        for (int i = 0; i < playerCount; i++) {
+
+            if (players[i] != nonParticipant) {
+                indexCount++;
+                bidderArray[indexCount] = players[i].getPlayerName();
+            }
+        }
+        int previousOffer = 0;
+        while(higherBidder) {
+            if (!testingAuctionLot) {
+                bidderName = guiController.getUserSelection(msg.getText("areThereBidders"), bidderArray);
+                offer = guiController.getUserInteger(bidderName + ", " + msg.getText("enterOfferedPrice"));
+                if(offer < previousOffer) {
+                    msg.printText("lowerThanPrevious", "na");
+                }
+
+                higherBidder = guiController.getUserBoolean(msg.getText("higherBidder"));
+
+                if(higherBidder){
+                    previousOffer = offer;
+                }
+            }
+        }
+        msg.printText("soldHighestBidder", "Tillykke " + bidderName + "! ");
+    }
+
+    public void setTestingAuctionLot (boolean testingAuctionLot, String bidderName, int offer) {
+        this.testingAuctionLot = testingAuctionLot;
+        this.bidderName = bidderName;
+        this.offer = offer;
+    }
 }
