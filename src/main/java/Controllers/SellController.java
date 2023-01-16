@@ -7,6 +7,9 @@ import GameComponents.Cardholder;
 import GameComponents.Player;
 import Translator.Text;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class SellController {
     public SellController(GuiController guiController , Text msg ) {
         this.guiController = guiController;
@@ -89,4 +92,107 @@ public class SellController {
             }
         }
     }
+    boolean testingBuyLot;
+    String chosenDeedName = "";
+    int offeredPrice = 0;
+    boolean offerAccepted = false;
+    String[] lotOptions;
+    public void buyLot(Player buyer, Player[] players) {
+        String[] options = setLotOptions(buyer, players);
+
+        if(!testingBuyLot) {
+            chosenDeedName = guiController.getUserSelection(msg.getText("whichLotBuy"), options);
+            offeredPrice = guiController.getUserInteger(msg.getText("enterOfferedPrice"));
+        }
+
+        boolean insufficientFunds = offeredPrice > buyer.getCurrentBalance();
+        while(insufficientFunds) {
+
+            offeredPrice = guiController.getUserInteger(msg.getText("giveLowerPrice"));
+
+            if(offeredPrice <= buyer.getCurrentBalance()){
+                insufficientFunds = false;
+            }
+        }
+
+                Deed chosenDeed = getDeedFromName(chosenDeedName, players);
+                Player owner = chosenDeed.getOwner();
+                String ownerName = owner.getPlayerName();
+
+                if(!testingBuyLot) {
+                    offerAccepted = guiController.getUserBoolean(ownerName + msg.getText("acceptOffer"));
+                }
+
+                if (offerAccepted) {
+                        buyer.withdrawMoney(offeredPrice, false);
+                        owner.depositMoney(offeredPrice, false);
+                        owner.removeFromOwnedFields(chosenDeed);
+                        owner.removeFromCardholder(chosenDeed);
+                        chosenDeed.setOwner(buyer);
+                        buyer.addToOwnedFields(chosenDeed);
+                        buyer.addToCardholder(chosenDeed);
+
+                } else {msg.printText("offerNotAccepted", "na");}
+
+    }
+    ArrayList<Deed> playersDeeds = new ArrayList<Deed>();
+    private Deed getDeedFromName(String chosenDeedName, Player[] allPlayers) {
+    int currentDeedIndex = 0;
+        for(int i = 0 ; i < playersDeeds.size() ; i++) {
+            String currentDeedName = playersDeeds.get(i).getDeedName();
+            if(currentDeedName.equals(chosenDeedName)){
+               currentDeedIndex = i;
+            }
+        }
+        Deed deed = playersDeeds.get(currentDeedIndex);
+        return deed;
+    }
+
+    private String[] setLotOptions(Player currentPlayer, Player[] allPlayers) {
+        ArrayList<String> lotArrList = new ArrayList<String>();
+        System.out.println("Players arr length: " + allPlayers.length);
+
+        for (int m = 0 ; m < allPlayers.length ; m++) {
+            if(!allPlayers[m].equals(currentPlayer)) {
+
+               Deed_Buildable[] bd = allPlayers[m].getBuildableDeeds();
+                Deed_NonBuildable[] nbd = allPlayers[m].getNonBuildableDeeds();
+
+                if(bd.length>0) {
+                    for (int l = 0; l < bd.length; l++) {
+                        lotArrList.add(bd[l].getDeedName());
+                        playersDeeds.add(bd[l]);
+                    }
+                }
+
+                if(nbd.length > 0) {
+                    for (int l = 0; l < nbd.length; l++) {
+                        lotArrList.add(nbd[l].getDeedName());
+                        playersDeeds.add(nbd[l]);
+                    }
+                }
+
+
+            }
+
+
+        }
+        lotOptions = new String[lotArrList.size()];
+        lotOptions = lotArrList.toArray(lotOptions);
+        return lotOptions;
+    }
+
+
+    public void setTestingBuyLot(boolean testingBuyLot, String chosenDeedName, int offeredPrice, boolean accept) {
+        this.testingBuyLot = testingBuyLot;
+        this.chosenDeedName = chosenDeedName;
+        this.offeredPrice = offeredPrice;
+        offerAccepted = accept;
+
+    }
+
+    public String[] getLotOptions() {
+        return lotOptions;
+    }
+
 }

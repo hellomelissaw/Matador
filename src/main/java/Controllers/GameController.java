@@ -17,7 +17,7 @@ import java.awt.*;
 public class GameController {
     boolean useCupStub = false;
     boolean testingInit = true;
-    boolean testingBuildButton = false;
+    boolean testingBuildButton = true;
     boolean testStartBalance = false;
     GuiController guiController = new GuiController();
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
@@ -262,13 +262,33 @@ public class GameController {
                             String[] userActionButtons = setActionButtons(i);
                             String userChoice = guiController.getUserAction(players[i].getPlayerName(), userActionButtons);
 
-                            if (userChoice.equals("Byg")) {
-                                buildController.setCurrentPlayer(players[i]);
-                                buildController.build();
+                            if (userChoice.equals("Bygninger")) {
+                                //buildController.setCurrentPlayer(players[i]);
+                                String[] constructionOptions = setConstructionButtons(i);
+                                String constructChoice = guiController.getUserSelection(msg.getText("buildOrDemo"), constructionOptions);
 
-                            } else if (userChoice.equals("Sælg")) {
-                                System.out.println("player chose saelg");
-                                sellController.sellLot(players[i], players);
+                                if (constructChoice.equals("Byg")){
+                                   buildController.build(players[i]);
+
+                                } else { buildController.demolish(players[i]);
+
+                                }
+
+
+                            } else if (userChoice.equals("Handle")) {
+                                System.out.println("player chose handle");
+                                String[] userDealButtons = setDealButtons(i);
+                                String dealChoice = guiController.getUserAction(players[i].getPlayerName(), userDealButtons);
+
+
+                                if (dealChoice.equals("Køb")) {
+                                    sellController.buyLot(players[i], players);
+
+                                } else if (dealChoice.equals("Sælg")) {
+                                    sellController.sellLot(players[i], players);
+
+                                } else {
+                                    System.out.println("Player wants to trade");/*sellController.tradeLot(players[i], players);*/}
 
                             } else {
                                 rollDice = true;
@@ -302,25 +322,88 @@ public class GameController {
 
         private String[] setActionButtons(int i) {
             String[] actionButtons;
+            boolean anyPlayerHasDeeds = false;
+            for(int k = 0 ; k < players.length ; k++) {
+                if (players[k].getPropertyCount() > 0) {
+                    anyPlayerHasDeeds = true;
+                    break;
+                }
+            }
 
             if(players[i].getOwnedFields().length > 0) {
                 if(players[i].getBuildableDeeds().length > 0) {
                     actionButtons = new String[3];
-                    actionButtons[0] = "Byg";
-                    actionButtons[1] = "Sælg";
+                    actionButtons[0] = "Bygninger";
+                    actionButtons[1] = "Handle";
                     actionButtons[2] = "Kast terningerne";
                 }  else {
                     actionButtons = new String[2];
-                    actionButtons[0] = "Sælg";
+                    actionButtons[0] = "Handle";
                     actionButtons[1] = "Kast terningerne";
                 }
 
-            } else {
+            } else if (anyPlayerHasDeeds){
+                actionButtons = new String[2];
+                actionButtons[0] = "Handle";
+                actionButtons[1] = "Kast terningerne";
+            }
+
+            else {
                 actionButtons = new String[1];
                 actionButtons[0] = "Kast terningerne";
 
             }
             return actionButtons;
+        }
+
+        private String[] setConstructionButtons(int i) {
+            Deed_Buildable[] deeds = players[i].getBuildableDeeds();
+            String[] constructButtons;
+            boolean hasLots = false;
+            boolean hasBuildings = false;
+
+            for (int j = 0; j < deeds.length; j++) {
+                if(deeds.length > 0){
+                    hasLots = true;
+                }
+            }
+
+            for (int j = 0; j < deeds.length; j++) {
+                if (deeds[j].getHouseCount() > 0 || deeds[j].hasHotel()) {
+
+                    hasBuildings = true;
+                    break;
+                }
+            }
+
+           if(hasLots && !hasBuildings) { // JUST BUILD
+               constructButtons = new String[1];
+               constructButtons[0] = "Byg";
+
+           } else { //BUILD + DEMOLISH
+               constructButtons = new String[2];
+               constructButtons[0] = "Byg";
+               constructButtons[1] = "Sælg tilbage til banken";
+           }
+            return constructButtons;
+        }
+
+        private String[] setDealButtons(int i) {
+           String[] dealButtons;
+           boolean currentPlayerHasDeeds = players[i].getBuildableDeeds().length > 0 || players[i].getNonBuildableDeeds().length > 0;
+
+           if(currentPlayerHasDeeds){
+                dealButtons = new String[3];
+                dealButtons[0] = "Køb";
+                dealButtons[1] = "Sælg";
+                dealButtons[2] = "Bytte";
+
+           } else {
+                dealButtons = new String[1];
+                dealButtons[0] = "Køb";
+
+            }
+            return dealButtons;
         }
 
 

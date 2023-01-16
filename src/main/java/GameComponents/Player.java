@@ -130,18 +130,6 @@ public class Player {
         }
     }
 
-    public String[] playerNameList(Player[] players) {
-
-        String[] playerNameArray = new String[players.length];
-        for (int i = 0; i < players.length; i++) {
-            //playerNameArray = new String[players.length];
-            playerNameArray[i] = players[i].getPlayerName();
-
-
-        }
-        return playerNameArray;
-    }
-
     public int getCurrentBalance() {
         return (playerAccount.getBalance());
     }
@@ -287,14 +275,14 @@ public class Player {
         return deedList;
     }
 
-    //public Player getPlayer(String playerName){
-    //}
     public void addToOwnedFields(Deed deed) {
+
         ownedFields.add(deed);
     }
 
 
     public void removeFromOwnedFields(Deed deed) {
+
         ownedFields.remove(deed);
     }
 
@@ -308,6 +296,10 @@ public class Player {
 
     public Deed[] getPropertiesDeed() {
         return cardholder.getProperties();
+    }
+
+    public int getPropertyCount() {
+        return cardholder.getPropertyCount();
     }
 
     public void buyHouse(Deed_Buildable[] deedsToBuildOn, int housesToBuy) {
