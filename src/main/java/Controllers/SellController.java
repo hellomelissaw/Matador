@@ -201,5 +201,52 @@ public class SellController {
     public String[] getLotOptions() {
         return lotOptions;
     }
+    boolean testingTradeLot = false;
+    String currentPlayerDeed;
+    String otherPlayerDeed;
+    public void tradeLot(Player currentPlayer, Player[] players){
+        String[] currentPlayerDeeds = new String[ currentPlayer.getOwnedFields().length];
+
+        for(int i = 0 ; i < currentPlayer.getOwnedFields().length ; i++){
+            currentPlayerDeeds[i] = currentPlayer.getOwnedFields()[i].getDeedName();
+        }
+
+        String[] otherPlayerDeeds = setLotOptions(currentPlayer, players);
+
+        if(!testingTradeLot) {
+            currentPlayerDeed = guiController.getUserSelection(msg.getText("whichLotToTrade"), currentPlayerDeeds);
+            otherPlayerDeed = guiController.getUserSelection(msg.getText("whichLotToGet"), otherPlayerDeeds);
+        }
+
+        Deed deedToGet = getDeedFromName(otherPlayerDeed, players);
+        Player otherPlayer = deedToGet.getOwner();
+
+        offerAccepted = guiController.getUserBoolean(otherPlayer.getPlayerName() + msg.getText("acceptOffer"));
+
+        if (offerAccepted) {
+            Deed deedToOffer = getDeedFromName(currentPlayerDeed, players);
+            currentPlayer.removeFromOwnedFields(deedToOffer);
+            currentPlayer.removeFromCardholder(deedToOffer);
+            deedToOffer.setOwner(otherPlayer);
+            otherPlayer.addToOwnedFields(deedToOffer);
+            otherPlayer.addToCardholder(deedToOffer);
+
+            otherPlayer.removeFromOwnedFields(deedToGet);
+            otherPlayer.removeFromCardholder(deedToGet);
+            deedToGet.setOwner(currentPlayer);
+            currentPlayer.addToOwnedFields(deedToGet);
+            currentPlayer.addToCardholder(deedToGet);
+
+        } else {msg.printText("offerNotAccepted", "na");}
+
+
+    }
+
+    public void setTestingTradeLot(boolean testingTradeLot, String deedToOffer, String deedToGet, boolean offerAccepted) {
+        this.testingTradeLot = testingTradeLot;
+        this.currentPlayerDeed = deedToOffer;
+        this.otherPlayerDeed = deedToGet;
+        this.offerAccepted = offerAccepted;
+    }
 
 }

@@ -120,3 +120,5 @@ enterOfferedPrice; Til hvilken pris vil du købe grunden?
 acceptOffer; , accepterer du tilbuddet?
 giveLowerPrice; Du har ikke nok penge. Kom venligst med et lavere tilbud.
 offerNotAccepted; Dit tilbud er desværre blev afvist.
+whichLotToTrade; Vælg venligst hvilken af dine grunde, du vil bytte.
+whichLotToGet; Vælg venligst den grund, du vil anmode om at få retur.
