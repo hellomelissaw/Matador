@@ -74,6 +74,10 @@ public class Cardholder {
         return deedCardsArray;
     }
 
+    public int getPropertyCount () {
+        return deedCards_Buildable.size()+deedCards_NonBuildable.size();
+    }
+
     public boolean houseCountIsLevel(String color, Deed_Buildable deed) {
         boolean countIsLevel = false;
         int newCount = deed.getHouseCount() + 1;
