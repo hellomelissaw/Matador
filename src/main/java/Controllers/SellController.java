@@ -267,13 +267,13 @@ public class SellController {
     boolean testingAuctionLot = false;
     String bidderName;
     int offer;
-    boolean higherBidder;
-    public void auctionLot(Player nonParticipant, Player[] players) {
+    boolean higherBidder = true;
+    public void auctionLot(Player nonParticipant, Player[] players, Deed deed) {
         String[] bidderArray = new String[players.length - 1];
         int indexCount = -1;
-        for (int i = 0; i < playerCount; i++) {
+        for (int i = 0; i < players.length; i++) {
 
-            if (players[i] != nonParticipant) {
+            if (!players[i].equals(nonParticipant)) {
                 indexCount++;
                 bidderArray[indexCount] = players[i].getPlayerName();
             }
@@ -294,12 +294,23 @@ public class SellController {
                 }
             }
         }
+        int playerIndex = 0;
+        for(int i = 0 ; i < players.length ; i++) {
+            if(players[i].getPlayerName().equals(bidderName)){
+               indexCount = i;
+            }
+        }
+        Player auctionWinner = players[playerIndex];
+        auctionWinner.withdrawMoney(offer, true);
+        auctionWinner.addToCardholder(deed);
+        auctionWinner.addToOwnedFields(deed);
         msg.printText("soldHighestBidder", "Tillykke " + bidderName + "! ");
     }
 
-    public void setTestingAuctionLot (boolean testingAuctionLot, String bidderName, int offer) {
+    public void setTestingAuctionLot (boolean testingAuctionLot, String bidderName, int offer, boolean higherBidder) {
         this.testingAuctionLot = testingAuctionLot;
         this.bidderName = bidderName;
         this.offer = offer;
+        this.higherBidder = higherBidder;
     }
 }

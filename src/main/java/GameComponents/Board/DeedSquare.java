@@ -106,4 +106,6 @@ public abstract class DeedSquare extends Square{
     public boolean auctionIsStarting() {
         return startAuction;
     }
+
+    public abstract Deed getAuctionedDeed();
 }

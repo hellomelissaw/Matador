@@ -111,4 +111,8 @@ public class DeedSquare_Buildable extends DeedSquare {
 
     }
 
+    public Deed getAuctionedDeed () {
+        return deed;
+    }
+
 }

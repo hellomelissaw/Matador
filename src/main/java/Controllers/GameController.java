@@ -12,7 +12,7 @@ import java.awt.*;
 
 public class GameController {
     boolean useCupStub = false;
-    boolean testingInit = false;
+    boolean testingInit = true;
     boolean testingBuildButton = false;
     boolean testStartBalance = false;
     GuiController guiController = new GuiController();
@@ -300,7 +300,8 @@ public class GameController {
                     squares[newPosition].landOn(players[i]);
                     if(squares[newPosition] instanceof DeedSquare){
                         if(((DeedSquare) squares[newPosition]).auctionIsStarting()){
-                            sellController.auctionLot(players[i], players);
+                            Deed deed = ((DeedSquare)squares[newPosition]).getAuctionedDeed();
+                            sellController.auctionLot(players[i], players, deed);
                         }
                     }
                 }

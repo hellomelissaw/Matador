@@ -92,4 +92,8 @@ public class DeedSquare_NonBuildable extends DeedSquare {
 
     }
 
+    public Deed getAuctionedDeed() {
+        return deed;
+    }
+
 }

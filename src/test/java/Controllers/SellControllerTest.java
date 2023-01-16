@@ -28,6 +28,8 @@ public class SellControllerTest {
     DeedSquare_Buildable boulevardOfBrokenDreams = new DeedSquare_Buildable("Boulevard of Broken Dreams", 1000, array, 500);
     GUI_Player testGuiPlayer = new GUI_Player("Test Player");
 
+    DeedSquare_NonBuildable capriciousCarport = new DeedSquare_NonBuildable("Capricious Carport", 1000, array);
+
     int startBalance = 7000;
     public SellControllerTest() {
         testPlayer.guiIsOn(false);
@@ -146,6 +148,15 @@ public class SellControllerTest {
         assertEquals(players[2], ratKingdom.getDeedOwner());
         assertEquals(players[1], bunnyPalace.getDeedOwner());
 
-
     }
+@Test
+    public void player1BidsOnCapriciousCarportAndGetIt(){
+        capriciousCarport.testing(true, "nej");
+        capriciousCarport.landOn(players[0]);
+
+        sellController.setTestingAuctionLot(true,"TestPlayer1", 1000, false);
+
+        assertEquals(players[1], capriciousCarport.getDeedOwner());
+}
+
 }
