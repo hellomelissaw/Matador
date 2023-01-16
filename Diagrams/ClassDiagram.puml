@@ -74,11 +74,26 @@ class ChanceSquare {}
 
 class ChanceCard {}
 
-class JailSquare {}
+class JailSquare {
+- guiController : GuiController
+- die1 : Die
+- die2 : Die
 
-class StartSquare {}
++ JailSquare()
++ LandOn() : void
+}
 
-class ParkingSquare {}
+class StartSquare {
++ StartSquare (startSquare : String)
++ LandOn() : void
+}
+
+class ParkingSquare {
+players : Player[]
+
++ ParkingSquare(freeParkingSquare : String)
++ landOn() : void
+}
 class TaxSquare{
 guiController : GuiController
 - userInput : int

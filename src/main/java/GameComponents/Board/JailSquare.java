@@ -6,11 +6,11 @@ import GameComponents.Cup;
 import GameComponents.Die;
 import GameComponents.Player;
 public class JailSquare extends Square{
-    GuiController guiController;
+    private GuiController guiController;
 
-    Die  die1 = new Die();
-    Die die2 = new Die();
-    int counter = 0;
+    private Die  die1 = new Die();
+    private Die die2 = new Die();
+    private int counter = 0;
 
 
     public JailSquare(String jailSquare, GuiController guiController) {
