@@ -102,7 +102,6 @@ public class GameController {
             for (int i = 0; i < playerCount; i++) {
                 int playerNumber = i + 1;
                 boolean duplicateName = true;
-
                 while(duplicateName) {
                     userInput = guiController.getUserString(playerNumber);
                     carColor = guiController.getUserSelection("Hvilke farve skal være din bil?", color);
