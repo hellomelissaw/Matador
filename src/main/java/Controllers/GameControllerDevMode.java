@@ -1,34 +1,27 @@
 package Controllers;
-import GameComponents.Board.*;
+
+import GameComponents.Bank;
+import GameComponents.Board.BoardInit;
+import GameComponents.Board.ChanceCard;
+import GameComponents.Board.ChanceSquare;
 import GameComponents.Board.Square;
 import GameComponents.Cup;
 import GameComponents.Cup_stub;
 import GameComponents.Player;
-import Translator.*;
-import GameComponents.Bank;
+import Translator.Text;
 
 import java.util.Objects;
 
-import gui_fields.GUI_Player;
-
-import java.awt.*;
-
-
-public class GameController {
+public class GameControllerDevMode {
     boolean useCupStub = false;
     boolean testingInit = true;
-    boolean testingBuildButton = false;
-    boolean testStartBalance = false;
     GuiController guiController = new GuiController();
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
-
-    BuildController buildController = new BuildController(guiController, msg);
-    SellController sellController = new SellController(guiController,msg);
+    //private int playerCount = 0;
     String userInput;
     int balance = 0;
     Player[] players;
     Square[] squares;
-
+    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
 
     int playerCount = 0;
 
@@ -38,64 +31,55 @@ public class GameController {
 
     Bank bank = new Bank();
 
-
     public void init() {
         guiController.setLang(msg);
+        boolean testingInit = true;
         if (testingInit){
             msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+            msg.printText("startGame", "na");
             //msg = new Text("src/main/java/Translator/EnglishText", guiController);
             //guiController.initFieldTitles(msg);
-            playerCount = 6;
-            if(testStartBalance){
-                balance = 4000;
-
-            } else { balance = 30000; }
-
+            playerCount = 3;
+            balance = 30000;
 
             players = new Player[playerCount];
 
             players[0] = new Player("Marc"); // INITIALISE EACH PLAYER WITH NAME
-            players[0].setGui(guiController.createGuiPlayer(players[0]), guiController, msg);
+            players[0].setGui(guiController.createGuiPlayer(players[0]),guiController,msg);
             players[0].setBank(bank); //INITIALISE BANK WITHIN PLAYER
-            players[0].setStartBalance(balance,false); // DEPOSIT INITIAL BALANCE
-            players[0].setCarColor(Color.red);
+            players[0].setStartBalance(balance,true); // DEPOSIT INITIAL BALANCE
 
 
             players[1] = new Player("Germaine"); // INITIALISE EACH PLAYER WITH NAME
-            players[1].setGui(guiController.createGuiPlayer(players[1]), guiController, msg);
+            players[1].setGui(guiController.createGuiPlayer(players[1]),guiController,msg);
             players[1].setBank(bank); //INITIALISE BANK WITHIN PLAYER
-            players[1].setCarColor(Color.white);
             players[1].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
 
             players[2] = new Player("Harry"); // INITIALISE EACH PLAYER WITH NAME
-            players[2].setGui(guiController.createGuiPlayer(players[2]), guiController, msg);
+            players[2].setGui(guiController.createGuiPlayer(players[2]),guiController,msg);
             players[2].setBank(bank); //INITIALISE BANK WITHIN PLAYER
-            players[2].setCarColor(Color.orange);
             players[2].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
 
             if (playerCount > 3) {
                 players[3] = new Player("Sara"); // INITIALISE EACH PLAYER WITH NAME
-                players[3].setGui(guiController.createGuiPlayer(players[3]), guiController, msg);
-                players[3].setCarColor(Color.pink);
+                players[3].setGui(guiController.createGuiPlayer(players[3]),guiController,msg);
                 players[3].setBank(bank); //INITIALISE BANK WITHIN PLAYER
                 players[3].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
 
-                if (playerCount > 4){
                 players[4] = new Player("Megan"); // INITIALISE EACH PLAYER WITH NAME
                 players[4].setGui(guiController.createGuiPlayer(players[4]),guiController,msg);
                 players[4].setBank(bank); //INITIALISE BANK WITHIN PLAYER
                 players[4].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
-                players[4].setCarColor(Color.yellow);
-            }}
 
-            if (playerCount == 6) {
-                players[5] = new Player("Adam"); // INITIALISE EACH PLAYER WITH NAME
-                players[5].setGui(guiController.createGuiPlayer(players[5]), guiController, msg);
-                players[5].setBank(bank);
-                players[5].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
-                players[5].setCarColor(Color.blue);
 
+                if (playerCount == 6) {
+                    players[5] = new Player("Adam"); // INITIALISE EACH PLAYER WITH NAME
+                    players[5].setGui(guiController.createGuiPlayer(players[5]),guiController,msg);
+                    players[5].setBank(bank); //INITIALISE BANK WITHIN PLAYER
+                    players[5].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
+                }
             }
+
         } else {
             //String[] lang = {"DanskTekst"};
             //int langIndex = guiController.getUserInteger("You are in English mode. Enter 1 to keep English or enter 2 to switch to Danish."); //GETS USER TO CHOOSE LANGUAGE
@@ -124,7 +108,6 @@ public class GameController {
             }
             balance = 30000;//SETS START BALANCE ACCORDING TO AMOUNT OF PLAYERS INPUT
 
-            Color[] COLORSset = {Color.red, Color.white, Color.blue, Color.yellow, Color.pink, Color.black};//COLOR ARRAY FOR THE CAR
             players = new Player[playerCount];
 
             for (int i = 0; i < playerCount; i++) {
@@ -150,12 +133,10 @@ public class GameController {
                     }
                 }
 
-
                 players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
                 players[i].setGui(guiController.createGuiPlayer(players[i]),guiController,msg);
                 players[i].setBank(bank); //INITIALISE BANK WITHIN PLAYER
                 players[i].setStartBalance(balance, true); // DEPOSIT INITIAL BALANCE
-                players[i].setCarColor(COLORSset[i]);// SET CAR COLOR FOR EACH PLAYER
 
 
             }
@@ -169,7 +150,7 @@ public class GameController {
     }
 
     public void run() {
-
+         // SET TO TRUE WHEN TESTING LANDING ON SPECIFIC SQUARE (SET SUM IN Cup_stub)
         Cup cup;
         if (useCupStub) {
             cup = new Cup_stub(guiController);
@@ -184,8 +165,6 @@ public class GameController {
 
         while (gameOver == false) {
 
-
-
             for (int i = 0; i < playerCount; i++) { //THROWS DICE AND UPDATES PLAYER'S POSITION
                 int sum;
                 boolean isInJail = players[i].checkInJail();
@@ -194,19 +173,19 @@ public class GameController {
                 if (isInJail) {
 
                     guiController.showMessage(players[i].getPlayerName() + " Du er i fængsel og har kun følgende muligheder for at komme ud af fængsel! Vælg en valgmulighed: Betal bøde på 1000 kr med det samme? eller Prøv dit held ved terningekast! Du kan også bruge et kom ud af fængsel kort, hvis du har et");
-                    String name;
+                    String name = "";
                     if (players[i].getJailPass() > 0){
                         guiController.showMessage("Du har " + players[i].getJailPass() + " kom ud af fængsel kort.");
                         String[] jailOptions = {"Betal bøde?", "Kast terninger?", "Brug et kom ud af fængsel kort"};
                         name = guiController.getUserSelection("Betal bøde på 1000 kr med det samme?, Prøv heldet med terningekast? eller Kom ud af fængslet med det samme ", jailOptions);
-                    }else {
+                    }else if (players[i].getJailPass() == 0) {
                         String[] jailOptions = {"Betal bøde?", "Kast terninger?"};
                         name = guiController.getUserSelection("Betal bøde på 1000 kr med det samme? eller Prøv heldet med terningekast!", jailOptions);
                     }
 
                     if (players[i].jailCounter() < 3) {
 
-                        if (name.equals("Betal bøde?")) {
+                        if (name == "Betal bøde?") {
                             players[i].withdrawMoney(fine, true);
                             int currentBalance = players[i].getCurrentBalance();
                             System.out.println(msg.getText("newBalance") + currentBalance);
@@ -256,28 +235,24 @@ public class GameController {
                 }
 
                 if (!isInJail){
-                    if(testingBuildButton){setOwnerForTesting();}
-                        boolean rollDice = false;
-                        while (!rollDice) {
-                            String[] userActionButtons = setActionButtons(i);
-                            String userChoice = guiController.getUserAction(players[i].getPlayerName(), userActionButtons);
-
-                            if (userChoice.equals("Byg")) {
-                                buildController.setCurrentPlayer(players[i]);
-                                buildController.build();
-
-                            } else if (userChoice.equals("Sælg")) {
-                                System.out.println("player chose saelg");
-                                sellController.sellLot(players[i], players);
-
-                            } else {
-                                rollDice = true;
-                            }
-                        }
-
                     msg.printText("rollDice", players[i].getPlayerName());
-                    sum = cup.getSum();
-                    players[i].updatePosition(sum);
+                    int moveTo = 0;
+                    boolean indexInvalid = true;
+
+                    while (indexInvalid) {
+                        // playerCount = userInput.nextInt();
+                        //System.out.println(playerCount);
+                        moveTo = guiController.getUserInteger("Hvor vil du lande henne? Tast feltnummeret");
+                        if (playerCount >= 1 && playerCount <= 40) {
+                            indexInvalid = false;
+
+                        } else {
+                            guiController.showMessage("Invalid index nr.");
+
+                        }
+                    }
+
+                    players[i].updatePosition(players[i].getDistanceToMove(moveTo,40));
                     newPosition = players[i].getPosition();
                     squares[newPosition].landOn(players[i]);
                 }
@@ -299,43 +274,6 @@ public class GameController {
             }
 
         }
-
-        private String[] setActionButtons(int i) {
-            String[] actionButtons;
-
-            if(players[i].getOwnedFields().length > 0) {
-                if(players[i].getBuildableDeeds().length > 0) {
-                    actionButtons = new String[3];
-                    actionButtons[0] = "Byg";
-                    actionButtons[1] = "Sælg";
-                    actionButtons[2] = "Kast terningerne";
-                }  else {
-                    actionButtons = new String[2];
-                    actionButtons[0] = "Sælg";
-                    actionButtons[1] = "Kast terningerne";
-                }
-
-            } else {
-                actionButtons = new String[1];
-                actionButtons[0] = "Kast terningerne";
-
-            }
-            return actionButtons;
-        }
-
-
-        private void setOwnerForTesting() {
-
-            ((DeedSquare_Buildable)squares[6]).setOwnerForTesting(players[0]);
-            ((DeedSquare_Buildable)squares[8]).setOwnerForTesting(players[0]);
-            ((DeedSquare_Buildable)squares[9]).setOwnerForTesting(players[0]);
-            ((DeedSquare_Buildable)squares[11]).setOwnerForTesting(players[1]);
-            ((DeedSquare_Buildable)squares[13]).setOwnerForTesting(players[1]);
-            ((DeedSquare_Buildable)squares[14]).setOwnerForTesting(players[2]);
-
-
-        }
-
 
     }
 
