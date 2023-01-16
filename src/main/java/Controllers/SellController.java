@@ -217,17 +217,29 @@ public class SellController {
             currentPlayerDeed = guiController.getUserSelection(msg.getText("whichLotToTrade"), currentPlayerDeeds);
             otherPlayerDeed = guiController.getUserSelection(msg.getText("whichLotToGet"), otherPlayerDeeds);
         }
-
+        System.out.println("Current player deed is: " + currentPlayerDeed);
+        System.out.println("Other player deed is: " + otherPlayerDeed);
         Deed deedToGet = getDeedFromName(otherPlayerDeed, players);
         Player otherPlayer = deedToGet.getOwner();
 
-        offerAccepted = guiController.getUserBoolean(otherPlayer.getPlayerName() + msg.getText("acceptOffer"));
+        System.out.println("Owner of " + deedToGet.getDeedName() + " is " + otherPlayer);
+
+        if(!testingTradeLot) {
+            offerAccepted = guiController.getUserBoolean(otherPlayer.getPlayerName() + msg.getText("acceptOffer"));
+        }
 
         if (offerAccepted) {
-            Deed deedToOffer = getDeedFromName(currentPlayerDeed, players);
+            Deed deedToOffer = null;
+            Deed[] ownedFields = currentPlayer.getOwnedFields();
+            for(int i = 0 ; i < ownedFields.length ; i++){
+                if(ownedFields[i].getDeedName().equals(currentPlayerDeed)) {
+                    deedToOffer = ownedFields[i];
+                } else { deedToOffer = null; }
+            }
             currentPlayer.removeFromOwnedFields(deedToOffer);
             currentPlayer.removeFromCardholder(deedToOffer);
             deedToOffer.setOwner(otherPlayer);
+            System.out.println(deedToOffer.getDeedName() + " owner after setOwner() is " + deedToOffer.getOwner().getPlayerName());
             otherPlayer.addToOwnedFields(deedToOffer);
             otherPlayer.addToCardholder(deedToOffer);
 

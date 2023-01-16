@@ -32,6 +32,7 @@ public class SellControllerTest {
     public SellControllerTest() {
         testPlayer.guiIsOn(false);
         buyerPlayer.guiIsOn(false);
+        msg.setGuiIsOn(false);
 
         for(int i = 0 ; i < players.length ; i++) {
             players[i] = new Player("TestPlayer"+i);
@@ -117,6 +118,32 @@ public class SellControllerTest {
 
         assertEquals(startBalance, players[0].getCurrentBalance());
         assertEquals(startBalance, players[1].getCurrentBalance());
+        assertEquals(players[1], bunnyPalace.getDeedOwner());
+
+
+    }
+
+    @Test
+    public void player1TradesBunnyPalaceWithPlayer2RatKingdom(){
+        sellController.setTestingTradeLot(true,"Bunny Palace", "Rat Kingdom", true);
+        sellController.tradeLot(players[1], players);
+
+        assertEquals(startBalance, players[1].getCurrentBalance());
+        assertEquals(startBalance, players[2].getCurrentBalance());
+        assertEquals(players[1], ratKingdom.getDeedOwner());
+        assertEquals(players[2], bunnyPalace.getDeedOwner());
+
+
+    }
+
+    @Test
+    public void player1AsksTradesBunnyPalaceWithPlayer2RatKingdomOfferRefused(){
+        sellController.setTestingTradeLot(true,"Bunny Palace", "Rat Kingdom", false);
+        sellController.tradeLot(players[1], players);
+
+        assertEquals(startBalance, players[1].getCurrentBalance());
+        assertEquals(startBalance, players[2].getCurrentBalance());
+        assertEquals(players[2], ratKingdom.getDeedOwner());
         assertEquals(players[1], bunnyPalace.getDeedOwner());
 
 
