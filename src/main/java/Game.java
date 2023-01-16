@@ -8,8 +8,7 @@ public class Game {
         GameController game = new GameController();
 
         game.init();
-        //game.run();
-        game.run(new Cup());
+        game.run();
 
     }
 }

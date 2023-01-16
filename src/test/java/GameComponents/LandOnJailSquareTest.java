@@ -53,9 +53,19 @@ public class LandOnJailSquareTest {
                 currentPosition = testPlayer.getPosition();
                 assertEquals(10, currentPosition);
             }
+            @Test
+            public void LandOnJail () {
+                Player testPlayer = new Player("Test Player");
+                testPlayer.guiIsOn(false);
+                testPlayer.setLang(msg);
+                int currentPosition = 0;
+                testPlayer.updatePosition(30);
+                currentPosition = testPlayer.getPosition();
+                assertEquals(30, currentPosition);
+    }
             //K26
             @Test
-            public void LandOnJailAndPostBail () {
+            public void LandOnJailAndChooseToPostBail () {
                 Player testPlayer = new Player("Test Player");
                 testPlayer.guiIsOn(false);
                 testPlayer.setLang(msg);
@@ -70,15 +80,8 @@ public class LandOnJailSquareTest {
 
 
 
-            @Test
-            //K8
-            public void TripleTurnAndMoveToJail () {
-                Player testPlayer = new Player("Test Player");
-                testPlayer.guiIsOn(false);
-                testPlayer.setLang(msg);
-                int currentPosition = 0;
-
 
             }
-        }
+
+
 

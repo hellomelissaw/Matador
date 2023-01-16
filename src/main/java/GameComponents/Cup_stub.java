@@ -6,8 +6,8 @@ import gui_main.GUI;
 public class Cup_stub extends Cup {
     private int testSum = 5;
 
-    public Cup_stub(GuiController guiController) {
-        super(guiController);
+    public Cup_stub() {
+        //super(guiController);
     }
     /*public Cup_stub(GUI gui) {
         super(gui);

@@ -13,6 +13,7 @@ import java.awt.*;
 
 public class GameController {
     boolean useCupStub = false;
+
     boolean testingInit = true;
     boolean testingBuildButton = false;
     boolean testStartBalance = false;
@@ -165,14 +166,15 @@ public class GameController {
 
     }
 
-    public void run(Cup cup) {
-
-        /*if (useCupStub) {
-            cup = new Cup_stub(guiController);
+    public void run() {
+        Cup cup = new Cup();
+        cup.testRollDice = false;
+        if (useCupStub) {
+            cup = new Cup_stub();
         } else {
             cup = new Cup(guiController);
         }
-*/
+
         int newPosition;
         int fine = 1000;
 
