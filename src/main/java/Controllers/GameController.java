@@ -14,7 +14,7 @@ import java.awt.*;
 public class GameController {
     boolean useCupStub = false;
     boolean testingInit = true;
-    boolean testingBuildButton = false;
+    boolean testingBuildButton = true;
     boolean testStartBalance = false;
     GuiController guiController = new GuiController();
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
