@@ -298,6 +298,11 @@ public class GameController {
                     players[i].updatePosition(sum);
                     newPosition = players[i].getPosition();
                     squares[newPosition].landOn(players[i]);
+                    if(squares[newPosition] instanceof DeedSquare){
+                        if(((DeedSquare) squares[newPosition]).auctionIsStarting()){
+                            sellController.auctionLot(players[i], players);
+                        }
+                    }
                 }
 
                    if(players[i].isBankrupt()) {
