@@ -1,22 +1,34 @@
 package GameComponents;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LoadedCup extends Cup2 {
-    private final List<int[]> rolls;
+    private final ArrayList<int[]> rolls;
 
-    public LoadedCup(List<int[]> rolls) {
+    private int kastIndex = -1;
+
+    public LoadedCup(ArrayList<int[]> rolls) {
         this.rolls = rolls;
     }
 
     @Override
     public Cup2 roll() {
-        rolls.remove(0);
+
+        kastIndex++;
+        if(kastIndex >= rolls.size()){
+            kastIndex = 0;
+        }
+
         return this;
     }
 
     @Override
     public int[] getFaces() {
-        return rolls.get(0);
+        return rolls.get(kastIndex);
+
+
+
+
     }
 }
