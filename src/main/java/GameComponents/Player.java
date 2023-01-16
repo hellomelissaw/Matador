@@ -24,6 +24,7 @@ public class Player {
     GUI_Player guiPlayer;
     GUI_Player[] guiPlayers;
     Text msg;
+    String carColor;
     private int squareIndex = 0;
     private String playerName;
     private Account playerAccount = new Account();
@@ -56,6 +57,9 @@ public class Player {
         guiPlayer.getCar().setPrimaryColor(color);
 
     }
+    public void  getUserColor(String color){
+
+    }
     public void setStartBalance(int startBalance) {
         playerAccount.deposit(startBalance);
         if (guiOn) {guiPlayer.setBalance(startBalance); }
@@ -83,6 +87,10 @@ public class Player {
 
     public String getPlayerName (){
         return playerName;
+    }
+    public  String getCarColor(){
+        guiPlayer.getCar().getPrimaryColor();
+        return carColor;
     }
 
     /**

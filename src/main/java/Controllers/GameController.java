@@ -19,8 +19,8 @@ public class GameController {
     String carColor;
 
     int playerCount = 0;
-    Color[] colors = {Color.cyan,Color.green,Color.pink,Color.green,Color.red,Color.yellow};
-    String[] color = {"cyan" , "pink" , "yellow" , "green" ,"red" ,"blue","white"};
+
+    String[] color = {"Cyan" , "Lyserød" , "Gul" , "Grøn" ,"Rød" ,"Blå","Hvid"};
 
     public void init() {
         guiController.setLang(msg);
@@ -102,8 +102,25 @@ public class GameController {
             for (int i = 0; i < playerCount; i++) {
                 int playerNumber = i + 1;
                 boolean duplicateName = true;
+
                 while(duplicateName) {
                     userInput = guiController.getUserString(playerNumber);
+                    carColor = guiController.getUserSelection("Hvilke farve skal være din bil?", color);
+                    for (int j = 0; j < color.length; j++) {// check color duplicated, and remove the color from the color array, and the next player is not allowed to choos the same color
+                        if (color[j] != null && color[j].equals(carColor)) {
+                            color[j] = null;
+                            String[] tempColor = new String[color.length-1];
+                            boolean foundColor = false;
+                            for (int k = 0; k < color.length-1; k++) {
+                                if (color[k] == null || foundColor) {
+                                    foundColor = true;
+                                    tempColor[k] = color[k+1];
+                                }
+                                else tempColor[k] = color[k];
+                            }
+                            color = tempColor;
+                        }
+                    }
 
                     if (i == 0) {
                         duplicateName = false;
@@ -112,12 +129,16 @@ public class GameController {
                     } else {
                         for (int j = 0; j < i; j++) {
                             String name = players[j].getPlayerName();
+
+
+
                             if (name.equals(userInput)) {
                                 duplicateName = true;
                                 msg.printText("duplicateName", "na");
                                 break;
 
                             } else {duplicateName = false;}
+
                         }
                     }
                 }
@@ -125,33 +146,11 @@ public class GameController {
                 players[i] = new Player(userInput); // INITIALISE EACH PLAYER WITH NAME
                 players[i].setGui(guiController.createGuiPlayer(players[i]),guiController,msg);
                 players[i].setStartBalance(balance); // DEPOSIT INITIAL BALANCE
-                carColor = guiController.getUserSelection("Hvilke farve skal være din bil?",color);
-                switch (carColor){
-                    case "pink":
-                        players[i].setCarColor(Color.pink);
-                        break;
-                    case "yellow":
-                        players[i].setCarColor(Color.yellow);
-                        break;
-                    case "green":
-                        players[i].setCarColor(Color.green);
-                        break;
-                    case "blue":
-                        players[i].setCarColor(Color.blue);
-                        break;
-                    case "white":
-                        players[i].setCarColor(Color.white);
-                        break;
-                    case "cyan":
-                        players[i].setCarColor(Color.cyan);
-                        break;
+                setCarColor(carColor, players[i]);
+
                 }
 
-
-
-
             }
-        }
 
         BoardInit board = new BoardInit(guiController, msg, players);
         squares = board.getSquareArr();
@@ -159,6 +158,7 @@ public class GameController {
         msg.printText("startGame", "na");
 
     }
+
 
     public void run() {
         boolean testing = false; // SET TO TRUE WHEN TESTING LANDING ON SPECIFIC SQUARE (SET SUM IN Cup_stub)
@@ -199,4 +199,29 @@ public class GameController {
             }
 
     }
-}
+
+
+    public void setCarColor(String color, Player player) {
+        switch (carColor) {
+
+            case "Lyserød":
+                player.setCarColor(Color.pink);
+                break;
+            case "Gul":
+                player.setCarColor(Color.yellow);
+                break;
+            case "Grøn":
+                player.setCarColor(Color.green);
+                break;
+            case "Blå":
+                player.setCarColor(Color.blue);
+                break;
+            case "Hvid":
+                player.setCarColor(Color.white);
+                break;
+            case "Cyan":
+                player.setCarColor(Color.cyan);
+                break;
+
+    }
+}}
