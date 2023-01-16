@@ -1,4 +1,5 @@
 package Controllers;
+import GameComponents.*;
 import GameComponents.Board.*;
 import GameComponents.Board.Square;
 import GameComponents.Cup;
@@ -168,14 +169,7 @@ public class GameController {
 
     }
 
-    public void run() {
-
-        Cup cup;
-        if (useCupStub) {
-            cup = new Cup_stub(guiController);
-        } else {
-            cup = new Cup(guiController);
-        }
+    public void run(Cup2 cup) {
 
         int newPosition;
         int fine = 1000;
@@ -217,7 +211,7 @@ public class GameController {
 
                             msg.printText("rollDice", players[i].getPlayerName());
 
-                            boolean sameValue = cup.rollAndCheckEqualValueOfDice();
+                            boolean sameValue = cup.roll().isSame();
                             players[i].jailIncrement();
 
                             if (sameValue) {
@@ -296,7 +290,7 @@ public class GameController {
                         }
 
                     msg.printText("rollDice", players[i].getPlayerName());
-                    sum = cup.getSum();
+                    sum = cup.roll().getSum();
                     players[i].updatePosition(sum);
                     newPosition = players[i].getPosition();
                     squares[newPosition].landOn(players[i]);

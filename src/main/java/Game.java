@@ -1,5 +1,8 @@
 import Controllers.*;
 import GameComponents.Cup;
+import GameComponents.RandomCup;
+
+import java.util.Random;
 
 
 public class Game {
@@ -8,8 +11,7 @@ public class Game {
         GameController game = new GameController();
 
         game.init();
-        game.run();
-        //game.run(new Cup());
+        game.run(new RandomCup(new Random()));
 
     }
 }

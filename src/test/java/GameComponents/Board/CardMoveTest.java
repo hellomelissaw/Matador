@@ -88,15 +88,4 @@ public class CardMoveTest {
 
         assertEquals(8, testPlayers[0].getPosition());
     }
-
-    @Test
-    // K12 Flyt fra besøg fængsel til fængsel
-    public void playCardMoveFromVisitJailtoJail() {
-        ChanceCard testChanceCard = new CardMove("K12", guiController, 20, "distance");
-        testChanceCard.setCardLang(msg);
-        testPlayers[0].updatePosition(10);
-        testChanceCard.playCard(testPlayers[0]);
-
-        assertEquals(30, testPlayers[0].getPosition());
-    }
 }

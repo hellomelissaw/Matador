@@ -1,9 +1,6 @@
 package GameComponents;
 
-import Controllers.GameController;
 import Controllers.GuiController;
-import gui_fields.GUI_Board;
-import gui_main.GUI;
 
 /*
 ===================================================================================
@@ -14,7 +11,8 @@ public class Cup {
     Die  die1 = new Die();
     Die die2 = new Die();
     GuiController guiController;
-    GUI gui;
+
+    public boolean testRollDice;
 
     int d1;
     int d2;
@@ -26,13 +24,14 @@ public class Cup {
     }
     //public Cup (GUI gui) {this.gui = gui;}
 
-    public boolean rollAndCheckEqualValueOfDice(){
+    public Boolean rollAndCheckEqualValueOfDice(){
 
         boolean equalValue = false;
 
-        d1 = die1.roll();
-        d2 = die2.roll();
-        guiController.setDice(d1,d2);
+        //d1 = die1.roll();
+        //d2 = die2.roll();
+        if (!testRollDice) guiController.setDice(d1,d2);
+
         System.out.println("First die: " + d1 + " and second die: " + d2);
 
         if (d1 == d2){
@@ -53,3 +52,4 @@ public class Cup {
 
     }
 }
+
