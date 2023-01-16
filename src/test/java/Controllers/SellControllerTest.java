@@ -17,6 +17,7 @@ public class SellControllerTest {
     Player testPlayer = new Player("TestPlayer");
     Player buyerPlayer = new Player("BuyerPlayer");
     int[] array = {1000,50,250,750,2250,4000,6000};
+    int[] arrayBuildable = {1000,50,250,750,2250,4000,6000};
     Deed_Buildable deedBuildable = new Deed_Buildable(1200 ,array,"Rødorvrevej",500);
     GUI_Player testGuiPlayer = new GUI_Player("Test Player");
 
@@ -31,6 +32,11 @@ public class SellControllerTest {
         Deed_NonBuildable deed = new Deed_NonBuildable(100,array,"Shipping");
         testPlayer.takeNonBuildableDeed(deed);
         assertEquals("Shipping" , testPlayer.getNonBuildableDeeds()[0].getDeedName());
+    }
+    @Test
+    public void testPlayerTakeBuildableDeed(){
+        testPlayer.takeBuildableDeed(deedBuildable);
+        assertEquals("Rødorvrevej",testPlayer.getBuildableDeeds()[0].getDeedName());
     }
     @Test
     public void testGetOwnedFields(){
