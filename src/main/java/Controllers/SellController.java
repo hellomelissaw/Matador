@@ -289,7 +289,7 @@ public class SellController {
 
                 higherBidder = guiController.getUserBoolean(msg.getText("higherBidder"));
 
-                if(higherBidder){
+                if(higherBidder && offer > previousOffer){
                     previousOffer = offer;
                 }
             }
