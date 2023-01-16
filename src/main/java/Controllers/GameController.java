@@ -243,15 +243,22 @@ public class GameController {
                             String[] userActionButtons = setActionButtons(i);
                             String userChoice = guiController.getUserAction(players[i].getPlayerName(), userActionButtons);
 
-                            if (userChoice.equals("Byg")) {
+                            if (userChoice.equals("Bygninger")) {
                                 //buildController.setCurrentPlayer(players[i]);
-                                String[] buildingsButtons = setBuildButtons(i);
-                                buildController.build(players[i]);
+                                String[] constructionOptions = setConstructionButtons(i);
+                                String constructChoice = guiController.getUserSelection(msg.getText("buildOrDemo"), constructionOptions);
+                                if (constructChoice.equals("Byg")){
+                                   buildController.build(players[i]);
+
+                                } else { buildController.demolish(players[i]);}
+                                buildController.demolish(players[i]);
+
 
                             } else if (userChoice.equals("Handle")) {
                                 System.out.println("player chose handle");
                                 String[] userDealButtons = setDealButtons(i);
                                 String dealChoice = guiController.getUserAction(players[i].getPlayerName(), userDealButtons);
+
 
                                 if (dealChoice.equals("Køb")) {
                                     sellController.buyLot(players[i], players);
@@ -305,12 +312,12 @@ public class GameController {
             if(players[i].getOwnedFields().length > 0) {
                 if(players[i].getBuildableDeeds().length > 0) {
                     actionButtons = new String[3];
-                    actionButtons[0] = "Byg";
+                    actionButtons[0] = "Bygninger";
                     actionButtons[1] = "Handle";
                     actionButtons[2] = "Kast terningerne";
                 }  else {
                     actionButtons = new String[2];
-                    actionButtons[0] = "Sælg";
+                    actionButtons[0] = "Handle";
                     actionButtons[1] = "Kast terningerne";
                 }
 
@@ -328,37 +335,37 @@ public class GameController {
             return actionButtons;
         }
 
-        private String[] setBuildButtons(int i) {
-            String[] buildingButtons;
-            boolean hasHouses = false;
-            boolean hasHotels = false;
+        private String[] setConstructionButtons(int i) {
             Deed_Buildable[] deeds = players[i].getBuildableDeeds();
+            String[] constructButtons;
+            boolean hasLots = false;
+            boolean hasBuildings = false;
+
             for (int j = 0; j < deeds.length; j++) {
-                if (deeds[j].getHouseCount() > 0) {
-                    hasHouses = true;
-                    break;
-                } else if (deeds[j].hasHotel()) {
-                    hasHotels = true;
+                if(deeds.length > 0){
+                    hasLots = true;
                 }
             }
 
-            if(hasHouses && hasHotels) {
-                buildingButtons = new String[2];
-                buildingButtons[0] = "Hus";
-                buildingButtons[1] = "Hotel";
-            } else if (hasHouses && !hasHotels) {
-                buildingButtons = new String[1];
-                buildingButtons[0] = "Hus";
-            } else if (!hasHouses && hasHotels) {
-                buildingButtons = new String[1];
-                buildingButtons[0] = "Hotel";
-            } else {
-                System.out.println("Player has no buildings");
-                buildingButtons = new String[0];}
+            for (int j = 0; j < deeds.length; j++) {
+                if (deeds[j].getHouseCount() > 0 || deeds[j].hasHotel()) {
 
-            return buildingButtons;
+                    hasBuildings = true;
+                    break;
+                }
+            }
+
+           if(hasLots && !hasBuildings) { // JUST BUILD
+               constructButtons = new String[1];
+               constructButtons[0] = "Byg";
+
+           } else { //BUILD + DEMOLISH
+               constructButtons = new String[2];
+               constructButtons[0] = "Byg";
+               constructButtons[1] = "Sælg tilbage til banken";
+           }
+            return constructButtons;
         }
-
 
         private String[] setDealButtons(int i) {
            String[] dealButtons;
