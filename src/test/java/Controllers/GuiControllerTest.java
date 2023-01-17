@@ -42,7 +42,7 @@ public class GuiControllerTest {
     public GuiControllerTest() {
         msg.setGuiController(guiController);
         testPlayers[0] = new Player("Brigit");
-        testPlayers[0].guiIsOn(false);
+        testPlayers[0].setGuiIsOn(false);
         testPlayers[0].setBank(bank);
         testPlayers[0].setStartBalance(startBalance,true);
 

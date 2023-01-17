@@ -82,7 +82,7 @@ public class DeedSquareTest {
             testPlayers[i].setGui(testGuiPlayers[i], guiController, msg);
             testPlayers[i].depositMoney(startBalance,false);
             testPlayers[i].setBank(bank);
-            testPlayers[i].guiIsOn(false);
+            testPlayers[i].setGuiIsOn(false);
         }
     }
 

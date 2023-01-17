@@ -33,13 +33,13 @@ public class SellControllerTest {
 
     int startBalance = 7000;
     public SellControllerTest() {
-        testPlayer.guiIsOn(false);
-        buyerPlayer.guiIsOn(false);
+        testPlayer.setGuiIsOn(false);
+        buyerPlayer.setGuiIsOn(false);
         msg.setGuiIsOn(false);
 
         for(int i = 0 ; i < players.length ; i++) {
             players[i] = new Player("TestPlayer"+i);
-            players[i].guiIsOn(false);
+            players[i].setGuiIsOn(false);
             players[i].setBank(bank);
             players[i].setStartBalance(startBalance, false);
         }

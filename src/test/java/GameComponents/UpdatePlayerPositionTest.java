@@ -1,7 +1,6 @@
 package GameComponents;
 
 import Controllers.GuiController;
-import GameComponents.Board.Square;
 import Translator.Text;
 import org.junit.Test;
 
@@ -15,7 +14,7 @@ public class UpdatePlayerPositionTest {
     @Test
     public void updatePosition10Squares() {
         Player testPlayer = new Player("Test Player");
-        testPlayer.guiIsOn(false);
+        testPlayer.setGuiIsOn(false);
         testPlayer.setLang(msg);
         int currentPosition = 0;
         testPlayer.updatePosition(10);
@@ -26,7 +25,7 @@ public class UpdatePlayerPositionTest {
     @Test
     public void updatePosition25Squares() {
         Player testPlayer = new Player("Test Player");
-        testPlayer.guiIsOn(false);
+        testPlayer.setGuiIsOn(false);
         testPlayer.setLang(msg);
         int currentPosition = 0;
         testPlayer.updatePosition(41);

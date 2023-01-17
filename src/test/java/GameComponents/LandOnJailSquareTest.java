@@ -2,15 +2,10 @@ package GameComponents;
 
 import static org.junit.Assert.*;
 import Controllers.GuiController;
-import Controllers.GameController;
 import GameComponents.Board.BoardInit;
 import GameComponents.Board.Square;
-import GameComponents.Cup;
-import GameComponents.Die;
-import GameComponents.Player;
 import Translator.Text;
 import gui_fields.GUI_Player;
-import gui_main.GUI;
 import org.junit.Test;
 
 public class LandOnJailSquareTest {
@@ -46,7 +41,7 @@ public class LandOnJailSquareTest {
             @Test
             public void LandOnVisitJail () {
                 Player testPlayer = new Player("Test Player");
-                testPlayer.guiIsOn(false);
+                testPlayer.setGuiIsOn(false);
                 testPlayer.setLang(msg);
                 int currentPosition = 0;
                 testPlayer.updatePosition(10);
@@ -56,7 +51,7 @@ public class LandOnJailSquareTest {
             @Test
             public void LandOnJail () {
                 Player testPlayer = new Player("Test Player");
-                testPlayer.guiIsOn(false);
+                testPlayer.setGuiIsOn(false);
                 testPlayer.setLang(msg);
                 int currentPosition = 0;
                 testPlayer.updatePosition(30);
@@ -67,7 +62,7 @@ public class LandOnJailSquareTest {
             @Test
             public void LandOnJailAndChooseToPostBail () {
                 Player testPlayer = new Player("Test Player");
-                testPlayer.guiIsOn(false);
+                testPlayer.setGuiIsOn(false);
                 testPlayer.setLang(msg);
                 int currentPosition = 0;
                 int fine = 1000;

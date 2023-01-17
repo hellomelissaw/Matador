@@ -1,12 +1,10 @@
 package Controllers;
 
 import GameComponents.Bank;
-import GameComponents.Board.Deed;
 import GameComponents.Board.DeedSquare_Buildable;
 import GameComponents.Board.Deed_Buildable;
 import GameComponents.Player;
 import Translator.Text;
-import org.apache.maven.model.Build;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -26,7 +24,7 @@ public class BuildControllerTest {
     public BuildControllerTest() {
 
         testPlayer.setLang(msg);
-        testPlayer.guiIsOn(false);
+        testPlayer.setGuiIsOn(false);
         testPlayer.setBank(bank);
         testPlayer.setStartBalance(startBalance, false);
 
