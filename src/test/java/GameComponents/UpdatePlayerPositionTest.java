@@ -1,6 +1,7 @@
 package GameComponents;
 
 import Controllers.GuiController;
+import GameComponents.Board.Square;
 import Translator.Text;
 import org.junit.Test;
 
