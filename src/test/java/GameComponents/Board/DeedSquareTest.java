@@ -257,7 +257,7 @@ public class DeedSquareTest {
         assertFalse(testStreetSquare[0].ownsGroup(testPlayers[0]));
     }
 
-    @Test
+    @Test // user story K24, accepttest:  Givet at spilleren har bygget et hus på hver grund i samme gruppe, så vedkommende kan bygge videre ovenpå
     public void playerCannotBuildSecondHouseBecauseNoHouseOnOtherLotInGroup() {
         testStreetSquare[0].testing(true,"ja");
         testStreetSquare[0].landOn(testPlayers[0]);
