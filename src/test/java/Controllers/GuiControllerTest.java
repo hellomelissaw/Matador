@@ -42,11 +42,11 @@ public class GuiControllerTest {
     @Test
     public void getUserLot() {
         testStreetSquare[0].testing(true,"ja");
-        testStreetSquare[0].landOn(testPlayers[0]);
+        testStreetSquare[0].landOn(testPlayers[0],testPlayers);
         testStreetSquare[1].testing(true,"ja");
-        testStreetSquare[1].landOn(testPlayers[0]);
+        testStreetSquare[1].landOn(testPlayers[0],testPlayers);
         testStreetSquare[2].testing(true,"ja");
-        testStreetSquare[2].landOn(testPlayers[0]);
+        testStreetSquare[2].landOn(testPlayers[0],testPlayers);
 
     }
 }

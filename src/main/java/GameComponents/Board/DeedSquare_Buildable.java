@@ -22,11 +22,6 @@ public class DeedSquare_Buildable extends DeedSquare {
 
     }
 
-    @Override
-    public void landOn(Player currentPlayer) {  //Implemented by intellij check if it works properly
-
-    }
-
     public void setGroup(String color, int groupSize) {
         this.color = color;
         this.groupSize = groupSize;
@@ -63,8 +58,7 @@ public class DeedSquare_Buildable extends DeedSquare {
         }
     }
 
-
-    protected void lotIsOwned(Player currentPlayer, Player[] players ,int playerCount){
+    protected void lotIsOwned(Player currentPlayer, Player[] players){
         Player deedOwner = deed.getOwner();
         Player owner;
         int playerNumber = 10;
@@ -81,7 +75,7 @@ public class DeedSquare_Buildable extends DeedSquare {
             msg.printText("payRent",  deedOwner.getPlayerName());
             }
 
-            for (int i = 0; i < playerCount ; i++) {
+            for (int i = 0; i < players.length ; i++) {
                 owner = deed.getOwner();
                 if (players[i] == owner){
                     playerNumber = i;

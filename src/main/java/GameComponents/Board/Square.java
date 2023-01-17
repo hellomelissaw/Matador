@@ -22,7 +22,7 @@ public abstract class Square {
 
     }
 
-    public abstract void landOn(Player currentPlayer);
+    public abstract void landOn(Player currentPlayer, Player[] players);
 
 
     public String getSquareName() {

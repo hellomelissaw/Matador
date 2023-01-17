@@ -44,7 +44,7 @@ public abstract class ChanceCard {
 
     }
 
-    public abstract void playCard(Player currentPlayer);
+    public abstract void playCard(Player currentPlayer, Player[] players);
 
     public boolean checkPickAgain() {
         return pickAgain;

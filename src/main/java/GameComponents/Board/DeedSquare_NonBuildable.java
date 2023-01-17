@@ -39,8 +39,8 @@ public class DeedSquare_NonBuildable extends DeedSquare {
         }
     }
 
-    @Override
-    protected void lotIsOwned(Player currentPlayer, Player[] players, int playerCount) {
+
+    protected void lotIsOwned(Player currentPlayer, Player[] players) {
         Player deedOwner = deed.getOwner();
         int playerNumber = 10;
         Player owner;
@@ -69,7 +69,7 @@ public class DeedSquare_NonBuildable extends DeedSquare {
 
             int rentOwed = rent[rentIndex];
 
-            for (int i = 0; i < playerCount ; i++) {
+            for (int i = 0; i < players.length ; i++) {
                 owner = deed.getOwner();
                 if (players[i] == owner){
                     playerNumber = i;
@@ -86,12 +86,6 @@ public class DeedSquare_NonBuildable extends DeedSquare {
     public Player getDeedOwner() {
         return deed.getOwner();
     }
-
-    @Override
-    public void landOn(Player currentPlayer) {
-
-    }
-
     public void setGroup(String color, int groupSize) {
         this.color = color;
         this.groupSize = groupSize;

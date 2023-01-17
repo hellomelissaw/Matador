@@ -14,7 +14,7 @@ public class CardDeed extends ChanceCard {
     }
 
 
-    public void playCard(Player currentPlayer) { //
+    public void playCard(Player currentPlayer,Player[] players) { //
         int[] shipyardIndex = {5, 15, 25, 35};
         int diff = 39;
         for (int i = 0 ; i < shipyardIndex.length ; i++) { // CALCULATES WHICH SHIPYARD IS THE NEAREST TO PLAYER
@@ -25,7 +25,7 @@ public class CardDeed extends ChanceCard {
             }
         }
         currentPlayer.updatePosition(diff);
-        board[currentPlayer.getPosition() + diff].landOn(currentPlayer);
+        board[currentPlayer.getPosition() + diff].landOn(currentPlayer,players);
 
     }
 }

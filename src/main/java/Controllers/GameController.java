@@ -227,7 +227,7 @@ public class GameController {
                                     sum = cup.getSum();
                                     players[i].updatePosition(sum);
                                     newPosition = players[i].getPosition();
-                                    squares[newPosition].landOn(players[i]);
+                                    squares[newPosition].landOn(players[i],players);
 
                                 } else {
                                     System.out.println("Vent til næste runde");
@@ -310,7 +310,7 @@ public class GameController {
                     sum = cup.roll().getSum();
                     players[i].updatePosition(sum);
                     newPosition = players[i].getPosition();
-                    squares[newPosition].landOn(players[i]);
+                    squares[newPosition].landOn(players[i],players);
 
                     if(players[i].doesPlayerHaveCreditor()) {
                         int creditor;

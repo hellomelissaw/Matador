@@ -89,7 +89,7 @@ public class ChanceSquare extends Square{
 
     }
 
-    public void landOn(Player currentPlayer) {
+    public void landOn(Player currentPlayer, Player[] players) {
         boolean pickAgain = true;
         isTesting(true,43);
         while(pickAgain){
@@ -99,7 +99,7 @@ public class ChanceSquare extends Square{
             }
             chanceCards[cardIndex].printMessage(cardIndex);
             System.out.println("Card picked: " + cardIndex);
-            chanceCards[cardIndex].playCard(currentPlayer);
+            chanceCards[cardIndex].playCard(currentPlayer,players);
             pickAgain = chanceCards[cardIndex].checkPickAgain();
         }
     }

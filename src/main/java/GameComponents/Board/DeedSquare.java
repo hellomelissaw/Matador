@@ -49,7 +49,7 @@ public abstract class DeedSquare extends Square{
         return priceString;
     }
 
-    public void landOn(Player currentPlayer, Player[] players, int playerCount) {
+    public void landOn(Player currentPlayer, Player[] players) {
         if(sellDeed == true) { // IF DEED IS AVAILABLE TO BUY
 
             if (guiIsOn) {
@@ -79,18 +79,19 @@ public abstract class DeedSquare extends Square{
             }
 
         } else { // IF DEED IS ALREADY OWNED
-            lotIsOwned(currentPlayer,players, playerCount);
-
+            lotIsOwned(currentPlayer, players);
             System.out.println("");
         }
 
 
     }
 
+    private abstract void lotIsOwned(Player currentPlayer, Player[] players) {
+    }
+
     protected abstract String userInputBuying(boolean testing);
     protected abstract void buyingLot(Player currentPlayer);
 
-    protected abstract void lotIsOwned(Player currentPlayer, Player[] players, int playerCount);
 
     public boolean ownsGroup(Player currentPlayer) {
         ownsGroup = currentPlayer.IsGroupOwner(color);
