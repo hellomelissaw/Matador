@@ -12,9 +12,10 @@ import static org.junit.Assert.*;
 
 public class SellControllerTest {
 
-    GuiController guiController = new GuiController();
+    GuiController guiController = null;
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
     SellController sellController = new SellController(guiController,msg);
+    SellController_test sellControllerSequ = new SellController_test(null,null);
     Player testPlayer = new Player("TestPlayer");
     Player buyerPlayer = new Player("BuyerPlayer");
 
@@ -46,8 +47,13 @@ public class SellControllerTest {
         }
 
         bunnyPalace.setOwnerForTesting(players[1]);
+        bunnyPalace.setGuiOn(false);
+
         ratKingdom.setOwnerForTesting(players[2]);
+        ratKingdom.setGuiOn(false);
+
         boulevardOfBrokenDreams.setOwnerForTesting(players[2]);
+        capriciousCarport.setGuiOn(false);
 
     }
 
@@ -162,4 +168,17 @@ public class SellControllerTest {
         assertEquals(players[1], capriciousCarport.getDeedOwner());
 }
 
+@Test
+    public void player1Bids1000Player2Bids1100Player1Bids1200AndGetCapriciousCarport() {
+        capriciousCarport.testing(true,"nej");
+        capriciousCarport.landOn(players[0]);
+        String[] bidderNames= {"TestPlayer1", "TestPlayer2", "TestPlayer1"};
+        int[] offers = {1000, 1100, 1200};
+        boolean[] higherBidders = {true, true, false};
+        sellControllerSequ.setTestingAuctionLot(bidderNames, offers, higherBidders);
+        sellControllerSequ.auctionLot(players[0], players, capriciousCarport.getAuctionedDeed());
+        assertEquals(players[1], capriciousCarport.getDeedOwner());
+        assertEquals(startBalance-1200, players[1].getCurrentBalance());
+        assertEquals(startBalance, players[2].getCurrentBalance());
+}
 }
