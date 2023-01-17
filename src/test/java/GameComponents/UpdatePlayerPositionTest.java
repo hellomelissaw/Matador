@@ -8,14 +8,17 @@ import static org.junit.Assert.*;
 
 public class UpdatePlayerPositionTest {
 
-    GuiController guiController = new GuiController();
     Text msg = new Text("src/main/java/Translator/DanskTekst");
+    Player testPlayer = new Player("Test Player");
 
+    public UpdatePlayerPositionTest() {
+        msg.setGuiIsOn(false);
+        testPlayer.setLang(msg);
+        testPlayer.setGuiIsOn(false);
+
+    }
     @Test
     public void updatePosition10Squares() {
-        Player testPlayer = new Player("Test Player");
-        testPlayer.setGuiIsOn(false);
-        testPlayer.setLang(msg);
         int currentPosition = 0;
         testPlayer.updatePosition(10);
         currentPosition = testPlayer.getPosition();
@@ -24,9 +27,6 @@ public class UpdatePlayerPositionTest {
 
     @Test
     public void updatePosition25Squares() {
-        Player testPlayer = new Player("Test Player");
-        testPlayer.setGuiIsOn(false);
-        testPlayer.setLang(msg);
         int currentPosition = 0;
         testPlayer.updatePosition(41);
         currentPosition = testPlayer.getPosition();
