@@ -56,38 +56,29 @@ public class GuiControllerTest {
 
 
     @Test
-    public void getUserLot() {
-        testStreetSquare[0].testing(true,"ja");
-        testStreetSquare[0].landOn(testPlayers[0]);
-        testStreetSquare[1].testing(true,"ja");
-        testStreetSquare[1].landOn(testPlayers[0]);
-        testStreetSquare[2].testing(true,"ja");
-        testStreetSquare[2].landOn(testPlayers[0]);
-
-    }
-
-
-    @Test
     public void chooseCarColor() {
         testPlayer_1.setGui(testGuiPlayer_1, guiController, msg);
         colorArray[0] = "Blå";
         colorArray[1] = "Gul";
         colorArray[2] = "Grøn";
 
-        userSelection = guiController.getUserSelection("Valg et farve", colorArray);
+        for (int i = 0; i < colorArray.length; i++) {
+            userSelection = colorArray[i];
 
-        if (userSelection.equals("Blå")) {
-            testPlayer_1.setCarColor(Color.blue);
-            assertEquals(BLÅ, testGuiPlayer_1.getPrimaryColor());
-        }
-        if (userSelection.equals("Gul")) {
-            testPlayer_1.setCarColor(Color.yellow);
-            assertEquals(GUL, testGuiPlayer_1.getPrimaryColor());
-        }
-        if (userSelection.equals("Grøn")) {
-            testPlayer_1.setCarColor(Color.green);
-            assertEquals(GRØN, testGuiPlayer_1.getPrimaryColor());
-        }
 
+            if (userSelection.equals("Blå")) {
+                testPlayer_1.setCarColor(Color.blue);
+                assertEquals(BLÅ, testGuiPlayer_1.getPrimaryColor());
+            }
+            if (userSelection.equals("Gul")) {
+                testPlayer_1.setCarColor(Color.yellow);
+                assertEquals(GUL, testGuiPlayer_1.getPrimaryColor());
+            }
+            if (userSelection.equals("Grøn")) {
+                testPlayer_1.setCarColor(Color.green);
+                assertEquals(GRØN, testGuiPlayer_1.getPrimaryColor());
+            }
+
+        }
     }
 }

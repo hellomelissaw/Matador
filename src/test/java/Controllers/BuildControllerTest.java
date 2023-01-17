@@ -29,7 +29,7 @@ public class BuildControllerTest {
         testPlayer.setStartBalance(startBalance, false);
 
         ponyFarm.setLang(msg);
-        ponyFarm.setGuiOn(false);
+        ponyFarm.setGuiIsOn(false);
         ponyFarm.setGroup("pink", 1);
         ponyFarm.setOwnerForTesting(testPlayer);
 

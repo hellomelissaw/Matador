@@ -28,10 +28,6 @@ public abstract class DeedSquare extends Square{
 
     }
 
-    public void  setGuiOn(boolean guiIsOn) {
-        this.guiIsOn = guiIsOn;
-    }
-
     public void testing(boolean testing, String answer) {
         this.testing = testing;
         buying = answer;

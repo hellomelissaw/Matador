@@ -44,14 +44,14 @@ public class DeedSquareTest {
             testStreetSquare[i].setLang(msg);
             testStreetSquare[i].setGuiController(guiController);
             testStreetSquare[i].setGroup("blue", 2);
-            testStreetSquare[i].setGuiOn(false);
+            testStreetSquare[i].setGuiIsOn(false);
         }
 
         testStreetSquare[2] = new DeedSquare_Buildable("TestDeedSquare 3", streetDeedPrice, rentStreet, buildingPrice);
         testStreetSquare[2].setLang(msg);
         testStreetSquare[2].setGroup("red",1);
         testStreetSquare[2].setGuiController(guiController);
-        testStreetSquare[2].setGuiOn(false);
+        testStreetSquare[2].setGuiIsOn(false);
 
         testPlayers[0] = new Player("TestPlayer 1");
         testPlayers[1] = new Player("TestPlayer 2");
@@ -65,7 +65,7 @@ public class DeedSquareTest {
             testShippingSquare[i].setLang(msg);
             testShippingSquare[i].setGroup("white", 4);
             testShippingSquare[i].setGuiController(guiController);
-            testShippingSquare[i].setGuiOn(false);
+            testShippingSquare[i].setGuiIsOn(false);
 
         }
 
@@ -74,7 +74,7 @@ public class DeedSquareTest {
             testBrewerySquare[i].setLang(msg);
             testBrewerySquare[i].setGroup("lavender", 2);
             testBrewerySquare[i].setGuiController(guiController);
-            testBrewerySquare[i].setGuiOn(false);
+            testBrewerySquare[i].setGuiIsOn(false);
 
         }
 

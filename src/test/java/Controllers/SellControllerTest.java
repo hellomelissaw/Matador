@@ -45,13 +45,13 @@ public class SellControllerTest {
         }
 
         bunnyPalace.setOwnerForTesting(players[1]);
-        bunnyPalace.setGuiOn(false);
+        bunnyPalace.setGuiIsOn(false);
 
         ratKingdom.setOwnerForTesting(players[2]);
-        ratKingdom.setGuiOn(false);
+        ratKingdom.setGuiIsOn(false);
 
         boulevardOfBrokenDreams.setOwnerForTesting(players[2]);
-        capriciousCarport.setGuiOn(false);
+        capriciousCarport.setGuiIsOn(false);
 
     }
 
