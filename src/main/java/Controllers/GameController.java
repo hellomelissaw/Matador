@@ -36,6 +36,7 @@ public class GameController {
 
     public GameController() {
         msg.setGuiController(guiController);
+        guiController.setLang(msg);
         buildController.setGuiController(guiController);
         sellController.setGuiController(guiController);
     }
@@ -179,6 +180,7 @@ public class GameController {
         }
 
         BoardInit board = new BoardInit(guiController, msg, players);
+        board.initBoard();
         squares = board.getSquareArr();
         board.initChanceSquare(squares);
         msg.printText("startGame", "na");

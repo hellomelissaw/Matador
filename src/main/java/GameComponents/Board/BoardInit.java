@@ -9,9 +9,13 @@ import java.io.BufferedReader;
 import static java.lang.Integer.valueOf;
 
     public class BoardInit {
-    int boardSize = 40;
+    final int boardSize = 40;
     Square[] board = new Square[boardSize];
     GuiController guiController;
+    Text msg;
+    Player[] players;
+
+    boolean guiIsOn = true;
 
     /**
      * Constructs a BoardInit where all the Squares on the board are instantiated with name and evt. price.
@@ -20,7 +24,19 @@ import static java.lang.Integer.valueOf;
      */
     public BoardInit(GuiController guiController, Text msg, Player[] players) {
         this.guiController = guiController;
+        this.msg = msg;
+        this.players = players;
 
+    }
+
+    public BoardInit(Text msg, Player[] players) {
+        this.msg = msg;
+        this.players = players;
+        guiIsOn = false;
+
+    }
+
+    public void initBoard(){
         BufferedReader reader;
 
         try {
@@ -39,14 +55,15 @@ import static java.lang.Integer.valueOf;
                 } else if(squareInfo[2].equals(" street")) {
                     int[] rent = new int[6];
                     for(int j = 0 ; j < 6 ; j++) {
-                       rent[j] = valueOf(squareInfo[j+4]);
+                        rent[j] = valueOf(squareInfo[j+4]);
                     }
 
                     board[i-1] = new DeedSquare_Buildable(squareInfo[0], valueOf(squareInfo[3]), rent, valueOf(squareInfo[4]));
                     board[i-1].setLang(msg);
                     board[i-1].setGroup(squareInfo[11], valueOf(squareInfo[12]));
-                    board[i-1].setGuiController(guiController);
                     ((DeedSquare_Buildable)board[i-1]).setDeedIndex(i-1);
+
+                    if(guiIsOn){ board[i-1].setGuiController(guiController); }
 
                 } else if (squareInfo[2].equals(" chance")) {
                     board[i-1] = new ChanceSquare(squareInfo[0], guiController, players);
@@ -64,7 +81,7 @@ import static java.lang.Integer.valueOf;
                     board[i-1] = new DeedSquare_NonBuildable(squareInfo[0], valueOf(squareInfo[3]), rent);
                     board[i-1].setLang(msg);
                     board[i-1].setGroup(squareInfo[11], valueOf(squareInfo[12]));
-                    board[i-1].setGuiController(guiController);
+                    if(guiIsOn){ board[i-1].setGuiController(guiController); }
 
                 } else if  (squareInfo[2].equals(" jail")) {
                     board[i-1] = new JailSquare(squareInfo[0], guiController);
@@ -78,7 +95,7 @@ import static java.lang.Integer.valueOf;
                     board[i-1] = new DeedSquare_NonBuildable(squareInfo[0], valueOf(squareInfo[3]), rent);
                     board[i-1].setLang(msg);
                     board[i-1].setGroup(squareInfo[11], valueOf(squareInfo[12]));
-                    board[i-1].setGuiController(guiController);
+                    if(guiIsOn){ board[i-1].setGuiController(guiController); }
 
                 } else if (squareInfo[2].equals(" refuge")) {
                     board[i-1] = new ParkingSquare(squareInfo[0]);
@@ -93,7 +110,6 @@ import static java.lang.Integer.valueOf;
             e.printStackTrace();
 
         }
-
     }
 
     /**
