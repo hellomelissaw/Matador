@@ -14,6 +14,8 @@ public class ChanceSquare extends Square{
 
         super(squareName);
         this.players = players;
+    }
+        public void setChanceCards(Square[] board) {
 
 // definition af chancecards
         chanceCards[0] = new CardMoney("chance1", "withdraw", 500, 2000); //1. Oliepriserne er steget, og De skal betale kr 500 pr hus og kr 2000 pr hotel.
@@ -62,9 +64,6 @@ public class ChanceSquare extends Square{
         chanceCards[44] = new CardMove("chance45", 30,"index"); // 45. Gå i fængsel, De indkasserer ikke 4000 kr for at passere start. (test)
         chanceCards[45] = new CardMove("chance46", 30,"index"); // 46. Gå i fængsel, De indkasserer ikke 4000 kr for at passere start. (test)
 
-    }
-
-    public void setChanceCards(Square[] board) {
 
         for (int i = 0 ; i < chanceCards.length ; i++) { //SETS PLAYERS ARRAY FOR EACH CARD
             chanceCards[i].setBoard(board);
