@@ -273,6 +273,7 @@ public class GameController {
                     if(testingBuildButton){setOwnerForTesting();}
                         boolean rollDice = false;
                         while (!rollDice) {
+
                             String[] userActionButtons = setActionButtons(i);
                             String userChoice = guiController.getUserAction(players[i].getPlayerName(), userActionButtons);
 
