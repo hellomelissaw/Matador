@@ -64,3 +64,27 @@ public class CardDeedTest {
     }
 
 }
+/*
+
+
+    @Test
+    public void chanceCard34GoToShipyard6From2() {
+        ((DeedSquare_NonBuildable)board[5]).testing(true,"nej");
+        ((ChanceSquare)board[2]).isTesting(true,34);
+        testPlayers[0].updatePosition(2);
+        board[2].landOn(testPlayers[0]);
+        assertEquals(5,testPlayers[0].getPosition());
+
+    }
+
+    @Test
+    public void chanceCard34GoToShipyardAndBuyItFor4000() {
+        ((DeedSquare_NonBuildable)board[5]).testing(true,"ja");
+        ((ChanceSquare)board[2]).isTesting(true,34);
+        testPlayers[0].updatePosition(2);
+        board[2].landOn(testPlayers[0]);
+        assertEquals(5,testPlayers[0].getPosition());
+
+    }
+
+}*/
