@@ -102,11 +102,12 @@ public class CardMoneyTest {
     }
     @Test
     // Userstory K11: chancecard 13, spiller skal kunne modtage 500 kr fra banken
-    public void playChanceCardReceive500() {
+    public void playChanceCardReceive200FromPlayers() {
         ChanceCard testChanceCard = new CardMoney("chance13",guiController,"deposit", 500);
         testChanceCard.setCardLang(msg);
         testChanceCard.playCard(testPlayers[0]);
         assertEquals(500, testPlayers[0].getCurrentBalance());
 
     }
+
 }

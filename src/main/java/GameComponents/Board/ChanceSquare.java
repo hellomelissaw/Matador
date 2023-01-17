@@ -17,8 +17,8 @@ public class ChanceSquare extends Square{
         this.players = players;
 
 
-        chanceCards[0] = new CardMoney("chance1", guiController, "withdraw", 500, 2000); //betal 500 kr pr hus og 2000 pr hotel
-        chanceCards[1] = new CardMoney("chance2", guiController, "withdraw", 800, 2300); //betal 800 kr pr hus og 2300 pr hotel
+        chanceCards[0] = new CardMoney("chance1", guiController, "withdraw", 500, 2000);
+        chanceCards[1] = new CardMoney("chance2", guiController, "withdraw", 800, 2300);
         chanceCards[2] = new CardMoney("chance3", guiController, "withdraw", 1000);
         chanceCards[3] = new CardMoney("chance4", guiController, "withdraw", 300);
         chanceCards[4] = new CardMoney("chance5", guiController, "withdraw", 200);
