@@ -52,7 +52,7 @@ public class Player {
 
     }
 
-    public void guiIsOn(boolean guiIsOn) {
+    public void setGuiIsOn(boolean guiIsOn) {
         guiOn = guiIsOn;
         playerAccount.guiIsOn(guiIsOn);
 
