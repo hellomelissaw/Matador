@@ -37,7 +37,6 @@ public class CardMoney extends ChanceCard {
     public void playCard(Player currentPlayer){
         if (transactionType.equals("deposit")) { // PLAYER RECEIVES MONEY FROM THE BANK
             currentPlayer.depositMoney(amount, true);
-            currentPlayer.netWorth += amount;
             //currentPlayer.updateBank(amount, "deposit");
 
         }
@@ -56,10 +55,9 @@ public class CardMoney extends ChanceCard {
 
                 int newAmount = amount*houseCounter + alternativeAmount*hotelCounter;
                 currentPlayer.withdrawMoney(newAmount, true);
-                currentPlayer.netWorth -= amount;
             } else {
                 currentPlayer.withdrawMoney(amount, true);
-                currentPlayer.netWorth -= amount;
+
             }
 
 
