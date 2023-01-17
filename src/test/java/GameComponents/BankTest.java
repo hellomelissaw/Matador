@@ -16,7 +16,7 @@ public class BankTest {
     Text msg = new Text("src/main/java/Translator/DanskTekst");
     public BankTest() {
         msg.setGuiIsOn(false);
-        testPlayer.gui
+        testPlayer.setGuiIsOn(false);
         testPlayer.setLang(msg);
     }
 
