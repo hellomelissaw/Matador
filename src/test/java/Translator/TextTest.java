@@ -7,7 +7,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TextTest {
-    GuiController guiController = new GuiController();
     Text testMessage;
 
     @Test
