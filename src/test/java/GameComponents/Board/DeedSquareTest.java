@@ -10,7 +10,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class DeedSquareTest {
-    GuiController guiController = new GuiController();
+    GuiController guiController = null;
 
     Player[] testPlayers = new Player[2];
     GUI_Player[] testGuiPlayers = new GUI_Player[2];
@@ -38,6 +38,7 @@ public class DeedSquareTest {
     int[] breweryRent ={100,200};
 
     public DeedSquareTest() {
+        msg.setGuiIsOn(false);
         for(int i = 0; i < testStreetSquare.length - 1 ; i++) {
             testStreetSquare[i] = new DeedSquare_Buildable("TestDeedSquare" + i, streetDeedPrice, rentStreet, buildingPrice);
             testStreetSquare[i].setLang(msg);
