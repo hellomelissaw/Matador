@@ -65,7 +65,7 @@ public class SellController_loadable extends SellController{
             deed.setOwner(auctionWinner);
             auctionWinner.addToCardholder(deed);
             auctionWinner.addToOwnedFields(deed);
-            System.out.println("Solgt til højstbydende! Tillykke " + bidderName + "! ");
+            System.out.println("Solgt til højstbydende! Tillykke " + currentBidderName + "! ");
         }
 
 }
