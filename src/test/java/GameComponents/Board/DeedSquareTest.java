@@ -87,7 +87,7 @@ public class DeedSquareTest {
     }
 
 
-    @Test
+    @Test   // User story K7 , accepttest : Givet at spilleren ejer flere huse eller hotel, så tjener vedkommende flere penge svarende til bygningernes værdi.
     public void cannotBuyHouseBecauseNotEnoughMoney() {
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
@@ -105,7 +105,8 @@ public class DeedSquareTest {
         assertEquals(0, testStreetSquare[0].getDeed().getHouseCount());
     }
 
-    @Test
+
+    @Test  // User story K20, accepttest: Givet at spilleren allerede har købt 4 huse på samme grund først, så kan de efterfølgende købe et hotel
     public void buyHotelForDeedSquare() {
         testStreetSquare[2].testing(true,"ja");
         System.out.println("Group size is: " + testStreetSquare[2].getDeed().getGroupSize());
@@ -117,7 +118,7 @@ public class DeedSquareTest {
         assertTrue(testStreetSquare[2].getDeed().hasHotel());
     }
 
-    @Test
+    @Test  // User story K20, accepttest: Givet at spilleren allerede har købt 4 huse på samme grund først, så kan de efterfølgende købe et hotel
     public void errorMsgCannotBuyHotel() {
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
@@ -140,7 +141,7 @@ public class DeedSquareTest {
         assertFalse(testStreetSquare[2].getDeed().hasHotel());
     }
 
-    @Test
+    @Test // User story K4, accepttest : Givet at en anden spiller lander på et spillers grund, så kan ejeren opkræve lejemål svarende til ejendommens værdi
     public void ownerHasNoHousesAndNotOwnerOfLotGroupReceives50InRent() {
         testStreetSquare[0].testing(true,"ja");
         testStreetSquare[0].landOn(testPlayers[0]);
@@ -149,7 +150,8 @@ public class DeedSquareTest {
         assertEquals(startBalance-50,testPlayers[1].getCurrentBalance());
     }
 
-    @Test
+
+    @Test // User story K7 , accepttest : Givet at spilleren ejer flere huse eller hotel, så tjener vedkommende flere penge svarende til bygningernes værdi.
     public void ownerHasNoHousesButOwnerOfLotGroupReceives100InRent() {
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
@@ -159,7 +161,8 @@ public class DeedSquareTest {
         assertEquals(startBalance-50*2,testPlayers[1].getCurrentBalance());
     }
 
-    @Test
+
+    @Test // User story K7 , accepttest : Givet at spilleren ejer flere huse eller hotel, så tjener vedkommende flere penge svarende til bygningernes værdi.
     public void ownerHas1HouseReceives250InRent() {
 
         testStreetSquare[2].testing(true,"ja");
@@ -172,7 +175,7 @@ public class DeedSquareTest {
         assertEquals(startBalance-250,testPlayers[1].getCurrentBalance());
     }
 
-    @Test
+    @Test  // User story K7 , accepttest : Givet at spilleren ejer flere huse eller hotel, så tjener vedkommende flere penge svarende til bygningernes værdi.
     public void ownerHas2HousesReceives750InRent() {
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
@@ -184,7 +187,7 @@ public class DeedSquareTest {
         assertEquals(startBalance-750,testPlayers[1].getCurrentBalance());
     }
 
-    @Test
+    @Test // User story K7 , accepttest : Givet at spilleren ejer flere huse eller hotel, så tjener vedkommende flere penge svarende til bygningernes værdi.
     public void ownerHas3HousesReceives2250InRent() {
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
@@ -196,7 +199,7 @@ public class DeedSquareTest {
         assertEquals(startBalance-2250,testPlayers[1].getCurrentBalance());
     }
 
-    @Test
+    @Test // User story K7 , accepttest : Givet at spilleren ejer flere huse eller hotel, så tjener vedkommende flere penge svarende til bygningernes værdi.
     public void ownerHas4HousesReceives4000InRent() {
         testStreetSquare[2].testing(true,"ja");
         testStreetSquare[2].landOn(testPlayers[0]);
@@ -208,7 +211,7 @@ public class DeedSquareTest {
         assertEquals(startBalance-4000,testPlayers[1].getCurrentBalance());
     }
 
-    @Test
+    @Test // User story K3, accepttest : Givet at spilleren har købt en grund, så modtager spilleren rettigheder til at opkræve leje og bygge ejendom
     public void playerChoosesToBuyLot(){
         testStreetSquare[0].testing(true,"ja");
         testStreetSquare[0].landOn(testPlayers[0]);
@@ -216,7 +219,7 @@ public class DeedSquareTest {
         assertEquals(testPlayers[0], testStreetSquare[0].getDeedOwner());
     }
 
-    @Test
+    @Test // User story K3, acceptest : Givet at spilleren har købt en grund, så modtager spilleren rettigheder til at opkræve leje og bygge ejendom
     public void playerChoosesNotToBuyLot(){
         testStreetSquare[0].testing(true,"nej");
         testStreetSquare[0].landOn(testPlayers[0]);
@@ -224,7 +227,7 @@ public class DeedSquareTest {
         assertNull(testStreetSquare[0].getDeedOwner());
     }
 
-    @Test
+    @Test // User story K3, acceptest : Givet at spilleren har købt en grund, så modtager spilleren rettigheder til at opkræve leje og bygge ejendom
     public void playerHasTestDeedSquare1DeedInCardholder(){
         boolean hasDeed = false;
         testPlayers[0].takeBuildableDeed(testStreetSquare[0].getDeed());
@@ -239,7 +242,7 @@ public class DeedSquareTest {
 
         assertTrue(hasDeed);
     }
-    @Test
+    @Test // User story K23, accepttest : Givet at en spiller ejer grunde i samme farve, så kan de opkræve dobbeltleje, når en anden spiller lander på dem.
     public void playerHasAllLotsOfSameColour(){
         testPlayers[0].takeBuildableDeed(testStreetSquare[0].getDeed());
         testPlayers[0].takeBuildableDeed(testStreetSquare[0].getDeed());
@@ -247,7 +250,7 @@ public class DeedSquareTest {
         assertTrue(testStreetSquare[0].ownsGroup(testPlayers[0]));
     }
 
-    @Test
+    @Test // User story K23, accepttest : Givet at en spiller ejer grunde i samme farve, så kan de opkræve dobbeltleje, når en anden spiller lander på dem.
     public void playerDoesNotHaveAllLotsOfSameColour(){
         testPlayers[0].takeBuildableDeed(testStreetSquare[0].getDeed());
 
@@ -267,7 +270,7 @@ public class DeedSquareTest {
         assertEquals(1, testStreetSquare[0].getDeed().getHouseCount());
     }
 
-    @Test
+    @Test  // User story K3, accepttest : Givet at spilleren har købt en grund, så modtager spilleren rettigheder til at opkræve leje og bygge ejendom
     public void playerBuilds1HouseOnTestDeedSquare0And1() {
         testStreetSquare[0].testing(true,"ja");
         testStreetSquare[0].landOn(testPlayers[0]);
@@ -281,7 +284,7 @@ public class DeedSquareTest {
         assertEquals(1, testStreetSquare[1].getDeed().getHouseCount());
     }
 
-    @Test
+    @Test // User story K3, accepttest : Givet at spilleren har købt en grund, så modtager spilleren rettigheder til at opkræve leje og bygge ejendom
     public void playerBuilds2HousesOnTestDeedSquare0And1() {
         testPlayers[0].depositMoney(2000,false);
         testStreetSquare[0].testing(true,"ja");
@@ -296,7 +299,7 @@ public class DeedSquareTest {
         assertEquals(2, testStreetSquare[1].getDeed().getHouseCount());
     }
 
-    @Test
+    @Test // User story K3, accepttest : Givet at spilleren har købt en grund, så modtager spilleren rettigheder til at opkræve leje og bygge ejendom
     public void playerOwns1ShippingLotAndRentIs500() {
         testShippingSquare[0].testing(true,"ja");
         testShippingSquare[0].landOn(testPlayers[0]);
@@ -308,7 +311,7 @@ public class DeedSquareTest {
 
     }
 
-    @Test
+    @Test // User story K3, accepttest : Givet at spilleren har købt en grund, så modtager spilleren rettigheder til at opkræve leje og bygge ejendom
     public void playerOwns2ShippingLotsAndRentIs1000() {
         testShippingSquare[0].testing(true,"ja");
         testShippingSquare[0].landOn(testPlayers[0]);
@@ -322,7 +325,7 @@ public class DeedSquareTest {
 
     }
 
-    @Test
+    @Test // User story K3, accepttest : Givet at spilleren har købt en grund, så modtager spilleren rettigheder til at opkræve leje og bygge ejendom
     public void playerOwns3ShippingLotsAndRentIs2000() {
         testShippingSquare[0].testing(true,"ja");
         testShippingSquare[0].landOn(testPlayers[0]);
@@ -338,7 +341,7 @@ public class DeedSquareTest {
 
     }
 
-    @Test
+    @Test // User story K3, accepttest : Givet at spilleren har købt en grund, så modtager spilleren rettigheder til at opkræve leje og bygge ejendom
     public void playerOwns4ShippingLotsAndRentIs4000() {
         testShippingSquare[0].testing(true,"ja");
         testShippingSquare[0].landOn(testPlayers[0]);
@@ -356,7 +359,7 @@ public class DeedSquareTest {
 
     }
 
-    @Test
+    @Test // User story K3, accepttest : Givet at spilleren har købt en grund, så modtager spilleren rettigheder til at opkræve leje og bygge ejendom
     public void playerOwns1breweryRentIs100() {
         testBrewerySquare[0].testing(true,"ja");
         testBrewerySquare[0].landOn(testPlayers[0]);
@@ -367,7 +370,7 @@ public class DeedSquareTest {
         assertEquals(startBalance-breweryDeedPrice+100, testPlayers[0].getCurrentBalance());
 
     }
-    @Test
+    @Test // User story K3, accepttest : Givet at spilleren har købt en grund, så modtager spilleren rettigheder til at opkræve leje og bygge ejendom
     public void playerOwns2breweryRentIs200() {
         testBrewerySquare[0].testing(true,"ja");
         testBrewerySquare[0].landOn(testPlayers[0]);
