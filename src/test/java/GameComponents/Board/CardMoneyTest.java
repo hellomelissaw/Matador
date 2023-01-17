@@ -66,16 +66,25 @@ public class CardMoneyTest {
         DeedSquareTest.getDeed().setHouseCount(1);
         testChanceCard.playCard(testPlayers[1]);
         assertEquals(500, testPlayers[1].getCurrentBalance());
+
+        //test af 4 huse
+        // vi tilføjer 500 kr for at reset til 1000 kr
+
         testPlayers[1].depositMoney(500, true);
         DeedSquareTest.getDeed().setHouseCount(4);
         testChanceCard.playCard(testPlayers[1]);
         assertEquals(-1000, testPlayers[1].getCurrentBalance());
-        /*
-        testPlayers[1].buyHotel(testDeed);
-        testChanceCard.playCard(testPlayers[1]);
-        assertEquals(-1500,testPlayers[1].getCurrentBalance());
 
-         */
+        //test for et hotel
+        // vi tilføjer 2000 kr for at reset til 1000 kr
+
+        DeedSquareTest.getDeed().setHouseCount(0);
+        DeedSquareTest.getDeed().setHasHotel(true);
+        testPlayers[1].depositMoney(2000,true);
+        testChanceCard.playCard(testPlayers[1]);
+        assertEquals(-1000, testPlayers[1].getCurrentBalance());
+
+
     }
 
     @Test
@@ -92,7 +101,7 @@ public class CardMoneyTest {
 
     }
     @Test
-    // chancecard 13, spiller skal kunne modtage 500 kr fra banken
+    // Userstory K11: chancecard 13, spiller skal kunne modtage 500 kr fra banken
     public void playChanceCardReceive500() {
         ChanceCard testChanceCard = new CardMoney("chance13",guiController,"deposit", 500);
         testChanceCard.setCardLang(msg);
