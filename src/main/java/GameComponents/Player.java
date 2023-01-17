@@ -401,6 +401,19 @@ public class Player {
 
             }
         }
+
+    }
+
+    public int getJailPass(){
+        return playerAccount.getJailPasses();
+    }
+
+    public void giveJailPass(){
+        playerAccount.giveJailPass();
+    }
+
+    public Boolean useJailPass(){
+        return playerAccount.useJailPass();
     }
 
 
