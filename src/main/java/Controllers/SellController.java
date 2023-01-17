@@ -15,7 +15,7 @@ public class SellController {
 
     }
     GuiController guiController;
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+    Text msg;
 
     int deedPrice =0 ;
     int playerCount = 0;
@@ -104,6 +104,27 @@ public class SellController {
     String chosenDeedName = "";
     boolean offerAccepted = false;
     String[] lotOptions;
+
+    /***
+     * Call this method when testing buyLot method in order to pre-fill user input.
+     * @param testingBuyLot takes true or false boolean argument, set to true when testing
+     * @param chosenDeedName takes a String, set String to the name of the Deed to be bought
+     * @param offeredPrice takes an Integer, set to the price for which the test player offers to buy lot
+     * @param accept takes true or false boolean argument, set to true to test an accepted offer and false to test a rejected offer
+     */
+    public void setTestingBuyLot(boolean testingBuyLot, String chosenDeedName, int offeredPrice, boolean accept) {
+        this.testingBuyLot = testingBuyLot;
+        this.chosenDeedName = chosenDeedName;
+        this.offeredPrice = offeredPrice;
+        offerAccepted = accept;
+
+    }
+
+    /***
+     * Call this method when one player should offer to buy another player's lot for an offered price. The owner of the lot to be bought can either accept or refuse the offer.
+     * @param buyer Player which will choose a lot to buy from all the other players' lots and offer a price for it
+     * @param players All the players in the game
+     */
     public void buyLot(Player buyer, Player[] players) {
         String[] options = setLotOptions(buyer, players);
 
@@ -190,14 +211,6 @@ public class SellController {
     }
 
 
-    public void setTestingBuyLot(boolean testingBuyLot, String chosenDeedName, int offeredPrice, boolean accept) {
-        this.testingBuyLot = testingBuyLot;
-        this.chosenDeedName = chosenDeedName;
-        this.offeredPrice = offeredPrice;
-        offerAccepted = accept;
-
-    }
-
     public String[] getLotOptions() {
         return lotOptions;
     }
@@ -206,6 +219,26 @@ public class SellController {
     boolean testingTradeLot = false;
     String currentPlayerDeed;
     String otherPlayerDeed;
+
+    /***
+     * Call this method when testing tradeLot() in order to pre-fill user input.
+     * @param testingTradeLot takes true or false boolean argument, set to true when testing
+     * @param deedToOffer Deed that one player wishes to trade another player with
+     * @param deedToGet Deed that one player wishes to get in return for their offered Deed
+     * @param offerAccepted takes true or false boolean argument, set to true to test an accepted offer and false to test a rejected offer
+     */
+    public void setTestingTradeLot(boolean testingTradeLot, String deedToOffer, String deedToGet, boolean offerAccepted) {
+        this.testingTradeLot = testingTradeLot;
+        this.currentPlayerDeed = deedToOffer;
+        this.otherPlayerDeed = deedToGet;
+        this.offerAccepted = offerAccepted;
+    }
+
+    /***
+     * Call this method when one player should ask to trade lots with another player
+     * @param currentPlayer Player which offers another player to trade lots
+     * @param players All the players in the game
+     */
     public void tradeLot(Player currentPlayer, Player[] players){
         String[] currentPlayerDeeds = new String[ currentPlayer.getOwnedFields().length];
 
@@ -254,13 +287,6 @@ public class SellController {
         } else {msg.printText("offerNotAccepted", "na");}
 
 
-    }
-
-    public void setTestingTradeLot(boolean testingTradeLot, String deedToOffer, String deedToGet, boolean offerAccepted) {
-        this.testingTradeLot = testingTradeLot;
-        this.currentPlayerDeed = deedToOffer;
-        this.otherPlayerDeed = deedToGet;
-        this.offerAccepted = offerAccepted;
     }
 
     //  AUCTION LOT METHOD AND HELPER METHODS
