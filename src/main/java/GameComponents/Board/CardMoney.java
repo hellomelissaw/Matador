@@ -29,13 +29,13 @@ public class CardMoney extends ChanceCard {
             //currentPlayer.updateBank(amount, "deposit");
 
         } else if (transactionType.equals("withdraw")) { // PLAYER PAYS MONEY TO THE BANK
-            currentPlayer.withdrawMoney(amount, true);
+            currentPlayer.withdrawMoney(amount, true,10);
             //currentPlayer.updateBank(amount, "withdraw");
 
         } else if (transactionType.equals("hybrid")) { // PLAYER RECEIVES MONEY FROM OTHER PLAYERS
             for (int i = 0 ; i < players.length ; i++) {
                 if (players[i] != currentPlayer) {
-                    players[i].withdrawMoney(amount, false);
+                    players[i].withdrawMoney(amount, false,10);
                 }
             }
             int receive = amount * (players.length-1);

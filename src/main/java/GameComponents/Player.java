@@ -36,6 +36,11 @@ public class Player {
     private Cardholder cardholder = new Cardholder();
     private String winnerName;
 
+    private int creditor;
+
+    private int ignoreCreditor = 10;
+    private boolean hasCreditor = false;
+
 
     public GUI_Car getGuiCar() {
 
@@ -82,6 +87,10 @@ public class Player {
         this.bank = bank;
     }
 
+    public void setBalanceToZero (){
+        playerAccount.setBalance(0);
+    }
+
     public void setStartBalance(int startBalance, boolean transactionToBankParameter) {
         playerAccount.deposit(startBalance);
         if (guiOn) {
@@ -105,14 +114,31 @@ public class Player {
      * @param newPoints                  amount of Monopoly money to deposit
      * @param transactionToBankParameter is true if the transaction is with the bank and not other players
      */
-    public void withdrawMoney(int newPoints, boolean transactionToBankParameter) {
+    public void withdrawMoney(int newPoints, boolean transactionToBankParameter, int creditor) {
 
-        if (transactionToBankParameter) {
-            playerAccount.withDraw(newPoints);
-            bank.giveMoneyToBank(newPoints);
-        } else {
-            playerAccount.withDraw(newPoints);
+            if (transactionToBankParameter) {
+                playerAccount.withDraw(newPoints);
+                bank.giveMoneyToBank(newPoints);
+            } else {
+                playerAccount.withDraw(newPoints);
+            }
+
+            if (playerAccount.getAccountStatus()) {
+            if (creditor != ignoreCreditor) {
+            this.creditor = creditor;
+            hasCreditor = true;
+            }
+
         }
+
+    }
+
+    public int getCreditor(){
+        return creditor;
+    }
+
+    public boolean doesPlayerHaveCreditor(){
+        return hasCreditor;
     }
 
     /**
@@ -285,6 +311,7 @@ public class Player {
 
         ownedFields.remove(deed);
     }
+
 
     public Deed[] getOwnedFields() {
         Deed[] deeds = new Deed[ownedFields.size()];

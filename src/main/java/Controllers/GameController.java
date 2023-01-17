@@ -28,11 +28,13 @@ public class GameController {
     Player[] players;
     Square[] squares;
 
-
+    int bankCreditorID = 99;
     int playerCount = 0;
 
 
     Bank bank = new Bank();
+
+    int creditorId = 10;
 
 
     public void init() {
@@ -203,7 +205,7 @@ public class GameController {
                         if (players[i].jailCounter() < 3) {
 
                             if (name.equals("Betal bøde?")) {
-                                players[i].withdrawMoney(fine, true);
+                                players[i].withdrawMoney(fine, true,bankCreditorID);
                                 int currentBalance = players[i].getCurrentBalance();
                                 System.out.println(msg.getText("newBalance") + currentBalance);
                                 msg.printText("forladFængsel", "Du har nu betalt bøden, du kan nu forlade fængsel!");
@@ -243,7 +245,15 @@ public class GameController {
                             }
                         } else if (players[i].jailCounter() == 3) {
                             msg.printText("spildt3Runder", "na");
-                            players[i].withdrawMoney(fine, true);
+                            players[i].withdrawMoney(fine, true,bankCreditorID);
+
+                            if (players[i].doesPlayerHaveCreditor()){
+                                creditorId = players[i].getCreditor();
+
+                                if (creditorId == bankCreditorID){
+
+                                }
+                            }
                             int currentBalance = players[i].getCurrentBalance();
                             System.out.println(msg.getText("newBalance") + currentBalance);
                             msg.printText("forladFængsel", "na");
@@ -301,6 +311,56 @@ public class GameController {
                     players[i].updatePosition(sum);
                     newPosition = players[i].getPosition();
                     squares[newPosition].landOn(players[i]);
+
+                    if(players[i].doesPlayerHaveCreditor()) {
+                        int creditor;
+                        creditor = players[i].getCreditor();
+
+                        if (creditor == bankCreditorID) {
+                            guiController.showMessage("Du skylder penge til banken, men du har mulighed for at sælge dine ejendomme før du går bankerot");
+                            String[] userActionButtons = setActionButtons(i);
+                            String userChoice = guiController.getUserAction(players[i].getPlayerName(), userActionButtons);
+
+                            if (userChoice.equals("Erklær Bankerot")) {
+
+                                buildController.demolishEverything(players[i]);
+                                sellController.takeLots(players[i]);
+                                players[i].setBalanceToZero();
+                                players[i].isBankrupt();
+
+
+                            } else if (userChoice.equals("Handle")) {
+                            System.out.println("player chose handle");
+                            String[] userDealButtons = setDealButtons(i);
+                            String dealChoice = guiController.getUserAction(players[i].getPlayerName(), userDealButtons);
+
+
+                            if (dealChoice.equals("Køb")) {
+                                sellController.buyLot(players[i], players);
+
+                            } else if (dealChoice.equals("Sælg")) {
+                                sellController.sellLot(players[i], players);
+
+                            } else {
+                                System.out.println("Player wants to trade");/*sellController.tradeLot(players[i], players);*/
+                            }
+                            }
+
+                        }else if (creditor == 10) {
+                            continue;
+
+                        } else {
+
+                            sellController.giveLotsToCreditor(players[i],players,creditor);
+                            players[i].setBalanceToZero();
+                            guiController.showMessage(players[i].getPlayerName() + " Du skylder " + players[creditor].getPlayerName() + " penge, men nu er det for sent. Du er nu gået bankerot og er ude af spillet. Alt hvad du ejer går til din  kreditor");
+
+                        }
+
+
+
+                    }
+
                 }
 
                 if (players[i].isBankrupt()) {

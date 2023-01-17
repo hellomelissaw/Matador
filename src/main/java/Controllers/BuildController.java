@@ -76,6 +76,25 @@ public class BuildController {
         }
     }
 
+    public void demolishEverything(Player currentPlayer) {
+
+        ArrayList<Deed_Buildable> selectedLotsArr = new ArrayList<Deed_Buildable>();
+        Deed_Buildable[] playerDeeds = currentPlayer.getBuildableDeeds();
+        for (int j = 0; j < currentPlayer.getBuildableDeeds().length; j++) {
+            selectedLotsArr.add(playerDeeds[j]);
+        }
+
+        Deed_Buildable[] selected = new Deed_Buildable[selectedLotsArr.size()];
+        selectedLotsArr.toArray(selected);
+
+        currentPlayer.sellHouseToBank(selected, houseCount);
+        currentPlayer.sellHotelToBank(selected);
+
+    }
+
+
+
+
     public void testing(boolean testing, String buildingType, int houseCount) {
         this.testing = testing;
         this.buildingType = buildingType;

@@ -25,6 +25,11 @@ public class SellController {
     Player buyerPlayer;
     Deed boughtDeed;
 
+    int buyerPlayerNumber;
+
+    int bankCreditorID = 99;
+    int ignoreCreditor = 10;
+
     public void sellLot(Player seller, Player[] players){
         //if (seller.getPropertiesDeed().length < 1) return;
         playerCount = players.length;
@@ -49,15 +54,17 @@ public class SellController {
                 // Find the buyer player
                 for (int i = 0; i <playerCount; i++) {
                     players[i].getPlayerName();
-                    if(players[i].getPlayerName() == buyerName)
+                    if(players[i].getPlayerName() == buyerName){
                         buyerPlayer = players[i];
+                        buyerPlayerNumber = i;
+                    }
                 }
 
                 String[] deedNames = new String[ seller.getOwnedFields().length];
                 int[] deedPrices = new int[ seller.getOwnedFields().length];
                 String[] messages = new String[ seller.getOwnedFields().length];
 
-                for (int i = 0; i < ( seller.getOwnedFields()).length; i++) { // showes all the properties
+                for (int i = 0; i < ( seller.getOwnedFields()).length; i++) { // shows all the properties
                     deedNames[i] = seller.getOwnedFields()[i].getDeedName();
                     deedPrices[i] = seller.getOwnedFields()[i].getDeedPrice();
                     boughtDeedPrice = seller.getOwnedFields()[i].getDeedPrice();
@@ -84,7 +91,7 @@ public class SellController {
 
                 msg.printText("erKøbt",buyerName);
                 seller.depositMoney(boughtDeedPrice, false);
-                buyerPlayer.withdrawMoney(boughtDeedPrice, false);
+                buyerPlayer.withdrawMoney(boughtDeedPrice, false,buyerPlayerNumber);
                 msg.printText("overført",seller.getPlayerName());
 
 
@@ -92,6 +99,51 @@ public class SellController {
             }
         }
     }
+
+    public void takeLots(Player seller){
+
+            boughtDeed = seller.getOwnedFields()[playersDeeds.size()];
+
+                for(int k = 0 ; k < seller.getOwnedFields().length ; k++){
+                    System.out.println("Owned fields before removal: " + seller.getOwnedFields()[k].getDeedName());
+                }
+                seller.removeFromOwnedFields(boughtDeed);
+                seller.removeFromCardholder(boughtDeed);
+
+                for(int k = 0 ; k < seller.getOwnedFields().length ; k++){
+                    System.out.println("Owned fields after removal: " + seller.getOwnedFields()[k].getDeedName());
+
+                }
+
+
+    }
+
+    public void giveLotsToCreditor(Player seller, Player[] players, int creditor){
+        //if (seller.getPropertiesDeed().length < 1) return;
+        playerCount = players.length;
+
+        buyerPlayer = players[creditor];
+        buyerPlayerNumber = creditor;
+
+        boughtDeed = seller.getOwnedFields()[playersDeeds.size()];
+
+        for(int k = 0 ; k < seller.getOwnedFields().length ; k++){
+            System.out.println("Owned fields before removal: " + seller.getOwnedFields()[k].getDeedName());
+        }
+        seller.removeFromOwnedFields(boughtDeed);
+        seller.removeFromCardholder(boughtDeed);
+
+        for(int k = 0 ; k < seller.getOwnedFields().length ; k++){
+            System.out.println("Owned fields after removal: " + seller.getOwnedFields()[k].getDeedName());
+
+        }
+        buyerPlayer.addToOwnedFields(boughtDeed);
+        buyerPlayer.addToCardholder(boughtDeed);
+
+
+    }
+
+
     boolean testingBuyLot;
     String chosenDeedName = "";
     int offeredPrice = 0;
@@ -119,12 +171,13 @@ public class SellController {
                 Player owner = chosenDeed.getOwner();
                 String ownerName = owner.getPlayerName();
 
+
                 if(!testingBuyLot) {
                     offerAccepted = guiController.getUserBoolean(ownerName + msg.getText("acceptOffer"));
                 }
 
                 if (offerAccepted) {
-                        buyer.withdrawMoney(offeredPrice, false);
+                        buyer.withdrawMoney(offeredPrice, false, ignoreCreditor);
                         owner.depositMoney(offeredPrice, false);
                         owner.removeFromOwnedFields(chosenDeed);
                         owner.removeFromCardholder(chosenDeed);

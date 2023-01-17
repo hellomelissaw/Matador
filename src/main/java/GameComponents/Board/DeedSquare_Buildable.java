@@ -3,6 +3,7 @@ import GameComponents.Player;
 
 public class DeedSquare_Buildable extends DeedSquare {
     int buildingPrice;
+    int ignoreCreditor = 10;
     //int houseCount = 0;
     boolean hasHotel = false;
     Deed_Buildable deed;
@@ -18,6 +19,11 @@ public class DeedSquare_Buildable extends DeedSquare {
         super(deedName, deedPrice, rent);
         this.buildingPrice = buildingPrice;
         deed = new Deed_Buildable(deedPrice, rent, deedName, buildingPrice);
+
+    }
+
+    @Override
+    public void landOn(Player currentPlayer) {  //Implemented by intellij check if it works properly
 
     }
 
@@ -45,7 +51,7 @@ public class DeedSquare_Buildable extends DeedSquare {
     }
 
     protected void buyingLot(Player currentPlayer) {
-        currentPlayer.withdrawMoney(deedPrice, true);
+        currentPlayer.withdrawMoney(deedPrice, true, ignoreCreditor);
         System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
         sellDeed = false;
         freeDeed = false;
@@ -57,8 +63,11 @@ public class DeedSquare_Buildable extends DeedSquare {
         }
     }
 
-    protected void lotIsOwned(Player currentPlayer){
+
+    protected void lotIsOwned(Player currentPlayer, Player[] players ,int playerCount){
         Player deedOwner = deed.getOwner();
+        Player owner;
+        int playerNumber = 10;
         if (currentPlayer==deedOwner) { // IF PLAYER HAS LANDED ON A LOT THAT THEY OWN
             msg.printText("ownerOfDeed", "na");
 
@@ -72,7 +81,13 @@ public class DeedSquare_Buildable extends DeedSquare {
             msg.printText("payRent",  deedOwner.getPlayerName());
             }
 
-            currentPlayer.withdrawMoney(rentOwed, false);
+            for (int i = 0; i < playerCount ; i++) {
+                owner = deed.getOwner();
+                if (players[i] == owner){
+                    playerNumber = i;
+                }
+            }
+            currentPlayer.withdrawMoney(rentOwed, false, playerNumber);
             deedOwner.depositMoney(deedPrice, false);
             System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
 

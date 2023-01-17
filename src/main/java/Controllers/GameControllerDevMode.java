@@ -176,7 +176,7 @@ public class GameControllerDevMode {
                     if (players[i].jailCounter() < 3) {
 
                         if (name == "Betal bøde?") {
-                            players[i].withdrawMoney(fine, true);
+                            players[i].withdrawMoney(fine, true, 99);
                             int currentBalance = players[i].getCurrentBalance();
                             System.out.println(msg.getText("newBalance") + currentBalance);
                             msg.printText("forladFængsel", "Du har nu betalt bøden, du kan nu forlade fængsel!");
@@ -216,7 +216,7 @@ public class GameControllerDevMode {
                         }
                     } else if (players[i].jailCounter() == 3) {
                         msg.printText("spildt3Runder", "na");
-                        players[i].withdrawMoney(fine, true);
+                        players[i].withdrawMoney(fine, true, 99);
                         int currentBalance = players[i].getCurrentBalance();
                         System.out.println(msg.getText("newBalance") + currentBalance);
                         msg.printText("forladFængsel", "na");
