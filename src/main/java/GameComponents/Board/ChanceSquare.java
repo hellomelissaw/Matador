@@ -72,7 +72,7 @@ public class ChanceSquare extends Square{
         chanceCards[40] = new CardMove("chance41", 19,"index");
         chanceCards[41] = new CardMove("chance42", 39,"index");
         chanceCards[42] = new CardJailPass("chance43"); // I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det. (waiting on updated jailsquare)
-            chanceCards[43] = new CardJailPass("chance43");// I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det. (waiting on updated jailsquare)
+            chanceCards[43] = new CardJailPass("chance44");// I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det. (waiting on updated jailsquare)
         chanceCards[44] = new CardMove("chance45",30,"index"); // Gå i fængsel, De indkasserer ikke 4000 kr for at passere start. (test)
         chanceCards[45] = new CardMove("chance46", 30,"index"); // Gå i fængsel, De indkasserer ikke 4000 kr for at passere start. (test)
 
@@ -105,7 +105,6 @@ public class ChanceSquare extends Square{
 
     public void landOn(Player currentPlayer) {
         boolean pickAgain = true;
-        isTesting(true,43);
         while(pickAgain){
 
             if(!testing){
