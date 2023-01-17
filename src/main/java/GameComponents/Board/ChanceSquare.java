@@ -39,7 +39,8 @@ public class ChanceSquare extends Square{
         chanceCards[7] = new CardMoney("chance8", "withdraw", 1000); // 8. De har købt 4 nye dæk til Deres vogn, betal kr 1000.
         chanceCards[8] = new CardMoney("chance9", "withdraw", 200); // 9. De har fået en parkeringsbøde, betal kr 200 i bøde.
         chanceCards[9] = new CardMoney("chance10", "withdraw", 1000); // 10. Betal deres bilforsikring, kr 1000.
-        chanceCards[10] = new CardMoney("chance11", "withdraw", 2000); // 12. Tandlægeregning, betal kr 2000.
+        chanceCards[10] = new CardMoney("chance11", "withdraw", 200); // 11. De har været udenlands og købt for mange smøger, betal kr 200 i told.
+        chanceCards[11] = new CardMoney("chance11", "withdraw", 2000); // 12. Tandlægeregning, betal kr 2000.
         chanceCards[12] = new CardMoney("chance13", "deposit", 500); // 13. De har vundet i klasselotteriet. Modtag 500 kr.
         chanceCards[13] = new CardMoney("chance14", "deposit", 500); // 14. De har vundet i klasselotteriet. Modtag 500 kr.
         chanceCards[14] = new CardMoney("chance15", "deposit", 1000); // 15. De modtager Deres aktieudbytte. Modtag kr 1000 af banken.
@@ -70,8 +71,8 @@ public class ChanceSquare extends Square{
         chanceCards[39] = new CardDeed("chance40" ); // 40. Tag med den nærmeste færge, hvis de passerer start indkasser da kr 4000 (felter 5, 25, 35) (waiting on the ferry square)
         chanceCards[40] = new CardMove("chance41" , 19,"index"); // 41. Ryk frem til Strandvejen. Hvis De passere START, indkasser da 4000 kr.
         chanceCards[41] = new CardMove("chance42", 39,"index"); // 42. Tag til Rådhuspladsen
-        chanceCards[42] = new CardMove("chance43", 30,"index"); // 43. I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det. (waiting on updated jailsquare)
-        chanceCards[43] = new CardMove("chance44", 30,"index"); // 44. I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det. (waiting on updated jailsquare)
+        chanceCards[42] = new CardJailPass("chance43"); // I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det. (waiting on updated jailsquare)
+        chanceCards[43] = new CardJailPass("chance44");// I anledning af kongens fødselsdag benådes De herved for fængsel. Dette kort kan opbevares indtil De får brug for det, eller De kan sælge det. (waiting on updated jailsquare)
         chanceCards[44] = new CardMove("chance45", 30,"index"); // 45. Gå i fængsel, De indkasserer ikke 4000 kr for at passere start. (test)
         chanceCards[45] = new CardMove("chance46", 30,"index"); // 46. Gå i fængsel, De indkasserer ikke 4000 kr for at passere start. (test)
 
