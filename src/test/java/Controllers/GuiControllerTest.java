@@ -15,7 +15,7 @@ public class GuiControllerTest {
 
     GuiController guiController = new GuiController();
 
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+    Text msg = new Text("src/main/java/Translator/DanskTekst");
 
     Player[] testPlayers = new Player[1];
 
@@ -40,6 +40,7 @@ public class GuiControllerTest {
 
 
     public GuiControllerTest() {
+        msg.setGuiController(guiController);
         testPlayers[0] = new Player("Brigit");
         testPlayers[0].guiIsOn(false);
         testPlayers[0].setBank(bank);

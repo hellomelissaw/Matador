@@ -19,7 +19,7 @@ public class LandOnJailSquareTest {
 
     GUI_Player testGuiPlayer1 = new GUI_Player("TestGuiPlayer 1");
     GuiController guiController = new GuiController();
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+    Text msg = new Text("src/main/java/Translator/DanskTekst");
     Square[] board;
 
     public LandOnJailSquareTest() {

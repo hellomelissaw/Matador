@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 public class CardDeedTest {
     GuiController guiController = new GuiController();
     Player[] testPlayers = new Player[2];
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+    Text msg = new Text("src/main/java/Translator/DanskTekst");
     ChanceSquare testChanceSquare;
 
     Bank bank = new Bank();

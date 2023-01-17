@@ -15,7 +15,7 @@ public class BankTest {
     Player testPlayer = new Player("Test Player");
     GUI_Player testGuiPlayer = new GUI_Player("Test Player");
     GuiController guiController = new GuiController();
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+    Text msg = new Text("src/main/java/Translator/DanskTekst");
     public BankTest() {
         testPlayer.setGui(testGuiPlayer, guiController, msg);
     }

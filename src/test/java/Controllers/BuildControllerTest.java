@@ -17,8 +17,8 @@ public class BuildControllerTest {
     int buildingPrice = 500;
     int startBalance = 7000;
     GuiController guiController = new GuiController();
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
-    BuildController buildController = new BuildController(guiController,msg);
+    Text msg = new Text("src/main/java/Translator/DanskTekst");
+    BuildController buildController = new BuildController(msg);
     Player testPlayer = new Player("Test Player 0");
 
     Bank bank = new Bank();
@@ -31,6 +31,7 @@ public class BuildControllerTest {
         testPlayer.guiIsOn(false);
         testPlayer.setBank(bank);
         testPlayer.setStartBalance(startBalance, false);
+
         ponyFarm.setLang(msg);
         ponyFarm.setGuiController(guiController);
         ponyFarm.setGuiOn(false);

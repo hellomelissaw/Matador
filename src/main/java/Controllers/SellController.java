@@ -9,7 +9,7 @@ import Translator.Text;
 import java.util.ArrayList;
 
 public class SellController {
-    public SellController(GuiController guiController , Text msg ) {
+    public SellController(Text msg ) {
         this.guiController = guiController;
         this.msg = msg;
 
@@ -24,6 +24,10 @@ public class SellController {
     Deed deedToSell;
 
     int offeredPrice = 0;
+
+    public void setGuiController(GuiController guiController) {
+        this.guiController = guiController;
+    }
 
     public void sellLot(Player seller, Player[] players){
         //if (seller.getPropertiesDeed().length < 1) return;

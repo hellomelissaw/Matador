@@ -6,8 +6,8 @@ import Translator.Text;
 
 public class SellController_loadable extends SellController{
 
-    public SellController_loadable(GuiController guiController, Text msg) {
-        super(guiController, msg);
+    public SellController_loadable(Text msg) {
+        super(msg);
     }
 
     String[] bidderName;

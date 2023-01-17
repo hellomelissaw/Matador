@@ -19,7 +19,7 @@ public class DeedSquareTest {
     DeedSquare_NonBuildable[] testShippingSquare = new DeedSquare_NonBuildable[4];
 
     DeedSquare_NonBuildable[] testBrewerySquare = new DeedSquare_NonBuildable[2];
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+    Text msg = new Text("src/main/java/Translator/DanskTekst");
 
     Bank bank = new Bank();
 

@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 public class CardMoneyTest {
     GuiController guiController = new GuiController();
     Player[] testPlayers = new Player[4];
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+    Text msg = new Text("src/main/java/Translator/DanskTekst");
     GUI_Player[] testGuiPlayers = new GUI_Player[4];
 
     Bank bank = new Bank();

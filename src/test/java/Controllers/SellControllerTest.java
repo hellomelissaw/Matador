@@ -11,10 +11,9 @@ import static org.junit.Assert.*;
 
 public class SellControllerTest {
 
-    GuiController guiController = null;
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
-    SellController sellController = new SellController(guiController,msg);
-    SellController_loadable sellControllerSequ = new SellController_loadable(null,null);
+    Text msg = new Text("src/main/java/Translator/DanskTekst");
+    SellController sellController = new SellController(msg);
+    SellController_loadable sellControllerSequ = new SellController_loadable(msg);
     Player testPlayer = new Player("TestPlayer");
     Player buyerPlayer = new Player("BuyerPlayer");
 

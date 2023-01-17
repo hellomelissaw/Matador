@@ -16,8 +16,7 @@ public class BuildController {
     int houseCount = 0;
     boolean testing = false;
 
-    public BuildController(GuiController guiController, Text msg) {
-        this.guiController = guiController;
+    public BuildController(Text msg) {
         this.msg = msg;
 
     }
@@ -26,6 +25,9 @@ public class BuildController {
         this.currentPlayer = currentPlayer;
     }*/
 
+    public void setGuiController(GuiController guiController) {
+        this.guiController = guiController;
+    }
     public void build(Player currentPlayer) {
         Deed_Buildable[] selectedLotsArr = selectLots(currentPlayer, "build");
 

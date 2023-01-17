@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class UpdatePlayerPositionTest {
 
     GuiController guiController = new GuiController();
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+    Text msg = new Text("src/main/java/Translator/DanskTekst");
 
     @Test
     public void updatePosition10Squares() {

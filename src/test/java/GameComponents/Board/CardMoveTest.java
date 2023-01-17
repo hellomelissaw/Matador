@@ -16,7 +16,7 @@ public class CardMoveTest {
     Player[] testPlayers = new Player[1];
 
    // Square testChanceSquare = new ChanceSquare("Testing Chance", guiController);
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+    Text msg = new Text("src/main/java/Translator/DanskTekst");
 
     public CardMoveTest() {
         testPlayers[0] = new Player("TestPlayer 1");

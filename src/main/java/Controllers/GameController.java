@@ -15,10 +15,9 @@ public class GameController {
     boolean testingBuildButton = false;
     boolean testStartBalance = false;
     GuiController guiController = new GuiController();
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
-
-    BuildController buildController = new BuildController(guiController, msg);
-    SellController sellController = new SellController(guiController,msg);
+    Text msg = new Text("src/main/java/Translator/DanskTekst");
+    BuildController buildController = new BuildController(msg);
+    SellController sellController = new SellController(msg);
     String userInput;
     int balance = 0;
     Player[] players;
@@ -36,9 +35,12 @@ public class GameController {
     String carColor;
 
     public void init() {
-        guiController.setLang(msg);
+        msg.setGuiController(guiController);
+        buildController.setGuiController(guiController);
+        sellController.setGuiController(guiController);
+
         if (testingInit){
-            msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+            msg = new Text("src/main/java/Translator/DanskTekst");
             //msg = new Text("src/main/java/Translator/EnglishText", guiController);
             //guiController.initFieldTitles(msg);
             playerCount = 6;

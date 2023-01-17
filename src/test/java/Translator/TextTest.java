@@ -12,7 +12,7 @@ public class TextTest {
 
     @Test
     public void getText() {
-        testMessage = new Text("src/main/java/Translator/TestLang", guiController);
+        testMessage = new Text("src/main/java/Translator/TestLang");
         assertEquals(testMessage.getText("amountOfPlayers"),  " Hvor mange spillere?");
         assertEquals(testMessage.getText("label"),  " message");
         assertEquals(testMessage.getText("someOtherLabel"), " Hello my name is Sir Pumpernickel The Third");
@@ -20,7 +20,7 @@ public class TextTest {
 
     @Test
     public void getTextDansk() {
-        testMessage = new Text("src/main/java/Translator/DanskTekst", guiController);
+        testMessage = new Text("src/main/java/Translator/DanskTekst");
         assertEquals(testMessage.getText("whichLots"),  " Hvilke grunde vil du bygge på?");
         assertEquals(testMessage.getText("selectMoreLots"),  " Vil du vælge flere grunde?");
         assertEquals(testMessage.getText("houseOrHotel"), " Hvilken type bygning vil du bygge?");
