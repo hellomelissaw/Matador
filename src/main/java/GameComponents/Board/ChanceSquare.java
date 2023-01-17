@@ -41,7 +41,7 @@ public class ChanceSquare extends Square{
         chanceCards[21] = new CardMoney("chance22", guiController, "deposit", 1000); // 22. Deres præmieobligation er udtrykket. De modtager 1000 kr af banken.
         chanceCards[22] = new CardMoney("chance23", guiController, "deposit", 1000); // 23. De har solgt nogle gamle møbler på auktion. Modtag 1000 kr af banken.
         chanceCards[23] = new CardMoney("chance24", guiController, "deposit", 200); // 24. Værdien af egen avl fra nyttehaven udgør 200 som de modtager af banken
-        chanceCards[24] = new CardMoney("chance25", guiController, "deposit", 40000); // 25. modtag fra banken et matador legat på 40.000 kun hvis værdier ikke overstiger 15.000 (spørger indtil de 15000)
+        chanceCards[24] = new CardMoney("chance25", guiController, "deposit", 8000); // 25. ændret: modtag 8000 kr fra banken som legat
         chanceCards[25] = new CardMoney("chance26", guiController, "hybrid", 200); // 26. Det er deres fødselsdag. Modtag af hver medspiller 200 kr.
         chanceCards[26] = new CardMoney("chance27", guiController, "hybrid", 500); // 27. De har lagt penge ud til et sammenskudsgilde. Mærkværdigvis betaler alle straks. Modtag fra hver medspiller 500 kr.
         chanceCards[27] = new CardMoney("chance28", guiController, "hybrid", 500); // 28. De skal holde familiefest og får et tilskud fra hver medspiller på 500 kr.
