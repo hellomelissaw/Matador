@@ -17,6 +17,8 @@ public class CardMoneyTest {
 
     Bank bank = new Bank();
 
+    ChanceSquare testChanceSquare;
+
     public CardMoneyTest() {
         testPlayers[0] = new Player("TestPlayer 1");
         testPlayers[0].setBank(bank);

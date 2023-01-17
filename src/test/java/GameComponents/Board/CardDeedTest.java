@@ -42,8 +42,11 @@ public class CardDeedTest {
 
     }
 
+    //unittests på 2 af chancesquaresne hvor man hopper til nærmeste redderi
+
     @Test
-    public void chanceCard34GoToShipyard6From2() {
+    // K11 Chancecard 35 og 36: tjekker om man hopper fra chancefield til nærmeste rederi
+    public void chanceCard35GoToShipyard5From2() {
     testChanceSquare.isTesting(true,34);
     testPlayers[0].updatePosition(2);
     testChanceSquare.landOn(testPlayers[0]);
@@ -52,12 +55,12 @@ public class CardDeedTest {
     }
 
     @Test
-    public void chanceCard34GoToShipyardAndBuyItFor4000() {
-        testChanceSquare.isTesting(true,34);
-        testPlayers[0].updatePosition(2);
+    // user story. k11 Chancecard 36 og 36, tjekker om man også kan hoppe fra chancesquare index 7 til rederi index 15
+    public void chanceCard35GoToShipyard15from7() {
+        testChanceSquare.isTesting(true,35);
+        testPlayers[0].updatePosition(7);
         testChanceSquare.landOn(testPlayers[0]);
-        assertEquals(5,testPlayers[0].getPosition());
-
+        assertEquals(15,testPlayers[0].getPosition());
     }
 
 }
