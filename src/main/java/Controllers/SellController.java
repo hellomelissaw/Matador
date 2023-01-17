@@ -294,6 +294,27 @@ public class SellController {
     String bidderName;
     int offer;
     boolean higherBidder = true;
+
+    /***
+     * Call when testing auctionLot in order to pre-fill user input
+     * @param testingAuctionLot takes true or false boolean argument, set to true when testing
+     * @param bidderName takes a String, the name of the player placing a bid
+     * @param offer takes an Integer, the amount the bidder is offering
+     * @param higherBidder takes a boolean argument true or false, true if there is a player who wants to bid higher, false if there is not
+     */
+    public void setTestingAuctionLot (boolean testingAuctionLot, String bidderName, int offer, boolean higherBidder) {
+        this.testingAuctionLot = testingAuctionLot;
+        this.bidderName = bidderName;
+        this.offer = offer;
+        this.higherBidder = higherBidder;
+    }
+
+    /***
+     * Call auctionLot when a player lands on a lot available for purchase and does not buy it so that other players can bid on it
+     * @param nonParticipant Player which has landed on the square and chooses not to buy it and will not participate in the auction
+     * @param players All the Players in the game
+     * @param deed the Deed up for auction (the deed for the lot that has been landed on and not purchased)
+     */
     public void auctionLot(Player nonParticipant, Player[] players, Deed deed) {
         String[] bidderArray = new String[players.length - 1];
         int indexCount = -1;
@@ -334,10 +355,4 @@ public class SellController {
         msg.printText("soldHighestBidder", "Tillykke " + bidderName + "! ");
     }
 
-    public void setTestingAuctionLot (boolean testingAuctionLot, String bidderName, int offer, boolean higherBidder) {
-        this.testingAuctionLot = testingAuctionLot;
-        this.bidderName = bidderName;
-        this.offer = offer;
-        this.higherBidder = higherBidder;
-    }
 }
