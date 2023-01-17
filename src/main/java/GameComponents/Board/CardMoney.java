@@ -23,6 +23,9 @@ public class CardMoney extends ChanceCard {
         this.amount = amount;
         this.alternativeAmount = alternativeAmount;
 
+
+
+
     }
     public CardMoney(String cardName, GuiController guiController, String transactionType, int amount) {
         super(cardName, guiController);
@@ -39,11 +42,9 @@ public class CardMoney extends ChanceCard {
 
         }
         else if (transactionType.equals("withdraw")) { // PLAYER PAYS MONEY TO THE BANK
-            currentPlayer.withdrawMoney(amount, true);
-            currentPlayer.netWorth += amount;
-            //currentPlayer.updateBank(amount, "withdraw");
 
-            if(cardName.equals("chance1") || cardName.equals("chance2")) {
+
+            if(cardName.equals("Chance1") || cardName.equals("Chance2")) {
 
                 Deed[] playerFields = currentPlayer.getOwnedFields();
                 int houseCounter = 0;
@@ -55,9 +56,12 @@ public class CardMoney extends ChanceCard {
 
                 int newAmount = amount*houseCounter + alternativeAmount*hotelCounter;
                 currentPlayer.withdrawMoney(newAmount, true);
-                currentPlayer.netWorth += amount;
-            } else currentPlayer.withdrawMoney(amount, true);
-            currentPlayer.netWorth += amount;
+                currentPlayer.netWorth -= amount;
+            } else {
+                currentPlayer.withdrawMoney(amount, true);
+                currentPlayer.netWorth -= amount;
+            }
+
 
         } else if (transactionType.equals("hybrid")) { // PLAYER RECEIVES MONEY FROM OTHER PLAYERS
             for (int i = 0 ; i < players.length ; i++) {

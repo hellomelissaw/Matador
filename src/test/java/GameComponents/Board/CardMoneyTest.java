@@ -42,12 +42,40 @@ public class CardMoneyTest {
     }
 
     @Test
-    public void playChanceCardPay500() {
-        // chancecard 1, spiller skal betale 500 kr til banken
-        ChanceCard testChanceCard = new CardMoney("Chance1",guiController,"withdraw",500);
+    // Userstory k11: kan man betale penge til banken.
+    public void playChanceCardWithdrawMoney() {
+        ChanceCard testChanceCard = new CardMoney("withdraw",guiController,"withdraw",500);
         testChanceCard.setCardLang(msg);
         testChanceCard.playCard(testPlayers[1]);
         assertEquals(-500, testPlayers[1].getCurrentBalance());
+
+
+    }
+
+    @Test
+    // chancecard 1: Oliepriserne er steget, og De skal betale kr 500 pr hus og kr 2000 pr hotel.
+    public void playChanceCardPay500or2000() {
+        CardMoney testChanceCard = new CardMoney("Chance1",guiController,"withdraw",500, 2000);
+        testChanceCard.setCardLang(msg);
+        int[] rent = {0,0};
+        //Deed_Buildable[] testDeed = {new Deed_Buildable(100,rent, "test", 100)};
+        DeedSquare_Buildable DeedSquareTest = new DeedSquare_Buildable("Street", 0, rent, 100);
+        DeedSquareTest.setGroup("Pink", 1);
+        testPlayers[1].depositMoney(1000, true);
+        DeedSquareTest.setOwnerForTesting(testPlayers[1]);
+        DeedSquareTest.getDeed().setHouseCount(1);
+        testChanceCard.playCard(testPlayers[1]);
+        assertEquals(500, testPlayers[1].getCurrentBalance());
+        testPlayers[1].depositMoney(500, true);
+        DeedSquareTest.getDeed().setHouseCount(4);
+        testChanceCard.playCard(testPlayers[1]);
+        assertEquals(-1000, testPlayers[1].getCurrentBalance());
+        /*
+        testPlayers[1].buyHotel(testDeed);
+        testChanceCard.playCard(testPlayers[1]);
+        assertEquals(-1500,testPlayers[1].getCurrentBalance());
+
+         */
     }
 
     @Test
