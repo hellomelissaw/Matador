@@ -35,9 +35,10 @@ Til at teste programmet:
 
 - Alle de nuværende unit tests findes i mappen /src/main/test
 
-- Hvis man vil få et bestemt sum af terninger, sætter man useCupStub i GameController til 'true' og i Cup_stub sætter man testSum til det antal felt man ønsker spilleren til at rykke frem.
+- Hvis man vil få et bestemt sum af terninger bruger man LoadedCup, når man kalder på metoden run() fra GameController. I LoadedCup kan man vælge antal øjnene på hver af de to terninger i lige så mange kast som man vil.
 - Det kan bruges fx til at lande på et specifikt felt.
 - GameController findes i /src/main/java/Controllers/GameController
-- Cup_stub findes i /src/main/java/GameComponents/Cup_stub
+- LoadedCup findes i /src/test/java/GameComponents/LoadedCup
 
 - Hvis man ikke ønsker at sætte alle spillere op manuelt, kan man sætte testInit til true i GameController. 
+- Man kan kalde på metoden setGuiIsOn(boolean guiIsOn) og give false som argument, for at 'slukke' for gui'en, når man lave unit tests på de forskellige klasser, som benytter gui'en. Variablen guiIsOn er ellers true per default. 
