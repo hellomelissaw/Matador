@@ -21,7 +21,7 @@ public class GameControllerDevMode {
     int balance = 0;
     Player[] players;
     Square[] squares;
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+    Text msg = new Text("src/main/java/Translator/DanskTekst");
 
     int playerCount = 0;
 
@@ -35,7 +35,7 @@ public class GameControllerDevMode {
         guiController.setLang(msg);
         boolean testingInit = true;
         if (testingInit){
-            msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+            msg = new Text("src/main/java/Translator/DanskTekst");
             msg.printText("startGame", "na");
             //msg = new Text("src/main/java/Translator/EnglishText", guiController);
             //guiController.initFieldTitles(msg);
@@ -153,9 +153,9 @@ public class GameControllerDevMode {
          // SET TO TRUE WHEN TESTING LANDING ON SPECIFIC SQUARE (SET SUM IN Cup_stub)
         Cup cup;
         if (useCupStub) {
-            cup = new Cup_stub(guiController);
+            cup = new Cup_stub();
         } else {
-            cup = new Cup(guiController);
+            cup = new Cup();
         }
 
         int newPosition;

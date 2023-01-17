@@ -13,8 +13,6 @@ import java.util.Objects;
 
 public class GameController {
     boolean useCupStub = false;
-    boolean useCupStub = false;
-
     boolean testingInit = true;
     boolean testingBuildButton = false;
     boolean testStartBalance = false;
