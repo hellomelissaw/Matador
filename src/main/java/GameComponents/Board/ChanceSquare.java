@@ -65,11 +65,15 @@ public class ChanceSquare extends Square{
         chanceCards[45] = new CardMove("chance46", 30,"index"); // 46. Gå i fængsel, De indkasserer ikke 4000 kr for at passere start. (test)
 
 
-        for (int i = 0 ; i < chanceCards.length ; i++) { //SETS PLAYERS ARRAY FOR EACH CARD
-            chanceCards[i].setBoard(board);
-            chanceCards[i].setPlayers(players);
-
-        }
+            for (int i = 0 ; i < chanceCards.length ; i++) { //SETS PLAYERS ARRAY FOR EACH CARD
+                chanceCards[i].setBoard(board);
+                chanceCards[i].setPlayers(players);
+                if(guiIsOn) {
+                    chanceCards[i].setGuiController(guiController);
+                } else {
+                    chanceCards[i].setGuiIsOn(false);
+                }
+            }
 
     }
 
