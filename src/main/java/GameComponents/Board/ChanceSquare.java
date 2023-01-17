@@ -29,8 +29,8 @@ public class ChanceSquare extends Square{
 
         public void setChanceCards(Square[] board) {
 
-            chanceCards[0] = new CardMoney("chance1", "withdraw", 500, 2000); //1. Oliepriserne er steget, og De skal betale kr 500 pr hus og kr 2000 pr hotel.
-            chanceCards[1] = new CardMoney("chance2", "withdraw", 800, 2300); //2. Ejendomsskatten er steget. Ekstraudgifterne er: 800 kr pr hus, 2300 kr pr hotel.
+        chanceCards[0] = new CardMoney("chance1","withdraw", 500); //betal 500 kr pr hus og 2000 pr hotel (venter på mels)
+        chanceCards[1] = new CardMoney("chance2", "withdraw", 800); //betal 800 kr pr hus og 2300 pr hotel (venter på mels)
         chanceCards[2] = new CardMoney("chance3", "withdraw", 1000);
         chanceCards[3] = new CardMoney("chance4", "withdraw", 300);
         chanceCards[4] = new CardMoney("chance5", "withdraw", 200);
@@ -52,8 +52,8 @@ public class ChanceSquare extends Square{
         chanceCards[20] = new CardMoney("chance21", "deposit", 1000);
         chanceCards[21] = new CardMoney("chance22", "deposit", 1000);
         chanceCards[22] = new CardMoney("chance23", "deposit", 1000);
-        chanceCards[23] = new CardMoney("chance24","deposit",200);
-        chanceCards[24] = new CardMoney("chance25", "deposit", 8000); // 25. ændret: modtag 8000 kr fra banken som legat
+        chanceCards[23] = new CardMoney("chance24", "deposit", 200);
+        chanceCards[24] = new CardMoney("chance25", "deposit", 40000); //modtag fra banken et matador legat på 40.000 kun hvis værdier ikke overstiger 15.000 (spørger indtil de 15000)
         chanceCards[25] = new CardMoney("chance26", "hybrid", 200);
         chanceCards[26] = new CardMoney("chance27", "hybrid", 500);
         chanceCards[27] = new CardMoney("chance28", "hybrid", 500);
@@ -108,11 +108,9 @@ public class ChanceSquare extends Square{
         while(pickAgain){
 
             if(!testing){
-                //(int) (Math.random() * (45 - 1));
-                cardIndex = 35;
-                chanceCards[cardIndex].printMessage(cardIndex);
+                cardIndex = (int) (Math.random() * (45 - 1));
             }
-
+            chanceCards[cardIndex].printMessage(cardIndex);
             System.out.println("Card picked: " + cardIndex);
             chanceCards[cardIndex].playCard(currentPlayer);
             pickAgain = chanceCards[cardIndex].checkPickAgain();
