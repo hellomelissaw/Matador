@@ -20,7 +20,7 @@ public class JailSquare extends Square{
 
     }
 
-    public void landOn(Player currentPlayer) {
+    public void landOn(Player currentPlayer, Player[] players) {
         int currentPosition = currentPlayer.getPosition();
 
         //The player get moved to jail square and gets instructions on how to leave. If the player didn't land on jail square, then they're just visiting.

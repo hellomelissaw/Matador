@@ -46,7 +46,7 @@ public class DeedSquare_Buildable extends DeedSquare {
     }
 
     protected void buyingLot(Player currentPlayer) {
-        currentPlayer.withdrawMoney(deedPrice, true, ignoreCreditor);
+        currentPlayer.withdrawMoney(deedPrice, true, 99);
         System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
         sellDeed = false;
         freeDeed = false;
@@ -61,12 +61,13 @@ public class DeedSquare_Buildable extends DeedSquare {
     protected void lotIsOwned(Player currentPlayer, Player[] players){
         Player deedOwner = deed.getOwner();
         Player owner;
-        int playerNumber = 10;
+
         if (currentPlayer==deedOwner) { // IF PLAYER HAS LANDED ON A LOT THAT THEY OWN
             msg.printText("ownerOfDeed", "na");
 
         } else { // IF A PLAYER LANDS ON A LOT THAT ANOTHER PLAYER OWNS
             int rentOwed = rent[deed.getHouseCount()];
+            int playerNumber = 99;
             boolean doubleRentCondition = deedOwner.IsGroupOwner(deed.getColor()) && deed.getHouseCount() == 0 && deed.hasHotel == false;
             if(doubleRentCondition){ // PLAYER OWNS ALL LOTS IN COLOR GROUP BUT DOES NOT HAVE BUILDINGS ON IT
                 rentOwed = rentOwed * 2;
@@ -76,8 +77,7 @@ public class DeedSquare_Buildable extends DeedSquare {
             }
 
             for (int i = 0; i < players.length ; i++) {
-                owner = deed.getOwner();
-                if (players[i] == owner){
+                if (players[i] == deedOwner){
                     playerNumber = i;
                 }
             }

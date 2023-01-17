@@ -27,7 +27,7 @@ public class DeedSquare_NonBuildable extends DeedSquare {
     }
     @Override
     protected void buyingLot(Player currentPlayer) {
-        currentPlayer.withdrawMoney(deedPrice, true, 10);
+        currentPlayer.withdrawMoney(deedPrice, true, 99);
         System.out.println(msg.getText("newBalance") + currentPlayer.getCurrentBalance());
         sellDeed = false;
         freeDeed = false;
@@ -42,7 +42,7 @@ public class DeedSquare_NonBuildable extends DeedSquare {
 
     protected void lotIsOwned(Player currentPlayer, Player[] players) {
         Player deedOwner = deed.getOwner();
-        int playerNumber = 10;
+
         Player owner;
         if (currentPlayer==deedOwner) { // IF PLAYER HAS LANDED ON A LOT THAT THEY OWN
             msg.printText("ownerOfDeed", "na");
@@ -68,10 +68,10 @@ public class DeedSquare_NonBuildable extends DeedSquare {
             System.out.println("Rent index is: " + rentIndex);
 
             int rentOwed = rent[rentIndex];
+            int playerNumber = 99;
 
             for (int i = 0; i < players.length ; i++) {
-                owner = deed.getOwner();
-                if (players[i] == owner){
+                if (players[i] == deedOwner){
                     playerNumber = i;
                 }
             }

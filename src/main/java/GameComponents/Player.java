@@ -137,6 +137,10 @@ public class Player {
         return creditor;
     }
 
+    public void setCreditorFalse(){
+        hasCreditor = false;
+    }
+
     public boolean doesPlayerHaveCreditor(){
         return hasCreditor;
     }
@@ -479,6 +483,23 @@ public class Player {
                 guiController.setHouseCount(index, currentHouseCount - houseCount);
             }
         }
+    }
+
+    public void giveHousesAndHotelsToBank(Deed_Buildable[] deedsToSellFrom) {
+        int houseCounter = 0;
+        for (int i = 0; i < deedsToSellFrom.length; i++) {
+            int currentHouseCount = deedsToSellFrom[i].getHouseCount();
+            houseCounter = houseCounter + currentHouseCount;
+            deedsToSellFrom[i].setHouseCount(0);
+
+            if (deedsToSellFrom[i].hasHotel()) {
+                deedsToSellFrom[i].setHasHotel(false);
+                bank.sellHotelToBank(1, 0);
+            }
+        }
+
+        bank.sellHouseToBank(houseCounter,0);
+
     }
 
     public void addToCardholder(Deed boughtDeed) {

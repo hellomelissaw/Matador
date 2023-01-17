@@ -19,7 +19,7 @@ public class TaxSquare extends Square {
     }
 
     @Override
-    public void landOn(Player currentPlayer) {
+    public void landOn(Player currentPlayer, Player[] players) {
         int currentPosition = currentPlayer.getPosition();
 
         if (currentPosition == 4) {
@@ -32,14 +32,14 @@ public class TaxSquare extends Square {
                 if (userInput == 1) {
                     balance = (currentPlayer.getCurrentBalance());
                     withdrawMoney = (int) (balance / 100) * 10;
-                    currentPlayer.withdrawMoney(withdrawMoney,true,10);
+                    currentPlayer.withdrawMoney(withdrawMoney,true,99);
                     newBalance = currentPlayer.getCurrentBalance();
                     msg.printText("newBalance", "na");
                     System.out.println(msg.getText("newBalance" + newBalance));
                     break;
                 } else if (userInput == 2) {
                     balance = currentPlayer.getCurrentBalance();
-                    currentPlayer.withdrawMoney(4000,true,10);
+                    currentPlayer.withdrawMoney(4000,true,99);
                     newBalance = currentPlayer.getCurrentBalance();
                     msg.printText("newBalance", "na");
                     System.out.println(msg.getText("newBalance") + newBalance);
@@ -54,7 +54,7 @@ public class TaxSquare extends Square {
 
             if (currentPosition == 38) {
                 balance = currentPlayer.getCurrentBalance();
-                currentPlayer.withdrawMoney(2000,true,10);
+                currentPlayer.withdrawMoney(2000,true,99);
                 newBalance = currentPlayer.getCurrentBalance();
                 msg.printText("newBalance", "na");
                 System.out.println(msg.getText("newBalance") + newBalance);

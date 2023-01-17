@@ -9,7 +9,7 @@ public class CardJailPass extends ChanceCard {
     }
 
 
-    public void playCard(Player currentPlayer) {
+    public void playCard(Player currentPlayer, Player[] players) {
         currentPlayer.giveJailPass();
     }
 }

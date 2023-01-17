@@ -46,7 +46,7 @@ public class CardMoneyTest {
         // chancecard 1, spiller skal betale 500 kr til banken
         ChanceCard testChanceCard = new CardMoney("Chance1",guiController,"withdraw",500);
         testChanceCard.setCardLang(msg);
-        testChanceCard.playCard(testPlayers[1]);
+        testChanceCard.playCard(testPlayers[1],testPlayers);
         assertEquals(-500, testPlayers[1].getCurrentBalance());
     }
 
@@ -56,7 +56,7 @@ public class CardMoneyTest {
         ChanceCard testChanceCard = new CardMoney("chance26",guiController,"hybrid", 200);
         testChanceCard.setCardLang(msg);
         testChanceCard.setPlayers(testPlayers);
-        testChanceCard.playCard(testPlayers[0]);
+        testChanceCard.playCard(testPlayers[0],testPlayers);
         assertEquals(600, testPlayers[0].getCurrentBalance());
         assertEquals(-200, testPlayers[1].getCurrentBalance());
         assertEquals(-200, testPlayers[2].getCurrentBalance());
@@ -68,7 +68,7 @@ public class CardMoneyTest {
     public void playChanceCardReceive500() {
         ChanceCard testChanceCard = new CardMoney("chance13",guiController,"deposit", 500);
         testChanceCard.setCardLang(msg);
-        testChanceCard.playCard(testPlayers[0]);
+        testChanceCard.playCard(testPlayers[0],testPlayers);
         assertEquals(500, testPlayers[0].getCurrentBalance());
 
     }

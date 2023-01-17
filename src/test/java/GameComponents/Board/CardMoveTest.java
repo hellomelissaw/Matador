@@ -30,7 +30,7 @@ public class CardMoveTest {
     public void playCardDontGet4000() {
         ChanceCard testChanceCard = new CardMove("Start",guiController,0, "index");
         testChanceCard.setCardLang(msg);
-        testChanceCard.playCard(testPlayers[0]);
+        testChanceCard.playCard(testPlayers[0],testPlayers);
         assertEquals(0, testPlayers[0].getPosition());
 
     }
@@ -41,7 +41,7 @@ public class CardMoveTest {
         ChanceCard testChanceCard = new CardMove("chance29",guiController,0, "index");
         testChanceCard.setCardLang(msg);
         testPlayers[0].updatePosition(20);
-        testChanceCard.playCard(testPlayers[0]);
+        testChanceCard.playCard(testPlayers[0],testPlayers);
         assertEquals(4000, testPlayers[0].getCurrentBalance());
     }
 
@@ -50,7 +50,7 @@ public class CardMoveTest {
     public void playCardMoveToRådhusplads() {
         ChanceCard testChanceCard = new CardMove("chance42",guiController,39, "index");
         testChanceCard.setCardLang(msg);
-        testChanceCard.playCard(testPlayers[0]);
+        testChanceCard.playCard(testPlayers[0],testPlayers);
         assertEquals(39, testPlayers[0].getPosition());
 
     }
@@ -62,7 +62,7 @@ public class CardMoveTest {
         ChanceCard testChanceCard = new CardMove("chance32", guiController, -3, "distance");
         testChanceCard.setCardLang(msg);
         testPlayers[0].updatePosition(5);
-        testChanceCard.playCard(testPlayers[0]);
+        testChanceCard.playCard(testPlayers[0],testPlayers);
 
         assertEquals(2, testPlayers[0].getPosition());
     }
@@ -73,7 +73,7 @@ public class CardMoveTest {
         ChanceCard testChanceCard = new CardMove("chance34", guiController, 3, "distance");
         testChanceCard.setCardLang(msg);
         testPlayers[0].updatePosition(39);
-        testChanceCard.playCard(testPlayers[0]);
+        testChanceCard.playCard(testPlayers[0],testPlayers);
 
         assertEquals(4000, testPlayers[0].getCurrentBalance());
     }
@@ -84,7 +84,7 @@ public class CardMoveTest {
         ChanceCard testChanceCard = new CardMove("chance32", guiController, 3, "distance");
         testChanceCard.setCardLang(msg);
         testPlayers[0].updatePosition(5);
-        testChanceCard.playCard(testPlayers[0]);
+        testChanceCard.playCard(testPlayers[0],testPlayers);
 
         assertEquals(8, testPlayers[0].getPosition());
     }

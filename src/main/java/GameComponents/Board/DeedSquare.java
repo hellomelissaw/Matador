@@ -86,12 +86,12 @@ public abstract class DeedSquare extends Square{
 
     }
 
-    private abstract void lotIsOwned(Player currentPlayer, Player[] players) {
-    }
+
 
     protected abstract String userInputBuying(boolean testing);
     protected abstract void buyingLot(Player currentPlayer);
 
+    protected abstract void lotIsOwned(Player currentPlayer, Player[] players);
 
     public boolean ownsGroup(Player currentPlayer) {
         ownsGroup = currentPlayer.IsGroupOwner(color);

@@ -23,19 +23,19 @@ public class CardMoney extends ChanceCard {
 
     }
 
-    public void playCard(Player currentPlayer){
+    public void playCard(Player currentPlayer, Player[] players){
         if (transactionType.equals("deposit")) { // PLAYER RECEIVES MONEY FROM THE BANK
             currentPlayer.depositMoney(amount, true);
             //currentPlayer.updateBank(amount, "deposit");
 
         } else if (transactionType.equals("withdraw")) { // PLAYER PAYS MONEY TO THE BANK
-            currentPlayer.withdrawMoney(amount, true,10);
+            currentPlayer.withdrawMoney(amount, true,99);
             //currentPlayer.updateBank(amount, "withdraw");
 
         } else if (transactionType.equals("hybrid")) { // PLAYER RECEIVES MONEY FROM OTHER PLAYERS
             for (int i = 0 ; i < players.length ; i++) {
                 if (players[i] != currentPlayer) {
-                    players[i].withdrawMoney(amount, false,10);
+                    players[i].withdrawMoney(amount, false,99);
                 }
             }
             int receive = amount * (players.length-1);

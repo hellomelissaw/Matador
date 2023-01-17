@@ -34,7 +34,6 @@ public class GameController {
 
     Bank bank = new Bank();
 
-    int creditorId = 10;
 
 
     public void init() {
@@ -185,84 +184,104 @@ public class GameController {
                 int sum;
                 boolean isInJail = players[i].checkInJail();
 
-                if (players[i].isBankrupt()){
-                    continue;
-                }else{
+                if (players[i].isBankrupt()) {
 
-                    if (isInJail) {
+                    if (players[i].doesPlayerHaveCreditor()) {
+                        int creditor;
+                        creditor = players[i].getCreditor();
 
-                        guiController.showMessage(players[i].getPlayerName() + " Du er i fængsel og har kun følgende muligheder for at komme ud af fængsel! Vælg en valgmulighed: Betal bøde på 1000 kr med det samme? eller Prøv dit held ved terningekast! Du kan også bruge et kom ud af fængsel kort, hvis du har et");
-                        String name;
-                        if (players[i].getJailPass() > 0) {
-                            guiController.showMessage("Du har " + players[i].getJailPass() + " kom ud af fængsel kort.");
-                            String[] jailOptions = {"Betal bøde?", "Kast terninger?", "Brug et kom ud af fængsel kort"};
-                            name = guiController.getUserSelection("Betal bøde på 1000 kr med det samme?, Prøv heldet med terningekast? eller Kom ud af fængslet med det samme ", jailOptions);
-                        } else {
-                            String[] jailOptions = {"Betal bøde?", "Kast terninger?"};
-                            name = guiController.getUserSelection("Betal bøde på 1000 kr med det samme? eller Prøv heldet med terningekast!", jailOptions);
+                        if (creditor == bankCreditorID) {
+                            guiController.showMessage("Du skylder penge til banken, og nu er det for sent. Du er gået bankerot");
+
+                            buildController.demolishEverything(players[i]);
+                            sellController.takeLots(players[i]);
+                            players[i].setBalanceToZero();
+                            continue;
+
+
+                        } else if (creditor >= 0 && creditor <= playerCount){
+                            guiController.showMessage(players[i].getPlayerName() + " Du skylder " + players[creditor].getPlayerName() + " penge, men nu er det for sent. Du er nu gået bankerot og er ude af spillet. Alt hvad du ejer går til din kreditor");
+                            sellController.giveLotsToCreditor(players[i], players, creditor);
+                            players[i].setBalanceToZero();
+                            continue;
                         }
+                    }
+                    else{
+                        guiController.showMessage(players[i].getPlayerName() + " du er bankerot og kan ikke spille videre");
+                        continue;
+                    }
+                }
 
-                        if (players[i].jailCounter() < 3) {
+                if (isInJail) {
 
-                            if (name.equals("Betal bøde?")) {
-                                players[i].withdrawMoney(fine, true,bankCreditorID);
-                                int currentBalance = players[i].getCurrentBalance();
-                                System.out.println(msg.getText("newBalance") + currentBalance);
-                                msg.printText("forladFængsel", "Du har nu betalt bøden, du kan nu forlade fængsel!");
-                                players[i].moveOutJail();
+                    guiController.showMessage(players[i].getPlayerName() + " Du er i fængsel og har kun følgende muligheder for at komme ud af fængsel! Vælg en valgmulighed: Betal bøde på 1000 kr med det samme? eller Prøv dit held ved terningekast! Du kan også bruge et kom ud af fængsel kort, hvis du har et");
+                    String name;
+                    if (players[i].getJailPass() > 0) {
+                        guiController.showMessage("Du har " + players[i].getJailPass() + " kom ud af fængsel kort.");
+                        String[] jailOptions = {"Betal bøde?", "Kast terninger?", "Brug et kom ud af fængsel kort"};
+                        name = guiController.getUserSelection("Betal bøde på 1000 kr med det samme?, Prøv heldet med terningekast? eller Kom ud af fængslet med det samme ", jailOptions);
+                    } else {
+                        String[] jailOptions = {"Betal bøde?", "Kast terninger?"};
+                        name = guiController.getUserSelection("Betal bøde på 1000 kr med det samme? eller Prøv heldet med terningekast!", jailOptions);
+                    }
 
-                            } else if (name.equals("Kast terninger?")) {
+                    if (players[i].jailCounter() < 3) {
 
-                                msg.printText("rollDice", players[i].getPlayerName());
-
-                                boolean sameValue = cup.roll().isSame();
-                                players[i].jailIncrement();
-
-                                if (sameValue) {
-                                    players[i].moveOutJail();
-                                    msg.printText("kastOgForladFængsel", "na");
-                                    //Extra turn when leaving jail missing! maybe have done to final product!
-
-                                    msg.printText("rollDice", players[i].getPlayerName());
-                                    sum = cup.getSum();
-                                    players[i].updatePosition(sum);
-                                    newPosition = players[i].getPosition();
-                                    squares[newPosition].landOn(players[i],players);
-
-                                } else {
-                                    System.out.println("Vent til næste runde");
-                                }
-
-                            } else if (Objects.equals(name, "Brug et kom ud af fængsel kort")) {
-                                int jailPasses = players[i].getJailPass();
-
-                                if (jailPasses > 0) {
-                                    players[i].useJailPass();
-                                    guiController.showMessage(players[i].getPlayerName() + " Du er nu ude af fængslet");
-                                    players[i].moveOutJail();
-                                }
-
-                            }
-                        } else if (players[i].jailCounter() == 3) {
-                            msg.printText("spildt3Runder", "na");
-                            players[i].withdrawMoney(fine, true,bankCreditorID);
-
-                            if (players[i].doesPlayerHaveCreditor()){
-                                creditorId = players[i].getCreditor();
-
-                                if (creditorId == bankCreditorID){
-
-                                }
-                            }
+                        if (name.equals("Betal bøde?")) {
+                            players[i].withdrawMoney(fine, true, bankCreditorID);
                             int currentBalance = players[i].getCurrentBalance();
                             System.out.println(msg.getText("newBalance") + currentBalance);
-                            msg.printText("forladFængsel", "na");
+                            msg.printText("forladFængsel", "Du har nu betalt bøden, du kan nu forlade fængsel!");
                             players[i].moveOutJail();
+
+                        } else if (name.equals("Kast terninger?")) {
+
+                            msg.printText("rollDice", players[i].getPlayerName());
+
+                            boolean sameValue = cup.roll().isSame();
+                            players[i].jailIncrement();
+
+                            if (sameValue) {
+                                players[i].moveOutJail();
+                                msg.printText("kastOgForladFængsel", "na");
+                                //Extra turn when leaving jail missing! maybe have done to final product!
+
+                                msg.printText("rollDice", players[i].getPlayerName());
+                                sum = cup.getSum();
+                                players[i].updatePosition(sum);
+                                newPosition = players[i].getPosition();
+                                squares[newPosition].landOn(players[i], players);
+
+                            } else {
+                                System.out.println("Vent til næste runde");
+                            }
+
+                        } else if (Objects.equals(name, "Brug et kom ud af fængsel kort")) {
+                            int jailPasses = players[i].getJailPass();
+
+                            if (jailPasses > 0) {
+                                players[i].useJailPass();
+                                guiController.showMessage(players[i].getPlayerName() + " Du er nu ude af fængslet");
+                                players[i].moveOutJail();
+                            }
+
                         }
+                    } else if (players[i].jailCounter() == 3) {
+                        msg.printText("spildt3Runder", "na");
+                        players[i].withdrawMoney(fine, true, bankCreditorID);
+                        int currentBalance = players[i].getCurrentBalance();
+                        System.out.println(msg.getText("newBalance") + currentBalance);
+                        msg.printText("forladFængsel", "na");
+                        players[i].moveOutJail();
                     }
                 }
 
                 if (!isInJail) {
+
+                    if (players[i].getCurrentBalance()<0){
+                        continue;
+                    }
+
                     if (testingBuildButton) {
                         setOwnerForTesting();
                     }
@@ -310,56 +329,7 @@ public class GameController {
                     sum = cup.roll().getSum();
                     players[i].updatePosition(sum);
                     newPosition = players[i].getPosition();
-                    squares[newPosition].landOn(players[i],players);
-
-                    if(players[i].doesPlayerHaveCreditor()) {
-                        int creditor;
-                        creditor = players[i].getCreditor();
-
-                        if (creditor == bankCreditorID) {
-                            guiController.showMessage("Du skylder penge til banken, men du har mulighed for at sælge dine ejendomme før du går bankerot");
-                            String[] userActionButtons = setActionButtons(i);
-                            String userChoice = guiController.getUserAction(players[i].getPlayerName(), userActionButtons);
-
-                            if (userChoice.equals("Erklær Bankerot")) {
-
-                                buildController.demolishEverything(players[i]);
-                                sellController.takeLots(players[i]);
-                                players[i].setBalanceToZero();
-                                players[i].isBankrupt();
-
-
-                            } else if (userChoice.equals("Handle")) {
-                            System.out.println("player chose handle");
-                            String[] userDealButtons = setDealButtons(i);
-                            String dealChoice = guiController.getUserAction(players[i].getPlayerName(), userDealButtons);
-
-
-                            if (dealChoice.equals("Køb")) {
-                                sellController.buyLot(players[i], players);
-
-                            } else if (dealChoice.equals("Sælg")) {
-                                sellController.sellLot(players[i], players);
-
-                            } else {
-                                System.out.println("Player wants to trade");/*sellController.tradeLot(players[i], players);*/
-                            }
-                            }
-
-                        }else if (creditor == 10) {
-                            continue;
-
-                        } else {
-
-                            sellController.giveLotsToCreditor(players[i],players,creditor);
-                            players[i].setBalanceToZero();
-                            guiController.showMessage(players[i].getPlayerName() + " Du skylder " + players[creditor].getPlayerName() + " penge, men nu er det for sent. Du er nu gået bankerot og er ude af spillet. Alt hvad du ejer går til din  kreditor");
-
-                        }
-
-
-
-                    }
+                    squares[newPosition].landOn(players[i], players);
 
                 }
 
@@ -380,7 +350,7 @@ public class GameController {
                     if (bankruptPlayers == playerCount - 1) {
                         gameOver = true;
                         String winnerName = players[winner].getPlayerName();
-                        guiController.showMessage(msg.getText("gameOver") +" "+ winnerName);
+                        guiController.showMessage(msg.getText("gameOver") + " " + winnerName);
                         break;
                     } else {
                         winner = 0;
@@ -393,8 +363,9 @@ public class GameController {
             }
 
         }
-
     }
+
+
 
     private String[] setActionButtons(int i) {
         String[] actionButtons;

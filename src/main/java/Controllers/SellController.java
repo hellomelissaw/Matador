@@ -91,7 +91,7 @@ public class SellController {
 
                 msg.printText("erKøbt",buyerName);
                 seller.depositMoney(boughtDeedPrice, false);
-                buyerPlayer.withdrawMoney(boughtDeedPrice, false,buyerPlayerNumber);
+                buyerPlayer.withdrawMoney(boughtDeedPrice, false,ignoreCreditor);
                 msg.printText("overført",seller.getPlayerName());
 
 
@@ -102,44 +102,44 @@ public class SellController {
 
     public void takeLots(Player seller){
 
-            boughtDeed = seller.getOwnedFields()[playersDeeds.size()];
-
                 for(int k = 0 ; k < seller.getOwnedFields().length ; k++){
                     System.out.println("Owned fields before removal: " + seller.getOwnedFields()[k].getDeedName());
+                    boughtDeed = seller.getOwnedFields()[k];
+                    seller.removeFromOwnedFields(boughtDeed);
+                    seller.removeFromCardholder(boughtDeed);
                 }
-                seller.removeFromOwnedFields(boughtDeed);
-                seller.removeFromCardholder(boughtDeed);
 
                 for(int k = 0 ; k < seller.getOwnedFields().length ; k++){
                     System.out.println("Owned fields after removal: " + seller.getOwnedFields()[k].getDeedName());
 
                 }
 
-
     }
 
     public void giveLotsToCreditor(Player seller, Player[] players, int creditor){
         //if (seller.getPropertiesDeed().length < 1) return;
-        playerCount = players.length;
-
         buyerPlayer = players[creditor];
         buyerPlayerNumber = creditor;
 
-        boughtDeed = seller.getOwnedFields()[playersDeeds.size()];
 
         for(int k = 0 ; k < seller.getOwnedFields().length ; k++){
             System.out.println("Owned fields before removal: " + seller.getOwnedFields()[k].getDeedName());
+            boughtDeed = seller.getOwnedFields()[k];
+            seller.removeFromOwnedFields(boughtDeed);
+            seller.removeFromCardholder(boughtDeed);
+
+            buyerPlayer.addToOwnedFields(boughtDeed);
+            buyerPlayer.addToCardholder(boughtDeed);
         }
-        seller.removeFromOwnedFields(boughtDeed);
-        seller.removeFromCardholder(boughtDeed);
+
 
         for(int k = 0 ; k < seller.getOwnedFields().length ; k++){
             System.out.println("Owned fields after removal: " + seller.getOwnedFields()[k].getDeedName());
-
         }
-        buyerPlayer.addToOwnedFields(boughtDeed);
-        buyerPlayer.addToCardholder(boughtDeed);
 
+        for(int k = 0 ; k < buyerPlayer.getOwnedFields().length ; k++){
+            System.out.println("Owned fields for creditor: " + buyerPlayer.getOwnedFields()[k].getDeedName());
+        }
 
     }
 
