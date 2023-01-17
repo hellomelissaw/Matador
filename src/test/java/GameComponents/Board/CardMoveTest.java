@@ -12,16 +12,17 @@ import static org.junit.Assert.*;
 
 
 public class CardMoveTest {
-    GuiController guiController = new GuiController();
     Player[] testPlayers = new Player[1];
 
    // Square testChanceSquare = new ChanceSquare("Testing Chance", guiController);
     Text msg = new Text("src/main/java/Translator/DanskTekst");
 
     public CardMoveTest() {
+        msg.setGuiIsOn(false);
         testPlayers[0] = new Player("TestPlayer 1");
-        BoardInit board = new BoardInit(guiController, msg, testPlayers);
-        testPlayers[0].setGui(guiController.createGuiPlayer(testPlayers[0]),guiController,msg);
+        BoardInit board = new BoardInit(msg, testPlayers);
+        testPlayers[0].setGuiIsOn(false);
+        testPlayers[0].setLang(msg);
 
     }
 
