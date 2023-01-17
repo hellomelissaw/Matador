@@ -4,19 +4,30 @@ import GameComponents.Player;
 
 public class ChanceSquare extends Square{
     boolean testing = false;
+    boolean guiIsOn = true;
     private int cardIndex;
     private GuiController guiController;
     Player[] players;
 
     private ChanceCard[] chanceCards = new ChanceCard[46];
 
-    public ChanceSquare(String squareName, Player[] players) { //INITIALISES DECK OF CHANCE CARDS
-
+    public ChanceSquare(String squareName, GuiController guiController, Player[] players) { //INITIALISES DECK OF CHANCE CARDS
         super(squareName);
+        this.guiController = guiController;
         this.players = players;
     }
-        public void setChanceCards(Square[] board) {
 
+    public ChanceSquare(String squareName, Player[] players) { //INITIALISES DECK OF CHANCE CARDS WITHOUT GUI
+        super(squareName);
+        this.players = players;
+        guiIsOn = false;
+    }
+
+    /*public void setGuiIsOn(boolean guiIsOn){
+        this.guiIsOn = guiIsOn;
+    }*/
+
+    public void setChanceCards(Square[] board) {
 // definition af chancecards
         chanceCards[0] = new CardMoney("chance1", "withdraw", 500, 2000); //1. Oliepriserne er steget, og De skal betale kr 500 pr hus og kr 2000 pr hotel.
         chanceCards[1] = new CardMoney("chance2", "withdraw", 800, 2300); //2. Ejendomsskatten er steget. Ekstraudgifterne er: 800 kr pr hus, 2300 kr pr hotel.
