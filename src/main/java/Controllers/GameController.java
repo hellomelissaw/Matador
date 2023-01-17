@@ -133,24 +133,8 @@ public class GameController {
             for (int i = 0; i < playerCount; i++) {
                 int playerNumber = i + 1;
                 boolean duplicateName = true;
-                while(duplicateName) {
+                while(duplicateName){
                     userInput = guiController.getUserString(playerNumber);
-                    carColor = guiController.getUserSelection("Hvilke farve skal være din bil?", color);
-                    for (int j = 0; j < color.length; j++) {// check color duplicated, and remove the color from the color array, and the next player is not allowed to choos the same color
-                        if (color[j] != null && color[j].equals(carColor)) {
-                            color[j] = null;
-                            String[] tempColor = new String[color.length-1];
-                            boolean foundColor = false;
-                            for (int k = 0; k < color.length-1; k++) {
-                                if (color[k] == null || foundColor) {
-                                    foundColor = true;
-                                    tempColor[k] = color[k+1];
-                                }
-                                else tempColor[k] = color[k];
-                            }
-                            color = tempColor;
-                        }
-                    }
                     if (i == 0) {
                         duplicateName = false;
                         System.out.println("First Player");
@@ -164,6 +148,23 @@ public class GameController {
                                 break;
 
                             } else {duplicateName = false;}
+                        }
+                    }
+                    if(!duplicateName){
+                    carColor = guiController.getUserSelection("Hvilke farve skal være din bil?", color);
+                    for (int j = 0; j < color.length; j++) {// check color duplicated, and remove the color from the color array, and the next player is not allowed to choos the same color
+                        if (color[j] != null && color[j].equals(carColor)) {
+                            color[j] = null;
+                            String[] tempColor = new String[color.length - 1];
+                            boolean foundColor = false;
+                            for (int k = 0; k < color.length - 1; k++) {
+                                if (color[k] == null || foundColor) {
+                                    foundColor = true;
+                                    tempColor[k] = color[k + 1];
+                                } else tempColor[k] = color[k];
+                            }
+                            color = tempColor;
+                        }
                         }
                     }
                 }
