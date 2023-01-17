@@ -52,6 +52,7 @@ public class ChanceSquare extends Square{
         chanceCards[20] = new CardMoney("chance21", "deposit", 1000);
         chanceCards[21] = new CardMoney("chance22", "deposit", 1000);
         chanceCards[22] = new CardMoney("chance23", "deposit", 1000);
+        chanceCards[23] = new CardMoney("chance24","deposit",200);
         chanceCards[24] = new CardMoney("chance25", "deposit", 8000); // 25. ændret: modtag 8000 kr fra banken som legat
         chanceCards[25] = new CardMoney("chance26", "hybrid", 200);
         chanceCards[26] = new CardMoney("chance27", "hybrid", 500);
