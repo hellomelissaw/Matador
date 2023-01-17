@@ -11,7 +11,6 @@ public class RandomCup extends Cup2 {
         this.random = random;
     }
 
-
     @Override
     public Cup2 roll() {
         faces = new int[] {random.nextInt(6), random.nextInt(6)};

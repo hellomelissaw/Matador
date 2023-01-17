@@ -36,7 +36,7 @@ public class JailTest {
     public static void main(String[] args) {
 
         GameController game = new GameController();
-        LoadedCup cup = new LoadedCup(new ArrayList<>(Arrays.asList(new int[]{5, 5}, new int[]{5, 5}, new int[]{5, 5})));
+        LoadedCup cup = new LoadedCup(new ArrayList<>(Arrays.asList(new int[]{15, 15})));
         game.init();
         game.run(cup);
     }

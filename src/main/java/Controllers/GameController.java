@@ -204,10 +204,10 @@ public class GameController {
                             if (sameValue) {
                                 players[i].moveOutJail();
                                 msg.printText("kastOgForladFængsel", "na");
-                                //Extra turn when leaving jail missing! maybe have done to final product!
+
 
                                 msg.printText("rollDice", players[i].getPlayerName());
-                                sum = cup.getSum();
+                                sum = cup.roll().getSum();
                                 players[i].updatePosition(sum);
                                 newPosition = players[i].getPosition();
                                 squares[newPosition].landOn(players[i]);
@@ -232,9 +232,9 @@ public class GameController {
 
                     while (equalValue && counter !=0) {
                         msg.printText("rollDice", players[i].getPlayerName());
-                        sum = cup.getSum();
+                        sum = cup.roll().getSum();
 
-                        equalValue = cup.CheckForEqualValueOfDice();
+                        equalValue = cup.roll().isSame();
                         if (equalValue){
                             counter --;
                         }
