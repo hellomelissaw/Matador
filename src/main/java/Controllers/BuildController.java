@@ -12,6 +12,8 @@ public class BuildController {
     Text msg;
     Player currentPlayer;
     boolean testingHouseCount = false;
+
+    Deed_Buildable[] selectedLotsArr;
     String buildingType;
     int houseCount = 0;
     boolean testing = false;
@@ -29,13 +31,16 @@ public class BuildController {
         this.guiController = guiController;
     }
 
-    public void testing(boolean testing, String buildingType, int houseCount) {
+    public void testing(boolean testing, String buildingType, int houseCount, Deed_Buildable[] selectedLotsArr) {
         this.testing = testing;
         this.buildingType = buildingType;
         this.houseCount = houseCount;
+        this.selectedLotsArr = selectedLotsArr;
     }
     public void build(Player currentPlayer) {
-        Deed_Buildable[] selectedLotsArr = selectLots(currentPlayer, "build");
+        if(!testing) {
+            selectedLotsArr = selectLots(currentPlayer, "build");
+        }
 
         String[] buildOptions = {"Hus", "Hotel"};
 
@@ -60,7 +65,9 @@ public class BuildController {
     }
 
     public void demolish(Player currentPlayer) {
-        Deed_Buildable[] selectedLotsArr = selectLots(currentPlayer,"demolish");
+        if(!testing) {
+            selectedLotsArr = selectLots(currentPlayer, "demolish");
+        }
 
         String[] demolishOptions = {"Hus", "Hotel"};
 

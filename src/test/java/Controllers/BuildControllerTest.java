@@ -17,7 +17,7 @@ public class BuildControllerTest {
     int buildingPrice = 500;
     int startBalance = 7000;
     GuiController guiController = new GuiController();
-    Text msg = new Text("src/main/java/Translator/DanskTekst"z);
+    Text msg = new Text("src/main/java/Translator/DanskTekst");
     BuildController buildController = new BuildController(msg);
     Player testPlayer = new Player("Test Player 0");
 
@@ -42,31 +42,34 @@ public class BuildControllerTest {
 
     @Test
     public void playerHas2HousesOnPonyFarmAndSells1HouseBackToBank() {
-        buildController.testing(true,"Hus",2);
         Deed_Buildable[] deeds = new Deed_Buildable[1];
         deeds[0] = ponyFarm.getDeed();
+
+        buildController.testing(true,"Hus",2,deeds);
+
         buildController.build(testPlayer);
         assertEquals(2, ponyFarm.getDeed().getHouseCount());
 
-        buildController.testing(true,"Hus",1);
+        buildController.testing(true,"Hus",1, deeds);
         buildController.demolish(testPlayer);
         assertEquals(1, ponyFarm.getDeed().getHouseCount());
     }
 
     @Test
     public void playerHas1HotelOnPonyFarmAndSellsItBackToBank() {
-        buildController.testing(true,"Hus",4);
         Deed_Buildable[] deeds = new Deed_Buildable[1];
         deeds[0] = ponyFarm.getDeed();
+        buildController.testing(true,"Hus",4, deeds);
+
         buildController.build(testPlayer);
         assertEquals(4,ponyFarm.getDeed().getHouseCount());
 
-        buildController.testing(true,"Hotel",0);
+        buildController.testing(true,"Hotel",0, deeds);
         buildController.build(testPlayer);
         assertEquals(0,ponyFarm.getDeed().getHouseCount());
         assertTrue(ponyFarm.getDeed().hasHotel());
 
-        buildController.testing(true,"Hotel",0);
+        buildController.testing(true,"Hotel",0, deeds);
         buildController.demolish(testPlayer);
         assertFalse(ponyFarm.getDeed().hasHotel());
     }
