@@ -53,7 +53,6 @@ public class ChanceSquare extends Square{
         chanceCards[21] = new CardMoney("chance22", "deposit", 1000);
         chanceCards[22] = new CardMoney("chance23", "deposit", 1000);
         chanceCards[24] = new CardMoney("chance25", "deposit", 8000); // 25. ændret: modtag 8000 kr fra banken som legat
-        chanceCards[24] = new CardMoney("chance25", "deposit", 40000); //modtag fra banken et matador legat på 40.000 kun hvis værdier ikke overstiger 15.000 (spørger indtil de 15000)
         chanceCards[25] = new CardMoney("chance26", "hybrid", 200);
         chanceCards[26] = new CardMoney("chance27", "hybrid", 500);
         chanceCards[27] = new CardMoney("chance28", "hybrid", 500);

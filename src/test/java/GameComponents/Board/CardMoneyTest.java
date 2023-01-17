@@ -29,7 +29,7 @@ public class CardMoneyTest {
     @Test
     // Userstory k11: kan man betale penge til banken.
     public void playChanceCardWithdrawMoney() {
-        ChanceCard testChanceCard = new CardMoney("withdraw",guiController,"withdraw",500);
+        ChanceCard testChanceCard = new CardMoney("withdraw","withdraw",500);
         testChanceCard.setCardLang(msg);
         testChanceCard.playCard(testPlayers[1]);
         assertEquals(-500, testPlayers[1].getCurrentBalance());
@@ -40,7 +40,7 @@ public class CardMoneyTest {
     @Test
     // chancecard 1: Oliepriserne er steget, og De skal betale kr 500 pr hus og kr 2000 pr hotel.
     public void playChanceCardPay500or2000() {
-        CardMoney testChanceCard = new CardMoney("Chance1",guiController,"withdraw",500, 2000);
+        CardMoney testChanceCard = new CardMoney("Chance1","withdraw",500, 2000);
         testChanceCard.setCardLang(msg);
         int[] rent = {0,0};
         //Deed_Buildable[] testDeed = {new Deed_Buildable(100,rent, "test", 100)};
@@ -75,7 +75,7 @@ public class CardMoneyTest {
     @Test
     //chancecard 26, spiller modtager 200 kr fra resterende spillere
     public void playChanceCardCurrentPlayergets200fromeachplayer() {
-        ChanceCard testChanceCard = new CardMoney("chance26",guiController,"hybrid", 200);
+        ChanceCard testChanceCard = new CardMoney("chance26","hybrid", 200);
         testChanceCard.setCardLang(msg);
         testChanceCard.setPlayers(testPlayers);
         testChanceCard.playCard(testPlayers[0]);
@@ -88,7 +88,7 @@ public class CardMoneyTest {
     @Test
     // Userstory K11: chancecard 13, spiller skal kunne modtage 500 kr fra banken
     public void playChanceCardReceive200FromPlayers() {
-        ChanceCard testChanceCard = new CardMoney("chance13",guiController,"deposit", 500);
+        ChanceCard testChanceCard = new CardMoney("chance13","deposit", 500);
         testChanceCard.setCardLang(msg);
         testChanceCard.playCard(testPlayers[0]);
         assertEquals(500, testPlayers[0].getCurrentBalance());

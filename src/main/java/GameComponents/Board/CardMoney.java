@@ -13,24 +13,19 @@ public class CardMoney extends ChanceCard {
     /**
      * Constructs a chance card that involves a money transaction
      * @param cardName name of the card
-     * @param guiController GuiController used throughout the program
      * @param transactionType determines if player pays or receives money and from who
      * @param amount how much money is involved in the transaction
      */
-    public CardMoney(String cardName, String transactionType, int amount) {
+
+    public CardMoney(String cardName, String transactionType, int amount, int alternativeAmount) {
         super(cardName);
-    public CardMoney(String cardName, GuiController guiController, String transactionType, int amount, int alternativeAmount) {
-        super(cardName, guiController);
         this.transactionType = transactionType;
         this.amount = amount;
         this.alternativeAmount = alternativeAmount;
 
-
-
-
     }
-    public CardMoney(String cardName, GuiController guiController, String transactionType, int amount) {
-        super(cardName, guiController);
+    public CardMoney(String cardName, String transactionType, int amount) {
+        super(cardName);
         this.transactionType = transactionType;
         this.amount = amount;
 
