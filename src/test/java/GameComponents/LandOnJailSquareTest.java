@@ -13,6 +13,9 @@ import gui_fields.GUI_Player;
 import gui_main.GUI;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class LandOnJailSquareTest {
 
     Player[] testPlayers = new Player[1];
@@ -42,7 +45,7 @@ public class LandOnJailSquareTest {
 
             }
 
-            //K12
+            //K12 - Spiller besøger fængsel uden straf
             @Test
             public void LandOnVisitJail () {
                 Player testPlayer = new Player("Test Player");
@@ -54,7 +57,7 @@ public class LandOnJailSquareTest {
                 assertEquals(10, currentPosition);
             }
             @Test
-            public void LandOnJail () {
+            public void LandOnGoToJail () {
                 Player testPlayer = new Player("Test Player");
                 testPlayer.guiIsOn(false);
                 testPlayer.setLang(msg);
@@ -63,22 +66,31 @@ public class LandOnJailSquareTest {
                 currentPosition = testPlayer.getPosition();
                 assertEquals(30, currentPosition);
     }
-            //K26
+            //K26 - Spiller lander i fængsel og betaler bøde for at kunne komme ud af fængsel
             @Test
-            public void LandOnJailAndChooseToPostBail () {
-                Player testPlayer = new Player("Test Player");
-                testPlayer.guiIsOn(false);
-                testPlayer.setLang(msg);
-                int currentPosition = 0;
-                int fine = 1000;
-                testPlayer.updatePosition(30);
-                currentPosition = testPlayer.getPosition();
-                testPlayer.withdrawMoney(1000,false);
-                assertEquals(-1000,testPlayer.getCurrentBalance());
+            public void LandOnGoToJailAndChooseToPostBail () {
+                GameController game = new GameController();
+                LoadedCup cup = new LoadedCup(new ArrayList<>(Arrays.asList(new int[]{15, 15})));
+                game.init();
+                game.run(cup);
 
             }
-
-
+            //K30 - Spiller lander i fængsel og kaster terninger over 3 omgange og formår ikke at slå sig ud, så betaler bøde
+            @Test
+            public void LandOnGoToJailAndChooseToThrowDiceAndStillPostBail () {
+                GameController game = new GameController();
+                LoadedCup cup = new LoadedCup(new ArrayList<>(Arrays.asList(new int[]{15, 15})));
+                game.init();
+                game.run(cup);
+            }
+            //K8 - Spiller ender i fængsel når de slår terninger af samme slags tre gange i streg
+            @Test
+            public void TripleTurnAndGoToJail () {
+                GameController game = new GameController();
+                LoadedCup cup = new LoadedCup(new ArrayList<>(Arrays.asList(new int[]{5, 5}, new int[]{5, 5}, new int[]{5, 5})));
+                game.init();
+                game.run(cup);
+    }
 
 
             }

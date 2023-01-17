@@ -27,8 +27,5 @@ public class LoadedCup extends Cup2 {
     public int[] getFaces() {
         return rolls.get(kastIndex);
 
-
-
-
     }
 }
