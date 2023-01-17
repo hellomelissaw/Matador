@@ -34,13 +34,16 @@ public class GameController {
     String[] color = {"Cyan" , "Lyserød" , "Gul" , "Grøn" ,"Rød" ,"Blå","Hvid"};
     String carColor;
 
-    public void init() {
+    public GameController() {
         msg.setGuiController(guiController);
         buildController.setGuiController(guiController);
         sellController.setGuiController(guiController);
+    }
+
+    public void init() {
 
         if (testingInit){
-            msg = new Text("src/main/java/Translator/DanskTekst");
+
             //msg = new Text("src/main/java/Translator/EnglishText", guiController);
             //guiController.initFieldTitles(msg);
             playerCount = 6;
@@ -106,7 +109,7 @@ public class GameController {
 
             //INITIALIZING PLAYERS
             //System.out.println(msg.getText("enterPlayerCount"));
-            msg.printText("welcomeMessage", "na");
+
             boolean playerCountInvalid = true;
             while (playerCountInvalid) {
                 // playerCount = userInput.nextInt();
