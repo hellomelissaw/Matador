@@ -17,7 +17,7 @@ public class BuildControllerTest {
     int buildingPrice = 500;
     int startBalance = 7000;
     GuiController guiController = new GuiController();
-    Text msg = new Text("src/main/java/Translator/DanskTekst");
+    Text msg = new Text("src/main/java/Translator/DanskTekst"z);
     BuildController buildController = new BuildController(msg);
     Player testPlayer = new Player("Test Player 0");
 

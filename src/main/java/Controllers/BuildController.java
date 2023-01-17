@@ -28,6 +28,12 @@ public class BuildController {
     public void setGuiController(GuiController guiController) {
         this.guiController = guiController;
     }
+
+    public void testing(boolean testing, String buildingType, int houseCount) {
+        this.testing = testing;
+        this.buildingType = buildingType;
+        this.houseCount = houseCount;
+    }
     public void build(Player currentPlayer) {
         Deed_Buildable[] selectedLotsArr = selectLots(currentPlayer, "build");
 
@@ -76,12 +82,6 @@ public class BuildController {
             currentPlayer.sellHotelToBank(selectedLotsArr);
 
         }
-    }
-
-    public void testing(boolean testing, String buildingType, int houseCount) {
-        this.testing = testing;
-        this.buildingType = buildingType;
-        this.houseCount = houseCount;
     }
 
 
