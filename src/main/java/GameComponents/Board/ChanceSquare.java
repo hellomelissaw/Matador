@@ -64,7 +64,6 @@ public class ChanceSquare extends Square{
         chanceCards[44] = new CardMove("chance45", 30,"index"); // 45. Gå i fængsel, De indkasserer ikke 4000 kr for at passere start. (test)
         chanceCards[45] = new CardMove("chance46", 30,"index"); // 46. Gå i fængsel, De indkasserer ikke 4000 kr for at passere start. (test)
 
-
             for (int i = 0 ; i < chanceCards.length ; i++) { //SETS PLAYERS ARRAY FOR EACH CARD
                 chanceCards[i].setBoard(board);
                 chanceCards[i].setPlayers(players);
@@ -75,7 +74,7 @@ public class ChanceSquare extends Square{
                 }
             }
 
-    }
+        }
 
     public void setCardLang() {
         for (int i = 0 ; i < chanceCards.length ; i++) { //SETS LANGUAGE FOR EACH CARD
@@ -87,6 +86,7 @@ public class ChanceSquare extends Square{
     public void isTesting(boolean testing, int testIndex) {
         this.testing = testing;
         cardIndex = testIndex;
+
     }
 
     public void landOn(Player currentPlayer) {
@@ -94,11 +94,9 @@ public class ChanceSquare extends Square{
         while(pickAgain){
 
             if(!testing){
-                //(int) (Math.random() * (45 - 1));
-                cardIndex = 35;
-                chanceCards[cardIndex].printMessage(cardIndex);
+                cardIndex = (int) (Math.random() * (45 - 1));
             }
-
+            chanceCards[cardIndex].printMessage(cardIndex);
             System.out.println("Card picked: " + cardIndex);
             chanceCards[cardIndex].playCard(currentPlayer);
             pickAgain = chanceCards[cardIndex].checkPickAgain();
