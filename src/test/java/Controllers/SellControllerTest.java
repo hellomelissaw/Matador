@@ -6,7 +6,6 @@ import GameComponents.Player;
 import Translator.Text;
 import gui_fields.GUI_Player;
 import org.junit.Test;
-import org.junit.experimental.theories.suppliers.TestedOn;
 
 import static org.junit.Assert.*;
 
@@ -15,7 +14,7 @@ public class SellControllerTest {
     GuiController guiController = null;
     Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
     SellController sellController = new SellController(guiController,msg);
-    SellController_test sellControllerSequ = new SellController_test(null,null);
+    SellController_loadable sellControllerSequ = new SellController_loadable(null,null);
     Player testPlayer = new Player("TestPlayer");
     Player buyerPlayer = new Player("BuyerPlayer");
 
