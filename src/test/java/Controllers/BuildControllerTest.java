@@ -16,7 +16,6 @@ public class BuildControllerTest {
     int[] rent = {1000,50,250,750,2250,4000,6000};
     int buildingPrice = 500;
     int startBalance = 7000;
-    GuiController guiController = new GuiController();
     Text msg = new Text("src/main/java/Translator/DanskTekst");
     BuildController buildController = new BuildController(msg);
     Player testPlayer = new Player("Test Player 0");
@@ -25,15 +24,13 @@ public class BuildControllerTest {
     DeedSquare_Buildable ponyFarm = new DeedSquare_Buildable("Pony Farm", deedPrice, rent, buildingPrice);
 
     public BuildControllerTest() {
-        guiController.setLang(msg);
-        //buildController.setCurrentPlayer(testPlayer);
+
         testPlayer.setLang(msg);
         testPlayer.guiIsOn(false);
         testPlayer.setBank(bank);
         testPlayer.setStartBalance(startBalance, false);
 
         ponyFarm.setLang(msg);
-        ponyFarm.setGuiController(guiController);
         ponyFarm.setGuiOn(false);
         ponyFarm.setGroup("pink", 1);
         ponyFarm.setOwnerForTesting(testPlayer);
