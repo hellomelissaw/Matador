@@ -17,6 +17,8 @@ public abstract class Square {
 
     GuiController guiController;
 
+    boolean guiIsOn = true;
+
     Square(String squareName){
         this.squareName = squareName;
 
@@ -49,6 +51,10 @@ public abstract class Square {
 
     public void setGuiController(GuiController guiController) {
         this.guiController = guiController;
+    }
+
+    public void setGuiIsOn(boolean guiIsOn) {
+        this.guiIsOn = guiIsOn;
     }
 
 

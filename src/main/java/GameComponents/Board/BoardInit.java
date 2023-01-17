@@ -30,9 +30,9 @@ import static java.lang.Integer.valueOf;
     }
 
     public BoardInit(Text msg, Player[] players) {
+        guiIsOn = false;
         this.msg = msg;
         this.players = players;
-        guiIsOn = false;
 
     }
 
@@ -63,11 +63,17 @@ import static java.lang.Integer.valueOf;
                     board[i-1].setGroup(squareInfo[11], valueOf(squareInfo[12]));
                     ((DeedSquare_Buildable)board[i-1]).setDeedIndex(i-1);
 
-                    if(guiIsOn){ board[i-1].setGuiController(guiController); }
+                    if(guiIsOn){ board[i-1].setGuiController(guiController);
+                    } else {
+                        board[i-1].setGuiIsOn(false);
+                    }
 
                 } else if (squareInfo[2].equals(" chance")) {
-                    board[i-1] = new ChanceSquare(squareInfo[0], guiController, players);
+                    board[i-1] = new ChanceSquare(squareInfo[0], players);
                     board[i-1].setLang(msg);
+                    if(guiIsOn){ board[i-1].setGuiController(guiController); } else {
+                        board[i-1].setGuiIsOn(false);
+                    }
 
                 } else if (squareInfo[2].equals(" tax")) {
                     board[i-1] = new TaxSquare(squareInfo[0], guiController, players);
@@ -81,7 +87,10 @@ import static java.lang.Integer.valueOf;
                     board[i-1] = new DeedSquare_NonBuildable(squareInfo[0], valueOf(squareInfo[3]), rent);
                     board[i-1].setLang(msg);
                     board[i-1].setGroup(squareInfo[11], valueOf(squareInfo[12]));
-                    if(guiIsOn){ board[i-1].setGuiController(guiController); }
+                    if(guiIsOn){ board[i-1].setGuiController(guiController);
+                    } else {
+                        board[i-1].setGuiIsOn(false);
+                    }
 
                 } else if  (squareInfo[2].equals(" jail")) {
                     board[i-1] = new JailSquare(squareInfo[0], guiController);
@@ -95,7 +104,9 @@ import static java.lang.Integer.valueOf;
                     board[i-1] = new DeedSquare_NonBuildable(squareInfo[0], valueOf(squareInfo[3]), rent);
                     board[i-1].setLang(msg);
                     board[i-1].setGroup(squareInfo[11], valueOf(squareInfo[12]));
-                    if(guiIsOn){ board[i-1].setGuiController(guiController); }
+                    if(guiIsOn){ board[i-1].setGuiController(guiController); } else {
+                        board[i-1].setGuiIsOn(false);
+                    }
 
                 } else if (squareInfo[2].equals(" refuge")) {
                     board[i-1] = new ParkingSquare(squareInfo[0]);

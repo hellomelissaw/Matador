@@ -9,18 +9,16 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class CardDeedTest {
-    GuiController guiController = new GuiController();
     Player[] testPlayers = new Player[2];
     Text msg = new Text("src/main/java/Translator/DanskTekst");
     ChanceSquare testChanceSquare;
-
     Bank bank = new Bank();
 
-
     public CardDeedTest() {
+        msg.setGuiIsOn(false);
         testPlayers[0] = new Player("TestPlayer 1");
-        testPlayers[0].setGuiIsOn(false);
         testPlayers[0].setLang(msg);
+        testPlayers[0].setGuiIsOn(false);
         testPlayers[0].setBank(bank);
         testPlayers[0].setStartBalance(6000, true);
 
@@ -30,13 +28,14 @@ public class CardDeedTest {
         testPlayers[1].setBank(bank);
         testPlayers[1].setStartBalance(6000, true);
 
-        BoardInit squares = new BoardInit(guiController, msg, testPlayers);
+        BoardInit squares = new BoardInit(msg, testPlayers);
+        squares.initBoard();
         Square[] board = squares.getSquareArr();
-        testChanceSquare = new ChanceSquare("Chance Square", guiController, testPlayers);
+        testChanceSquare = new ChanceSquare("Chance Square", testPlayers);
+        testChanceSquare.setGuiIsOn(false);
+        testChanceSquare.setChanceCards(board);
         testChanceSquare.setLang(msg);
         testChanceSquare.setCardLang();
-        testChanceSquare.setChanceCards(board);
-
 
     }
 

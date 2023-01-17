@@ -11,16 +11,14 @@ import org.junit.Test;
 public class LandOnJailSquareTest {
 
     Player[] testPlayers = new Player[1];
-
-    GUI_Player testGuiPlayer1 = new GUI_Player("TestGuiPlayer 1");
-    GuiController guiController = new GuiController();
     Text msg = new Text("src/main/java/Translator/DanskTekst");
     Square[] board;
 
     public LandOnJailSquareTest() {
         testPlayers[0] = new Player("TestPlayer 1");
-        testPlayers[0].setGui(testGuiPlayer1, guiController, msg);
-        BoardInit squares = new BoardInit(guiController, msg, testPlayers);
+        testPlayers[0].setGuiIsOn(false);
+        BoardInit squares = new BoardInit(msg, testPlayers);
+        squares.initBoard();
         board = squares.getSquareArr();}
 
             @Test

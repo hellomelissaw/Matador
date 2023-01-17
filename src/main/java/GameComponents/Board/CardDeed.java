@@ -6,10 +6,9 @@ public class CardDeed extends ChanceCard {
     /**
      * Constructs a card that involves moving player to the nearest shipyard (rederi)
      * @param cardName name of the card
-     * @param guiController GuiController used throughout the program
      */
-    public CardDeed(String cardName, GuiController guiController) {
-        super(cardName, guiController);
+    public CardDeed(String cardName) {
+        super(cardName);
 
     }
 

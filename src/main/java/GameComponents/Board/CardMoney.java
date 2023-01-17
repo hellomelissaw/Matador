@@ -16,8 +16,8 @@ public class CardMoney extends ChanceCard {
      * @param transactionType determines if player pays or receives money and from who
      * @param amount how much money is involved in the transaction
      */
-    public CardMoney(String cardName, GuiController guiController, String transactionType, int amount) {
-        super(cardName, guiController);
+    public CardMoney(String cardName, String transactionType, int amount) {
+        super(cardName);
         this.transactionType = transactionType;
         this.amount = amount;
 
