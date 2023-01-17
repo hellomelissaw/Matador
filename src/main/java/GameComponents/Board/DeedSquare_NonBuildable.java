@@ -21,7 +21,9 @@ public class DeedSquare_NonBuildable extends DeedSquare {
     protected String userInputBuying(boolean testing) {
         String[] choices = {"ja", "nej"};
         if(!testing) {
-            buying = guiController.getUserSelection(msg.getText("buyLot") + " " + deed.getDeedName() + "?", choices);
+            if (guiIsOn) {
+                buying = guiController.getUserSelection(msg.getText("buyLot") + " " + deed.getDeedName() + "?", choices);
+            }
         }
         return buying;
     }

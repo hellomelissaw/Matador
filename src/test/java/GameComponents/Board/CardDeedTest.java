@@ -13,6 +13,7 @@ public class CardDeedTest {
     Text msg = new Text("src/main/java/Translator/DanskTekst");
     ChanceSquare testChanceSquare;
     Bank bank = new Bank();
+    Square[] board;
 
     public CardDeedTest() {
         msg.setGuiIsOn(false);
@@ -30,29 +31,33 @@ public class CardDeedTest {
 
         BoardInit squares = new BoardInit(msg, testPlayers);
         squares.initBoard();
-        Square[] board = squares.getSquareArr();
-        testChanceSquare = new ChanceSquare("Chance Square", testPlayers);
+        board = squares.getSquareArr();
+        squares.initChanceSquare(board);
+
+       /* testChanceSquare = new ChanceSquare("Chance Square", testPlayers);
         testChanceSquare.setGuiIsOn(false);
         testChanceSquare.setChanceCards(board);
         testChanceSquare.setLang(msg);
-        testChanceSquare.setCardLang();
+        testChanceSquare.setCardLang();*/
 
     }
 
     @Test
     public void chanceCard34GoToShipyard6From2() {
-    testChanceSquare.isTesting(true,34);
+        ((DeedSquare_NonBuildable)board[5]).testing(true,"nej");
+        ((ChanceSquare)board[2]).isTesting(true,34);
     testPlayers[0].updatePosition(2);
-    testChanceSquare.landOn(testPlayers[0]);
+        board[2].landOn(testPlayers[0]);
     assertEquals(5,testPlayers[0].getPosition());
 
     }
 
     @Test
     public void chanceCard34GoToShipyardAndBuyItFor4000() {
-        testChanceSquare.isTesting(true,34);
+        ((DeedSquare_NonBuildable)board[5]).testing(true,"ja");
+        ((ChanceSquare)board[2]).isTesting(true,34);
         testPlayers[0].updatePosition(2);
-        testChanceSquare.landOn(testPlayers[0]);
+        board[2].landOn(testPlayers[0]);
         assertEquals(5,testPlayers[0].getPosition());
 
     }
