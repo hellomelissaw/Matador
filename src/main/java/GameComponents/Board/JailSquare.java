@@ -23,11 +23,12 @@ public class JailSquare extends Square{
     public void landOn(Player currentPlayer) {
         int currentPosition = currentPlayer.getPosition();
 
-        //The player get moved to jail square and gets instructions on how to leave. If the player didn't land on jail square, then they're just visiting.
+        //The player gets moved to jail square and gets instructions on how to leave. If the player didn't land on jail square, then they're just visiting.
         if(currentPosition==30)
         {
             msg.printText("movedToJail", "na");
             currentPlayer.updatePosition(20);
+            //youre being detrimental yuuuh
             currentPlayer.setInJail(true);
 
         }else{
