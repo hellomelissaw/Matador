@@ -1,5 +1,6 @@
 package Controllers;
 
+import GameComponents.Bank;
 import GameComponents.Board.*;
 import GameComponents.Player;
 import Translator.Text;
@@ -17,6 +18,7 @@ public class SellControllerTest {
     Player testPlayer = new Player("TestPlayer");
     Player buyerPlayer = new Player("BuyerPlayer");
 
+    Bank bank = new Bank();
     Player[] players = new Player[3];
     int[] array = {1000,50,250,750,2250,4000,6000};
     int[] arrayBuildable = {1000,50,250,750,2250,4000,6000};
@@ -39,6 +41,7 @@ public class SellControllerTest {
         for(int i = 0 ; i < players.length ; i++) {
             players[i] = new Player("TestPlayer"+i);
             players[i].guiIsOn(false);
+            players[i].setBank(bank);
             players[i].setStartBalance(startBalance, false);
         }
 
@@ -155,7 +158,7 @@ public class SellControllerTest {
         capriciousCarport.landOn(players[0]);
 
         sellController.setTestingAuctionLot(true,"TestPlayer1", 1000, false);
-
+        sellController.auctionLot(players[0],players,capriciousCarport.getAuctionedDeed());
         assertEquals(players[1], capriciousCarport.getDeedOwner());
 }
 
