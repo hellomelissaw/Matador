@@ -9,6 +9,8 @@ public abstract class ChanceCard {
     protected String cardName;
     GuiController guiController;
 
+    boolean guiIsOn;
+
     protected Text msg;
     protected Player[] players;
     protected GUI_Player[] guiPlayers;
@@ -17,12 +19,18 @@ public abstract class ChanceCard {
     protected Square[] board;
     boolean pickAgain;
 
-    public ChanceCard(String cardName, GuiController guiController){
+    public ChanceCard(String cardName){
         this.cardName = cardName;
-        this.guiController = guiController;
 
     }
 
+    public void setGuiIsOn(boolean guiIsOn) {
+        this.guiIsOn = guiIsOn;
+    }
+
+    public void setGuiController(GuiController guiController) {
+        this.guiController = guiController;
+    }
     public void setBoard(Square[] board) {
         this.board = board;
     }

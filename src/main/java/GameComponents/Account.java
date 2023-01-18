@@ -9,12 +9,15 @@ public class Account {
     private int houses;
 
     private int hotels;
+
+    private int jailPasses;
     private boolean isBankrupt = false;
     GUI_Player guiPlayer;
 
     public Account(){
 
         balance = 0;
+        jailPasses = 0;
        // houses = 0;
        // hotels = 0;
     }
@@ -47,6 +50,27 @@ public class Account {
 
     public boolean getAccountStatus() {
         return isBankrupt;
+    }
+
+    public int getJailPasses (){
+        return jailPasses;
+    }
+
+    public void giveJailPass(){
+        jailPasses += 1;
+    }
+
+    public boolean useJailPass(){
+        Boolean hasUsedPass = false;
+
+        if (jailPasses==0){
+            System.out.println("Du har ikke flere kom ud af fængselkort");
+        } else if (jailPasses > 0) {
+            jailPasses--;
+            hasUsedPass = true;
+        }
+
+        return hasUsedPass;
     }
 
 

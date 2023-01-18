@@ -15,14 +15,15 @@ public class CardMove extends ChanceCard {
      * @param move determines either the amount of squares to be moved or the index to be moved to according to moveType
      * @param moveType determines the player is moved a certain amount of squares or to a particular index
      */
-    public CardMove(String cardName, GuiController guiController, int move, String moveType) {
-        super(cardName, guiController);
+    public CardMove(String cardName, int move, String moveType) {
+        super(cardName);
         this.move = move;
         this.moveType = moveType;
     }
 
+
     public void playCard(Player currentPlayer) {
-        if (moveType == "index"){ // MOVES PLAYER TO A GIVEN INDEX
+        if (moveType == "index") { // MOVES PLAYER TO A GIVEN INDEX
             int distance = currentPlayer.getDistanceToMove(move, 40);
             currentPlayer.updatePosition(distance);
             pickAgain = false;

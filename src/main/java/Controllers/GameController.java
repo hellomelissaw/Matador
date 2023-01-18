@@ -8,17 +8,18 @@ import GameComponents.Bank;
 import java.awt.*;
 
 
+
+import java.util.Objects;
+
 public class GameController {
     boolean useCupStub = false;
-
-    boolean testingInit = true;
+    boolean testingInit = false;
     boolean testingBuildButton = false;
     boolean testStartBalance = false;
     GuiController guiController = new GuiController();
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
-
-    BuildController buildController = new BuildController(guiController, msg);
-    SellController sellController = new SellController(guiController,msg);
+    Text msg = new Text("src/main/java/Translator/DanskTekst");
+    BuildController buildController = new BuildController(msg);
+    SellController sellController = new SellController(msg);
     String userInput;
     int balance = 0;
     Player[] players;
@@ -35,10 +36,17 @@ public class GameController {
     String[] color = {"Cyan" , "Lyserød" , "Gul" , "Grøn" ,"Rød" ,"Blå","Hvid"};
     String carColor;
 
-    public void init() {
+    public GameController() {
+        msg.setGuiController(guiController);
         guiController.setLang(msg);
+        buildController.setGuiController(guiController);
+        sellController.setGuiController(guiController);
+    }
+
+    public void init() {
+
         if (testingInit){
-            msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+
             //msg = new Text("src/main/java/Translator/EnglishText", guiController);
             //guiController.initFieldTitles(msg);
             playerCount = 6;
@@ -55,7 +63,6 @@ public class GameController {
             players[0].setBank(bank); //INITIALISE BANK WITHIN PLAYER
             players[0].setStartBalance(balance,false); // DEPOSIT INITIAL BALANCE
             players[0].setCarColor(Color.red);
-
 
             players[1] = new Player("Germaine"); // INITIALISE EACH PLAYER WITH NAME
             players[1].setGui(guiController.createGuiPlayer(players[1]), guiController, msg);
@@ -104,7 +111,7 @@ public class GameController {
 
             //INITIALIZING PLAYERS
             //System.out.println(msg.getText("enterPlayerCount"));
-            msg.printText("welcomeMessage", "na");
+
             boolean playerCountInvalid = true;
             while (playerCountInvalid) {
                 // playerCount = userInput.nextInt();
@@ -126,24 +133,8 @@ public class GameController {
             for (int i = 0; i < playerCount; i++) {
                 int playerNumber = i + 1;
                 boolean duplicateName = true;
-                while(duplicateName) {
+                while(duplicateName){
                     userInput = guiController.getUserString(playerNumber);
-                    carColor = guiController.getUserSelection("Hvilke farve skal være din bil?", color);
-                    for (int j = 0; j < color.length; j++) {// check color duplicated, and remove the color from the color array, and the next player is not allowed to choos the same color
-                        if (color[j] != null && color[j].equals(carColor)) {
-                            color[j] = null;
-                            String[] tempColor = new String[color.length-1];
-                            boolean foundColor = false;
-                            for (int k = 0; k < color.length-1; k++) {
-                                if (color[k] == null || foundColor) {
-                                    foundColor = true;
-                                    tempColor[k] = color[k+1];
-                                }
-                                else tempColor[k] = color[k];
-                            }
-                            color = tempColor;
-                        }
-                    }
                     if (i == 0) {
                         duplicateName = false;
                         System.out.println("First Player");
@@ -157,6 +148,23 @@ public class GameController {
                                 break;
 
                             } else {duplicateName = false;}
+                        }
+                    }
+                    if(!duplicateName){
+                    carColor = guiController.getUserSelection("Hvilke farve skal være din bil?", color);
+                    for (int j = 0; j < color.length; j++) {// check color duplicated, and remove the color from the color array, and the next player is not allowed to choos the same color
+                        if (color[j] != null && color[j].equals(carColor)) {
+                            color[j] = null;
+                            String[] tempColor = new String[color.length - 1];
+                            boolean foundColor = false;
+                            for (int k = 0; k < color.length - 1; k++) {
+                                if (color[k] == null || foundColor) {
+                                    foundColor = true;
+                                    tempColor[k] = color[k + 1];
+                                } else tempColor[k] = color[k];
+                            }
+                            color = tempColor;
+                        }
                         }
                     }
                 }
@@ -174,6 +182,7 @@ public class GameController {
         }
 
         BoardInit board = new BoardInit(guiController, msg, players);
+        board.initBoard();
         squares = board.getSquareArr();
         board.initChanceSquare(squares);
         msg.printText("startGame", "na");
@@ -198,10 +207,16 @@ public class GameController {
 
                 if (isInJail) {
 
-                    msg.printText("fængsel", "na");
-                    String[] jailOptions = {"Betal bøde?", "Kast terninger?"};
+                    guiController.showMessage(players[i].getPlayerName() + " Du er i fængsel og har kun følgende muligheder for at komme ud af fængsel! Vælg en valgmulighed: Betal bøde på 1000 kr med det samme? eller Prøv dit held ved terningekast! Du kan også bruge et kom ud af fængsel kort, hvis du har et");
                     String name;
-                    name = guiController.getUserSelection("Betal bøde på 1000 kr med det samme? eller Prøv heldet med terningekast!", jailOptions);
+                    if (players[i].getJailPass() > 0){
+                        guiController.showMessage("Du har " + players[i].getJailPass() + " kom ud af fængsel kort.");
+                        String[] jailOptions = {"Betal bøde?", "Kast terninger?", "Brug et kom ud af fængsel kort"};
+                        name = guiController.getUserSelection("Betal bøde på 1000 kr med det samme?, Prøv heldet med terningekast? eller Kom ud af fængslet med det samme ", jailOptions);
+                    }else {
+                        String[] jailOptions = {"Betal bøde?", "Kast terninger?"};
+                        name = guiController.getUserSelection("Betal bøde på 1000 kr med det samme? eller Prøv heldet med terningekast!", jailOptions);
+                    }
 
                     if (players[i].jailCounter() < 3) {
 
@@ -234,6 +249,15 @@ public class GameController {
                                 System.out.println("Vent til næste runde");
                             }
 
+                        } else if (Objects.equals(name, "Brug et kom ud af fængsel kort")){
+                            int jailPasses = players[i].getJailPass();
+
+                            if (jailPasses > 0) {
+                                players[i].useJailPass();
+                                guiController.showMessage(players[i].getPlayerName()+ " Du er nu ude af fængslet");
+                                players[i].moveOutJail();
+                            }
+
                         }
                     } else if (players[i].jailCounter() == 3) {
                         msg.printText("spildt3Runder", "na");
@@ -249,6 +273,7 @@ public class GameController {
                     if(testingBuildButton){setOwnerForTesting();}
                         boolean rollDice = false;
                         while (!rollDice) {
+
                             String[] userActionButtons = setActionButtons(i);
                             String userChoice = guiController.getUserAction(players[i].getPlayerName(), userActionButtons);
 

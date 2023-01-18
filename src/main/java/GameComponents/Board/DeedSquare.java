@@ -4,7 +4,6 @@ import GameComponents.Player;
 import java.util.Scanner;
 
 public abstract class DeedSquare extends Square{
-    boolean guiIsOn = true;
     boolean testing = false;
     String buying;
     boolean sellDeed = true;
@@ -29,10 +28,6 @@ public abstract class DeedSquare extends Square{
 
     }
 
-    public void  setGuiOn(boolean guiIsOn) {
-        this.guiIsOn = guiIsOn;
-    }
-
     public void testing(boolean testing, String answer) {
         this.testing = testing;
         buying = answer;
@@ -51,13 +46,13 @@ public abstract class DeedSquare extends Square{
 
     public void landOn(Player currentPlayer) {
         if(sellDeed == true) { // IF DEED IS AVAILABLE TO BUY
-
+            if(!testing){
             if (guiIsOn) {
                buying = userInputBuying(testing);
 
             } else {
                 System.out.println("Vil du købe denne grund?");
-                if(!testing){
+
                     buying = userInput.nextLine();
                 }
             }

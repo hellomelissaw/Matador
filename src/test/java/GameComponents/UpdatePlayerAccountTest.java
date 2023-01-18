@@ -8,14 +8,13 @@ import static org.junit.Assert.*;
 
 public class UpdatePlayerAccountTest {
     Player testPlayer = new Player("Test Player");
-    GUI_Player testGuiPlayer = new GUI_Player("Test Player");
 
-    GuiController guiController = new GuiController();
-
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+    Text msg = new Text("src/main/java/Translator/DanskTekst");
 
     public UpdatePlayerAccountTest() {
-        testPlayer.setGui(testGuiPlayer, guiController, msg);
+        msg.setGuiIsOn(false);
+        testPlayer.setGuiIsOn(false);
+
     }
 
     @Test

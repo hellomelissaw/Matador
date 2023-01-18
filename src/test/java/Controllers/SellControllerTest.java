@@ -11,10 +11,9 @@ import static org.junit.Assert.*;
 
 public class SellControllerTest {
 
-    GuiController guiController = null;
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
-    SellController sellController = new SellController(guiController,msg);
-    SellController_loadable sellControllerSequ = new SellController_loadable(null,null);
+    Text msg = new Text("src/main/java/Translator/DanskTekst");
+    SellController sellController = new SellController(msg);
+    SellController_loadable sellControllerSequ = new SellController_loadable(msg);
     Player testPlayer = new Player("TestPlayer");
     Player buyerPlayer = new Player("BuyerPlayer");
 
@@ -34,25 +33,25 @@ public class SellControllerTest {
 
     int startBalance = 7000;
     public SellControllerTest() {
-        testPlayer.guiIsOn(false);
-        buyerPlayer.guiIsOn(false);
+        testPlayer.setGuiIsOn(false);
+        buyerPlayer.setGuiIsOn(false);
         msg.setGuiIsOn(false);
 
         for(int i = 0 ; i < players.length ; i++) {
             players[i] = new Player("TestPlayer"+i);
-            players[i].guiIsOn(false);
+            players[i].setGuiIsOn(false);
             players[i].setBank(bank);
             players[i].setStartBalance(startBalance, false);
         }
 
         bunnyPalace.setOwnerForTesting(players[1]);
-        bunnyPalace.setGuiOn(false);
+        bunnyPalace.setGuiIsOn(false);
 
         ratKingdom.setOwnerForTesting(players[2]);
-        ratKingdom.setGuiOn(false);
+        ratKingdom.setGuiIsOn(false);
 
         boulevardOfBrokenDreams.setOwnerForTesting(players[2]);
-        capriciousCarport.setGuiOn(false);
+        capriciousCarport.setGuiIsOn(false);
 
     }
 
@@ -86,7 +85,7 @@ public class SellControllerTest {
         testPlayer.addToOwnedFields(deedBuildable);
     }
 
-    @Test
+    @Test // user story K19, accepttest : Givet at spilleren køber grunde, så kan de opkøbe de grunde de nu gerne vil have
     public void player0WantsToBuyAndPlayer1And2LotsShownInArray() {
         sellController.setTestingBuyLot(true,"Bunny Palace", 1000, true);
         sellController.buyLot(players[0], players);
@@ -95,21 +94,7 @@ public class SellControllerTest {
 
     }
 
-    public void player1BuysBunnyPalaceFromPlayer2For500() {
-
-        sellController.buyLot(players[0], players);
-
-        assertEquals(bunnyPalace.getDeedOwner(), players[0]);
-
-    }
-
-    @Test
-    public void deedIsOfTypeDeed_Buildable() {
-       Deed_Buildable deed = bunnyPalace.getDeed();
-        System.out.println(bunnyPalace.getDeedType(deed));
-    }
-
-    @Test
+    @Test   // user story K19, accepttest : Givet at spilleren køber grunde, så kan de opkøbe de grunde de nu gerne vil have
     public void player0BuysBunnyPalaceFromPlayer1For1000(){
         sellController.setTestingBuyLot(true,"Bunny Palace", 1000, true);
         sellController.buyLot(players[0], players);
@@ -121,7 +106,7 @@ public class SellControllerTest {
 
     }
 
-    @Test
+    @Test  // user story K19, accepttest : Givet at spilleren køber grunde, så kan de opkøbe de grunde de nu gerne vil have
     public void player0TriesToBuyBunnyPalaceFor1000ButOfferDeclined(){
         sellController.setTestingBuyLot(true,"Bunny Palace", 1000, false);
         sellController.buyLot(players[0], players);
@@ -133,7 +118,7 @@ public class SellControllerTest {
 
     }
 
-    @Test
+    @Test // user story K18, accepttest : Givet at spilleren bytter sine grunde med sine medspillere, så har alle spillere mulighed for modtage den grund de nu står og skal bruge.
     public void player1TradesBunnyPalaceWithPlayer2RatKingdom(){
         sellController.setTestingTradeLot(true,"Bunny Palace", "Rat Kingdom", true);
         sellController.tradeLot(players[1], players);
@@ -146,7 +131,7 @@ public class SellControllerTest {
 
     }
 
-    @Test
+    @Test // user story K18, accepttest : Givet at spilleren bytter sine grunde med sine medspillere, så har alle spillere mulighed for modtage den grund de nu står og skal bruge.
     public void player1AsksTradesBunnyPalaceWithPlayer2RatKingdomOfferRefused(){
         sellController.setTestingTradeLot(true,"Bunny Palace", "Rat Kingdom", false);
         sellController.tradeLot(players[1], players);
@@ -157,7 +142,7 @@ public class SellControllerTest {
         assertEquals(players[1], bunnyPalace.getDeedOwner());
 
     }
-@Test
+@Test //user story K28 accepttest: Givet at den aktive spiller ikke vil købe feltet, så kan feltet købes af de andre spillere gennem banken
     public void player1BidsOnCapriciousCarportAndGetIt(){
         capriciousCarport.testing(true, "nej");
         capriciousCarport.landOn(players[0]);
@@ -167,7 +152,7 @@ public class SellControllerTest {
         assertEquals(players[1], capriciousCarport.getDeedOwner());
 }
 
-@Test
+@Test //user story K28 accepttest: Givet at den aktive spiller ikke vil købe feltet, så kan feltet købes af de andre spillere gennem banken
     public void player1Bids1000Player2Bids1100Player1Bids1200AndGetCapriciousCarport() {
         capriciousCarport.testing(true,"nej");
         capriciousCarport.landOn(players[0]);

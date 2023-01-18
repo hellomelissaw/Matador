@@ -14,7 +14,7 @@ public abstract class Cup2 {
     public boolean isSame() {
         //todo fix
 
-        return false;
+        return true;
     }
 
     public abstract int[] getFaces();

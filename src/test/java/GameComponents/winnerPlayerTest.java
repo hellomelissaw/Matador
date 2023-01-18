@@ -8,13 +8,13 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class winnerPlayerTest {
-    GuiController guiController = new GuiController();
     Player[] players = new Player[4];
     GUI_Player[] guiPlayers = new GUI_Player[4];
-
-    Text msg = new Text("src/main/java/Translator/DanskTekst", guiController);
+    Text msg = new Text("src/main/java/Translator/DanskTekst");
 
     public winnerPlayerTest() {
+        msg.setGuiIsOn(false);
+
         players[0] = new Player("A");
         players[1] = new Player("B");
         players[2] = new Player("C");
@@ -25,9 +25,10 @@ public class winnerPlayerTest {
         guiPlayers[2] = new GUI_Player("C");
         guiPlayers[3] = new GUI_Player("D");
 
-        for (int i = 0 ; i < players.length ; i++)
-            players[i].setGui(guiPlayers[i], guiController, msg);
+        for (int i = 0; i < players.length; i++) {
 
+              players[i].setGuiIsOn(false);
+        }
     }
 
     @Test

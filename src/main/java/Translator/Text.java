@@ -19,17 +19,16 @@ public class Text {
     /***
      * Reads a text file and parses each line into labels and their corresponding messages
      * @param file file name for user-chosen language
-     * @param guiController
      */
-    public Text(String file, GuiController guiController){
+    public Text(String file) {
         this.file = file;
-        this.guiController = guiController;
+
         BufferedReader reader;
 
         try {
             BufferedReader counter = new BufferedReader(new java.io.FileReader(file));
 
-            while(counter.readLine() != null){
+            while (counter.readLine() != null) {
                 lineCount++;
 
             }
@@ -52,6 +51,10 @@ public class Text {
 
         }
 
+    }
+
+    public void setGuiController(GuiController guiController) {
+        this.guiController = guiController;
     }
 
     public void setGuiIsOn(boolean guiIsOn) {

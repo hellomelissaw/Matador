@@ -15,7 +15,7 @@ public class TaxSquareTest {
     int balance = 0;
     @Test
     public void testPayTenProcentTax() {
-        testPlayer.guiIsOn(false);
+        testPlayer.setGuiIsOn(false);
         testPlayer.depositMoney(2000,false);
         assertEquals(2000,testPlayer.getCurrentBalance());
 

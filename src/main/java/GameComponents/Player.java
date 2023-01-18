@@ -23,6 +23,8 @@ public class Player {
     DeedSquare deedSquare;
     int squareCount = 40;
 
+    public int netWorth;
+
     private boolean inJail = false;
 
     int counter = 0;
@@ -52,10 +54,14 @@ public class Player {
 
     }
 
-    public void guiIsOn(boolean guiIsOn) {
+    public void setGuiIsOn(boolean guiIsOn) {
         guiOn = guiIsOn;
         playerAccount.guiIsOn(guiIsOn);
 
+    }
+
+    public int getNetWorth(){
+        return netWorth;
     }
 
     public void setCarColor (Color color){
@@ -84,6 +90,7 @@ public class Player {
 
     public void setStartBalance(int startBalance, boolean transactionToBankParameter) {
         playerAccount.deposit(startBalance);
+        netWorth += startBalance;
         if (guiOn) {
             guiPlayer.setBalance(startBalance);
         }
@@ -401,6 +408,19 @@ public class Player {
 
             }
         }
+
+    }
+
+    public int getJailPass(){
+        return playerAccount.getJailPasses();
+    }
+
+    public void giveJailPass(){
+        playerAccount.giveJailPass();
+    }
+
+    public Boolean useJailPass(){
+        return playerAccount.useJailPass();
     }
 
 
