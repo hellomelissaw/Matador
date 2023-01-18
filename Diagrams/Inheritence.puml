@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Square
+class StartSquare
+class ParkingSquare
+class DeedSquare
+class JailSquare
+class ChanceSquare
+class TaxSquare
+class DeedSquare_NonBuildable
+class DeedSquare_Buildable
+class ChanceCard
+
+abstract class ChanceCard
+class CardJailPass
+class CardMove
+class CardMoney
+class CardDeed
+
+
+abstract class Deed
+
+class Deed_Buildable
+class Deed_NonBuildable
+
+Square <|-- StartSquare
+Square <|-- TaxSquare
+Square <|-- JailSquare
+Square <|-- DeedSquare
+Square <|-- ParkingSquare
+Square <|-- ChanceSquare
+
+DeedSquare <|-- DeedSquare_Buildable
+DeedSquare <|-- DeedSquare_NonBuildable
+
+ChanceCard <|-- CardJailPass
+ChanceCard <|-- CardDeed
+ChanceCard <|-- CardMoney
+ChanceCard <|-- CardMove
+
+Deed <|-- Deed_Buildable
+Deed <|-- Deed_NonBuildable
+@enduml
