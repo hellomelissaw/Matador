@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/class-diagram
+title Class diagram for a buildable square
+abstract class Square {
+color: String
+groupSize: int
+
+}
+
+abstract class DeedSquare {
+
+rent: int[];
+deedPrice: int;
+
+buying: String;
+sellDeed: Bool = true;
+ownsGroup: Bool = false;
+
+userInput: Scanner;
+
++hasDeed():boolean
++sellDeed():void
+
+}
+
+class DeedSquare_Buildable {
+buildingPrice: int;
+
+}
+
+abstract class Deed
+class Deed_Buildable
+
+Square <|-down- DeedSquare
+
+DeedSquare <|-down- DeedSquare_Buildable
+
+Deed <|-down- Deed_Buildable
+
+DeedSquare_Buildable <-right- Deed
+
+@enduml
