@@ -4,7 +4,6 @@
 title Class Diagram
 
 class Game{
-game: GameController()
 }
 
 
@@ -70,7 +69,7 @@ class Account {
 
 class ChanceSquare {}
 
-class ChanceCard {}
+abstract class ChanceCard {}
 
 class JailSquare {}
 
@@ -78,23 +77,27 @@ class StartSquare {}
 
 class ParkingSquare {}
 
+class TaxSquare{}
+
 class GuiController{
 
 }
 
-class ChanceCard {
-
-
-}
 
 class MoveCard {
 
 }
 
+class JailPassCard {}
+
 class Cardholder {}
 
 class Bank {
 }
+
+class SellController {}
+
+class BuildController {}
 
 Bank <-down- GameController
 
@@ -103,6 +106,10 @@ Bank "1" o--down- "3..6" Player
 GameController -up-- Game
 
 GuiController -down-- GameController
+
+SellController -down-- GameController
+
+BuildController -down-- GameController
 
 GameController <-down- BoardInit
 
@@ -133,11 +140,15 @@ Square  <|-down- StartSquare
 
 Square  <|-down- ParkingSquare
 
+Square  <|-down- TaxSquare
+
 ChanceCard <|-down- MoveCard
 
 ChanceCard <|-down- MoneyCard
 
 ChanceCard <|-down- DeedCard
+
+ChanceCard <|-down- JailPassCard
 
 Player *-left-Cardholder
 
