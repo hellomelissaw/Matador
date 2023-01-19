@@ -1,0 +1,160 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title Class Diagram
+
+class Game{
+game: GameController()
+}
+
+
+class Cup{
+
+}
+
+class Die {
+
+}
+
+class GameController {
+
+}
+
+class Player{
+
+}
+
+class Account{
+
+}
+
+class Square {
+
+
+}
+
+class BoardInit {
+
+
+}
+
+abstract class Square {
+
+}
+
+abstract class DeedSquare {
+
+}
+
+class DeedSquare_Buildable {
+
+}
+
+class DeedSquare_NonBuildable {}
+
+abstract class Deed {
+
+}
+
+class Deed_Buildable{}
+
+class Deed_NonBuildable{}
+
+class Player {
+
+}
+
+class Account {
+
+}
+
+class ChanceSquare {}
+
+class ChanceCard {}
+
+class JailSquare {}
+
+class StartSquare {}
+
+class ParkingSquare {}
+
+class GuiController{
+
+}
+
+class ChanceCard {
+
+
+}
+
+class MoveCard {
+
+}
+
+class Cardholder {}
+
+class Bank {
+}
+
+Bank <-down- GameController
+
+Bank "1" o--down- "3..6" Player
+
+GameController -up-- Game
+
+GuiController -down-- GameController
+
+GameController <-down- BoardInit
+
+BoardInit "1" *--down- "40" Square
+
+Square <|-down- DeedSquare
+
+DeedSquare <|-down- DeedSquare_Buildable
+
+DeedSquare <|-down- DeedSquare_NonBuildable
+
+DeedSquare_Buildable <-down- Deed
+
+DeedSquare_NonBuildable <-down- Deed
+
+
+Deed <|-down- Deed_Buildable
+
+Deed <|-down- Deed_NonBuildable
+
+Square  <|-down- ChanceSquare
+
+ChanceSquare *-down-- "1..46"ChanceCard
+
+Square  <|-down- JailSquare
+
+Square  <|-down- StartSquare
+
+Square  <|-down- ParkingSquare
+
+ChanceCard <|-down- MoveCard
+
+ChanceCard <|-down- MoneyCard
+
+ChanceCard <|-down- DeedCard
+
+Player *-left-Cardholder
+
+Cardholder <-down- Deed
+
+
+
+GameController <-left- Player
+
+GameController "1" -right- "1" Cup
+
+
+
+
+Cup "1" *-down-- "2" Die
+
+Player "1" *--down- "1" Account
+
+
+@enduml
